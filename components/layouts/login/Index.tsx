@@ -1,0 +1,248 @@
+"use client";
+import { COLORS } from "@/utils/enum";
+import { montserrat, roboto } from "@/utils/fonts";
+import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
+import { Email, Visibility, VisibilityOff, Lock } from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  Card,
+  Checkbox,
+  Container,
+  FormControl,
+  FormControlLabel,
+  IconButton,
+  InputAdornment,
+  Link,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+
+const LoginLayout = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  return (
+    <Box
+      sx={{
+        background: `linear-gradient(135deg, ${COLORS.NAVY_GRADIENT_START} 0%, ${COLORS.NAVY_GRADIENT_END} 100%)`,
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        overflow: "hidden",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: "-10%",
+          left: "-10%",
+          width: "40%",
+          height: "40%",
+          background:
+            "radial-gradient(circle, rgba(209, 160, 84, 0.05) 0%, rgba(209, 160, 84, 0) 70%)",
+          filter: "blur(60px)",
+          zIndex: 0,
+        },
+      }}
+    >
+      <Container maxWidth="sm" sx={{ position: "relative", zIndex: 1 }}>
+        <Card
+          sx={{
+            py: 5,
+            px: { xs: 3, md: 5 },
+            backgroundColor: COLORS.WHITE,
+            borderRadius: "16px",
+            boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.4)",
+          }}
+        >
+          <Box sx={{ textAlign: "center", mb: 4 }}>
+            <Box
+              sx={{
+                width: 50,
+                height: 50,
+                bgcolor: COLORS.ACCENT_TAN,
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#111827",
+                fontWeight: 800,
+                fontSize: 24,
+                mx: "auto",
+                mb: 2,
+              }}
+            >
+              I
+            </Box>
+            <Typography
+              sx={{
+                color: COLORS.BLACK,
+                fontFamily: roboto.style.fontFamily,
+                fontWeight: 700,
+                fontSize: 28,
+                textTransform: "uppercase",
+                letterSpacing: 1,
+              }}
+            >
+              Welcome to IAIRE
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: montserrat.style.fontFamily,
+                fontSize: 15,
+                color: "rgba(0, 0, 0, 0.6)",
+                mt: 1,
+              }}
+            >
+              Sign in to access your member dashboard
+            </Typography>
+          </Box>
+
+          <form>
+            <Stack spacing={3}>
+              <TextField
+                label="Email Address"
+                placeholder="email@example.com"
+                fullWidth
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Email sx={{ color: "rgba(0, 0, 0, 0.4)" }} />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+                sx={{
+                  ...TEXTFIELD_STYLE_VALIDATION,
+                }}
+              />
+
+              <TextField
+                label="Password"
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                fullWidth
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Lock sx={{ color: "rgba(0, 0, 0, 0.4)" }} />
+                      </InputAdornment>
+                    ),
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          edge="end"
+                        >
+                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+                sx={{
+                  ...TEXTFIELD_STYLE_VALIDATION,
+                }}
+              />
+
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ mt: -1 }}
+              >
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      size="small"
+                      sx={{
+                        color: COLORS.PRIMARY_NAVY,
+                        "&.Mui-checked": { color: COLORS.PRIMARY_NAVY },
+                      }}
+                    />
+                  }
+                  label={
+                    <Typography
+                      sx={{
+                        fontSize: 14,
+                        fontFamily: montserrat.style.fontFamily,
+                        color: COLORS.BLACK,
+                      }}
+                    >
+                      Remember me
+                    </Typography>
+                  }
+                />
+                <Link
+                  href="#"
+                  underline="hover"
+                  sx={{
+                    fontSize: 14,
+                    color: COLORS.PRIMARY_NAVY,
+                    fontFamily: montserrat.style.fontFamily,
+                    fontWeight: 500,
+                  }}
+                >
+                  Forgot password?
+                </Link>
+              </Stack>
+
+              <Button
+                variant="contained"
+                fullWidth
+                size="large"
+                sx={{
+                  bgcolor: COLORS.ACCENT_TAN,
+                  color: COLORS.BLACK,
+                  py: 1.5,
+                  borderRadius: "10px",
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                  textTransform: "none",
+                  fontFamily: montserrat.style.fontFamily,
+                  boxShadow: "0px 4px 10px rgba(209, 160, 84, 0.3)",
+                  "&:hover": {
+                    bgcolor: "#B88A40",
+                    boxShadow: "0px 6px 15px rgba(209, 160, 84, 0.4)",
+                  },
+                }}
+              >
+                Sign In
+              </Button>
+
+              <Typography
+                textAlign="center"
+                sx={{
+                  fontSize: 14,
+                  fontFamily: montserrat.style.fontFamily,
+                  color: "rgba(0, 0, 0, 0.6)",
+                }}
+              >
+                Don't have an account?{" "}
+                <Link
+                  href="/signup/role-selection"
+                  underline="hover"
+                  sx={{
+                    color: COLORS.PRIMARY_NAVY,
+                    fontWeight: 600,
+                  }}
+                >
+                  Join IAIRE
+                </Link>
+              </Typography>
+            </Stack>
+          </form>
+        </Card>
+      </Container>
+    </Box>
+  );
+};
+
+export default LoginLayout;

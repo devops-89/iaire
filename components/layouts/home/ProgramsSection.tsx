@@ -1,0 +1,204 @@
+"use client";
+
+import {
+  Box,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  Card,
+  Link,
+} from "@mui/material";
+import React from "react";
+import { COLORS } from "@/utils/enum";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import LightbulbIcon from "@mui/icons-material/Lightbulb";
+import ScienceIcon from "@mui/icons-material/Science";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+
+interface Program {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+const programs: Program[] = [
+  {
+    title: "Innovation Program",
+    description:
+      "Transform ideas into patented innovations with expert guidance and resources.",
+    icon: <LightbulbIcon sx={{ color: "#EAB308" }} />,
+  },
+  {
+    title: "Research Program",
+    description:
+      "Conduct rigorous research and publish findings in prestigious journals.",
+    icon: <ScienceIcon sx={{ color: "#3B82F6" }} />,
+  },
+  {
+    title: "Entrepreneurship Program",
+    description:
+      "Build startups and launch ventures with mentorship and funding opportunities.",
+    icon: <RocketLaunchIcon sx={{ color: "#A855F7" }} />,
+  },
+];
+
+const THEMED_COLORS = [
+  { accent: "#F59E0B", light: "rgba(245, 158, 11, 0.05)" }, // Innovation
+  { accent: "#3B82F6", light: "rgba(59, 130, 246, 0.05)" }, // Research
+  { accent: "#8B5CF6", light: "rgba(139, 92, 246, 0.05)" }, // Entrepreneurship
+];
+
+const ProgramsSection = () => {
+  return (
+    <Box sx={{ py: { xs: 8, md: 15 }, bgcolor: "#F9F7F5" }}>
+      <Container maxWidth="lg">
+        <Stack
+          spacing={2}
+          alignItems="center"
+          textAlign="center"
+          sx={{ mb: 8 }}
+        >
+          <Typography
+            variant="h2"
+            sx={{
+              color: "#0F172A",
+              fontSize: { xs: 32, md: 48 },
+              fontWeight: 700,
+              fontFamily: '"Playfair Display", serif',
+            }}
+          >
+            Our Programs
+          </Typography>
+          <Typography
+            sx={{
+              color: "#475569",
+              fontSize: { xs: 16, md: 18 },
+              maxWidth: "600px",
+              fontFamily: '"Inter", sans-serif',
+            }}
+          >
+            Comprehensive pathways for young minds to excel
+          </Typography>
+        </Stack>
+
+        <Grid container spacing={8} alignItems="center">
+          <Grid size={{ xs: 12, md: 5.5 }}>
+            <Box
+              sx={{
+                width: "100%",
+                aspectRatio: "4/3",
+                borderRadius: "24px",
+                overflow: "hidden",
+                boxShadow: "0 20px 40px rgba(0,0,0,0.06)",
+              }}
+            >
+              <Box
+                component="img"
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1000"
+                alt="Students working together"
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+              />
+            </Box>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6.5 }}>
+            <Stack spacing={3}>
+              {programs.map((program, index) => {
+                const theme = THEMED_COLORS[index];
+
+                return (
+                  <Card
+                    key={index}
+                    elevation={0}
+                    sx={{
+                      p: 4,
+                      bgcolor: "#FFFFFF",
+                      borderRadius: "16px",
+                      border: "1px solid #F1F5F9",
+                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                      "&:hover": {
+                        transform: "translateY(-4px)",
+                        boxShadow:
+                          "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                      },
+                    }}
+                  >
+                    <Stack direction="row" spacing={3} alignItems="flex-start">
+                      <Box
+                        sx={{
+                          display: "flex",
+                          color: theme.accent,
+                        }}
+                      >
+                        {React.isValidElement(program.icon) &&
+                          (() => {
+                            const iconElement =
+                              program.icon as React.ReactElement<any>;
+                            return React.cloneElement(iconElement, {
+                              sx: {
+                                ...(iconElement.props.sx || {}),
+                                fontSize: 32,
+                                color: theme.accent,
+                              },
+                            });
+                          })()}
+                      </Box>
+                      <Stack spacing={1}>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            color: "#0F172A",
+                            fontWeight: 600,
+                            fontSize: "1.25rem",
+                            fontFamily: '"Inter", sans-serif',
+                          }}
+                        >
+                          {program.title}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            color: "#475569",
+                            fontSize: "1rem",
+                            lineHeight: 1.6,
+                            fontFamily: '"Inter", sans-serif',
+                          }}
+                        >
+                          {program.description}
+                        </Typography>
+                        <Link
+                          href="#"
+                          sx={{
+                            color: theme.accent,
+                            textDecoration: "none",
+                            fontWeight: 600,
+                            fontSize: "0.95rem",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 0.5,
+                            mt: 1,
+                            transition: "gap 0.2s ease",
+                            "&:hover": {
+                              gap: 1,
+                            },
+                          }}
+                        >
+                          Learn more <ArrowForwardIcon sx={{ fontSize: 18 }} />
+                        </Link>
+                      </Stack>
+                    </Stack>
+                  </Card>
+                );
+              })}
+            </Stack>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
+
+export default ProgramsSection;

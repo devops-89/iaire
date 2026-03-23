@@ -1,0 +1,208 @@
+"use client";
+
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  Card,
+  Chip,
+  Link,
+} from "@mui/material";
+import React from "react";
+import { COLORS } from "@/utils/enum";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+
+const events = [
+  {
+    type: "Webinar",
+    title: "AI & Innovation: Building Tomorrow's Solutions",
+    date: "March 25, 2025",
+    description:
+      "Explore how artificial intelligence is transforming innovation and entrepreneurship for young minds.",
+  },
+  {
+    type: "Workshop",
+    title: "Young Researchers: Publishing Your First Paper",
+    date: "April 10, 2025",
+    description:
+      "Learn the essential steps to conduct research and publish in academic journals.",
+  },
+  {
+    type: "Seminar",
+    title: "Scaling Your Startup: From Idea to Investment",
+    date: "April 15, 2025",
+    description:
+      "Navigate the journey from concept to funded venture with insights from successful entrepreneurs.",
+  },
+];
+
+const EventsSection = () => {
+  return (
+    <Box
+      sx={{
+        py: { xs: 8, md: 15 },
+        bgcolor: COLORS.WHITE,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          justifyContent="space-between"
+          alignItems={{ xs: "flex-start", sm: "flex-end" }}
+          spacing={2}
+          sx={{ mb: 8 }}
+        >
+          <Stack spacing={1}>
+            <Typography
+              variant="h2"
+              sx={{
+                color: "#111827",
+                fontSize: { xs: 32, md: 48 },
+                fontWeight: 700,
+                fontFamily: '"Playfair Display", serif',
+              }}
+            >
+              Upcoming Webinars & Events
+            </Typography>
+            <Typography
+              sx={{
+                color: "#6B7280",
+                fontSize: "1.1rem",
+                fontFamily: '"Inter", sans-serif',
+              }}
+            >
+              Connect, learn, and grow with the IAIRE community
+            </Typography>
+          </Stack>
+          <Link
+            href="#"
+            sx={{
+              color: "#F59E0B",
+              textDecoration: "none",
+              fontWeight: 600,
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              fontFamily: '"Inter", sans-serif',
+              transition: "gap 0.2s ease",
+              "&:hover": {
+                gap: 1.5,
+              },
+            }}
+          >
+            View All Events <ArrowForwardIcon sx={{ fontSize: 18 }} />
+          </Link>
+        </Stack>
+
+        <Grid container spacing={4}>
+          {events.map((event, index) => (
+            <Grid key={index} size={{ xs: 12, md: 4 }}>
+              <Card
+                elevation={0}
+                sx={{
+                  p: 4,
+                  height: "100%",
+                  borderRadius: "24px",
+                  border: "1px solid #E5E7EB",
+                  bgcolor: "#FFFFFF",
+                  display: "flex",
+                  flexDirection: "column",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-8px)",
+                    boxShadow:
+                      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                  },
+                }}
+              >
+                <Stack
+                  direction="row"
+                  justifyContent="space-between"
+                  sx={{ mb: 3 }}
+                >
+                  <Chip
+                    label={event.type}
+                    size="small"
+                    sx={{
+                      bgcolor: event.type === "Webinar" ? "#FEF3C7" : "#F3F4F6",
+                      color: event.type === "Webinar" ? "#B45309" : "#374151",
+                      fontWeight: 600,
+                      borderRadius: "8px",
+                      px: 0.5,
+                    }}
+                  />
+                  <CalendarTodayIcon sx={{ color: "#9CA3AF", fontSize: 20 }} />
+                </Stack>
+
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: "#111827",
+                    fontWeight: 700,
+                    fontSize: "1.25rem",
+                    mb: 1.5,
+                    lineHeight: 1.4,
+                    fontFamily: '"Inter", sans-serif',
+                  }}
+                >
+                  {event.title}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#374151",
+                    fontSize: "0.95rem",
+                    fontWeight: 600,
+                    mb: 2,
+                    fontFamily: '"Inter", sans-serif',
+                  }}
+                >
+                  {event.date}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "#6B7280",
+                    fontSize: "0.95rem",
+                    mb: 4,
+                    flexGrow: 1,
+                    lineHeight: 1.6,
+                    fontFamily: '"Inter", sans-serif',
+                  }}
+                >
+                  {event.description}
+                </Typography>
+
+                <Button
+                  variant="contained"
+                  fullWidth
+                  endIcon={<ArrowForwardIcon />}
+                  sx={{
+                    bgcolor: "#F3F4F6",
+                    color: "#111827",
+                    boxShadow: "none",
+                    textTransform: "none",
+                    fontWeight: 600,
+                    borderRadius: "12px",
+                    py: 1.5,
+                    fontFamily: '"Inter", sans-serif',
+                    "&:hover": {
+                      bgcolor: "#E5E7EB",
+                      boxShadow: "none",
+                    },
+                  }}
+                >
+                  Register Now
+                </Button>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
+
+export default EventsSection;
