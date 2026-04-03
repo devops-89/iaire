@@ -60,6 +60,7 @@ const PaymentLayout = () => {
   });
 
   console.log("data", data);
+  console.log("schoolData", schoolData);
 
   const cardType = useMemo(() => {
     const number = formik.values.cardNumber;

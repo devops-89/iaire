@@ -18,7 +18,8 @@ import {
 import { useFormik } from "formik";
 import { schoolSignupValidationSchema } from "@/utils/validationSchema";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
-import { COLORS } from "@/utils/enum";
+import { COLORS, USER_ROLES } from "@/utils/enum";
+import { MEMBERSHIP_LEVEL } from "@/utils/type";
 import {
   CloudUpload,
   Delete,
@@ -42,7 +43,7 @@ const School = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const router = useRouter();
-  const { data } = useSignup();
+  const { data, setSchoolData } = useSignup();
   const formik = useFormik({
     initialValues: {
       schoolName: "",
@@ -59,8 +60,16 @@ const School = () => {
     },
     validationSchema: schoolSignupValidationSchema,
     onSubmit: (values) => {
-      console.log("School Signup Values:", values);
-      console.log("dat", data);
+      // console.log("School Signup Values:", values);
+      // console.log("dat", data);
+      setSchoolData({
+        ...values,
+        role: USER_ROLES.SCHOOL,
+        membershipLevel: MEMBERSHIP_LEVEL.INSTITUTIONAL,
+        certifiedTeachers: 0,
+        publications: 0,
+        hasSelectionBoardApproval: false,
+      });
 
       router.push("/signup/verify");
     },

@@ -7,6 +7,8 @@ import StudentSidebar from "./dashboard/student/components/Sidebar";
 import StudentHeader from "./dashboard/student/components/Header";
 import SchoolSidebar from "./dashboard/school/components/Sidebar";
 import SchoolHeader from "./dashboard/school/components/Header";
+import TeacherSidebar from "./dashboard/teacher/components/Sidebar";
+import TeacherHeader from "./dashboard/teacher/components/Header";
 
 const HIDE_LAYOUT_ROUTES = [
   "/login",
@@ -24,9 +26,13 @@ export default function LayoutWrapper({
 
   const isStudentDashboard = pathname.startsWith("/dashboard/student");
   const isSchoolDashboard = pathname.startsWith("/dashboard/school");
+  const isTeacherDashboard = pathname.startsWith("/dashboard/teacher");
 
   const shouldHideMainLayout =
-    HIDE_LAYOUT_ROUTES.includes(pathname) || isStudentDashboard || isSchoolDashboard;
+    HIDE_LAYOUT_ROUTES.includes(pathname) ||
+    isStudentDashboard ||
+    isSchoolDashboard ||
+    isTeacherDashboard;
 
   return (
     <>
@@ -35,8 +41,11 @@ export default function LayoutWrapper({
       {isStudentDashboard && <StudentHeader />}
       {isSchoolDashboard && <SchoolSidebar />}
       {isSchoolDashboard && <SchoolHeader />}
+      {isTeacherDashboard && <TeacherSidebar />}
+      {isTeacherDashboard && <TeacherHeader />}
       {children}
       {!shouldHideMainLayout && <Footer />}
     </>
   );
 }
+

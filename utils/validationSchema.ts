@@ -52,3 +52,62 @@ export const schoolSignupValidationSchema = Yup.object({
     .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Confirm password is required"),
 });
+
+export const addTeacherValidationSchema = Yup.object({
+  fullName: Yup.string().required("Full name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  phone: Yup.string()
+    .test(
+      "is-valid-phone",
+      "Phone number must be at least 10 digits",
+      (value) => {
+        const digits = value?.replace(/\D/g, "");
+        return digits ? digits.length >= 10 : false;
+      }
+    )
+    .required("Phone number is required"),
+  subject: Yup.string().required("Subject is required"),
+  status: Yup.string().required("Status is required"),
+});
+
+export const addInnovationValidationSchema = Yup.object({
+  title: Yup.string().required("Title is required"),
+  category: Yup.string().required("Category is required"),
+  description: Yup.string().required("Description is required"),
+  status: Yup.string().required("Status is required"),
+});
+
+export const addResearchValidationSchema = Yup.object({
+  title: Yup.string().required("Research Title is required"),
+  topic: Yup.string().required("Topic is required"),
+  abstract: Yup.string().required("Abstract is required"),
+  status: Yup.string().required("Status is required"),
+});
+
+export const addStartupValidationSchema = Yup.object({
+  startupName: Yup.string().required("Startup name is required"),
+  sector: Yup.string().required("Sector is required"),
+  description: Yup.string().required("Description is required"),
+  founderName: Yup.string().required("Founder name is required"),
+  status: Yup.string().required("Status is required"),
+});
+
+export const teacherSignupValidationSchema = Yup.object({
+  board: Yup.string().required("Board is required"),
+  school: Yup.string().required("School is required"),
+  firstName: Yup.string().required("First name is required"),
+  lastName: Yup.string().required("Last name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  phone: Yup.string().required("Phone number is required"),
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password")], "Passwords must match")
+    .required("Confirm password is required"),
+});
+
+
+
+
+

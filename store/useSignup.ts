@@ -1,4 +1,9 @@
-import { SchoolInfo, SIGNUP_RESPONSE, MEMBERSHIP_LEVEL } from "@/utils/type";
+import {
+  SchoolInfo,
+  SIGNUP_RESPONSE,
+  MEMBERSHIP_LEVEL,
+  TeacherInfo,
+} from "@/utils/type";
 import { USER_ROLES } from "@/utils/enum";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -6,8 +11,10 @@ import { persist } from "zustand/middleware";
 interface SignupStore {
   data: SIGNUP_RESPONSE | null;
   schoolData: SchoolInfo | null;
+  teacherData: TeacherInfo | null;
   setUserData: (data: SIGNUP_RESPONSE) => void;
   setSchoolData: (data: SchoolInfo) => void;
+  setTeacherData: (data: TeacherInfo) => void;
   clearAll: () => void;
 }
 
@@ -16,9 +23,11 @@ export const useSignup = create<SignupStore>()(
     (set) => ({
       data: null,
       schoolData: null,
+      teacherData: null,
       setUserData: (data) => set({ data }),
       setSchoolData: (data) => set({ schoolData: data }),
-      clearAll: () => set({ data: null, schoolData: null }),
+      setTeacherData: (data) => set({ teacherData: data }),
+      clearAll: () => set({ data: null, schoolData: null, teacherData: null }),
     }),
     {
       name: "signup-storage",
@@ -35,7 +44,9 @@ export const useSignup = create<SignupStore>()(
               hasSelectionBoardApproval: false,
               affiliationCertificate: null,
             },
+        teacherData: state.teacherData,
       }),
     }
   )
 );
+

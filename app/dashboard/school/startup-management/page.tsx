@@ -78,7 +78,7 @@ const StartupManagementPage = () => {
           <Button
             variant="contained"
             startIcon={<RocketLaunch />}
-            onClick={() => router.push("/dashboard/school/startup-management/track-status")}
+            onClick={() => router.push("/dashboard/school/startup-management/add-startup")}
             sx={{
               bgcolor: COLORS.ACCENT_TAN,
               color: COLORS.BLACK,
@@ -93,6 +93,7 @@ const StartupManagementPage = () => {
           >
             New Startup
           </Button>
+
         </Box>
 
         <Paper elevation={0} sx={{ borderRadius: "24px", border: "1px solid #f0f0f0", overflow: "hidden" }}>

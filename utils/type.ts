@@ -32,4 +32,19 @@ export interface SchoolInfo {
   certifiedTeachers: number;
   publications: number;
   hasSelectionBoardApproval: boolean;
+  password?: string;
+  confirmPassword?: string;
 }
+
+export interface TeacherInfo {
+  board: string;
+  school: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password?: string;
+  confirmPassword?: string;
+  role: USER_ROLES.TEACHER;
+}
+

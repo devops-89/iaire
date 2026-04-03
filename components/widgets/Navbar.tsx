@@ -25,7 +25,7 @@ const navLinks = [
   { title: "Membership", href: "#" },
   { title: "Fellows", href: "#" },
   { title: "Programs", href: "#" },
-  { title: "Awards & Grants", href: "#" },
+  // { title: "Awards & Grants", href: "#" },
 ];
 
 const Navbar = () => {
