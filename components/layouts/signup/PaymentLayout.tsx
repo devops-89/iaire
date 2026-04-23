@@ -31,7 +31,7 @@ import React, { useMemo } from "react";
 
 const PaymentLayout = () => {
   const router = useRouter();
-  const { data, schoolData } = useSignup();
+  const { data, institutionData } = useSignup();
   const formik = useFormik({
     initialValues: {
       cardholderName: "",
@@ -47,20 +47,20 @@ const PaymentLayout = () => {
         router.push("/dashboard/student");
       }
       if (
-        data?.role === USER_ROLES.SCHOOL ||
-        schoolData?.role === USER_ROLES.SCHOOL
+        data?.role === USER_ROLES.INSTITUTION ||
+        institutionData?.role === USER_ROLES.INSTITUTION
       ) {
-        router.push("/dashboard/school");
+        router.push("/dashboard/institution");
       }
 
-      if (data?.role === USER_ROLES.TEACHER) {
-        router.push("/dashboard/teacher");
+      if (data?.role === USER_ROLES.EDUCATOR) {
+        router.push("/dashboard/educator");
       }
     },
   });
 
   console.log("data", data);
-  console.log("schoolData", schoolData);
+  console.log("institutionData", institutionData);
 
   const cardType = useMemo(() => {
     const number = formik.values.cardNumber;

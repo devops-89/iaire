@@ -5,16 +5,18 @@ import Navbar from "@/components/widgets/Navbar";
 import Footer from "@/components/widgets/Footer";
 import StudentSidebar from "./dashboard/student/components/Sidebar";
 import StudentHeader from "./dashboard/student/components/Header";
-import SchoolSidebar from "./dashboard/school/components/Sidebar";
-import SchoolHeader from "./dashboard/school/components/Header";
-import TeacherSidebar from "./dashboard/teacher/components/Sidebar";
-import TeacherHeader from "./dashboard/teacher/components/Header";
+import InstitutionSidebar from "./dashboard/institution/components/Sidebar";
+import InstitutionHeader from "./dashboard/institution/components/Header";
+import EducatorSidebar from "./dashboard/educator/components/Sidebar";
+import EducatorHeader from "./dashboard/educator/components/Header";
+
 
 const HIDE_LAYOUT_ROUTES = [
   "/login",
   "/signup",
   "/signup/role-selection",
   "/signup/payment",
+  "/dashboard/school",
 ];
 
 export default function LayoutWrapper({
@@ -25,27 +27,26 @@ export default function LayoutWrapper({
   const pathname = usePathname();
 
   const isStudentDashboard = pathname.startsWith("/dashboard/student");
-  const isSchoolDashboard = pathname.startsWith("/dashboard/school");
-  const isTeacherDashboard = pathname.startsWith("/dashboard/teacher");
+  const isInstitutionDashboard = pathname.startsWith("/dashboard/institution");
+  const isEducatorDashboard = pathname.startsWith("/dashboard/educator");
 
   const shouldHideMainLayout =
     HIDE_LAYOUT_ROUTES.includes(pathname) ||
     isStudentDashboard ||
-    isSchoolDashboard ||
-    isTeacherDashboard;
+    isInstitutionDashboard ||
+    isEducatorDashboard;
 
   return (
     <>
       {!shouldHideMainLayout && <Navbar />}
       {isStudentDashboard && <StudentSidebar />}
       {isStudentDashboard && <StudentHeader />}
-      {isSchoolDashboard && <SchoolSidebar />}
-      {isSchoolDashboard && <SchoolHeader />}
-      {isTeacherDashboard && <TeacherSidebar />}
-      {isTeacherDashboard && <TeacherHeader />}
+      {isInstitutionDashboard && <InstitutionSidebar />}
+      {isInstitutionDashboard && <InstitutionHeader />}
+      {isEducatorDashboard && <EducatorSidebar />}
+      {isEducatorDashboard && <EducatorHeader />}
       {children}
       {!shouldHideMainLayout && <Footer />}
     </>
   );
 }
-

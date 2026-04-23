@@ -16,35 +16,51 @@ export interface SIGNUP_RESPONSE {
   role: string | null;
 }
 
-export interface SchoolInfo {
-  schoolName: string;
+export interface InstitutionInfo {
+  institutionName: string;
   principalName: string;
-  affiliationType: string;
-  affiliationNumber: string;
-  affiliationCertificate: File | null;
   email: string;
   phone: string;
   website: string;
-  address: string;
+  addressLine1: string;
+  addressLine2?: string;
+  city: string;
+  state: string;
+  postalCode: string;
   registrationNumber?: string;
-  role: USER_ROLES.SCHOOL;
+  role: USER_ROLES.INSTITUTION;
   membershipLevel: MEMBERSHIP_LEVEL;
-  certifiedTeachers: number;
+  certifiedEducators: number;
   publications: number;
   hasSelectionBoardApproval: boolean;
   password?: string;
   confirmPassword?: string;
+  affiliationType?: string;
+  affiliationNumber?: string;
+  affiliationCertificate?: File | null;
+  country?: string;
+  isd?: string;
 }
 
-export interface TeacherInfo {
+export interface EducatorInfo {
   board: string;
-  school: string;
+  institution: string;
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
   password?: string;
   confirmPassword?: string;
-  role: USER_ROLES.TEACHER;
+  role: USER_ROLES.EDUCATOR;
 }
 
+export interface STATSCARDDATA {
+  title: string;
+  count: string;
+  icon: any;
+}
+
+export interface STATSCARDPROPS {
+  title: string;
+  data: STATSCARDDATA[];
+}

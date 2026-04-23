@@ -7,13 +7,13 @@ const TeacherDashboardLayout = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { teacherData } = useSignup();
+  const { educatorData } = useSignup();
   return (
     <Box sx={{ backgroundColor: "#f8f9fa", minHeight: "100vh" }}>
       <Box
         sx={{
           ml: { xs: 0, md: "250px" },
-          pt: "90px", // Header height (70px) + 20px padding
+          pt: "90px",
           pb: 4,
           px: { xs: 2, md: 4, lg: 6 },
           transition: "margin-left 0.3s ease",

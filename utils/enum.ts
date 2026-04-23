@@ -8,9 +8,9 @@ export enum COLORS {
 }
 
 export enum USER_ROLES {
-  SCHOOL = "SCHOOL",
-  TEACHER = "TEACHER",
-  STUDENT = "STUDENT",
+  INSTITUTION = "institution",
+  EDUCATOR = "educator",
+  STUDENT = "student",
 }
 
 export enum USER_STATUS {
@@ -18,4 +18,9 @@ export enum USER_STATUS {
   INACTIVE = "Inactive",
   BANNED = "Banned",
   PENDING = "Pending",
+}
+
+export enum MEMBER_TYPES {
+  NEW_MEMBER = "New Member",
+  EXISTING_MEMBER = "Existing Member",
 }

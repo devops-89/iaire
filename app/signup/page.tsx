@@ -1,7 +1,7 @@
 "use client";
 import SignupLayout from "@/components/layouts/signup/Index";
-import School from "@/components/layouts/signup/school/Index";
-import Teacher from "@/components/layouts/signup/teacher/Index";
+import Institution from "@/components/layouts/signup/institution/Index";
+import Educator from "@/components/layouts/signup/educator/Index";
 import { USER_ROLES } from "@/utils/enum";
 import { useSearchParams } from "next/navigation";
 import React, { Suspense } from "react";
@@ -11,10 +11,10 @@ const SignupContent = () => {
   const role = searchParams.get("role");
   return (
     <div>
-      {role === USER_ROLES.SCHOOL ? (
-        <School />
-      ) : role === USER_ROLES.TEACHER ? (
-        <Teacher />
+      {role === USER_ROLES.INSTITUTION ? (
+        <Institution />
+      ) : role === USER_ROLES.EDUCATOR ? (
+        <Educator />
       ) : (
         <SignupLayout />
       )}

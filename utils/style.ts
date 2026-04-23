@@ -12,8 +12,19 @@ export const TEXTFIELD_STYLE_VALIDATION = {
       borderColor: COLORS.PRIMARY_NAVY,
     },
   },
-  "& .MuiOutlinedInput-input::placeholder": {
-    color: "rgba(0, 0, 0, 0.4)",
-    opacity: 1,
+  "& .Mui-error ": {
+    "& fieldset": { borderColor: "#ff0000" },
   },
+};
+export const DATE_PICKER_STYLE_VALIDATION = {
+  "& .MuiPickersOutlinedInput-root": {
+    borderColor: "rgba(0,0,0,0.1)",
+    borderRadius: "10px",
+  },
+  // "& .MuiInputLabel-root": {
+  //   color: "rgba(0, 0, 0, 0.6)",
+  //   "& .Mui-focused": {
+  //     color: COLORS.PRIMARY_NAVY,
+  //   },
+  // },
 };

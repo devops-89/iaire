@@ -1,3 +1,4 @@
+"use client";
 import { roboto } from "@/utils/fonts";
 import { Box, Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";

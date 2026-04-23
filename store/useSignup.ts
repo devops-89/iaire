@@ -1,8 +1,8 @@
 import {
-  SchoolInfo,
+  InstitutionInfo,
   SIGNUP_RESPONSE,
   MEMBERSHIP_LEVEL,
-  TeacherInfo,
+  EducatorInfo,
 } from "@/utils/type";
 import { USER_ROLES } from "@/utils/enum";
 import { create } from "zustand";
@@ -10,11 +10,11 @@ import { persist } from "zustand/middleware";
 
 interface SignupStore {
   data: SIGNUP_RESPONSE | null;
-  schoolData: SchoolInfo | null;
-  teacherData: TeacherInfo | null;
+  institutionData: InstitutionInfo | null;
+  educatorData: EducatorInfo | null;
   setUserData: (data: SIGNUP_RESPONSE) => void;
-  setSchoolData: (data: SchoolInfo) => void;
-  setTeacherData: (data: TeacherInfo) => void;
+  setInstitutionData: (data: InstitutionInfo) => void;
+  setEducatorData: (data: EducatorInfo) => void;
   clearAll: () => void;
 }
 
@@ -22,31 +22,31 @@ export const useSignup = create<SignupStore>()(
   persist(
     (set) => ({
       data: null,
-      schoolData: null,
-      teacherData: null,
+      institutionData: null,
+      educatorData: null,
       setUserData: (data) => set({ data }),
-      setSchoolData: (data) => set({ schoolData: data }),
-      setTeacherData: (data) => set({ teacherData: data }),
-      clearAll: () => set({ data: null, schoolData: null, teacherData: null }),
+      setInstitutionData: (data) => set({ institutionData: data }),
+      setEducatorData: (data) => set({ educatorData: data }),
+      clearAll: () =>
+        set({ data: null, institutionData: null, educatorData: null }),
     }),
     {
       name: "signup-storage",
       partialize: (state) => ({
         ...state,
-        schoolData: state.schoolData
-          ? { ...state.schoolData, affiliationCertificate: null }
+        institutionData: state.institutionData
+          ? { ...state.institutionData, affiliationCertificate: null }
           : {
-              schoolName: "",
-              role: USER_ROLES.SCHOOL,
+              institutionName: "",
+              role: USER_ROLES.INSTITUTION,
               membershipLevel: MEMBERSHIP_LEVEL.INSTITUTIONAL,
-              certifiedTeachers: 0,
+              certifiedEducators: 0,
               publications: 0,
               hasSelectionBoardApproval: false,
               affiliationCertificate: null,
             },
-        teacherData: state.teacherData,
+        educatorData: state.educatorData,
       }),
-    }
-  )
+    },
+  ),
 );
-

@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 import LayoutWrapper from "@/components/layouts/LayoutWrapper";
+import Modal from "@/components/widgets/Modal";
 
 export default function RootLayout({
   children,
@@ -30,7 +31,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable}`}>
         {/* <ThemeRegistry> */}
-        <LayoutWrapper>{children}</LayoutWrapper>
+        <LayoutWrapper>
+          <Modal />
+          {children}
+        </LayoutWrapper>
         {/* </ThemeRegistry> */}
       </body>
     </html>

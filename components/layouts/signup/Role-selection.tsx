@@ -23,14 +23,14 @@ import React, { useState } from "react";
 
 const ROLES = [
   {
-    id: USER_ROLES.SCHOOL,
-    title: "School",
-    description: "Manage your institution, staff, and students seamlessly.",
+    id: USER_ROLES.INSTITUTION,
+    title: "Institution",
+    description: "Manage your institution, staff, and researcher educators seamlessly.",
     icon: <School sx={{ fontSize: 40 }} />,
   },
   {
-    id: USER_ROLES.TEACHER,
-    title: "Teachers",
+    id: USER_ROLES.EDUCATOR,
+    title: "Educators",
     description: "Create classes, track progress, and inspire your students.",
     icon: <SupervisorAccount sx={{ fontSize: 40 }} />,
   },
