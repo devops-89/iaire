@@ -9,8 +9,9 @@ import {
   stepConnectorClasses,
   Box,
 } from "@mui/material";
-import { COLORS } from "@/utils/enum";
+import { COLORS, USER_ROLES } from "@/utils/enum";
 import { Check } from "@mui/icons-material";
+import { useSignup } from "@/store/useSignup";
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -35,28 +36,28 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   },
 }));
 
-const QontoStepIconRoot = styled("div")<{ ownerState: { active?: boolean; completed?: boolean } }>(
-  ({ theme, ownerState }) => ({
-    color: "rgba(0, 0, 0, 0.1)",
-    display: "flex",
-    height: 22,
-    alignItems: "center",
-    ...(ownerState.active && {
-      color: COLORS.ACCENT_TAN,
-    }),
-    "& .QontoStepIcon-completedIcon": {
-      color: COLORS.ACCENT_TAN,
-      zIndex: 1,
-      fontSize: 22,
-    },
-    "& .QontoStepIcon-circle": {
-      width: 10,
-      height: 10,
-      borderRadius: "50%",
-      backgroundColor: "currentColor",
-    },
-  })
-);
+const QontoStepIconRoot = styled("div")<{
+  ownerState: { active?: boolean; completed?: boolean };
+}>(({ theme, ownerState }) => ({
+  color: "rgba(0, 0, 0, 0.1)",
+  display: "flex",
+  height: 22,
+  alignItems: "center",
+  ...(ownerState.active && {
+    color: COLORS.ACCENT_TAN,
+  }),
+  "& .QontoStepIcon-completedIcon": {
+    color: COLORS.ACCENT_TAN,
+    zIndex: 1,
+    fontSize: 22,
+  },
+  "& .QontoStepIcon-circle": {
+    width: 10,
+    height: 10,
+    borderRadius: "50%",
+    backgroundColor: "currentColor",
+  },
+}));
 
 function QontoStepIcon(props: any) {
   const { active, completed, className } = props;
@@ -72,13 +73,31 @@ function QontoStepIcon(props: any) {
   );
 }
 
-const steps = ["Institution Details", "Review Information", "Payment Verification"];
-
 interface SignupStepperProps {
   activeStep: number;
+  steps?: string[];
 }
 
-const SignupStepper = ({ activeStep }: SignupStepperProps) => {
+const SignupStepper = ({ activeStep, steps: customSteps }: SignupStepperProps) => {
+  const { data } = useSignup();
+  
+  const getSteps = () => {
+    if (customSteps) return customSteps;
+    
+    switch (data?.role) {
+      case USER_ROLES.INSTITUTION:
+        return ["Institution Details", "Review Information", "Payment Verification"];
+      case USER_ROLES.EDUCATOR:
+        return ["Educator Details", "Verify OTP", "Payment Verification"];
+      case USER_ROLES.STUDENT:
+        return ["Student Details", "Verify OTP", "Payment Verification"];
+      default:
+        return ["Account Details", "Verification", "Payment Verification"];
+    }
+  };
+
+  const steps = getSteps();
+
   return (
     <Box sx={{ width: "100%", mb: 5 }}>
       <Stepper

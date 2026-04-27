@@ -35,7 +35,7 @@ const InstitutionSidebar = () => {
           boxShadow: "0px 0px 2px 2px #d7d7d7",
           position: "fixed",
           height: "100vh",
-          backgroundColor: COLORS.PRIMARY_NAVY,
+          backgroundColor: COLORS.WHITE,
           top: 0,
           left: 0,
           zIndex: 1200,
@@ -46,17 +46,18 @@ const InstitutionSidebar = () => {
           <Typography
             sx={{
               fontSize: 30,
-              color: COLORS.ACCENT_TAN,
+              color: COLORS.RED,
               textAlign: "center",
               fontFamily: roboto.style.fontFamily,
               pt: 2,
               pb: 2,
+              fontWeight: 600,
             }}
           >
             IAIRE
           </Typography>
         </Box>
-        <Divider sx={{ borderColor: COLORS.ACCENT_TAN }} />
+        <Divider sx={{ borderColor: "rgba(0, 0, 0, 0.08)" }} />
         <List sx={{ px: 1 }}>
           {INSTITUTION_SIDEBAR_DATA.map((val: any, i) => {
             const hasSubItems = val.subItems && val.subItems.length > 0;
@@ -73,15 +74,14 @@ const InstitutionSidebar = () => {
                     borderRadius: "8px",
                     mb: 0.5,
                     backgroundColor:
-                      pathname === val.url ? COLORS.ACCENT_TAN : "transparent",
+                      pathname === val.url ? COLORS.RED : "transparent",
                     ":hover": {
                       backgroundColor:
                         pathname === val.url
-                          ? COLORS.ACCENT_TAN
-                          : "rgba(209, 160, 84, 0.1)",
+                          ? COLORS.RED
+                          : "rgba(198, 21, 48, 0.1)",
                     },
-                    color:
-                      pathname === val.url ? COLORS.PRIMARY_NAVY : COLORS.WHITE,
+                    color: pathname === val.url ? COLORS.WHITE : COLORS.BLACK,
                   }}
                   onClick={() => {
                     if (hasSubItems) {
@@ -123,10 +123,10 @@ const InstitutionSidebar = () => {
                             mb: 0.5,
                             backgroundColor:
                               pathname === sub.url
-                                ? "rgba(209, 160, 84, 0.2)"
+                                ? "rgba(198, 21, 48, 0.15)"
                                 : "transparent",
                             ":hover": {
-                              backgroundColor: "rgba(209, 160, 84, 0.1)",
+                              backgroundColor: "rgba(198, 21, 48, 0.08)",
                             },
                           }}
                           onClick={() => router.push(sub.url)}
@@ -140,8 +140,8 @@ const InstitutionSidebar = () => {
                                   fontSize: "13px",
                                   color:
                                     pathname === sub.url
-                                      ? COLORS.ACCENT_TAN
-                                      : "rgba(255, 255, 255, 0.7)",
+                                      ? COLORS.RED
+                                      : "rgba(0, 0, 0, 0.6)",
                                   fontWeight: pathname === sub.url ? 600 : 400,
                                 },
                               },

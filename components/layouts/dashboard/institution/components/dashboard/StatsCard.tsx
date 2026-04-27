@@ -34,7 +34,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
             left: 0,
             right: 0,
             height: "4px",
-            background: `linear-gradient(90deg, ${COLORS.PRIMARY_NAVY} 0%, ${COLORS.ACCENT_TAN} 100%)`,
+            background: `linear-gradient(90deg, ${COLORS.BLUE} 0%, ${COLORS.RED} 100%)`,
           }}
         />
 
@@ -47,7 +47,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
             opacity: 0.04,
             fontSize: "120px",
             transform: "rotate(-10deg)",
-            color: COLORS.PRIMARY_NAVY,
+            color: COLORS.BLUE,
             "& svg": {
               fontSize: "inherit",
             },
@@ -70,7 +70,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
                 p: 1.2,
                 borderRadius: "12px",
                 bgcolor: "rgba(11, 23, 39, 0.04)",
-                color: COLORS.PRIMARY_NAVY,
+                color: COLORS.BLUE,
                 display: "flex",
               }}
             >
@@ -97,7 +97,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
               fontSize: 32,
               fontWeight: 800,
               fontFamily: roboto.style.fontFamily, // Roboto Slab
-              color: COLORS.PRIMARY_NAVY,
+              color: COLORS.BLUE,
               letterSpacing: "-1px",
             }}
           >

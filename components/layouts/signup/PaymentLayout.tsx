@@ -26,6 +26,7 @@ import {
   Divider,
 } from "@mui/material";
 import { useFormik } from "formik";
+import SignupStepper from "./SignupStepper";
 import { useRouter } from "next/navigation";
 import React, { useMemo } from "react";
 
@@ -95,7 +96,8 @@ const PaymentLayout = () => {
         },
       }}
     >
-      <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        <SignupStepper activeStep={2} />
         <form onSubmit={formik.handleSubmit}>
           <Grid container spacing={4} alignItems="stretch">
             <Grid size={{ xs: 12, md: 7 }}>
@@ -127,8 +129,7 @@ const PaymentLayout = () => {
                       color: "rgba(0, 0, 0, 0.5)",
                     }}
                   >
-                    Your card will not be charged today. Free trial ends in 7
-                    days.
+                    Secure your membership with a valid payment method.
                   </Typography>
                 </Box>
 
@@ -303,7 +304,40 @@ const PaymentLayout = () => {
                         },
                       }}
                     >
-                      Start 7-Day Free Trial
+                      Complete Registration
+                    </Button>
+
+                    <Button
+                      fullWidth
+                      variant="text"
+                      onClick={() => {
+                        if (data?.role === USER_ROLES.STUDENT) {
+                          router.push("/dashboard/student");
+                        }
+                        if (
+                          data?.role === USER_ROLES.INSTITUTION ||
+                          institutionData?.role === USER_ROLES.INSTITUTION
+                        ) {
+                          router.push("/dashboard/institution");
+                        }
+                        if (data?.role === USER_ROLES.EDUCATOR) {
+                          router.push("/dashboard/educator");
+                        }
+                      }}
+                      sx={{
+                        mt: 2,
+                        color: COLORS.PRIMARY_NAVY,
+                        fontFamily: montserrat.style.fontFamily,
+                        fontWeight: 700,
+                        textTransform: "none",
+                        fontSize: "0.95rem",
+                        "&:hover": {
+                          bgcolor: "rgba(209, 160, 84, 0.1)",
+                          textDecoration: "underline",
+                        },
+                      }}
+                    >
+                      Skip for now & Pay Later
                     </Button>
                   </Box>
                   <Stack
@@ -421,9 +455,9 @@ const PaymentLayout = () => {
                         color: "rgba(255, 255, 255, 0.8)",
                       }}
                     >
-                      Your subscription will start automatically after the 7-day
-                      trial. You can cancel anytime before the trial ends and
-                      you won't be charged.
+                      Your subscription will start immediately. You can manage
+                      your billing and invoices from the dashboard settings at
+                      any time.
                     </Typography>
                   </Stack>
                 </Box>

@@ -41,7 +41,7 @@ const InstitutionHeader = () => {
     >
       <Avatar
         sx={{
-          bgcolor: COLORS.PRIMARY_NAVY,
+          bgcolor: COLORS.BLUE,
           cursor: "pointer",
           transition: "transform 0.2s",
           "&:hover": { transform: "scale(1.05)" },

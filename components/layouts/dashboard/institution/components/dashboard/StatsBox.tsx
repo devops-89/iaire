@@ -20,7 +20,7 @@ const StatsBox = ({ title, data }: STATSCARDPROPS) => {
       </Typography>
       <Divider
         sx={{
-          borderColor: COLORS.PRIMARY_NAVY,
+          borderColor: COLORS.RED,
           borderWidth: "2px",
           width: 80,
           borderRadius: "20px",

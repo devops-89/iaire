@@ -183,7 +183,7 @@ const AddInnovation = () => {
                 type="submit"
                 variant="contained"
                 sx={{
-                  bgcolor: COLORS.ACCENT_TAN,
+                  bgcolor: COLORS.RED,
                   color: COLORS.WHITE,
                   py: 1.5,
                   px: 4,

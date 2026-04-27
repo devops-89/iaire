@@ -1085,17 +1085,7 @@ export const DASHBOARD_STAT_CARDS: STATSCARDPROPS[] = [
   },
 ];
 
-export const CATEGORY_TYPES = [
-  {
-    label: "Innovation",
-  },
-  {
-    label: "Research",
-  },
-  {
-    label: "Startup",
-  },
-];
+export const CATEGORY_TYPES = ["Innovation", "Research", "Startup"];
 
 export const MODE_TRAINING = [
   {
@@ -1108,3 +1098,5 @@ export const MODE_TRAINING = [
     label: "Hybrid",
   },
 ];
+
+export const GENDER = ["Male", "Female", "Prefer not to say"];

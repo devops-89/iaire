@@ -5,6 +5,8 @@ export enum COLORS {
   ACCENT_TAN = "#D1A054",
   NAVY_GRADIENT_START = "#0B1727",
   NAVY_GRADIENT_END = "#16222F",
+  RED = "#C61530",
+  BLUE = "#1C4282",
 }
 
 export enum USER_ROLES {

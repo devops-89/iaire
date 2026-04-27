@@ -10,7 +10,7 @@ import {
   InputAdornment,
   Autocomplete,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import { addEducatorValidationSchema } from "@/utils/validationSchema";
 import { COLORS, MEMBER_TYPES, USER_STATUS } from "@/utils/enum";
@@ -23,7 +23,8 @@ import {
   CheckCircle,
 } from "@mui/icons-material";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
-import { CATEGORY_TYPES, MEMBER_TYPE } from "@/utils/constant";
+import { CATEGORY_TYPES, GENDER, MEMBER_TYPE } from "@/utils/constant";
+import { matchIsValidTel, MuiTelInput } from "mui-tel-input";
 
 const AddEducatorcomponent = () => {
   const formik = useFormik({
@@ -36,6 +37,7 @@ const AddEducatorcomponent = () => {
       memberType: "",
       category: "",
       memberId: "",
+      gender: "",
     },
     validationSchema: addEducatorValidationSchema,
     onSubmit: (values) => {
@@ -44,6 +46,18 @@ const AddEducatorcomponent = () => {
       formik.resetForm();
     },
   });
+
+  const [phone, setPhone] = useState("");
+  const handlePhoneChange = (value: string) => {
+    setPhone(value);
+    const isValid = matchIsValidTel(value);
+
+    if (isValid) {
+      formik.setFieldValue("phone", value);
+    } else {
+      formik.setFieldError("phone", "Invalid phone number");
+    }
+  };
 
   return (
     <Box sx={{ p: 1 }}>
@@ -117,22 +131,24 @@ const AddEducatorcomponent = () => {
                 }}
               />
             </Grid>
-            <Grid size={{ xs: 12, md: 6 }}>
-              <TextField
-                fullWidth
-                name="memberId"
-                label="Member ID"
-                placeholder="e.g. 123456789"
-                value={formik.values.memberId}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.memberId && Boolean(formik.errors.memberId)
-                }
-                helperText={formik.touched.memberId && formik.errors.memberId}
-                sx={TEXTFIELD_STYLE_VALIDATION}
-              />
-            </Grid>
+            {formik.values.memberType === MEMBER_TYPES.EXISTING_MEMBER && (
+              <Grid size={{ xs: 12, md: 6 }}>
+                <TextField
+                  fullWidth
+                  name="memberId"
+                  label="Member ID"
+                  placeholder="e.g. 123456789"
+                  value={formik.values.memberId}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.memberId && Boolean(formik.errors.memberId)
+                  }
+                  helperText={formik.touched.memberId && formik.errors.memberId}
+                  sx={TEXTFIELD_STYLE_VALIDATION}
+                />
+              </Grid>
+            )}
             <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth
@@ -166,17 +182,16 @@ const AddEducatorcomponent = () => {
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
-              <TextField
-                fullWidth
-                name="phone"
+              <MuiTelInput
                 label="Phone Number"
-                placeholder="9876543210"
+                fullWidth
+                sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
                 value={formik.values.phone}
-                onChange={formik.handleChange}
+                onChange={handlePhoneChange}
                 onBlur={formik.handleBlur}
                 error={formik.touched.phone && Boolean(formik.errors.phone)}
                 helperText={formik.touched.phone && formik.errors.phone}
-                sx={TEXTFIELD_STYLE_VALIDATION}
+                defaultCountry="IN"
               />
             </Grid>
 
@@ -229,9 +244,29 @@ const AddEducatorcomponent = () => {
                   />
                 )}
                 options={CATEGORY_TYPES}
-                getOptionLabel={(option) => option.label}
+                getOptionLabel={(option) => option}
                 onChange={(event, value) => {
                   formik.setFieldValue("category", value);
+                }}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Autocomplete
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Select Gender"
+                    sx={{ ...TEXTFIELD_STYLE_VALIDATION, width: "100%" }}
+                    helperText={formik.touched.gender && formik.errors.gender}
+                    error={
+                      formik.touched.gender && Boolean(formik.errors.gender)
+                    }
+                  />
+                )}
+                options={GENDER}
+                getOptionLabel={(option) => option}
+                onChange={(event, value) => {
+                  formik.setFieldValue("gender", value);
                 }}
               />
             </Grid>
@@ -241,7 +276,7 @@ const AddEducatorcomponent = () => {
                 type="submit"
                 variant="contained"
                 sx={{
-                  bgcolor: COLORS.ACCENT_TAN,
+                  bgcolor: COLORS.RED,
                   color: COLORS.WHITE,
                   py: 1.5,
                   px: 4,

@@ -107,7 +107,7 @@ const EducatorNomination = ({ educatorId }: { educatorId: string | null }) => {
           <Grid size={6}>
             <Autocomplete
               options={CATEGORY_TYPES}
-              getOptionLabel={(option) => option.label}
+              getOptionLabel={(option) => option}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -120,7 +120,7 @@ const EducatorNomination = ({ educatorId }: { educatorId: string | null }) => {
                 />
               )}
               onChange={(event, value) =>
-                formik.setFieldValue("category", value?.label)
+                formik.setFieldValue("category", value)
               }
             />
           </Grid>

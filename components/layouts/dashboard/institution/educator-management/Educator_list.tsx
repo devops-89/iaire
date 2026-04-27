@@ -108,7 +108,7 @@ const EducatorList = () => {
           <Link href="/dashboard/institution/educator-management/add-educator">
             <Button
               sx={{
-                backgroundColor: COLORS.ACCENT_TAN,
+                backgroundColor: COLORS.RED,
                 color: COLORS.WHITE,
                 fontFamily: roboto.style.fontFamily,
                 fontWeight: 700,
