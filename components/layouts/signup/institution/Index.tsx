@@ -31,6 +31,7 @@ import UsForm from "./us-form";
 import SignupStepper from "../SignupStepper";
 import { FormTextField, PasswordTextField } from "./FormComponents";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
+import { CalendarIcon } from "@mui/x-date-pickers";
 
 const Institution = () => {
   const router = useRouter();
@@ -55,11 +56,11 @@ const Institution = () => {
       confirmPassword: institutionData?.confirmPassword || "",
       country: institutionData?.country || "",
       isd: institutionData?.isd || "",
+      registrationYear: institutionData?.registrationYear || "",
     },
     enableReinitialize: true,
     validationSchema: institutionSignupValidationSchema,
     onSubmit: (values) => {
-      console.log("values", values);
       setInstitutionData({
         ...values,
         role: USER_ROLES.INSTITUTION,
@@ -261,6 +262,16 @@ const Institution = () => {
                 />
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
+                <FormTextField
+                  name="registrationYear"
+                  label="Registration Year"
+                  placeholder="2024"
+                  formik={formik}
+                  icon={<CalendarIcon />}
+                  type="number"
+                />
+              </Grid>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <MuiTelInput
                   fullWidth
                   name="phone"
@@ -274,7 +285,7 @@ const Institution = () => {
                   sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
                 />
               </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
+              <Grid size={{ xs: 12, md: 12 }}>
                 <FormTextField
                   name="website"
                   label="Website"

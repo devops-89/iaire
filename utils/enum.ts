@@ -26,3 +26,9 @@ export enum MEMBER_TYPES {
   NEW_MEMBER = "New Member",
   EXISTING_MEMBER = "Existing Member",
 }
+
+export enum GENDER_TYPE {
+  MALE = "Male",
+  FEMALE = "Female",
+  PREFER_NOT_TO_SAY = "Prefer Not To Say",
+}

@@ -44,6 +44,7 @@ export const useSignup = create<SignupStore>()(
               publications: 0,
               hasSelectionBoardApproval: false,
               affiliationCertificate: null,
+              registrationYear: "",
             },
         educatorData: state.educatorData,
       }),

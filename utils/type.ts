@@ -40,6 +40,7 @@ export interface InstitutionInfo {
   affiliationCertificate?: File | null;
   country?: string;
   isd?: string;
+  registrationYear: string;
 }
 
 export interface EducatorInfo {
@@ -63,4 +64,15 @@ export interface STATSCARDDATA {
 export interface STATSCARDPROPS {
   title: string;
   data: STATSCARDDATA[];
+}
+
+export interface TEAM_LIST_HEADER {
+  label: string;
+}
+
+export interface TEAM_LIST_DATA_PROPS {
+  id: string;
+  teamName: string;
+  mentorName: string;
+  assistantMentorName: string;
 }

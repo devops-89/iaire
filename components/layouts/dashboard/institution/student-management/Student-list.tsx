@@ -1,3 +1,4 @@
+"use client";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { STUDENT_HEADER_DATA, STUDENT_TABLE_DATA } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
@@ -8,6 +9,10 @@ import {
   Button,
   Card,
   IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  Popover,
   Stack,
   Table,
   TableBody,
@@ -17,8 +22,23 @@ import {
   TableRow,
 } from "@mui/material";
 import Link from "next/link";
+import { useState } from "react";
 
 const StudentList = () => {
+  const [selectedStudent, setSelecetedStudent] = useState("");
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const open = Boolean(anchorEl);
+  const handlePopover = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: string,
+  ) => {
+    setAnchorEl(e.currentTarget);
+    setSelecetedStudent(id);
+  };
+  const handleClosePopover = () => {
+    setAnchorEl(null);
+    setSelecetedStudent("");
+  };
   return (
     <Box>
       <Card sx={{ p: 2, boxShadow: "0px 0px 4px 4px #000000040" }}>
@@ -77,10 +97,11 @@ const StudentList = () => {
                     <TableCell>{val.email}</TableCell>
                     <TableCell>{val.phone}</TableCell>
                     <TableCell>{val.grade}</TableCell>
+                    <TableCell>{val.gender}</TableCell>
                     <TableCell>{val.status}</TableCell>
                     <TableCell>{val.membershipId}</TableCell>
                     <TableCell>
-                      <IconButton>
+                      <IconButton onClick={(e) => handlePopover(e, val.id)}>
                         <MoreVert />
                       </IconButton>
                     </TableCell>
@@ -90,6 +111,27 @@ const StudentList = () => {
             </Table>
           </TableContainer>
         </Box>
+        <Popover
+          sx={{
+            "& .MuiPopover-paper": {
+              width: 210,
+              backgroundColor: "rgba(255, 255, 255, 0.65)",
+              backdropFilter: "blur(14px)",
+              borderRadius: "16px",
+              border: "1px solid rgba(255, 255, 255, 0.3)",
+              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.08)",
+              mt: 1,
+              overflow: "hidden",
+            },
+          }}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClosePopover}
+        >
+          <List>
+            <ListItemButton></ListItemButton>
+          </List>
+        </Popover>
       </Card>
     </Box>
   );
