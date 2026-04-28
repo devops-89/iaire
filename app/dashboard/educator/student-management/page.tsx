@@ -21,13 +21,7 @@ import {
 } from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
-import {
-  MoreVert,
-  AccountCircle,
-  Edit,
-  Handyman,
-  Institution,
-} from "@mui/icons-material";
+import { MoreVert, AccountCircle, Edit, Handyman } from "@mui/icons-material";
 
 const students = [
   {
@@ -89,7 +83,8 @@ const EducatorStudentManagement = () => {
               color: "rgba(0,0,0,0.6)",
             }}
           >
-            Monitor student progress, review submissions, and provide mentorship.
+            Monitor student progress, review submissions, and provide
+            mentorship.
           </Typography>
         </Box>
 
@@ -105,35 +100,100 @@ const EducatorStudentManagement = () => {
             <Table>
               <TableHead sx={{ bgcolor: "rgba(11, 23, 39, 0.02)" }}>
                 <TableRow>
-                  <TableCell sx={{ fontWeight: 700, fontFamily: montserrat.style.fontFamily }}>Student ID</TableCell>
-                  <TableCell sx={{ fontWeight: 700, fontFamily: montserrat.style.fontFamily }}>Student Name</TableCell>
-                  <TableCell sx={{ fontWeight: 700, fontFamily: montserrat.style.fontFamily }}>Grade</TableCell>
-                  <TableCell sx={{ fontWeight: 700, fontFamily: montserrat.style.fontFamily }}>Last Innovation</TableCell>
-                  <TableCell sx={{ fontWeight: 700, fontFamily: montserrat.style.fontFamily }}>Status</TableCell>
-                  <TableCell align="right" sx={{ fontWeight: 700, fontFamily: montserrat.style.fontFamily }}>Actions</TableCell>
+                  <TableCell
+                    sx={{
+                      fontWeight: 700,
+                      fontFamily: montserrat.style.fontFamily,
+                    }}
+                  >
+                    Student ID
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      fontWeight: 700,
+                      fontFamily: montserrat.style.fontFamily,
+                    }}
+                  >
+                    Student Name
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      fontWeight: 700,
+                      fontFamily: montserrat.style.fontFamily,
+                    }}
+                  >
+                    Grade
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      fontWeight: 700,
+                      fontFamily: montserrat.style.fontFamily,
+                    }}
+                  >
+                    Last Innovation
+                  </TableCell>
+                  <TableCell
+                    sx={{
+                      fontWeight: 700,
+                      fontFamily: montserrat.style.fontFamily,
+                    }}
+                  >
+                    Status
+                  </TableCell>
+                  <TableCell
+                    align="right"
+                    sx={{
+                      fontWeight: 700,
+                      fontFamily: montserrat.style.fontFamily,
+                    }}
+                  >
+                    Actions
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {students.map((item) => (
                   <TableRow key={item.id} hover>
-                    <TableCell sx={{ fontFamily: roboto.style.fontFamily, fontWeight: 500 }}>{item.id}</TableCell>
-                    <TableCell sx={{ fontWeight: 600, color: COLORS.PRIMARY_NAVY }}>{item.name}</TableCell>
-                    <TableCell sx={{ fontFamily: montserrat.style.fontFamily }}>{item.grade}</TableCell>
-                    <TableCell sx={{ fontFamily: montserrat.style.fontFamily }}>{item.lastInnovation}</TableCell>
+                    <TableCell
+                      sx={{
+                        fontFamily: roboto.style.fontFamily,
+                        fontWeight: 500,
+                      }}
+                    >
+                      {item.id}
+                    </TableCell>
+                    <TableCell
+                      sx={{ fontWeight: 600, color: COLORS.PRIMARY_NAVY }}
+                    >
+                      {item.name}
+                    </TableCell>
+                    <TableCell sx={{ fontFamily: montserrat.style.fontFamily }}>
+                      {item.grade}
+                    </TableCell>
+                    <TableCell sx={{ fontFamily: montserrat.style.fontFamily }}>
+                      {item.lastInnovation}
+                    </TableCell>
                     <TableCell>
                       <Chip
                         label={item.status}
                         size="small"
                         sx={{
-                          bgcolor: item.status === "Active" ? "rgba(16, 185, 129, 0.1)" : "rgba(245, 158, 11, 0.1)",
-                          color: item.status === "Active" ? "#10B981" : "#F59E0B",
+                          bgcolor:
+                            item.status === "Active"
+                              ? "rgba(16, 185, 129, 0.1)"
+                              : "rgba(245, 158, 11, 0.1)",
+                          color:
+                            item.status === "Active" ? "#10B981" : "#F59E0B",
                           fontWeight: 700,
                           borderRadius: "6px",
                         }}
                       />
                     </TableCell>
                     <TableCell align="right">
-                      <IconButton size="small" onClick={(e) => handleClick(e, item)}>
+                      <IconButton
+                        size="small"
+                        onClick={(e) => handleClick(e, item)}
+                      >
                         <MoreVert fontSize="small" />
                       </IconButton>
                     </TableCell>
@@ -154,20 +214,28 @@ const EducatorStudentManagement = () => {
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
           <MenuItem onClick={handleClose}>
-            <ListItemIcon><AccountCircle fontSize="small" /></ListItemIcon>
+            <ListItemIcon>
+              <AccountCircle fontSize="small" />
+            </ListItemIcon>
             <ListItemText>View Student Profile</ListItemText>
           </MenuItem>
           <MenuItem onClick={handleClose}>
-            <ListItemIcon><Institution fontSize="small" /></ListItemIcon>
+            {/* <ListItemIcon>
+              <Institution fontSize="small" />
+            </ListItemIcon> */}
             <ListItemText>Provide Feedback</ListItemText>
           </MenuItem>
           <MenuItem onClick={handleClose}>
-            <ListItemIcon><Handyman fontSize="small" /></ListItemIcon>
+            <ListItemIcon>
+              <Handyman fontSize="small" />
+            </ListItemIcon>
             <ListItemText>Assign Task</ListItemText>
           </MenuItem>
           <Divider />
           <MenuItem onClick={handleClose}>
-            <ListItemIcon><Edit fontSize="small" /></ListItemIcon>
+            <ListItemIcon>
+              <Edit fontSize="small" />
+            </ListItemIcon>
             <ListItemText>Edit Records</ListItemText>
           </MenuItem>
         </Menu>

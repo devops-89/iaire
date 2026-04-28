@@ -1,12 +1,12 @@
 "use client";
-import SchoolDashboardLayout from "@/components/layouts/dashboard/school/Index";
-import AddResearch from "@/components/layouts/dashboard/school/research-management/Add-Research";
+import InstitutionDashboardLayout from "@/components/layouts/dashboard/institution/Index";
+import AddResearch from "@/components/layouts/dashboard/institution/research-management/Add-Research";
 
 const AddResearchPage = () => {
   return (
-    <SchoolDashboardLayout>
+    <InstitutionDashboardLayout>
       <AddResearch />
-    </SchoolDashboardLayout>
+    </InstitutionDashboardLayout>
   );
 };
 

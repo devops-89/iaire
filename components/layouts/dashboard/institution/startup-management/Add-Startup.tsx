@@ -92,9 +92,12 @@ const AddStartup = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.startupName && Boolean(formik.errors.startupName)
+                  formik.touched.startupName &&
+                  Boolean(formik.errors.startupName)
                 }
-                helperText={formik.touched.startupName && formik.errors.startupName}
+                helperText={
+                  formik.touched.startupName && formik.errors.startupName
+                }
                 slotProps={{
                   input: {
                     startAdornment: (
@@ -141,8 +144,13 @@ const AddStartup = () => {
                 value={formik.values.founderName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={formik.touched.founderName && Boolean(formik.errors.founderName)}
-                helperText={formik.touched.founderName && formik.errors.founderName}
+                error={
+                  formik.touched.founderName &&
+                  Boolean(formik.errors.founderName)
+                }
+                helperText={
+                  formik.touched.founderName && formik.errors.founderName
+                }
                 slotProps={{
                   input: {
                     startAdornment: (
@@ -188,12 +196,20 @@ const AddStartup = () => {
                 value={formik.values.description}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={formik.touched.description && Boolean(formik.errors.description)}
-                helperText={formik.touched.description && formik.errors.description}
+                error={
+                  formik.touched.description &&
+                  Boolean(formik.errors.description)
+                }
+                helperText={
+                  formik.touched.description && formik.errors.description
+                }
                 slotProps={{
                   input: {
                     startAdornment: (
-                      <InputAdornment position="start" sx={{ alignSelf: "flex-start", mt: 1.5 }}>
+                      <InputAdornment
+                        position="start"
+                        sx={{ alignSelf: "flex-start", mt: 1.5 }}
+                      >
                         <Description sx={{ color: "rgba(0,0,0,0.4)" }} />
                       </InputAdornment>
                     ),

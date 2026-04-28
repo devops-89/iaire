@@ -1,5 +1,4 @@
 "use client";
-import { TEACHER_SIDEBAR_DATA } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
 import {
@@ -14,6 +13,7 @@ import {
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { EDUCATOR_SIDEBAR_DATA } from "@/utils/constant";
 
 const TeacherSidebar = () => {
   const pathname = usePathname();
@@ -58,10 +58,13 @@ const TeacherSidebar = () => {
         </Box>
         <Divider sx={{ borderColor: COLORS.ACCENT_TAN }} />
         <List sx={{ px: 1 }}>
-          {TEACHER_SIDEBAR_DATA.map((val: any, i) => {
+          {EDUCATOR_SIDEBAR_DATA.map((val: any, i) => {
             const hasSubItems = val.subItems && val.subItems.length > 0;
             const isOpen = openItems[val.label] || false;
-            const isActive = pathname === val.url || (hasSubItems && val.subItems.some((sub: any) => pathname === sub.url));
+            const isActive =
+              pathname === val.url ||
+              (hasSubItems &&
+                val.subItems.some((sub: any) => pathname === sub.url));
 
             return (
               <React.Fragment key={i}>
@@ -73,9 +76,12 @@ const TeacherSidebar = () => {
                       pathname === val.url ? COLORS.ACCENT_TAN : "transparent",
                     ":hover": {
                       backgroundColor:
-                        pathname === val.url ? COLORS.ACCENT_TAN : "rgba(209, 160, 84, 0.1)",
+                        pathname === val.url
+                          ? COLORS.ACCENT_TAN
+                          : "rgba(209, 160, 84, 0.1)",
                     },
-                    color: pathname === val.url ? COLORS.PRIMARY_NAVY : COLORS.WHITE,
+                    color:
+                      pathname === val.url ? COLORS.PRIMARY_NAVY : COLORS.WHITE,
                   }}
                   onClick={() => {
                     if (hasSubItems) {
@@ -97,7 +103,12 @@ const TeacherSidebar = () => {
                       },
                     }}
                   />
-                  {hasSubItems && (isOpen ? <ExpandLess sx={{ fontSize: 18 }} /> : <ExpandMore sx={{ fontSize: 18 }} />)}
+                  {hasSubItems &&
+                    (isOpen ? (
+                      <ExpandLess sx={{ fontSize: 18 }} />
+                    ) : (
+                      <ExpandMore sx={{ fontSize: 18 }} />
+                    ))}
                 </ListItemButton>
 
                 {hasSubItems && (
@@ -111,7 +122,9 @@ const TeacherSidebar = () => {
                             borderRadius: "8px",
                             mb: 0.5,
                             backgroundColor:
-                              pathname === sub.url ? "rgba(209, 160, 84, 0.2)" : "transparent",
+                              pathname === sub.url
+                                ? "rgba(209, 160, 84, 0.2)"
+                                : "transparent",
                             ":hover": {
                               backgroundColor: "rgba(209, 160, 84, 0.1)",
                             },
@@ -125,7 +138,10 @@ const TeacherSidebar = () => {
                                 sx: {
                                   fontFamily: montserrat.style.fontFamily,
                                   fontSize: "13px",
-                                  color: pathname === sub.url ? COLORS.ACCENT_TAN : "rgba(255, 255, 255, 0.7)",
+                                  color:
+                                    pathname === sub.url
+                                      ? COLORS.ACCENT_TAN
+                                      : "rgba(255, 255, 255, 0.7)",
                                   fontWeight: pathname === sub.url ? 600 : 400,
                                 },
                               },
