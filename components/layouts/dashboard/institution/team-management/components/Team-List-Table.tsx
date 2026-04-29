@@ -29,6 +29,21 @@ const TeamListTable = ({
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const open = Boolean(anchorEl);
 
+  const listdata = [
+    {
+      label: "Manage Team Members",
+    },
+    {
+      label: "View Team Profile",
+    },
+    {
+      label: "Manage Assistant Mentor",
+    },
+    {
+      label: "Manage Mentor",
+    },
+  ];
+
   const handlePopover = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -108,21 +123,30 @@ const TeamListTable = ({
         onClose={() => setAnchorEl(null)}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "center",
+          horizontal: "left",
         }}
         transformOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
+          vertical: "top",
+          horizontal: "left",
         }}
         sx={{
           p: 2,
           borderRadius: "10px",
+          "& .MuiPopover-paper": {
+            backgroundColor: "rgba(255,255,255,0.5)",
+            backdropFilter: "blur(10px)",
+            boxShadow: "rgba(0, 0, 0, 0.15) 0px 5px 15px",
+            borderRadius: "10px",
+          },
+          //   color: COLORS.WHITE,
         }}
       >
         <List>
-          <ListItemButton>
-            <ListItemText primary={"Manage Team Memebers"} />
-          </ListItemButton>
+          {listdata.map((val, i) => (
+            <ListItemButton key={i}>
+              <ListItemText primary={val.label} />
+            </ListItemButton>
+          ))}
         </List>
       </Popover>
     </Box>

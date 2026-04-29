@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
@@ -14,7 +14,7 @@ import {
 import { useFormik } from "formik";
 import { institutionSignupValidationSchema } from "@/utils/validationSchema";
 import { COLORS, USER_ROLES } from "@/utils/enum";
-import { MEMBERSHIP_LEVEL } from "@/utils/type";
+import { COUNTRYDATAPROPS, MEMBERSHIP_LEVEL } from "@/utils/type";
 import {
   Business,
   Person,
@@ -32,11 +32,12 @@ import SignupStepper from "../SignupStepper";
 import { FormTextField, PasswordTextField } from "./FormComponents";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { CalendarIcon } from "@mui/x-date-pickers";
+import { useGetCountries } from "@/hooks/common/useGetCountry";
 
 const Institution = () => {
   const router = useRouter();
   const { setInstitutionData, institutionData } = useSignup();
-
+  const [country, setCountry] = useState<COUNTRYDATAPROPS | null>(null);
   const formik = useFormik({
     initialValues: {
       institutionName: institutionData?.institutionName || "",
@@ -82,14 +83,25 @@ const Institution = () => {
   };
 
   const renderCountrySpecificFields = () => {
-    const country = formik.values.country;
-    if (country === "IN" || country === "AE") {
+    if (country?.code === "IN" || country?.code === "AE") {
       return <IndiaForm formik={formik} handleFileChange={handleFileChange} />;
-    } else if (country === "US") {
+    } else if (country?.code === "US") {
       return <UsForm formik={formik} />;
     }
     return null;
   };
+
+  const countryChangeHandler = (
+    e: React.SyntheticEvent,
+    newValue: COUNTRYDATAPROPS | null,
+  ) => {
+    setCountry(newValue);
+    if (newValue) {
+      formik.setFieldValue("country", newValue.id);
+    }
+  };
+
+  const { countryData } = useGetCountries();
 
   return (
     <Box
@@ -177,20 +189,13 @@ const Institution = () => {
                 />
               </Grid>
 
-              <Grid
-                size={{ xs: 12, md: formik.values.country === "US" ? 6 : 12 }}
-              >
+              <Grid size={{ xs: 12, md: country?.code === "US" ? 6 : 12 }}>
                 <Autocomplete
-                  options={COUNTRIES}
+                  options={countryData}
                   autoHighlight
-                  getOptionLabel={(option) => option.label}
-                  value={
-                    COUNTRIES.find((c) => c.code === formik.values.country) ||
-                    null
-                  }
-                  onChange={(_, value) => {
-                    formik.setFieldValue("country", value ? value.code : "");
-                  }}
+                  getOptionLabel={(option) => option.name}
+                  value={country}
+                  onChange={(e, newValue) => countryChangeHandler(e, newValue)}
                   renderOption={(props, option) => {
                     const { key, ...optionProps } = props;
                     return (
@@ -206,7 +211,7 @@ const Institution = () => {
                           src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
                           alt=""
                         />
-                        {option.label} ({option.code}) +{option.phone}
+                        {option.name}
                       </Box>
                     );
                   }}
@@ -228,7 +233,7 @@ const Institution = () => {
                   )}
                 />
               </Grid>
-              {formik.values.country === "US" && (
+              {country?.code === "US" && (
                 <Grid size={{ xs: 12, md: 6 }}>
                   <Autocomplete
                     options={US_STATES}
@@ -281,7 +286,7 @@ const Institution = () => {
                   onBlur={formik.handleBlur}
                   error={formik.touched.phone && Boolean(formik.errors.phone)}
                   helperText={formik.touched.phone && formik.errors.phone}
-                  defaultCountry={(formik.values.country as any) || "US"}
+                  defaultCountry={(country?.code as any) || "US"}
                   sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
                 />
               </Grid>

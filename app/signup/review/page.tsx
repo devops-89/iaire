@@ -15,6 +15,10 @@ import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
 import SignupStepper from "@/components/layouts/signup/SignupStepper";
 import { ArrowBack, Payment } from "@mui/icons-material";
+import { useSchoolSignup } from "@/hooks/school/useSignup";
+import useSnackbar from "@/store/useSnackbar";
+import { useModal } from "@/store/useModal";
+import VerifyOtp from "@/components/modals/common/VerifyOtp";
 
 const ReviewPage = () => {
   const router = useRouter();
@@ -29,6 +33,26 @@ const ReviewPage = () => {
   if (!institutionData) {
     return null;
   }
+
+  const { showModal } = useModal();
+
+  const { createSchool, loading } = useSchoolSignup();
+  const { setSnackbar } = useSnackbar();
+
+  const handleCheckout = async () => {
+    // try {
+    //   const data = await createSchool(institutionData);
+    //   if (data?.status) {
+    //     showModal(<VerifyOtp />);
+    //     // router.push("/payment");
+    //   }
+    // } catch (error) {
+    //   setSnackbar("Something went wrong", "error");
+    //   console.log(error);
+    // }
+
+    showModal(<VerifyOtp />);
+  };
 
   const DataRow = ({ label, value }: { label: string; value: any }) => (
     <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{ mb: 2 }}>
@@ -236,7 +260,8 @@ const ReviewPage = () => {
               fullWidth
               variant="contained"
               endIcon={<Payment />}
-              onClick={() => router.push("/signup/payment")}
+              disabled={loading}
+              onClick={handleCheckout}
               sx={{
                 bgcolor: COLORS.ACCENT_TAN,
                 color: COLORS.BLACK,
@@ -249,7 +274,7 @@ const ReviewPage = () => {
                 },
               }}
             >
-              Confirm & Pay
+              Verify & Confirm
             </Button>
           </Box>
         </Card>

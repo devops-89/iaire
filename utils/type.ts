@@ -76,3 +76,15 @@ export interface TEAM_LIST_DATA_PROPS {
   mentorName: string;
   assistantMentorName: string;
 }
+
+export interface COUNTRYDATAPROPS {
+  id: number;
+  name: string;
+  code: string;
+  phoneCode: string;
+  currencyCode: string;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}

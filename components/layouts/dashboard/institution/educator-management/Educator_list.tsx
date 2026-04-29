@@ -180,10 +180,25 @@ const EducatorList = () => {
               {TEACHER_DATA.map((teacher) => (
                 <TableRow key={teacher.id}>
                   <TableCell>{teacher.id}</TableCell>
-                  <TableCell>{teacher.name}</TableCell>
-                  <TableCell>{teacher.email}</TableCell>
+                  <TableCell>
+                    {" "}
+                    <Typography
+                      sx={{
+                        color: COLORS.BLACK,
+                        fontWeight: 500,
+                        fontSize: 15,
+                      }}
+                    >
+                      {teacher.name}
+                    </Typography>
+                    <Typography sx={{ fontSize: 12 }}>
+                      {teacher.email}
+                    </Typography>
+                  </TableCell>
+                  {/* <TableCell>{teacher.email}</TableCell> */}
                   <TableCell>{teacher.phone}</TableCell>
                   <TableCell>{teacher.subject}</TableCell>
+                  {/* <TableCell>{teacher.gender}</TableCell> */}
                   <TableCell>{teacher.status}</TableCell>
                   <TableCell>{teacher.membershipId}</TableCell>
 

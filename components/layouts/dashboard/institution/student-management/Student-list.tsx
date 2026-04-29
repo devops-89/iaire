@@ -1,7 +1,9 @@
 "use client";
+import Recommend from "@/components/modals/student/Recommend";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
+import { useModal } from "@/store/useModal";
 import { STUDENT_HEADER_DATA, STUDENT_TABLE_DATA } from "@/utils/constant";
-import { COLORS } from "@/utils/enum";
+import { COLORS, GENDER_TYPE } from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
 import { Add, MoreVert } from "@mui/icons-material";
 import {
@@ -12,6 +14,7 @@ import {
   List,
   ListItem,
   ListItemButton,
+  ListItemText,
   Popover,
   Stack,
   Table,
@@ -20,25 +23,44 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 
 const StudentList = () => {
+  const { showModal } = useModal();
   const [selectedStudent, setSelecetedStudent] = useState("");
+  const handleRecommendation = () => {
+    console.log("id", selectedStudent);
+    showModal(<Recommend studentData={selectedStudent} />);
+    setAnchorEl(null);
+  };
+
+  const listData = [
+    {
+      label: "Recommend for Head Girl/Boy",
+      onclick: handleRecommendation,
+    },
+    {
+      label: "View Profile",
+    },
+  ];
+
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const handlePopover = (
     e: React.MouseEvent<HTMLButtonElement>,
-    id: string,
+    studentData: any,
   ) => {
     setAnchorEl(e.currentTarget);
-    setSelecetedStudent(id);
+    setSelecetedStudent(studentData);
   };
   const handleClosePopover = () => {
     setAnchorEl(null);
     setSelecetedStudent("");
   };
+
   return (
     <Box>
       <Card sx={{ p: 2, boxShadow: "0px 0px 4px 4px #000000040" }}>
@@ -93,15 +115,25 @@ const StudentList = () => {
                 {STUDENT_TABLE_DATA.map((val, i) => (
                   <TableRow key={i}>
                     <TableCell>{val.id}</TableCell>
-                    <TableCell>{val.name}</TableCell>
-                    <TableCell>{val.email}</TableCell>
+                    <TableCell>
+                      <Typography
+                        sx={{
+                          color: COLORS.BLACK,
+                          fontWeight: 500,
+                          fontSize: 15,
+                        }}
+                      >
+                        {val.name}
+                      </Typography>
+                      <Typography sx={{ fontSize: 12 }}>{val.email}</Typography>
+                    </TableCell>
                     <TableCell>{val.phone}</TableCell>
                     <TableCell>{val.grade}</TableCell>
                     <TableCell>{val.gender}</TableCell>
                     <TableCell>{val.status}</TableCell>
                     <TableCell>{val.membershipId}</TableCell>
                     <TableCell>
-                      <IconButton onClick={(e) => handlePopover(e, val.id)}>
+                      <IconButton onClick={(e) => handlePopover(e, val)}>
                         <MoreVert />
                       </IconButton>
                     </TableCell>
@@ -114,10 +146,10 @@ const StudentList = () => {
         <Popover
           sx={{
             "& .MuiPopover-paper": {
-              width: 210,
-              backgroundColor: "rgba(255, 255, 255, 0.65)",
+              // width: 210,
+              backgroundColor: "#ffffff30",
               backdropFilter: "blur(14px)",
-              borderRadius: "16px",
+              borderRadius: "8px",
               border: "1px solid rgba(255, 255, 255, 0.3)",
               boxShadow: "0 8px 32px rgba(0, 0, 0, 0.08)",
               mt: 1,
@@ -127,9 +159,30 @@ const StudentList = () => {
           open={open}
           anchorEl={anchorEl}
           onClose={handleClosePopover}
+          anchorOrigin={{
+            horizontal: "right",
+            vertical: "bottom",
+          }}
+          transformOrigin={{
+            horizontal: "right",
+            vertical: "top",
+          }}
         >
           <List>
-            <ListItemButton></ListItemButton>
+            {listData.map((val, i) => (
+              <ListItemButton onClick={val.onclick}>
+                <ListItemText
+                  primary={val.label}
+                  slotProps={{
+                    primary: {
+                      sx: {
+                        fontSize: 15,
+                      },
+                    },
+                  }}
+                />
+              </ListItemButton>
+            ))}
           </List>
         </Popover>
       </Card>

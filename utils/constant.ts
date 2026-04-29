@@ -123,6 +123,7 @@ export const TEACHER_DATA = [
     subject: "Mathematics",
     status: "Member",
     membershipId: "AI-M-001",
+    gender: GENDER_TYPE.MALE,
   },
   {
     id: "E-002",
@@ -132,6 +133,7 @@ export const TEACHER_DATA = [
     subject: "Physics",
     status: "Not a member",
     membershipId: "-",
+    gender: GENDER_TYPE.FEMALE,
   },
   {
     id: "E-003",
@@ -141,6 +143,7 @@ export const TEACHER_DATA = [
     subject: "Chemistry",
     status: "Member",
     membershipId: "AI-M-003",
+    gender: GENDER_TYPE.MALE,
   },
   {
     id: "E-004",
@@ -150,6 +153,7 @@ export const TEACHER_DATA = [
     subject: "Biology",
     status: "Not a member",
     membershipId: "-",
+    gender: GENDER_TYPE.FEMALE,
   },
   {
     id: "E-005",
@@ -159,6 +163,7 @@ export const TEACHER_DATA = [
     subject: "Computer Science",
     status: "Member",
     membershipId: "AI-M-006",
+    gender: GENDER_TYPE.MALE,
   },
   {
     id: "E-006",
@@ -168,6 +173,7 @@ export const TEACHER_DATA = [
     subject: "History",
     status: "Member",
     membershipId: "AI-M-007",
+    gender: GENDER_TYPE.FEMALE,
   },
   {
     id: "E-007",
@@ -177,6 +183,7 @@ export const TEACHER_DATA = [
     subject: "Geography",
     status: "Member",
     membershipId: "AI-M-008",
+    gender: GENDER_TYPE.MALE,
   },
   {
     id: "E-008",
@@ -186,6 +193,7 @@ export const TEACHER_DATA = [
     subject: "English",
     status: "Member",
     membershipId: "AI-M-009",
+    gender: GENDER_TYPE.FEMALE,
   },
   {
     id: "E-009",
@@ -195,6 +203,7 @@ export const TEACHER_DATA = [
     subject: "Economics",
     status: "Member",
     membershipId: "AI-M-010",
+    gender: GENDER_TYPE.MALE,
   },
   {
     id: "E-010",
@@ -204,6 +213,7 @@ export const TEACHER_DATA = [
     subject: "Political Science",
     status: "Member",
     membershipId: "AI-M-011",
+    gender: GENDER_TYPE.PREFER_NOT_TO_SAY,
   },
   {
     id: "E-011",
@@ -213,13 +223,14 @@ export const TEACHER_DATA = [
     subject: "Physical Education",
     status: "Member",
     membershipId: "AI-M-012",
+    gender: GENDER_TYPE.MALE,
   },
 ];
 
 export const STUDENT_HEADER_DATA = [
   "Id",
   "Name",
-  "Email",
+  // "Email",
   "Phone",
   "Grade",
   "Gender",
@@ -339,9 +350,10 @@ export const MEMBER_TYPE = [
 export const TEACHER_HEADER = [
   "Id",
   "Full Name",
-  "Email",
+
   "Phone",
   "Subject",
+  // "Gender",
   "Status",
   "Membership Id",
   "Actions",

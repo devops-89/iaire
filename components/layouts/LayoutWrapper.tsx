@@ -10,13 +10,13 @@ import InstitutionHeader from "./dashboard/institution/components/Header";
 import EducatorSidebar from "./dashboard/educator/components/Sidebar";
 import EducatorHeader from "./dashboard/educator/components/Header";
 
-
 const HIDE_LAYOUT_ROUTES = [
   "/login",
   "/signup",
   "/signup/role-selection",
   "/signup/payment",
   "/dashboard/school",
+  "/signup/review",
 ];
 
 export default function LayoutWrapper({
