@@ -35,10 +35,14 @@ export interface InstitutionInfo {
   hasSelectionBoardApproval: boolean;
   password?: string;
   confirmPassword?: string;
-  affiliationType?: string;
+  affiliationType?: { id?: number; name: string; code?: string } | string;
   affiliationNumber?: string;
   affiliationCertificate?: File | null;
-  country?: string;
+  country?: {
+    id: number;
+    name: string;
+    code: string;
+  };
   isd?: string;
   registrationYear: string;
 }
@@ -81,10 +85,26 @@ export interface COUNTRYDATAPROPS {
   id: number;
   name: string;
   code: string;
-  phoneCode: string;
-  currencyCode: string;
-  isActive: boolean;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
+}
+
+export interface BOARDDATAPROPS {
+  id: number;
+  name: string;
+  code: string;
+  countryId: number;
+  country: {
+    countryId: number;
+    name: string;
+    code: string;
+  };
+}
+
+export interface VERIFY_OTP_REQUEST {
+  email: string;
+  otp: string;
+}
+
+export interface LOGIN_REQUEST {
+  email: string;
+  password: string;
 }

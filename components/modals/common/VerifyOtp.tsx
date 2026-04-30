@@ -1,5 +1,11 @@
 "use client";
-import { Box, Button, Typography, IconButton } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  IconButton,
+  CircularProgress,
+} from "@mui/material";
 import React, { useState } from "react";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { COLORS } from "@/utils/enum";
@@ -7,45 +13,33 @@ import { montserrat, roboto } from "@/utils/fonts";
 import { Close } from "@mui/icons-material";
 import { useModal } from "@/store/useModal";
 import { useRouter } from "next/navigation";
+import { useVerifyOtp } from "@/hooks/common/useVerifyOtp";
 
-const VerifyOtp = () => {
+const VerifyOtp = ({ email }: { email: string }) => {
   const [otp, setOtp] = useState("");
   const { hideModal } = useModal();
   const router = useRouter();
   const handleChange = (newValue: string) => {
     setOtp(newValue);
   };
+  const { verifyOtp, loading } = useVerifyOtp({ email, otp });
 
-  const handleVerify = () => {
-    // Verification logic here
-    hideModal();
-    router.push("/signup/payment");
-    console.log("Verifying OTP:", otp);
+  const handleVerify = async () => {
+    const res = await verifyOtp();
+    if (res?.success) {
+      hideModal();
+      router.push("/signup/payment");
+    }
   };
 
   return (
     <Box
       sx={{
-        // width: { xs: "90vw", sm: 400 },
-        // bgcolor: "background.paper",
         borderRadius: 4,
-        // boxShadow: 24,
         p: 4,
         position: "relative",
       }}
     >
-      {/* <IconButton
-        onClick={hideModal}
-        sx={{
-          position: "absolute",
-          top: 12,
-          right: 12,
-          color: COLORS.PRIMARY_NAVY,
-        }}
-      >
-        <Close />
-      </IconButton> */}
-
       <Typography
         variant="h5"
         sx={{
@@ -126,7 +120,7 @@ const VerifyOtp = () => {
           },
         }}
       >
-        Verify
+        {loading ? <CircularProgress color="inherit" /> : "Verify"}
       </Button>
 
       <Box sx={{ mt: 3, textAlign: "center" }}>

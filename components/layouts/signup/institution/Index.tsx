@@ -14,7 +14,11 @@ import {
 import { useFormik } from "formik";
 import { institutionSignupValidationSchema } from "@/utils/validationSchema";
 import { COLORS, USER_ROLES } from "@/utils/enum";
-import { COUNTRYDATAPROPS, MEMBERSHIP_LEVEL } from "@/utils/type";
+import {
+  COUNTRYDATAPROPS,
+  InstitutionInfo,
+  MEMBERSHIP_LEVEL,
+} from "@/utils/type";
 import {
   Business,
   Person,
@@ -22,7 +26,7 @@ import {
   Language,
   LocationOn,
 } from "@mui/icons-material";
-import { MuiTelInput } from "mui-tel-input";
+import { matchIsValidTel, MuiTelInput } from "mui-tel-input";
 import { montserrat, roboto } from "@/utils/fonts";
 import { useSignup } from "@/store/useSignup";
 import { COUNTRIES, US_STATES } from "@/utils/constant";
@@ -33,11 +37,17 @@ import { FormTextField, PasswordTextField } from "./FormComponents";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { CalendarIcon } from "@mui/x-date-pickers";
 import { useGetCountries } from "@/hooks/common/useGetCountry";
+import { useBoardByCountry } from "@/hooks/common/useGetBoardByCountry";
 
 const Institution = () => {
   const router = useRouter();
   const { setInstitutionData, institutionData } = useSignup();
-  const [country, setCountry] = useState<COUNTRYDATAPROPS | null>(null);
+
+  const [country, setCountry] = useState<COUNTRYDATAPROPS | null>(
+    institutionData?.country || null,
+  );
+
+  console.log("insi", institutionData);
   const formik = useFormik({
     initialValues: {
       institutionName: institutionData?.institutionName || "",
@@ -55,40 +65,34 @@ const Institution = () => {
       postalCode: institutionData?.postalCode || "",
       password: institutionData?.password || "",
       confirmPassword: institutionData?.confirmPassword || "",
-      country: institutionData?.country || "",
+      country: institutionData?.country,
       isd: institutionData?.isd || "",
       registrationYear: institutionData?.registrationYear || "",
     },
     enableReinitialize: true,
     validationSchema: institutionSignupValidationSchema,
     onSubmit: (values) => {
+      const filteredValues = Object.fromEntries(
+        Object.entries(values).filter(([_, v]) => v !== ""),
+      );
+
       setInstitutionData({
-        ...values,
+        ...filteredValues,
         role: USER_ROLES.INSTITUTION,
         membershipLevel: MEMBERSHIP_LEVEL.INSTITUTIONAL,
         certifiedEducators: 0,
         publications: 0,
         hasSelectionBoardApproval: false,
-      });
+      } as unknown as InstitutionInfo);
       router.push("/signup/review");
+      // console.log("values", values);
     },
   });
-
-  // console.error("errors", formik.errors);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       formik.setFieldValue("affiliationCertificate", event.target.files[0]);
     }
-  };
-
-  const renderCountrySpecificFields = () => {
-    if (country?.code === "IN" || country?.code === "AE") {
-      return <IndiaForm formik={formik} handleFileChange={handleFileChange} />;
-    } else if (country?.code === "US") {
-      return <UsForm formik={formik} />;
-    }
-    return null;
   };
 
   const countryChangeHandler = (
@@ -97,11 +101,47 @@ const Institution = () => {
   ) => {
     setCountry(newValue);
     if (newValue) {
-      formik.setFieldValue("country", newValue.id);
+      formik.setFieldValue("country", newValue);
+    }
+  };
+
+  const [phone, setPhone] = useState(institutionData?.phone || "");
+
+  const handlePhoneChange = (value: string) => {
+    setPhone(value);
+    const isValid = matchIsValidTel(value);
+    if (isValid) {
+      formik.setFieldError("phone", "");
+      formik.setFieldValue("phone", value);
+    } else {
+      formik.setFieldError("phone", "Please Enter a Valid Phone Number");
     }
   };
 
   const { countryData } = useGetCountries();
+  const { boardData, boardLoading } = useBoardByCountry(country?.code || "");
+
+  const renderCountrySpecificFields = () => {
+    if (country?.code === "IN" || country?.code === "AE") {
+      return (
+        <IndiaForm
+          formik={formik}
+          handleFileChange={handleFileChange}
+          boardData={boardData}
+          boardLoading={boardLoading}
+        />
+      );
+    } else if (country?.code === "US") {
+      return (
+        <UsForm
+          formik={formik}
+          boardData={boardData}
+          boardLoading={boardLoading}
+        />
+      );
+    }
+    return null;
+  };
 
   return (
     <Box
@@ -281,10 +321,14 @@ const Institution = () => {
                   fullWidth
                   name="phone"
                   label="Phone Number"
-                  value={formik.values.phone}
-                  onChange={(val) => formik.setFieldValue("phone", val)}
+                  value={phone}
+                  onChange={handlePhoneChange}
                   onBlur={formik.handleBlur}
-                  error={formik.touched.phone && Boolean(formik.errors.phone)}
+                  error={
+                    formik.touched.phone &&
+                    !matchIsValidTel(phone) &&
+                    Boolean(formik.errors.phone)
+                  }
                   helperText={formik.touched.phone && formik.errors.phone}
                   defaultCountry={(country?.code as any) || "US"}
                   sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
@@ -319,11 +363,14 @@ const Institution = () => {
               </Grid>
               <Grid container spacing={2} size={12}>
                 <Grid
-                  size={{ xs: 12, md: formik.values.country === "US" ? 6 : 4 }}
+                  size={{
+                    xs: 12,
+                    md: formik.values.country?.code === "US" ? 6 : 4,
+                  }}
                 >
                   <FormTextField name="city" label="City" formik={formik} />
                 </Grid>
-                {formik.values.country !== "US" && (
+                {formik.values.country?.code !== "US" && (
                   <Grid size={{ xs: 12, md: 4 }}>
                     <FormTextField
                       name="state"
@@ -333,12 +380,15 @@ const Institution = () => {
                   </Grid>
                 )}
                 <Grid
-                  size={{ xs: 12, md: formik.values.country === "US" ? 6 : 4 }}
+                  size={{
+                    xs: 12,
+                    md: formik.values.country?.code === "US" ? 6 : 4,
+                  }}
                 >
                   <FormTextField
                     name="postalCode"
                     label={
-                      formik.values.country === "US"
+                      formik.values.country?.code === "US"
                         ? "Zip Code"
                         : "Postal Code"
                     }

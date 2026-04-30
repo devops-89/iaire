@@ -22,7 +22,6 @@ const SignupContent = () => {
   );
 };
 
-
 const Signup = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>

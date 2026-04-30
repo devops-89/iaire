@@ -1,61 +1,140 @@
 import {
   Box,
   Grid,
-  MenuItem,
   TextField,
   Typography,
   IconButton,
   Stack,
   Badge,
   InputAdornment,
+  Autocomplete,
+  createFilterOptions,
 } from "@mui/material";
 import React from "react";
 import { CloudUpload, Delete, Badge as BadgeIcon } from "@mui/icons-material";
 import { COLORS } from "@/utils/enum";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
+import { BOARDDATAPROPS } from "@/utils/type";
+
+type BoardOptionType =
+  | BOARDDATAPROPS
+  | { inputValue?: string; name: string; code: string; id: number };
+const filter = createFilterOptions<BoardOptionType>();
 
 interface IndiaFormProps {
   formik: any;
   handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  boardData: BOARDDATAPROPS[];
+  boardLoading: boolean;
 }
 
-const IndiaForm = ({ formik, handleFileChange }: IndiaFormProps) => {
+const IndiaForm = ({
+  formik,
+  handleFileChange,
+  boardData,
+  boardLoading,
+}: IndiaFormProps) => {
   return (
     <>
       <Grid size={{ lg: 6, xs: 12 }}>
-        <TextField
-          fullWidth
-          select
-          name="affiliationType"
-          label="Select Education Board"
-          value={formik.values.affiliationType}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={
-            formik.touched.affiliationType &&
-            Boolean(formik.errors.affiliationType)
-          }
-          helperText={
-            formik.touched.affiliationType && formik.errors.affiliationType
-          }
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <BadgeIcon />
-                </InputAdornment>
-              ),
-            },
+        <Autocomplete
+          value={formik.values.affiliationType || null}
+          isOptionEqualToValue={(option, value) => {
+            if (value.id && option.id) {
+              return option.id === value.id;
+            }
+            return option.name === value.name;
           }}
-          sx={TEXTFIELD_STYLE_VALIDATION}
-        >
-          <MenuItem value="CBSE">CBSE</MenuItem>
-          <MenuItem value="ICSE">ICSE</MenuItem>
-          <MenuItem value="State Board">State Board</MenuItem>
-          <MenuItem value="IB">IB</MenuItem>
-          <MenuItem value="IGCSE">IGCSE</MenuItem>
-          <MenuItem value="Other">Other</MenuItem>
-        </TextField>
+          onChange={(event, newValue) => {
+            if (typeof newValue === "string") {
+              formik.setFieldValue("affiliationType", {
+                name: newValue,
+                code: "",
+                id: 0,
+              });
+            } else if (
+              newValue &&
+              "inputValue" in newValue &&
+              newValue.inputValue
+            ) {
+              formik.setFieldValue("affiliationType", {
+                name: newValue.inputValue,
+                code: "",
+                id: 0,
+              });
+            } else {
+              formik.setFieldValue("affiliationType", newValue || null);
+            }
+          }}
+          filterOptions={(options, params) => {
+            const filtered = filter(options, params);
+            const { inputValue } = params;
+            const isExisting = options.some(
+              (option) => inputValue === option.name,
+            );
+            if (inputValue !== "" && !isExisting) {
+              filtered.push({
+                inputValue,
+                name: `${inputValue}`,
+                id: 0,
+                code: "",
+                countryId: 0,
+                country: { countryId: 0, name: "", code: "" },
+              });
+            }
+            return filtered;
+          }}
+          selectOnFocus
+          clearOnBlur
+          handleHomeEndKeys
+          freeSolo
+          options={boardData as BoardOptionType[]}
+          getOptionLabel={(option) => {
+            if (typeof option === "string") {
+              return option;
+            }
+            if ("inputValue" in option && option.inputValue) {
+              return option.inputValue;
+            }
+            return option.name;
+          }}
+          loading={boardLoading}
+          renderOption={(props, option) => {
+            const { key, ...optionProps } = props as any;
+            return (
+              <li key={key || option.name} {...optionProps}>
+                {option.name}
+              </li>
+            );
+          }}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Select Education Board"
+              error={
+                formik.touched.affiliationType &&
+                Boolean(formik.errors.affiliationType)
+              }
+              helperText={
+                formik.touched.affiliationType && formik.errors.affiliationType
+              }
+              slotProps={{
+                input: {
+                  ...params.InputProps,
+                  startAdornment: (
+                    <>
+                      <InputAdornment position="start" sx={{ ml: 1 }}>
+                        <BadgeIcon />
+                      </InputAdornment>
+                      {params.InputProps.startAdornment}
+                    </>
+                  ),
+                },
+              }}
+              sx={TEXTFIELD_STYLE_VALIDATION}
+            />
+          )}
+        />
       </Grid>
       <Grid size={{ lg: 6, xs: 12 }}>
         <TextField

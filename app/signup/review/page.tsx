@@ -9,6 +9,7 @@ import {
   Card,
   Container,
   Divider,
+  CircularProgress,
 } from "@mui/material";
 import { useSignup } from "@/store/useSignup";
 import { COLORS } from "@/utils/enum";
@@ -19,10 +20,14 @@ import { useSchoolSignup } from "@/hooks/school/useSignup";
 import useSnackbar from "@/store/useSnackbar";
 import { useModal } from "@/store/useModal";
 import VerifyOtp from "@/components/modals/common/VerifyOtp";
+import { InstitutionInfo } from "@/utils/type";
 
 const ReviewPage = () => {
   const router = useRouter();
   const { institutionData } = useSignup();
+  const { showModal } = useModal();
+  const { createSchool, loading } = useSchoolSignup();
+  const { setSnackbar } = useSnackbar();
 
   useEffect(() => {
     if (!institutionData && typeof window !== "undefined") {
@@ -33,25 +38,39 @@ const ReviewPage = () => {
   if (!institutionData) {
     return null;
   }
-
-  const { showModal } = useModal();
-
-  const { createSchool, loading } = useSchoolSignup();
-  const { setSnackbar } = useSnackbar();
-
+  console.log("isnt", institutionData);
   const handleCheckout = async () => {
     // try {
-    //   const data = await createSchool(institutionData);
-    //   if (data?.status) {
-    //     showModal(<VerifyOtp />);
-    //     // router.push("/payment");
-    //   }
-    // } catch (error) {
-    //   setSnackbar("Something went wrong", "error");
-    //   console.log(error);
-    // }
 
-    showModal(<VerifyOtp />);
+    const schoolData = {
+      schoolName: institutionData.institutionName,
+      principalName: institutionData.principalName,
+      email: institutionData.email,
+      phoneNumber: institutionData.phone,
+      website: institutionData.website,
+      countryId: institutionData.country?.id,
+      addressLine1: institutionData.addressLine1,
+      addressLine2: institutionData.addressLine2,
+      city: institutionData.city,
+      state: institutionData.state,
+      zipCode: institutionData.postalCode,
+      isd: institutionData.isd,
+      boardId:
+        typeof institutionData?.affiliationType === "string"
+          ? undefined
+          : institutionData?.affiliationType?.id,
+      affiliationNumber: institutionData.affiliationNumber,
+      registrationYear: institutionData?.registrationYear,
+      password: institutionData?.password,
+      affiliationCertificate: institutionData?.affiliationCertificate,
+    };
+    try {
+      const data = await createSchool(schoolData as unknown as InstitutionInfo);
+      showModal(<VerifyOtp email={institutionData?.email} />);
+    } catch (error) {
+      setSnackbar("Something went wrong", "error");
+      console.log(error);
+    }
   };
 
   const DataRow = ({ label, value }: { label: string; value: any }) => (
@@ -157,7 +176,7 @@ const ReviewPage = () => {
               <DataRow label="Email" value={institutionData.email} />
               <DataRow label="Phone" value={institutionData.phone} />
               <DataRow label="Website" value={institutionData.website} />
-              <DataRow label="Country" value={institutionData.country} />
+              <DataRow label="Country" value={institutionData.country?.name} />
             </Grid>
 
             <Divider sx={{ my: 4 }} />
@@ -225,7 +244,11 @@ const ReviewPage = () => {
                 <Grid container spacing={1}>
                   <DataRow
                     label="Board"
-                    value={institutionData.affiliationType}
+                    value={
+                      typeof institutionData?.affiliationType === "string"
+                        ? institutionData.affiliationType
+                        : institutionData?.affiliationType?.name || "N/A"
+                    }
                   />
                   <DataRow
                     label="Affiliation Number"
@@ -274,7 +297,11 @@ const ReviewPage = () => {
                 },
               }}
             >
-              Verify & Confirm
+              {loading ? (
+                <CircularProgress sx={{ color: COLORS.BLACK }} />
+              ) : (
+                "Verify & Confirm"
+              )}
             </Button>
           </Box>
         </Card>

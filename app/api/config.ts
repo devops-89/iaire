@@ -17,8 +17,12 @@ const userPublicApi = axios.create({
   baseURL: serverConstants.users,
 });
 
-const publicApi = axios.create({
+const basePublicApi = axios.create({
+  baseURL: serverConstants.base,
+});
+
+const authApi = axios.create({
   baseURL: serverConstants.auth,
 });
 
-export { userPublicApi, userSecuredApi, publicApi };
+export { userPublicApi, userSecuredApi, authApi, basePublicApi };

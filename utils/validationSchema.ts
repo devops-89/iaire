@@ -35,26 +35,26 @@ export const otpValidationSchema = Yup.object({
 export const institutionSignupValidationSchema = Yup.object({
   institutionName: Yup.string().required("Institution name is required"),
   principalName: Yup.string().required("Principal's name is required"),
-  country: Yup.string().required("Please Select Country"),
-  affiliationType: Yup.string().when("country", {
-    is: (val: string) => val === "IN" || val === "AE",
+  country: Yup.mixed().required("Please Select Country"),
+  affiliationType: Yup.mixed().when("country", {
+    is: (val: any) => val?.code === "IN" || val?.code === "AE",
     then: (schema) => schema.required("Affiliation type is required"),
     otherwise: (schema) => schema.optional(),
   }),
   affiliationNumber: Yup.string().when("country", {
-    is: (val: string) => val === "IN" || val === "AE",
+    is: (val: any) => val?.code === "IN" || val?.code === "AE",
     then: (schema) => schema.required("Affiliation number is required"),
     otherwise: (schema) => schema.optional(),
   }),
   affiliationCertificate: Yup.mixed()
     .nullable()
     .when("country", {
-      is: (val: string) => val === "IN" || val === "AE",
+      is: (val: any) => val?.code === "IN" || val?.code === "AE",
       then: (schema) => schema.required("Affiliation certificate is required"),
       otherwise: (schema) => schema.optional(),
     }),
   isd: Yup.string().when("country", {
-    is: "US",
+    is: (val: any) => val?.code === "US",
     then: (schema) => schema.required("ISD is required"),
     otherwise: (schema) => schema.optional(),
   }),

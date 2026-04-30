@@ -36,18 +36,9 @@ export const useSignup = create<SignupStore>()(
         ...state,
         institutionData: state.institutionData
           ? { ...state.institutionData, affiliationCertificate: null }
-          : {
-              institutionName: "",
-              role: USER_ROLES.INSTITUTION,
-              membershipLevel: MEMBERSHIP_LEVEL.INSTITUTIONAL,
-              certifiedEducators: 0,
-              publications: 0,
-              hasSelectionBoardApproval: false,
-              affiliationCertificate: null,
-              registrationYear: "",
-            },
+          : null,
         educatorData: state.educatorData,
       }),
-    },
-  ),
+    }
+  )
 );
