@@ -105,6 +105,6 @@ export interface VERIFY_OTP_REQUEST {
 }
 
 export interface LOGIN_REQUEST {
-  email: string;
+  identifier: string;
   password: string;
 }

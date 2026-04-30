@@ -11,9 +11,9 @@ export const AuthControllers = {
     }
   },
 
-  login: async ({ email, password }: LOGIN_REQUEST) => {
+  login: async ({ identifier, password }: LOGIN_REQUEST) => {
     try {
-      const result = await authApi.post("/login", { email, password });
+      const result = await authApi.post("/login", { identifier, password });
       return result.data;
     } catch (error) {
       throw error;

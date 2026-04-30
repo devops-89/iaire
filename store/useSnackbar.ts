@@ -8,6 +8,7 @@ interface SnackbarState {
     message: string,
     variant: "success" | "error" | "warning" | "info",
   ) => void;
+  hideSnackbar: () => void;
 }
 
 const useSnackbar = create<SnackbarState>((set) => ({
@@ -15,6 +16,7 @@ const useSnackbar = create<SnackbarState>((set) => ({
   message: "",
   variant: "success",
   setSnackbar: (message, variant) => set({ open: true, message, variant }),
+  hideSnackbar: () => set({ open: false }),
 }));
 
 export default useSnackbar;

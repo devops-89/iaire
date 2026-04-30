@@ -219,3 +219,8 @@ export const studentValidationSchema = Yup.object({
     )
     .required("Father's phone number is required"),
 });
+
+export const loginValidationSchema = Yup.object({
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  password: Yup.string().required("Password is required"),
+});

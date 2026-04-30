@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 
 import LayoutWrapper from "@/components/layouts/LayoutWrapper";
 import Modal from "@/components/widgets/Modal";
+import GlobalSnackbar from "@/components/widgets/GlobalSnackbar";
 
 export default function RootLayout({
   children,
@@ -33,6 +34,7 @@ export default function RootLayout({
         {/* <ThemeRegistry> */}
         <LayoutWrapper>
           <Modal />
+          <GlobalSnackbar />
           {children}
         </LayoutWrapper>
         {/* </ThemeRegistry> */}

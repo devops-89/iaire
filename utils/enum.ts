@@ -11,7 +11,7 @@ export enum COLORS {
 
 export enum USER_ROLES {
   INSTITUTION = "institution",
-  EDUCATOR = "educator",
+  EDUCATOR = "mentor",
   STUDENT = "student",
 }
 

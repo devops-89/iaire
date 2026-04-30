@@ -25,12 +25,13 @@ const ROLES = [
   {
     id: USER_ROLES.INSTITUTION,
     title: "Institution",
-    description: "Manage your institution, staff, and researcher educators seamlessly.",
+    description:
+      "Manage your institution, staff, and researcher educators seamlessly.",
     icon: <School sx={{ fontSize: 40 }} />,
   },
   {
     id: USER_ROLES.EDUCATOR,
-    title: "Educators",
+    title: "Mentors",
     description: "Create classes, track progress, and inspire your students.",
     icon: <SupervisorAccount sx={{ fontSize: 40 }} />,
   },

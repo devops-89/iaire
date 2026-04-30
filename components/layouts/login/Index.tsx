@@ -1,13 +1,17 @@
 "use client";
+import { useLogin } from "@/hooks/common/useLogin";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
+import { LOGIN_REQUEST } from "@/utils/type";
+import { loginValidationSchema } from "@/utils/validationSchema";
 import { Email, Visibility, VisibilityOff, Lock } from "@mui/icons-material";
 import {
   Box,
   Button,
   Card,
   Checkbox,
+  CircularProgress,
   Container,
   FormControl,
   FormControlLabel,
@@ -18,12 +22,29 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useFormik } from "formik";
 import React, { useState } from "react";
 
 const LoginLayout = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const { login, loading } = useLogin();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: loginValidationSchema,
+    onSubmit: (values) => {
+      const data = {
+        identifier: values.email,
+        password: values.password,
+      };
+      login(data as unknown as LOGIN_REQUEST);
+    },
+  });
 
   return (
     <Box
@@ -102,7 +123,7 @@ const LoginLayout = () => {
             </Typography>
           </Box>
 
-          <form>
+          <form onSubmit={formik.handleSubmit}>
             <Stack spacing={3}>
               <TextField
                 label="Email Address"
@@ -120,6 +141,13 @@ const LoginLayout = () => {
                 sx={{
                   ...TEXTFIELD_STYLE_VALIDATION,
                 }}
+                name="email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+                id="email"
               />
 
               <TextField
@@ -150,6 +178,15 @@ const LoginLayout = () => {
                 sx={{
                   ...TEXTFIELD_STYLE_VALIDATION,
                 }}
+                name="password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
+                id="password"
               />
 
               <Stack
@@ -213,8 +250,14 @@ const LoginLayout = () => {
                     boxShadow: "0px 6px 15px rgba(209, 160, 84, 0.4)",
                   },
                 }}
+                type="submit"
+                disabled={loading}
               >
-                Sign In
+                {loading ? (
+                  <CircularProgress color="inherit" size={20} />
+                ) : (
+                  "Sign In"
+                )}
               </Button>
 
               <Typography

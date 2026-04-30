@@ -1,8 +1,18 @@
 "use client";
 import { COLORS } from "@/utils/enum";
-import { Person } from "@mui/icons-material";
-import { Avatar, Box } from "@mui/material";
+import { Person, Logout, Settings, PersonOutline } from "@mui/icons-material";
+import {
+  Avatar,
+  Box,
+  Popover,
+  Typography,
+  Divider,
+  MenuItem,
+  ListItemIcon,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { montserrat, roboto } from "@/utils/fonts";
 
 const InstitutionHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -14,6 +24,24 @@ const InstitutionHeader = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const router = useRouter();
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    router.push("/login");
+  };
+
+  const open = Boolean(anchorEl);
 
   return (
     <Box
@@ -40,15 +68,140 @@ const InstitutionHeader = () => {
       }}
     >
       <Avatar
+        onClick={handleOpen}
         sx={{
           bgcolor: COLORS.BLUE,
           cursor: "pointer",
-          transition: "transform 0.2s",
-          "&:hover": { transform: "scale(1.05)" },
+          transition: "transform 0.2s, box-shadow 0.2s",
+          "&:hover": {
+            transform: "scale(1.05)",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+          },
         }}
       >
         <Person />
       </Avatar>
+
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        slotProps={{
+          paper: {
+            sx: {
+              mt: 1.5,
+              width: 240,
+              borderRadius: "16px",
+              boxShadow: "0px 10px 40px rgba(0, 0, 0, 0.08)",
+              border: "1px solid rgba(0,0,0,0.05)",
+              overflow: "hidden",
+            },
+          },
+        }}
+      >
+        <Box sx={{ p: 2.5, bgcolor: "rgba(249, 250, 251, 0.5)" }}>
+          <Typography
+            sx={{
+              fontFamily: roboto.style.fontFamily,
+              fontWeight: 700,
+              fontSize: 16,
+              color: COLORS.PRIMARY_NAVY,
+            }}
+          >
+            Institution Admin
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: montserrat.style.fontFamily,
+              fontSize: 13,
+              color: "rgba(0, 0, 0, 0.5)",
+              mt: 0.5,
+            }}
+          >
+            Manage your portal
+          </Typography>
+        </Box>
+        <Divider />
+        <Box sx={{ p: 1 }}>
+          <MenuItem
+            onClick={handleClose}
+            sx={{
+              borderRadius: "8px",
+              py: 1.5,
+              mb: 0.5,
+              "&:hover": { bgcolor: "rgba(0, 0, 0, 0.03)" },
+            }}
+          >
+            <ListItemIcon>
+              <PersonOutline fontSize="small" sx={{ color: COLORS.BLACK }} />
+            </ListItemIcon>
+            <Typography
+              sx={{
+                fontFamily: montserrat.style.fontFamily,
+                fontSize: 14,
+                fontWeight: 600,
+                color: COLORS.BLACK,
+              }}
+            >
+              Profile
+            </Typography>
+          </MenuItem>
+          <MenuItem
+            onClick={handleClose}
+            sx={{
+              borderRadius: "8px",
+              py: 1.5,
+              mb: 0.5,
+              "&:hover": { bgcolor: "rgba(0, 0, 0, 0.03)" },
+            }}
+          >
+            <ListItemIcon>
+              <Settings fontSize="small" sx={{ color: COLORS.BLACK }} />
+            </ListItemIcon>
+            <Typography
+              sx={{
+                fontFamily: montserrat.style.fontFamily,
+                fontSize: 14,
+                fontWeight: 600,
+                color: COLORS.BLACK,
+              }}
+            >
+              Settings
+            </Typography>
+          </MenuItem>
+          <Divider sx={{ my: 1 }} />
+          <MenuItem
+            onClick={handleLogout}
+            sx={{
+              borderRadius: "8px",
+              py: 1.5,
+              color: "#d32f2f",
+              "&:hover": { bgcolor: "rgba(211, 47, 47, 0.08)" },
+            }}
+          >
+            <ListItemIcon>
+              <Logout fontSize="small" sx={{ color: "#d32f2f" }} />
+            </ListItemIcon>
+            <Typography
+              sx={{
+                fontFamily: montserrat.style.fontFamily,
+                fontSize: 14,
+                fontWeight: 700,
+              }}
+            >
+              Log out
+            </Typography>
+          </MenuItem>
+        </Box>
+      </Popover>
     </Box>
   );
 };
