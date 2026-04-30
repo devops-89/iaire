@@ -54,7 +54,7 @@ const ReviewPage = () => {
       city: institutionData.city,
       state: institutionData.state,
       zipCode: institutionData.postalCode,
-      isd: institutionData.isd,
+      isdCode: institutionData.isd,
       boardId:
         typeof institutionData?.affiliationType === "string"
           ? undefined

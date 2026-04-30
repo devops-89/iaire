@@ -1,14 +1,26 @@
 import { VERIFY_OTP_REQUEST } from "@/utils/type";
 import { AuthControllers } from "@/app/api/authControllers";
 import { useState } from "react";
+import { USER_ROLES } from "@/utils/enum";
+import { useRouter } from "next/navigation";
+import { useModal } from "@/store/useModal";
 
 export const useVerifyOtp = ({ email, otp }: VERIFY_OTP_REQUEST) => {
   const [loading, setLoading] = useState(false);
-
+  const router = useRouter();
+  const { hideModal } = useModal();
   const verifyOtp = async () => {
     try {
       setLoading(true);
       const result = await AuthControllers.verifyOtp({ email, otp });
+      const tokens = result?.data?.tokens;
+      const user = result.data.user;
+      localStorage.setItem("token", tokens?.accessToken);
+      if (user?.role === "SCHOOL_ADMIN") {
+        localStorage.setItem("role", USER_ROLES.INSTITUTION);
+        router.push("/signup/payment");
+        hideModal();
+      }
       return result;
     } catch (error) {
       throw error;

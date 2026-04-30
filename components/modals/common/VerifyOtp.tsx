@@ -26,10 +26,6 @@ const VerifyOtp = ({ email }: { email: string }) => {
 
   const handleVerify = async () => {
     const res = await verifyOtp();
-    if (res?.success) {
-      hideModal();
-      router.push("/signup/payment");
-    }
   };
 
   return (
@@ -120,7 +116,7 @@ const VerifyOtp = ({ email }: { email: string }) => {
           },
         }}
       >
-        {loading ? <CircularProgress color="inherit" /> : "Verify"}
+        {loading ? <CircularProgress color="inherit" size={20} /> : "Verify"}
       </Button>
 
       <Box sx={{ mt: 3, textAlign: "center" }}>

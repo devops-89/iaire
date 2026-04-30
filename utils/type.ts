@@ -57,6 +57,7 @@ export interface EducatorInfo {
   password?: string;
   confirmPassword?: string;
   role: USER_ROLES.EDUCATOR;
+  country: COUNTRYDATAPROPS;
 }
 
 export interface STATSCARDDATA {

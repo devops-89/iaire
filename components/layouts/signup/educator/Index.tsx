@@ -8,6 +8,7 @@ import { EducatorInfo } from "@/utils/type";
 import { USER_ROLES } from "@/utils/enum";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
+  Autocomplete,
   Box,
   Button,
   Grid,
@@ -22,12 +23,15 @@ import { MuiTelInput } from "mui-tel-input";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import SignupLayout from "../Index";
+import { useGetCountries } from "@/hooks/common/useGetCountry";
+import { useBoardByCountry } from "@/hooks/common/useGetBoardByCountry";
 
 const EducatorSignup = () => {
   const router = useRouter();
   const { setEducatorData } = useSignup();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { countryData } = useGetCountries();
 
   const formik = useFormik<EducatorInfo>({
     initialValues: {
@@ -40,14 +44,25 @@ const EducatorSignup = () => {
       password: "",
       confirmPassword: "",
       role: USER_ROLES.EDUCATOR,
+      country: { name: "", code: "", id: 0 },
     },
     validationSchema: educatorSignupValidationSchema,
     onSubmit: (values) => {
       console.log("Educator Signup Data:", values);
       setEducatorData(values);
-      router.push("/signup/verify");
+      // router.push("/signup/verify");
     },
   });
+
+  const { boardData, boardLoading } = useBoardByCountry(
+    formik.values.country?.code || "",
+  );
+
+  const countryChangeHandler = (_: any, newValue: any) => {
+    if (newValue) {
+      formik.setFieldValue("country", newValue);
+    }
+  };
 
   return (
     <SignupLayout>
@@ -79,7 +94,17 @@ const EducatorSignup = () => {
 
         <form onSubmit={formik.handleSubmit}>
           <Grid container spacing={2}>
-            <Grid size={{ xs: 12 }}>
+            <Grid size={{ xs: 12, lg: 12 }}>
+              <Autocomplete
+                renderInput={(params) => (
+                  <TextField {...params} label="Select Country" />
+                )}
+                options={countryData}
+                getOptionLabel={(option) => option.name}
+                onChange={countryChangeHandler}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, lg: 6 }}>
               <TextField
                 fullWidth
                 select
