@@ -1,58 +1,51 @@
 "use client";
 
-import { Box, Card, Container, Grid, Typography, Stack, Avatar } from "@mui/material";
-import React from "react";
-import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
-import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOutlined";
-import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
-import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
-import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
-import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
-import RecordVoiceOverOutlinedIcon from "@mui/icons-material/RecordVoiceOverOutlined";
-import { COLORS } from "@/utils/enum";
+import { inter } from "@/utils/fonts";
+import { Box, Card, Container, Grid, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 
 const activities = [
   {
     title: "Nurturing IRE Ecosystem",
-    description: "Building thriving communities of innovators, researchers, and entrepreneurs.",
-    icon: <GroupOutlinedIcon sx={{ color: "#D1A054" }} />,
-    bgColor: "rgba(209, 160, 84, 0.1)",
+    description:
+      "Building a thriving community of innovators, researchers, and entrepreneurs.",
+    icon: "/images/icon/IREecoIcon.png",
   },
   {
     title: "Enabling Schools",
-    description: "Partnering with institutions to integrate IRE culture into education.",
-    icon: <MenuBookOutlinedIcon sx={{ color: "#1B3B2B" }} />,
-    bgColor: "rgba(27, 59, 43, 0.1)",
+    description:
+      "Partnering with institutions to integrate IRE culture into education.",
+    icon: "/images/icon/enSchoolIcon.png",
   },
   {
     title: "Training & Certifying Teachers",
-    description: "Empowering educators with cutting-edge IRE methodologies.",
-    icon: <WorkspacePremiumOutlinedIcon sx={{ color: "#D1A054" }} />,
-    bgColor: "rgba(209, 160, 84, 0.1)",
+    description:
+      "Empowering educators with cutting-edge IRE methodologies.",
+    icon: "/images/icon/trainingIcon.png",
   },
   {
     title: "Student Training Programs",
-    description: "Enabling teachers to train students in IRE excellence.",
-    icon: <RecordVoiceOverOutlinedIcon sx={{ color: "#1B3B2B" }} />,
-    bgColor: "rgba(27, 59, 43, 0.1)",
+    description:
+      "Enabling teachers to train school students in IRE excellence.",
+    icon: "/images/icon/studentTrainingIcon.png",
   },
   {
     title: "Research Grants",
-    description: "Funding groundbreaking research by young minds.",
-    icon: <ArticleOutlinedIcon sx={{ color: "#D1A054" }} />,
-    bgColor: "rgba(209, 160, 84, 0.1)",
+    description:
+      "Funding groundbreaking research by young minds.",
+    icon: "/images/icon/researchGrantIcon.png",
   },
   {
     title: "Patent Grants",
-    description: "Supporting intellectual property protection for innovations.",
-    icon: <BusinessCenterOutlinedIcon sx={{ color: "#1B3B2B" }} />,
-    bgColor: "rgba(27, 59, 43, 0.1)",
+    description:
+      "Supporting intellectual property protection for innovations.",
+    icon: "/images/icon/patentGrantIcon.png",
   },
   {
     title: "Startup Funding",
-    description: "Investing in entrepreneurial ventures that create impact.",
-    icon: <PaidOutlinedIcon sx={{ color: "#D1A054" }} />,
-    bgColor: "rgba(209, 160, 84, 0.1)",
+    description:
+      "Investing in entrepreneurial ventures that create impact.",
+    icon: "/images/icon/startupIcon.png",
   },
 ];
 
@@ -60,87 +53,94 @@ const WhatWeDo = () => {
   return (
     <Box sx={{ py: { xs: 8, md: 10 }, bgcolor: "#F9F7F5" }}>
       <Container maxWidth="lg">
-        <Stack spacing={6}>
-          <Box textAlign="center">
-            <Typography
-              variant="h2"
-              sx={{
-                fontFamily: '"Playfair Display", serif',
-                fontWeight: 700,
-                fontSize: { xs: "2.5rem", md: "3rem" },
-                color: "#111827",
-                mb: 2,
-              }}
-            >
-              What We Do
-            </Typography>
-          </Box>
 
-          <Grid container spacing={3} justifyContent="center">
-            {activities.map((item, index) => (
-              <Grid key={index} size={{ xs: 12, sm: 6, md: 4 }}>
-                <Card
-                  elevation={0}
-                  sx={{
-                    p: 4,
-                    height: "100%",
-                    borderRadius: 4,
-                    bgcolor: COLORS.WHITE,
-                    transition: "all 0.3s ease",
-                    border: "1px solid",
-                    borderColor: "rgba(0, 0, 0, 0.05)",
-                    "&:hover": {
-                      transform: "translateY(-5px)",
-                      boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
-                    },
-                  }}
-                >
-                  <Stack spacing={3}>
-                    <Avatar
-                      sx={{
-                        bgcolor: item.bgColor,
-                        width: 56,
-                        height: 56,
-                      }}
-                    >
-                      {React.isValidElement(item.icon) && React.cloneElement(item.icon as React.ReactElement<any>, { 
-                        sx: { 
-                          fontSize: 28, 
-                          color: (item.icon.props as any)?.sx?.color || "inherit" 
-                        } 
-                      })}
-                    </Avatar>
-                    <Box>
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          fontFamily: '"Playfair Display", serif',
-                          fontWeight: 700,
-                          fontSize: "1.25rem",
-                          color: "#111827",
-                          lineHeight: 1.3,
-                          mb: 1.5,
-                        }}
-                      >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontFamily: '"Inter", sans-serif',
-                          fontSize: "0.95rem",
-                          color: "#6B7280",
-                          lineHeight: 1.6,
-                        }}
-                      >
-                        {item.description}
-                      </Typography>
-                    </Box>
-                  </Stack>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Stack>
+        <Typography
+          sx={{
+            fontFamily: '"Playfair Display", serif',
+            fontSize: "32px",
+            fontWeight: 700,
+            textAlign: "center",
+            color: "#1A2847",
+            mb: 6,
+          }}
+        >
+          What We Do
+        </Typography>
+
+        <Grid container spacing={8}>
+          {activities.map((item, index) => (
+            <Grid key={index} size={{xs:12,sm:6,md:4}}>
+              
+              <Card
+                elevation={0}
+                sx={{
+                  p: 3,
+                  borderRadius: "10px",
+                  border: "1px solid #E5E7EB",
+                  background: "#fff",
+                  width:{xs:"auto",md:"340px"},
+                  height: {xs:"auto",md:"180px"},
+                  transition: "0.3s",
+
+                  "&:hover": {
+                    boxShadow: "0px 10px 30px rgba(0,0,0,0.06)",
+                    transform: "translateY(-4px)",
+                  },
+                }}
+              >
+                <Stack spacing={3}>
+
+                  {/* ICON */}
+                  <Box
+                    sx={{
+                      width: 56,
+                      height: 56,
+                      borderRadius: "10px",
+                      background: "rgba(212, 165, 116, 0.12)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Image
+                      src={item.icon}
+                      alt={item.title}
+                      width={22}
+                      height={22}
+                    />
+                  </Box>
+
+                  {/* TITLE */}
+                  <Typography
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      color: "#1A2847",
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+
+                  {/* DESCRIPTION */}
+                  <Typography
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      lineHeight: "20px",
+                      color: "#6B7280",
+                    }}
+                  >
+                    {item.description}
+                  </Typography>
+
+                </Stack>
+              </Card>
+
+            </Grid>
+          ))}
+        </Grid>
+
       </Container>
     </Box>
   );

@@ -1,5 +1,8 @@
 "use client";
 
+import { COLORS } from "@/utils/enum";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
@@ -12,19 +15,16 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import MenuIcon from "@mui/icons-material/Menu";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React, { useState } from "react";
 
 const navLinks = [
   { title: "Home", href: "/" },
   { title: "About", href: "/about" },
-  { title: "Membership", href: "#" },
-  { title: "Fellows", href: "#" },
-  { title: "Programs", href: "#" },
+  { title: "Membership", href: "/membership" },
+  { title: "Fellows", href: "/fellows" },
+  { title: "Programs", href: "/programs" },
   // { title: "Awards & Grants", href: "#" },
 ];
 

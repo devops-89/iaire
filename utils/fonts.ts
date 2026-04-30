@@ -1,5 +1,4 @@
-import { Montserrat, Roboto, Roboto_Slab } from "next/font/google";
-
+import { Inter, Montserrat, Roboto_Slab } from "next/font/google";
 export const roboto = Roboto_Slab({
   weight: "variable",
   subsets: ["latin"],
@@ -8,4 +7,10 @@ export const roboto = Roboto_Slab({
 export const montserrat = Montserrat({
   weight: "variable",
   subsets: ["latin"],
+});
+
+
+export const inter = Inter({
+  subsets: ["latin"],
+  weight: "variable",
 });
