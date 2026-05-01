@@ -51,35 +51,35 @@ const activities = [
 
 const WhatWeDo = () => {
   return (
-    <Box sx={{ py: { xs: 8, md: 10 }, bgcolor: "#F9F7F5" }}>
+    <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: "#F9F7F5" }}>
       <Container maxWidth="lg">
 
         <Typography
           sx={{
             fontFamily: '"Playfair Display", serif',
-            fontSize: "32px",
+            fontSize: { xs: "24px", sm: "28px", md: "32px" },
             fontWeight: 700,
             textAlign: "center",
             color: "#1A2847",
-            mb: 6,
+            mb: {xs:4,md:6},
           }}
         >
           What We Do
         </Typography>
 
-        <Grid container spacing={8}>
+        <Grid container spacing={{xs:7.5,md:8}}>
           {activities.map((item, index) => (
             <Grid key={index} size={{xs:12,sm:6,md:4}}>
               
               <Card
                 elevation={0}
                 sx={{
-                  p: 3,
+                  p: {xs:2.5,md:3},
                   borderRadius: "10px",
                   border: "1px solid #E5E7EB",
                   background: "#fff",
                   width:{xs:"auto",md:"340px"},
-                  height: {xs:"auto",md:"180px"},
+                  height: "100%",
                   transition: "0.3s",
 
                   "&:hover": {
@@ -88,7 +88,7 @@ const WhatWeDo = () => {
                   },
                 }}
               >
-                <Stack spacing={3}>
+                <Stack spacing={2.5}>
 
                   {/* ICON */}
                   <Box
@@ -114,7 +114,7 @@ const WhatWeDo = () => {
                   <Typography
                     sx={{
                       fontFamily: inter.style.fontFamily,
-                      fontSize: "16px",
+                      fontSize: {xs:"15px",md:"16px"},
                       fontWeight: 600,
                       color: "#1A2847",
                     }}
@@ -126,7 +126,7 @@ const WhatWeDo = () => {
                   <Typography
                     sx={{
                       fontFamily: inter.style.fontFamily,
-                      fontSize: "14px",
+                      fontSize: {xs:"13.5px",md:"14px"},
                       lineHeight: "20px",
                       color: "#6B7280",
                     }}

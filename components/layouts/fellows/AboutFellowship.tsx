@@ -13,7 +13,7 @@ const AboutFellowship = () => {
 
             <Box
             sx={{
-                width: "100%",
+                width: "80%",
                 maxWidth: "893px",
                 border: "1px solid #E5E7EB",
                 borderRadius: "12px",

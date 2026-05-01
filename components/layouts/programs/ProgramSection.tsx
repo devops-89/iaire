@@ -5,7 +5,7 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import Image from "next/image";
 
 const programData = [
-   {
+    {
     title: "Innovation Program",
     desc: "Transform your creative ideas into patented innovations that solve real-world problems",
     image: "/images/programs/innovationProgram.png",
@@ -89,7 +89,7 @@ return (
         sx={{
             maxWidth: { xs: "100%", md: "400px" },
             fontFamily: '"Playfair Display", serif',
-            fontSize: "30px",
+            fontSize: {xs:"20px",md:"30px"},
             lineHeight: "36px",
             fontWeight: 700,
             color: "#1A2847",
@@ -104,7 +104,7 @@ return (
         sx={{
             maxWidth: { xs: "100%", md: "490px" },
             fontFamily: inter.style.fontFamily,
-            fontSize: "18px",
+            fontSize: {xs:"14px",md:"18px"},
             fontWeight: 400,
             lineHeight: "28px",
             color: "#6B7280",

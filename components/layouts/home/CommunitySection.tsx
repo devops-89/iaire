@@ -1,26 +1,26 @@
 "use client";
 
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import React from "react";
-import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
 import { COLORS } from "@/utils/enum";
+import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 
 const CommunitySection = () => {
   return (
     <Box
       sx={{
-        py: { xs: 10, md: 15 },
+        py: { xs: 6, sm: 8, md: 12 },
+        px: { xs: 2, sm: 3, md: 0 },
         bgcolor: "#101828",
         color: COLORS.WHITE,
         textAlign: "center",
       }}
     >
       <Container maxWidth="md">
-        <Stack spacing={6} alignItems="center">
+        <Stack spacing={{ xs: 4, md: 6 }} alignItems="center">
           <Box
             sx={{
-              width: 64,
-              height: 64,
+              width: 80,
+              height: 80,
               bgcolor: "#C5A059",
               borderRadius: "50%",
               display: "flex",
@@ -28,13 +28,13 @@ const CommunitySection = () => {
               justifyContent: "center",
             }}
           >
-            <MilitaryTechIcon sx={{ color: "#101828", fontSize: 32 }} />
+            <Image src="/images/icon/communityIcon.png" alt="icon" width={40} height={40}/>
           </Box>
 
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: 32, md: 40 },
+              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
               fontWeight: 600,
               maxWidth: "800px",
               fontFamily: '"Playfair Display", serif',
@@ -48,7 +48,7 @@ const CommunitySection = () => {
               bgcolor: "rgba(30, 41, 59, 0.4)",
               border: "1px solid rgba(197, 160, 89, 0.2)",
               borderRadius: 4,
-              p: { xs: 4, md: 6 },
+              p: { xs: 3, sm: 4, md: 6 },
               width: "100%",
               maxWidth: "900px",
             }}
@@ -59,7 +59,7 @@ const CommunitySection = () => {
                 fontFamily: '"Playfair Display", serif',
                 fontStyle: "italic",
                 color: "#C5A059",
-                fontSize: { xs: 20, md: 28 },
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.6rem" },
                 lineHeight: 1.6,
                 textAlign: "center",
               }}
@@ -73,7 +73,7 @@ const CommunitySection = () => {
           <Typography
             sx={{
               color: "#98A2B3",
-              fontSize: "1.1rem",
+              fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
               maxWidth: "600px",
               lineHeight: 1.6,
             }}
@@ -90,10 +90,11 @@ const CommunitySection = () => {
             sx={{
               bgcolor: "#C5A059",
               color: "#101828",
-              px: 6,
-              py: 2,
+              px: { xs: 3, md: 6 },
+              py: { xs: 1.3, md: 2 },
               borderRadius: "8px",
-              fontSize: "1rem",
+              fontSize: { xs: "0.9rem", md: "1rem" },
+              maxWidth: { xs: "100%", sm: "auto" },
               fontWeight: 600,
               textTransform: "none",
               "&:hover": {

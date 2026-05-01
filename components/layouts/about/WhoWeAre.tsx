@@ -1,34 +1,33 @@
 "use client";
 
-import { Box, Container, Typography, Stack } from "@mui/material";
-import React from "react";
-import { COLORS } from "@/utils/enum";
+import { Box, Container, Stack, Typography } from "@mui/material";
 
 const WhoWeAre = () => {
   return (
-    <Box sx={{ py: { xs: 8, md: 10 }, bgcolor: "#FFFFFF" }}>
+    <Box sx={{ py: { xs: 6, sm: 8, md: 10 },px: { xs: 2, sm: 3, md: 0 }, bgcolor: "#FFFFFF" }}>
       <Container maxWidth="lg">
-        <Stack spacing={4}>
+        <Stack spacing={{xs:3,md:4}}>
           <Box textAlign="center">
             <Typography
               variant="h2"
               sx={{
                 fontFamily: '"Playfair Display", serif',
                 fontWeight: 700,
-                fontSize: { xs: "2.5rem", md: "3rem" },
+                fontSize: { xs: "1.8rem",sm:"2.2rem", md: "3rem" },
                 color: "#111827",
-                mb: 6,
+                mb: {xs:3,md:6},
               }}
             >
               Who We Are
             </Typography>
           </Box>
-          <Box sx={{ maxWidth: "800px", mx: "auto", textAlign: "left" }}>
+          <Box sx={{ maxWidth: "800px", mx: "auto", textAlign: {xs:"center",md:"left"} }}>
             <Typography
               variant="h5"
               sx={{
                 fontFamily: '"Playfair Display", serif',
                 fontWeight: 600,
+                fontSize:{xs:"1.2rem",sm:"1.4rem",md:"1.6rem"},
                 color: "#111827",
                 mb: 2,
               }}
@@ -38,8 +37,8 @@ const WhoWeAre = () => {
             <Typography
               sx={{
                 fontFamily: '"Inter", sans-serif',
-                fontSize: "1.125rem",
-                lineHeight: 1.8,
+                fontSize: {xs:"0.95rem",sm:"1.05rem",md:"1.125rem"},
+                lineHeight: {xs:"1.6",md:"1.8"},
                 color: "#4B5563",
               }}
             >

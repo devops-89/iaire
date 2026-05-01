@@ -1,21 +1,19 @@
 "use client";
 
-import { Box, Card, Container, Grid, Typography, Stack, Avatar } from "@mui/material";
-import React from "react";
 import AdsClickIcon from "@mui/icons-material/AdsClick"; // Representing Bullseye
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents"; // Representing Medal
-import { COLORS } from "@/utils/enum";
+import { Avatar, Box, Card, Container, Grid, Stack, Typography } from "@mui/material";
 
 const MissionVision = () => {
   return (
     <Box sx={{ pb: { xs: 8, md: 12 }, bgcolor: "#FFFFFF" }}>
       <Container maxWidth="lg">
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={{xs:10,md:4}} justifyContent="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Card
               elevation={0}
               sx={{
-                p: 5,
+                p: { xs: 3, sm: 4, md: 5 },
                 height: "100%",
                 borderRadius: 4,
                 bgcolor: "#F9F7F5",
@@ -24,6 +22,7 @@ const MissionVision = () => {
                 display: "flex",
                 flexDirection: "column",
                 gap: 2,
+                mb: { xs: 1, md: 0 },
               }}
             >
               <Stack direction="row" spacing={2} alignItems="center">

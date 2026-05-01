@@ -1,20 +1,19 @@
 "use client";
 
+import { COLORS } from "@/utils/enum";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
   Button,
-  Container,
-  Grid,
-  Stack,
-  Typography,
   Card,
   Chip,
+  Container,
+  Grid,
   Link,
+  Stack,
+  Typography,
 } from "@mui/material";
-import React from "react";
-import { COLORS } from "@/utils/enum";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import Image from "next/image";
 
 const events = [
   {
@@ -54,7 +53,7 @@ const EventsSection = () => {
           justifyContent="space-between"
           alignItems={{ xs: "flex-start", sm: "flex-end" }}
           spacing={2}
-          sx={{ mb: 8 }}
+          sx={{ mb: { xs: 4, md: 8 } }}
         >
           <Stack spacing={1}>
             <Typography
@@ -98,13 +97,13 @@ const EventsSection = () => {
           </Link>
         </Stack>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={{xs:12,md:4}}>
           {events.map((event, index) => (
             <Grid key={index} size={{ xs: 12, md: 4 }}>
               <Card
                 elevation={0}
                 sx={{
-                  p: 4,
+                  p: { xs: 2.5, sm: 3, md: 4 },
                   height: "100%",
                   borderRadius: "24px",
                   border: "1px solid #E5E7EB",
@@ -135,7 +134,7 @@ const EventsSection = () => {
                       px: 0.5,
                     }}
                   />
-                  <CalendarTodayIcon sx={{ color: "#9CA3AF", fontSize: 20 }} />
+                  <Image src="/images/icon/calanderIcon.png" alt="calander" width={20} height={20}/>
                 </Stack>
 
                 <Typography
@@ -143,7 +142,7 @@ const EventsSection = () => {
                   sx={{
                     color: "#111827",
                     fontWeight: 700,
-                    fontSize: "1.25rem",
+                    fontSize: { xs: "1.1rem", md: "1.25rem" },
                     mb: 1.5,
                     lineHeight: 1.4,
                     fontFamily: '"Inter", sans-serif',
@@ -154,7 +153,7 @@ const EventsSection = () => {
                 <Typography
                   sx={{
                     color: "#374151",
-                    fontSize: "0.95rem",
+                    fontSize: { xs: "0.85rem", md: "0.95rem" },
                     fontWeight: 600,
                     mb: 2,
                     fontFamily: '"Inter", sans-serif',
@@ -165,7 +164,7 @@ const EventsSection = () => {
                 <Typography
                   sx={{
                     color: "#6B7280",
-                    fontSize: "0.95rem",
+                    fontSize: { xs: "0.85rem", md: "0.95rem" },
                     mb: 4,
                     flexGrow: 1,
                     lineHeight: 1.6,
@@ -186,7 +185,8 @@ const EventsSection = () => {
                     textTransform: "none",
                     fontWeight: 600,
                     borderRadius: "12px",
-                    py: 1.5,
+                    py: { xs: 1.2, md: 1.5 },
+                    fontSize: { xs: "0.9rem", md: "1rem" },
                     fontFamily: '"Inter", sans-serif',
                     "&:hover": {
                       bgcolor: "#E5E7EB",

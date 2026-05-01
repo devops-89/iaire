@@ -1,40 +1,36 @@
 "use client";
 
+import { COLORS } from "@/utils/enum";
 import {
   Box,
   Card,
   Container,
   Grid,
   Stack,
-  Typography,
-  Avatar,
+  Typography
 } from "@mui/material";
-import React from "react";
-import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import ScienceIcon from "@mui/icons-material/Science";
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
-import { COLORS } from "@/utils/enum";
+import Image from "next/image";
 
 const focusAreas = [
   {
     title: "Innovation",
     description:
       "Foster growth through novel ideas and transformative solutions that shape the future.",
-    icon: <LightbulbIcon sx={{ color: "#EAB308" }} />,
+    icon: "/images/icon/bulbIcon.png",
     bgColor: "rgba(234, 179, 8, 0.1)",
   },
   {
     title: "Research",
     description:
       "Conduct rigorous scientific investigation and discovery that advances knowledge.",
-    icon: <ScienceIcon sx={{ color: "#3B82F6" }} />,
+    icon: "/images/icon/researchIcon.png",
     bgColor: "rgba(59, 130, 246, 0.1)",
   },
   {
     title: "Entrepreneurship",
     description:
       "Turn concepts into ventures that create impact and solve problems globally.",
-    icon: <RocketLaunchIcon sx={{ color: "#A855F7" }} />,
+    icon: "/images/icon/rocketIcon.png",
     bgColor: "rgba(168, 85, 247, 0.1)",
   },
 ];
@@ -47,13 +43,13 @@ const FocusAreas = () => {
           spacing={2}
           alignItems="center"
           textAlign="center"
-          sx={{ mb: 8 }}
+          sx={{ mb: { xs: 4, md: 8 }, px: { xs: 1 } }}
         >
           <Typography
             variant="h2"
             sx={{
               color: COLORS.PRIMARY_NAVY,
-              fontSize: { xs: 32, md: 48 },
+              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
               fontWeight: 700,
             }}
           >
@@ -62,7 +58,7 @@ const FocusAreas = () => {
           <Typography
             sx={{
               color: "rgba(11, 23, 39, 0.7)",
-              fontSize: { xs: 16, md: 18 },
+              fontSize: { xs: "0.9rem", md: "1.05rem" },
               maxWidth: "600px",
             }}
           >
@@ -71,13 +67,13 @@ const FocusAreas = () => {
           </Typography>
         </Stack>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={{ xs: 8, md: 4 }}>
           {focusAreas.map((area, index) => (
             <Grid key={index} size={{ xs: 12, md: 4 }}>
               <Card
                 elevation={0}
                 sx={{
-                  p: 4,
+                  p: { xs: 2.5, md: 4 },
                   height: "100%",
                   border: "1px solid",
                   borderColor: "divider",
@@ -91,21 +87,19 @@ const FocusAreas = () => {
                 }}
               >
                 <Stack spacing={3}>
-                  <Avatar
-                    sx={{
-                      bgcolor: area.bgColor,
-                      width: 64,
-                      height: 64,
-                    }}
-                  >
-                    {/* Size boost for icons */}
-                    {React.cloneElement(area.icon as any, {
-                      sx: {
-                        ...((area.icon as any).props.sx || {}),
-                        fontSize: 32,
-                      },
-                    })}
-                  </Avatar>
+                  <Box
+                  sx=
+                  {{
+                    width: 64,
+                    height: 64,
+                    borderRadius: "50%",
+                    background: area.bgColor,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    }} >
+                    <Image src={area.icon} alt={area.title} width={32} height={32} />
+                  </Box>
                   <Box>
                     <Typography
                       variant="h4"
