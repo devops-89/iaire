@@ -1,3 +1,4 @@
+import { countryControllers } from "@/app/api/countryControllers";
 import { userControllers } from "@/app/api/userControllers";
 import { COUNTRYDATAPROPS } from "@/utils/type";
 import { useState, useEffect } from "react";
@@ -10,7 +11,7 @@ export const useGetCountries = () => {
     const fetchCountries = async () => {
       setCountryLoading(true);
       try {
-        const res = await userControllers.getCountries();
+        const res = await countryControllers.getCountries();
         setCountryData(res.data.data);
       } catch (error) {
         console.log("error in country listing", error);

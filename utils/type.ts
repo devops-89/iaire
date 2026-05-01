@@ -48,17 +48,21 @@ export interface InstitutionInfo {
 }
 
 export interface EducatorInfo {
-  board: string;
-  institution: string;
+  email: string;
+  countryCode: string;
+  phone: string;
   firstName: string;
   lastName: string;
-  email: string;
-  phone: string;
-  password?: string;
-  confirmPassword?: string;
-  role: USER_ROLES.EDUCATOR;
-  country: COUNTRYDATAPROPS;
-  avatar: null;
+  password: string;
+  boardId?: string;
+  schoolId: string;
+  profileImage: File | null;
+  country: COUNTRYDATAPROPS | null;
+  state: string;
+  isdCode?: string;
+  primarySubjects: string[];
+  gender: string;
+  experience: string;
 }
 
 export interface STATSCARDDATA {
@@ -121,4 +125,31 @@ export interface MENTOR_SIGNUP_REQUEST {
   password: string;
   confirmPassword?: string;
   institutionId: number;
+  primarySubjects: string[];
+  boardId?: number;
+  isdCode?: string;
+  gender: string;
+  experience: string;
+}
+
+export interface INSTITUTION_BY_BOARD_PROPS {
+  id: number;
+  name: string;
+  code?: string;
+  address?: string;
+  addressLine1?: string;
+  addressLine2?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+  logo?: File | null;
+  affiliationCertificate?: string;
+  affiliationNumber?: string;
+  website?: null;
+  registrationYear: number;
+  isActive: boolean;
+  boardId: number;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt?: string | null;
 }

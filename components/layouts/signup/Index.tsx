@@ -82,7 +82,7 @@ const SignupLayout = ({ children }: { children?: React.ReactNode }) => {
         },
       }}
     >
-      <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Card
           sx={{
             py: 5,
@@ -234,7 +234,9 @@ const SignupLayout = ({ children }: { children?: React.ReactNode }) => {
                     error={
                       formik.touched.password && Boolean(formik.errors.password)
                     }
-                    helperText={formik.touched.password && formik.errors.password}
+                    helperText={
+                      formik.touched.password && formik.errors.password
+                    }
                     slotProps={{
                       input: {
                         startAdornment: (
@@ -360,6 +362,5 @@ const SignupLayout = ({ children }: { children?: React.ReactNode }) => {
     </Box>
   );
 };
-
 
 export default SignupLayout;

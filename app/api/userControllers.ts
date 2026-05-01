@@ -25,32 +25,4 @@ export const userControllers = {
       throw error;
     }
   },
-  getCountries: async () => {
-    try {
-      const result = await basePublicApi.get("/countries/dropdown");
-      return result.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-
-  getBoardByCountry: async (country: string) => {
-    try {
-      const result = await basePublicApi.get(
-        `/boards/dropdown?country=${country}`,
-      );
-      return result.data;
-    } catch (error) {
-      throw error;
-    }
-  },
-
-  getIsdByCountry: async (country: number) => {
-    try {
-      const result = await basePublicApi.get(`/countries/${country}/isd`);
-      return result.data;
-    } catch (error) {
-      throw error;
-    }
-  },
 };

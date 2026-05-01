@@ -78,15 +78,22 @@ interface SignupStepperProps {
   steps?: string[];
 }
 
-const SignupStepper = ({ activeStep, steps: customSteps }: SignupStepperProps) => {
+const SignupStepper = ({
+  activeStep,
+  steps: customSteps,
+}: SignupStepperProps) => {
   const { data } = useSignup();
-  
+
   const getSteps = () => {
     if (customSteps) return customSteps;
-    
+
     switch (data?.role) {
       case USER_ROLES.INSTITUTION:
-        return ["Institution Details", "Review Information", "Payment Verification"];
+        return [
+          "Institution Details",
+          "Review Information",
+          "Payment Verification",
+        ];
       case USER_ROLES.EDUCATOR:
         return ["Educator Details", "Verify OTP", "Payment Verification"];
       case USER_ROLES.STUDENT:

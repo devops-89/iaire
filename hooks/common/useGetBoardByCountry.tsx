@@ -1,3 +1,4 @@
+import { countryControllers } from "@/app/api/countryControllers";
 import { userControllers } from "@/app/api/userControllers";
 import { COUNTRIES } from "@/utils/constant";
 import { BOARDDATAPROPS, COUNTRYDATAPROPS } from "@/utils/type";
@@ -13,7 +14,7 @@ export const useBoardByCountry = (country: COUNTRYDATAPROPS | null) => {
         setBoardLoading(true);
         if (country?.code === "IN") {
           try {
-            const result = await userControllers.getBoardByCountry(
+            const result = await countryControllers.getBoardByCountry(
               country?.code,
             );
             setBoardData(result?.data?.data || result);
@@ -24,7 +25,7 @@ export const useBoardByCountry = (country: COUNTRYDATAPROPS | null) => {
           }
         } else if (country?.code === "US") {
           try {
-            const result = await userControllers.getIsdByCountry(country.id);
+            const result = await countryControllers.getIsdByCountry(country.id);
             // console.log("res", result);
             setBoardData(result?.data?.data?.isdCodes);
           } catch (error) {
@@ -34,7 +35,7 @@ export const useBoardByCountry = (country: COUNTRYDATAPROPS | null) => {
           }
         } else {
           try {
-            const result = await userControllers.getBoardByCountry(
+            const result = await countryControllers.getBoardByCountry(
               country?.code,
             );
             setBoardData(result?.data?.data || result);
