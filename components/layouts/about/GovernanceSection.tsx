@@ -1,17 +1,14 @@
 "use client";
 
-import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
-import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
-import GavelOutlinedIcon from "@mui/icons-material/GavelOutlined";
-import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
-import { Box, Card, Container, Divider, Stack, Typography } from "@mui/material";
+import { Box, Card, Container, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import React from "react";
 
 const documents = [
-  { title: "Charter & Constitution", icon: <GavelOutlinedIcon sx={{ fontSize: 20 }} /> },
-  { title: "Bylaws", icon: <ArticleOutlinedIcon sx={{ fontSize: 20 }} /> },
-  { title: "Code of Ethics & Conduct", icon: <ShieldOutlinedIcon sx={{ fontSize: 20 }} /> },
-  { title: "Financial Transparency Reports", icon: <AnalyticsOutlinedIcon sx={{ fontSize: 20 }} /> },
+  { title: "Charter & Constitution", icon: "/images/icon/researchGrantIcon.png",},
+  { title: "Bylaws", icon: "/images/icon/researchGrantIcon.png", },
+  { title: "Code of Ethics & Conduct", icon: "/images/icon/researchGrantIcon.png", },
+  { title: "Financial Transparency Reports", icon: "/images/icon/researchGrantIcon.png", },
 ];
 
 const GovernanceSection = () => {
@@ -91,7 +88,7 @@ const GovernanceSection = () => {
                 borderColor: "rgba(0, 0, 0, 0.05)",
               }}
             >
-              <Stack spacing={4}>
+              <Stack spacing={1}>
                 <Typography
                   variant="h4"
                   sx={{
@@ -108,8 +105,20 @@ const GovernanceSection = () => {
                   {documents.map((doc, index) => (
                     <React.Fragment key={index}>
                       <Stack direction="row" spacing={2} alignItems="center" sx={{ py: 2 }}>
-                        <Box sx={{ color: "#D1A054", display: "flex" }}>
-                          {doc.icon}
+                        <Box
+                          sx={{
+                            width: 32,
+                            height: 32,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}>
+                          <Image
+                            src={doc.icon}
+                            alt={doc.title}
+                            width={20}
+                            height={20}
+                          />
                         </Box>
                         <Typography
                           sx={{
@@ -122,9 +131,6 @@ const GovernanceSection = () => {
                           {doc.title}
                         </Typography>
                       </Stack>
-                      {index < documents.length - 1 && (
-                        <Divider sx={{ borderColor: "rgba(0, 0, 0, 0.05)" }} />
-                      )}
                     </React.Fragment>
                   ))}
                 </Box>
