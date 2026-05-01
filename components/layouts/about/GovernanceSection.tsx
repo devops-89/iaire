@@ -1,5 +1,6 @@
 "use client";
 
+import { COLORS } from "@/utils/enum";
 import { Box, Card, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
@@ -37,7 +38,7 @@ const GovernanceSection = () => {
               sx={{
                 p: { xs: 3, sm: 4, md: 6 },
                 borderRadius: 4,
-                bgcolor: "#FFFFFF",
+                bgcolor: COLORS.WHITE,
                 border: "1px solid",
                 borderColor: "rgba(0, 0, 0, 0.05)",
               }}

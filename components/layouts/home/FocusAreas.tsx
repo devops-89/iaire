@@ -1,6 +1,7 @@
 "use client";
 
 import { COLORS } from "@/utils/enum";
+import { inter } from "@/utils/fonts";
 import {
   Box,
   Card,
@@ -18,6 +19,7 @@ const focusAreas = [
       "Foster growth through novel ideas and transformative solutions that shape the future.",
     icon: "/images/icon/bulbIcon.png",
     bgColor: "rgba(234, 179, 8, 0.1)",
+    accent: "#EAB308",
   },
   {
     title: "Research",
@@ -25,6 +27,7 @@ const focusAreas = [
       "Conduct rigorous scientific investigation and discovery that advances knowledge.",
     icon: "/images/icon/researchIcon.png",
     bgColor: "rgba(59, 130, 246, 0.1)",
+    accent: "#3B82F6",
   },
   {
     title: "Entrepreneurship",
@@ -32,6 +35,7 @@ const focusAreas = [
       "Turn concepts into ventures that create impact and solve problems globally.",
     icon: "/images/icon/rocketIcon.png",
     bgColor: "rgba(168, 85, 247, 0.1)",
+    accent: "#A855F7",
   },
 ];
 
@@ -51,6 +55,7 @@ const FocusAreas = () => {
               color: COLORS.PRIMARY_NAVY,
               fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
               fontWeight: 700,
+              fontFamily: '"Playfair Display", serif',
             }}
           >
             Key Focus Areas
@@ -60,6 +65,7 @@ const FocusAreas = () => {
               color: "rgba(11, 23, 39, 0.7)",
               fontSize: { xs: "0.9rem", md: "1.05rem" },
               maxWidth: "600px",
+              fontFamily:inter.style.fontFamily,
             }}
           >
             Empowering the next generation through three interconnected pillars
@@ -82,7 +88,8 @@ const FocusAreas = () => {
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   "&:hover": {
                     transform: "translateY(-8px)",
-                    boxShadow: "0 12px 24px rgba(0,0,0,0.05)",
+                    boxShadow: `0 12px 30px ${area.accent}40`,
+                    borderColor: area.accent,
                   },
                 }}
               >
@@ -108,6 +115,7 @@ const FocusAreas = () => {
                         mb: 2,
                         fontWeight: 700,
                         fontSize: "1.5rem",
+                        fontFamily: '"Playfair Display", serif',
                       }}
                     >
                       {area.title}
@@ -117,6 +125,7 @@ const FocusAreas = () => {
                         color: "rgba(11, 23, 39, 0.7)",
                         lineHeight: 1.6,
                         fontSize: "0.95rem",
+                        fontFamily:inter.style.fontFamily,
                       }}
                     >
                       {area.description}

@@ -80,11 +80,11 @@ const WhatWeDo = () => {
                   background: "#fff",
                   width:{xs:"auto",md:"340px"},
                   height: "100%",
-                  transition: "0.3s",
-
+                  transition: "all 0.3s ease",
                   "&:hover": {
-                    boxShadow: "0px 10px 30px rgba(0,0,0,0.06)",
                     transform: "translateY(-4px)",
+                    borderColor: "#D4A574",
+                    boxShadow: "0 10px 30px rgba(212,165,116,0.35)",
                   },
                 }}
               >

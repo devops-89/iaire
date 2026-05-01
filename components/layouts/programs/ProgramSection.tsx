@@ -1,6 +1,7 @@
 "use client";
 
 import { inter } from "@/utils/fonts";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Button, Container, Typography } from "@mui/material";
 import Image from "next/image";
 
@@ -10,6 +11,7 @@ const programData = [
     desc: "Transform your creative ideas into patented innovations that solve real-world problems",
     image: "/images/programs/innovationProgram.png",
     icon: "/images/icon/bulbIcon.png",
+    accent: "#C89B3C",
     points: [
     "Structured innovation methodology training",
     "Patent filing support and grants",
@@ -22,6 +24,7 @@ const programData = [
     desc: "Conduct rigorous scientific research and publish your findings in prestigious journals",
     image: "/images/programs/researchProgram.png",
     icon: "/images/icon/researchIcon.png",
+    accent: "#5B7DBF",
     points: [
     "Research methodology and design training",
     "Access to research lab resources",
@@ -34,6 +37,7 @@ const programData = [
     desc: "Build and launch startups with mentorship, resources, and funding opportunities",
     image: "/images/programs/entrepreneur.png",
     icon: "/images/icon/rocketIcon.png",
+    accent: "#7C5CC4",
     points: [
     "Startup development bootcamps",
     "Business plan and pitch training",
@@ -56,6 +60,16 @@ return (
         borderRadius: "12px",
         overflow: "hidden",
         background: "#fff",
+        transition: "all 0.3s ease",
+        "&:hover": {
+        transform: "translateY(-4px)",
+        borderColor: item.accent,
+        boxShadow: `
+        0 10px 25px rgba(0,0,0,0.05),
+        0 0 0 1px ${item.accent}40,
+        0 0 20px ${item.accent}30
+        `,
+},
     }}
     >
 
@@ -164,15 +178,17 @@ return (
             fontFamily: inter.style.fontFamily,
             fontSize: "16px",
             fontWeight: 400,
-
+            transition: "gap 0.2s ease",
             "&:hover": {
             background: "#D4A574",
             color: "#1A2847",
             },
-        }}
+            "&:hover .arrow": {
+            transform: "translateX(4px)",
+            },
+            }}
         >
-        Learn More{" "}
-        <span style={{ marginLeft: 4, fontWeight: 700 }}>→</span>
+        Learn More <ArrowForwardIcon className="arrow" sx={{ px:1,fontSize: 18,transition:"transform 0.3s ease" }} />
         </Button>
     </Box>
     </Box>

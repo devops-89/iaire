@@ -1,7 +1,10 @@
 "use client";
 
+import SplitText from "@/components/widgets/SplitText";
+import TextBlur from "@/components/widgets/TextBlur";
 import bgImage from "@/images/homepage/hero_bg.png";
 import { COLORS } from "@/utils/enum";
+import { inter } from "@/utils/fonts";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 
@@ -48,28 +51,43 @@ const HeroSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
         <Stack spacing={{xs:3,md:4}} alignItems="center" textAlign="center">
-          <Typography
-            variant="h1"
+        <Typography
+            component="div"
             sx={{
+              fontFamily: '"Playfair Display", serif',
               color: COLORS.WHITE,
-              fontSize: { xs: "1.9rem", sm: "2.4rem", md: "3.5rem", },
+              fontSize: { xs: "1.9rem", sm: "2.4rem", md: "3.5rem" },
               lineHeight: { xs: 1.3, md: 1.2 },
               maxWidth: "900px",
               fontWeight: 600,
-            }}
-          >
-            Nurturing a Culture of Innovation, Research and Entrepreneurship
+              textAlign: "center",
+              mx:"auto"
+            }}>
+              <TextBlur
+                text="Nurturing a Culture of Innovation, Research and Entrepreneurship"
+                animateBy="words"
+                delay={80}
+                stepDuration={0.4}
+                className="blur-text-inherit"
+              />
           </Typography>
           
-          <Typography
-            sx={{
-              color: "rgba(255, 255, 255, 0.8)",
-              fontSize: { xs: "0.95rem", sm: "1.1rem", md: "1.25rem"},
-              maxWidth: "700px",
-              lineHeight: 1.6,
-            }}
-          >
-            Among youth. Become a member institution of IAIRE - where the brightest minds innovate tomorrow
+        <Typography
+          component="div"
+          sx={{
+            color: "rgba(255, 255, 255, 0.8)",
+            fontSize: { xs: "0.95rem", sm: "1.1rem", md: "1.25rem" },
+            maxWidth: "700px",
+            fontFamily: inter.style.fontFamily,
+            lineHeight: 1.6,
+            textAlign: "center",
+            mx: "auto",
+          }}>
+          <SplitText
+            text="Among youth. Become a member institution of IAIRE - where the brightest minds innovate tomorrow"
+            splitType="words"
+            delay={40}
+          />
           </Typography>
 
           <Stack direction={{ xs: "column", sm: "row" }} onMouseLeave={() => setHovered(null)} spacing={2} sx={{ pt: { xs: 1, md: 2 }, width: { xs: "100%", sm: "auto" } }} >
@@ -78,6 +96,7 @@ const HeroSection = () => {
               variant="contained"
               size="large"
               sx={{
+                fontFamily:inter.style.fontFamily,
                 bgcolor:
                 hovered === "secondary"? "transparent": COLORS.ACCENT_TAN,
                 color:hovered === "secondary"? COLORS.WHITE: COLORS.BLACK,
@@ -97,6 +116,7 @@ const HeroSection = () => {
               variant="outlined"
               size="large"
               sx={{
+                fontFamily:inter.style.fontFamily,
                 border: `1px solid ${hovered === "primary" ? COLORS.ACCENT_TAN : COLORS.WHITE}`,
                 bgcolor:hovered === "primary"? COLORS.ACCENT_TAN: "transparent",
                 color:hovered === "primary"? COLORS.BLACK: COLORS.WHITE,

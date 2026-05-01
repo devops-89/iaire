@@ -1,9 +1,10 @@
 "use client";
 
 import { COLORS } from "@/utils/enum";
+import { inter } from "@/utils/fonts";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-
 const CommunitySection = () => {
   return (
     <Box
@@ -76,6 +77,7 @@ const CommunitySection = () => {
               fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
               maxWidth: "600px",
               lineHeight: 1.6,
+              fontFamily:inter.style.fontFamily,
             }}
           >
             Our members are among the world's most distinguished young innovators,
@@ -86,7 +88,6 @@ const CommunitySection = () => {
           <Button
             variant="contained"
             size="large"
-            endIcon={<span>→</span>}
             sx={{
               bgcolor: "#C5A059",
               color: "#101828",
@@ -100,9 +101,12 @@ const CommunitySection = () => {
               "&:hover": {
                 bgcolor: "#B08A4A",
               },
+              "&:hover .arrow": {
+                    transform: "translateX(4px)",
+              },
             }}
           >
-            Learn About Membership
+            Learn About Membership <ArrowForwardIcon className="arrow" sx={{px:1,fontSize: 18,transition: "transform 0.3s ease",}}/>
           </Button>
         </Stack>
       </Container>

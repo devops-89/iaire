@@ -10,6 +10,7 @@ const membershipData = [
     desc: "For schools and educational institutions committed to fostering IRE culture",
     icon: "/images/icon/institute.png",
     bg: "#E9EEF5",
+    accent: "#5B7DBF",
     benefits: [
     "Official IAIRE accreditation and certification",
     "Access to comprehensive IRE curriculum and resources",
@@ -23,6 +24,7 @@ const membershipData = [
     desc: "For teachers and mentors who guide young minds in innovation and research",
     icon: "/images/icon/education.png",
     bg: "#EFEAF7",
+    accent: "#7C5CC4",
     benefits: [
     "IAIRE Certified Educator designation",
     "Access to teaching resources and training modules",
@@ -36,6 +38,7 @@ const membershipData = [
     desc: "For exceptional young innovators, researchers, and entrepreneurs",
     icon: "/images/icon/student.png",
     bg: "#F6F1E7",
+    accent: "#C89B3C",
     benefits: [
     "Official IAIRE member certificate and credentials",
     "Access to grant and funding opportunities",
@@ -52,6 +55,7 @@ type MembershipItem = {
                     icon: string;
                     bg: string;
                     benefits: string[];
+                    accent: string;
                     };
 
 type MembershipCardProps = {
@@ -70,10 +74,15 @@ return (
         overflow: "hidden",
         border: "1px solid #E5E7EB",
         background: "#fff",
-        transition: "0.3s",
+        transition: "all 0.3s ease",
         "&:hover": {
-        borderColor: "#D4A574",
-        boxShadow: "0px 8px 24px rgba(0,0,0,0.08)",
+        transform: "translateY(-4px)",
+        borderColor: item.accent,
+        boxShadow: `
+        0 10px 25px rgba(0,0,0,0.05),
+        0 0 0 1px ${item.accent}40,
+        0 0 20px ${item.accent}30
+        `,
         },
     }}
     >

@@ -32,11 +32,12 @@ return (
         background: "#fff",
         p: { xs: 2.5, md: 3 },
         textAlign: "center",
-        transition: "0.3s",
         height: "100%",
+        transition: "all 0.3s ease",
         "&:hover": {
-        borderColor: "#D4A574",
-        boxShadow: "0px 8px 24px rgba(0,0,0,0.08)",
+                    transform: "translateY(-4px)",
+                    borderColor: "#D4A574",
+                    boxShadow: "0 10px 30px rgba(212,165,116,0.35)",
         },
     }}>
     <Box

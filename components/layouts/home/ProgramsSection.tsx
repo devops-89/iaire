@@ -24,6 +24,7 @@ const programs: Program[] = [
     description:
       "Transform ideas into patented innovations with expert guidance and resources.",
     icon: "/images/icon/bulbIcon.png",
+    
   },
   {
     title: "Research Program",
@@ -118,8 +119,8 @@ const ProgramsSection = () => {
                       transition: "transform 0.3s ease, box-shadow 0.3s ease",
                       "&:hover": {
                         transform: "translateY(-4px)",
-                        boxShadow:
-                          "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                        boxShadow: `0 12px 30px ${theme.accent}40`,
+                        borderColor: theme.accent,
                       },
                     }}
                   >

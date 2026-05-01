@@ -177,7 +177,6 @@ const EventsSection = () => {
                 <Button
                   variant="contained"
                   fullWidth
-                  endIcon={<ArrowForwardIcon />}
                   sx={{
                     bgcolor: "#F3F4F6",
                     color: "#111827",
@@ -188,13 +187,19 @@ const EventsSection = () => {
                     py: { xs: 1.2, md: 1.5 },
                     fontSize: { xs: "0.9rem", md: "1rem" },
                     fontFamily: '"Inter", sans-serif',
+                    transition: "all 0.3s ease",
+
                     "&:hover": {
-                      bgcolor: "#E5E7EB",
+                      bgcolor: "#D4A574",
+                      color: "#FFFFFF",
                       boxShadow: "none",
+                    },
+                    "&:hover .arrow": {
+                      transform: "translateX(4px)",
                     },
                   }}
                 >
-                  Register Now
+                  Register Now <ArrowForwardIcon className="arrow" sx={{px:1,fontSize: 18,transition: "transform 0.3s ease",}}/>
                 </Button>
               </Card>
             </Grid>

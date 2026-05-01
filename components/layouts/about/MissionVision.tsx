@@ -1,14 +1,13 @@
 "use client";
 
-import AdsClickIcon from "@mui/icons-material/AdsClick"; // Representing Bullseye
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents"; // Representing Medal
 import { Avatar, Box, Card, Container, Grid, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 
 const MissionVision = () => {
   return (
     <Box sx={{ pb: { xs: 8, md: 12 }, bgcolor: "#FFFFFF" }}>
       <Container maxWidth="lg">
-        <Grid container spacing={{xs:10,md:4}} justifyContent="center">
+        <Grid container spacing={{xs:8,md:4}} justifyContent="center">
           <Grid size={{ xs: 12, md: 6 }}>
             <Card
               elevation={0}
@@ -23,11 +22,28 @@ const MissionVision = () => {
                 flexDirection: "column",
                 gap: 2,
                 mb: { xs: 1, md: 0 },
+                transition: "all 0.3s ease",
+              "&:hover": {
+                transform: "translateY(-6px)",
+                borderColor: "#D4A574",
+                boxShadow: "0 10px 30px rgba(212,165,116,0.35)",
+              },
+
               }}
             >
               <Stack direction="row" spacing={2} alignItems="center">
-                <Avatar sx={{ bgcolor: "rgba(209, 160, 84, 0.1)", color: "#D1A054", width: 44, height: 44 }}>
-                  <AdsClickIcon />
+                <Avatar
+                sx={{
+                      bgcolor: "rgba(209, 160, 84, 0.1)",
+                      width: 44,
+                      height: 44,
+                    }}>
+                <Image
+                  src="/images/icon/studenttrainingIcon.png"
+                  alt="icon"
+                  width={32}
+                  height={32}
+                />
                 </Avatar>
                 <Typography
                   variant="h5"
@@ -65,11 +81,29 @@ const MissionVision = () => {
                 display: "flex",
                 flexDirection: "column",
                 gap: 2,
+
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-6px)",
+                  borderColor: "#D4A574",
+                  boxShadow: "0 10px 30px rgba(212,165,116,0.35)",
+                },
+
               }}
             >
               <Stack direction="row" spacing={2} alignItems="center">
-                <Avatar sx={{ bgcolor: "rgba(209, 160, 84, 0.1)", color: "#D1A054", width: 44, height: 44 }}>
-                  <EmojiEventsIcon />
+                <Avatar
+                sx={{
+                  bgcolor: "rgba(209, 160, 84, 0.1)",
+                  width: 44,
+                  height: 44,
+                }}>
+                <Image
+                  src="/images/icon/trainingIcon.png"
+                  alt="icon"
+                  width={32}
+                  height={32}
+                />
                 </Avatar>
                 <Typography
                   variant="h5"
