@@ -1,5 +1,6 @@
 "use client";
 
+import ScrollReveal from "@/components/widgets/ScrollReveal";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -18,6 +19,7 @@ const CommunitySection = () => {
     >
       <Container maxWidth="md">
         <Stack spacing={{ xs: 4, md: 6 }} alignItems="center">
+          <ScrollReveal delay={0.1}>
           <Box
             sx={{
               width: 80,
@@ -31,7 +33,8 @@ const CommunitySection = () => {
           >
             <Image src="/images/icon/communityIcon.png" alt="icon" width={40} height={40}/>
           </Box>
-
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
           <Typography
             variant="h2"
             sx={{
@@ -43,15 +46,18 @@ const CommunitySection = () => {
           >
             Join a Prestigious Community
           </Typography>
-
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
           <Box
             sx={{
               bgcolor: "rgba(30, 41, 59, 0.4)",
               border: "1px solid rgba(197, 160, 89, 0.2)",
               borderRadius: 4,
-              p: { xs: 3, sm: 4, md: 6 },
-              width: "100%",
-              maxWidth: "900px",
+              px: { xs: 3, sm: 5, md: 8 },
+              py: { xs: 3, sm: 4, md: 5 },
+              width: "90%",
+              maxWidth: "750px",
+              mx:"auto"
             }}
           >
             <Typography
@@ -63,6 +69,7 @@ const CommunitySection = () => {
                 fontSize: { xs: "1rem", sm: "1.2rem", md: "1.6rem" },
                 lineHeight: 1.6,
                 textAlign: "center",
+                margin: "0 auto",
               }}
             >
               "Membership in IAIRE recognizes excellence in innovation, research,
@@ -70,6 +77,7 @@ const CommunitySection = () => {
               can achieve."
             </Typography>
           </Box>
+          </ScrollReveal>
 
           <Typography
             sx={{

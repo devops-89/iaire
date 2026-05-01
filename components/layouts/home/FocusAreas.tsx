@@ -1,5 +1,6 @@
 "use client";
 
+import ScrollReveal from "@/components/widgets/ScrollReveal";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import {
@@ -49,6 +50,7 @@ const FocusAreas = () => {
           textAlign="center"
           sx={{ mb: { xs: 4, md: 8 }, px: { xs: 1 } }}
         >
+          <ScrollReveal delay={0.1}>
           <Typography
             variant="h2"
             sx={{
@@ -71,16 +73,18 @@ const FocusAreas = () => {
             Empowering the next generation through three interconnected pillars
             of excellence.
           </Typography>
+          </ScrollReveal>
         </Stack>
 
-        <Grid container spacing={{ xs: 8, md: 4 }}>
+        <Grid container spacing={{ xs: 8, md: 4 }} alignItems="stretch">
           {focusAreas.map((area, index) => (
-            <Grid key={index} size={{ xs: 12, md: 4 }}>
+            <Grid key={index} size={{ xs: 12, md: 4 }} display="flex">
+               <ScrollReveal delay={index * 0.15}>
               <Card
                 elevation={0}
                 sx={{
                   p: { xs: 2.5, md: 4 },
-                  height: "100%",
+                  height: "90%",
                   border: "1px solid",
                   borderColor: "divider",
                   borderRadius: 4,
@@ -133,6 +137,7 @@ const FocusAreas = () => {
                   </Box>
                 </Stack>
               </Card>
+              </ScrollReveal>
             </Grid>
           ))}
         </Grid>

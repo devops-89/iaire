@@ -1,5 +1,6 @@
 "use client";
 
+import ScrollReveal from "@/components/widgets/ScrollReveal";
 import { COLORS } from "@/utils/enum";
 import { Avatar, Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
@@ -29,6 +30,7 @@ const TestimonialSection = () => {
       />
 
       <Container maxWidth="md">
+        <ScrollReveal delay={0.1}>
         <Stack spacing={4} alignItems="center" textAlign="center">
           <Avatar
             sx={{
@@ -75,6 +77,7 @@ const TestimonialSection = () => {
             </Typography>
           </Box>
         </Stack>
+        </ScrollReveal>
       </Container>
     </Box>
   );

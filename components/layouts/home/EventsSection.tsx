@@ -1,5 +1,6 @@
 "use client";
 
+import ScrollReveal from "@/components/widgets/ScrollReveal";
 import { COLORS } from "@/utils/enum";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
@@ -55,6 +56,7 @@ const EventsSection = () => {
           spacing={2}
           sx={{ mb: { xs: 4, md: 8 } }}
         >
+          <ScrollReveal delay={0.1}>
           <Stack spacing={1}>
             <Typography
               variant="h2"
@@ -95,11 +97,13 @@ const EventsSection = () => {
           >
             View All Events <ArrowForwardIcon sx={{ fontSize: 18 }} />
           </Link>
+          </ScrollReveal>
         </Stack>
 
         <Grid container spacing={{xs:12,md:4}}>
           {events.map((event, index) => (
             <Grid key={index} size={{ xs: 12, md: 4 }}>
+              <ScrollReveal delay={0.15*index}>
               <Card
                 elevation={0}
                 sx={{
@@ -202,6 +206,7 @@ const EventsSection = () => {
                   Register Now <ArrowForwardIcon className="arrow" sx={{px:1,fontSize: 18,transition: "transform 0.3s ease",}}/>
                 </Button>
               </Card>
+              </ScrollReveal>
             </Grid>
           ))}
         </Grid>

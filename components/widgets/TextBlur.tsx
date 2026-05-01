@@ -70,21 +70,18 @@ const [inView, setInView] = useState(false);
 const ref = useRef<HTMLParagraphElement | null>(null);
 
 useEffect(() => {
-const el = ref.current;
-if (!el) return;
-const observer = new IntersectionObserver(
-  ([entry]) => {
-    if (entry.isIntersecting) {
-      setInView(true);
-      observer.unobserve(el);
-    }
-  },
-  { threshold, rootMargin }
-);
+  const el = ref.current;
+  if (!el) return;
 
-observer.observe(el);
-return () => observer.disconnect();
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setInView(entry.isIntersecting); // 🔥 toggle true/false
+    },
+    { threshold, rootMargin }
+  );
 
+  observer.observe(el);
+  return () => observer.disconnect();
 }, [threshold, rootMargin]);
 
 const defaultFrom = useMemo<AnimationState>(() => {

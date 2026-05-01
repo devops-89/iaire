@@ -97,10 +97,11 @@ if (!ref.current || !ready) return;
       ease,
       stagger: delay / 1000,
       scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-        once: true,
-      },
+                      trigger: el,
+                      start: "top 85%",
+                      end: "bottom 15%",
+                      toggleActions: "play reverse play reverse",
+                      },
       onComplete,
     }
   );

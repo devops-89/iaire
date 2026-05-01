@@ -1,5 +1,6 @@
 "use client";
 
+import ScrollReveal from "@/components/widgets/ScrollReveal";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
@@ -50,6 +51,7 @@ const ProgramsSection = () => {
   return (
     <Box sx={{ py: { xs: 8, md: 15 }, bgcolor: "#F9F7F5" }}>
       <Container maxWidth="lg">
+        <ScrollReveal delay={0.1}>
         <Stack
           spacing={2}
           alignItems="center"
@@ -108,6 +110,7 @@ const ProgramsSection = () => {
                 const theme = THEMED_COLORS[index];
 
                 return (
+                  <ScrollReveal delay={index * 0.15}>
                   <Card
                     key={index}
                     elevation={0}
@@ -187,11 +190,13 @@ const ProgramsSection = () => {
                       </Stack>
                     </Stack>
                   </Card>
+                  </ScrollReveal>
                 );
               })}
             </Stack>
           </Grid>
         </Grid>
+        </ScrollReveal>
       </Container>
     </Box>
   );
