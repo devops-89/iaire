@@ -35,6 +35,7 @@ const EducatorSignup = () => {
 
   const formik = useFormik<EducatorInfo>({
     initialValues: {
+      avatar: null,
       board: "",
       institution: "",
       firstName: "",
@@ -54,15 +55,17 @@ const EducatorSignup = () => {
     },
   });
 
-  const { boardData, boardLoading } = useBoardByCountry(
-    formik.values.country?.code || "",
-  );
+  const { boardData, boardLoading } = useBoardByCountry(formik.values.country);
 
   const countryChangeHandler = (_: any, newValue: any) => {
     if (newValue) {
       formik.setFieldValue("country", newValue);
     }
   };
+
+  console.log("board data", boardData);
+
+  console.log("formik", formik.values.country);
 
   return (
     <SignupLayout>
@@ -77,7 +80,7 @@ const EducatorSignup = () => {
             textAlign: "center",
           }}
         >
-          Educator Registration
+          Mentor Registration
         </Typography>
         <Typography
           sx={{
@@ -105,34 +108,49 @@ const EducatorSignup = () => {
               />
             </Grid>
             <Grid size={{ xs: 12, lg: 6 }}>
-              <TextField
-                fullWidth
-                select
-                name="board"
-                label="Select Board"
-                value={formik.values.board}
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  formik.setFieldValue("institution", ""); // Reset institution when board changes
-                }}
-                onBlur={formik.handleBlur}
-                error={formik.touched.board && Boolean(formik.errors.board)}
-                helperText={formik.touched.board && formik.errors.board}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "12px",
-                  },
-                }}
-              >
-                {BOARDS.map((board) => (
-                  <MenuItem key={board} value={board}>
-                    {board}
-                  </MenuItem>
-                ))}
-              </TextField>
+              {formik.values?.country?.code === "IN" ? (
+                <Autocomplete
+                  renderInput={(params) => (
+                    <TextField {...params} label="Select Board" />
+                  )}
+                  options={boardData}
+                  getOptionLabel={(option) => option.name}
+                  onChange={(_: any, newValue: any) => {
+                    if (newValue) {
+                      formik.setFieldValue("board", newValue);
+                    }
+                  }}
+                />
+              ) : formik.values?.country?.code === "US" ? (
+                <Autocomplete
+                  renderInput={(params) => (
+                    <TextField {...params} label="Select ISD Code" />
+                  )}
+                  options={boardData}
+                  getOptionLabel={(option) => option}
+                  onChange={(_: any, newValue: any) => {
+                    if (newValue) {
+                      formik.setFieldValue("isdCode", newValue);
+                    }
+                  }}
+                />
+              ) : (
+                <Autocomplete
+                  renderInput={(params) => (
+                    <TextField {...params} label="Select Board" />
+                  )}
+                  options={boardData}
+                  getOptionLabel={(option) => option.name}
+                  onChange={(_: any, newValue: any) => {
+                    if (newValue) {
+                      formik.setFieldValue("board", newValue);
+                    }
+                  }}
+                />
+              )}
             </Grid>
 
-            <Grid size={{ xs: 12 }}>
+            <Grid size={{ xs: 12, lg: 6 }}>
               <TextField
                 fullWidth
                 select
@@ -153,11 +171,11 @@ const EducatorSignup = () => {
                       ? "Please select a board first"
                       : ""
                 }
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "12px",
-                  },
-                }}
+                // sx={{
+                //   "& .MuiOutlinedInput-root": {
+                //     borderRadius: "12px",
+                //   },
+                // }}
               >
                 {INSTITUTIONS.map((institution) => (
                   <MenuItem key={institution} value={institution}>

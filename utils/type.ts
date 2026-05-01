@@ -58,6 +58,7 @@ export interface EducatorInfo {
   confirmPassword?: string;
   role: USER_ROLES.EDUCATOR;
   country: COUNTRYDATAPROPS;
+  avatar: null;
 }
 
 export interface STATSCARDDATA {
@@ -108,4 +109,16 @@ export interface VERIFY_OTP_REQUEST {
 export interface LOGIN_REQUEST {
   identifier: string;
   password: string;
+}
+
+export interface MENTOR_SIGNUP_REQUEST {
+  countryId: number;
+  profileImage?: File | null;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  confirmPassword?: string;
+  institutionId: number;
 }

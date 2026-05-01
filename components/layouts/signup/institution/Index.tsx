@@ -119,7 +119,7 @@ const Institution = () => {
   };
 
   const { countryData } = useGetCountries();
-  const { boardData, boardLoading } = useBoardByCountry(country?.code || "");
+  const { boardData, boardLoading } = useBoardByCountry(country || null);
 
   const renderCountrySpecificFields = () => {
     if (country?.code === "IN" || country?.code === "AE") {

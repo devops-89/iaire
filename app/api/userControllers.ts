@@ -44,4 +44,13 @@ export const userControllers = {
       throw error;
     }
   },
+
+  getIsdByCountry: async (country: number) => {
+    try {
+      const result = await basePublicApi.get(`/countries/${country}/isd`);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
