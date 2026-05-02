@@ -1,16 +1,21 @@
 "use client";
 
+import SplitText from "@/components/widgets/SplitText";
+import TextBlur from "@/components/widgets/TextBlur";
 import bgImage from "@/images/homepage/hero_bg.png";
 import { COLORS } from "@/utils/enum";
+import { inter } from "@/utils/fonts";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { useState } from "react";
 
 const HeroSection = () => {
+  const [hovered, setHovered] = useState<"primary" | "secondary" | null>(null);
   return (
     <Box
       sx={{
         position: "relative",
         background: `linear-gradient(135deg, ${COLORS.NAVY_GRADIENT_START} 0%, ${COLORS.NAVY_GRADIENT_END} 100%)`,
-        height: "100vh",
+        minHeight:{xs:"100svh",md:"100vh"},
         width: "100%",
         display: "flex",
         alignItems: "center",
@@ -45,60 +50,80 @@ const HeroSection = () => {
       />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
-        <Stack spacing={4} alignItems="center" textAlign="center">
-          <Typography
-            variant="h1"
+        <Stack spacing={{xs:3,md:4}} alignItems="center" textAlign="center">
+        <Typography
+            component="div"
             sx={{
+              fontFamily: '"Playfair Display", serif',
               color: COLORS.WHITE,
-              fontSize: { xs: 40, md: 64 },
-              lineHeight: 1.2,
+              fontSize: { xs: "1.9rem", sm: "2.4rem", md: "3.5rem" },
+              lineHeight: { xs: 1.3, md: 1.2 },
               maxWidth: "900px",
               fontWeight: 600,
-            }}
-          >
-            Nurturing a Culture of Innovation, Research and Entrepreneurship
+              textAlign: "center",
+              mx:"auto"
+            }}>
+              <TextBlur
+                text="Nurturing a Culture of Innovation, Research and Entrepreneurship"
+                animateBy="words"
+                delay={80}
+                stepDuration={0.4}
+                className="blur-text-inherit"
+              />
           </Typography>
           
-          <Typography
-            sx={{
-              color: "rgba(255, 255, 255, 0.8)",
-              fontSize: { xs: 16, md: 20 },
-              maxWidth: "700px",
-              lineHeight: 1.6,
-            }}
-          >
-            Among youth. Become a member institution of IAIRE - where the brightest minds innovate tomorrow
+        <Typography
+          component="div"
+          sx={{
+            color: "rgba(255, 255, 255, 0.8)",
+            fontSize: { xs: "0.95rem", sm: "1.1rem", md: "1.25rem" },
+            maxWidth: "700px",
+            fontFamily: inter.style.fontFamily,
+            lineHeight: 1.6,
+            textAlign: "center",
+            mx: "auto",
+          }}>
+          <SplitText
+            text="Among youth. Become a member institution of IAIRE - where the brightest minds innovate tomorrow"
+            splitType="words"
+            delay={40}
+          />
           </Typography>
 
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ pt: 2 }}>
+          <Stack direction={{ xs: "column", sm: "row" }} onMouseLeave={() => setHovered(null)} spacing={2} sx={{ pt: { xs: 1, md: 2 }, width: { xs: "100%", sm: "auto" } }} >
             <Button
+                onMouseEnter={() => setHovered("primary")}
               variant="contained"
               size="large"
               sx={{
-                bgcolor: COLORS.ACCENT_TAN,
-                color: COLORS.BLACK,
+                fontFamily:inter.style.fontFamily,
+                bgcolor:
+                hovered === "secondary"? "transparent": COLORS.ACCENT_TAN,
+                color:hovered === "secondary"? COLORS.WHITE: COLORS.BLACK,
                 px: 4,
                 py: 1.5,
                 fontSize: "1rem",
                 fontWeight: 600,
-                "&:hover": { bgcolor: "#B88A40" },
+                border: `1px solid ${hovered === "secondary" ? COLORS.WHITE : COLORS.ACCENT_TAN}`,
+                transition:"0.3s",
+                "&:hover": { bgcolor: "transparent", color: COLORS.WHITE, borderColor: COLORS.WHITE, },
               }}
             >
               Become a Member
             </Button>
             <Button
+                onMouseEnter={() => setHovered("secondary")}
               variant="outlined"
               size="large"
               sx={{
-                borderColor: COLORS.WHITE,
-                color: COLORS.WHITE,
+                fontFamily:inter.style.fontFamily,
+                border: `1px solid ${hovered === "primary" ? COLORS.ACCENT_TAN : COLORS.WHITE}`,
+                bgcolor:hovered === "primary"? COLORS.ACCENT_TAN: "transparent",
+                color:hovered === "primary"? COLORS.BLACK: COLORS.WHITE,
                 px: 4,
                 py: 1.5,
                 fontSize: "1rem",
-                "&:hover": {
-                  borderColor: COLORS.WHITE,
-                  bgcolor: "rgba(255, 255, 255, 0.1)",
-                },
+                "&:hover": { bgcolor: COLORS.ACCENT_TAN, color: COLORS.BLACK, borderColor: COLORS.ACCENT_TAN, },
               }}
             >
               Explore Programs
@@ -114,7 +139,7 @@ const HeroSection = () => {
           bottom: 30,
           left: "50%",
           transform: "translateX(-50%)",
-          display: "flex",
+          display: { xs: "none", sm: "flex" },
           flexDirection: "column",
           alignItems: "center",
           gap: 1,

@@ -1,9 +1,8 @@
 "use client";
 
-import { Box, Container, Grid, Stack, Typography, Card, CardMedia, Chip, Link } from "@mui/material";
-import React from "react";
-import { COLORS } from "@/utils/enum";
+import ScrollReveal from "@/components/widgets/ScrollReveal";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Box, Card, CardMedia, Chip, Container, Grid, Link, Stack, Typography } from "@mui/material";
 
 const newsArticles = [
   {
@@ -41,6 +40,7 @@ const NewsSection = () => {
           sx={{ mb: 8 }}
         >
           <Stack spacing={1}>
+            <ScrollReveal delay={0.1}>
             <Typography
               variant="h2"
               sx={{
@@ -61,6 +61,7 @@ const NewsSection = () => {
             >
               Stay updated with achievements and announcements
             </Typography>
+            </ScrollReveal>
           </Stack>
           <Link
             href="#"
@@ -85,6 +86,7 @@ const NewsSection = () => {
         <Grid container spacing={4}>
           {newsArticles.map((article, index) => (
             <Grid key={index} size={{ xs: 12, md: 4 }}>
+              <ScrollReveal delay={0.15*index}>
               <Card
                 elevation={0}
                 sx={{
@@ -195,6 +197,7 @@ const NewsSection = () => {
                   </Link>
                 </Box>
               </Card>
+              </ScrollReveal>
             </Grid>
           ))}
         </Grid>

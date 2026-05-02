@@ -1,23 +1,20 @@
 "use client";
 
-import { Box, Card, Container, Typography, Stack, Divider } from "@mui/material";
-import React from "react";
-import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
-import GavelOutlinedIcon from "@mui/icons-material/GavelOutlined";
-import ShieldOutlinedIcon from "@mui/icons-material/ShieldOutlined";
-import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
 import { COLORS } from "@/utils/enum";
+import { Box, Card, Container, Stack, Typography } from "@mui/material";
+import Image from "next/image";
+import React from "react";
 
 const documents = [
-  { title: "Charter & Constitution", icon: <GavelOutlinedIcon sx={{ fontSize: 20 }} /> },
-  { title: "Bylaws", icon: <ArticleOutlinedIcon sx={{ fontSize: 20 }} /> },
-  { title: "Code of Ethics & Conduct", icon: <ShieldOutlinedIcon sx={{ fontSize: 20 }} /> },
-  { title: "Financial Transparency Reports", icon: <AnalyticsOutlinedIcon sx={{ fontSize: 20 }} /> },
+  { title: "Charter & Constitution", icon: "/images/icon/researchGrantIcon.png",},
+  { title: "Bylaws", icon: "/images/icon/researchGrantIcon.png", },
+  { title: "Code of Ethics & Conduct", icon: "/images/icon/researchGrantIcon.png", },
+  { title: "Financial Transparency Reports", icon: "/images/icon/researchGrantIcon.png", },
 ];
 
 const GovernanceSection = () => {
   return (
-    <Box sx={{ py: { xs: 10, md: 12 }, bgcolor: "#F9F7F5" }}>
+    <Box sx={{ py: { xs: 6, sm: 8, md: 12 },px: { xs: 2, sm: 3, md: 0 }, bgcolor: "#F9F7F5" }}>
       <Container maxWidth="lg">
         <Stack spacing={8} alignItems="center">
           <Typography
@@ -25,7 +22,8 @@ const GovernanceSection = () => {
             sx={{
               fontFamily: '"Playfair Display", serif',
               fontWeight: 700,
-              fontSize: { xs: "2.5rem", md: "3rem" },
+              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "3rem" },
+              lineHeight: { xs: "2.4rem", md: "3.5rem" },
               color: "#111827",
               textAlign: "center",
             }}
@@ -38,9 +36,9 @@ const GovernanceSection = () => {
             <Card
               elevation={0}
               sx={{
-                p: { xs: 4, md: 6 },
+                p: { xs: 3, sm: 4, md: 6 },
                 borderRadius: 4,
-                bgcolor: "#FFFFFF",
+                bgcolor: COLORS.WHITE,
                 border: "1px solid",
                 borderColor: "rgba(0, 0, 0, 0.05)",
               }}
@@ -51,7 +49,7 @@ const GovernanceSection = () => {
                   sx={{
                     fontFamily: '"Playfair Display", serif',
                     fontWeight: 700,
-                    fontSize: "1.75rem",
+                    fontSize: { xs: "1.3rem", md: "1.75rem" },
                     color: "#111827",
                   }}
                 >
@@ -61,8 +59,8 @@ const GovernanceSection = () => {
                   sx={{
                     fontFamily: '"Inter", sans-serif',
                     color: "#4B5563",
-                    fontSize: "1.05rem",
-                    lineHeight: 1.7,
+                    fontSize: { xs: "0.95rem", md: "1.05rem" },
+                    lineHeight: { xs: 1.6, md: 1.7 },
                   }}
                 >
                   IAIRE is supported through a combination of membership fees, grants from foundations committed to youth education, corporate partnerships, and donations from individuals who believe in nurturing the next generation of innovators.
@@ -71,8 +69,8 @@ const GovernanceSection = () => {
                   sx={{
                     fontFamily: '"Inter", sans-serif',
                     color: "#4B5563",
-                    fontSize: "1.05rem",
-                    lineHeight: 1.7,
+                    fontSize: { xs: "0.95rem", md: "1.05rem" },
+                    lineHeight: { xs: 1.6, md: 1.7 },
                   }}
                 >
                   All funding is transparently managed and directed toward programs, resources, and support for our members and their initiatives.
@@ -84,20 +82,20 @@ const GovernanceSection = () => {
             <Card
               elevation={0}
               sx={{
-                p: { xs: 4, md: 6 },
+                p: { xs: 3, sm: 4, md: 6 },
                 borderRadius: 4,
                 bgcolor: "#FFFFFF",
                 border: "1px solid",
                 borderColor: "rgba(0, 0, 0, 0.05)",
               }}
             >
-              <Stack spacing={4}>
+              <Stack spacing={1}>
                 <Typography
                   variant="h4"
                   sx={{
                     fontFamily: '"Playfair Display", serif',
                     fontWeight: 700,
-                    fontSize: "1.75rem",
+                    fontSize: { xs: "1.3rem", md: "1.75rem" },
                     color: "#111827",
                   }}
                 >
@@ -108,23 +106,32 @@ const GovernanceSection = () => {
                   {documents.map((doc, index) => (
                     <React.Fragment key={index}>
                       <Stack direction="row" spacing={2} alignItems="center" sx={{ py: 2 }}>
-                        <Box sx={{ color: "#D1A054", display: "flex" }}>
-                          {doc.icon}
+                        <Box
+                          sx={{
+                            width: 32,
+                            height: 32,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}>
+                          <Image
+                            src={doc.icon}
+                            alt={doc.title}
+                            width={20}
+                            height={20}
+                          />
                         </Box>
                         <Typography
                           sx={{
                             fontFamily: '"Inter", sans-serif',
                             fontWeight: 500,
-                            fontSize: "1.1rem",
+                            fontSize: { xs: "0.95rem", md: "1.1rem" },
                             color: "#374151",
                           }}
                         >
                           {doc.title}
                         </Typography>
                       </Stack>
-                      {index < documents.length - 1 && (
-                        <Divider sx={{ borderColor: "rgba(0, 0, 0, 0.05)" }} />
-                      )}
                     </React.Fragment>
                   ))}
                 </Box>
@@ -133,7 +140,7 @@ const GovernanceSection = () => {
                   sx={{
                     fontFamily: '"Inter", sans-serif',
                     color: "#6B7280",
-                    fontSize: "0.95rem",
+                    fontSize: { xs: "0.85rem", md: "0.95rem" },
                     fontStyle: "italic",
                   }}
                 >

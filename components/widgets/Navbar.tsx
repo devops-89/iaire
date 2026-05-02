@@ -1,5 +1,6 @@
 "use client";
-
+import { COLORS } from "@/utils/enum";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
@@ -12,19 +13,16 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import MenuIcon from "@mui/icons-material/Menu";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React, { useState } from "react";
 
 const navLinks = [
   { title: "Home", href: "/" },
   { title: "About", href: "/about" },
-  { title: "Membership", href: "#" },
-  { title: "Fellows", href: "#" },
-  { title: "Programs", href: "#" },
+  { title: "Membership", href: "/membership" },
+  { title: "Fellows", href: "/fellows" },
+  { title: "Programs", href: "/programs" },
   // { title: "Awards & Grants", href: "#" },
 ];
 
@@ -98,8 +96,8 @@ const Navbar = () => {
             sx={{
               display: { xs: "none", md: "flex" },
               alignItems: "center",
-              gap: 0.5,
-              ml: 5,
+              gap: 1.5,
+              ml: 4,
             }}
           >
             {navLinks.map((link, i) => (
@@ -107,17 +105,19 @@ const Navbar = () => {
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{
-                    color: COLORS.WHITE,
+                    color: pathname === link.href ? "#D4AF37" : COLORS.WHITE,
                     fontSize: "14px",
                     fontWeight: 500,
                     px: 2,
                     py: 1,
                     textTransform: "none",
                     fontFamily: '"Inter", sans-serif',
+                    bgcolor: pathname === link.href ? "#1A2533" : "transparent",
                     "&:hover": {
-                      color: "#D4AF37",
+                        color: "#D4AF37",
+                        bgcolor: "#1A2533",
                     },
-                    ...(link.title === "Home" && {
+                    ...(pathname === link.href && {
                       bgcolor: "#1A2533",
                       borderRadius: "10px",
                       px: 2.5,
@@ -128,20 +128,6 @@ const Navbar = () => {
                 </Button>
               </Link>
             ))}
-            <Button
-              endIcon={<KeyboardArrowDownIcon sx={{ fontSize: 16 }} />}
-              sx={{
-                color: COLORS.WHITE,
-                fontSize: "14px",
-                fontWeight: 500,
-                px: 2,
-                textTransform: "none",
-                fontFamily: '"Inter", sans-serif',
-                "&:hover": { color: "#D4AF37" },
-              }}
-            >
-              More
-            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 1 }} />
@@ -159,7 +145,7 @@ const Navbar = () => {
                   color: COLORS.WHITE,
                   textTransform: "none",
                   borderRadius: "100px",
-                  px: 3,
+                  px: 2,
                   py: 0.8,
                   fontWeight: 600,
                   fontSize: "14px",
@@ -181,7 +167,7 @@ const Navbar = () => {
                 fontWeight: 700,
                 textTransform: "none",
                 borderRadius: "100px",
-                px: 4,
+                px: 3,
                 py: 1,
                 fontSize: "14px",
                 fontFamily: '"Inter", sans-serif',
@@ -224,17 +210,31 @@ const Navbar = () => {
                 "& .MuiPaper-root": {
                   bgcolor: "#0B1726",
                   color: COLORS.WHITE,
+                  width:"100%",
+                  mt:1.5,
+                  position:"absolute",
+                  right:20,
+                  borderRadius:"12px",
+                  border:"1px solid rgba(255,255,255,0.05)"
                 },
               }}
             >
               {navLinks.map((link) => (
-                <MenuItem key={link.title} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{link.title}</Typography>
+                <MenuItem key={link.title} onClick={handleCloseNavMenu}
+                sx={{
+                      bgcolor: pathname === link.href ? "#1A2533" : "transparent",
+                      "&:hover": {
+                        bgcolor: "#1A2533",
+                      },
+                    }}>
+                  <Typography
+                  textAlign="center"
+                  sx={{
+                    color: pathname === link.href ? "#D4AF37" : COLORS.WHITE,
+                  }}
+                  >{link.title}</Typography>
                 </MenuItem>
               ))}
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">More</Typography>
-              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

@@ -1,25 +1,22 @@
 "use client";
 
+import ScrollReveal from "@/components/widgets/ScrollReveal";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
+  Card,
   Container,
   Grid,
+  Link,
   Stack,
   Typography,
-  Card,
-  Link,
 } from "@mui/material";
-import React from "react";
-import { COLORS } from "@/utils/enum";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import ScienceIcon from "@mui/icons-material/Science";
-import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import Image from "next/image";
 
 interface Program {
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon: string;
 }
 
 const programs: Program[] = [
@@ -27,19 +24,20 @@ const programs: Program[] = [
     title: "Innovation Program",
     description:
       "Transform ideas into patented innovations with expert guidance and resources.",
-    icon: <LightbulbIcon sx={{ color: "#EAB308" }} />,
+    icon: "/images/icon/bulbIcon.png",
+    
   },
   {
     title: "Research Program",
     description:
       "Conduct rigorous research and publish findings in prestigious journals.",
-    icon: <ScienceIcon sx={{ color: "#3B82F6" }} />,
+    icon: "/images/icon/researchIcon.png",
   },
   {
     title: "Entrepreneurship Program",
     description:
       "Build startups and launch ventures with mentorship and funding opportunities.",
-    icon: <RocketLaunchIcon sx={{ color: "#A855F7" }} />,
+    icon: "/images/icon/rocketIcon.png",
   },
 ];
 
@@ -53,6 +51,7 @@ const ProgramsSection = () => {
   return (
     <Box sx={{ py: { xs: 8, md: 15 }, bgcolor: "#F9F7F5" }}>
       <Container maxWidth="lg">
+        <ScrollReveal delay={0.1}>
         <Stack
           spacing={2}
           alignItems="center"
@@ -111,41 +110,41 @@ const ProgramsSection = () => {
                 const theme = THEMED_COLORS[index];
 
                 return (
+                  <ScrollReveal delay={index * 0.15}>
                   <Card
                     key={index}
                     elevation={0}
                     sx={{
-                      p: 4,
+                      p: { xs: 2.5, sm: 3, md: 4 },
                       bgcolor: "#FFFFFF",
                       borderRadius: "16px",
                       border: "1px solid #F1F5F9",
                       transition: "transform 0.3s ease, box-shadow 0.3s ease",
                       "&:hover": {
                         transform: "translateY(-4px)",
-                        boxShadow:
-                          "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                        boxShadow: `0 12px 30px ${theme.accent}40`,
+                        borderColor: theme.accent,
                       },
                     }}
                   >
-                    <Stack direction="row" spacing={3} alignItems="flex-start">
+                    <Stack direction={{ xs: "column", sm: "row" }} spacing={3} alignItems={{ xs: "flex-start", sm: "flex-start" }}>
                       <Box
-                        sx={{
-                          display: "flex",
-                          color: theme.accent,
-                        }}
-                      >
-                        {React.isValidElement(program.icon) &&
-                          (() => {
-                            const iconElement =
-                              program.icon as React.ReactElement<any>;
-                            return React.cloneElement(iconElement, {
-                              sx: {
-                                ...(iconElement.props.sx || {}),
-                                fontSize: 32,
-                                color: theme.accent,
-                              },
-                            });
-                          })()}
+                          sx={{
+                            width: 56,
+                            height: 56,
+                            borderRadius: "50%",
+                            background: theme.light,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexShrink: 0,
+                          }}>
+                          <Image
+                            src={program.icon as string}
+                            alt={program.title}
+                            width={28}
+                            height={28}
+                          />
                       </Box>
                       <Stack spacing={1}>
                         <Typography
@@ -191,11 +190,13 @@ const ProgramsSection = () => {
                       </Stack>
                     </Stack>
                   </Card>
+                  </ScrollReveal>
                 );
               })}
             </Stack>
           </Grid>
         </Grid>
+        </ScrollReveal>
       </Container>
     </Box>
   );

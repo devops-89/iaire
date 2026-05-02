@@ -1,9 +1,9 @@
 "use client";
 
-import { Box, Container, Stack, Typography, Avatar } from "@mui/material";
-import React from "react";
+import ScrollReveal from "@/components/widgets/ScrollReveal";
 import { COLORS } from "@/utils/enum";
-import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import { Avatar, Box, Container, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 
 const TestimonialSection = () => {
   return (
@@ -30,6 +30,7 @@ const TestimonialSection = () => {
       />
 
       <Container maxWidth="md">
+        <ScrollReveal delay={0.1}>
         <Stack spacing={4} alignItems="center" textAlign="center">
           <Avatar
             sx={{
@@ -37,10 +38,9 @@ const TestimonialSection = () => {
               height: 80,
               bgcolor: "transparent",
               color: COLORS.ACCENT_TAN,
-              border: `2px solid ${COLORS.ACCENT_TAN}`,
             }}
           >
-            <FormatQuoteIcon sx={{ fontSize: 48 }} />
+            <Image src="/images/icon/IREecoIcon.png" alt="icon" width={64} height={64}/>
           </Avatar>
 
           <Typography
@@ -77,6 +77,7 @@ const TestimonialSection = () => {
             </Typography>
           </Box>
         </Stack>
+        </ScrollReveal>
       </Container>
     </Box>
   );
