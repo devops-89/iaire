@@ -68,6 +68,9 @@ const Institution = () => {
       country: institutionData?.country,
       isd: institutionData?.isd || "",
       registrationYear: institutionData?.registrationYear || "",
+      contactPersonName: institutionData?.contactPersonName || "",
+      contactPersonEmail: institutionData?.contactPersonEmail || "",
+      contactPersonPhone: institutionData?.contactPersonPhone || "",
     },
     enableReinitialize: true,
     validationSchema: institutionSignupValidationSchema,
@@ -141,6 +144,24 @@ const Institution = () => {
       );
     }
     return null;
+  };
+
+  const [contactPersonPhone, setContactPersonPhone] = useState(
+    institutionData?.contactPersonPhone || "",
+  );
+
+  const handleContactPersonPhone = (value: string) => {
+    setContactPersonPhone(value);
+    const isValid = matchIsValidTel(value);
+    if (isValid) {
+      formik.setFieldError("contactPersonPhone", "");
+      formik.setFieldValue("contactPersonPhone", value);
+    } else {
+      formik.setFieldError(
+        "contactPersonPhone",
+        "Please Enter a Valid Phone Number",
+      );
+    }
   };
 
   return (
@@ -409,6 +430,41 @@ const Institution = () => {
                   name="confirmPassword"
                   label="Confirm Password"
                   formik={formik}
+                />
+              </Grid>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <FormTextField
+                  name="contactPersonName"
+                  label="Contact Person Name"
+                  formik={formik}
+                />
+              </Grid>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <FormTextField
+                  name="contactPersonEmail"
+                  label="Contact Person Email"
+                  formik={formik}
+                />
+              </Grid>
+              <Grid size={{ xs: 12, md: 4 }}>
+                <MuiTelInput
+                  fullWidth
+                  name="contactPersonPhone"
+                  label="Contact Person Phone"
+                  value={contactPersonPhone}
+                  onChange={handleContactPersonPhone}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.contactPersonPhone &&
+                    !matchIsValidTel(formik.values.contactPersonPhone) &&
+                    Boolean(formik.errors.contactPersonPhone)
+                  }
+                  helperText={
+                    formik.touched.contactPersonPhone &&
+                    formik.errors.contactPersonPhone
+                  }
+                  defaultCountry={(country?.code as any) || "US"}
+                  sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
                 />
               </Grid>
               {/* Footer / Submit */}

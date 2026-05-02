@@ -124,7 +124,9 @@ const RoleSelectionLayout = () => {
           {ROLES.map((role) => (
             <Grid size={{ lg: 4, xs: 12 }} key={role.id}>
               <Card
-                onClick={() => setSelectedRole(role.id)}
+                onClick={() => {
+                  setSelectedRole(role.id);
+                }}
                 sx={{
                   height: "100%",
                   cursor: "pointer",
@@ -203,7 +205,10 @@ const RoleSelectionLayout = () => {
           <Button
             variant="contained"
             disabled={!selectedRole}
-            onClick={() => router.push(`/signup?role=${selectedRole}`)}
+            onClick={() => {
+              router.push(`/signup?role=${selectedRole}`);
+              localStorage.setItem("role", JSON.stringify(selectedRole));
+            }}
             endIcon={<ArrowForward />}
             sx={{
               bgcolor: COLORS.ACCENT_TAN,

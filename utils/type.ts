@@ -22,6 +22,9 @@ export interface InstitutionInfo {
   email: string;
   phone: string;
   website: string;
+  contactPersonName?: string;
+  contactPersonEmail?: string;
+  contactPersonPhone?: string;
   addressLine1: string;
   addressLine2?: string;
   city: string;
@@ -54,6 +57,7 @@ export interface EducatorInfo {
   firstName: string;
   lastName: string;
   password: string;
+  confirmPassword?: string;
   boardId?: string;
   schoolId: string;
   profileImage: File | null;
@@ -63,6 +67,7 @@ export interface EducatorInfo {
   primarySubjects: string[];
   gender: string;
   experience: string;
+  role: string;
 }
 
 export interface STATSCARDDATA {
@@ -123,7 +128,7 @@ export interface MENTOR_SIGNUP_REQUEST {
   email: string;
   phone: string;
   password: string;
-  confirmPassword?: string;
+  // confirmPassword?: string;
   institutionId: number;
   primarySubjects: string[];
   boardId?: number;

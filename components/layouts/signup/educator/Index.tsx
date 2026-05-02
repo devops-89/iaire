@@ -1,5 +1,5 @@
 "use client";
-import { BOARDS, GENDER, INSTITUTIONS } from "@/utils/constant";
+import { BOARDS, COUNTRIES, GENDER, INSTITUTIONS } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
 import { educatorSignupValidationSchema } from "@/utils/validationSchema";
@@ -17,6 +17,7 @@ import {
   Avatar,
   Box,
   Button,
+  Container,
   FormHelperText,
   Grid,
   IconButton,
@@ -34,6 +35,7 @@ import { useGetCountries } from "@/hooks/common/useGetCountry";
 import { useBoardByCountry } from "@/hooks/common/useGetBoardByCountry";
 import SignupStepper from "../SignupStepper";
 import { useInstitutionByBoard } from "@/hooks/common/getInstitutionByBoard";
+import { useMentorSignup } from "@/hooks/mentor/useMentorSignup";
 
 const EducatorSignup = () => {
   const router = useRouter();
@@ -41,6 +43,8 @@ const EducatorSignup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { countryData } = useGetCountries();
+
+  const { signupTeacher, loading } = useMentorSignup();
 
   const formik = useFormik<EducatorInfo>({
     initialValues: {
@@ -59,31 +63,53 @@ const EducatorSignup = () => {
       isdCode: "",
       gender: "",
       experience: "",
+      role: USER_ROLES.EDUCATOR,
     },
     validationSchema: educatorSignupValidationSchema,
     onSubmit: (values) => {
-      console.log("Educator Signup Data:", values);
+      // console.log("Educator Signup Data:", values);
       setEducatorData(values);
-      // router.push("/signup/verify");
+      const code = COUNTRIES.find((item) => item.code === values.country?.code);
+      // console.log("code", code);
+
+      // const data: Record<string, any> = {
+      //   email: values?.email,
+      //   countryCode: code?.phone,
+      //   phone: values?.phone,
+      //   firstName: values?.firstName,
+      //   lastName: values?.lastName,
+      //   password: values?.password,
+      //   boardId: values?.boardId,
+      //   schoolId: values?.schoolId,
+      //   profileImage: values?.profileImage,
+      //   countryId: values?.country?.id,
+      // };
+      // if (country?.code === "US") {
+      //   data.isdCode = values?.isdCode;
+      // }
+      // signupTeacher(values);
+
+      router.push("/signup/review");
     },
   });
 
   const [country, setCountry] = useState<COUNTRYDATAPROPS | null>(null);
   const { boardData, boardLoading } = useBoardByCountry(country);
-  const { institutionData, loading } = useInstitutionByBoard({
-    country: country,
-    boardId:
-      country?.code === "IN"
-        ? formik.values?.boardId
-        : country?.code === "US"
-          ? formik.values.isdCode
-          : formik.values?.boardId,
-  });
+  const { institutionData, loading: institutionLoading } =
+    useInstitutionByBoard({
+      country: country,
+      boardId:
+        country?.code === "IN"
+          ? formik.values?.boardId
+          : country?.code === "US"
+            ? formik.values.isdCode
+            : formik.values?.boardId,
+    });
 
   const countryChangeHandler = (_: any, newValue: any) => {
     setCountry(newValue);
     if (newValue) {
-      formik.setFieldValue("countryId", newValue.id);
+      formik.setFieldValue("country", newValue);
       formik.setFieldValue("isdCode", "");
       formik.setFieldValue("institution", "");
       formik.setFieldValue("boardId", "");
@@ -113,8 +139,9 @@ const EducatorSignup = () => {
 
   return (
     <Box>
-      <SignupLayout>
-        <Box>
+      {/* <SignupLayout> */}
+      <Container maxWidth="lg">
+        <Box sx={{ mt: 3 }}>
           <SignupStepper activeStep={0} />
         </Box>
         <Box sx={{ p: { xs: 2, md: 4 } }}>
@@ -302,7 +329,7 @@ const EducatorSignup = () => {
                 />
               </Grid>
 
-              <Grid size={{ xs: 12, lg: 4 }}>
+              <Grid size={{ xs: 12, lg: 6 }}>
                 <TextField
                   fullWidth
                   name="firstName"
@@ -320,7 +347,7 @@ const EducatorSignup = () => {
                 />
               </Grid>
 
-              <Grid size={{ xs: 12, lg: 4 }}>
+              <Grid size={{ xs: 12, lg: 6 }}>
                 <TextField
                   fullWidth
                   name="lastName"
@@ -336,7 +363,7 @@ const EducatorSignup = () => {
                 />
               </Grid>
 
-              <Grid size={{ xs: 12, lg: 4 }}>
+              <Grid size={{ xs: 12, lg: 6 }}>
                 <TextField
                   fullWidth
                   name="email"
@@ -350,7 +377,7 @@ const EducatorSignup = () => {
                 />
               </Grid>
 
-              <Grid size={{ xs: 12, lg: 4 }}>
+              <Grid size={{ xs: 12, lg: 6 }}>
                 <MuiTelInput
                   fullWidth
                   name="phone"
@@ -366,7 +393,7 @@ const EducatorSignup = () => {
                 />
               </Grid>
 
-              <Grid size={{ xs: 12, lg: 4 }}>
+              <Grid size={{ xs: 12, lg: 6 }}>
                 <TextField
                   fullWidth
                   type={showPassword ? "text" : "password"}
@@ -396,7 +423,37 @@ const EducatorSignup = () => {
                   }}
                 />
               </Grid>
-              <Grid size={{ xs: 12, lg: 4 }}>
+              <Grid size={{ xs: 12, lg: 6 }}>
+                <TextField
+                  fullWidth
+                  type={showConfirmPassword ? "text" : "password"}
+                  name="confirmPassword"
+                  label="Confirm Password"
+                  placeholder="••••••••"
+                  value={formik.values.confirmPassword}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                  }
+                  helperText={formik.touched.password && formik.errors.password}
+                  slotProps={{
+                    input: {
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={() => setShowPassword(!showPassword)}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    },
+                  }}
+                />
+              </Grid>
+              <Grid size={{ xs: 12, lg: 6 }}>
                 <Autocomplete
                   renderInput={(params) => (
                     <TextField
@@ -415,7 +472,7 @@ const EducatorSignup = () => {
                   }}
                 />
               </Grid>
-              <Grid size={{ xs: 12, lg: 4 }}>
+              <Grid size={{ xs: 12, lg: 6 }}>
                 <TextField
                   label="Experience"
                   type="number"
@@ -435,9 +492,35 @@ const EducatorSignup = () => {
                 />
               </Grid>
 
+              <Grid size={{ xs: 12, lg: 12 }}>
+                <Autocomplete
+                  multiple
+                  freeSolo
+                  options={[]}
+                  value={formik.values.primarySubjects}
+                  onChange={(e, newValue) => {
+                    formik.setFieldValue("primarySubjects", newValue);
+                  }}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Primary Subjects"
+                      placeholder="Type a subject and press Enter"
+                      error={
+                        formik.touched.primarySubjects &&
+                        Boolean(formik.errors.primarySubjects)
+                      }
+                      helperText={
+                        formik.touched.primarySubjects &&
+                        (formik.errors.primarySubjects as string)
+                      }
+                    />
+                  )}
+                />
+              </Grid>
+
               <Grid size={{ xs: 12 }} sx={{ mt: 2 }}>
                 <Button
-                  fullWidth
                   type="submit"
                   variant="contained"
                   sx={{
@@ -454,6 +537,7 @@ const EducatorSignup = () => {
                       bgcolor: "#B88A40",
                       boxShadow: "0px 10px 25px rgba(209, 160, 84, 0.4)",
                     },
+                    width: 200,
                   }}
                 >
                   Sign Up
@@ -462,7 +546,8 @@ const EducatorSignup = () => {
             </Grid>
           </form>
         </Box>
-      </SignupLayout>
+      </Container>
+      {/* </SignupLayout> */}
     </Box>
   );
 };

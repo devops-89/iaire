@@ -12,7 +12,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import { useSignup } from "@/store/useSignup";
-import { COLORS, USER_ROLES } from "@/utils/enum";
+import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
 import SignupStepper from "@/components/layouts/signup/SignupStepper";
 import { ArrowBack, Payment } from "@mui/icons-material";
@@ -21,28 +21,98 @@ import useSnackbar from "@/store/useSnackbar";
 import { useModal } from "@/store/useModal";
 import VerifyOtp from "@/components/modals/common/VerifyOtp";
 import { InstitutionInfo } from "@/utils/type";
-import InstitutionReview from "@/components/layouts/signup/review/InstitutionReview";
+const InstitutionReview = () => {
+  const router = useRouter();
+  const { institutionData } = useSignup();
+  const { showModal } = useModal();
+  const { createSchool, loading } = useSchoolSignup();
+  const { setSnackbar } = useSnackbar();
 
-const ReviewPage = () => {
-  const { educatorData, institutionData, data } = useSignup();
-  // const
-  // console.log("educator", educatorData);
+  useEffect(() => {
+    if (!institutionData && typeof window !== "undefined") {
+      router.push("/signup?role=institution");
+    }
+  }, [institutionData, router]);
 
-  console.log("educatorData", educatorData);
-  console.log("institutionData", institutionData);
-  console.log("data", data);
+  if (!institutionData) {
+    return null;
+  }
+  console.log("isnt", institutionData);
+  const handleCheckout = async () => {
+    // try {
 
-  const role = localStorage.getItem("role");
+    const schoolData = {
+      schoolName: institutionData.institutionName,
+      principalName: institutionData.principalName,
+      email: institutionData.email,
+      phoneNumber: institutionData.phone,
+      website: institutionData.website,
+      countryId: institutionData.country?.id,
+      addressLine1: institutionData.addressLine1,
+      addressLine2: institutionData.addressLine2,
+      city: institutionData.city,
+      state: institutionData.state,
+      zipCode: institutionData.postalCode,
+      isdCode: institutionData.isd,
+      boardId:
+        typeof institutionData?.affiliationType === "string"
+          ? undefined
+          : institutionData?.affiliationType?.id,
+      affiliationNumber: institutionData.affiliationNumber,
+      registrationYear: institutionData?.registrationYear,
+      password: institutionData?.password,
+      affiliationCertificate: institutionData?.affiliationCertificate,
+      contactPersonName: institutionData?.contactPersonName,
+      contactPersonEmail: institutionData?.contactPersonEmail,
+      contactPersonPhone: institutionData?.contactPersonPhone,
+    };
+    try {
+      const data = await createSchool(schoolData as unknown as InstitutionInfo);
+      showModal(<VerifyOtp email={institutionData?.email} />);
+    } catch (error) {
+      setSnackbar("Something went wrong", "error");
+      console.log(error);
+    }
+  };
 
+  const DataRow = ({ label, value }: { label: string; value: any }) => (
+    <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{ mb: 2 }}>
+      <Typography
+        sx={{
+          fontSize: "0.8rem",
+          fontWeight: 600,
+          color: "rgba(0,0,0,0.5)",
+          textTransform: "uppercase",
+          fontFamily: montserrat.style.fontFamily,
+        }}
+      >
+        {label}
+      </Typography>
+      <Typography
+        sx={{
+          fontSize: "1rem",
+          fontWeight: 700,
+          color: COLORS.PRIMARY_NAVY,
+          fontFamily: montserrat.style.fontFamily,
+          wordBreak: "break-word",
+        }}
+      >
+        {value || "N/A"}
+      </Typography>
+    </Grid>
+  );
   return (
-    <Box>
-      {role === USER_ROLES.INSTITUTION ? (
-        <InstitutionReview />
-      ) : (
-        // role === USER_ROLES.ED
-        <></>
-      )}
-      {/* <Container maxWidth="lg">
+    <Box
+      sx={{
+        background: `linear-gradient(135deg, ${COLORS.NAVY_GRADIENT_START} 0%, ${COLORS.NAVY_GRADIENT_END} 100%)`,
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        py: 8,
+      }}
+    >
+      <Container maxWidth="lg">
         <Card
           sx={{
             py: 5,
@@ -236,9 +306,9 @@ const ReviewPage = () => {
             </Button>
           </Box>
         </Card>
-      </Container> */}
+      </Container>
     </Box>
   );
 };
 
-export default ReviewPage;
+export default InstitutionReview;

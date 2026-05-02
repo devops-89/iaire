@@ -153,14 +153,20 @@ export const educatorSignupValidationSchema = Yup.object({
   password: Yup.string()
     .min(8, "Password must be at least 8 characters")
     .required("Password is required"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password")], "Passwords must match")
+    .required("Confirm password is required"),
   country: Yup.object().required("Country is required"),
-  state: Yup.string().required("State is required"),
-  isdCode: Yup.string().required("ISD Code is required"),
-  primarySubjects: Yup.array().required("Primary Subjects is required"),
+  // state: Yup.string().required("State is required"),
+  isdCode: Yup.string().when("country", {
+    is: (val: any) => val?.code === "US",
+    then: (schema) => schema.required("ISD Code is required"),
+    otherwise: (schema) => schema.optional(),
+  }),
+  primarySubjects: Yup.array().min(1, "At least one subject is required"),
   experience: Yup.string().required("Experience is required"),
   gender: Yup.string().required("Gender is required"),
-  subject: Yup.string().required("Subject is required"),
-  category: Yup.string().required("Category is required"),
+  // category: Yup.string().required("Category is required"),
 });
 
 export const TEACHERVALIDATIONSCHEMA = Yup.object({
