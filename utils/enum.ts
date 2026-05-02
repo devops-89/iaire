@@ -13,6 +13,8 @@ export enum USER_ROLES {
   INSTITUTION = "institution",
   EDUCATOR = "mentor",
   STUDENT = "student",
+  SCHOOL_ADMIN = "SCHOOL_ADMIN",
+  TEACHER = "TEACHER",
 }
 
 export enum USER_STATUS {
@@ -28,7 +30,7 @@ export enum MEMBER_TYPES {
 }
 
 export enum GENDER_TYPE {
-  MALE = "Male",
-  FEMALE = "Female",
-  PREFER_NOT_TO_SAY = "Prefer Not To Say",
+  MALE = "MALE",
+  FEMALE = "FEMALE",
+  PREFER_NOT_TO_SAY = "PREFER_NOT_TO_SAY",
 }

@@ -22,6 +22,7 @@ import { useModal } from "@/store/useModal";
 import VerifyOtp from "@/components/modals/common/VerifyOtp";
 import { InstitutionInfo } from "@/utils/type";
 import InstitutionReview from "@/components/layouts/signup/review/InstitutionReview";
+import MentorReview from "@/components/layouts/signup/review/MentorReview";
 
 const ReviewPage = () => {
   const { educatorData, institutionData, data } = useSignup();
@@ -32,211 +33,33 @@ const ReviewPage = () => {
   console.log("institutionData", institutionData);
   console.log("data", data);
 
-  const role = localStorage.getItem("role");
+  const [role, setRole] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      let storedRole = localStorage.getItem("role");
+      if (storedRole && storedRole.startsWith('"') && storedRole.endsWith('"')) {
+        storedRole = JSON.parse(storedRole);
+      }
+      
+      if (!storedRole) {
+        if (educatorData) storedRole = educatorData.role;
+        else if (institutionData) storedRole = USER_ROLES.INSTITUTION;
+      }
+      
+      setRole(storedRole);
+    }
+  }, [educatorData, institutionData]);
 
   return (
     <Box>
       {role === USER_ROLES.INSTITUTION ? (
         <InstitutionReview />
+      ) : role === USER_ROLES.EDUCATOR ? (
+        <MentorReview />
       ) : (
-        // role === USER_ROLES.ED
-        <></>
+        <Box></Box>
       )}
-      {/* <Container maxWidth="lg">
-        <Card
-          sx={{
-            py: 5,
-            px: { xs: 3, md: 5 },
-            backgroundColor: COLORS.WHITE,
-            borderRadius: "24px",
-            boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.4)",
-          }}
-        >
-          <Box sx={{ textAlign: "center", mb: 4 }}>
-            <Typography
-              sx={{
-                color: COLORS.BLACK,
-                fontFamily: roboto.style.fontFamily,
-                fontWeight: 800,
-                fontSize: { xs: 28, md: 34 },
-                textTransform: "uppercase",
-                letterSpacing: 1,
-              }}
-            >
-              Review Information
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: montserrat.style.fontFamily,
-                fontSize: 16,
-                color: "rgba(0, 0, 0, 0.5)",
-                mt: 1,
-              }}
-            >
-              Please verify your institution details before proceeding to
-              payment.
-            </Typography>
-          </Box>
-
-          <SignupStepper activeStep={1} />
-
-          <Box sx={{ mt: 4 }}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 800,
-                mb: 3,
-                color: COLORS.PRIMARY_NAVY,
-                fontFamily: roboto.style.fontFamily,
-                display: "flex",
-                alignItems: "center",
-                gap: 1,
-              }}
-            >
-              Basic Details
-            </Typography>
-            <Grid container spacing={1}>
-              <DataRow
-                label="Institution Name"
-                value={institutionData.institutionName}
-              />
-              <DataRow
-                label="Principal Name"
-                value={institutionData.principalName}
-              />
-              <DataRow label="Email" value={institutionData.email} />
-              <DataRow label="Phone" value={institutionData.phone} />
-              <DataRow label="Website" value={institutionData.website} />
-              <DataRow label="Country" value={institutionData.country?.name} />
-            </Grid>
-
-            <Divider sx={{ my: 4 }} />
-
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 800,
-                mb: 3,
-                color: COLORS.PRIMARY_NAVY,
-                fontFamily: roboto.style.fontFamily,
-              }}
-            >
-              Address Information
-            </Typography>
-            <Grid container spacing={1}>
-              <DataRow
-                label="Address Line 1"
-                value={institutionData.addressLine1}
-              />
-              <DataRow
-                label="Address Line 2"
-                value={institutionData.addressLine2}
-              />
-              <DataRow label="City" value={institutionData.city} />
-              <DataRow label="State" value={institutionData.state} />
-              <DataRow label="Postal Code" value={institutionData.postalCode} />
-            </Grid>
-
-            {institutionData.isd && (
-              <>
-                <Divider sx={{ my: 4 }} />
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 800,
-                    mb: 3,
-                    color: COLORS.PRIMARY_NAVY,
-                    fontFamily: roboto.style.fontFamily,
-                  }}
-                >
-                  Regional details
-                </Typography>
-                <Grid container spacing={1}>
-                  <DataRow label="ISD" value={institutionData.isd} />
-                </Grid>
-              </>
-            )}
-
-            {(institutionData.affiliationType ||
-              institutionData.affiliationNumber) && (
-              <>
-                <Divider sx={{ my: 4 }} />
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 800,
-                    mb: 3,
-                    color: COLORS.PRIMARY_NAVY,
-                    fontFamily: roboto.style.fontFamily,
-                  }}
-                >
-                  Affiliation details
-                </Typography>
-                <Grid container spacing={1}>
-                  <DataRow
-                    label="Board"
-                    value={
-                      typeof institutionData?.affiliationType === "string"
-                        ? institutionData.affiliationType
-                        : institutionData?.affiliationType?.name || "N/A"
-                    }
-                  />
-                  <DataRow
-                    label="Affiliation Number"
-                    value={institutionData.affiliationNumber}
-                  />
-                </Grid>
-              </>
-            )}
-          </Box>
-
-          <Box sx={{ mt: 6, display: "flex", gap: 3 }}>
-            <Button
-              fullWidth
-              variant="outlined"
-              startIcon={<ArrowBack />}
-              onClick={() => router.back()}
-              sx={{
-                py: 2,
-                borderRadius: "14px",
-                fontWeight: 700,
-                borderColor: COLORS.PRIMARY_NAVY,
-                color: COLORS.PRIMARY_NAVY,
-                "&:hover": {
-                  borderColor: COLORS.ACCENT_TAN,
-                  bgcolor: "rgba(209, 160, 84, 0.05)",
-                },
-              }}
-            >
-              Back to Edit
-            </Button>
-            <Button
-              fullWidth
-              variant="contained"
-              endIcon={<Payment />}
-              disabled={loading}
-              onClick={handleCheckout}
-              sx={{
-                bgcolor: COLORS.ACCENT_TAN,
-                color: COLORS.BLACK,
-                py: 2,
-                borderRadius: "14px",
-                fontWeight: 800,
-                fontSize: "1rem",
-                "&:hover": {
-                  bgcolor: "#B88A44",
-                },
-              }}
-            >
-              {loading ? (
-                <CircularProgress sx={{ color: COLORS.BLACK }} />
-              ) : (
-                "Verify & Confirm"
-              )}
-            </Button>
-          </Box>
-        </Card>
-      </Container> */}
     </Box>
   );
 };

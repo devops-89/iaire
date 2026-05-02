@@ -1131,7 +1131,11 @@ export const MODE_TRAINING = [
   },
 ];
 
-export const GENDER = ["Male", "Female", "Prefer not to say"];
+export const GENDER = [
+  GENDER_TYPE.MALE,
+  GENDER_TYPE.FEMALE,
+  GENDER_TYPE.PREFER_NOT_TO_SAY && "PREFER NOT TO SAY",
+];
 
 export const TEAM_LIST_HEADER_DATA: TEAM_LIST_HEADER[] = [
   {

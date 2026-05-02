@@ -144,8 +144,8 @@ export const educatorSignupValidationSchema = Yup.object({
       const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
       return allowedTypes.includes(value.type);
     }),
-  boardId: Yup.string().required("Board is required"),
-  schoolId: Yup.string().required("School is required"),
+  board: Yup.object().nullable().required("Board is required"),
+  school: Yup.object().nullable().required("School is required"),
   firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),

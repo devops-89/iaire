@@ -35,9 +35,11 @@ export const useSignup = create<SignupStore>()(
       partialize: (state) => ({
         ...state,
         institutionData: state.institutionData
-          ? { ...state.institutionData, affiliationCertificate: null }
+          ? { ...state.institutionData, affiliationCertificate: null, logo: null }
           : null,
-        educatorData: state.educatorData,
+        educatorData: state.educatorData
+          ? { ...state.educatorData, profileImage: null }
+          : null,
       }),
     }
   )

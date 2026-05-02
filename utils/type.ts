@@ -58,8 +58,8 @@ export interface EducatorInfo {
   lastName: string;
   password: string;
   confirmPassword?: string;
-  boardId?: string;
-  schoolId: string;
+  board: BOARDDATAPROPS | null;
+  school: INSTITUTION_BY_BOARD_PROPS | null;
   profileImage: File | null;
   country: COUNTRYDATAPROPS | null;
   state: string;
@@ -99,7 +99,7 @@ export interface COUNTRYDATAPROPS {
 }
 
 export interface BOARDDATAPROPS {
-  id: number;
+  id: number | string;
   name: string;
   code: string;
   countryId: number;

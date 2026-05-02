@@ -16,9 +16,13 @@ export const useVerifyOtp = ({ email, otp }: VERIFY_OTP_REQUEST) => {
       const tokens = result?.data?.tokens;
       const user = result.data.user;
       localStorage.setItem("token", tokens?.accessToken);
-      if (user?.role === "SCHOOL_ADMIN") {
+      if (user?.role === USER_ROLES.SCHOOL_ADMIN) {
         localStorage.setItem("role", USER_ROLES.INSTITUTION);
-        router.push("/signup/payment");
+        router.push(`/signup/payment?role=${USER_ROLES.INSTITUTION}`);
+        hideModal();
+      } else if (user?.role === USER_ROLES.TEACHER) {
+        localStorage.setItem("role", USER_ROLES.EDUCATOR);
+        router.push(`/signup/payment?role=${USER_ROLES.EDUCATOR}`);
         hideModal();
       }
       return result;
