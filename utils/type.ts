@@ -158,3 +158,27 @@ export interface INSTITUTION_BY_BOARD_PROPS {
   updatedAt: string;
   deletedAt?: string | null;
 }
+
+export interface PLAN_RESPONSE_PROPS {
+  id: number;
+  code: string;
+  name: string;
+  target: string;
+  price: number;
+  currency: string;
+  billingCycle: string;
+  trialDays: number;
+  isActive: boolean;
+  stripeProductId: string;
+  stripePriceId: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface ALL_USER_REQUEST_PROPS {
+  page?: number;
+  limit?: number;
+  role?: string;
+  approvalStatus?: string;
+}

@@ -1,6 +1,6 @@
 "use client";
 import { useSignup } from "@/store/useSignup";
-import { COLORS, USER_ROLES } from "@/utils/enum";
+import { BILLING_CYCLE, COLORS, CURRENCY, USER_ROLES } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { paymentValidationSchema } from "@/utils/validationSchema";
@@ -24,15 +24,17 @@ import {
   Stack,
   InputAdornment,
   Divider,
+  Skeleton,
 } from "@mui/material";
 import { useFormik } from "formik";
 import SignupStepper from "./SignupStepper";
 import { useRouter } from "next/navigation";
 import React, { useMemo } from "react";
+import { useGetPlans } from "@/hooks/common/useGetPlans";
 
 const PaymentLayout = () => {
   const router = useRouter();
-  const { data, institutionData } = useSignup();
+  const { data, institutionData, educatorData } = useSignup();
   const formik = useFormik({
     initialValues: {
       cardholderName: "",
@@ -54,14 +56,14 @@ const PaymentLayout = () => {
         router.push("/dashboard/institution");
       }
 
-      if (data?.role === USER_ROLES.EDUCATOR) {
+      if (
+        data?.role === USER_ROLES.EDUCATOR ||
+        educatorData?.role === USER_ROLES.EDUCATOR
+      ) {
         router.push("/dashboard/educator");
       }
     },
   });
-
-  console.log("data", data);
-  console.log("institutionData", institutionData);
 
   const cardType = useMemo(() => {
     const number = formik.values.cardNumber;
@@ -70,6 +72,19 @@ const PaymentLayout = () => {
     if (/^3[47]/.test(number)) return "Amex";
     return null;
   }, [formik.values.cardNumber]);
+
+  const role = data?.role || institutionData?.role || educatorData?.role;
+
+  let finalRole = role;
+
+  if (role === USER_ROLES.INSTITUTION) {
+    finalRole = USER_ROLES.SCHOOL;
+  }
+
+  const { planData, planLoading } = useGetPlans({ role: finalRole || "" });
+  // console.log("plan Data", planData);
+
+  // console.l;
 
   return (
     <Box
@@ -387,54 +402,66 @@ const PaymentLayout = () => {
                 </Typography>
 
                 <Box sx={{ flexGrow: 1 }}>
-                  <Stack spacing={3}>
-                    <Box>
-                      <Typography
-                        sx={{
-                          fontSize: 13,
-                          color: "rgba(255, 255, 255, 0.5)",
-                          mb: 0.5,
-                        }}
-                      >
-                        Selected Plan
-                      </Typography>
-                      <Typography sx={{ fontSize: 18, fontWeight: 600 }}>
-                        Professional Membership
-                      </Typography>
-                    </Box>
+                  {planLoading ? (
+                    <Skeleton height={100} />
+                  ) : (
+                    planData.map((val, i) => (
+                      <Stack spacing={3} key={i}>
+                        <Box>
+                          <Typography
+                            sx={{
+                              fontSize: 13,
+                              color: "rgba(255, 255, 255, 0.5)",
+                              mb: 0.5,
+                            }}
+                          >
+                            Selected Plan
+                          </Typography>
+                          <Typography sx={{ fontSize: 18, fontWeight: 600 }}>
+                            {val?.name}
+                          </Typography>
+                        </Box>
 
-                    <Box>
-                      <Typography
-                        sx={{
-                          fontSize: 13,
-                          color: "rgba(255, 255, 255, 0.5)",
-                          mb: 0.5,
-                        }}
-                      >
-                        Billing Cycle
-                      </Typography>
-                      <Typography sx={{ fontSize: 18, fontWeight: 600 }}>
-                        Monthly ($29.99/mo)
-                      </Typography>
-                    </Box>
+                        <Box>
+                          <Typography
+                            sx={{
+                              fontSize: 13,
+                              color: "rgba(255, 255, 255, 0.5)",
+                              mb: 0.5,
+                            }}
+                          >
+                            Billing Cycle
+                          </Typography>
+                          <Typography sx={{ fontSize: 18, fontWeight: 600 }}>
+                            {val.currency === CURRENCY.INR ? "₹" : "$"}{" "}
+                            {val?.price} /{" "}
+                            {val.billingCycle === BILLING_CYCLE.MONTHLY
+                              ? "mo"
+                              : "yr"}
+                          </Typography>
+                        </Box>
 
-                    <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.1)" }} />
+                        <Divider
+                          sx={{ borderColor: "rgba(255, 255, 255, 0.1)" }}
+                        />
 
-                    <Stack direction="row" justifyContent="space-between">
-                      <Typography sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
-                        Due Today
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontWeight: 700,
-                          color: COLORS.ACCENT_TAN,
-                          fontSize: 20,
-                        }}
-                      >
-                        $0.00
-                      </Typography>
-                    </Stack>
-                  </Stack>
+                        {/* <Stack direction="row" justifyContent="space-between">
+                        <Typography sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
+                          Due Today
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontWeight: 700,
+                            color: COLORS.ACCENT_TAN,
+                            fontSize: 20,
+                          }}
+                        >
+                          $0.00
+                        </Typography>
+                      </Stack> */}
+                      </Stack>
+                    ))
+                  )}
                 </Box>
 
                 <Box

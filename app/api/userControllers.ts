@@ -1,5 +1,5 @@
-import { InstitutionInfo } from "@/utils/type";
-import { basePublicApi, userPublicApi } from "./config";
+import { ALL_USER_REQUEST_PROPS, InstitutionInfo } from "@/utils/type";
+import { basePublicApi, userPublicApi, userSecuredApi } from "./config";
 
 export const userControllers = {
   signupSchool: async (data: InstitutionInfo) => {
@@ -20,6 +20,27 @@ export const userControllers = {
           },
         },
       );
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  getAllUsers: async ({
+    page,
+    limit,
+    role,
+    approvalStatus,
+  }: ALL_USER_REQUEST_PROPS) => {
+    try {
+      const params = Object.fromEntries(
+        Object.entries({ page, limit, role, approvalStatus }).filter(
+          ([_, v]) => v !== null && v !== undefined && v !== "",
+        ),
+      );
+      const result = await userSecuredApi.get("/all", {
+        params,
+      });
       return result.data;
     } catch (error) {
       throw error;

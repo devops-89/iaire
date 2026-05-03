@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ThemeRegistry from "@/components/ThemeRegistry";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,7 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+      <body
+        className={`${inter.variable} ${playfair.variable}`}
+        suppressHydrationWarning
+      >
         {/* <ThemeRegistry> */}
         <LayoutWrapper>
           <Modal />

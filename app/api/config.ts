@@ -25,4 +25,27 @@ const authApi = axios.create({
   baseURL: serverConstants.auth,
 });
 
-export { userPublicApi, userSecuredApi, authApi, basePublicApi };
+const plansApi = axios.create({
+  baseURL: serverConstants.plans,
+});
+
+const paymentSecuredApi = axios.create({
+  baseURL: serverConstants.payment,
+});
+
+paymentSecuredApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+export {
+  userPublicApi,
+  userSecuredApi,
+  authApi,
+  basePublicApi,
+  plansApi,
+  paymentSecuredApi,
+};

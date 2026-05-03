@@ -4,4 +4,6 @@ export const serverConstants = {
   users: `${baseURL}/users`,
   base: `${baseURL}`,
   auth: `${baseURL}/auth`,
+  plans: `${baseURL}/plans`,
+  payment: `${baseURL}/payment`,
 };

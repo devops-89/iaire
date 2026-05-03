@@ -15,6 +15,7 @@ export enum USER_ROLES {
   STUDENT = "student",
   SCHOOL_ADMIN = "SCHOOL_ADMIN",
   TEACHER = "TEACHER",
+  SCHOOL = "SCHOOL",
 }
 
 export enum USER_STATUS {
@@ -33,4 +34,14 @@ export enum GENDER_TYPE {
   MALE = "MALE",
   FEMALE = "FEMALE",
   PREFER_NOT_TO_SAY = "PREFER_NOT_TO_SAY",
+}
+
+export enum CURRENCY {
+  INR = "INR",
+  USD = "USD",
+}
+
+export enum BILLING_CYCLE {
+  MONTHLY = "MONTHLY",
+  YEARLY = "YEARLY",
 }
