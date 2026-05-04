@@ -1,4 +1,10 @@
-import { GENDER_TYPE, MEMBER_TYPES, USER_STATUS } from "./enum";
+import {
+  APPROVAL_STATUS,
+  CATEGORY,
+  GENDER_TYPE,
+  MEMBER_TYPES,
+  USER_STATUS,
+} from "./enum";
 import {
   STATSCARDDATA,
   STATSCARDPROPS,
@@ -1117,7 +1123,11 @@ export const DASHBOARD_STAT_CARDS: STATSCARDPROPS[] = [
   },
 ];
 
-export const CATEGORY_TYPES = ["Innovation", "Research", "Startup"];
+export const CATEGORY_TYPES = [
+  CATEGORY.INNOVATION,
+  CATEGORY.RESEARCH,
+  CATEGORY.ENTREPRENEURSHIP,
+];
 
 export const MODE_TRAINING = [
   {
@@ -1186,4 +1196,23 @@ export const TEAM_DATA_TABLE_DATA: TEAM_LIST_DATA_PROPS[] = [
     mentorName: "Mentor 5",
     assistantMentorName: "Assistant Mentor 5",
   },
+];
+
+export const USER_TABS = [
+  {
+    label: "All",
+    value: "ALL",
+  },
+  {
+    label: "Pending",
+    value: APPROVAL_STATUS.PENDING,
+  },
+  {
+    label: "Approved",
+    value: APPROVAL_STATUS.APPROVED,
+  },
+  // {
+  //   label: "Blocked",
+  //   value: APPROVAL_STATUS.BLOCKED,
+  // },
 ];

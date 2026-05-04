@@ -1,5 +1,6 @@
 import { ALL_USER_REQUEST_PROPS, InstitutionInfo } from "@/utils/type";
 import { basePublicApi, userPublicApi, userSecuredApi } from "./config";
+import { APPROVAL_STATUS } from "@/utils/enum";
 
 export const userControllers = {
   signupSchool: async (data: InstitutionInfo) => {
@@ -40,6 +41,17 @@ export const userControllers = {
       );
       const result = await userSecuredApi.get("/all", {
         params,
+      });
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  updateUserStatus: async (id: string | number, status: APPROVAL_STATUS) => {
+    try {
+      const result = await userSecuredApi.patch(`/${id}/school-admin-approve`, {
+        status,
       });
       return result.data;
     } catch (error) {

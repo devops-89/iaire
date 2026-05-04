@@ -180,5 +180,29 @@ export interface ALL_USER_REQUEST_PROPS {
   page?: number;
   limit?: number;
   role?: string;
-  approvalStatus?: string;
+  approvalStatus?: string | null;
+}
+
+export interface TEACHER_REPONSE_PROPS {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  primarySubjects: string[];
+  approvalStatus: string;
+  membershipId: string;
+}
+
+export interface INSTITUTION_ADD_EDUCATOR_REQUEST {
+  email: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  primarySubjects: string[];
+  category: string;
+  gender: string;
+  experienceYear: string;
+  experienceMonth: string;
+  password: string;
 }

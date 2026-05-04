@@ -20,7 +20,11 @@ import { useFormik } from "formik";
 import moment, { Moment } from "moment";
 import React from "react";
 
-const EducatorNomination = ({ educatorId }: { educatorId: string | null }) => {
+const EducatorNomination = ({
+  educatorId,
+}: {
+  educatorId: string | number | null;
+}) => {
   const [startDate, setStartDate] = React.useState<Moment | null>(null);
   const [endDate, setEndDate] = React.useState<Moment | null>(null);
 

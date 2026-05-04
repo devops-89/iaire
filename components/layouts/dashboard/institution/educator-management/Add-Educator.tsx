@@ -23,10 +23,23 @@ import {
   CheckCircle,
 } from "@mui/icons-material";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
-import { CATEGORY_TYPES, GENDER, MEMBER_TYPE } from "@/utils/constant";
+import {
+  CATEGORY_TYPES,
+  COUNTRIES,
+  GENDER,
+  MEMBER_TYPE,
+} from "@/utils/constant";
 import { matchIsValidTel, MuiTelInput } from "mui-tel-input";
+import { useSignup } from "@/store/useSignup";
+import { useTeacherAddBySchool } from "@/hooks/school/useTeacherAdd";
+import useSnackbar from "@/store/useSnackbar";
+import { useRouter } from "next/navigation";
 
 const AddEducatorcomponent = () => {
+  const router = useRouter();
+  const { institutionData } = useSignup();
+  const { setSnackbar } = useSnackbar();
+  const { loading, addTeacher } = useTeacherAddBySchool();
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -38,14 +51,49 @@ const AddEducatorcomponent = () => {
       category: "",
       memberId: "",
       gender: "",
+      experienceMonth: "",
+      experienceYear: "",
+      primarySubjects: [],
+      password: "",
     },
     validationSchema: addEducatorValidationSchema,
     onSubmit: (values) => {
       console.log("Educator Data:", values);
-      alert("Educator added successfully!");
-      formik.resetForm();
+      // alert("Educator added successfully!");
+      // formik.resetForm();
+      const countryCode = COUNTRIES.find(
+        (item) => item?.code === institutionData?.country?.code,
+      );
+
+      const rawData = {
+        fullName: values?.fullName,
+        email: values?.email,
+        phoneNumber: values?.phone,
+        countryCode: countryCode?.phone,
+        primarySubjects: values?.primarySubjects,
+        experienceYears: values?.experienceYear,
+        experienceMonths: values?.experienceMonth,
+        category: values?.category,
+        memberShipCode: values?.memberId,
+        gender: values?.gender,
+        password: values?.password,
+      };
+
+      const data = Object.fromEntries(
+        Object.entries(rawData).filter(
+          ([_, v]) =>
+            v !== null &&
+            v !== undefined &&
+            v !== "" &&
+            !(Array.isArray(v) && v.length === 0),
+        ),
+      ) as any;
+
+      addTeacher(data);
     },
   });
+
+  console.log(formik.errors);
 
   const [phone, setPhone] = useState("");
   const handlePhoneChange = (value: string) => {
@@ -149,7 +197,7 @@ const AddEducatorcomponent = () => {
                 />
               </Grid>
             )}
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <TextField
                 fullWidth
                 name="fullName"
@@ -186,7 +234,7 @@ const AddEducatorcomponent = () => {
                 label="Phone Number"
                 fullWidth
                 sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
-                value={formik.values.phone}
+                value={phone}
                 onChange={handlePhoneChange}
                 onBlur={formik.handleBlur}
                 error={formik.touched.phone && Boolean(formik.errors.phone)}
@@ -196,7 +244,7 @@ const AddEducatorcomponent = () => {
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
-              <TextField
+              {/* <TextField
                 fullWidth
                 name="subject"
                 label="Primary Subject"
@@ -207,27 +255,33 @@ const AddEducatorcomponent = () => {
                 error={formik.touched.subject && Boolean(formik.errors.subject)}
                 helperText={formik.touched.subject && formik.errors.subject}
                 sx={TEXTFIELD_STYLE_VALIDATION}
+              /> */}
+              <Autocomplete
+                multiple
+                freeSolo
+                options={[]}
+                value={formik.values.primarySubjects}
+                onChange={(e, newValue) => {
+                  formik.setFieldValue("primarySubjects", newValue);
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Primary Subjects"
+                    placeholder="Type a subject and press Enter"
+                    error={
+                      formik.touched.primarySubjects &&
+                      Boolean(formik.errors.primarySubjects)
+                    }
+                    helperText={
+                      formik.touched.primarySubjects &&
+                      (formik.errors.primarySubjects as string)
+                    }
+                  />
+                )}
               />
             </Grid>
-            <Grid size={{ xs: 12, md: 6 }}>
-              <TextField
-                fullWidth
-                name="experience"
-                label="Experience (in Years)"
-                placeholder="e.g. 5"
-                value={formik.values.experience}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.experience && Boolean(formik.errors.experience)
-                }
-                helperText={
-                  formik.touched.experience && formik.errors.experience
-                }
-                sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
-                type="number"
-              />
-            </Grid>
+
             <Grid size={{ xs: 12, md: 6 }}>
               <Autocomplete
                 renderInput={(params) => (
@@ -271,26 +325,84 @@ const AddEducatorcomponent = () => {
               />
             </Grid>
 
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                name="experienceYear"
+                label="Experience (in Years)"
+                placeholder="e.g. 5"
+                value={formik.values.experienceYear}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.experienceYear &&
+                  Boolean(formik.errors.experienceYear)
+                }
+                helperText={
+                  formik.touched.experienceYear && formik.errors.experienceYear
+                }
+                sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
+                type="number"
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                name="experienceMonth"
+                label="Experience (in months)"
+                placeholder="e.g. 5"
+                value={formik.values.experienceMonth}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.experienceMonth &&
+                  Boolean(formik.errors.experienceMonth)
+                }
+                helperText={
+                  formik.touched.experienceMonth &&
+                  formik.errors.experienceMonth
+                }
+                sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
+                type="number"
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                name="password"
+                label="Password"
+                placeholder="Enter Password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
+                sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
+                // type="number"
+              />
+            </Grid>
+
             <Grid size={{ xs: 12 }} sx={{ mt: 3, display: "flex", gap: 2 }}>
               <Button
                 type="submit"
                 variant="contained"
+                disabled={loading}
                 sx={{
-                  bgcolor: COLORS.RED,
+                  bgcolor: COLORS.PRIMARY_NAVY,
                   color: COLORS.WHITE,
-                  py: 1.5,
                   px: 4,
-                  borderRadius: "10px",
-                  fontWeight: 700,
-                  fontFamily: montserrat.style.fontFamily,
-                  boxShadow: "0px 4px 10px rgba(209, 160, 84, 0.3)",
+                  py: 1.5,
+                  borderRadius: "8px",
+                  fontWeight: 600,
+                  textTransform: "none",
                   "&:hover": {
-                    bgcolor: "#B88A44",
-                    boxShadow: "0px 6px 15px rgba(209, 160, 84, 0.4)",
+                    bgcolor: "#1a2a3a",
                   },
                 }}
               >
-                Add Educator
+                {loading ? "Adding..." : "Add Educator"}
               </Button>
               <Button
                 onClick={() => formik.resetForm()}

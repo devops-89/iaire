@@ -80,6 +80,9 @@ const PaymentLayout = () => {
   if (role === USER_ROLES.INSTITUTION) {
     finalRole = USER_ROLES.SCHOOL;
   }
+  if (role === USER_ROLES.EDUCATOR) {
+    finalRole = USER_ROLES.TEACHER;
+  }
 
   const { planData, planLoading } = useGetPlans({ role: finalRole || "" });
   // console.log("plan Data", planData);
@@ -335,7 +338,10 @@ const PaymentLayout = () => {
                         ) {
                           router.push("/dashboard/institution");
                         }
-                        if (data?.role === USER_ROLES.EDUCATOR) {
+                        if (
+                          data?.role === USER_ROLES.EDUCATOR ||
+                          educatorData?.role === USER_ROLES.EDUCATOR
+                        ) {
                           router.push("/dashboard/educator");
                         }
                       }}
