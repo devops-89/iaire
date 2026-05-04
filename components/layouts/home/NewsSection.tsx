@@ -83,9 +83,10 @@ const NewsSection = () => {
           </Link>
         </Stack>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={4} alignItems="stretch">
           {newsArticles.map((article, index) => (
-            <Grid key={index} size={{ xs: 12, md: 4 }}>
+            <Grid key={index} size={{ xs: 12, md: 4 }}
+            sx={{display:"flex"}}>
               <ScrollReveal delay={0.15*index}>
               <Card
                 elevation={0}

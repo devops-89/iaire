@@ -14,6 +14,7 @@ import {
 import Image from "next/image";
 
 interface Program {
+  id:string;
   title: string;
   description: string;
   icon: string;
@@ -21,6 +22,7 @@ interface Program {
 
 const programs: Program[] = [
   {
+    id:"innovation",
     title: "Innovation Program",
     description:
       "Transform ideas into patented innovations with expert guidance and resources.",
@@ -28,12 +30,14 @@ const programs: Program[] = [
     
   },
   {
+    id:"research",
     title: "Research Program",
     description:
       "Conduct rigorous research and publish findings in prestigious journals.",
     icon: "/images/icon/researchIcon.png",
   },
   {
+    id:"entrepreneurship",
     title: "Entrepreneurship Program",
     description:
       "Build startups and launch ventures with mentorship and funding opportunities.",
@@ -110,9 +114,8 @@ const ProgramsSection = () => {
                 const theme = THEMED_COLORS[index];
 
                 return (
-                  <ScrollReveal delay={index * 0.15}>
+                  <ScrollReveal key={program.id} delay={index * 0.15}>
                   <Card
-                    key={index}
                     elevation={0}
                     sx={{
                       p: { xs: 2.5, sm: 3, md: 4 },
