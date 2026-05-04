@@ -47,7 +47,6 @@ const Institution = () => {
     institutionData?.country || null,
   );
 
-  console.log("insi", institutionData);
   const formik = useFormik({
     initialValues: {
       institutionName: institutionData?.institutionName || "",

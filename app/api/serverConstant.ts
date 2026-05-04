@@ -6,4 +6,5 @@ export const serverConstants = {
   auth: `${baseURL}/auth`,
   plans: `${baseURL}/plans`,
   payment: `${baseURL}/payment`,
+  training: `${baseURL}/training`,
 };

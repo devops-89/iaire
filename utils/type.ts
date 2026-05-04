@@ -1,4 +1,4 @@
-import { USER_ROLES } from "./enum";
+import { CATEGORY, TRAINING_MODE, USER_ROLES } from "./enum";
 
 export enum MEMBERSHIP_LEVEL {
   INSTITUTIONAL = "Institutional Member",
@@ -192,6 +192,7 @@ export interface TEACHER_REPONSE_PROPS {
   primarySubjects: string[];
   approvalStatus: string;
   membershipId: string;
+  userId: string;
 }
 
 export interface INSTITUTION_ADD_EDUCATOR_REQUEST {
@@ -205,4 +206,13 @@ export interface INSTITUTION_ADD_EDUCATOR_REQUEST {
   experienceYear: string;
   experienceMonth: string;
   password: string;
+}
+
+export interface NOMINATE_TEACHER_FOR_TRAINING_REQUEST {
+  teacherId: number;
+  title: string;
+  type: CATEGORY;
+  availableFrom: Date | string;
+  availableTo: Date | string;
+  mode: TRAINING_MODE;
 }

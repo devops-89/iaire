@@ -17,10 +17,15 @@ export const useLogin = () => {
         const tokens = res.data.tokens;
 
         localStorage.setItem("token", tokens?.accessToken);
-        if (res.data.user.role === "SCHOOL_ADMIN") {
+        if (res.data.user.role === USER_ROLES.SCHOOL_ADMIN) {
           localStorage.setItem("role", USER_ROLES.INSTITUTION);
           router.push("/dashboard/institution");
         }
+        if (res.data.user.role === USER_ROLES.TEACHER) {
+          localStorage.setItem("role", USER_ROLES.EDUCATOR);
+          router.push("/dashboard/educator");
+        }
+
         setSnackbar("Login successful!", "success");
       })
       .catch((err) => {

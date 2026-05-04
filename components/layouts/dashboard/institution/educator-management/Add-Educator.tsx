@@ -42,7 +42,8 @@ const AddEducatorcomponent = () => {
   const { loading, addTeacher } = useTeacherAddBySchool();
   const formik = useFormik({
     initialValues: {
-      fullName: "",
+      firstName: "",
+      lastName: "",
       email: "",
       phone: "",
       subject: "",
@@ -66,7 +67,8 @@ const AddEducatorcomponent = () => {
       );
 
       const rawData = {
-        fullName: values?.fullName,
+        firstName: values?.firstName,
+        lastName: values?.lastName,
         email: values?.email,
         phoneNumber: values?.phone,
         countryCode: countryCode?.phone,
@@ -197,19 +199,35 @@ const AddEducatorcomponent = () => {
                 />
               </Grid>
             )}
-            <Grid size={{ xs: 12, md: 12 }}>
+            <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth
-                name="fullName"
-                label="Full Name"
+                name="firstName"
+                label="First Name"
                 placeholder="e.g. Dr. Rajesh Kumar"
-                value={formik.values.fullName}
+                value={formik.values.firstName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.fullName && Boolean(formik.errors.fullName)
+                  formik.touched.firstName && Boolean(formik.errors.firstName)
                 }
-                helperText={formik.touched.fullName && formik.errors.fullName}
+                helperText={formik.touched.firstName && formik.errors.firstName}
+                sx={TEXTFIELD_STYLE_VALIDATION}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                name="lastName"
+                label="Last Name"
+                placeholder="e.g. Dr. Rajesh Kumar"
+                value={formik.values.lastName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.lastName && Boolean(formik.errors.lastName)
+                }
+                helperText={formik.touched.lastName && formik.errors.lastName}
                 sx={TEXTFIELD_STYLE_VALIDATION}
               />
             </Grid>

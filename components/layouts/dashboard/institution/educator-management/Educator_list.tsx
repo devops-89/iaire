@@ -247,7 +247,7 @@ const EducatorList = () => {
                 {userData?.data.length ? (
                   userData?.data?.map((teacher: TEACHER_REPONSE_PROPS) => (
                     <TableRow key={teacher.id}>
-                      <TableCell>{teacher.id}</TableCell>
+                      <TableCell>{teacher.userId}</TableCell>
                       <TableCell>
                         {" "}
                         <Typography
@@ -314,7 +314,7 @@ const EducatorList = () => {
                           </FormControl>
                         )}
                       </TableCell>
-                      <TableCell>{teacher?.membershipId}</TableCell>
+                      <TableCell>{teacher?.membershipId || "--"}</TableCell>
 
                       <TableCell>
                         <IconButton

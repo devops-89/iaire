@@ -3,6 +3,7 @@ import {
   CATEGORY,
   GENDER_TYPE,
   MEMBER_TYPES,
+  TRAINING_MODE,
   USER_STATUS,
 } from "./enum";
 import {
@@ -1131,13 +1132,13 @@ export const CATEGORY_TYPES = [
 
 export const MODE_TRAINING = [
   {
-    label: "Online",
+    label: TRAINING_MODE.ONLINE,
   },
   {
-    label: "Offline",
+    label: TRAINING_MODE.OFFLINE,
   },
   {
-    label: "Hybrid",
+    label: TRAINING_MODE.HYBRID,
   },
 ];
 

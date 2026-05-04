@@ -41,6 +41,18 @@ paymentSecuredApi.interceptors.request.use((config) => {
   return config;
 });
 
+const trainingSecuredApi = axios.create({
+  baseURL: serverConstants.training,
+});
+
+trainingSecuredApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export {
   userPublicApi,
   userSecuredApi,
@@ -48,4 +60,5 @@ export {
   basePublicApi,
   plansApi,
   paymentSecuredApi,
+  trainingSecuredApi,
 };

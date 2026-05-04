@@ -1,3 +1,4 @@
+import { useNominateTeacherForTraining } from "@/hooks/school/useTeacherAdd";
 import { CATEGORY_TYPES, MODE_TRAINING } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
@@ -5,6 +6,7 @@ import {
   DATE_PICKER_STYLE_VALIDATION,
   TEXTFIELD_STYLE_VALIDATION,
 } from "@/utils/style";
+import { NOMINATE_TEACHER_FOR_TRAINING_REQUEST } from "@/utils/type";
 import { TEACHERVALIDATIONSCHEMA } from "@/utils/validationSchema";
 import {
   Autocomplete,
@@ -30,14 +32,13 @@ const EducatorNomination = ({
 
   const startDateHandler = (value: any) => {
     setStartDate(value);
-    // console.log("value start date timestamp", moment(value).unix());
-    formik.setFieldValue("startDate", moment(value).unix());
+    formik.setFieldValue("startDate", moment(value).format("YYYY-MM-DD"));
   };
   const endDateHandler = (value: any) => {
     setEndDate(value);
-    // console.log("value end date timestamp", moment(value).unix());
-    formik.setFieldValue("endDate", moment(value).unix());
+    formik.setFieldValue("endDate", moment(value).format("YYYY-MM-DD"));
   };
+  const { nominateLoading, nominateTeacher } = useNominateTeacherForTraining();
 
   const formik = useFormik({
     initialValues: {
@@ -45,10 +46,20 @@ const EducatorNomination = ({
       endDate: "",
       category: "",
       mode: "",
+      teacherId: educatorId,
     },
     validationSchema: TEACHERVALIDATIONSCHEMA,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const data = {
+        type: values?.category,
+        availableFrom: values?.startDate,
+        availableTo: values?.endDate,
+        mode: values?.mode,
+        teacherId: values?.teacherId,
+      };
+      await nominateTeacher(
+        data as any as NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
+      );
     },
   });
   return (

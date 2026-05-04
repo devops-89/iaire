@@ -86,7 +86,8 @@ export const institutionSignupValidationSchema = Yup.object({
 
 export const addEducatorValidationSchema = Yup.object({
   memberType: Yup.string().required("Please Select Member Type"),
-  fullName: Yup.string().required("Full name is required"),
+  firstName: Yup.string().required("First name is required"),
+  lastName: Yup.string().required("Last name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   phone: Yup.string()
     .test(
