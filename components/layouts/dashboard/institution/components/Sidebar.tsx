@@ -14,6 +14,7 @@ import {
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { getUserDetails } from "@/hooks/common/getUserDetails";
 
 const InstitutionSidebar = () => {
   const pathname = usePathname();
@@ -26,6 +27,8 @@ const InstitutionSidebar = () => {
       [label]: !prev[label],
     }));
   };
+
+  const { data, loading } = getUserDetails();
 
   return (
     <Box>

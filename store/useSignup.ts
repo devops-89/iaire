@@ -9,12 +9,12 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface SignupStore {
-  data: SIGNUP_RESPONSE | null;
-  institutionData: InstitutionInfo | null;
-  educatorData: EducatorInfo | null;
-  setUserData: (data: SIGNUP_RESPONSE) => void;
-  setInstitutionData: (data: InstitutionInfo) => void;
-  setEducatorData: (data: EducatorInfo) => void;
+  data: any;
+  institutionData: any;
+  educatorData: any;
+  setUserData: (data: any) => void;
+  setInstitutionData: (data: any) => void;
+  setEducatorData: (data: any) => void;
   clearAll: () => void;
 }
 
@@ -35,12 +35,16 @@ export const useSignup = create<SignupStore>()(
       partialize: (state) => ({
         ...state,
         institutionData: state.institutionData
-          ? { ...state.institutionData, affiliationCertificate: null, logo: null }
+          ? {
+              ...state.institutionData,
+              affiliationCertificate: null,
+              logo: null,
+            }
           : null,
         educatorData: state.educatorData
           ? { ...state.educatorData, profileImage: null }
           : null,
       }),
-    }
-  )
+    },
+  ),
 );

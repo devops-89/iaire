@@ -58,4 +58,13 @@ export const userControllers = {
       throw error;
     }
   },
+
+  getUserDetails: async () => {
+    try {
+      const result = await userSecuredApi.get("/details");
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

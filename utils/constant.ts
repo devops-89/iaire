@@ -4,6 +4,7 @@ import {
   GENDER_TYPE,
   MEMBER_TYPES,
   TRAINING_MODE,
+  TRAINING_NOMINATION_STATUS,
   USER_STATUS,
 } from "./enum";
 import {
@@ -53,21 +54,46 @@ export const EDUCATOR_SIDEBAR_DATA = [
     label: "Dashboard",
     url: "/dashboard/educator",
   },
+  // {
+  //   label: "Profile Management",
+  //   url: "/dashboard/educator/profile-management",
+  // },
   {
-    label: "Student Management",
-    url: "/dashboard/educator/student-management",
+    label: "Training Management",
+    url: "/dashboard/educator/training-management",
   },
   {
-    label: "Innovation Approval",
-    url: "/dashboard/educator/innovation-approval",
+    label: "Innovation Submission",
+    url: "/dashboard/educator/innovation-management",
   },
   {
     label: "Research Submission",
-    url: "/dashboard/educator/research-submission",
+    url: "/dashboard/educator/research-management",
+  },
+  {
+    label: "Request Support",
+    url: "/dashboard/educator/support-ticket",
+  },
+  {
+    label: "Request Honorarium",
+    url: "/dashboard/educator/request-honorarium",
   },
   {
     label: "Resource Access",
-    url: "/dashboard/educator/resource-access",
+    subItems: [
+      {
+        label: "Playbooks",
+        url: "/dashboard/educator/resource-access/playbooks",
+      },
+      {
+        label: "Modules",
+        url: "/dashboard/educator/resource-access/modules",
+      },
+      {
+        label: "Templates",
+        url: "/dashboard/educator/resource-access/templates",
+      },
+    ],
   },
 ];
 
@@ -79,6 +105,10 @@ export const INSTITUTION_SIDEBAR_DATA = [
   {
     label: "Educator Management",
     url: "/dashboard/institution/educator-management",
+  },
+  {
+    label: "Training Management",
+    url: "/dashboard/institution/training-management",
   },
   {
     label: "Student Management",
@@ -1216,4 +1246,63 @@ export const USER_TABS = [
   //   label: "Blocked",
   //   value: APPROVAL_STATUS.BLOCKED,
   // },
+];
+
+export const TRAINING_NOMINATION_TABLE_HEADER = [
+  "Id",
+  "Category",
+  "Training Mode",
+  "Start Date",
+  "End Date",
+
+  "Status",
+  "Actions",
+];
+export const TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW = [
+  "Id",
+  "Category",
+  "Training Mode",
+  "Start Date",
+  "End Date",
+  "Interview Date",
+  "Status",
+  "Actions",
+];
+
+export const SCHOOL_TRAINING_NOMINATION_STATUS = [
+  {
+    label: "Approved",
+    value: TRAINING_NOMINATION_STATUS.SCHOOL_APPROVED,
+  },
+  {
+    label: "Rejected",
+    value: TRAINING_NOMINATION_STATUS.REJECTED,
+  },
+];
+
+export const SCHOOL_TRAINING_LIST_TABS = [
+  {
+    label: "All",
+    value: "ALL",
+  },
+  {
+    label: "Pending",
+    value: TRAINING_NOMINATION_STATUS.SELF_NOMINATED,
+  },
+  {
+    label: "Approved",
+    value: TRAINING_NOMINATION_STATUS.SCHOOL_APPROVED,
+  },
+  {
+    label: "Rejected",
+    value: TRAINING_NOMINATION_STATUS.REJECTED,
+  },
+  {
+    label: "Interview Scheduled",
+    value: TRAINING_NOMINATION_STATUS.INTERVIEW_SCHEDULED,
+  },
+  {
+    label: "Interview Completed",
+    value: TRAINING_NOMINATION_STATUS.INTERVIEW_COMPLETED,
+  },
 ];

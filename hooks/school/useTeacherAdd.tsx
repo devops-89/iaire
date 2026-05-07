@@ -6,7 +6,7 @@ import {
   NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
 } from "@/utils/type";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useTeacherAddBySchool = () => {
   const [loading, setLoading] = useState(false);
@@ -51,4 +51,44 @@ export const useNominateTeacherForTraining = () => {
       });
   };
   return { nominateLoading, nominateTeacher };
+};
+
+export const useGetNomineeTeacher = () => {
+  const [loading, setLoading] = useState(false);
+  const [nominatedTeacherData, setNominatedTeacherData] = useState(null);
+  useEffect(() => {
+    setLoading(true);
+    const fetchNominatedTeacher = async () => {
+      await schoolControllers
+        .getAllNominatingTeacher()
+        .then((res) => {
+          console.log("ress", res);
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    };
+    fetchNominatedTeacher();
+  }, []);
+  return { loading, nominatedTeacherData };
+};
+
+export const useApprovedNominateTeacher = () => {
+  const [approveTeacherNominationLoading, setApproveTeacherNominationLoading] =
+    useState(false);
+
+  const ApproveTeacherNomination = async (id: string, status: string) => {
+    setApproveTeacherNominationLoading(true);
+    await schoolControllers
+      .approveTeacherNomination(id, status)
+      .then((res) => {
+        console.log("res", res);
+        setApproveTeacherNominationLoading(false);
+      })
+      .catch((err) => {
+        console.log("error in approve teacher nomination", err);
+        setApproveTeacherNominationLoading(false);
+      });
+  };
+  return { approveTeacherNominationLoading, ApproveTeacherNomination };
 };

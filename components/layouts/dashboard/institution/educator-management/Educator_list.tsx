@@ -1,56 +1,47 @@
+import EducatorNomination from "@/components/modals/TeacherNomination";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
-import { TEACHER_DATA, TEACHER_HEADER, USER_TABS } from "@/utils/constant";
+import {
+  useGetAllUser,
+  useUpdateTeacherStatus,
+} from "@/hooks/common/useGetAllUser";
+import { useModal } from "@/store/useModal";
+import useSnackbar from "@/store/useSnackbar";
+import { TEACHER_HEADER, USER_TABS } from "@/utils/constant";
 import { APPROVAL_STATUS, COLORS, USER_ROLES } from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
-import { Add, Delete, Edit, MoreVert } from "@mui/icons-material";
+import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
+import { TEACHER_REPONSE_PROPS } from "@/utils/type";
+import { Add, MoreVert } from "@mui/icons-material";
 import {
+  Autocomplete,
   Box,
   Button,
+  Card,
+  Chip,
+  FormControl,
+  Grid,
   IconButton,
+  List,
+  ListItemButton,
+  ListItemText,
+  MenuItem,
+  Popover,
+  Select,
   Stack,
+  Tab,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Chip,
-  Card,
-  Grid,
-  Autocomplete,
+  Tabs,
   TextField,
   Typography,
-  Popover,
-  List,
-  ListItemButton,
-  Tabs,
-  Tab,
-  Select,
-  FormControl,
 } from "@mui/material";
-import { USER_STATUS } from "@/utils/enum";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import {
-  Menu,
-  MenuItem,
-  ListItemIcon,
-  ListItemText,
-  Divider,
-} from "@mui/material";
-import { School } from "@mui/icons-material";
-import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
-import TeacherHeader from "../../teacher/components/Header";
-import { useModal } from "@/store/useModal";
-import EducatorNomination from "@/components/modals/TeacherNomination";
-import {
-  useGetAllUser,
-  useUpdateTeacherStatus,
-} from "@/hooks/common/useGetAllUser";
 import { Atom } from "react-loading-indicators";
-import { TEACHER_REPONSE_PROPS } from "@/utils/type";
-import useSnackbar from "@/store/useSnackbar";
-import { userControllers } from "@/app/api/userControllers";
 
 const statusOptions = ["Member", "Not a Member"];
 
@@ -61,17 +52,16 @@ const EducatorList = () => {
   const [tabValue, setTabValue] = useState("ALL");
   const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedTeacherId, setSelectedTeacherId] = useState<
-    string | number | null
-  >(null);
+  const [selectedTeacher, setSelectedTeacher] =
+    useState<TEACHER_REPONSE_PROPS | null>(null);
   const open = Boolean(anchorEl);
 
   const handleClick = (
     event: React.MouseEvent<HTMLButtonElement>,
-    id: string | number,
+    teacher: TEACHER_REPONSE_PROPS,
   ) => {
     setAnchorEl(event.currentTarget);
-    setSelectedTeacherId(id);
+    setSelectedTeacher(teacher);
   };
 
   const handleChangeTab = (event: React.SyntheticEvent, newValue: string) => {
@@ -81,12 +71,12 @@ const EducatorList = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
-    setSelectedTeacherId(null);
+    setSelectedTeacher(null);
   };
 
-  const handleShowTeacherNominationModal = (id: string | number | null) => {
+  const handleShowTeacherNominationModal = () => {
     handleClose();
-    showModal(<EducatorNomination educatorId={id} />);
+    showModal(<EducatorNomination educatorId={selectedTeacher?.id ?? null} />);
   };
 
   const { updateStatus, loading: statusLoading } = useUpdateTeacherStatus();
@@ -110,18 +100,19 @@ const EducatorList = () => {
 
   const { userData, loading, fetchUserData } = useGetAllUser();
 
-  console.log("user datat", userData);
+  // console.log("user datat", userData);
 
   const listItems = [
     {
       label: "Issue NOC",
     },
-    {
-      label: "Nominate For Training",
-      onclick: () => handleShowTeacherNominationModal(selectedTeacherId),
-    },
+    // {
+    //   label: "Nominate For Training",
+    //   onclick: handleShowTeacherNominationModal,
+    // },
     {
       label: "View Profile",
+      // onclick: () => showModal(<ViewTeacherProfile teacherId={selectedTeacher?.id ?? null} />),
     },
     {
       label: "Report",
@@ -317,9 +308,7 @@ const EducatorList = () => {
                       <TableCell>{teacher?.membershipId || "--"}</TableCell>
 
                       <TableCell>
-                        <IconButton
-                          onClick={(e) => handleClick(e, teacher?.id)}
-                        >
+                        <IconButton onClick={(e) => handleClick(e, teacher)}>
                           <MoreVert />
                         </IconButton>
                       </TableCell>
@@ -365,7 +354,7 @@ const EducatorList = () => {
         >
           <List>
             {listItems.map((val, i) => (
-              <ListItemButton key={i} onClick={val.onclick}>
+              <ListItemButton key={i}>
                 <ListItemText primary={val.label} />
               </ListItemButton>
             ))}

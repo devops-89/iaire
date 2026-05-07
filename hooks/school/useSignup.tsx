@@ -1,6 +1,7 @@
+import { teacherController } from "@/app/api/teacherController";
 import { userControllers } from "@/app/api/userControllers";
 import { InstitutionInfo } from "@/utils/type";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useSchoolSignup = () => {
   const [loading, setLoading] = useState(false);

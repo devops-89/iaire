@@ -35,43 +35,6 @@ import { useGetPlans } from "@/hooks/common/useGetPlans";
 const PaymentLayout = () => {
   const router = useRouter();
   const { data, institutionData, educatorData } = useSignup();
-  const formik = useFormik({
-    initialValues: {
-      cardholderName: "",
-      cardNumber: "",
-      expiryDate: "",
-      cvv: "",
-    },
-    validationSchema: paymentValidationSchema,
-    onSubmit: (values) => {
-      console.log("Payment submitted:", values);
-
-      if (data?.role === USER_ROLES.STUDENT) {
-        router.push("/dashboard/student");
-      }
-      if (
-        data?.role === USER_ROLES.INSTITUTION ||
-        institutionData?.role === USER_ROLES.INSTITUTION
-      ) {
-        router.push("/dashboard/institution");
-      }
-
-      if (
-        data?.role === USER_ROLES.EDUCATOR ||
-        educatorData?.role === USER_ROLES.EDUCATOR
-      ) {
-        router.push("/dashboard/educator");
-      }
-    },
-  });
-
-  const cardType = useMemo(() => {
-    const number = formik.values.cardNumber;
-    if (/^4/.test(number)) return "Visa";
-    if (/^5[1-5]|^2[2-7]/.test(number)) return "Mastercard";
-    if (/^3[47]/.test(number)) return "Amex";
-    return null;
-  }, [formik.values.cardNumber]);
 
   const role = data?.role || institutionData?.role || educatorData?.role;
 
@@ -85,7 +48,7 @@ const PaymentLayout = () => {
   }
 
   const { planData, planLoading } = useGetPlans({ role: finalRole || "" });
-  // console.log("plan Data", planData);
+  console.log("plan Data", planData);
 
   // console.l;
 
@@ -116,8 +79,8 @@ const PaymentLayout = () => {
     >
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <SignupStepper activeStep={2} />
-        <form onSubmit={formik.handleSubmit}>
-          <Grid container spacing={4} alignItems="stretch">
+
+        {/* <Grid container spacing={4} alignItems="stretch">
             <Grid size={{ xs: 12, md: 7 }}>
               <Card
                 sx={{
@@ -450,21 +413,6 @@ const PaymentLayout = () => {
                         <Divider
                           sx={{ borderColor: "rgba(255, 255, 255, 0.1)" }}
                         />
-
-                        {/* <Stack direction="row" justifyContent="space-between">
-                        <Typography sx={{ color: "rgba(255, 255, 255, 0.7)" }}>
-                          Due Today
-                        </Typography>
-                        <Typography
-                          sx={{
-                            fontWeight: 700,
-                            color: COLORS.ACCENT_TAN,
-                            fontSize: 20,
-                          }}
-                        >
-                          $0.00
-                        </Typography>
-                      </Stack> */}
                       </Stack>
                     ))
                   )}
@@ -496,8 +444,24 @@ const PaymentLayout = () => {
                 </Box>
               </Card>
             </Grid>
+          </Grid> */}
+        <Grid container>
+          <Grid size={8} margin="auto">
+            {planData?.map((val, i) => (
+              <Card sx={{ p: 3, borderRadius: "20px" }} key={i}>
+                <Typography
+                  sx={{
+                    fontSize: 25,
+                    fontWeight: 500,
+                    fontFamily: roboto.style.fontFamily,
+                  }}
+                >
+                  {val.name}
+                </Typography>
+              </Card>
+            ))}
           </Grid>
-        </form>
+        </Grid>
       </Container>
     </Box>
   );

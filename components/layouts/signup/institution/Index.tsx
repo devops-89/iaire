@@ -283,7 +283,8 @@ const Institution = () => {
                         formik.touched.country && Boolean(formik.errors.country)
                       }
                       helperText={
-                        formik.touched.country && formik.errors.country
+                        formik.touched.country &&
+                        (formik.errors.country as string)
                       }
                       sx={{
                         ...TEXTFIELD_STYLE_VALIDATION,
@@ -308,7 +309,10 @@ const Institution = () => {
                         error={
                           formik.touched.state && Boolean(formik.errors.state)
                         }
-                        helperText={formik.touched.state && formik.errors.state}
+                        helperText={
+                          formik.touched.state &&
+                          (formik.errors.state as string)
+                        }
                         sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
                       />
                     )}
@@ -349,7 +353,9 @@ const Institution = () => {
                     !matchIsValidTel(phone) &&
                     Boolean(formik.errors.phone)
                   }
-                  helperText={formik.touched.phone && formik.errors.phone}
+                  helperText={
+                    formik.touched.phone && (formik.errors.phone as string)
+                  }
                   defaultCountry={(country?.code as any) || "US"}
                   sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
                 />
@@ -460,7 +466,7 @@ const Institution = () => {
                   }
                   helperText={
                     formik.touched.contactPersonPhone &&
-                    formik.errors.contactPersonPhone
+                    (formik.errors.contactPersonPhone as string)
                   }
                   defaultCountry={(country?.code as any) || "US"}
                   sx={{ ...TEXTFIELD_STYLE_VALIDATION }}

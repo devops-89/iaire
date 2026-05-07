@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
-import "./globals.css";
-import ThemeRegistry from "@/components/ThemeRegistry";
 import "react-loading-skeleton/dist/skeleton.css";
+import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,8 +20,8 @@ export const metadata: Metadata = {
 };
 
 import LayoutWrapper from "@/components/layouts/LayoutWrapper";
-import Modal from "@/components/widgets/Modal";
 import GlobalSnackbar from "@/components/widgets/GlobalSnackbar";
+import Modal from "@/components/widgets/Modal";
 
 export default function RootLayout({
   children,

@@ -1,3 +1,5 @@
+"use client";
+import { getUserDetails } from "@/hooks/common/getUserDetails";
 import { useSignup } from "@/store/useSignup";
 import { Box } from "@mui/material";
 import React from "react";
@@ -8,6 +10,7 @@ const EducatorDashboardLayout = ({
   children: React.ReactNode;
 }) => {
   const { educatorData } = useSignup();
+
   return (
     <Box sx={{ backgroundColor: "#f8f9fa", minHeight: "100vh" }}>
       <Box

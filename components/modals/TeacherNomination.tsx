@@ -1,3 +1,4 @@
+import { useSelfNominateTeacher } from "@/hooks/mentor/useNominateTeacher";
 import { useNominateTeacherForTraining } from "@/hooks/school/useTeacherAdd";
 import { CATEGORY_TYPES, MODE_TRAINING } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
@@ -25,7 +26,7 @@ import React from "react";
 const EducatorNomination = ({
   educatorId,
 }: {
-  educatorId: string | number | null;
+  educatorId?: string | number | null;
 }) => {
   const [startDate, setStartDate] = React.useState<Moment | null>(null);
   const [endDate, setEndDate] = React.useState<Moment | null>(null);
@@ -38,7 +39,8 @@ const EducatorNomination = ({
     setEndDate(value);
     formik.setFieldValue("endDate", moment(value).format("YYYY-MM-DD"));
   };
-  const { nominateLoading, nominateTeacher } = useNominateTeacherForTraining();
+  // const { nominateLoading, nominateTeacher } = useNominateTeacherForTraining();
+  const { loading, selfNominateTeacher } = useSelfNominateTeacher();
 
   const formik = useFormik({
     initialValues: {
@@ -46,7 +48,7 @@ const EducatorNomination = ({
       endDate: "",
       category: "",
       mode: "",
-      teacherId: educatorId,
+      // teacherId: educatorId,
     },
     validationSchema: TEACHERVALIDATIONSCHEMA,
     onSubmit: async (values) => {
@@ -55,9 +57,9 @@ const EducatorNomination = ({
         availableFrom: values?.startDate,
         availableTo: values?.endDate,
         mode: values?.mode,
-        teacherId: values?.teacherId,
+        // teacherId: values?.teacherId,
       };
-      await nominateTeacher(
+      await selfNominateTeacher(
         data as any as NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
       );
     },
@@ -179,7 +181,7 @@ const EducatorNomination = ({
           }}
           type="submit"
         >
-          Submit
+          {loading ? "Submitting..." : "Submit"}
         </Button>
       </form>
     </Box>

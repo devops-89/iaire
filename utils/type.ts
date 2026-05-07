@@ -1,4 +1,4 @@
-import { CATEGORY, TRAINING_MODE, USER_ROLES } from "./enum";
+import { CATEGORY, GENDER_TYPE, TRAINING_MODE, USER_ROLES } from "./enum";
 
 export enum MEMBERSHIP_LEVEL {
   INSTITUTIONAL = "Institutional Member",
@@ -209,10 +209,31 @@ export interface INSTITUTION_ADD_EDUCATOR_REQUEST {
 }
 
 export interface NOMINATE_TEACHER_FOR_TRAINING_REQUEST {
-  teacherId: number;
+  teacherId?: number;
   title: string;
   type: CATEGORY;
   availableFrom: Date | string;
   availableTo: Date | string;
   mode: TRAINING_MODE;
+}
+
+export interface INSTITUTION_ADD_STUDENT_REQUEST {
+  email: string;
+  firstName: string;
+  lastname: string;
+  password: string;
+  phone: string;
+  countryCode: string;
+  fatherName: string;
+  fatherEmail: string;
+  fatherPhone: string;
+  fatherProfession: string;
+  motherName: string;
+  motherEmail: string;
+  motherPhone: string;
+  motherProfession: string;
+  grade: string;
+  gender: GENDER_TYPE;
+  profileImage: File | null;
+  dob: string;
 }
