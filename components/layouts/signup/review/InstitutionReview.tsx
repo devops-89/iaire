@@ -299,7 +299,7 @@ const InstitutionReview = () => {
               }}
             >
               {loading ? (
-                <CircularProgress sx={{ color: COLORS.BLACK }} />
+                <CircularProgress sx={{ color: COLORS.BLACK, fontSize: 10 }} />
               ) : (
                 "Verify & Confirm"
               )}

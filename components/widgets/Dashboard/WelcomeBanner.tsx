@@ -14,6 +14,7 @@ import {
   stepConnectorClasses,
   styled,
 } from "@mui/material";
+import moment from "moment";
 import React from "react";
 
 const DottedConnector = styled(StepConnector)(({ theme }) => ({
@@ -31,7 +32,6 @@ const DottedConnector = styled(StepConnector)(({ theme }) => ({
 const FlightStepIcon = (props: { active?: boolean; icon: React.ReactNode }) => {
   const { icon } = props;
 
-  // MUI passes the 1-based index as a ReactNode. Convert it to a number for comparison.
   if (Number(icon) === 3) {
     return (
       <AirplanemodeActive
@@ -90,6 +90,8 @@ const WelcomeBanner = () => {
     { label: "Accredited Institution Member" },
   ];
 
+  console.log("first", institutionData);
+
   return (
     <Box sx={{ p: { xs: 2, md: 0 } }}>
       <Grid container spacing={10} alignItems="center">
@@ -131,50 +133,56 @@ const WelcomeBanner = () => {
                   fontSize: 20,
                 }}
               >
-                {institutionData?.institutionName || "Imperial Academy"}
+                {institutionData?.school?.name || ""}
               </Typography>
 
-              <Box
-                sx={{
-                  mt: 1.5,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 0.5,
-                }}
-              >
-                <Typography
+              {institutionData?.payments?.map((val: any, i: number) => (
+                <Box
                   sx={{
-                    color: "rgba(255,255,255,0.8)",
-                    fontFamily: montserrat.style.fontFamily,
-                    fontSize: 13,
-                    fontWeight: 500,
-                    fontStyle: "italic",
+                    mt: 1.5,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 0.5,
                   }}
                 >
-                  Valid through Mar 31, 2027
-                </Typography>
-                <Typography
-                  sx={{
-                    color: COLORS.WHITE,
-                    fontFamily: roboto.style.fontFamily,
-                    fontSize: 24,
-                    fontWeight: 700,
-                    letterSpacing: "1px",
-                  }}
-                >
-                  #6FDW798
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "rgba(255,255,255,0.7)",
-                    fontFamily: montserrat.style.fontFamily,
-                    fontSize: 12,
-                    fontWeight: 500,
-                  }}
-                >
-                  IAIRE member since: Nov 1, 2023
-                </Typography>
-              </Box>
+                  <Typography
+                    sx={{
+                      color: "rgba(255,255,255,0.8)",
+                      fontFamily: montserrat.style.fontFamily,
+                      fontSize: 13,
+                      fontWeight: 500,
+                      fontStyle: "italic",
+                    }}
+                  >
+                    Valid through{" "}
+                    {moment(val?.membership?.expiryDate).format("MMM DD, YYYY")}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: COLORS.WHITE,
+                      fontFamily: roboto.style.fontFamily,
+                      fontSize: 24,
+                      fontWeight: 700,
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    #{val?.membership?.membershipCode}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "rgba(255,255,255,0.7)",
+                      fontFamily: montserrat.style.fontFamily,
+                      fontSize: 12,
+                      fontWeight: 500,
+                    }}
+                  >
+                    IAIRE member since:{" "}
+                    {moment(val?.membership?.activatedAt).format(
+                      "MMM DD, YYYY",
+                    )}
+                  </Typography>
+                </Box>
+              ))}
 
               <Box
                 sx={{

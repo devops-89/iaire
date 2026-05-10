@@ -29,24 +29,24 @@ const ReviewPage = () => {
   // const
   // console.log("educator", educatorData);
 
-  console.log("educatorData", educatorData);
-  console.log("institutionData", institutionData);
-  console.log("data", data);
-
   const [role, setRole] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       let storedRole = localStorage.getItem("role");
-      if (storedRole && storedRole.startsWith('"') && storedRole.endsWith('"')) {
+      if (
+        storedRole &&
+        storedRole.startsWith('"') &&
+        storedRole.endsWith('"')
+      ) {
         storedRole = JSON.parse(storedRole);
       }
-      
+
       if (!storedRole) {
         if (educatorData) storedRole = educatorData.role;
         else if (institutionData) storedRole = USER_ROLES.INSTITUTION;
       }
-      
+
       setRole(storedRole);
     }
   }, [educatorData, institutionData]);

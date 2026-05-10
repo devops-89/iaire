@@ -69,7 +69,6 @@ const EducatorSignup = () => {
     enableReinitialize: true,
     validationSchema: educatorSignupValidationSchema,
     onSubmit: (values) => {
-      // console.log("Educator Signup Data:", values);
       setEducatorData(values);
 
       router.push("/signup/review");

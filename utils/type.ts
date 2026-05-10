@@ -1,4 +1,10 @@
-import { CATEGORY, GENDER_TYPE, TRAINING_MODE, USER_ROLES } from "./enum";
+import {
+  CATEGORY,
+  GENDER_TYPE,
+  PLAN_LIMIT_TYPE,
+  TRAINING_MODE,
+  USER_ROLES,
+} from "./enum";
 
 export enum MEMBERSHIP_LEVEL {
   INSTITUTIONAL = "Institutional Member",
@@ -174,6 +180,10 @@ export interface PLAN_RESPONSE_PROPS {
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
+  limits: {
+    key: PLAN_LIMIT_TYPE;
+    value: number;
+  }[];
 }
 
 export interface ALL_USER_REQUEST_PROPS {

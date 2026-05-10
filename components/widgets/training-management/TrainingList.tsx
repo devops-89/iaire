@@ -36,12 +36,13 @@ import moment from "moment";
 import { useApprovedNominateTeacher } from "@/hooks/school/useTeacherAdd";
 import { Atom } from "react-loading-indicators";
 import RejectReason from "@/components/modals/school/RejectReason";
+import TeacherSelfNomination from "@/components/modals/mentor/SelfNomination";
 
 const TrainingList = () => {
   const { showModal } = useModal();
 
   const handleModalOpen = () => {
-    showModal(<EducatorNomination />);
+    showModal(<TeacherSelfNomination />);
   };
 
   const [status, setStatus] = useState();
@@ -117,7 +118,7 @@ const TrainingList = () => {
                 }}
                 onClick={handleModalOpen}
               >
-                Nominate For Training
+                Nominate Self For Training
               </Button>
             )}
           </Stack>

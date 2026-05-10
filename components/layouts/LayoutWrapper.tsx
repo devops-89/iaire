@@ -17,6 +17,7 @@ const HIDE_LAYOUT_ROUTES = [
   "/signup/payment",
   "/dashboard/school",
   "/signup/review",
+  "/payment-success",
 ];
 
 export default function LayoutWrapper({

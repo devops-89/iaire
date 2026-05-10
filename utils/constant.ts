@@ -3,6 +3,7 @@ import {
   CATEGORY,
   GENDER_TYPE,
   MEMBER_TYPES,
+  PLAN_LIMIT_TYPE,
   TRAINING_MODE,
   TRAINING_NOMINATION_STATUS,
   USER_STATUS,
@@ -1304,5 +1305,23 @@ export const SCHOOL_TRAINING_LIST_TABS = [
   {
     label: "Interview Completed",
     value: TRAINING_NOMINATION_STATUS.INTERVIEW_COMPLETED,
+  },
+];
+
+export const PLAN_LIMITS_DATA = [
+  {
+    label: PLAN_LIMIT_TYPE.MAX_TEACHERS,
+    value: "Add Teachers",
+    icon: PersonOff,
+  },
+  {
+    label: PLAN_LIMIT_TYPE.MAX_STUDENTS,
+    value: "Add Students",
+    icon: PersonOff,
+  },
+  {
+    label: PLAN_LIMIT_TYPE.APPROVE_NOMINEE_TEACHERS,
+    value: "Approve Nominee Teachers",
+    icon: PersonOff,
   },
 ];

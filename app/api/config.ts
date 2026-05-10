@@ -29,6 +29,18 @@ const plansApi = axios.create({
   baseURL: serverConstants.plans,
 });
 
+const securedPlansApi = axios.create({
+  baseURL: serverConstants.plans,
+});
+
+securedPlansApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 const paymentSecuredApi = axios.create({
   baseURL: serverConstants.payment,
 });
@@ -53,6 +65,17 @@ trainingSecuredApi.interceptors.request.use((config) => {
   return config;
 });
 
+const batchSecuredApi = axios.create({
+  baseURL: serverConstants.batch,
+});
+batchSecuredApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export {
   userPublicApi,
   userSecuredApi,
@@ -61,4 +84,6 @@ export {
   plansApi,
   paymentSecuredApi,
   trainingSecuredApi,
+  securedPlansApi,
+  batchSecuredApi,
 };
