@@ -40,14 +40,13 @@ import TeacherSelfNomination from "@/components/modals/mentor/SelfNomination";
 
 const TrainingList = () => {
   const { showModal } = useModal();
-
+  const { loading, data, getTeacherTrainingList } = useTrainingList();
   const handleModalOpen = () => {
     showModal(<TeacherSelfNomination />);
   };
 
   const [status, setStatus] = useState();
 
-  const { loading, data, getTeacherTrainingList } = useTrainingList();
   const [role, setRole] = useState("");
   const { approveTeacherNominationLoading, ApproveTeacherNomination } =
     useApprovedNominateTeacher();
@@ -208,7 +207,7 @@ const TrainingList = () => {
                                     selected ===
                                     TRAINING_NOMINATION_STATUS.SELF_NOMINATED
                                   ) {
-                                    return "Pending";
+                                    return "Self Nominated";
                                   }
                                   const statusObj =
                                     SCHOOL_TRAINING_NOMINATION_STATUS.find(

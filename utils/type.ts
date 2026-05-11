@@ -219,12 +219,18 @@ export interface INSTITUTION_ADD_EDUCATOR_REQUEST {
 }
 
 export interface NOMINATE_TEACHER_FOR_TRAINING_REQUEST {
-  teacherId?: number;
-  title: string;
-  type: CATEGORY;
-  availableFrom: Date | string;
-  availableTo: Date | string;
-  mode: TRAINING_MODE;
+  // teacherId?: number;
+  // title: string;
+  // type: CATEGORY;
+  // availableFrom: Date | string;
+  // availableTo: Date | string;
+  // mode: TRAINING_MODE;
+  batchId: number;
+  mode: string;
+  answers: {
+    questionId: string;
+    answer: string;
+  }[];
 }
 
 export interface INSTITUTION_ADD_STUDENT_REQUEST {
