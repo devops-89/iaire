@@ -73,11 +73,6 @@ const TeacherSelfNomination = ({ batchId }: { batchId?: string }) => {
       await selfNominateTeacher(payload);
 
       formik.resetForm();
-      // console.log(
-      //   "Nomination Submitted Payload:",
-      //   JSON.stringify(payload, null, 2),
-      // );
-      // // TODO: send the payload to backend
     },
   });
 
