@@ -52,11 +52,9 @@ const TrainingList = () => {
     useApprovedNominateTeacher();
 
   const tabData =
-    role === USER_ROLES.INSTITUTION ? SCHOOL_TRAINING_LIST_TABS : [];
-
-  // const [tableHeader, setTableHeader] = useState(
-  //   TRAINING_NOMINATION_TABLE_HEADER,
-  // );
+    role === USER_ROLES.INSTITUTION
+      ? SCHOOL_TRAINING_LIST_TABS
+      : SCHOOL_TRAINING_LIST_TABS;
 
   const handleStatusChange = async (e: any, id: string) => {
     if (e.target.value === TRAINING_NOMINATION_STATUS.REJECTED) {
@@ -170,10 +168,14 @@ const TrainingList = () => {
 
                         <TableCell>{val?.mode || "N/A"}</TableCell>
                         <TableCell>
-                          {moment(val.startDate)?.format("YYYY,MMM DD")}
+                          {moment(val.training?.batch?.startDate)?.format(
+                            "YYYY,MMM DD",
+                          )}
                         </TableCell>
                         <TableCell>
-                          {moment(val.endDate)?.format("YYYY,MMM DD")}
+                          {moment(val.training?.batch?.endDate)?.format(
+                            "YYYY,MMM DD",
+                          )}
                         </TableCell>
 
                         <TableCell>

@@ -1290,11 +1290,11 @@ export const SCHOOL_TRAINING_LIST_TABS = [
     value: "ALL",
   },
   {
-    label: "Pending",
+    label: "Self Nominated",
     value: TRAINING_NOMINATION_STATUS.SELF_NOMINATED,
   },
   {
-    label: "Approved",
+    label: "School Approved",
     value: TRAINING_NOMINATION_STATUS.SCHOOL_APPROVED,
   },
   {

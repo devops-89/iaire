@@ -1,7 +1,7 @@
 "use client";
 import EducatorDashboardLayout from "@/components/layouts/dashboard/educator/Index";
 import EducatorWelcomeBanner from "@/components/widgets/Dashboard/EducatorWelcomeBanner";
-import { Box } from "@mui/material";
+import { Backdrop, Box, Typography } from "@mui/material";
 import React from "react";
 import StatsBox from "@/components/layouts/dashboard/institution/components/dashboard/StatsBox";
 import {
@@ -18,6 +18,8 @@ import {
   VerifiedUser,
   PendingActions,
 } from "@mui/icons-material";
+import { useSignup } from "@/store/useSignup";
+import { COLORS } from "@/utils/enum";
 
 const EducatorDashboard = () => {
   const EDUCATOR_STAT_SECTIONS = [
@@ -107,6 +109,11 @@ const EducatorDashboard = () => {
       ],
     },
   ];
+
+  const { educatorData } = useSignup();
+
+  // console.log("educatorData", educatorData);
+  const isMember = educatorData?.payments.length;
 
   return (
     <EducatorDashboardLayout>

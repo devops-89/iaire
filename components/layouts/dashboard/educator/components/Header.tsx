@@ -53,11 +53,11 @@ const EducatorHeader = () => {
         height: "70px",
         backgroundColor: isScrolled
           ? "rgba(255, 255, 255, 0.72)"
-          : COLORS.WHITE,
+          : "transparent",
         backdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
         WebkitBackdropFilter: isScrolled ? "blur(20px) saturate(180%)" : "none",
-        borderBottom: "1px solid",
-        borderColor: isScrolled ? "rgba(255, 255, 255, 0.3)" : "#eeeeee",
+        // borderBottom: "1px solid",
+        borderColor: isScrolled ? "rgba(255, 255, 255, 0.3)" : "none",
         boxShadow: isScrolled ? "0 4px 30px rgba(0, 0, 0, 0.05)" : "none",
         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         zIndex: 1100,
@@ -115,17 +115,27 @@ const EducatorHeader = () => {
           sx={{ py: 1.5, px: 2 }}
         >
           <ListItemIcon>
-            <PersonOutline fontSize="small" sx={{ color: COLORS.PRIMARY_NAVY }} />
+            <PersonOutline
+              fontSize="small"
+              sx={{ color: COLORS.PRIMARY_NAVY }}
+            />
           </ListItemIcon>
           <ListItemText
             primary="My Profile"
             primaryTypographyProps={{
-              sx: { fontSize: "14px", fontWeight: 600, color: COLORS.PRIMARY_NAVY },
+              sx: {
+                fontSize: "14px",
+                fontWeight: 600,
+                color: COLORS.PRIMARY_NAVY,
+              },
             }}
           />
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
-        <MenuItem onClick={handleLogout} sx={{ py: 1.5, px: 2, color: COLORS.RED }}>
+        <MenuItem
+          onClick={handleLogout}
+          sx={{ py: 1.5, px: 2, color: COLORS.RED }}
+        >
           <ListItemIcon>
             <Logout fontSize="small" sx={{ color: COLORS.RED }} />
           </ListItemIcon>
