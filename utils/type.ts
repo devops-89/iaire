@@ -173,13 +173,13 @@ export interface PLAN_RESPONSE_PROPS {
   price: number;
   currency: string;
   billingCycle: string;
-  trialDays: number;
-  isActive: boolean;
-  stripeProductId: string;
-  stripePriceId: string;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
+  trialDays?: number;
+  isActive?: boolean;
+  stripeProductId?: string;
+  stripePriceId?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string | null;
   limits: {
     key: PLAN_LIMIT_TYPE;
     value: number;

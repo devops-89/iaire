@@ -1,8 +1,6 @@
 import React from "react";
 import StudentDashboardLayout from "@/components/layouts/dashboard/student/Index";
-import CurrentPlanCard from "@/components/dashboard/student/membership/CurrentPlanCard";
-import PaymentHistory from "@/components/dashboard/student/membership/PaymentHistory";
-import UpgradePlans from "@/components/dashboard/student/membership/UpgradePlans";
+
 import { Box, Typography } from "@mui/material";
 import { roboto } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
@@ -32,10 +30,6 @@ const MembershipManagement = () => {
           View your current plan, billing history, and upgrade options.
         </Typography>
       </Box>
-
-      <CurrentPlanCard />
-      <PaymentHistory />
-      <UpgradePlans />
     </StudentDashboardLayout>
   );
 };

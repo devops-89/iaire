@@ -1,4 +1,5 @@
 "use client";
+import PlanCard from "@/components/widgets/PlanCard";
 import { getUserDetails } from "@/hooks/common/getUserDetails";
 import { useGetPlans } from "@/hooks/common/useGetPlans";
 import { useSignup } from "@/store/useSignup";
@@ -15,7 +16,9 @@ const EducatorDashboardLayout = ({
 
   const isMember = educatorData?.payments?.length > 0;
 
-  const { planData, planLoading } = useGetPlans({ role: USER_ROLES.EDUCATOR });
+  const { planData, planLoading } = useGetPlans({
+    role: USER_ROLES.EDUCATOR_ADMIN,
+  });
   console.log("plan Data", planData);
 
   return (
@@ -59,6 +62,18 @@ const EducatorDashboardLayout = ({
               Activate your membership now to unlock full access to your
               educator dashboard and features.
             </Typography>
+            {planData.map((val, i) => (
+              <PlanCard
+                name={val.name}
+                currency={val.currency}
+                price={val.price}
+                billingCycle={val.billingCycle}
+                limits={val.limits}
+                id={val.id}
+                // createPayment={}
+                loading={planLoading}
+              />
+            ))}
           </Box>
         </Backdrop>
         {children}
