@@ -20,7 +20,7 @@ const Usform = ({ formik, boardData, boardLoading }: UsFormProps) => {
   return (
     <>
       <Grid size={{ xs: 12, md: 12 }}>
-        {/* <TextField
+        <TextField
           fullWidth
           name="isd"
           label="Enter ISD"
@@ -31,9 +31,9 @@ const Usform = ({ formik, boardData, boardLoading }: UsFormProps) => {
           error={formik.touched.isd && Boolean(formik.errors.isd)}
           helperText={formik.touched.isd && formik.errors.isd}
           sx={TEXTFIELD_STYLE_VALIDATION}
-        /> */}
+        />
 
-        <Autocomplete
+        {/* <Autocomplete
           loading={boardLoading}
           options={boardData as boardOptionType[]}
           getOptionLabel={(option) => {
@@ -86,7 +86,7 @@ const Usform = ({ formik, boardData, boardLoading }: UsFormProps) => {
               formik.setFieldValue("isd", newValue?.name || "");
             }
           }}
-        />
+        /> */}
       </Grid>
     </>
   );

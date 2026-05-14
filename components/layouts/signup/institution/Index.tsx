@@ -26,7 +26,13 @@ import {
   Language,
   LocationOn,
 } from "@mui/icons-material";
-import { matchIsValidTel, MuiTelInput } from "mui-tel-input";
+import {
+  matchIsValidTel,
+  MuiTelInput,
+  MuiTelInputCountry,
+  MuiTelInputInfo,
+  MuiTelInputProps,
+} from "mui-tel-input";
 import { montserrat, roboto } from "@/utils/fonts";
 import { useSignup } from "@/store/useSignup";
 import { COUNTRIES, US_STATES } from "@/utils/constant";
@@ -38,6 +44,7 @@ import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { CalendarIcon } from "@mui/x-date-pickers";
 import { useGetCountries } from "@/hooks/common/useGetCountry";
 import { useBoardByCountry } from "@/hooks/common/useGetBoardByCountry";
+import Link from "next/link";
 
 const Institution = () => {
   const router = useRouter();
@@ -109,12 +116,12 @@ const Institution = () => {
 
   const [phone, setPhone] = useState(institutionData?.phone || "");
 
-  const handlePhoneChange = (value: string) => {
+  const handlePhoneChange = (value: string, countryData: MuiTelInputInfo) => {
     setPhone(value);
     const isValid = matchIsValidTel(value);
     if (isValid) {
       formik.setFieldError("phone", "");
-      formik.setFieldValue("phone", value);
+      formik.setFieldValue("phone", countryData?.nationalNumber);
     } else {
       formik.setFieldError("phone", "Please Enter a Valid Phone Number");
     }
@@ -515,23 +522,28 @@ const Institution = () => {
             }}
           >
             Already registered?{" "}
-            <Button
-              sx={{
-                color: COLORS.PRIMARY_NAVY,
-                fontWeight: 700,
-                textTransform: "none",
-                fontSize: 15,
-                p: 0,
-                minWidth: "auto",
-                ml: 0.5,
-                "&:hover": {
-                  bgcolor: "transparent",
-                  textDecoration: "underline",
-                },
-              }}
+            <Link
+              href={"/login"}
+              style={{ textTransform: "none", textDecoration: "none" }}
             >
-              Log in instead
-            </Button>
+              <Button
+                sx={{
+                  color: COLORS.PRIMARY_NAVY,
+                  fontWeight: 700,
+                  textTransform: "none",
+                  fontSize: 15,
+                  p: 0,
+                  minWidth: "auto",
+                  ml: 0.5,
+                  "&:hover": {
+                    bgcolor: "transparent",
+                    textDecoration: "underline",
+                  },
+                }}
+              >
+                Log in instead
+              </Button>
+            </Link>
           </Typography>
         </Card>
       </Container>

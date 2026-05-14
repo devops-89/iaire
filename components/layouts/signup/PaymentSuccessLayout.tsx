@@ -15,7 +15,7 @@ const PaymentSuccessLayout = () => {
     const role = data?.role || institutionData?.role || educatorData?.role;
     if (role === USER_ROLES.INSTITUTION) {
       router.push(`/dashboard/${USER_ROLES.INSTITUTION}`);
-    } else if (role === USER_ROLES.EDUCATOR) {
+    } else if (role === USER_ROLES.EDUCATOR || USER_ROLES.TEACHER) {
       router.push(`/dashboard/${USER_ROLES.EDUCATOR}`);
     } else if (role === USER_ROLES.STUDENT) {
       router.push(`/dashboard/student`);
@@ -63,7 +63,7 @@ const PaymentSuccessLayout = () => {
             <CheckCircleOutline
               sx={{ fontSize: 80, color: "#10B981", mb: 2 }}
             />
-            
+
             <Typography
               sx={{
                 color: COLORS.BLACK,
@@ -74,7 +74,7 @@ const PaymentSuccessLayout = () => {
             >
               Payment Successful!
             </Typography>
-            
+
             <Typography
               sx={{
                 fontFamily: montserrat.style.fontFamily,
@@ -84,7 +84,8 @@ const PaymentSuccessLayout = () => {
                 mb: 4,
               }}
             >
-              Thank you for your purchase. Your subscription is now active and you can start exploring all premium features.
+              Thank you for your purchase. Your subscription is now active and
+              you can start exploring all premium features.
             </Typography>
 
             <Button

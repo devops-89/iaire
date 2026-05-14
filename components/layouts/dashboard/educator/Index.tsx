@@ -1,6 +1,7 @@
 "use client";
 import PlanCard from "@/components/widgets/PlanCard";
 import { getUserDetails } from "@/hooks/common/getUserDetails";
+import { useMakePayment } from "@/hooks/common/useCreatePayment";
 import { useGetPlans } from "@/hooks/common/useGetPlans";
 import { useSignup } from "@/store/useSignup";
 import { COLORS, USER_ROLES } from "@/utils/enum";
@@ -19,7 +20,11 @@ const EducatorDashboardLayout = ({
   const { planData, planLoading } = useGetPlans({
     role: USER_ROLES.EDUCATOR_ADMIN,
   });
-  console.log("plan Data", planData);
+  const { makePayment } = useMakePayment();
+
+  const createPayment = async (id: number) => {
+    await makePayment(id);
+  };
 
   return (
     <Box sx={{ backgroundColor: "#f8f9fa", minHeight: "100vh" }}>
@@ -70,7 +75,7 @@ const EducatorDashboardLayout = ({
                 billingCycle={val.billingCycle}
                 limits={val.limits}
                 id={val.id}
-                // createPayment={}
+                createPayment={createPayment}
                 loading={planLoading}
               />
             ))}

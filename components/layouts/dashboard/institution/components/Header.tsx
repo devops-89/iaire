@@ -13,6 +13,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { montserrat, roboto } from "@/utils/fonts";
+import { useSignup } from "@/store/useSignup";
 
 const InstitutionHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,6 +43,14 @@ const InstitutionHeader = () => {
   };
 
   const open = Boolean(anchorEl);
+
+  const { institutionData } = useSignup();
+  const isMember =
+    institutionData?.payments.some(
+      (val: any) => val.membership?.status === "ACTIVE",
+    ) || false;
+
+  console.log("institutionData", institutionData);
 
   return (
     <Box
@@ -106,6 +115,7 @@ const InstitutionHeader = () => {
             },
           },
         }}
+        sx={{ zIndex: 999999 }}
       >
         <Box sx={{ p: 2.5, bgcolor: "rgba(249, 250, 251, 0.5)" }}>
           <Typography
@@ -114,9 +124,20 @@ const InstitutionHeader = () => {
               fontWeight: 700,
               fontSize: 16,
               color: COLORS.PRIMARY_NAVY,
+              textTransform: "capitalize",
             }}
           >
-            Institution Admin
+            {institutionData?.school?.name}
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: roboto.style.fontFamily,
+              fontWeight: 700,
+              fontSize: 14,
+              color: COLORS.PRIMARY_NAVY,
+            }}
+          >
+            {institutionData?.email}
           </Typography>
           <Typography
             sx={{
@@ -154,29 +175,7 @@ const InstitutionHeader = () => {
               Profile
             </Typography>
           </MenuItem>
-          <MenuItem
-            onClick={handleClose}
-            sx={{
-              borderRadius: "8px",
-              py: 1.5,
-              mb: 0.5,
-              "&:hover": { bgcolor: "rgba(0, 0, 0, 0.03)" },
-            }}
-          >
-            <ListItemIcon>
-              <Settings fontSize="small" sx={{ color: COLORS.BLACK }} />
-            </ListItemIcon>
-            <Typography
-              sx={{
-                fontFamily: montserrat.style.fontFamily,
-                fontSize: 14,
-                fontWeight: 600,
-                color: COLORS.BLACK,
-              }}
-            >
-              Settings
-            </Typography>
-          </MenuItem>
+
           <Divider sx={{ my: 1 }} />
           <MenuItem
             onClick={handleLogout}
