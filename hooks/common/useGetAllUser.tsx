@@ -39,7 +39,6 @@ export const useUpdateTeacherStatus = () => {
     setLoading(true);
     try {
       const res = await userControllers.updateUserStatus(id, status);
-      console.log("res", res);
       return res;
     } catch (err) {
       console.log("err", err);

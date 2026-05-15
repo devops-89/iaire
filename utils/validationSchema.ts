@@ -203,7 +203,7 @@ export const studentValidationSchema = Yup.object({
     )
     .required("Phone number is required"),
   grade: Yup.string().required("Please Enter Grade"),
-  dob: Yup.string().required("Please Enter Date of Birth"),
+  // dob: Yup.string().required("Please Enter Date of Birth"),
   gender: Yup.string().required("Please Select Gender"),
   fatherName: Yup.string().required("Father's name is required"),
   fatherEmail: Yup.string()
@@ -236,6 +236,7 @@ export const studentValidationSchema = Yup.object({
       },
     )
     .required("Father's phone number is required"),
+  password: Yup.string().required("Password is required"),
 });
 
 export const loginValidationSchema = Yup.object({

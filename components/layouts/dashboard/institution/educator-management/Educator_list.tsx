@@ -74,11 +74,6 @@ const EducatorList = () => {
     setSelectedTeacher(null);
   };
 
-  const handleShowTeacherNominationModal = () => {
-    handleClose();
-    showModal(<EducatorNomination educatorId={selectedTeacher?.id ?? null} />);
-  };
-
   const { updateStatus, loading: statusLoading } = useUpdateTeacherStatus();
 
   const handleStatusChange = async (id: string | number, newStatus: string) => {
@@ -315,7 +310,9 @@ const EducatorList = () => {
                           </FormControl>
                         )}
                       </TableCell>
-                      <TableCell>{teacher?.membershipId || "--"}</TableCell>
+                      <TableCell>
+                        {teacher?.memberships[0]?.membershipCode || "--"}
+                      </TableCell>
 
                       <TableCell>
                         <IconButton onClick={(e) => handleClick(e, teacher)}>

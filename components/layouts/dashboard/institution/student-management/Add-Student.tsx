@@ -5,7 +5,10 @@ import {
   Box,
   Button,
   Card,
+  CircularProgress,
   Grid,
+  IconButton,
+  InputAdornment,
   Stack,
   TextField,
   Typography,
@@ -22,8 +25,13 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import moment from "moment";
 import { montserrat, roboto } from "@/utils/fonts";
+import { useAddStudent } from "@/hooks/school/useStudent";
+import { INSTITUTION_ADD_STUDENT_REQUEST } from "@/utils/type";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const AddStudentComponent = () => {
+  const { createLoading, createStudent } = useAddStudent();
+
   const formik = useFormik({
     initialValues: {
       membershipType: "",
@@ -43,21 +51,40 @@ const AddStudentComponent = () => {
       motherEmail: "",
       motherProfession: "",
       grade: "",
+      countryCode: "",
+      password: "",
     },
     validationSchema: studentValidationSchema,
     onSubmit: (values) => {
-      const payload: any = {};
-      Object.keys(values).forEach((key) => {
-        const value = (values as any)[key];
-        if (value !== "" && value !== null && value !== undefined) {
-          payload[key] = value;
-        }
-      });
-      console.log("payload", payload);
+      const payload = {
+        email: values?.email,
+        firstName: values?.firstName,
+        lastName: values?.lastName,
+        phone: values?.phoneNumber,
+        gender: values?.gender,
+        // dob: moment(values?.dob).format("YYYY-MM-DD"),
+        grade: values?.grade,
+        countryCode: values?.countryCode,
+        fatherName: values?.fatherName,
+        fatherEmail: values?.fatherEmail,
+        fatherPhone: values?.fatherPhoneNumber,
+        fatherProfession: values?.fatherProfession,
+        motherName: values?.motherName,
+        motherPhone: values?.motherPhoneNumber,
+        motherEmail: values?.motherEmail,
+        motherProfession: values?.motherProfession,
+        password: values?.password,
+      };
+
+      createStudent(payload as INSTITUTION_ADD_STUDENT_REQUEST);
     },
   });
 
-  console.log("firsttest", formik.errors);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const [phone, setPhone] = useState("");
 
@@ -71,22 +98,21 @@ const AddStudentComponent = () => {
     switch (id) {
       case "phoneNumber":
         setPhone(value);
-        formik.setFieldValue("phoneNumber", countryData?.nationalNumber);
         break;
       case "fatherPhoneNumber":
         setFatherPhoneNumber(value);
-        formik.setFieldValue("fatherPhoneNumber", countryData?.nationalNumber);
         break;
       case "motherPhoneNumber":
         setMotherPhoneNumber(value);
-        formik.setFieldValue("motherPhoneNumber", countryData?.nationalNumber);
+
         break;
       default:
         break;
     }
     const isValidTel = matchIsValidTel(value);
     if (isValidTel) {
-      formik.setFieldValue(id, value);
+      formik.setFieldValue(id, countryData?.nationalNumber);
+      formik.setFieldValue("countryCode", countryData?.countryCallingCode);
     } else {
       formik.setFieldError(id, "Please Enter Valid Phone Number");
     }
@@ -270,7 +296,7 @@ const AddStudentComponent = () => {
                 fullWidth
               />
             </Grid>
-            <Grid size={6}>
+            {/* <Grid size={6}>
               <LocalizationProvider dateAdapter={AdapterMoment}>
                 <DatePicker
                   label="Date of Birth"
@@ -297,7 +323,7 @@ const AddStudentComponent = () => {
                   maxDate={moment()}
                 />
               </LocalizationProvider>
-            </Grid>
+            </Grid> */}
             <Grid size={6}>
               <Autocomplete
                 renderInput={(params) => (
@@ -325,6 +351,32 @@ const AddStudentComponent = () => {
                 sx={{ ...TEXTFIELD_STYLE_VALIDATION, width: "100%" }}
                 value={formik.values.gender}
                 onBlur={formik.handleBlur}
+              />
+            </Grid>
+            <Grid size={6}>
+              <TextField
+                label="Password"
+                fullWidth
+                id="password"
+                onChange={formik.handleChange}
+                type={showPassword ? "text" : "password"}
+                slotProps={{
+                  input: {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton onClick={handleTogglePassword}>
+                          {showPassword ? (
+                            <VisibilityOff
+                              sx={{ color: COLORS.PRIMARY_NAVY }}
+                            />
+                          ) : (
+                            <Visibility sx={{ color: COLORS.PRIMARY_NAVY }} />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  },
+                }}
               />
             </Grid>
             <Grid size={12}>
@@ -516,9 +568,19 @@ const AddStudentComponent = () => {
                   p: 1,
                 }}
                 type="submit"
-                disabled={formik.isSubmitting}
               >
-                Submit
+                {createLoading ? (
+                  <CircularProgress
+                    sx={{
+                      fontSize: 10,
+                      width: 20,
+                      height: 20,
+                      color: COLORS.WHITE,
+                    }}
+                  />
+                ) : (
+                  "Submit"
+                )}
               </Button>
             </Grid>
           </Grid>

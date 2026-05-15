@@ -201,8 +201,11 @@ export interface TEACHER_REPONSE_PROPS {
   phone: string;
   primarySubjects: string[];
   approvalStatus: string;
-  membershipId: string;
+
   userId: string;
+  memberships: {
+    membershipCode: number | string;
+  }[];
 }
 
 export interface INSTITUTION_ADD_EDUCATOR_REQUEST {
@@ -236,7 +239,7 @@ export interface NOMINATE_TEACHER_FOR_TRAINING_REQUEST {
 export interface INSTITUTION_ADD_STUDENT_REQUEST {
   email: string;
   firstName: string;
-  lastname: string;
+  lastName: string;
   password: string;
   phone: string;
   countryCode: string;
@@ -252,4 +255,95 @@ export interface INSTITUTION_ADD_STUDENT_REQUEST {
   gender: GENDER_TYPE;
   profileImage: File | null;
   dob: string;
+}
+
+export interface STUDENT_RESPONSE_PROPS {
+  id: number;
+  email: string;
+  username: string;
+  phone: string;
+  countryCode: string;
+  isdCode: string | null;
+  isEmailVerified: boolean;
+  isPhoneVerified: boolean;
+  fullName: string;
+  firstName: string;
+  lastName: string;
+  bio: string | null;
+  profileImage: string | null;
+  hashedRefreshToken: string | null;
+  lastLoginAt: string | null;
+  tokenVersion: number;
+  role: string;
+  status: string;
+  schoolId: number;
+  grade: string;
+  state: string | null;
+  dob: string | null;
+  spocDetails: string | null;
+  city: string | null;
+  totalSchools: number | null;
+  totalStudents: number | null;
+  totalTeachers: number | null;
+  category: string | null;
+  gender: string;
+  approvalStatus: string;
+  primarySubjects: string[];
+  experienceYears: number | null;
+  experienceMonths: number | null;
+  fatherName: string;
+  fatherEmail: string;
+  fatherPhone: string;
+  fatherProfession: string;
+  motherName: string;
+  motherEmail: string;
+  motherPhone: string;
+  motherProfession: string;
+  school: INSTITUTION_BY_BOARD_PROPS & {
+    countryId: number;
+    schoolLogoDownloadUrl: string | null;
+    contactPersonName: string;
+    contactPersonEmail: string;
+    contactPersonPhone: string;
+  };
+  boardId: number;
+  board: {
+    id: number;
+    name: string;
+    code: string;
+    description: string | null;
+    logo: string;
+    isActive: boolean;
+    state: string | null;
+    countryId: number;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+    boardLogoDownloadUrl: string;
+  };
+  countryId: number;
+  country: {
+    id: number;
+    name: string;
+    code: string;
+    phoneCode: string;
+    currencyCode: string;
+    isActive: boolean;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+  };
+  memberships: {
+    membershipCode: string | number;
+  }[];
+  approvedAt: string;
+  rejectedAt: string | null;
+  rejectReason: string | null;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+  isNominated: boolean;
+  userId: string;
+  isMembershipActive: boolean;
+  profileImageDownloadUrl: string | null;
 }

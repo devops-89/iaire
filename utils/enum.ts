@@ -11,9 +11,9 @@ export enum COLORS {
 }
 
 export enum USER_ROLES {
-  INSTITUTION = "institution",
-  EDUCATOR = "mentor",
-  STUDENT = "student",
+  INSTITUTION = "INSTITUTION",
+  EDUCATOR = "MENTOR",
+  STUDENT = "STUDENT",
   SCHOOL_ADMIN = "SCHOOL_ADMIN",
   TEACHER = "TEACHER",
   SCHOOL = "SCHOOL",
