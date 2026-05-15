@@ -9,10 +9,10 @@ const InstitutionDashboardLayout = ({
   children: React.ReactNode;
 }) => {
   const { institutionData } = useSignup();
-  const isMember =
-    institutionData?.payments.some(
-      (val: any) => val.membership?.status === "ACTIVE",
-    ) || false;
+  // console.log("institutionData", institutionData);
+  const isMember = institutionData?.payments?.some(
+    (val: any) => val.membership?.status === "ACTIVE",
+  );
   return (
     <Box sx={{ backgroundColor: "#f8f9fa", minHeight: "100vh" }}>
       <Box
@@ -54,18 +54,6 @@ const InstitutionDashboardLayout = ({
               Activate your membership now to unlock full access to your
               educator dashboard and features.
             </Typography>
-            {/* {planData.map((val, i) => (
-              <PlanCard
-                name={val.name}
-                currency={val.currency}
-                price={val.price}
-                billingCycle={val.billingCycle}
-                limits={val.limits}
-                id={val.id}
-                createPayment={createPayment}
-                loading={planLoading}
-              />
-            ))} */}
           </Box>
         </Backdrop>
         {children}

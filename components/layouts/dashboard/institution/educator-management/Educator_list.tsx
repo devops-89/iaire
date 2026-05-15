@@ -147,7 +147,7 @@ const EducatorList = () => {
           <Link href="/dashboard/institution/educator-management/add-educator">
             <Button
               sx={{
-                backgroundColor: COLORS.RED,
+                backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
                 fontFamily: roboto.style.fontFamily,
                 fontWeight: 700,
@@ -165,7 +165,17 @@ const EducatorList = () => {
         <Tabs
           value={tabValue}
           onChange={handleChangeTab}
-          sx={{ borderBottom: "1px solid #E0E0E0", mt: 1, mb: 2 }}
+          sx={{
+            borderBottom: "1px solid #E0E0E0",
+            mt: 1,
+            mb: 2,
+            "& .MuiTabs-indicator": {
+              backgroundColor: COLORS.PRIMARY_NAVY,
+            },
+            "& .Mui-selected": {
+              color: COLORS.PRIMARY_NAVY,
+            },
+          }}
         >
           {USER_TABS.map((val, i) => (
             <Tab label={val.label} key={i} value={val.value} />

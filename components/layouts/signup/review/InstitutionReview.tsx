@@ -39,8 +39,6 @@ const InstitutionReview = () => {
   }
   console.log("isnt", institutionData);
   const handleCheckout = async () => {
-    // try {
-
     const schoolData = {
       schoolName: institutionData.institutionName,
       principalName: institutionData.principalName,
@@ -66,13 +64,8 @@ const InstitutionReview = () => {
       contactPersonEmail: institutionData?.contactPersonEmail,
       contactPersonPhone: institutionData?.contactPersonPhone,
     };
-    try {
-      const data = await createSchool(schoolData as unknown as InstitutionInfo);
-      showModal(<VerifyOtp email={institutionData?.email} />);
-    } catch (error) {
-      setSnackbar("Something went wrong", "error");
-      console.log(error);
-    }
+
+    await createSchool(schoolData as unknown as InstitutionInfo);
   };
 
   const DataRow = ({ label, value }: { label: string; value: any }) => (

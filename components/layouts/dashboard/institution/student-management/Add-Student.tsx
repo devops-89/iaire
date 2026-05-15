@@ -28,7 +28,8 @@ const AddStudentComponent = () => {
     initialValues: {
       membershipType: "",
       membershipId: "",
-      fullName: "",
+      firstName: "",
+      lastName: "",
       dob: null,
       email: "",
       phoneNumber: "",
@@ -45,24 +46,40 @@ const AddStudentComponent = () => {
     },
     validationSchema: studentValidationSchema,
     onSubmit: (values) => {
-      console.log("values", values);
+      const payload: any = {};
+      Object.keys(values).forEach((key) => {
+        const value = (values as any)[key];
+        if (value !== "" && value !== null && value !== undefined) {
+          payload[key] = value;
+        }
+      });
+      console.log("payload", payload);
     },
   });
+
+  console.log("firsttest", formik.errors);
 
   const [phone, setPhone] = useState("");
 
   const [fatherPhoneNumber, setFatherPhoneNumber] = useState("");
   const [motherPhoneNumber, setMotherPhoneNumber] = useState("");
-  const handleChangePhoneNumber = (id: string, value: string) => {
+  const handleChangePhoneNumber = (
+    id: string,
+    value: string,
+    countryData: MuiTelInputInfo,
+  ) => {
     switch (id) {
       case "phoneNumber":
         setPhone(value);
+        formik.setFieldValue("phoneNumber", countryData?.nationalNumber);
         break;
       case "fatherPhoneNumber":
         setFatherPhoneNumber(value);
+        formik.setFieldValue("fatherPhoneNumber", countryData?.nationalNumber);
         break;
       case "motherPhoneNumber":
         setMotherPhoneNumber(value);
+        formik.setFieldValue("motherPhoneNumber", countryData?.nationalNumber);
         break;
       default:
         break;
@@ -173,17 +190,33 @@ const AddStudentComponent = () => {
             <Grid size={6}>
               <TextField
                 fullWidth
-                label="Full Name"
+                label="First Name"
                 sx={TEXTFIELD_STYLE_VALIDATION}
-                id="fullName"
-                name="fullName"
-                value={formik.values.fullName}
+                id="firstName"
+                name="firstName"
+                value={formik.values.firstName}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.fullName && Boolean(formik.errors.fullName)
+                  formik.touched.firstName && Boolean(formik.errors.firstName)
                 }
-                helperText={formik.touched.fullName && formik.errors.fullName}
+                helperText={formik.touched.firstName && formik.errors.firstName}
+              />
+            </Grid>
+            <Grid size={6}>
+              <TextField
+                fullWidth
+                label="Last Name"
+                sx={TEXTFIELD_STYLE_VALIDATION}
+                id="lastName"
+                name="lastName"
+                value={formik.values.lastName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.lastName && Boolean(formik.errors.lastName)
+                }
+                helperText={formik.touched.lastName && formik.errors.lastName}
               />
             </Grid>
             <Grid size={6}>
@@ -222,8 +255,8 @@ const AddStudentComponent = () => {
                 id="phoneNumber"
                 name="phoneNumber"
                 value={phone}
-                onChange={(value) =>
-                  handleChangePhoneNumber("phoneNumber", value)
+                onChange={(value, info) =>
+                  handleChangePhoneNumber("phoneNumber", value, info)
                 }
                 onBlur={formik.handleBlur}
                 error={
@@ -347,8 +380,8 @@ const AddStudentComponent = () => {
                 id={"fatherPhoneNumber"}
                 name={"fatherPhoneNumber"}
                 value={fatherPhoneNumber}
-                onChange={(value) => {
-                  handleChangePhoneNumber("fatherPhoneNumber", value);
+                onChange={(value, info) => {
+                  handleChangePhoneNumber("fatherPhoneNumber", value, info);
                 }}
                 onBlur={formik.handleBlur}
                 error={
@@ -435,8 +468,8 @@ const AddStudentComponent = () => {
                 id={"motherPhoneNumber"}
                 name={"motherPhoneNumber"}
                 value={motherPhoneNumber}
-                onChange={(value) => {
-                  handleChangePhoneNumber("motherPhoneNumber", value);
+                onChange={(value, info) => {
+                  handleChangePhoneNumber("motherPhoneNumber", value, info);
                 }}
                 onBlur={formik.handleBlur}
                 error={
@@ -474,7 +507,7 @@ const AddStudentComponent = () => {
               <Button
                 sx={{
                   width: 300,
-                  backgroundColor: COLORS.RED,
+                  backgroundColor: COLORS.PRIMARY_NAVY,
                   color: COLORS.WHITE,
                   fontFamily: montserrat.style.fontFamily,
                   fontSize: 16,

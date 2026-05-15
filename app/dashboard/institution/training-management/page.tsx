@@ -1,11 +1,10 @@
-import TrainingList from "@/components/widgets/training-management/TrainingList";
+import InstitutionTrainingList from "@/components/layouts/dashboard/institution/training-management/Training-list";
 import { Box } from "@mui/material";
-import React from "react";
 
 const Trainingmanagement = () => {
   return (
     <Box>
-      <TrainingList />
+      <InstitutionTrainingList />
     </Box>
   );
 };

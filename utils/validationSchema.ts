@@ -189,9 +189,10 @@ export const studentValidationSchema = Yup.object({
     then: (schema) => schema.required("Member ID is required"),
     otherwise: (schema) => schema.notRequired(),
   }),
-  fullName: Yup.string().required("Full name is required"),
+  firstName: Yup.string().required("First name is required"),
+  lastName: Yup.string().required("Last name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
-  phone: Yup.string()
+  phoneNumber: Yup.string()
     .test(
       "is-valid-phone",
       "Phone number must be at least 10 digits",
@@ -201,7 +202,6 @@ export const studentValidationSchema = Yup.object({
       },
     )
     .required("Phone number is required"),
-  category: Yup.string().required("Please Select Category"),
   grade: Yup.string().required("Please Enter Grade"),
   dob: Yup.string().required("Please Enter Date of Birth"),
   gender: Yup.string().required("Please Select Gender"),
@@ -225,16 +225,7 @@ export const studentValidationSchema = Yup.object({
     .email("Invalid email")
     .required("Mother's email is required"),
   motherProfession: Yup.string().required("Mother's profession is required"),
-  phoneNumber: Yup.string()
-    .test(
-      "is-valid-phone",
-      "Phone number must be at least 10 digits",
-      (value) => {
-        const digits = value?.replace(/\D/g, "");
-        return digits ? digits.length >= 10 : false;
-      },
-    )
-    .required("Phone number is required"),
+
   fatherPhoneNumber: Yup.string()
     .test(
       "is-valid-phone",

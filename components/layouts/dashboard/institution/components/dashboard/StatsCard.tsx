@@ -34,7 +34,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
             left: 0,
             right: 0,
             height: "4px",
-            background: `linear-gradient(90deg, ${COLORS.BLUE} 0%, ${COLORS.RED} 100%)`,
+            background: `linear-gradient(90deg, ${COLORS.PRIMARY_NAVY} 0%, ${COLORS.ACCENT_TAN} 100%)`,
           }}
         />
 

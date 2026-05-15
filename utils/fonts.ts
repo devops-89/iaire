@@ -1,4 +1,5 @@
 import { Inter, Montserrat, Roboto_Slab } from "next/font/google";
+import localFont from "next/font/local";
 export const roboto = Roboto_Slab({
   weight: "variable",
   subsets: ["latin"],
@@ -9,8 +10,25 @@ export const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
-
 export const inter = Inter({
   subsets: ["latin"],
   weight: "variable",
+});
+
+export const aloeveraDisplay_medium = localFont({
+  src: "../public/fonts/aloevera/AloeveraDisplay-Medium.ttf",
+  variable: "--font-aloevera",
+  weight: "500",
+});
+
+export const newBlack_medium = localFont({
+  src: "../public/fonts/newBlack/NewBlackTypeface-Medium.ttf",
+  weight: "500",
+  variable: "--font-newBlack",
+});
+
+export const newBlack_light = localFont({
+  src: "../public/fonts/newBlack/NewBlackTypeface-Light.ttf",
+  weight: "300",
+  variable: "--font-newBlack",
 });

@@ -1,5 +1,6 @@
 "use client";
 import { COLORS } from "@/utils/enum";
+import { roboto } from "@/utils/fonts";
 import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
@@ -39,13 +40,13 @@ const Navbar = () => {
 
   const pathname = usePathname();
 
-  console.log("pathname", pathname);
+  // console.log("pathname", pathname);
 
   return (
     <AppBar
-      position="fixed"
+      position="absolute"
       sx={{
-        backgroundColor: "#0B1726",
+        backgroundColor: COLORS.PRIMARY_NAVY,
         boxShadow: "none",
         borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
       }}
@@ -65,7 +66,7 @@ const Navbar = () => {
               sx={{
                 width: 40,
                 height: 40,
-                bgcolor: "#D4AF37",
+                bgcolor: COLORS.ACCENT_TAN,
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
@@ -105,23 +106,31 @@ const Navbar = () => {
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{
-                    color: pathname === link.href ? "#D4AF37" : COLORS.WHITE,
+                    color:
+                      pathname === link.href
+                        ? COLORS.PRIMARY_NAVY
+                        : COLORS.WHITE,
                     fontSize: "14px",
                     fontWeight: 500,
                     px: 2,
                     py: 1,
                     textTransform: "none",
-                    fontFamily: '"Inter", sans-serif',
-                    bgcolor: pathname === link.href ? "#1A2533" : "transparent",
+                    fontFamily: roboto.style.fontFamily,
+                    bgcolor:
+                      pathname === link.href
+                        ? COLORS.PRIMARY_GOLD
+                        : "transparent",
                     "&:hover": {
-                        color: "#D4AF37",
-                        bgcolor: "#1A2533",
+                      color: COLORS.WHITE,
+                      bgcolor: COLORS.PRIMARY_GOLD,
+                      borderRadius: "10px",
                     },
                     ...(pathname === link.href && {
-                      bgcolor: "#1A2533",
+                      bgcolor: COLORS.PRIMARY_GOLD,
                       borderRadius: "10px",
                       px: 2.5,
                     }),
+                    borderRadius: "10px",
                   }}
                 >
                   {link.title}
@@ -210,29 +219,34 @@ const Navbar = () => {
                 "& .MuiPaper-root": {
                   bgcolor: "#0B1726",
                   color: COLORS.WHITE,
-                  width:"100%",
-                  mt:1.5,
-                  position:"absolute",
-                  right:20,
-                  borderRadius:"12px",
-                  border:"1px solid rgba(255,255,255,0.05)"
+                  width: "100%",
+                  mt: 1.5,
+                  position: "absolute",
+                  right: 20,
+                  borderRadius: "12px",
+                  border: "1px solid rgba(255,255,255,0.05)",
                 },
               }}
             >
               {navLinks.map((link) => (
-                <MenuItem key={link.title} onClick={handleCloseNavMenu}
-                sx={{
-                      bgcolor: pathname === link.href ? "#1A2533" : "transparent",
-                      "&:hover": {
-                        bgcolor: "#1A2533",
-                      },
-                    }}>
-                  <Typography
-                  textAlign="center"
+                <MenuItem
+                  key={link.title}
+                  onClick={handleCloseNavMenu}
                   sx={{
-                    color: pathname === link.href ? "#D4AF37" : COLORS.WHITE,
+                    bgcolor: pathname === link.href ? "#1A2533" : "transparent",
+                    "&:hover": {
+                      bgcolor: "#1A2533",
+                    },
                   }}
-                  >{link.title}</Typography>
+                >
+                  <Typography
+                    textAlign="center"
+                    sx={{
+                      color: pathname === link.href ? "#D4AF37" : COLORS.WHITE,
+                    }}
+                  >
+                    {link.title}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>

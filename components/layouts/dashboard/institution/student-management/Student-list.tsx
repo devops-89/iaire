@@ -85,7 +85,7 @@ const StudentList = () => {
           <Link href="/dashboard/institution/student-management/add-student">
             <Button
               sx={{
-                backgroundColor: COLORS.RED,
+                backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
                 fontFamily: roboto.style.fontFamily,
                 fontWeight: 700,

@@ -45,12 +45,12 @@ const InstitutionHeader = () => {
   const open = Boolean(anchorEl);
 
   const { institutionData } = useSignup();
-  const isMember =
-    institutionData?.payments.some(
-      (val: any) => val.membership?.status === "ACTIVE",
-    ) || false;
+  // const isMember =
+  //   institutionData?.payments?.some(
+  //     (val: any) => val.membership?.status === "ACTIVE",
+  //   ) || false;
 
-  console.log("institutionData", institutionData);
+  // console.log("institutionData", institutionData);
 
   return (
     <Box

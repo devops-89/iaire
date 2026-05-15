@@ -1,12 +1,13 @@
 export enum COLORS {
   WHITE = "#ffffff",
   BLACK = "#000000",
-  PRIMARY_NAVY = "#0B1727",
-  ACCENT_TAN = "#D1A054",
+  PRIMARY_NAVY = "#015A50",
+  ACCENT_TAN = "#E1E0DA",
   NAVY_GRADIENT_START = "#0B1727",
   NAVY_GRADIENT_END = "#16222F",
   RED = "#C61530",
-  BLUE = "#1C4282",
+  BLUE = "#3C6D87",
+  PRIMARY_GOLD = "#E1E0DA",
 }
 
 export enum USER_ROLES {

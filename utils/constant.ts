@@ -2393,3 +2393,26 @@ export const CURRENCIES = [
   //   name_plural: "Zambian kwachas",
   // },
 ];
+
+export const HEADER_CONTENT = [
+  {
+    label: "Home",
+    url: "/",
+  },
+  {
+    label: "About",
+    url: "/about",
+  },
+  {
+    label: "Membership",
+    url: "/membership",
+  },
+  {
+    label: "Fellows",
+    url: "/fellows",
+  },
+  {
+    label: "Programs",
+    url: "/programs",
+  },
+];

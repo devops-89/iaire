@@ -49,7 +49,7 @@ const InstitutionSidebar = () => {
           <Typography
             sx={{
               fontSize: 30,
-              color: COLORS.RED,
+              color: COLORS.PRIMARY_NAVY,
               textAlign: "center",
               fontFamily: roboto.style.fontFamily,
               pt: 2,
@@ -77,12 +77,14 @@ const InstitutionSidebar = () => {
                     borderRadius: "8px",
                     mb: 0.5,
                     backgroundColor:
-                      pathname === val.url ? COLORS.RED : "transparent",
+                      pathname === val.url
+                        ? COLORS.PRIMARY_NAVY
+                        : "transparent",
                     ":hover": {
                       backgroundColor:
                         pathname === val.url
-                          ? COLORS.RED
-                          : "rgba(198, 21, 48, 0.1)",
+                          ? COLORS.PRIMARY_NAVY
+                          : "rgba(12, 10, 10, 0.1)",
                     },
                     color: pathname === val.url ? COLORS.WHITE : COLORS.BLACK,
                   }}
