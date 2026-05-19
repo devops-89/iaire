@@ -1,9 +1,10 @@
 import {
+  CREATE_TEAM_REQUEST,
   INSTITUTION_ADD_EDUCATOR_REQUEST,
   INSTITUTION_ADD_STUDENT_REQUEST,
   NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
 } from "@/utils/type";
-import { trainingSecuredApi, userSecuredApi } from "./config";
+import { teamSecuredApi, trainingSecuredApi, userSecuredApi } from "./config";
 
 export const schoolControllers = {
   createTeacher: async (data: INSTITUTION_ADD_EDUCATOR_REQUEST) => {
@@ -51,6 +52,15 @@ export const schoolControllers = {
         action: status,
         ...(rejectReason && { rejectReason }),
       });
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  createTeam: async (data: CREATE_TEAM_REQUEST) => {
+    try {
+      const result = await teamSecuredApi.post("/create", data);
       return result.data;
     } catch (error) {
       throw error;

@@ -76,6 +76,18 @@ batchSecuredApi.interceptors.request.use((config) => {
   return config;
 });
 
+const teamSecuredApi = axios.create({
+  baseURL: serverConstants.team,
+});
+
+teamSecuredApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export {
   userPublicApi,
   userSecuredApi,
@@ -86,4 +98,5 @@ export {
   trainingSecuredApi,
   securedPlansApi,
   batchSecuredApi,
+  teamSecuredApi,
 };

@@ -29,7 +29,7 @@ export const useGetAllUser = () => {
     }
   };
 
-  return { userData, loading, fetchUserData };
+  return { userData, loading, fetchUserData, setUserData };
 };
 
 export const useUpdateTeacherStatus = () => {

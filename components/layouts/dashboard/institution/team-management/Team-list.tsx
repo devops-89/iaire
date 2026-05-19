@@ -20,8 +20,17 @@ import {
   TEAM_LIST_HEADER_DATA,
 } from "@/utils/constant";
 import TeamListTable from "./components/Team-List-Table";
+import Link from "next/link";
+import { useModal } from "@/store/useModal";
+import AddTeams from "@/components/modals/school/CreateTeam";
 
 const TeamList = () => {
+  const { showModal } = useModal();
+
+  const handleAddTeam = () => {
+    showModal(<AddTeams />);
+  };
+
   return (
     <Box>
       <InstitutionDashboardLayout>
@@ -50,15 +59,17 @@ const TeamList = () => {
                 },
               ]}
             />
+
             <Button
               sx={{
-                backgroundColor: COLORS.RED,
+                backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
                 fontFamily: roboto.style.fontFamily,
                 borderRadius: "10px",
                 padding: "10px 20px",
               }}
               endIcon={<Add />}
+              onClick={handleAddTeam}
             >
               Add Team
             </Button>

@@ -347,3 +347,11 @@ export interface STUDENT_RESPONSE_PROPS {
   isMembershipActive: boolean;
   profileImageDownloadUrl: string | null;
 }
+
+export interface CREATE_TEAM_REQUEST {
+  title: string;
+  type: CATEGORY;
+  mentorId: number | string;
+  assistantMentorId?: number | string;
+  studentIds: number[] | string[];
+}

@@ -239,6 +239,15 @@ export const studentValidationSchema = Yup.object({
   password: Yup.string().required("Password is required"),
 });
 
+export const addTeamValidationSchema = Yup.object({
+  title: Yup.string().required("Team Title is required"),
+  type: Yup.string().required("Category is required"),
+  mentorId: Yup.mixed().required("Mentor is required"),
+  studentIds: Yup.array()
+    .min(1, "Select at least one student")
+    .required("Students are required"),
+});
+
 export const loginValidationSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),

@@ -8,4 +8,5 @@ export const serverConstants = {
   payment: `${baseURL}/payments`,
   training: `${baseURL}/training`,
   batch: `${baseURL}/batch`,
+  team: `${baseURL}/team`,
 };

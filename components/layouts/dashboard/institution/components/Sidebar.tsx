@@ -48,7 +48,7 @@ const InstitutionSidebar = () => {
         <Box>
           <Typography
             sx={{
-              fontSize: 30,
+              fontSize: 25,
               color: COLORS.PRIMARY_NAVY,
               textAlign: "center",
               fontFamily: roboto.style.fontFamily,
