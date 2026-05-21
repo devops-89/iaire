@@ -265,7 +265,7 @@ const EducatorList = () => {
                       </TableCell>
                       <TableCell>
                         {teacher?.approvalStatus ===
-                        APPROVAL_STATUS.APPROVED ? (
+                          APPROVAL_STATUS.APPROVED ? (
                           <Chip
                             label={teacher?.approvalStatus}
                             color="success"
@@ -287,10 +287,10 @@ const EducatorList = () => {
                                 "& .MuiSelect-select": {
                                   color:
                                     teacher?.approvalStatus ===
-                                    APPROVAL_STATUS.APPROVED
+                                      APPROVAL_STATUS.APPROVED
                                       ? "#2e7d32"
                                       : teacher?.approvalStatus ===
-                                          APPROVAL_STATUS.PENDING
+                                        APPROVAL_STATUS.PENDING
                                         ? "#ed6c02"
                                         : "#d32f2f",
                                   fontWeight: 600,
@@ -311,7 +311,8 @@ const EducatorList = () => {
                         )}
                       </TableCell>
                       <TableCell>
-                        {teacher?.memberships[0]?.membershipCode || "--"}
+                        {/* {teacher?.memberships[0]?.membershipCode || "--"} */}
+                        {teacher?.memberships?.membershipCode || "--"}
                       </TableCell>
 
                       <TableCell>

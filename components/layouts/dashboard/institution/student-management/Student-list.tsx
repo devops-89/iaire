@@ -9,7 +9,7 @@ import { useModal } from "@/store/useModal";
 import useSnackbar from "@/store/useSnackbar";
 import { STUDENT_HEADER_DATA } from "@/utils/constant";
 import { APPROVAL_STATUS, COLORS, USER_ROLES } from "@/utils/enum";
-import { roboto } from "@/utils/fonts";
+import { aloeveraDisplay_medium, newBlack_light, newBlack_medium, newBlack_semiBold, roboto } from "@/utils/fonts";
 import { STUDENT_RESPONSE_PROPS } from "@/utils/type";
 import { Add, MoreVert } from "@mui/icons-material";
 import {
@@ -20,7 +20,6 @@ import {
   FormControl,
   IconButton,
   List,
-  ListItem,
   ListItemButton,
   ListItemText,
   MenuItem,
@@ -33,11 +32,11 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
+  Typography
 } from "@mui/material";
-import { Atom } from "react-loading-indicators";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Atom } from "react-loading-indicators";
 
 const StudentList = () => {
   const { showModal } = useModal();
@@ -122,7 +121,7 @@ const StudentList = () => {
               sx={{
                 backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
-                fontFamily: roboto.style.fontFamily,
+                fontFamily: aloeveraDisplay_medium.style.fontFamily,
                 fontWeight: 700,
                 fontSize: 16,
                 borderRadius: "10px",
@@ -140,7 +139,7 @@ const StudentList = () => {
               <TableHead>
                 <TableRow>
                   {STUDENT_HEADER_DATA.map((val, i) => (
-                    <TableCell key={i} sx={{ fontWeight: 600 }}>
+                    <TableCell key={i} sx={{ fontWeight: 600, fontFamily: newBlack_semiBold.style.fontFamily, fontSize: 16 }}>
                       {val}
                     </TableCell>
                   ))}
@@ -157,24 +156,25 @@ const StudentList = () => {
                   userData?.data.map(
                     (val: STUDENT_RESPONSE_PROPS, i: number) => (
                       <TableRow key={i}>
-                        <TableCell>{val.userId}</TableCell>
+                        <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.userId}</TableCell>
                         <TableCell>
                           <Typography
                             sx={{
                               color: COLORS.BLACK,
                               fontWeight: 500,
                               fontSize: 15,
+                              fontFamily: newBlack_medium.style.fontFamily
                             }}
                           >
                             {val.fullName}
                           </Typography>
-                          <Typography sx={{ fontSize: 12 }}>
+                          <Typography sx={{ fontSize: 12, fontFamily: newBlack_medium.style.fontFamily }}>
                             {val.email}
                           </Typography>
                         </TableCell>
-                        <TableCell>{val.phone}</TableCell>
-                        <TableCell>{val.grade}</TableCell>
-                        <TableCell>{val.gender}</TableCell>
+                        <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.phone}</TableCell>
+                        <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.grade}</TableCell>
+                        <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.gender}</TableCell>
                         <TableCell>
                           {val?.approvalStatus === APPROVAL_STATUS.APPROVED ? (
                             <Chip label={val?.approvalStatus} color="success" />
@@ -195,13 +195,14 @@ const StudentList = () => {
                                   "& .MuiSelect-select": {
                                     color:
                                       val?.approvalStatus ===
-                                      APPROVAL_STATUS.APPROVED
+                                        APPROVAL_STATUS.APPROVED
                                         ? "#2e7d32"
                                         : val?.approvalStatus ===
-                                            APPROVAL_STATUS.PENDING
+                                          APPROVAL_STATUS.PENDING
                                           ? "#ed6c02"
                                           : "#d32f2f",
                                     fontWeight: 600,
+                                    fontFamily: newBlack_medium.style.fontFamily
                                   },
                                 }}
                               >
@@ -210,7 +211,7 @@ const StudentList = () => {
                                     <MenuItem
                                       key={status}
                                       value={status}
-                                      sx={{ fontSize: "13px" }}
+                                      sx={{ fontSize: "13px", fontFamily: newBlack_medium.style.fontFamily }}
                                     >
                                       {status}
                                     </MenuItem>
@@ -221,7 +222,7 @@ const StudentList = () => {
                           )}
                         </TableCell>
                         <TableCell>
-                          {val.memberships[0]?.membershipCode || "--"}
+                          {val.memberships?.[0]?.membershipCode || "--"}
                         </TableCell>
                         <TableCell>
                           <IconButton onClick={(e) => handlePopover(e, val)}>

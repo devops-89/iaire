@@ -77,7 +77,7 @@ export const useApprovedNominateTeacher = () => {
   const [approveTeacherNominationLoading, setApproveTeacherNominationLoading] =
     useState(false);
 
-  const ApproveTeacherNomination = async (id: string, status: string) => {
+  const ApproveTeacherNomination = async (id: number | string, status: string) => {
     setApproveTeacherNominationLoading(true);
     await schoolControllers
       .approveTeacherNomination(id, status)

@@ -21,7 +21,7 @@ import {
 import React, { useEffect, useState } from "react";
 import EducatorDashboardLayout from "@/components/layouts/dashboard/educator/Index";
 import { montserrat, roboto } from "@/utils/fonts";
-import { COLORS, TRAINING_NOMINATION_STATUS, USER_ROLES } from "@/utils/enum";
+import { COLORS, TRAINING_MODE, TRAINING_NOMINATION_STATUS, USER_ROLES } from "@/utils/enum";
 import { useModal } from "@/store/useModal";
 import EducatorNomination from "@/components/modals/TeacherNomination";
 import {
@@ -38,6 +38,7 @@ import { Atom } from "react-loading-indicators";
 import RejectReason from "@/components/modals/school/RejectReason";
 import TeacherSelfNomination from "@/components/modals/mentor/SelfNomination";
 import InstitutionDashboardLayout from "../Index";
+import { TRAINING_DETAILS_PROPS, TRAINING_NOMINATION_RESPONSE } from "@/utils/type";
 
 const InstitutionTrainingList = () => {
   const { showModal } = useModal();
@@ -57,7 +58,7 @@ const InstitutionTrainingList = () => {
       ? SCHOOL_TRAINING_LIST_TABS
       : SCHOOL_TRAINING_LIST_TABS;
 
-  const handleStatusChange = async (e: any, id: string) => {
+  const handleStatusChange = async (e: any, id: string | number) => {
     if (e.target.value === TRAINING_NOMINATION_STATUS.REJECTED) {
       showModal(<RejectReason />);
     } else {
@@ -162,12 +163,12 @@ const InstitutionTrainingList = () => {
                       </TableCell>
                     </TableRow>
                   ) : data && data.length > 0 ? (
-                    data.map((val: any, i: number) => (
+                    data.map((val: TRAINING_NOMINATION_RESPONSE, i: number) => (
                       <TableRow key={val?.id || i}>
                         <TableCell>{val?.id}</TableCell>
                         <TableCell>{val?.training?.type}</TableCell>
 
-                        <TableCell>{val?.mode || "N/A"}</TableCell>
+                        <TableCell>{val?.training?.mode === TRAINING_MODE.ANY_OF_THE_ABOVE ? "Any As Available" : val?.training?.mode || "N/A"}</TableCell>
                         <TableCell>
                           {moment(val.training?.batch?.startDate)?.format(
                             "YYYY,MMM DD",
@@ -182,14 +183,14 @@ const InstitutionTrainingList = () => {
                         <TableCell>
                           {val.interviewScheduledAt
                             ? moment(val.interviewScheduledAt)?.format(
-                                "YYYY,MMM DD , hh:mm A",
-                              )
+                              "YYYY,MMM DD , hh:mm A",
+                            )
                             : "--"}
                         </TableCell>
 
                         {role === USER_ROLES.INSTITUTION ? (
                           val.status ===
-                          TRAINING_NOMINATION_STATUS.INTERVIEW_SCHEDULED ? (
+                            TRAINING_NOMINATION_STATUS.INTERVIEW_SCHEDULED ? (
                             <TableCell>
                               {val.status?.replace(/_/g, " ")?.toUpperCase()}
                             </TableCell>

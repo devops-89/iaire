@@ -3,8 +3,10 @@ import {
   INSTITUTION_ADD_EDUCATOR_REQUEST,
   INSTITUTION_ADD_STUDENT_REQUEST,
   NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
+  SCHOOL_ADD_INNOVATION_REQUEST_PROPS,
 } from "@/utils/type";
-import { teamSecuredApi, trainingSecuredApi, userSecuredApi } from "./config";
+import { innovationSecuredApi, teamSecuredApi, trainingSecuredApi, userSecuredApi } from "./config";
+import { CATEGORY } from "@/utils/enum";
 
 export const schoolControllers = {
   createTeacher: async (data: INSTITUTION_ADD_EDUCATOR_REQUEST) => {
@@ -43,7 +45,7 @@ export const schoolControllers = {
   },
 
   approveTeacherNomination: async (
-    id: string,
+    id: number | string,
     status: string,
     rejectReason?: string,
   ) => {
@@ -66,4 +68,26 @@ export const schoolControllers = {
       throw error;
     }
   },
+  getTeam: async ({ type }: { type?: CATEGORY }) => {
+    try {
+      const result = await teamSecuredApi.get("/all", {
+        params: {
+          type: type
+        }
+      });
+      return result.data
+    }
+    catch (error) {
+      throw error
+    }
+  },
+  addInnovationBySchool: async (data: SCHOOL_ADD_INNOVATION_REQUEST_PROPS) => {
+    try {
+      const result = await innovationSecuredApi.post("/create", data);
+      return result.data
+    }
+    catch (error) {
+      throw error
+    }
+  }
 };

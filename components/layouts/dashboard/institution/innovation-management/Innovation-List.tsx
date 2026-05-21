@@ -1,11 +1,12 @@
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { INNOVATION_DATA, INNOVATION_HEADER } from "@/utils/constant";
 import { COLORS, USER_STATUS } from "@/utils/enum";
-import { roboto } from "@/utils/fonts";
+import { aloeveraDisplay_medium, newBlack_medium, newBlack_semiBold, roboto } from "@/utils/fonts";
 import { Add, Delete, Edit } from "@mui/icons-material";
 import {
   Box,
   Button,
+  Card,
   Chip,
   IconButton,
   Stack,
@@ -15,14 +16,16 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 import Link from "next/link";
 
 const InnovationList = () => {
+
   return (
     <Box>
       <Box>
-        <Stack
+        {/* <Stack
           direction={"row"}
           alignItems={"center"}
           justifyContent={"space-between"}
@@ -126,7 +129,35 @@ const InnovationList = () => {
               ))}
             </TableBody>
           </Table>
-        </TableContainer>
+        </TableContainer> */}
+
+
+        <Box>
+          <Card sx={{ p: 2 }}>
+            <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
+              <Typography variant="h6" sx={{ fontFamily: newBlack_semiBold.style.fontFamily, fontWeight: 500, fontSize: 25, color: COLORS.BLACK }}>
+                Innovation Management
+              </Typography>
+              <Link href="/dashboard/institution/innovation-submission/add-innovation">
+                <Button
+                  sx={{
+                    backgroundColor: COLORS.PRIMARY_NAVY,
+                    color: COLORS.WHITE,
+                    fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                    fontWeight: 400,
+                    fontSize: 14,
+                    borderRadius: "10px",
+                    padding: "8px 24px",
+                    textTransform: "none"
+                  }}
+                  endIcon={<Add />}
+                >
+                  Add Team
+                </Button>
+              </Link>
+            </Stack>
+          </Card>
+        </Box>
       </Box>
     </Box>
   );

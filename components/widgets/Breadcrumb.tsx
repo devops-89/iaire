@@ -1,5 +1,5 @@
 "use client";
-import { roboto } from "@/utils/fonts";
+import { aloeveraDisplay_medium, newBlack_semiBold, roboto } from "@/utils/fonts";
 import { Box, Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
@@ -18,7 +18,7 @@ const Breadcrumb = ({ title, data }: BREADCRUMBPROPS) => {
       <Typography
         sx={{
           fontSize: 30,
-          fontFamily: roboto.style.fontFamily,
+          fontFamily: newBlack_semiBold.style.fontFamily,
           fontWeight: 500,
         }}
       >
@@ -42,7 +42,7 @@ const Breadcrumb = ({ title, data }: BREADCRUMBPROPS) => {
                 fontSize: 12,
                 fontWeight: 500,
                 textTransform: "capitalize",
-                fontFamily: roboto.style.fontFamily,
+                fontFamily: aloeveraDisplay_medium.style.fontFamily,
               }}
             >
               {item.title}

@@ -4,7 +4,7 @@ import { getUserDetails } from "@/hooks/common/getUserDetails";
 import { useMakePayment } from "@/hooks/common/useCreatePayment";
 import { useGetPlans } from "@/hooks/common/useGetPlans";
 import { useSignup } from "@/store/useSignup";
-import { COLORS, USER_ROLES } from "@/utils/enum";
+import { COLORS, USER_ROLES, USER_STATUS } from "@/utils/enum";
 import { Backdrop, Box, Typography } from "@mui/material";
 import React, { useState } from "react";
 
@@ -15,7 +15,7 @@ const EducatorDashboardLayout = ({
 }) => {
   const { educatorData } = useSignup();
 
-  const isMember = educatorData?.payments?.length > 0;
+  const isMember = educatorData?.payments?.length > 0 && educatorData?.payments.find((v: any) => v.membership?.status === USER_STATUS.ACTIVE)
 
   const { planData, planLoading } = useGetPlans({
     role: USER_ROLES.EDUCATOR_ADMIN,

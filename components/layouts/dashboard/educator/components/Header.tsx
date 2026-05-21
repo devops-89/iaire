@@ -82,6 +82,7 @@ const EducatorHeader = () => {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
+        sx={{ zIndex: 10000 }}
         PaperProps={{
           elevation: 0,
           sx: {
@@ -100,7 +101,7 @@ const EducatorHeader = () => {
               height: 10,
               bgcolor: "background.paper",
               transform: "translateY(-50%) rotate(45deg)",
-              zIndex: 0,
+              zIndex: 9999,
             },
           },
         }}

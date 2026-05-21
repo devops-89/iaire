@@ -18,7 +18,7 @@ const InstitutionDashboardLayout = ({
       <Box
         sx={{
           ml: { xs: 0, md: "250px" },
-          pt: "90px",
+          pt: "120px",
           pb: 4,
           px: { xs: 2, md: 4, lg: 6 },
           transition: "margin-left 0.3s ease",

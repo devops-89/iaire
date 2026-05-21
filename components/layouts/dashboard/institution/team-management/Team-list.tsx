@@ -8,11 +8,11 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import InstitutionDashboardLayout from "../Index";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { COLORS } from "@/utils/enum";
-import { roboto } from "@/utils/fonts";
+import { aloeveraDisplay_medium, roboto } from "@/utils/fonts";
 import { Add } from "@mui/icons-material";
 import {
   CATEGORY_TYPES,
@@ -23,6 +23,7 @@ import TeamListTable from "./components/Team-List-Table";
 import Link from "next/link";
 import { useModal } from "@/store/useModal";
 import AddTeams from "@/components/modals/school/CreateTeam";
+import { useGetTeam } from "@/hooks/school/useTeam";
 
 const TeamList = () => {
   const { showModal } = useModal();
@@ -30,6 +31,14 @@ const TeamList = () => {
   const handleAddTeam = () => {
     showModal(<AddTeams />);
   };
+
+  const { fetchData, loading, teamData } = useGetTeam()
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+  console.log("first", teamData)
 
   return (
     <Box>
@@ -64,7 +73,7 @@ const TeamList = () => {
               sx={{
                 backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
-                fontFamily: roboto.style.fontFamily,
+                fontFamily: aloeveraDisplay_medium.style.fontFamily,
                 borderRadius: "10px",
                 padding: "10px 20px",
               }}
@@ -90,7 +99,7 @@ const TeamList = () => {
           </Grid>
           <TeamListTable
             tableHeader={TEAM_LIST_HEADER_DATA}
-            tableData={TEAM_DATA_TABLE_DATA}
+            tableData={teamData?.data || []}
           />
         </Card>
       </InstitutionDashboardLayout>

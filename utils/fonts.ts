@@ -32,3 +32,10 @@ export const newBlack_light = localFont({
   weight: "300",
   variable: "--font-newBlack",
 });
+
+
+export const newBlack_semiBold = localFont({
+  src: "../public/fonts/newBlack/NewBlackTypeface-SemiBold.ttf",
+  weight: "600",
+  variable: "--font-newBlack",
+})

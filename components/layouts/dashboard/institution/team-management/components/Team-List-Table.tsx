@@ -1,6 +1,6 @@
 "use client";
-import { roboto } from "@/utils/fonts";
-import { TEAM_LIST_DATA_PROPS, TEAM_LIST_HEADER } from "@/utils/type";
+import { aloeveraDisplay_medium, newBlack_light, newBlack_medium, roboto } from "@/utils/fonts";
+import { TEAM_DETAILS_RESPONSE, TEAM_LIST_DATA_PROPS, TEAM_LIST_HEADER } from "@/utils/type";
 import { MoreVert } from "@mui/icons-material";
 import {
   Box,
@@ -24,7 +24,7 @@ const TeamListTable = ({
   tableData,
 }: {
   tableHeader: TEAM_LIST_HEADER[];
-  tableData: TEAM_LIST_DATA_PROPS[];
+  tableData: TEAM_DETAILS_RESPONSE[];
 }) => {
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const open = Boolean(anchorEl);
@@ -60,7 +60,7 @@ const TeamListTable = ({
                   sx={{
                     fontSize: 16,
                     fontWeight: 600,
-                    fontFamily: roboto.style.fontFamily,
+                    fontFamily: aloeveraDisplay_medium.style.fontFamily,
                   }}
                 >
                   {val.label}
@@ -75,7 +75,7 @@ const TeamListTable = ({
                   sx={{
                     fontSize: 14,
 
-                    fontFamily: roboto.style.fontFamily,
+                    fontFamily: newBlack_medium.style.fontFamily,
                   }}
                 >
                   {val.id}
@@ -84,28 +84,28 @@ const TeamListTable = ({
                   sx={{
                     fontSize: 14,
 
-                    fontFamily: roboto.style.fontFamily,
+                    fontFamily: newBlack_medium.style.fontFamily,
                   }}
                 >
-                  {val.teamName}
+                  {val.title}
                 </TableCell>
                 <TableCell
                   sx={{
                     fontSize: 14,
 
-                    fontFamily: roboto.style.fontFamily,
+                    fontFamily: newBlack_medium.style.fontFamily,
                   }}
                 >
-                  {val.mentorName}
+                  {val.mentor.firstName} {val.mentor.lastName}
                 </TableCell>
                 <TableCell
                   sx={{
                     fontSize: 14,
 
-                    fontFamily: roboto.style.fontFamily,
+                    fontFamily: newBlack_medium.style.fontFamily,
                   }}
                 >
-                  {val.assistantMentorName}
+                  {val.assistantMentor?.firstName || "--"} {val.assistantMentor?.lastName || "--"}
                 </TableCell>
                 <TableCell sx={{ textAlign: "center" }}>
                   <IconButton onClick={handlePopover}>

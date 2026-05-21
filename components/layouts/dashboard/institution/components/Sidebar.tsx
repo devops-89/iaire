@@ -15,7 +15,8 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { getUserDetails } from "@/hooks/common/getUserDetails";
-
+import logo from '@/images/logo/logo.png'
+import Image from "next/image";
 const InstitutionSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
@@ -45,20 +46,8 @@ const InstitutionSidebar = () => {
           overflowY: "auto",
         }}
       >
-        <Box>
-          <Typography
-            sx={{
-              fontSize: 25,
-              color: COLORS.PRIMARY_NAVY,
-              textAlign: "center",
-              fontFamily: roboto.style.fontFamily,
-              pt: 2,
-              pb: 2,
-              fontWeight: 600,
-            }}
-          >
-            IAIRE
-          </Typography>
+        <Box sx={{ width: 150, p: 1, margin: "auto" }}>
+          <Image src={logo} alt="" style={{ width: "100%", height: "auto" }} />
         </Box>
         <Divider sx={{ borderColor: "rgba(0, 0, 0, 0.08)" }} />
         <List sx={{ px: 1 }}>

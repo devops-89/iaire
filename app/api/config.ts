@@ -88,6 +88,18 @@ teamSecuredApi.interceptors.request.use((config) => {
   return config;
 });
 
+const innovationSecuredApi = axios.create({
+  baseURL: serverConstants.innovation
+})
+
+innovationSecuredApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token")
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+})
+
 export {
   userPublicApi,
   userSecuredApi,
@@ -99,4 +111,5 @@ export {
   securedPlansApi,
   batchSecuredApi,
   teamSecuredApi,
+  innovationSecuredApi
 };

@@ -4,6 +4,8 @@ import {
   PLAN_LIMIT_TYPE,
   TRAINING_MODE,
   USER_ROLES,
+  TRAINING_NOMINATION_STATUS,
+  APPROVAL_STATUS,
 } from "./enum";
 
 export enum MEMBERSHIP_LEVEL {
@@ -205,7 +207,7 @@ export interface TEACHER_REPONSE_PROPS {
   userId: string;
   memberships: {
     membershipCode: number | string;
-  }[];
+  };
 }
 
 export interface INSTITUTION_ADD_EDUCATOR_REQUEST {
@@ -333,9 +335,10 @@ export interface STUDENT_RESPONSE_PROPS {
     updatedAt: string;
     deletedAt: string | null;
   };
+  payments: any[];
   memberships: {
     membershipCode: string | number;
-  }[];
+  }[] | null;
   approvedAt: string;
   rejectedAt: string | null;
   rejectReason: string | null;
@@ -354,4 +357,217 @@ export interface CREATE_TEAM_REQUEST {
   mentorId: number | string;
   assistantMentorId?: number | string;
   studentIds: number[] | string[];
+}
+
+export interface USER_DETAILS_PROPS {
+  id: number;
+  email: string;
+  username: string;
+  phone: string;
+  countryCode: string | null;
+  isdCode: string | null;
+  isEmailVerified: boolean;
+  isPhoneVerified: boolean;
+  fullName: string | null;
+  firstName: string | null;
+  lastName: string | null;
+  bio: string | null;
+  profileImage: string | null;
+  password?: string;
+  hashedRefreshToken?: string | null;
+  lastLoginAt?: string | null;
+  tokenVersion?: number;
+  role: USER_ROLES;
+  status: string;
+  schoolId: number;
+  grade: string | null;
+  state: string | null;
+  dob: string | null;
+  spocDetails: string | null;
+  city: string | null;
+  totalSchools: number | null;
+  totalStudents: number | null;
+  totalTeachers: number | null;
+  category: string | null;
+  gender: GENDER_TYPE | null;
+  approvalStatus: APPROVAL_STATUS;
+  primarySubjects: string[];
+  experienceYears: number | null;
+  experienceMonths: number | null;
+  fatherName: string | null;
+  fatherEmail: string | null;
+  fatherPhone: string | null;
+  fatherProfession: string | null;
+  motherName: string | null;
+  motherEmail: string | null;
+  motherPhone: string | null;
+  motherProfession: string | null;
+  boardId: number;
+  countryId: number;
+  approvedAt: string | null;
+  rejectedAt: string | null;
+  rejectReason: string | null;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface SCHOOL_DETAILS_PROPS {
+  id: number;
+  name: string;
+  code: string | null;
+  address: string | null;
+  addressLine1: string;
+  addressLine2: string | null;
+  city: string;
+  state: string;
+  zipCode: string;
+  logo: string | null;
+  affiliationCertificate: string | null;
+  affiliationNumber: string;
+  website: string;
+  registrationYear: number;
+  contactPersonName: string;
+  contactPersonEmail: string;
+  contactPersonPhone: string;
+  isActive: boolean;
+  boardId: number;
+  countryId: number;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface BOARD_DETAILS_PROPS {
+  id: number;
+  name: string;
+  code: string;
+  description: string | null;
+  logo: string | null;
+  isActive: boolean;
+  state: string | null;
+  countryId: number;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface BATCH_QUESTION_PROPS {
+  id: string;
+  type: string;
+  options: string[];
+  question: string;
+  required: boolean;
+}
+
+export interface BATCH_DETAILS_PROPS {
+  id: number;
+  name: string;
+  description: string | null;
+  category: CATEGORY;
+  userRole: USER_ROLES;
+  startDate: string;
+  endDate: string;
+  status: string;
+  mode: TRAINING_MODE;
+  isActive: boolean;
+  questions: BATCH_QUESTION_PROPS[];
+  createdBy: number;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface TRAINING_ANSWER_PROPS {
+  answer: string;
+  questionId: string;
+}
+
+export interface TRAINING_DETAILS_PROPS {
+  id: number;
+  title: string | null;
+  description: string | null;
+  type: CATEGORY;
+  startDate: string | null;
+  endDate: string | null;
+  mode: TRAINING_MODE;
+  status: string;
+  answers: TRAINING_ANSWER_PROPS[];
+  createdBy: number;
+  createdByUser: USER_DETAILS_PROPS;
+  schoolId: number;
+  school: SCHOOL_DETAILS_PROPS;
+  boardId: number;
+  board: BOARD_DETAILS_PROPS;
+  batchId: number;
+  batch: BATCH_DETAILS_PROPS;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface TRAINING_NOMINATION_RESPONSE {
+  id: number;
+  trainingId: number;
+  training: TRAINING_DETAILS_PROPS;
+  teacherId: number;
+  teacher: USER_DETAILS_PROPS;
+  availableFrom: string | null;
+  availableTo: string | null;
+  mode: TRAINING_MODE;
+  status: TRAINING_NOMINATION_STATUS;
+  approvedBySchoolAdmin: boolean | null;
+  schoolApprovedAt: string | null;
+  approvedByIaireAdmin: boolean | null;
+  iaireApprovedAt: string | null;
+  rejectionReason: string | null;
+  interviewScheduledAt: string | null;
+  interviewScheduledBy: number | null;
+  interviewMeetingLink: string | null;
+  interviewCompletedAt: string | null;
+  interviewCompletedBy: number | null;
+  interviewComments: string | null;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface TEAM_MEMBER_PROPS {
+  id: number;
+  teamId: number;
+  studentId: number;
+  student: STUDENT_RESPONSE_PROPS;
+  createdAt: string;
+}
+
+export interface TEAM_DETAILS_RESPONSE {
+  id: number;
+  title: string;
+  type: CATEGORY;
+  teamCode: string;
+  mentorId: number;
+  mentor: USER_DETAILS_PROPS;
+  assistantMentorId: number | null;
+  assistantMentor: USER_DETAILS_PROPS | null;
+  members: TEAM_MEMBER_PROPS[];
+  createdBy: number;
+  createdByUser: USER_DETAILS_PROPS;
+  schoolId: number;
+  school: SCHOOL_DETAILS_PROPS;
+  boardId: number;
+  board: BOARD_DETAILS_PROPS;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+
+
+export interface SCHOOL_ADD_INNOVATION_REQUEST_PROPS {
+  title: string;
+  problemDescription: string;
+  solution: string;
+  teamId: string | number;
+  isDraft?: boolean;
+  attorneyFinalTemplate?: File | null;
 }

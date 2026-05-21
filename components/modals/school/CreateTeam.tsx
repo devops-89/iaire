@@ -14,7 +14,7 @@ import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { CATEGORY_TYPES } from "@/utils/constant";
 import { useGetAllUser } from "@/hooks/common/useGetAllUser";
-import { COLORS, USER_ROLES } from "@/utils/enum";
+import { COLORS, USER_ROLES, USER_STATUS } from "@/utils/enum";
 import {
   CREATE_TEAM_REQUEST,
   STUDENT_RESPONSE_PROPS,
@@ -53,6 +53,7 @@ const AddTeams = () => {
       page: 1,
       limit: 100,
       role: USER_ROLES.TEACHER,
+      approvalStatus: USER_STATUS.ACTIVE
     });
   };
 

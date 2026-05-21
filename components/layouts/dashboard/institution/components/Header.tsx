@@ -62,7 +62,7 @@ const InstitutionHeader = () => {
         top: 0,
         right: 0,
         left: "250px", // Align with sidebar width
-        height: "70px",
+        height: "80px",
         backgroundColor: isScrolled
           ? "rgba(255, 255, 255, 0.72)"
           : COLORS.WHITE,
@@ -74,6 +74,7 @@ const InstitutionHeader = () => {
         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         zIndex: 1100,
         px: 4,
+        // py: 
       }}
     >
       <Avatar
