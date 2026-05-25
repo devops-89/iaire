@@ -222,35 +222,35 @@ const InstitutionReview = () => {
 
             {(institutionData.affiliationType ||
               institutionData.affiliationNumber) && (
-              <>
-                <Divider sx={{ my: 4 }} />
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 800,
-                    mb: 3,
-                    color: COLORS.PRIMARY_NAVY,
-                    fontFamily: roboto.style.fontFamily,
-                  }}
-                >
-                  Affiliation details
-                </Typography>
-                <Grid container spacing={1}>
-                  <DataRow
-                    label="Board"
-                    value={
-                      typeof institutionData?.affiliationType === "string"
-                        ? institutionData.affiliationType
-                        : institutionData?.affiliationType?.name || "N/A"
-                    }
-                  />
-                  <DataRow
-                    label="Affiliation Number"
-                    value={institutionData.affiliationNumber}
-                  />
-                </Grid>
-              </>
-            )}
+                <>
+                  <Divider sx={{ my: 4 }} />
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 800,
+                      mb: 3,
+                      color: COLORS.PRIMARY_NAVY,
+                      fontFamily: roboto.style.fontFamily,
+                    }}
+                  >
+                    Affiliation details
+                  </Typography>
+                  <Grid container spacing={1}>
+                    <DataRow
+                      label="Board"
+                      value={
+                        typeof institutionData?.affiliationType === "string"
+                          ? institutionData.affiliationType
+                          : institutionData?.affiliationType?.name || "N/A"
+                      }
+                    />
+                    <DataRow
+                      label="Affiliation Number"
+                      value={institutionData.affiliationNumber}
+                    />
+                  </Grid>
+                </>
+              )}
           </Box>
 
           <Box sx={{ mt: 6, display: "flex", gap: 3 }}>
@@ -280,14 +280,14 @@ const InstitutionReview = () => {
               disabled={loading}
               onClick={handleCheckout}
               sx={{
-                bgcolor: COLORS.ACCENT_TAN,
-                color: COLORS.BLACK,
+                bgcolor: COLORS.PRIMARY_NAVY,
+                color: COLORS.WHITE,
                 py: 2,
                 borderRadius: "14px",
                 fontWeight: 800,
                 fontSize: "1rem",
                 "&:hover": {
-                  bgcolor: "#B88A44",
+                  bgcolor: COLORS.PRIMARY_BLUE,
                 },
               }}
             >

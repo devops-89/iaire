@@ -11,12 +11,20 @@ const PaymentSuccessLayout = () => {
   const router = useRouter();
   const { data, institutionData, educatorData } = useSignup();
 
+  console.log("data", data);
+  console.log("institutionData", institutionData);
+  console.log("educatorData", educatorData);
+
   const handleContinue = () => {
     const role = data?.role || institutionData?.role || educatorData?.role;
-    if (role === USER_ROLES.INSTITUTION) {
-      router.push(`/dashboard/${USER_ROLES.INSTITUTION}`);
-    } else if (role === USER_ROLES.EDUCATOR || USER_ROLES.TEACHER) {
-      router.push(`/dashboard/${USER_ROLES.EDUCATOR}`);
+    if (role === USER_ROLES.INSTITUTION || role === USER_ROLES.SCHOOL_ADMIN) {
+      router.push(`/dashboard/institution`);
+    } else if (
+      role === USER_ROLES.EDUCATOR ||
+      role === USER_ROLES.TEACHER ||
+      role === USER_ROLES.EDUCATOR_ADMIN
+    ) {
+      router.push(`/dashboard/educator`);
     } else if (role === USER_ROLES.STUDENT) {
       router.push(`/dashboard/student`);
     } else {

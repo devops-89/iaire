@@ -6,6 +6,7 @@ import {
   PLAN_LIMIT_TYPE,
   TRAINING_MODE,
   TRAINING_NOMINATION_STATUS,
+  USER_ROLES,
   USER_STATUS,
 } from "./enum";
 import {
@@ -26,6 +27,7 @@ import {
   MonetizationOn,
   MoneyOff,
   BusinessCenter,
+  Group,
 } from "@mui/icons-material";
 
 export const STUDENT_SIDEBAR_DATA = [
@@ -1019,22 +1021,22 @@ export const INSTITUTIONS = [
 
 export const TEACHER_STATS_CARD: STATSCARDDATA[] = [
   {
-    title: "Total Member Teachers",
+    title: "Total Number of Teachers",
     count: "350",
     icon: Groups,
   },
   {
-    title: "Total Not a Member Teacher",
+    title: "Total Member Teachers",
     count: "200",
-    icon: PersonOff,
+    icon: Groups,
   },
   {
-    title: "Total Trained Teachers in Innovation",
+    title: "Total Trained & Certified Teachers in Innovation",
     count: "150",
     icon: Lightbulb,
   },
   {
-    title: "Total Trained Teachers in Research Submissions",
+    title: "Total Trained & Certified Teachers in Research Submissions",
     count: "200",
     icon: Science,
   },
@@ -2416,3 +2418,14 @@ export const HEADER_CONTENT = [
     url: "/programs",
   },
 ];
+
+
+
+export const PAYMENT_ROLE = [
+  {
+    label: USER_ROLES.EDUCATOR,
+  },
+  {
+    label: USER_ROLES.INSTITUTION
+  }
+]

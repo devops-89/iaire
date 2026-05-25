@@ -1,6 +1,6 @@
 "use client";
 import { COLORS, USER_ROLES } from "@/utils/enum";
-import { montserrat, roboto } from "@/utils/fonts";
+import { aloeveraDisplay_medium, montserrat, roboto } from "@/utils/fonts";
 import {
   School,
   SupervisorAccount,
@@ -138,18 +138,16 @@ const RoleSelectionLayout = () => {
                       : "rgba(255, 255, 255, 0.05)",
                   backdropFilter: "blur(10px)",
                   borderRadius: "20px",
-                  border: `2px solid ${
-                    selectedRole === role.id ? COLORS.ACCENT_TAN : "transparent"
-                  }`,
+                  border: `2px solid ${selectedRole === role.id ? COLORS.ACCENT_TAN : "transparent"
+                    }`,
                   transition: "all 0.3s ease",
                   "&:hover": {
                     transform: "translateY(-10px)",
                     backgroundColor: "rgba(255, 255, 255, 0.08)",
-                    border: `2px solid ${
-                      selectedRole === role.id
-                        ? COLORS.ACCENT_TAN
-                        : "rgba(209, 160, 84, 0.3)"
-                    }`,
+                    border: `2px solid ${selectedRole === role.id
+                      ? COLORS.ACCENT_TAN
+                      : "rgba(209, 160, 84, 0.3)"
+                      }`,
                     boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.3)",
                   },
                 }}
@@ -211,29 +209,24 @@ const RoleSelectionLayout = () => {
             }}
             endIcon={<ArrowForward />}
             sx={{
-              bgcolor: COLORS.ACCENT_TAN,
-              color: COLORS.BLACK,
+              bgcolor: COLORS.PRIMARY_NAVY,
+              color: COLORS.WHITE,
               px: 6,
               py: 2,
               borderRadius: "50px",
               fontSize: "1.1rem",
               fontWeight: 800,
               textTransform: "none",
-              fontFamily: montserrat.style.fontFamily,
-              boxShadow: "0px 8px 15px rgba(209, 160, 84, 0.3)",
+              fontFamily: aloeveraDisplay_medium.style.fontFamily,
               transition: "all 0.3s ease",
               "&:hover": {
-                bgcolor: "#B88A40",
-                boxShadow: "0px 12px 20px rgba(209, 160, 84, 0.4)",
-                transform: "scale(1.05)",
+                bgcolor: COLORS.PRIMARY_BLUE,
               },
-              "&.Mui-disabled": {
-                bgcolor: "rgba(209, 160, 84, 0.3)",
-                color: "rgba(0, 0, 0, 0.3)",
-              },
+
+              mt: 2
             }}
           >
-            Continue with {selectedRole ? selectedRole : "Selection"}
+            Continue as {selectedRole ? selectedRole : "Selection"}
           </Button>
 
           <Typography

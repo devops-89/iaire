@@ -36,10 +36,10 @@ export const useSignup = create<SignupStore>()(
         ...state,
         institutionData: state.institutionData
           ? {
-              ...state.institutionData,
-              affiliationCertificate: null,
-              logo: null,
-            }
+            ...state.institutionData,
+            affiliationCertificate: null,
+            logo: null,
+          }
           : null,
         educatorData: state.educatorData
           ? { ...state.educatorData, profileImage: null }

@@ -10,6 +10,13 @@ export const useCreateInnovation = () => {
 
     const createInnovation = async (data: SCHOOL_ADD_INNOVATION_REQUEST_PROPS) => {
         setLoading(true);
-        // schoolControllers.
+        schoolControllers.addInnovationBySchool(data).then((res) => {
+            console.log("res", res)
+        }).catch((err) => {
+            console.log("error in creating innovation", err)
+        }).finally(() => {
+            setLoading(false)
+        })
     }
+    return { loading, createInnovation }
 }

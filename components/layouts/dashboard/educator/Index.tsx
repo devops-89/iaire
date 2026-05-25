@@ -37,7 +37,7 @@ const EducatorDashboardLayout = ({
           transition: "margin-left 0.3s ease",
         }}
       >
-        <Backdrop
+        {/* <Backdrop
           open={!isMember}
           sx={{
             zIndex: 9999,
@@ -80,7 +80,7 @@ const EducatorDashboardLayout = ({
               />
             ))}
           </Box>
-        </Backdrop>
+        </Backdrop> */}
         {children}
       </Box>
     </Box>

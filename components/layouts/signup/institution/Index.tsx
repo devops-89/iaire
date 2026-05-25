@@ -33,7 +33,7 @@ import {
   MuiTelInputInfo,
   MuiTelInputProps,
 } from "mui-tel-input";
-import { montserrat, roboto } from "@/utils/fonts";
+import { montserrat, newBlack_medium, roboto } from "@/utils/fonts";
 import { useSignup } from "@/store/useSignup";
 import { COUNTRIES, US_STATES } from "@/utils/constant";
 import IndiaForm from "./India-Form";
@@ -77,6 +77,8 @@ const Institution = () => {
       contactPersonName: institutionData?.contactPersonName || "",
       contactPersonEmail: institutionData?.contactPersonEmail || "",
       contactPersonPhone: institutionData?.contactPersonPhone || "",
+      noOfTeachers: institutionData?.noOfTeachers || "",
+      noOfStudents: institutionData?.noOfStudents || "",
     },
     enableReinitialize: true,
     validationSchema: institutionSignupValidationSchema,
@@ -301,6 +303,12 @@ const Institution = () => {
                   )}
                 />
               </Grid>
+              <Grid size={6}>
+                <FormTextField label="Total Number Of Teachers" name="noOfTeachers" value={formik.values.noOfTeachers} formik={formik} />
+              </Grid>
+              <Grid size={6}>
+                <FormTextField label="Total Number Of Students" name="noOfStudents" value={formik.values.noOfStudents} formik={formik} />
+              </Grid>
               {country?.code === "US" && (
                 <Grid size={{ xs: 12, md: 6 }}>
                   <Autocomplete
@@ -487,20 +495,17 @@ const Institution = () => {
                   variant="contained"
                   size="large"
                   sx={{
-                    bgcolor: COLORS.ACCENT_TAN,
-                    color: COLORS.BLACK,
-                    py: 2,
+                    bgcolor: COLORS.PRIMARY_NAVY,
+                    color: COLORS.WHITE,
+                    py: 1.5,
                     borderRadius: "14px",
                     fontWeight: 800,
-                    fontSize: "1.1rem",
+                    fontSize: "1rem",
                     textTransform: "uppercase",
                     letterSpacing: 1.5,
-                    boxShadow: "0px 8px 15px rgba(209, 160, 84, 0.4)",
-                    fontFamily: montserrat.style.fontFamily,
+                    fontFamily: newBlack_medium.style.fontFamily,
                     "&:hover": {
-                      bgcolor: "#B88A44",
-                      boxShadow: "0px 12px 20px rgba(209, 160, 84, 0.5)",
-                      transform: "translateY(-2px)",
+                      bgcolor: COLORS.PRIMARY_BLUE,
                     },
                     transition: "all 0.3s ease",
                   }}

@@ -56,6 +56,8 @@ export interface InstitutionInfo {
   };
   isd?: string;
   registrationYear: string;
+  noOfTeachers: string | number;
+  noOfStudents: string | number;
 }
 
 export interface EducatorInfo {
@@ -214,13 +216,18 @@ export interface INSTITUTION_ADD_EDUCATOR_REQUEST {
   email: string;
   firstName: string;
   lastName: string;
-  phone: string;
+  phone?: string;
+  phoneNumber?: string;
+  countryCode?: string;
   primarySubjects: string[];
   category: string;
   gender: string;
-  experienceYear: string;
-  experienceMonth: string;
+  experienceYear?: string;
+  experienceYears?: string;
+  experienceMonth?: string;
   password: string;
+  isSchoolPay: boolean;
+  memberShipCode?: string;
 }
 
 export interface NOMINATE_TEACHER_FOR_TRAINING_REQUEST {
@@ -336,9 +343,11 @@ export interface STUDENT_RESPONSE_PROPS {
     deletedAt: string | null;
   };
   payments: any[];
-  memberships: {
-    membershipCode: string | number;
-  }[] | null;
+  memberships:
+    | {
+        membershipCode: string | number;
+      }[]
+    | null;
   approvedAt: string;
   rejectedAt: string | null;
   rejectReason: string | null;
@@ -560,8 +569,6 @@ export interface TEAM_DETAILS_RESPONSE {
   updatedAt: string;
   deletedAt: string | null;
 }
-
-
 
 export interface SCHOOL_ADD_INNOVATION_REQUEST_PROPS {
   title: string;

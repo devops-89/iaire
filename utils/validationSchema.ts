@@ -82,6 +82,10 @@ export const institutionSignupValidationSchema = Yup.object({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Confirm password is required"),
+
+  noOfTeachers: Yup.number().required("No of teachers is required"),
+  noOfStudents: Yup.number().required("No of students is required"),
+  registrationYear: Yup.string().required("Registration year is required"),
 });
 
 export const addEducatorValidationSchema = Yup.object({
@@ -113,6 +117,9 @@ export const addEducatorValidationSchema = Yup.object({
   experienceMonth: Yup.number().max(11).optional(),
   experienceYear: Yup.number().required("Experiecne is required"),
   password: Yup.string().required("Password is required"),
+  whoWillPay: Yup.string().required(
+    "Please Select Who Will Pay For Membership",
+  ),
 });
 
 export const addInnovationValidationSchema = Yup.object({
@@ -126,7 +133,9 @@ export const addInstitutionInnovationValidationSchema = Yup.object({
   title: Yup.string().required("Innovation Title is required"),
   team: Yup.object().nullable().required("Select Team is required"),
   problemDescription: Yup.string().required("Problem Description is required"),
-  solutionDescription: Yup.string().required("Solution Description is required"),
+  solutionDescription: Yup.string().required(
+    "Solution Description is required",
+  ),
   file: Yup.mixed().nullable().required("Template file is required"),
 });
 

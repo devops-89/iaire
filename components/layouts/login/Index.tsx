@@ -236,8 +236,8 @@ const LoginLayout = () => {
                 fullWidth
                 size="large"
                 sx={{
-                  bgcolor: COLORS.ACCENT_TAN,
-                  color: COLORS.BLACK,
+                  bgcolor: COLORS.PRIMARY_NAVY,
+                  color: COLORS.WHITE,
                   py: 1.5,
                   borderRadius: "10px",
                   fontSize: "1rem",
@@ -246,7 +246,7 @@ const LoginLayout = () => {
                   fontFamily: montserrat.style.fontFamily,
                   boxShadow: "0px 4px 10px rgba(209, 160, 84, 0.3)",
                   "&:hover": {
-                    bgcolor: "#B88A40",
+                    bgcolor: COLORS.PRIMARY_BLUE,
                     boxShadow: "0px 6px 15px rgba(209, 160, 84, 0.4)",
                   },
                 }}

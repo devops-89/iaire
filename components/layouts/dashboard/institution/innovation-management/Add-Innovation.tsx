@@ -29,11 +29,13 @@ import {
 } from "@mui/icons-material";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { useGetTeam } from "@/hooks/school/useTeam";
+import { useCreateInnovation } from "@/hooks/school/useInnovation";
 
 const AddInnovation = () => {
   const [dragActive, setDragActive] = useState(false);
 
   const { teamData, fetchData, loading } = useGetTeam()
+  const { loading: createLoading, } = useCreateInnovation()
 
   useEffect(() => {
     fetchData({ type: CATEGORY.INNOVATION })
@@ -49,9 +51,13 @@ const AddInnovation = () => {
     },
     validationSchema: addInstitutionInnovationValidationSchema,
     onSubmit: (values) => {
-      console.log("Institution Innovation Data:", values);
-      alert("Innovation submitted successfully!");
-      formik.resetForm();
+      // console.log("Institution Innovation Data:", values);
+      // alert("Innovation submitted successfully!");
+      // formik.resetForm();
+      const payload = {
+        title: values.title,
+        team: values?.team
+      }
     },
   });
 

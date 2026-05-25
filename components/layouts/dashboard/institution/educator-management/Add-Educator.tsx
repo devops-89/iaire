@@ -9,11 +9,12 @@ import {
   Typography,
   InputAdornment,
   Autocomplete,
+  CircularProgress,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import { addEducatorValidationSchema } from "@/utils/validationSchema";
-import { COLORS, MEMBER_TYPES, USER_STATUS } from "@/utils/enum";
+import { COLORS, MEMBER_TYPES, USER_ROLES, USER_STATUS } from "@/utils/enum";
 import { roboto, montserrat } from "@/utils/fonts";
 import {
   Person,
@@ -28,18 +29,22 @@ import {
   COUNTRIES,
   GENDER,
   MEMBER_TYPE,
+  PAYMENT_ROLE,
 } from "@/utils/constant";
 import { matchIsValidTel, MuiTelInput } from "mui-tel-input";
 import { useSignup } from "@/store/useSignup";
 import { useTeacherAddBySchool } from "@/hooks/school/useTeacherAdd";
 import useSnackbar from "@/store/useSnackbar";
 import { useRouter } from "next/navigation";
+import { useGetPlans } from "@/hooks/common/useGetPlans";
+import PlanCard from "@/components/widgets/PlanCard";
 
 const AddEducatorcomponent = () => {
   const router = useRouter();
   const { institutionData } = useSignup();
   const { setSnackbar } = useSnackbar();
   const { loading, addTeacher } = useTeacherAddBySchool();
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -56,12 +61,10 @@ const AddEducatorcomponent = () => {
       experienceYear: "",
       primarySubjects: [],
       password: "",
+      whoWillPay: "",
     },
     validationSchema: addEducatorValidationSchema,
     onSubmit: (values) => {
-      console.log("Educator Data:", values);
-      // alert("Educator added successfully!");
-      // formik.resetForm();
       const countryCode = COUNTRIES.find(
         (item) => item?.code === institutionData?.country?.code,
       );
@@ -74,11 +77,12 @@ const AddEducatorcomponent = () => {
         countryCode: countryCode?.phone,
         primarySubjects: values?.primarySubjects,
         experienceYears: values?.experienceYear,
-        experienceMonths: values?.experienceMonth,
         category: values?.category,
         memberShipCode: values?.memberId,
         gender: values?.gender,
         password: values?.password,
+        isSchoolPay:
+          values?.whoWillPay === USER_ROLES.INSTITUTION ? true : false,
       };
 
       const data = Object.fromEntries(
@@ -91,11 +95,23 @@ const AddEducatorcomponent = () => {
         ),
       ) as any;
 
-      addTeacher(data);
+      addTeacher({ data, planId: planData?.[0]?.id });
+      // console.log("data => ", data);
     },
   });
+  const { planData, planLoading } = useGetPlans({
+    role:
+      formik.values.whoWillPay === USER_ROLES.INSTITUTION
+        ? USER_ROLES.EDUCATOR_ADMIN
+        : "",
+  });
 
-  console.log(formik.errors);
+  const handleChangeWhoWillPay = (
+    e: React.SyntheticEvent,
+    newValue: { label: USER_ROLES } | null,
+  ) => {
+    formik.setFieldValue("whoWillPay", newValue?.label || "");
+  };
 
   const [phone, setPhone] = useState("");
   const handlePhoneChange = (value: string) => {
@@ -119,17 +135,6 @@ const AddEducatorcomponent = () => {
           boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.05)",
         }}
       >
-        {/* <Typography
-          sx={{
-            fontFamily: roboto.style.fontFamily,
-            fontSize: 24,
-            fontWeight: 700,
-            color: COLORS.PRIMARY_NAVY,
-            mb: 4,
-          }}
-        >
-          Educator Information
-        </Typography> */}
         <Breadcrumb
           title="Add Educator"
           data={[
@@ -199,6 +204,34 @@ const AddEducatorcomponent = () => {
                 />
               </Grid>
             )}
+            <Grid size={12}>
+              <Autocomplete
+                value={
+                  PAYMENT_ROLE.find(
+                    (role) => role.label === formik.values.whoWillPay,
+                  ) || null
+                }
+                options={PAYMENT_ROLE}
+                getOptionLabel={(option) => option?.label}
+                onChange={handleChangeWhoWillPay}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Who will Pay for the Membership ?"
+                    error={
+                      formik.touched.whoWillPay &&
+                      Boolean(formik.errors.whoWillPay)
+                    }
+                    helperText={
+                      formik.touched.whoWillPay &&
+                      (formik.errors.whoWillPay as string)
+                    }
+                    sx={TEXTFIELD_STYLE_VALIDATION}
+                  />
+                )}
+              />
+            </Grid>
+
             <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth
@@ -363,7 +396,7 @@ const AddEducatorcomponent = () => {
                 type="number"
               />
             </Grid>
-            <Grid size={{ xs: 12, md: 6 }}>
+            {/* <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth
                 name="experienceMonth"
@@ -383,7 +416,7 @@ const AddEducatorcomponent = () => {
                 sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
                 type="number"
               />
-            </Grid>
+            </Grid> */}
             <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth
@@ -398,9 +431,31 @@ const AddEducatorcomponent = () => {
                 }
                 helperText={formik.touched.password && formik.errors.password}
                 sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
-                // type="number"
               />
             </Grid>
+
+            {planLoading && (
+              <Grid
+                size={12}
+                sx={{ display: "flex", justifyContent: "center", my: 2 }}
+              >
+                <CircularProgress sx={{ color: COLORS.PRIMARY_NAVY }} />
+              </Grid>
+            )}
+
+            {!planLoading &&
+              planData.map((val, i) => (
+                <Grid size={12} key={i}>
+                  <PlanCard
+                    name={val.name}
+                    billingCycle={val.billingCycle}
+                    price={val.price}
+                    limits={val.limits}
+                    currency={val.currency}
+                    id={val.id}
+                  />
+                </Grid>
+              ))}
 
             <Grid size={{ xs: 12 }} sx={{ mt: 3, display: "flex", gap: 2 }}>
               <Button

@@ -7,22 +7,37 @@ import {
 } from "@/utils/type";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useMakePayment } from "../common/useCreatePayment";
 
 export const useTeacherAddBySchool = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const { makePayment } = useMakePayment();
   const { setSnackbar } = useSnackbar();
-  const addTeacher = async (data: INSTITUTION_ADD_EDUCATOR_REQUEST) => {
+  const addTeacher = async ({
+    data,
+    planId,
+  }: {
+    data: INSTITUTION_ADD_EDUCATOR_REQUEST;
+    planId?: number | string;
+  }) => {
     setLoading(true);
     await schoolControllers
       .createTeacher(data)
       .then((res) => {
-        setSnackbar(res.data.message, "success");
+        const userId = res.data.data.id;
+        if (data?.isSchoolPay && planId) {
+          makePayment({ planId, userId });
+        } else {
+          router.push("/dashboard/institution/educator-management");
+        }
+
         setLoading(false);
-        router.push("/dashboard/institution/educator-management");
       })
       .catch((err) => {
         const error = err.data || err.data.message || console.log("err", err);
+        setSnackbar(error, "error");
         setLoading(false);
       });
   };
@@ -77,7 +92,10 @@ export const useApprovedNominateTeacher = () => {
   const [approveTeacherNominationLoading, setApproveTeacherNominationLoading] =
     useState(false);
 
-  const ApproveTeacherNomination = async (id: number | string, status: string) => {
+  const ApproveTeacherNomination = async (
+    id: number | string,
+    status: string,
+  ) => {
     setApproveTeacherNominationLoading(true);
     await schoolControllers
       .approveTeacherNomination(id, status)

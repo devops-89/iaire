@@ -64,24 +64,26 @@ const PlanCard = ({
               </Typography>
             </Stack>
             <Stack sx={{ mt: 2 }} spacing={2}>
-              <Button
-                sx={{
-                  fontFamily: roboto.style.fontFamily,
-                  backgroundColor: COLORS.PRIMARY_NAVY,
-                  borderRadius: "20px",
-                  width: "100%",
-                  color: COLORS.WHITE,
-                }}
-                onClick={() => createPayment?.(id)}
-              >
-                {loading ? (
-                  <CircularProgress
-                    sx={{ color: COLORS.WHITE, fontSize: 10 }}
-                  />
-                ) : (
-                  "Make Payment"
-                )}
-              </Button>
+              {createPayment && (
+                <Button
+                  sx={{
+                    fontFamily: roboto.style.fontFamily,
+                    backgroundColor: COLORS.PRIMARY_NAVY,
+                    borderRadius: "20px",
+                    width: "100%",
+                    color: COLORS.WHITE,
+                  }}
+                  onClick={() => createPayment?.(id)}
+                >
+                  {loading ? (
+                    <CircularProgress
+                      sx={{ color: COLORS.WHITE, fontSize: 10 }}
+                    />
+                  ) : (
+                    "Make Payment"
+                  )}
+                </Button>
+              )}
               {canSkip && (
                 <Button
                   sx={{

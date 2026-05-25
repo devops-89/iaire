@@ -3,14 +3,21 @@ import { useState } from "react";
 
 export const useMakePayment = () => {
   const [loading, setLoading] = useState(false);
-  const makePayment = (planId: string | number) => {
+  const makePayment = ({
+    planId,
+    userId,
+  }: {
+    planId: string | number;
+    userId?: string | number;
+  }) => {
     setLoading(true);
     paymentControllers
-      .createPayment(planId)
+      .createPayment({ planId, userId })
       .then((res: any) => {
-        console.log("res", res);
-
-        const url = res?.data?.checkoutUrl || res?.checkoutUrl || res?.data?.data?.checkoutUrl;
+        const url =
+          res?.data?.checkoutUrl ||
+          res?.checkoutUrl ||
+          res?.data?.data?.checkoutUrl;
         if (url) {
           window.location.href = url;
         } else {
