@@ -15,7 +15,8 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { getUserDetails } from "@/hooks/common/getUserDetails";
-
+import logo from "@/images/logo/logo.png";
+import Image from "next/image";
 const EducatorSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
@@ -38,26 +39,28 @@ const EducatorSidebar = () => {
           boxShadow: "0px 0px 2px 2px #d7d7d7",
           position: "fixed",
           height: "100vh",
-          backgroundColor: COLORS.PRIMARY_NAVY,
+          backgroundColor: COLORS.WHITE,
           top: 0,
           left: 0,
           zIndex: 1200,
           overflowY: "auto",
         }}
       >
-        <Box>
-          <Typography
-            sx={{
-              fontSize: 30,
-              color: COLORS.ACCENT_TAN,
-              textAlign: "center",
-              fontFamily: roboto.style.fontFamily,
-              pt: 2,
-              pb: 2,
-            }}
-          >
-            IAIRE
-          </Typography>
+        <Box
+          sx={{
+            width: "150px",
+            height: "70px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: "auto",
+          }}
+        >
+          <Image
+            src={logo}
+            alt="logo"
+            style={{ width: "100%", height: "auto" }}
+          />
         </Box>
         <Divider sx={{ borderColor: COLORS.ACCENT_TAN }} />
         <List sx={{ px: 1 }}>
@@ -76,15 +79,17 @@ const EducatorSidebar = () => {
                     borderRadius: "8px",
                     mb: 0.5,
                     backgroundColor:
-                      pathname === val.url ? COLORS.ACCENT_TAN : "transparent",
+                      pathname === val.url
+                        ? COLORS.PRIMARY_NAVY
+                        : "transparent",
                     ":hover": {
                       backgroundColor:
                         pathname === val.url
-                          ? COLORS.ACCENT_TAN
+                          ? COLORS.PRIMARY_NAVY
                           : "rgba(209, 160, 84, 0.1)",
                     },
                     color:
-                      pathname === val.url ? COLORS.PRIMARY_NAVY : COLORS.WHITE,
+                      pathname === val.url ? COLORS.WHITE : COLORS.PRIMARY_NAVY,
                   }}
                   onClick={() => {
                     if (hasSubItems) {

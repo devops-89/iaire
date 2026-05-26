@@ -249,21 +249,21 @@ export interface INSTITUTION_ADD_STUDENT_REQUEST {
   email: string;
   firstName: string;
   lastName: string;
-  password: string;
+  // password: string;
   phone: string;
-  countryCode: string;
-  fatherName: string;
-  fatherEmail: string;
-  fatherPhone: string;
-  fatherProfession: string;
-  motherName: string;
-  motherEmail: string;
-  motherPhone: string;
-  motherProfession: string;
-  grade: string;
-  gender: GENDER_TYPE;
-  profileImage: File | null;
-  dob: string;
+  // countryCode: string;
+  // fatherName: string;
+  // fatherEmail: string;
+  // fatherPhone: string;
+  // fatherProfession: string;
+  // motherName: string;
+  // motherEmail: string;
+  // motherPhone: string;
+  // motherProfession: string;
+  // grade: string;
+  // gender: GENDER_TYPE;
+  // profileImage: File | null;
+  // dob: string;
 }
 
 export interface STUDENT_RESPONSE_PROPS {
@@ -577,4 +577,198 @@ export interface SCHOOL_ADD_INNOVATION_REQUEST_PROPS {
   teamId: string | number;
   isDraft?: boolean;
   attorneyFinalTemplate?: File | null;
+}
+
+export interface PAYMENT_MEMBERSHIP_PROPS {
+  id?: number;
+  userId?: number;
+  type?: string;
+  membershipCode?: string;
+  status?: string;
+  isSchoolInvited?: boolean;
+  activatedAt?: string | null;
+  expiryDate?: string | null;
+  paymentDeadline?: string | null;
+  createdAt?: string;
+}
+
+export interface PAYMENT_PLAN_PROPS {
+  id?: number;
+  code?: string;
+  name?: string;
+  target?: string;
+  price?: number;
+  currency?: string;
+  billingCycle?: string;
+  trialDays?: number;
+  isActive?: boolean;
+  countryId?: number;
+  stripeProductId?: string | null;
+  stripePriceId?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string | null;
+}
+
+export interface PAYMENT_DETAILS_PROPS {
+  id?: number;
+  membershipId?: number;
+  membership?: PAYMENT_MEMBERSHIP_PROPS;
+  subscriptionId?: string | null;
+  userId?: number;
+  planId?: number;
+  plan?: PAYMENT_PLAN_PROPS;
+  amount?: number;
+  currency?: string;
+  gateway?: string;
+  stripeSessionId?: string | null;
+  stripePaymentIntentId?: string | null;
+  stripeChargeId?: string | null;
+  status?: string;
+  failureReason?: string | null;
+  paidAt?: string | null;
+  expiresAt?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface USER_DETAILS_RESPONSE {
+  id?: number;
+  email?: string;
+  username?: string;
+  phone?: string;
+  countryCode?: string | null;
+  isdCode?: string | null;
+  isEmailVerified?: boolean;
+  isPhoneVerified?: boolean;
+  fullName?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  bio?: string | null;
+  profileImage?: string | null;
+  hashedRefreshToken?: string | null;
+  lastLoginAt?: string | null;
+  tokenVersion?: number;
+  role?: USER_ROLES;
+  status?: string;
+  schoolId?: number;
+  grade?: string | null;
+  state?: string | null;
+  dob?: string | null;
+  spocDetails?: string | null;
+  city?: string | null;
+  totalSchools?: number | null;
+  totalStudents?: number | null;
+  totalTeachers?: number | null;
+  noOfStudents?: number | null;
+  noOfTeachers?: number | null;
+  category?: string | null;
+  gender?: GENDER_TYPE | string | null;
+  approvalStatus?: APPROVAL_STATUS;
+  isSchoolPay?: boolean;
+  primarySubjects?: string[];
+  experienceYears?: number | null;
+  experienceinYears?: number | null;
+  experienceMonths?: number | null;
+  fatherName?: string | null;
+  fatherEmail?: string | null;
+  fatherPhone?: string | null;
+  fatherProfession?: string | null;
+  motherName?: string | null;
+  motherEmail?: string | null;
+  motherPhone?: string | null;
+  motherProfession?: string | null;
+  school?: {
+    id?: number;
+    name?: string;
+    code?: string | null;
+    address?: string | null;
+    addressLine1?: string;
+    addressLine2?: string | null;
+    city?: string;
+    state?: string;
+    zipCode?: string;
+    logo?: string | null;
+    affiliationCertificate?: string | null;
+    affiliationNumber?: string;
+    website?: string | null;
+    registrationYear?: number;
+    contactPersonName?: string;
+    contactPersonEmail?: string;
+    contactPersonPhone?: string;
+    isActive?: boolean;
+    boardId?: number;
+    countryId?: number;
+    createdAt?: string;
+    updatedAt?: string;
+    deletedAt?: string | null;
+    schoolLogoDownloadUrl?: string | null;
+  };
+  boardId?: number;
+  board?: {
+    id?: number;
+    name?: string;
+    code?: string;
+    description?: string | null;
+    logo?: string | null;
+    isActive?: boolean;
+    state?: string | null;
+    countryId?: number;
+    country?: {
+      id?: number;
+      name?: string;
+      code?: string;
+      phoneCode?: string;
+      currencyCode?: string;
+      isActive?: boolean;
+      createdAt?: string;
+      updatedAt?: string;
+      deletedAt?: string | null;
+    };
+    createdAt?: string;
+    updatedAt?: string;
+    deletedAt?: string | null;
+    boardLogoDownloadUrl?: string | null;
+  };
+  countryId?: number;
+  payments?: PAYMENT_DETAILS_PROPS[];
+  approvedAt?: string | null;
+  rejectedAt?: string | null;
+  rejectReason?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string | null;
+  profileImageDownloadUrl?: string | null;
+  affiliationCertificateDownloadUrl?: string | null;
+  userId?: string;
+  students?: {
+    id?: number;
+    email?: string;
+    username?: string;
+    firstName?: string;
+    lastName?: string;
+    profileImage?: string | null;
+    role?: string;
+    status?: string;
+    schoolId?: number;
+    boardId?: number;
+    createdAt?: string;
+    updatedAt?: string;
+    profileImageDownloadUrl?: string | null;
+  }[];
+  schoolAdmins?: {
+    id?: number;
+    email?: string;
+    username?: string;
+    firstName?: string | null;
+    lastName?: string | null;
+    profileImage?: string | null;
+    role?: string;
+    status?: string;
+    schoolId?: number;
+    boardId?: number;
+    createdAt?: string;
+    updatedAt?: string;
+    profileImageDownloadUrl?: string | null;
+  }[];
 }

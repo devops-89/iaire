@@ -59,9 +59,13 @@ export const userControllers = {
     }
   },
 
-  getUserDetails: async () => {
+  getUserDetails: async ({ userId }: { userId?: string | null }) => {
     try {
-      const result = await userSecuredApi.get("/details");
+      const result = await userSecuredApi.get("/details", {
+        params: {
+          ...(userId && { userId }),
+        },
+      });
       return result.data;
     } catch (error) {
       throw error;

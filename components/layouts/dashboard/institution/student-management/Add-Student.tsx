@@ -61,19 +61,19 @@ const AddStudentComponent = () => {
         firstName: values?.firstName,
         lastName: values?.lastName,
         phone: values?.phoneNumber,
-        gender: values?.gender,
+        // gender: values?.gender,
         // dob: moment(values?.dob).format("YYYY-MM-DD"),
-        grade: values?.grade,
-        countryCode: values?.countryCode,
-        fatherName: values?.fatherName,
-        fatherEmail: values?.fatherEmail,
-        fatherPhone: values?.fatherPhoneNumber,
-        fatherProfession: values?.fatherProfession,
-        motherName: values?.motherName,
-        motherPhone: values?.motherPhoneNumber,
-        motherEmail: values?.motherEmail,
-        motherProfession: values?.motherProfession,
-        password: values?.password,
+        // grade: values?.grade,
+        // countryCode: values?.countryCode,
+        // fatherName: values?.fatherName,
+        // fatherEmail: values?.fatherEmail,
+        // fatherPhone: values?.fatherPhoneNumber,
+        // fatherProfession: values?.fatherProfession,
+        // motherName: values?.motherName,
+        // motherPhone: values?.motherPhoneNumber,
+        // motherEmail: values?.motherEmail,
+        // motherProfession: values?.motherProfession,
+        // password: values?.password,
       };
 
       createStudent(payload as INSTITUTION_ADD_STUDENT_REQUEST);
@@ -151,7 +151,7 @@ const AddStudentComponent = () => {
                 fontSize: 20,
                 fontFamily: roboto.style.fontFamily,
                 fontWeight: 600,
-                color: COLORS.BLUE,
+                color: COLORS.BLACK,
               }}
             >
               Personal Information
@@ -245,7 +245,7 @@ const AddStudentComponent = () => {
                 helperText={formik.touched.lastName && formik.errors.lastName}
               />
             </Grid>
-            <Grid size={6}>
+            {/* <Grid size={6}>
               <TextField
                 fullWidth
                 label="Grade"
@@ -258,7 +258,7 @@ const AddStudentComponent = () => {
                 error={formik.touched.grade && Boolean(formik.errors.grade)}
                 helperText={formik.touched.grade && formik.errors.grade}
               />
-            </Grid>
+            </Grid> */}
             <Grid size={6}>
               <TextField
                 fullWidth
@@ -297,34 +297,6 @@ const AddStudentComponent = () => {
               />
             </Grid>
             {/* <Grid size={6}>
-              <LocalizationProvider dateAdapter={AdapterMoment}>
-                <DatePicker
-                  label="Date of Birth"
-                  value={formik.values.dob ? moment(formik.values.dob) : null}
-                  onChange={(value) => {
-                    formik.setFieldValue(
-                      "dob",
-                      value ? moment(value).format("YYYY-MM-DD") : null,
-                    );
-                  }}
-                  slotProps={{
-                    textField: {
-                      fullWidth: true,
-                      sx: TEXTFIELD_STYLE_VALIDATION,
-                      id: "dob",
-                      name: "dob",
-                      onBlur: formik.handleBlur,
-                      error: formik.touched.dob && Boolean(formik.errors.dob),
-                      helperText: (formik.touched.dob &&
-                        formik.errors.dob) as string,
-                    },
-                  }}
-                  disableFuture
-                  maxDate={moment()}
-                />
-              </LocalizationProvider>
-            </Grid> */}
-            <Grid size={6}>
               <Autocomplete
                 renderInput={(params) => (
                   <TextField
@@ -352,8 +324,8 @@ const AddStudentComponent = () => {
                 value={formik.values.gender}
                 onBlur={formik.handleBlur}
               />
-            </Grid>
-            <Grid size={6}>
+            </Grid> */}
+            {/* <Grid size={6}>
               <TextField
                 label="Password"
                 fullWidth
@@ -378,14 +350,14 @@ const AddStudentComponent = () => {
                   },
                 }}
               />
-            </Grid>
-            <Grid size={12}>
+            </Grid> */}
+            {/* <Grid size={12}>
               <Typography
                 sx={{
                   fontSize: 20,
                   fontFamily: roboto.style.fontFamily,
                   fontWeight: 600,
-                  color: COLORS.BLUE,
+                  color: COLORS.BLACK,
                 }}
               >
                 Father's Information
@@ -466,14 +438,14 @@ const AddStudentComponent = () => {
                   formik.errors.fatherProfession
                 }
               />
-            </Grid>
-            <Grid size={12}>
+            </Grid> */}
+            {/* <Grid size={12}>
               <Typography
                 sx={{
                   fontSize: 20,
                   fontFamily: roboto.style.fontFamily,
                   fontWeight: 600,
-                  color: COLORS.BLUE,
+                  color: COLORS.BLACK,
                 }}
               >
                 Mother's Information
@@ -554,8 +526,8 @@ const AddStudentComponent = () => {
                   formik.errors.motherProfession
                 }
               />
-            </Grid>
-            <Grid size={6}>
+            </Grid> */}
+            <Grid size={12}>
               <Button
                 sx={{
                   width: 300,

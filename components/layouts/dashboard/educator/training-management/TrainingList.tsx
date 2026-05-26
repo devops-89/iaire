@@ -21,7 +21,12 @@ import {
 import React, { useEffect, useState } from "react";
 import EducatorDashboardLayout from "@/components/layouts/dashboard/educator/Index";
 import { montserrat, roboto } from "@/utils/fonts";
-import { COLORS, TRAINING_NOMINATION_STATUS, USER_ROLES } from "@/utils/enum";
+import {
+  COLORS,
+  TRAINING_NOMINATION_STATUS,
+  USER_ROLES,
+  USER_STATUS,
+} from "@/utils/enum";
 import { useModal } from "@/store/useModal";
 import EducatorNomination from "@/components/modals/TeacherNomination";
 import {
@@ -31,12 +36,14 @@ import {
   TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW,
 } from "@/utils/constant";
 import { useTrainingList } from "@/hooks/mentor/useNominateTeacher";
-import { MoreVert } from "@mui/icons-material";
+import { Lock, MoreVert } from "@mui/icons-material";
 import moment from "moment";
 import { useApprovedNominateTeacher } from "@/hooks/school/useTeacherAdd";
 import { Atom } from "react-loading-indicators";
 import RejectReason from "@/components/modals/school/RejectReason";
 import TeacherSelfNomination from "@/components/modals/mentor/SelfNomination";
+import { useSignup } from "@/store/useSignup";
+import Plans from "@/components/modals/common/Plans";
 
 const TrainingList = () => {
   const { showModal } = useModal();
@@ -77,6 +84,18 @@ const TrainingList = () => {
     }
   }, [status]);
 
+  const { educatorData } = useSignup();
+
+  const isMember =
+    (educatorData?.payments?.length ?? 0) > 0 &&
+    educatorData?.payments?.find(
+      (v: any) => v.membership?.status === USER_STATUS.ACTIVE.toUpperCase(),
+    );
+
+  const showPlans = () => {
+    showModal(<Plans role={USER_ROLES.TEACHER} />);
+  };
+
   return (
     <EducatorDashboardLayout>
       <Box>
@@ -99,7 +118,23 @@ const TrainingList = () => {
                 },
               ]}
             />
-            {role === USER_ROLES.EDUCATOR && (
+            {!isMember ? (
+              <Button
+                sx={{
+                  backgroundColor: COLORS.UNLOCKED_BUTTON_GREEN,
+                  color: COLORS.PRIMARY_NAVY,
+                  fontFamily: montserrat.style.fontFamily,
+                  fontWeight: 600,
+                  fontSize: "14px",
+                  borderRadius: "8px",
+                  p: 1.5,
+                }}
+                endIcon={<Lock />}
+                onClick={showPlans}
+              >
+                Unlock Now
+              </Button>
+            ) : (
               <Button
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,

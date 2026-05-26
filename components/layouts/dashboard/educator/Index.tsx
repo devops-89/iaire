@@ -15,7 +15,11 @@ const EducatorDashboardLayout = ({
 }) => {
   const { educatorData } = useSignup();
 
-  const isMember = educatorData?.payments?.length > 0 && educatorData?.payments.find((v: any) => v.membership?.status === USER_STATUS.ACTIVE)
+  // const isMember =
+  //   educatorData?.payments?.length > 0 &&
+  //   educatorData?.payments.find(
+  //     (v: any) => v.membership?.status === USER_STATUS.ACTIVE,
+  //   );
 
   const { planData, planLoading } = useGetPlans({
     role: USER_ROLES.EDUCATOR_ADMIN,
@@ -23,7 +27,7 @@ const EducatorDashboardLayout = ({
   const { makePayment } = useMakePayment();
 
   const createPayment = async (id: number) => {
-    await makePayment(id);
+    await makePayment({ planId: id });
   };
 
   return (

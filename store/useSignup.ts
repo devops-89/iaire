@@ -3,18 +3,19 @@ import {
   SIGNUP_RESPONSE,
   MEMBERSHIP_LEVEL,
   EducatorInfo,
+  USER_DETAILS_RESPONSE,
 } from "@/utils/type";
 import { USER_ROLES } from "@/utils/enum";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface SignupStore {
-  data: any;
-  institutionData: any;
-  educatorData: any;
-  setUserData: (data: any) => void;
-  setInstitutionData: (data: any) => void;
-  setEducatorData: (data: any) => void;
+  data: USER_DETAILS_RESPONSE | null;
+  institutionData: USER_DETAILS_RESPONSE | null;
+  educatorData: USER_DETAILS_RESPONSE | null;
+  setUserData: (data: USER_DETAILS_RESPONSE | null) => void;
+  setInstitutionData: (data: USER_DETAILS_RESPONSE | null) => void;
+  setEducatorData: (data: USER_DETAILS_RESPONSE | null) => void;
   clearAll: () => void;
 }
 
@@ -36,10 +37,10 @@ export const useSignup = create<SignupStore>()(
         ...state,
         institutionData: state.institutionData
           ? {
-            ...state.institutionData,
-            affiliationCertificate: null,
-            logo: null,
-          }
+              ...state.institutionData,
+              affiliationCertificate: null,
+              logo: null,
+            }
           : null,
         educatorData: state.educatorData
           ? { ...state.educatorData, profileImage: null }
