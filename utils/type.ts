@@ -771,4 +771,31 @@ export interface USER_DETAILS_RESPONSE {
     updatedAt?: string;
     profileImageDownloadUrl?: string | null;
   }[];
+  // Institution signup fields (used when institutionData holds form data)
+  institutionName?: string;
+  principalName?: string;
+  website?: string;
+  addressLine1?: string;
+  addressLine2?: string;
+  postalCode?: string;
+  isd?: string;
+  affiliationType?: { id?: number; name: string; code?: string } | string;
+  affiliationNumber?: string;
+  affiliationCertificate?: File | null;
+  registrationYear?: string;
+  password?: string;
+  confirmPassword?: string;
+  contactPersonName?: string;
+  contactPersonEmail?: string;
+  contactPersonPhone?: string;
+  country?: {
+    id: number;
+    name: string;
+    code: string;
+  };
+  membershipLevel?: string;
+  certifiedEducators?: number;
+  publications?: number;
+  hasSelectionBoardApproval?: boolean;
+  registrationNumber?: string;
 }

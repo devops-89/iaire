@@ -71,4 +71,12 @@ export const userControllers = {
       throw error;
     }
   },
+  getUserDetailsPublic: async ({ userId }: { userId: string | null }) => {
+    try {
+      const result = await userPublicApi.get(`public/details/${userId}`);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

@@ -37,6 +37,7 @@ const InstitutionReview = () => {
   if (!institutionData) {
     return null;
   }
+
   console.log("isnt", institutionData);
   const handleCheckout = async () => {
     const schoolData = {
@@ -222,35 +223,35 @@ const InstitutionReview = () => {
 
             {(institutionData.affiliationType ||
               institutionData.affiliationNumber) && (
-                <>
-                  <Divider sx={{ my: 4 }} />
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: 800,
-                      mb: 3,
-                      color: COLORS.PRIMARY_NAVY,
-                      fontFamily: roboto.style.fontFamily,
-                    }}
-                  >
-                    Affiliation details
-                  </Typography>
-                  <Grid container spacing={1}>
-                    <DataRow
-                      label="Board"
-                      value={
-                        typeof institutionData?.affiliationType === "string"
-                          ? institutionData.affiliationType
-                          : institutionData?.affiliationType?.name || "N/A"
-                      }
-                    />
-                    <DataRow
-                      label="Affiliation Number"
-                      value={institutionData.affiliationNumber}
-                    />
-                  </Grid>
-                </>
-              )}
+              <>
+                <Divider sx={{ my: 4 }} />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: 800,
+                    mb: 3,
+                    color: COLORS.PRIMARY_NAVY,
+                    fontFamily: roboto.style.fontFamily,
+                  }}
+                >
+                  Affiliation details
+                </Typography>
+                <Grid container spacing={1}>
+                  <DataRow
+                    label="Board"
+                    value={
+                      typeof institutionData?.affiliationType === "string"
+                        ? institutionData.affiliationType
+                        : institutionData?.affiliationType?.name || "N/A"
+                    }
+                  />
+                  <DataRow
+                    label="Affiliation Number"
+                    value={institutionData.affiliationNumber}
+                  />
+                </Grid>
+              </>
+            )}
           </Box>
 
           <Box sx={{ mt: 6, display: "flex", gap: 3 }}>

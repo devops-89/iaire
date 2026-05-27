@@ -29,7 +29,33 @@ export const getUserDetails = (userId?: string | null) => {
           console.log("err", err);
         });
     };
+
     fetchUserDetails();
   }, []);
+  return { loading, data };
+};
+
+export const getUserDetailsPublic = (userId: string | null) => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      await userControllers
+        .getUserDetailsPublic({ userId: userId })
+        .then((res) => {
+          setData(res.data.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log("err", err);
+        });
+    };
+    if (userId) {
+      fetchData();
+    }
+  }, [userId]);
   return { loading, data };
 };

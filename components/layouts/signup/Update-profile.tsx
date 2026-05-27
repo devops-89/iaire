@@ -1,5 +1,8 @@
 "use client";
-import { getUserDetails } from "@/hooks/common/getUserDetails";
+import {
+  getUserDetails,
+  getUserDetailsPublic,
+} from "@/hooks/common/getUserDetails";
 import { aloeveraDisplay_medium } from "@/utils/fonts";
 import {
   Box,
@@ -17,7 +20,7 @@ const UpdateProfileLayout = () => {
 
   console.log("params", userId);
 
-  const { data } = getUserDetails(userId);
+  const { data } = getUserDetailsPublic(userId);
   console.log("data", data);
   return (
     <Box
@@ -50,7 +53,15 @@ const UpdateProfileLayout = () => {
               <Grid size={6}>
                 <TextField label="First Name" fullWidth />
               </Grid>
-              <Grid size={6}></Grid>
+              <Grid size={6}>
+                <TextField label="Last Name" fullWidth />
+              </Grid>
+              <Grid size={6}>
+                <TextField label="Email" fullWidth />
+              </Grid>
+              <Grid size={6}>
+                <TextField label="Email" fullWidth />
+              </Grid>
             </Grid>
           </form>
         </Card>
