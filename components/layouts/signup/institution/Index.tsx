@@ -18,6 +18,7 @@ import {
   COUNTRYDATAPROPS,
   InstitutionInfo,
   MEMBERSHIP_LEVEL,
+  USER_DETAILS_RESPONSE,
 } from "@/utils/type";
 import {
   Business,
@@ -94,7 +95,9 @@ const Institution = () => {
         certifiedEducators: 0,
         publications: 0,
         hasSelectionBoardApproval: false,
-      } as unknown as InstitutionInfo);
+        noOfTeachers: Number(filteredValues.noOfTeachers) || 0,
+        noOfStudents: Number(filteredValues.noOfStudents) || 0,
+      } as InstitutionInfo & USER_DETAILS_RESPONSE);
       router.push("/signup/review");
       // console.log("values", values);
     },

@@ -56,8 +56,8 @@ export interface InstitutionInfo {
   };
   isd?: string;
   registrationYear: string;
-  noOfTeachers: string | number;
-  noOfStudents: string | number;
+  noOfTeachers: number;
+  noOfStudents: number;
 }
 
 export interface EducatorInfo {
@@ -798,4 +798,25 @@ export interface USER_DETAILS_RESPONSE {
   publications?: number;
   hasSelectionBoardApproval?: boolean;
   registrationNumber?: string;
+}
+
+export interface UPDATE_PROFILE_FORM_PROPS {
+  phone: string;
+  countryCode: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  confirmPassword: string;
+  email: string;
+  profileImage: File | null;
+  grade: string;
+  fatherName: string;
+  fatherEmail: string;
+  fatherPhone: string;
+  fatherProfession: string;
+  motherName: string;
+  motherEmail: string;
+  motherPhone: string;
+  motherProfession: string;
+  gender: string;
 }

@@ -43,7 +43,7 @@ const ReviewPage = () => {
       }
 
       if (!storedRole) {
-        if (educatorData) storedRole = educatorData.role;
+        if (educatorData) storedRole = educatorData.role ?? null;
         else if (institutionData) storedRole = USER_ROLES.INSTITUTION;
       }
 

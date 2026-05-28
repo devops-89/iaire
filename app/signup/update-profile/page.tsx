@@ -1,4 +1,4 @@
-import UpdateProfileLayout from "@/components/layouts/signup/Update-profile";
+import UpdateProfileLayout from "@/components/layouts/signup/update-profile/Update-profile-layout";
 import { Box, Container } from "@mui/material";
 import React from "react";
 

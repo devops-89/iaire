@@ -35,7 +35,7 @@ export const getUserDetails = (userId?: string | null) => {
   return { loading, data };
 };
 
-export const getUserDetailsPublic = (userId: string | null) => {
+export const useGetUserDetailsPublic = (userId: string | null) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 

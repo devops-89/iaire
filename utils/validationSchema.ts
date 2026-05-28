@@ -268,3 +268,32 @@ export const loginValidationSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
 });
+
+export const updateProfileValidationSchema = Yup.object({
+  phone: Yup.string().required("Please enter valid phone number"),
+  countryCode: Yup.string().required("Please select country in phone number"),
+  firstName: Yup.string().required("Please enter your first name"),
+  lastName: Yup.string().required("Please enter your last name"),
+  password: Yup.string().required("Please enter your password"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  profileImage: Yup.mixed().nullable(),
+  grade: Yup.string().required("Please enter your grade"),
+  fatherName: Yup.string().required("Please enter your father's name"),
+  fatherEmail: Yup.string()
+    .email("Invalid email")
+    .required("Please enter your father's email"),
+  fatherPhone: Yup.string().required("Please enter your father's phone number"),
+  fatherProfession: Yup.string().required(
+    "Please enter your father's profession",
+  ),
+  motherName: Yup.string().required("Please enter your mother's name"),
+  motherEmail: Yup.string()
+    .email("Invalid email")
+    .required("Please enter your mother's email"),
+  motherPhone: Yup.string().required("Please enter your mother's phone number"),
+  motherProfession: Yup.string().required(
+    "Please enter your mother's profession",
+  ),
+  gender: Yup.string().required("Please select your gender"),
+  confirmPassword: Yup.string().required("Please Enter Confirm Password"),
+});

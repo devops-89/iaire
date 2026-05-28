@@ -74,13 +74,13 @@ const InstitutionHeader = () => {
         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         zIndex: 1100,
         px: 4,
-        // py: 
+        // py:
       }}
     >
       <Avatar
         onClick={handleOpen}
         sx={{
-          bgcolor: COLORS.BLUE,
+          bgcolor: COLORS.ACCENT_TAN,
           cursor: "pointer",
           transition: "transform 0.2s, box-shadow 0.2s",
           "&:hover": {

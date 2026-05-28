@@ -1,5 +1,5 @@
 "use client";
-import { COLORS } from "@/utils/enum";
+import { COLORS, USER_ROLES } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { signupValidationSchema } from "@/utils/validationSchema";
@@ -48,7 +48,7 @@ const SignupLayout = ({ children }: { children?: React.ReactNode }) => {
       email: "",
       password: "",
       confirmPassword: "",
-      role: role,
+      role: (role as USER_ROLES) ?? undefined,
     },
     validationSchema: signupValidationSchema,
     onSubmit: (values) => {
