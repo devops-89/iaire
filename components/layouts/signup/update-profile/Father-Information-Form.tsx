@@ -2,7 +2,7 @@ import { UPDATE_PROFILE_FORM_PROPS } from "@/utils/type";
 import { Grid, TextField } from "@mui/material";
 import { FormikProps } from "formik";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface FATHER_INFORMATION_PROPS {
   formik: FormikProps<UPDATE_PROFILE_FORM_PROPS>;
@@ -10,6 +10,12 @@ interface FATHER_INFORMATION_PROPS {
 
 const FatherInformation = ({ formik }: FATHER_INFORMATION_PROPS) => {
   const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    if (formik.values.countryCode || formik.values.fatherPhone) {
+      setPhone(`${formik.values.countryCode}${formik.values.fatherPhone}`);
+    }
+  }, [formik.values.fatherPhone, formik.values.countryCode]);
 
   const phoneChangeHandler = (
     newValue: string,

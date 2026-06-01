@@ -2,10 +2,19 @@ import { GENDER } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
 import { newBlack_medium } from "@/utils/fonts";
 import { UPDATE_PROFILE_FORM_PROPS } from "@/utils/type";
-import { Autocomplete, Avatar, Button, Grid, TextField } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import {
+  Autocomplete,
+  Avatar,
+  Button,
+  Grid,
+  IconButton,
+  InputAdornment,
+  TextField,
+} from "@mui/material";
 import { FormikProps } from "formik";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
-import React, { SyntheticEvent, useRef, useState } from "react";
+import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 
 interface PERSONAL_INFORMATION_PROPS {
   formik: FormikProps<UPDATE_PROFILE_FORM_PROPS>;
@@ -13,6 +22,13 @@ interface PERSONAL_INFORMATION_PROPS {
 
 const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
   const [phone, setPhone] = useState("");
+
+  useEffect(() => {
+    if (formik.values.phone) {
+      setPhone(`${formik.values.countryCode}${formik.values.phone}`);
+    }
+  }, [formik.values.phone, formik.values.countryCode]);
+
   const [preview, setPreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -22,6 +38,15 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
       formik.setFieldValue("profileImage", file);
       setPreview(URL.createObjectURL(file));
     }
+  };
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmpassword] =
+    useState<boolean>(false);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+  const handleClickShowConfirmPassword = () => {
+    setShowConfirmpassword(!showConfirmPassword);
   };
 
   const phoneChangeHandler = (
@@ -47,8 +72,6 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
       formik.setFieldError("gender", "");
     }
   };
-
-  console.log("first", formik.values);
 
   return (
     <Grid container spacing={2}>
@@ -106,6 +129,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          value={formik.values.email}
         />
       </Grid>
       <Grid size={6}>
@@ -154,6 +178,17 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          slotProps={{
+            input: {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleClickShowPassword}>
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            },
+          }}
         />
       </Grid>
       <Grid size={6}>
@@ -169,6 +204,17 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           helperText={
             formik.touched.confirmPassword && formik.errors.confirmPassword
           }
+          slotProps={{
+            input: {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleClickShowConfirmPassword}>
+                    {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            },
+          }}
         />
       </Grid>
     </Grid>

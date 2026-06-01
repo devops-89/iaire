@@ -576,7 +576,7 @@ export interface SCHOOL_ADD_INNOVATION_REQUEST_PROPS {
   solution: string;
   teamId: string | number;
   isDraft?: boolean;
-  attorneyFinalTemplate?: File | null;
+  attomeyFinalTemplate?: File | null;
 }
 
 export interface PAYMENT_MEMBERSHIP_PROPS {
@@ -806,7 +806,7 @@ export interface UPDATE_PROFILE_FORM_PROPS {
   firstName: string;
   lastName: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
   email: string;
   profileImage: File | null;
   grade: string;
@@ -819,4 +819,83 @@ export interface UPDATE_PROFILE_FORM_PROPS {
   motherPhone: string;
   motherProfession: string;
   gender: string;
+  id?: number;
+}
+
+export interface INNOVATION_FORM_PROPS {
+  title: string;
+  team: any;
+  problemDescription: string;
+  solutionDescription: string;
+  file: File | null;
+  isDraft?: boolean;
+}
+
+export interface INNOVATION_RESPONSE_DATA_PROPS {
+  id: number;
+  title: string;
+  description: string;
+  problemStatement: string;
+  solutionApproach: string;
+  ownerType: string;
+  ownerId: number;
+  schoolId: number;
+  school: {
+    id: number;
+    name: string;
+    code: string | null;
+    address: string | null;
+    logo: string | null;
+    isActive: boolean;
+    boardId: number;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+  };
+  createdBy: number;
+  creator: {
+    id: number;
+    email: string;
+    username: string;
+    phone: string | null;
+    countryCode: string | null;
+    isEmailVerified: boolean;
+    isPhoneVerified: boolean;
+    firstName: string;
+    lastName: string;
+    bio: string | null;
+    profileImage: string | null;
+    password?: string;
+    hashedRefreshToken?: string | null;
+    lastLoginAt?: string | null;
+    tokenVersion: number;
+    role: string;
+    status: string;
+    schoolId: number;
+    boardId: number;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+  };
+  status: string;
+  stage: string;
+  attachments: string[];
+  patentLink: string | null;
+  publicationLink: string | null;
+  category: string;
+  tags: string[];
+  reviewedBy: number | null;
+  reviewer: any;
+  reviewComments: string | null;
+  reviewedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+}
+
+export interface PAGINATION_PROPS_DATA {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
 }

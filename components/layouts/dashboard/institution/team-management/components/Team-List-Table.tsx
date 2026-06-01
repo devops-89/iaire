@@ -1,6 +1,15 @@
 "use client";
-import { aloeveraDisplay_medium, newBlack_light, newBlack_medium, roboto } from "@/utils/fonts";
-import { TEAM_DETAILS_RESPONSE, TEAM_LIST_DATA_PROPS, TEAM_LIST_HEADER } from "@/utils/type";
+import {
+  aloeveraDisplay_medium,
+  newBlack_light,
+  newBlack_medium,
+  roboto,
+} from "@/utils/fonts";
+import {
+  TEAM_DETAILS_RESPONSE,
+  TEAM_LIST_DATA_PROPS,
+  TEAM_LIST_HEADER,
+} from "@/utils/type";
 import { MoreVert } from "@mui/icons-material";
 import {
   Box,
@@ -78,7 +87,7 @@ const TeamListTable = ({
                     fontFamily: newBlack_medium.style.fontFamily,
                   }}
                 >
-                  {val.id}
+                  {val.teamCode}
                 </TableCell>
                 <TableCell
                   sx={{
@@ -105,7 +114,8 @@ const TeamListTable = ({
                     fontFamily: newBlack_medium.style.fontFamily,
                   }}
                 >
-                  {val.assistantMentor?.firstName || "--"} {val.assistantMentor?.lastName || "--"}
+                  {val.assistantMentor?.firstName || "--"}{" "}
+                  {val.assistantMentor?.lastName || "--"}
                 </TableCell>
                 <TableCell sx={{ textAlign: "center" }}>
                   <IconButton onClick={handlePopover}>

@@ -2419,13 +2419,18 @@ export const HEADER_CONTENT = [
   },
 ];
 
-
-
 export const PAYMENT_ROLE = [
   {
     label: USER_ROLES.EDUCATOR,
   },
   {
-    label: USER_ROLES.INSTITUTION
-  }
-]
+    label: USER_ROLES.INSTITUTION,
+  },
+];
+
+export const INNOVATION_TABLE_HEADER = [
+  "Id",
+  "Innovation Title",
+  "Team Name",
+  "Status",
+];

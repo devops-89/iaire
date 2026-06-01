@@ -6,27 +6,26 @@ import { Box, Button, Card, Container, Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import FatherInformation from "./Father-Information-Form";
 import MotherInformation from "./Mother-Information-form";
-
 import { useFormik } from "formik";
 import { updateProfileValidationSchema } from "@/utils/validationSchema";
 import { UPDATE_PROFILE_FORM_PROPS, USER_DETAILS_RESPONSE } from "@/utils/type";
 import PersonalInformation from "./Personal-Information-Form";
+import { useUpdateProfileStudent } from "@/hooks/student/Update-Profile";
 
 const UpdateProfileLayout = () => {
   const searchParams = useSearchParams();
   const userId = searchParams.get("token");
 
-  console.log("params", userId);
-
   const { data } = useGetUserDetailsPublic(userId) as {
     data: USER_DETAILS_RESPONSE;
   };
-  console.log("data", data);
+
+  const { UpdateProfile, loading } = useUpdateProfileStudent();
 
   const formik = useFormik<UPDATE_PROFILE_FORM_PROPS>({
     initialValues: {
       phone: data?.phone || "",
-      countryCode: data?.countryCode || "",
+      countryCode: data?.countryCode || data?.board?.country?.phoneCode || "",
       firstName: data?.firstName || "",
       lastName: data?.lastName || "",
       password: "",
@@ -47,7 +46,8 @@ const UpdateProfileLayout = () => {
     enableReinitialize: true,
     validationSchema: updateProfileValidationSchema,
     onSubmit: (values) => {
-      console.log("values", values);
+      const { confirmPassword, ...payload } = values;
+      UpdateProfile(payload, Number(userId));
     },
   });
 

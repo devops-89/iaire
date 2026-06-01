@@ -32,13 +32,13 @@ const TeamList = () => {
     showModal(<AddTeams />);
   };
 
-  const { fetchData, loading, teamData } = useGetTeam()
+  const { fetchData, loading, teamData } = useGetTeam();
 
   useEffect(() => {
     fetchData();
-  }, [])
+  }, []);
 
-  console.log("first", teamData)
+  console.log("first", teamData);
 
   return (
     <Box>
