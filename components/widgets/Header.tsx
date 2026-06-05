@@ -133,22 +133,24 @@ const Header = () => {
                   Member Login
                 </Button>
               </Link>
-              <Button
-                sx={{
-                  fontSize: 15,
-                  fontFamily: newBlack_medium.style.fontFamily,
-                  fontWeight: 500,
-                  border: `1px solid ${COLORS.PRIMARY_NAVY}`,
-                  px: 3,
-                  py: 1.5,
-                  borderRadius: "50px",
-                  color: COLORS.PRIMARY_NAVY,
-                  textTransform: "none",
-                }}
-              >
-                {" "}
-                Join IAIRE
-              </Button>
+              <Link href="/signup/role-selection">
+                <Button
+                  sx={{
+                    fontSize: 15,
+                    fontFamily: newBlack_medium.style.fontFamily,
+                    fontWeight: 500,
+                    border: `1px solid ${COLORS.PRIMARY_NAVY}`,
+                    px: 3,
+                    py: 1.5,
+                    borderRadius: "50px",
+                    color: COLORS.PRIMARY_NAVY,
+                    textTransform: "none",
+                  }}
+                >
+                  {" "}
+                  Join IAIRE
+                </Button>
+              </Link>
             </Stack>
           </Stack>
         </Box>
