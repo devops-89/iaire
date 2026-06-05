@@ -82,7 +82,7 @@ const InnovationList = () => {
                 </TableHead>
                 <TableBody>
                   {innovationData?.map((val, i) => (
-                    <TableRow>
+                    <TableRow key={i}>
                       <TableCell>{val.id}</TableCell>
                       <TableCell>
                         <Link
@@ -91,13 +91,10 @@ const InnovationList = () => {
                         >
                           <Typography
                             sx={{
-                              color: COLORS.BLACK,
-                              fontWeight: 600,
+                              color: COLORS.PRIMARY_NAVY,
+                              fontWeight: 500,
                               fontSize: 15,
-                              "&:hover": {
-                                color: COLORS.PRIMARY_NAVY,
-                                textDecoration: "underline",
-                              },
+                              textDecoration: "underline",
                             }}
                           >
                             {val.title}

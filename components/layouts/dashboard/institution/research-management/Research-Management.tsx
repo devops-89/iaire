@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { RESEARCH_DATA, RESEARCH_HEADER } from "@/utils/constant";
 import { COLORS, USER_STATUS } from "@/utils/enum";
-import { roboto } from "@/utils/fonts";
+import { aloeveraDisplay_medium, roboto } from "@/utils/fonts";
 import { Add, Delete, Edit } from "@mui/icons-material";
 import {
   Box,
@@ -33,34 +33,33 @@ const ResearchManagement = () => {
             data={[
               {
                 title: "Dashboard",
-                href: "/dashboard/school",
+                href: "/dashboard/institution",
               },
               {
                 title: "Research Submissions",
-                href: "/dashboard/school/research-submission",
+                href: "/dashboard/institution/research-submission",
               },
             ]}
           />
           <Link
-            href="/dashboard/school/research-submission/add-research"
+            href="/dashboard/institution/research-submission/add-research"
             style={{ textDecoration: "none" }}
           >
             <Button
               sx={{
-                backgroundColor: COLORS.RED,
+                backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
-                fontFamily: roboto.style.fontFamily,
-                fontWeight: 700,
+                fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                fontWeight: 600,
                 fontSize: 16,
                 borderRadius: "10px",
                 padding: "10px 20px",
               }}
               endIcon={<Add />}
             >
-              Submit Research
+              Add Research
             </Button>
           </Link>
-
         </Stack>
 
         <TableContainer sx={{ mt: 3 }}>

@@ -140,10 +140,10 @@ export const addInstitutionInnovationValidationSchema = Yup.object({
 });
 
 export const addResearchValidationSchema = Yup.object({
-  title: Yup.string().required("Research Title is required"),
+  title: Yup.string().required("Research title is required"),
   topic: Yup.string().required("Topic is required"),
-  abstract: Yup.string().required("Abstract is required"),
-  status: Yup.string().required("Status is required"),
+  description: Yup.string().required("Please enter description"),
+  teamId: Yup.string().required("Please select at least one team"),
 });
 
 export const addStartupValidationSchema = Yup.object({

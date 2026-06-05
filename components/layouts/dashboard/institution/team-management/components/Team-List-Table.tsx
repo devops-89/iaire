@@ -10,7 +10,7 @@ import {
   TEAM_LIST_DATA_PROPS,
   TEAM_LIST_HEADER,
 } from "@/utils/type";
-import { MoreVert } from "@mui/icons-material";
+import { Edit, MoreVert } from "@mui/icons-material";
 import {
   Box,
   IconButton,
@@ -30,6 +30,9 @@ import {
 import React, { MouseEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { COLORS } from "@/utils/enum";
+import { useModal } from "@/store/useModal";
+import EditTeams from "@/components/modals/school/EditTeam";
 
 const TeamListTable = ({
   tableHeader,
@@ -49,28 +52,11 @@ const TeamListTable = ({
     setSelectedTeam(null);
   };
 
-  const listdata = [
-    {
-      label: "Manage Team Members",
-    },
-    // {
-    //   label: "View Team Profile",
-    //   onclick: () => {
-    //     if (selectedTeam?.id) {
-    //       router.push(
-    //         `/dashboard/institution/team-management/${selectedTeam.id}/view-team`,
-    //       );
-    //       handleClose();
-    //     }
-    //   },
-    // },
-    {
-      label: "Manage Assistant Mentor",
-    },
-    {
-      label: "Manage Mentor",
-    },
-  ];
+  const { showModal } = useModal();
+
+  const handleEditTeam = (value: TEAM_DETAILS_RESPONSE) => {
+    showModal(<EditTeams value={value} />);
+  };
 
   const handlePopover = (
     event: MouseEvent<HTMLButtonElement>,
@@ -138,6 +124,14 @@ const TeamListTable = ({
                 <TableCell
                   sx={{
                     fontSize: 14,
+                    fontFamily: newBlack_medium.style.fontFamily,
+                  }}
+                >
+                  {val.type}
+                </TableCell>
+                <TableCell
+                  sx={{
+                    fontSize: 14,
 
                     fontFamily: newBlack_medium.style.fontFamily,
                   }}
@@ -155,8 +149,13 @@ const TeamListTable = ({
                   {val.assistantMentor?.lastName || "--"}
                 </TableCell>
                 <TableCell sx={{ textAlign: "center" }}>
-                  <IconButton onClick={(e) => handlePopover(e, val)}>
-                    <MoreVert />
+                  <IconButton onClick={() => handleEditTeam(val)}>
+                    <Edit
+                      sx={{
+                        fontSize: 15,
+                        color: COLORS.PRIMARY_NAVY,
+                      }}
+                    />
                   </IconButton>
                 </TableCell>
               </TableRow>
@@ -164,7 +163,7 @@ const TeamListTable = ({
           </TableBody>
         </Table>
       </TableContainer>
-      <Popover
+      {/* <Popover
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
@@ -195,7 +194,7 @@ const TeamListTable = ({
             </ListItemButton>
           ))}
         </List>
-      </Popover>
+      </Popover> */}
     </Box>
   );
 };

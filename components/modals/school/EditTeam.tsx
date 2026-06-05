@@ -1,35 +1,31 @@
 "use client";
-import {
-  Autocomplete,
-  Box,
-  Button,
-  Card,
-  Grid,
-  TextField,
-  CircularProgress,
-  Typography,
-} from "@mui/material";
-import React, { useState } from "react";
-import Breadcrumb from "@/components/widgets/Breadcrumb";
-import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
-import { CATEGORY_TYPES } from "@/utils/constant";
 import { useGetAllUser } from "@/hooks/common/useGetAllUser";
-import { COLORS, USER_ROLES, USER_STATUS } from "@/utils/enum";
+import { useAddTeam } from "@/hooks/school/useTeam";
+import useSnackbar from "@/store/useSnackbar";
+import { CATEGORY_TYPES } from "@/utils/constant";
+import { COLORS, USER_ROLES } from "@/utils/enum";
+import { aloeveraDisplay_medium, newBlack_light } from "@/utils/fonts";
+import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import {
   CREATE_TEAM_REQUEST,
   STUDENT_RESPONSE_PROPS,
   TEACHER_REPONSE_PROPS,
+  TEAM_DETAILS_RESPONSE,
 } from "@/utils/type";
-import { useFormik } from "formik";
 import { addTeamValidationSchema } from "@/utils/validationSchema";
-import useSnackbar from "@/store/useSnackbar";
-import { schoolControllers } from "@/app/api/schoolControllers";
+import {
+  Autocomplete,
+  Box,
+  Button,
+  CircularProgress,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
-import InstitutionDashboardLayout from "@/components/layouts/dashboard/institution/Index";
-import { aloeveraDisplay_medium, newBlack_light, roboto } from "@/utils/fonts";
-import { useAddTeam } from "@/hooks/school/useTeam";
 
-const AddTeams = () => {
+const EditTeams = ({ value }: { value: TEAM_DETAILS_RESPONSE }) => {
   const { userData, fetchUserData, loading, setUserData } = useGetAllUser();
   const { setSnackbar } = useSnackbar();
   const router = useRouter();
@@ -37,10 +33,10 @@ const AddTeams = () => {
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      type: "",
-      mentorId: "",
-      studentIds: [],
+      title: value?.title || "",
+      type: value?.type || "",
+      mentorId: value?.mentorId || "",
+      studentIds: value?.members?.map((v) => v.studentId) || [],
     },
     validationSchema: addTeamValidationSchema,
     onSubmit: async (values) => {
@@ -71,23 +67,6 @@ const AddTeams = () => {
   return (
     <Box>
       <Box>
-        {/* <Breadcrumb
-          title="Add Team"
-          data={[
-            {
-              title: "Dashboard",
-              href: "/dashboard/institution",
-            },
-            {
-              title: "Team Management",
-              href: "/dashboard/institution/team-management",
-            },
-            {
-              title: "Add Team",
-              href: "/dashboard/institution/team-management/add-team",
-            },
-          ]}
-        /> */}
         <Typography
           variant="h5"
           sx={{
@@ -96,7 +75,7 @@ const AddTeams = () => {
             fontWeight: 600,
           }}
         >
-          Add Team
+          Edit Team
         </Typography>
 
         <Grid container spacing={2} sx={{ mt: 2 }}>
@@ -235,4 +214,4 @@ const AddTeams = () => {
   );
 };
 
-export default AddTeams;
+export default EditTeams;

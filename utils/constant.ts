@@ -1186,6 +1186,9 @@ export const TEAM_LIST_HEADER_DATA: TEAM_LIST_HEADER[] = [
     label: "Team Name",
   },
   {
+    label: "Category",
+  },
+  {
     label: "Mentor Name",
   },
   {

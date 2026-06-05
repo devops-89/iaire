@@ -1156,3 +1156,10 @@ export interface EDUCATOR_DETAILS_RESPONSE {
     profileImageDownloadUrl: string | null;
   }[];
 }
+
+export interface RESEARCH_FORM_PROPS {
+  title: string;
+  description: string;
+  topic?: string;
+  teamId: number | string;
+}
