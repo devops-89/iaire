@@ -35,10 +35,12 @@ import {
   Typography
 } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
 
 const StudentList = () => {
+  const router = useRouter();
   const { showModal } = useModal();
   const { setSnackbar } = useSnackbar();
   const [selectedStudent, setSelectedStudent] = useState<any>("");
@@ -66,6 +68,12 @@ const StudentList = () => {
     },
     {
       label: "View Profile",
+      onclick: () => {
+        if (selectedStudent?.id) {
+          router.push(`/dashboard/institution/student-management/${selectedStudent.id}/view-student`);
+          handleClosePopover();
+        }
+      },
     },
   ];
 
@@ -158,19 +166,27 @@ const StudentList = () => {
                       <TableRow key={i}>
                         <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.userId}</TableCell>
                         <TableCell>
-                          <Typography
-                            sx={{
-                              color: COLORS.BLACK,
-                              fontWeight: 500,
-                              fontSize: 15,
-                              fontFamily: newBlack_medium.style.fontFamily
-                            }}
+                          <Link
+                            href={`/dashboard/institution/student-management/${val.id}/view-student`}
+                            style={{ color: "inherit", textDecoration: "none" }}
                           >
-                            {val.fullName}
-                          </Typography>
-                          <Typography sx={{ fontSize: 12, fontFamily: newBlack_medium.style.fontFamily }}>
-                            {val.email}
-                          </Typography>
+                            <Typography
+                              sx={{
+                                color: COLORS.BLACK,
+                                fontWeight: 500,
+                                fontSize: 15,
+                                fontFamily: newBlack_medium.style.fontFamily,
+                                "&:hover": {
+                                  color: COLORS.PRIMARY_NAVY,
+                                }
+                              }}
+                            >
+                              {val.fullName}
+                            </Typography>
+                            <Typography sx={{ fontSize: 12, fontFamily: newBlack_medium.style.fontFamily }}>
+                              {val.email}
+                            </Typography>
+                          </Link>
                         </TableCell>
                         <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.phone}</TableCell>
                         <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.grade}</TableCell>

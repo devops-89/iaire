@@ -1,6 +1,5 @@
 "use client";
 import {
-  Avatar,
   Box,
   Button,
   Card,
@@ -30,29 +29,35 @@ import {
   Work,
   Badge,
   CreditCard,
-  Group,
   CheckCircle,
+  Person,
+  CalendarToday,
+  Wc,
+  SupervisorAccount,
   Cancel,
 } from "@mui/icons-material";
 import ProfileCard from "./components/Profile-Card";
-import { EDUCATOR_DETAILS_RESPONSE } from "@/utils/type";
+import { STUDENT_RESPONSE_PROPS } from "@/utils/type";
 
-const EducatorDetails = () => {
+const StudentDetails = () => {
   const params = useParams();
   const router = useRouter();
   const id = params?.slug as string;
 
   const { data, loading } = useGetUserDetailsById(id);
-  const educator = data as any;
+  const student = data as STUDENT_RESPONSE_PROPS;
 
-  const getInitials = (name: string) => {
-    if (!name) return "";
-    const parts = name.split(" ");
-    return parts
-      .map((p) => p[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 2);
+  const formatDob = (dobString: string | null) => {
+    if (!dobString) return "-";
+    try {
+      return new Date(dobString).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    } catch {
+      return dobString;
+    }
   };
 
   return (
@@ -68,7 +73,7 @@ const EducatorDetails = () => {
             overflowY: "auto",
           }}
         >
-          <ProfileCard data={data as EDUCATOR_DETAILS_RESPONSE} />
+          {data && <ProfileCard data={student} />}
         </Grid>
         <Grid size={{ xs: 12, md: 8 }}>
           <Stack spacing={4}>
@@ -84,7 +89,7 @@ const EducatorDetails = () => {
                   mb: 2,
                 }}
               >
-                Back to Educator Management
+                Back to Student Management
               </Button>
 
               <Stack
@@ -97,7 +102,7 @@ const EducatorDetails = () => {
                   className={montserrat.className}
                   sx={{ fontWeight: 700 }}
                 >
-                  Educator Details
+                  Student Details
                 </Typography>
               </Stack>
             </Box>
@@ -113,13 +118,14 @@ const EducatorDetails = () => {
               >
                 <CircularProgress />
               </Box>
-            ) : educator ? (
+            ) : student ? (
               <>
                 <Grid container spacing={4}>
+                  {/* About Card */}
                   <Grid size={{ xs: 12, sm: 6 }}>
                     <Card
                       elevation={0}
-                      sx={{ border: "1px solid #e0e0e0", borderRadius: "12px" }}
+                      sx={{ border: "1px solid #e0e0e0", borderRadius: "12px", height: "100%" }}
                     >
                       <CardContent>
                         <Typography
@@ -161,7 +167,7 @@ const EducatorDetails = () => {
                                 <Typography
                                   sx={{ fontSize: "14px", fontWeight: 500 }}
                                 >
-                                  {educator?.email || "-"}
+                                  {student?.email || "-"}
                                 </Typography>
                               }
                             />
@@ -193,7 +199,7 @@ const EducatorDetails = () => {
                                 <Typography
                                   sx={{ fontSize: "14px", fontWeight: 500 }}
                                 >
-                                  {educator?.phone ? (educator.phone.startsWith("+") ? educator.phone : `+${educator.phone}`) : "-"}
+                                  {student?.phone ? (student.phone.startsWith("+") ? student.phone : `+${student.phone}`) : "-"}
                                 </Typography>
                               }
                             />
@@ -218,7 +224,7 @@ const EducatorDetails = () => {
                                   variant="body2"
                                   sx={{ fontSize: "12px", color: "#757575" }}
                                 >
-                                  ROLE & CATEGORY
+                                  GRADE &amp; ROLE
                                 </Typography>
                               }
                               secondary={
@@ -226,10 +232,10 @@ const EducatorDetails = () => {
                                   <Typography
                                     sx={{ fontSize: "14px", fontWeight: 500 }}
                                   >
-                                    {educator?.role || "-"}
+                                    Grade {student?.grade || "-"}
                                   </Typography>
                                   <Chip
-                                    label={educator?.category || "-"}
+                                    label={student?.role || "-"}
                                     size="small"
                                     sx={{
                                       backgroundColor: "#F1F5F9",
@@ -242,9 +248,12 @@ const EducatorDetails = () => {
                               }
                             />
                           </ListItem>
-                          <ListItem disableGutters sx={{ py: 1.5 }}>
+                          <ListItem
+                            disableGutters
+                            sx={{ py: 1.5, borderBottom: "1px solid #e0e0e0" }}
+                          >
                             <ListItemAvatar>
-                              <CreditCard
+                              <Wc
                                 sx={{
                                   color: "#757575",
                                   backgroundColor: "#F1F5F9",
@@ -259,17 +268,43 @@ const EducatorDetails = () => {
                                   variant="body2"
                                   sx={{ fontSize: "12px", color: "#757575" }}
                                 >
-                                  MEMBERSHIP CODE
+                                  GENDER
+                                </Typography>
+                              }
+                              secondary={
+                                <Typography
+                                  sx={{ fontSize: "14px", fontWeight: 500, textTransform: "capitalize" }}
+                                >
+                                  {student?.gender?.toLowerCase() || "-"}
+                                </Typography>
+                              }
+                            />
+                          </ListItem>
+                          <ListItem disableGutters sx={{ py: 1.5 }}>
+                            <ListItemAvatar>
+                              <CalendarToday
+                                sx={{
+                                  color: "#757575",
+                                  backgroundColor: "#F1F5F9",
+                                  p: 1,
+                                  borderRadius: "8px",
+                                }}
+                              />
+                            </ListItemAvatar>
+                            <ListItemText
+                              primary={
+                                <Typography
+                                  variant="body2"
+                                  sx={{ fontSize: "12px", color: "#757575" }}
+                                >
+                                  DATE OF BIRTH
                                 </Typography>
                               }
                               secondary={
                                 <Typography
                                   sx={{ fontSize: "14px", fontWeight: 500 }}
                                 >
-                                  {educator?.payments?.[0]?.membership
-                                    ?.membershipCode ||
-                                    educator?.membershipCode ||
-                                    "-"}
+                                  {formatDob(student?.dob)}
                                 </Typography>
                               }
                             />
@@ -279,10 +314,11 @@ const EducatorDetails = () => {
                     </Card>
                   </Grid>
 
+                  {/* School & Board Details */}
                   <Grid size={{ xs: 12, sm: 6 }}>
                     <Card
                       elevation={0}
-                      sx={{ border: "1px solid #e0e0e0", borderRadius: "12px" }}
+                      sx={{ border: "1px solid #e0e0e0", borderRadius: "12px", height: "100%" }}
                     >
                       <CardContent>
                         <Typography
@@ -324,9 +360,7 @@ const EducatorDetails = () => {
                                 <Typography
                                   sx={{ fontSize: "14px", fontWeight: 500 }}
                                 >
-                                  {educator?.school?.name ||
-                                    educator?.institution?.name ||
-                                    "-"}
+                                  {student?.school?.name || "-"}
                                 </Typography>
                               }
                             />
@@ -358,9 +392,7 @@ const EducatorDetails = () => {
                                 <Typography
                                   sx={{ fontSize: "14px", fontWeight: 500 }}
                                 >
-                                  {educator?.board?.name ||
-                                    educator?.boardId ||
-                                    "-"}
+                                  {student?.board?.name || "-"}
                                 </Typography>
                               }
                             />
@@ -389,14 +421,145 @@ const EducatorDetails = () => {
                                 <Typography
                                   sx={{ fontSize: "14px", fontWeight: 500 }}
                                 >
-                                  {educator?.school?.city
-                                    ? `${educator.school.city}, ${educator.school.state || ""}`
-                                    : "-"}
+                                  {student?.school?.city
+                                    ? `${student.school.city}, ${student.school.state || ""}`
+                                    : student?.city
+                                      ? `${student.city}, ${student.state || ""}`
+                                      : "-"}
                                 </Typography>
                               }
                             />
                           </ListItem>
                         </List>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+
+                  {/* Parent / Guardian Details Card */}
+                  <Grid size={{ xs: 12 }}>
+                    <Card
+                      elevation={0}
+                      sx={{ border: "1px solid #e0e0e0", borderRadius: "12px" }}
+                    >
+                      <CardContent>
+                        <Typography
+                          className={montserrat.className}
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "16px",
+                            mb: 3,
+                          }}
+                        >
+                          Parent / Guardian Details
+                        </Typography>
+                        <Divider />
+                        <Grid container spacing={4} sx={{ mt: 1 }}>
+                          {/* Father Details */}
+                          <Grid size={{ xs: 12, sm: 6 }}>
+                            <Stack spacing={2}>
+                              <Typography
+                                sx={{
+                                  fontSize: "14px",
+                                  fontWeight: 700,
+                                  color: COLORS.PRIMARY_BLUE,
+                                }}
+                              >
+                                Father's Information
+                              </Typography>
+                              <List disablePadding>
+                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                  <ListItemAvatar sx={{ minWidth: 40 }}>
+                                    <Person sx={{ color: "#757575", fontSize: 20 }} />
+                                  </ListItemAvatar>
+                                  <ListItemText
+                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>NAME</Typography>}
+                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.fatherName || "-"}</Typography>}
+                                  />
+                                </ListItem>
+                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                  <ListItemAvatar sx={{ minWidth: 40 }}>
+                                    <Email sx={{ color: "#757575", fontSize: 20 }} />
+                                  </ListItemAvatar>
+                                  <ListItemText
+                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>EMAIL</Typography>}
+                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600, wordBreak: "break-all" }}>{student?.fatherEmail || "-"}</Typography>}
+                                  />
+                                </ListItem>
+                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                  <ListItemAvatar sx={{ minWidth: 40 }}>
+                                    <Phone sx={{ color: "#757575", fontSize: 20 }} />
+                                  </ListItemAvatar>
+                                  <ListItemText
+                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>PHONE</Typography>}
+                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.fatherPhone ? (student.fatherPhone.startsWith("+") ? student.fatherPhone : `+${student.fatherPhone}`) : "-"}</Typography>}
+                                  />
+                                </ListItem>
+                                <ListItem disableGutters sx={{ py: 1 }}>
+                                  <ListItemAvatar sx={{ minWidth: 40 }}>
+                                    <Work sx={{ color: "#757575", fontSize: 20 }} />
+                                  </ListItemAvatar>
+                                  <ListItemText
+                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>PROFESSION</Typography>}
+                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.fatherProfession || "-"}</Typography>}
+                                  />
+                                </ListItem>
+                              </List>
+                            </Stack>
+                          </Grid>
+
+                          {/* Mother Details */}
+                          <Grid size={{ xs: 12, sm: 6 }}>
+                            <Stack spacing={2}>
+                              <Typography
+                                sx={{
+                                  fontSize: "14px",
+                                  fontWeight: 700,
+                                  color: COLORS.PRIMARY_BLUE,
+                                }}
+                              >
+                                Mother's Information
+                              </Typography>
+                              <List disablePadding>
+                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                  <ListItemAvatar sx={{ minWidth: 40 }}>
+                                    <Person sx={{ color: "#757575", fontSize: 20 }} />
+                                  </ListItemAvatar>
+                                  <ListItemText
+                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>NAME</Typography>}
+                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.motherName || "-"}</Typography>}
+                                  />
+                                </ListItem>
+                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                  <ListItemAvatar sx={{ minWidth: 40 }}>
+                                    <Email sx={{ color: "#757575", fontSize: 20 }} />
+                                  </ListItemAvatar>
+                                  <ListItemText
+                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>EMAIL</Typography>}
+                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600, wordBreak: "break-all" }}>{student?.motherEmail || "-"}</Typography>}
+                                  />
+                                </ListItem>
+                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                  <ListItemAvatar sx={{ minWidth: 40 }}>
+                                    <Phone sx={{ color: "#757575", fontSize: 20 }} />
+                                  </ListItemAvatar>
+                                  <ListItemText
+                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>PHONE</Typography>}
+                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.motherPhone ? (student.motherPhone.startsWith("+") ? student.motherPhone : `+${student.motherPhone}`) : "-"}</Typography>}
+                                  />
+                                </ListItem>
+                                <ListItem disableGutters sx={{ py: 1 }}>
+                                  <ListItemAvatar sx={{ minWidth: 40 }}>
+                                    <Work sx={{ color: "#757575", fontSize: 20 }} />
+                                  </ListItemAvatar>
+                                  <ListItemText
+                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>PROFESSION</Typography>}
+                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.motherProfession || "-"}</Typography>}
+                                  />
+                                </ListItem>
+                              </List>
+                            </Stack>
+                          </Grid>
+                        </Grid>
                       </CardContent>
                     </Card>
                   </Grid>
@@ -429,7 +592,7 @@ const EducatorDetails = () => {
                     </Stack>
                     <Divider />
 
-                    {!educator.payments || educator.payments.length === 0 ? (
+                    {!student.payments || student.payments.length === 0 ? (
                       <Typography
                         variant="body2"
                         color="text.secondary"
@@ -439,7 +602,7 @@ const EducatorDetails = () => {
                       </Typography>
                     ) : (
                       <Stack spacing={3} mt={2}>
-                        {educator.payments.map((payment: any) => (
+                        {student.payments.map((payment: any) => (
                           <Box
                             key={payment.id}
                             sx={{
@@ -494,21 +657,21 @@ const EducatorDetails = () => {
                                   PAYMENT STATUS
                                 </Typography>
                                 <Chip
-                                  label={payment.status}
-                                  size="small"
-                                  icon={
-                                    payment.status?.toUpperCase() === "SUCCESS" ? (
-                                      <CheckCircle style={{ color: "#2e7d32" }} />
-                                    ) : (
-                                      <Cancel style={{ color: "#c62828" }} />
-                                    )
-                                  }
-                                  sx={{
-                                    backgroundColor: payment.status?.toUpperCase() === "SUCCESS" ? "#e8f5e9" : "#ffebee",
-                                    color: payment.status?.toUpperCase() === "SUCCESS" ? "#2e7d32" : "#c62828",
-                                    fontWeight: 600,
-                                  }}
-                                />
+                                   label={payment.status}
+                                   size="small"
+                                   icon={
+                                     payment.status?.toUpperCase() === "SUCCESS" ? (
+                                       <CheckCircle style={{ color: "#2e7d32" }} />
+                                     ) : (
+                                       <Cancel style={{ color: "#c62828" }} />
+                                     )
+                                   }
+                                   sx={{
+                                     backgroundColor: payment.status?.toUpperCase() === "SUCCESS" ? "#e8f5e9" : "#ffebee",
+                                     color: payment.status?.toUpperCase() === "SUCCESS" ? "#2e7d32" : "#c62828",
+                                     fontWeight: 600,
+                                   }}
+                                 />
                               </Grid>
 
                               <Grid size={{ xs: 12, sm: 4 }}>
@@ -587,7 +750,7 @@ const EducatorDetails = () => {
             ) : (
               <Box sx={{ textAlign: "center", py: 8 }}>
                 <Typography variant="h6" color="text.secondary">
-                  No educator details found.
+                  No student details found.
                 </Typography>
               </Box>
             )}
@@ -598,4 +761,4 @@ const EducatorDetails = () => {
   );
 };
 
-export default EducatorDetails;
+export default StudentDetails;

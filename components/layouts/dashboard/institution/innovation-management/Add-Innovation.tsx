@@ -65,19 +65,19 @@ const AddInnovation = () => {
           data={[
             {
               title: "Dashboard",
-              href: "/dashboard/school",
+              href: "/dashboard/institution",
             },
             {
               title: "Innovation Submissions",
-              href: "/dashboard/school/innovation-submission",
+              href: "/dashboard/institution/innovation-submission",
             },
             {
               title: "Add Innovation",
-              href: "/dashboard/school/innovation-submission/add-innovation",
+              href: "/dashboard/institution/innovation-submission/add-innovation",
             },
           ]}
         />
-        <InnovationForm formik={formik} />
+        <InnovationForm formik={formik} submitLoading={createLoading} />
       </Card>
     </Box>
   );

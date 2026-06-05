@@ -25,8 +25,11 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
 } from "@mui/material";
 import React, { MouseEvent, useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const TeamListTable = ({
   tableHeader,
@@ -35,16 +38,32 @@ const TeamListTable = ({
   tableHeader: TEAM_LIST_HEADER[];
   tableData: TEAM_DETAILS_RESPONSE[];
 }) => {
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const [selectedTeam, setSelectedTeam] =
+    useState<TEAM_DETAILS_RESPONSE | null>(null);
   const open = Boolean(anchorEl);
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setSelectedTeam(null);
+  };
 
   const listdata = [
     {
       label: "Manage Team Members",
     },
-    {
-      label: "View Team Profile",
-    },
+    // {
+    //   label: "View Team Profile",
+    //   onclick: () => {
+    //     if (selectedTeam?.id) {
+    //       router.push(
+    //         `/dashboard/institution/team-management/${selectedTeam.id}/view-team`,
+    //       );
+    //       handleClose();
+    //     }
+    //   },
+    // },
     {
       label: "Manage Assistant Mentor",
     },
@@ -53,8 +72,12 @@ const TeamListTable = ({
     },
   ];
 
-  const handlePopover = (event: MouseEvent<HTMLButtonElement>) => {
+  const handlePopover = (
+    event: MouseEvent<HTMLButtonElement>,
+    team: TEAM_DETAILS_RESPONSE,
+  ) => {
     setAnchorEl(event.currentTarget);
+    setSelectedTeam(team);
   };
 
   return (
@@ -92,11 +115,25 @@ const TeamListTable = ({
                 <TableCell
                   sx={{
                     fontSize: 14,
-
                     fontFamily: newBlack_medium.style.fontFamily,
                   }}
                 >
-                  {val.title}
+                  <Link
+                    href={`/dashboard/institution/team-management/${val.id}/view-team`}
+                    style={{ color: "inherit", textDecoration: "underline" }}
+                  >
+                    <Typography
+                      sx={{
+                        "&:hover": { color: "#015A50" },
+                        fontSize: 14,
+                        fontWeight: 600,
+                        fontFamily: newBlack_medium.style.fontFamily,
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {val.title}
+                    </Typography>
+                  </Link>
                 </TableCell>
                 <TableCell
                   sx={{
@@ -118,7 +155,7 @@ const TeamListTable = ({
                   {val.assistantMentor?.lastName || "--"}
                 </TableCell>
                 <TableCell sx={{ textAlign: "center" }}>
-                  <IconButton onClick={handlePopover}>
+                  <IconButton onClick={(e) => handlePopover(e, val)}>
                     <MoreVert />
                   </IconButton>
                 </TableCell>
@@ -130,7 +167,7 @@ const TeamListTable = ({
       <Popover
         open={open}
         anchorEl={anchorEl}
-        onClose={() => setAnchorEl(null)}
+        onClose={handleClose}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "left",

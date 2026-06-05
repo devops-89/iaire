@@ -4,7 +4,7 @@ import {
   INNOVATION_RESPONSE_DATA_PROPS,
   SCHOOL_ADD_INNOVATION_REQUEST_PROPS,
 } from "@/utils/type";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const useCreateInnovation = () => {
   const [loading, setLoading] = useState(false);
@@ -43,7 +43,7 @@ export const useGetAllInnovation = () => {
     schoolControllers
       .getAllInnovations()
       .then((res) => {
-        console.log("data in Innovation List>>>>>>", res);
+        // console.log("data in Innovation List>>>>>>", res);
         const data = res.data.data;
 
         setInnovationData(data);
@@ -56,4 +56,30 @@ export const useGetAllInnovation = () => {
   };
 
   return { innovationData, fetchInnovationList, loading };
+};
+
+export const useGetInnovationDetails = (id: number) => {
+  const [loading, setLoading] = useState(false);
+  const [innovationDetails, setInnovationDetails] = useState<INNOVATION_RESPONSE_DATA_PROPS | null>(null);
+
+  const fetchInnovationDetails = () => {
+    if (!id) return;
+    setLoading(true);
+    schoolControllers
+      .getInnovationDetails(id)
+      .then((res) => {
+        setInnovationDetails(res.data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("error in fetching innovation details", err);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    fetchInnovationDetails();
+  }, [id]);
+
+  return { loading, innovationDetails, fetchInnovationDetails };
 };

@@ -59,13 +59,9 @@ export const userControllers = {
     }
   },
 
-  getUserDetails: async ({ userId }: { userId?: string | null }) => {
+  getUserDetails: async () => {
     try {
-      const result = await userSecuredApi.get("/details", {
-        params: {
-          ...(userId && { userId }),
-        },
-      });
+      const result = await userSecuredApi.get("/details");
       return result.data;
     } catch (error) {
       throw error;
@@ -74,6 +70,14 @@ export const userControllers = {
   getUserDetailsPublic: async ({ userId }: { userId: string | null }) => {
     try {
       const result = await userPublicApi.get(`public/details/${userId}`);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getUserDetailsById: async ({ userId }: { userId: string | null }) => {
+    try {
+      const result = await userSecuredApi.get(`details/${userId}`);
       return result.data;
     } catch (error) {
       throw error;

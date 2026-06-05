@@ -1,7 +1,7 @@
 import { useGetTeam } from "@/hooks/school/useTeam";
 import { CATEGORY, COLORS } from "@/utils/enum";
+import { newBlack_light, roboto } from "@/utils/fonts";
 import { INNOVATION_FORM_PROPS } from "@/utils/type";
-import { roboto, newBlack_light } from "@/utils/fonts";
 import { CloudUpload, Delete, InsertDriveFile } from "@mui/icons-material";
 import {
   Autocomplete,
@@ -15,14 +15,15 @@ import {
   Typography,
 } from "@mui/material";
 import { FormikProps } from "formik";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface INNOVATIONFORMPROPS {
   formik: FormikProps<INNOVATION_FORM_PROPS>;
+  submitLoading?: boolean;
 }
 
-const InnovationForm = ({ formik }: INNOVATIONFORMPROPS) => {
-  const { teamData, fetchData, loading } = useGetTeam();
+const InnovationForm = ({ formik, submitLoading }: INNOVATIONFORMPROPS) => {
+  const { teamData, fetchData, loading: teamLoading } = useGetTeam();
   const [dragActive, setDragActive] = useState(false);
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const InnovationForm = ({ formik }: INNOVATIONFORMPROPS) => {
                 return options.filter(
                   (option) =>
                     option.title?.toLowerCase().includes(search) ||
-                    option.teamCode?.toLowerCase().includes(search)
+                    option.teamCode?.toLowerCase().includes(search),
                 );
               }}
               renderOption={(props, option) => (
@@ -322,14 +323,14 @@ const InnovationForm = ({ formik }: INNOVATIONFORMPROPS) => {
               <Button
                 type="submit"
                 variant="contained"
-                disabled={loading}
+                disabled={submitLoading || teamLoading}
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   fontFamily: newBlack_light.style.fontFamily,
                   textTransform: "none",
                 }}
               >
-                {loading ? (
+                {submitLoading ? (
                   <CircularProgress
                     sx={{ color: COLORS.WHITE, height: 25, width: 25 }}
                   />
@@ -338,7 +339,7 @@ const InnovationForm = ({ formik }: INNOVATIONFORMPROPS) => {
                 )}
               </Button>
               <Button
-                disabled={loading}
+                disabled={submitLoading || teamLoading}
                 sx={{
                   backgroundColor: "transparent",
                   fontFamily: newBlack_light.style.fontFamily,
@@ -352,7 +353,7 @@ const InnovationForm = ({ formik }: INNOVATIONFORMPROPS) => {
                   },
                 }}
               >
-                {loading ? (
+                {submitLoading ? (
                   <CircularProgress
                     sx={{ color: COLORS.PRIMARY_NAVY, height: 25, width: 25 }}
                   />

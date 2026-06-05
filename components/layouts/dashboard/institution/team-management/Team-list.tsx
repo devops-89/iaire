@@ -38,8 +38,6 @@ const TeamList = () => {
     fetchData();
   }, []);
 
-  console.log("first", teamData);
-
   return (
     <Box>
       <InstitutionDashboardLayout>

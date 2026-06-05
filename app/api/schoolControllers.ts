@@ -116,4 +116,20 @@ export const schoolControllers = {
       throw error;
     }
   },
+  getTeamDetails: async (id: number) => {
+    try {
+      const result = await teamSecuredApi.get(`${id}`);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getInnovationDetails: async (id: number) => {
+    try {
+      const result = await innovationSecuredApi.get(`${id}`);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

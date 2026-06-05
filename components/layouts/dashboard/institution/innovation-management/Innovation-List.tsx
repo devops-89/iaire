@@ -1,14 +1,16 @@
 import { useGetAllInnovation } from "@/hooks/school/useInnovation";
 import { INNOVATION_HEADER } from "@/utils/constant";
-import { COLORS } from "@/utils/enum";
+import { COLORS, USER_STATUS } from "@/utils/enum";
 import { aloeveraDisplay_medium, newBlack_semiBold } from "@/utils/fonts";
 import { Add } from "@mui/icons-material";
 import {
   Box,
   Button,
   Card,
+  Chip,
   Stack,
   Table,
+  TableBody,
   TableCell,
   TableContainer,
   TableHead,
@@ -16,6 +18,7 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const InnovationList = () => {
@@ -25,6 +28,9 @@ const InnovationList = () => {
   useEffect(() => {
     fetchInnovationList();
   }, []);
+
+  const router = useRouter();
+
   return (
     <Box>
       <Box>
@@ -74,6 +80,47 @@ const InnovationList = () => {
                     ))}
                   </TableRow>
                 </TableHead>
+                <TableBody>
+                  {innovationData?.map((val, i) => (
+                    <TableRow>
+                      <TableCell>{val.id}</TableCell>
+                      <TableCell>
+                        <Link
+                          href={`/dashboard/institution/innovation-submission/innovation-details/${val.id}`}
+                          style={{ color: "inherit", textDecoration: "none" }}
+                        >
+                          <Typography
+                            sx={{
+                              color: COLORS.BLACK,
+                              fontWeight: 600,
+                              fontSize: 15,
+                              "&:hover": {
+                                color: COLORS.PRIMARY_NAVY,
+                                textDecoration: "underline",
+                              },
+                            }}
+                          >
+                            {val.title}
+                          </Typography>
+                        </Link>
+                      </TableCell>
+                      <TableCell>
+                        {val.team.title} <br />({val.team.teamCode})
+                      </TableCell>
+                      <TableCell>
+                        <Chip
+                          label={val.status}
+                          sx={{
+                            backgroundColor:
+                              val.status === USER_STATUS.PENDING.toUpperCase()
+                                ? COLORS.ACCENT_TAN
+                                : "red",
+                          }}
+                        />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
               </Table>
             </TableContainer>
           </Card>

@@ -25,24 +25,50 @@ export const useAddTeam = () => {
   return { loading, createTeam };
 };
 
-
 export const useGetTeam = () => {
   const [loading, setLoading] = useState(false);
   const [teamData, setTeamData] = useState<{ data: TEAM_DETAILS_RESPONSE[] }>();
 
-
   const fetchData = (params?: { type?: CATEGORY }) => {
-
-    schoolControllers.getTeam({ type: params?.type }).then((res) => {
-      setTeamData(res.data)
-      setLoading(false)
-    }).catch((err) => {
-      console.log("error in fetching team", err);
-      setLoading(false)
-    })
-  }
+    schoolControllers
+      .getTeam({ type: params?.type })
+      .then((res) => {
+        setTeamData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("error in fetching team", err);
+        setLoading(false);
+      });
+  };
 
   return { fetchData, loading, teamData };
+};
 
+export const useGetTeamDetails = (id: number) => {
+  const [loading, setLoading] = useState(false);
+  const [teamDetails, setTeamDetails] = useState<TEAM_DETAILS_RESPONSE | null>(
+    null,
+  );
 
-}
+  const fetchTeamDetails = () => {
+    if (!id) return;
+    setLoading(true);
+    schoolControllers
+      .getTeamDetails(id)
+      .then((res) => {
+        setTeamDetails(res.data.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("error in fetching team details", err);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    fetchTeamDetails();
+  }, [id]);
+
+  return { loading, teamDetails, fetchTeamDetails };
+};

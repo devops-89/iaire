@@ -399,13 +399,7 @@ export const TEACHER_HEADER = [
   "Actions",
 ];
 
-export const INNOVATION_HEADER = [
-  "Id",
-  "Title",
-  "Category",
-  "Status",
-  "Actions",
-];
+export const INNOVATION_HEADER = ["Id", "Title", "Team", "Status"];
 
 export const INNOVATION_DATA = [
   {
