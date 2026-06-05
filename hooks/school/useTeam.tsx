@@ -72,3 +72,20 @@ export const useGetTeamDetails = (id: number) => {
 
   return { loading, teamDetails, fetchTeamDetails };
 };
+
+export const useEditTeam = () => {
+  const [loading, setLoading] = useState(false);
+  const { hideModal } = useModal();
+  const editTeamData = async (data: CREATE_TEAM_REQUEST, id: number) => {
+    schoolControllers
+      .editTeam(id, data)
+      .then((res) => {
+        setLoading(false);
+        hideModal();
+      })
+      .catch((err) => {
+        setLoading(false);
+      });
+  };
+  return { editTeamData, loading };
+};

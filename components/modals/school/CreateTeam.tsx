@@ -222,7 +222,7 @@ const AddTeams = () => {
                 fontSize: 16,
               }}
             >
-              {formik.isSubmitting ? (
+              {createTeamLoading ? (
                 <CircularProgress size={24} color="inherit" />
               ) : (
                 "Submit"

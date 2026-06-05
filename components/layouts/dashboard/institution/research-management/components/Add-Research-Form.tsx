@@ -1,7 +1,16 @@
 import { useGetTeam } from "@/hooks/school/useTeam";
-import { CATEGORY } from "@/utils/enum";
+import { CATEGORY, COLORS } from "@/utils/enum";
+import { aloeveraDisplay_medium } from "@/utils/fonts";
 import { RESEARCH_FORM_PROPS } from "@/utils/type";
-import { Autocomplete, Box, Grid, TextField, Typography } from "@mui/material";
+import {
+  Autocomplete,
+  Box,
+  Button,
+  CircularProgress,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { FormikProps } from "formik";
 import React, { useEffect } from "react";
 
@@ -64,13 +73,45 @@ const AddResearchForm = ({ formik, isLoading }: AddResearchFormProps) => {
               />
             </Grid>
             <Grid size={12}>
-              {/* <Autocomplete
+              <Autocomplete
+                options={teamData?.data || []}
+                getOptionLabel={(option) => option.title}
+                isOptionEqualToValue={(option, value) => option.id === value.id}
+                value={
+                  teamData?.data?.find(
+                    (team) => team.id === formik.values.teamId,
+                  ) || null
+                }
+                onChange={(_, newValue) => {
+                  formik.setFieldValue("teamId", newValue ? newValue.id : "");
+                }}
                 renderInput={(params) => (
-                  <TextField {...params} label="Please Select Team" />
+                  <TextField
+                    {...params}
+                    label="Please Select Team"
+                    error={formik.touched.teamId && !!formik.errors.teamId}
+                    helperText={formik.touched.teamId && formik.errors.teamId}
+                  />
                 )}
-                options={teamData}
-                getOptionLabel={(option)=>option.}
-              /> */}
+              />
+            </Grid>
+            <Grid size={6}>
+              <Button
+                sx={{
+                  fontWeight: 600,
+                  fontSize: 16,
+                  textTransform: "none",
+                  fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                  color: COLORS.WHITE,
+                  backgroundColor: COLORS.PRIMARY_NAVY,
+                  width: 180,
+                  p: 1.5,
+                }}
+                type="submit"
+                disabled={teamLoading || isLoading}
+              >
+                {isLoading ? <CircularProgress size={20} /> : "Submit Research"}
+              </Button>
             </Grid>
           </Grid>
         </form>

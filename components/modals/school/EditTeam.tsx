@@ -1,6 +1,6 @@
 "use client";
 import { useGetAllUser } from "@/hooks/common/useGetAllUser";
-import { useAddTeam } from "@/hooks/school/useTeam";
+import { useAddTeam, useEditTeam } from "@/hooks/school/useTeam";
 import useSnackbar from "@/store/useSnackbar";
 import { CATEGORY_TYPES } from "@/utils/constant";
 import { COLORS, USER_ROLES } from "@/utils/enum";
@@ -11,6 +11,7 @@ import {
   STUDENT_RESPONSE_PROPS,
   TEACHER_REPONSE_PROPS,
   TEAM_DETAILS_RESPONSE,
+  USER_DETAILS_PROPS,
 } from "@/utils/type";
 import { addTeamValidationSchema } from "@/utils/validationSchema";
 import {
@@ -24,12 +25,13 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
+import { SyntheticEvent, useState } from "react";
 
 const EditTeams = ({ value }: { value: TEAM_DETAILS_RESPONSE }) => {
   const { userData, fetchUserData, loading, setUserData } = useGetAllUser();
   const { setSnackbar } = useSnackbar();
   const router = useRouter();
-  const { loading: createTeamLoading, createTeam } = useAddTeam();
+  const { loading: editTeamLoading, editTeamData } = useEditTeam();
 
   const formik = useFormik({
     initialValues: {
@@ -40,9 +42,24 @@ const EditTeams = ({ value }: { value: TEAM_DETAILS_RESPONSE }) => {
     },
     validationSchema: addTeamValidationSchema,
     onSubmit: async (values) => {
-      createTeam(values as unknown as CREATE_TEAM_REQUEST);
+      editTeamData(values as unknown as CREATE_TEAM_REQUEST, value.id);
     },
   });
+
+  const [mentor, setMentor] = useState<USER_DETAILS_PROPS | null>(
+    value?.mentor || null,
+  );
+  const [students, setStudents] = useState<STUDENT_RESPONSE_PROPS[]>(
+    value?.members?.map((v) => v.student) || [],
+  );
+
+  const handleChangeMentor = (
+    e: SyntheticEvent,
+    newValue: USER_DETAILS_PROPS | null,
+  ) => {
+    setMentor(newValue);
+    formik.setFieldValue("mentorId", newValue ? newValue.id : "");
+  };
 
   const handleOpenMentor = () => {
     setUserData([]);
@@ -129,14 +146,13 @@ const EditTeams = ({ value }: { value: TEAM_DETAILS_RESPONSE }) => {
             <Autocomplete
               onOpen={handleOpenMentor}
               options={userData?.data || []}
-              getOptionLabel={(option: TEACHER_REPONSE_PROPS) =>
+              getOptionLabel={(option: USER_DETAILS_PROPS) =>
                 `${option.firstName} ${option.lastName} (${option.email})`
               }
               isOptionEqualToValue={(option, value) => option.id === value.id}
               loading={loading}
-              onChange={(_, newValue) =>
-                formik.setFieldValue("mentorId", newValue ? newValue.id : "")
-              }
+              value={mentor}
+              onChange={handleChangeMentor}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -164,12 +180,14 @@ const EditTeams = ({ value }: { value: TEAM_DETAILS_RESPONSE }) => {
               }
               isOptionEqualToValue={(option, value) => option.id === value.id}
               loading={loading}
-              onChange={(_, newValue) =>
+              value={students}
+              onChange={(_, newValue) => {
+                setStudents(newValue);
                 formik.setFieldValue(
                   "studentIds",
                   newValue.map((v) => v.id),
-                )
-              }
+                );
+              }}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -201,7 +219,7 @@ const EditTeams = ({ value }: { value: TEAM_DETAILS_RESPONSE }) => {
                 fontSize: 16,
               }}
             >
-              {formik.isSubmitting ? (
+              {editTeamLoading ? (
                 <CircularProgress size={24} color="inherit" />
               ) : (
                 "Submit"

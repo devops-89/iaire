@@ -132,4 +132,12 @@ export const schoolControllers = {
       throw error;
     }
   },
+  editTeam: async (id: number, data: CREATE_TEAM_REQUEST) => {
+    try {
+      let result = await teamSecuredApi.patch(`/${id}`, data);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
