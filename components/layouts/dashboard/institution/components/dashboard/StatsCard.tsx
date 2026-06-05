@@ -47,7 +47,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
             opacity: 0.04,
             fontSize: "120px",
             transform: "rotate(-10deg)",
-            color: COLORS.BLUE,
+            color: COLORS.PRIMARY_NAVY,
             "& svg": {
               fontSize: "inherit",
             },
@@ -70,7 +70,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
                 p: 1.2,
                 borderRadius: "12px",
                 bgcolor: "rgba(11, 23, 39, 0.04)",
-                color: COLORS.BLUE,
+                color: COLORS.PRIMARY_NAVY,
                 display: "flex",
               }}
             >
@@ -97,7 +97,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
               fontSize: 32,
               fontWeight: 800,
               fontFamily: roboto.style.fontFamily, // Roboto Slab
-              color: COLORS.BLUE,
+              color: COLORS.PRIMARY_NAVY,
               letterSpacing: "-1px",
             }}
           >

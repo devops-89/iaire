@@ -26,7 +26,8 @@ import { COUNTRIES } from "@/utils/constant";
 
 const MentorReview = () => {
   const router = useRouter();
-  const { educatorData } = useSignup();
+  const { educatorData: rawEducatorData } = useSignup();
+  const educatorData = rawEducatorData as any;
   const { showModal } = useModal();
   const { setSnackbar } = useSnackbar();
   const { signupTeacher, loading } = useMentorSignup();

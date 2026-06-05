@@ -39,7 +39,8 @@ import { useMentorSignup } from "@/hooks/mentor/useMentorSignup";
 
 const EducatorSignup = () => {
   const router = useRouter();
-  const { setEducatorData, educatorData } = useSignup();
+  const { setEducatorData, educatorData: rawEducatorData } = useSignup();
+  const educatorData = rawEducatorData as any;
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { countryData } = useGetCountries();
@@ -69,7 +70,7 @@ const EducatorSignup = () => {
     enableReinitialize: true,
     validationSchema: educatorSignupValidationSchema,
     onSubmit: (values) => {
-      setEducatorData(values);
+      setEducatorData(values as any);
 
       router.push("/signup/review");
     },
