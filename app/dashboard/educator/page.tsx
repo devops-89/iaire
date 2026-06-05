@@ -113,7 +113,7 @@ const EducatorDashboard = () => {
   const { educatorData } = useSignup();
 
   // console.log("educatorData", educatorData);
-  const isMember = educatorData?.payments.length;
+  const isMember = educatorData?.payments?.length;
 
   return (
     <EducatorDashboardLayout>

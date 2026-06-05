@@ -40,9 +40,6 @@ const ProfileCard = ({ innovationDetails }: ProfileCardProps) => {
         overflow: "hidden",
         backgroundColor: "#ffffff",
         pb: 1,
-        position: "fixed",
-        top: 150,
-        width: "350px",
       }}
     >
       <Box

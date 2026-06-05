@@ -34,9 +34,6 @@ const ProfileCard = ({ data }: ProfileCardProps) => {
         overflow: "hidden",
         backgroundColor: "#ffffff",
         pb: 1,
-        position: "fixed",
-        top: 100,
-        width: 350,
       }}
     >
       <Box

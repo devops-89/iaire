@@ -36,7 +36,18 @@ const InnovationDetails = () => {
     <InstitutionDashboardLayout>
       <Grid container spacing={4}>
         {/* Left Column - Innovation Profile */}
-        <Grid size={{ xs: 12, md: 4 }}>
+        <Grid
+          size={{ xs: 12, md: 4 }}
+          sx={{
+            position: { xs: "static", md: "sticky" },
+            top: { xs: "auto", md: "140px" },
+            alignSelf: "flex-start",
+            maxHeight: { xs: "none", md: "calc(100vh - 150px)" },
+            overflowY: { xs: "visible", md: "auto" },
+            scrollbarWidth: "none",
+            "::-webkit-scrollbar": { display: "none" },
+          }}
+        >
           {innovationDetails && (
             <ProfileCard innovationDetails={innovationDetails} />
           )}
