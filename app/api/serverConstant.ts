@@ -9,5 +9,6 @@ export const serverConstants = {
   training: `${baseURL}/training`,
   batch: `${baseURL}/batch`,
   team: `${baseURL}/team`,
-  innovation: `${baseURL}/innovations`
+  innovation: `${baseURL}/innovations`,
+  research: `${baseURL}/research-submissions`,
 };

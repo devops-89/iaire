@@ -39,12 +39,6 @@ const TeacherSelfNomination = ({ batchId }: { batchId?: string }) => {
     },
     enableReinitialize: true,
     validationSchema: Yup.lazy(() => {
-      const shape: any = {
-        trainingMode: Yup.object()
-          .nullable()
-          .required("Training mode is required"),
-      };
-
       const answerShape: any = {};
       if (selectedBatch?.questions) {
         selectedBatch.questions.forEach((q: any, index: number) => {
@@ -56,7 +50,9 @@ const TeacherSelfNomination = ({ batchId }: { batchId?: string }) => {
           }
         });
       }
-      shape.answers = Yup.object().shape(answerShape);
+      const shape: any = {
+        answers: Yup.object().shape(answerShape),
+      };
 
       return Yup.object(shape);
     }),
@@ -75,8 +71,6 @@ const TeacherSelfNomination = ({ batchId }: { batchId?: string }) => {
       formik.resetForm();
     },
   });
-
-  console.log("firstnumber", formik.errors);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: CATEGORY) => {
     setTabValue(newValue);
@@ -203,33 +197,6 @@ const TeacherSelfNomination = ({ batchId }: { batchId?: string }) => {
                     </Grid>
                   );
                 })}
-
-                <Grid size={12}>
-                  <Autocomplete
-                    options={MODE_TRAINING}
-                    getOptionLabel={(option: any) => option.label || ""}
-                    value={formik.values.trainingMode}
-                    onChange={(e, value) =>
-                      formik.setFieldValue("trainingMode", value)
-                    }
-                    onBlur={() => formik.setFieldTouched("trainingMode", true)}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Training Mode"
-                        error={
-                          formik.touched.trainingMode &&
-                          Boolean(formik.errors.trainingMode)
-                        }
-                        helperText={
-                          formik.touched.trainingMode &&
-                          (formik.errors.trainingMode as string)
-                        }
-                      />
-                    )}
-                    sx={{ mt: 2 }}
-                  />
-                </Grid>
 
                 <Grid size={12}>
                   <Button

@@ -3,10 +3,12 @@ import {
   INSTITUTION_ADD_EDUCATOR_REQUEST,
   INSTITUTION_ADD_STUDENT_REQUEST,
   NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
+  RESEARCH_FORM_PROPS,
   SCHOOL_ADD_INNOVATION_REQUEST_PROPS,
 } from "@/utils/type";
 import {
   innovationSecuredApi,
+  researchSecuredApi,
   teamSecuredApi,
   trainingSecuredApi,
   userSecuredApi,
@@ -135,6 +137,22 @@ export const schoolControllers = {
   editTeam: async (id: number, data: CREATE_TEAM_REQUEST) => {
     try {
       let result = await teamSecuredApi.patch(`/${id}`, data);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  createResearch: async (data: RESEARCH_FORM_PROPS) => {
+    try {
+      let result = await researchSecuredApi.post("/create", data);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getAllResearch: async () => {
+    try {
+      let result = await researchSecuredApi.get("/all");
       return result.data;
     } catch (error) {
       throw error;

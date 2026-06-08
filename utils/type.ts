@@ -1163,3 +1163,95 @@ export interface RESEARCH_FORM_PROPS {
   topic?: string;
   teamId: number | string;
 }
+
+export interface RESEARCH_SUBMISSION_RESPONSE_DATA_PROPS {
+  id: number;
+  title: string;
+  description: string;
+  topic: string;
+  teamId: number;
+  team: {
+    id: number;
+    title: string;
+    type: string;
+    teamCode: string;
+    mentorId: number;
+    assistantMentorId: number | null;
+    createdBy: number;
+    schoolId: number;
+    boardId: number;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+  };
+  schoolId: number;
+  school: {
+    id: number;
+    name: string;
+    code: string | null;
+    address: string | null;
+    addressLine1: string;
+    addressLine2: string | null;
+    city: string;
+    state: string;
+    zipCode: string;
+    logo: string | null;
+    affiliationCertificate: string | null;
+    affiliationNumber: string;
+    website: string;
+    registrationYear: number;
+    contactPersonName: string;
+    contactPersonEmail: string;
+    contactPersonPhone: string;
+    isActive: boolean;
+    boardId: number;
+    countryId: number;
+    country: {
+      id: number;
+      name: string;
+    };
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+    schoolLogoDownloadUrl: string | null;
+    affiliationCertificateDownloadUrl: string | null;
+  };
+  createdBy: number;
+  creator: {
+    id: number;
+    email: string;
+    username: string;
+    phone: string | null;
+    countryCode: string | null;
+    isdCode: string | null;
+    isEmailVerified: boolean;
+    isPhoneVerified: boolean;
+    fullName: string;
+    firstName: string | null;
+    lastName: string | null;
+    bio: string | null;
+    profileImage: string | null;
+    role: string;
+    status: string;
+    schoolId: number;
+    boardId: number;
+    countryId: number;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string | null;
+    profileImageDownloadUrl: string | null;
+  };
+  status: string;
+  isDraft: boolean;
+  attachments: string[] | string | null;
+  reviewedBy: number | null;
+  reviewer: any;
+  reviewComments: string | null;
+  reviewedAt: string | null;
+  archiveComments: string | null;
+  archivedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+  attachmentsDownloadUrls: string[];
+}

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { InternalAxiosRequestConfig } from "axios";
 import { serverConstants } from "./serverConstant";
 
 const userSecuredApi = axios.create({
@@ -89,16 +89,28 @@ teamSecuredApi.interceptors.request.use((config) => {
 });
 
 const innovationSecuredApi = axios.create({
-  baseURL: serverConstants.innovation
-})
+  baseURL: serverConstants.innovation,
+});
 
 innovationSecuredApi.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
-})
+});
+
+const researchSecuredApi = axios.create({
+  baseURL: serverConstants.research,
+});
+
+researchSecuredApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
 export {
   userPublicApi,
@@ -111,5 +123,6 @@ export {
   securedPlansApi,
   batchSecuredApi,
   teamSecuredApi,
-  innovationSecuredApi
+  innovationSecuredApi,
+  researchSecuredApi,
 };

@@ -52,15 +52,18 @@ import {
   TRAINING_DETAILS_PROPS,
   TRAINING_NOMINATION_RESPONSE,
 } from "@/utils/type";
+import { useRouter } from "next/navigation";
 
 const InstitutionTrainingList = () => {
   const { showModal } = useModal();
   const { loading, data, getTeacherTrainingList } = useTrainingList();
-  const handleModalOpen = () => {
-    showModal(<TeacherSelfNomination />);
-  };
 
   const [status, setStatus] = useState();
+
+  const router = useRouter();
+  const assignTeachers = () => {
+    router.push("/dashboard/institution/training-management/assign-teachers");
+  };
 
   const [role, setRole] = useState("");
   const { approveTeacherNominationLoading, ApproveTeacherNomination } =
@@ -114,25 +117,25 @@ const InstitutionTrainingList = () => {
                 },
               ]}
             />
-            {role === USER_ROLES.EDUCATOR && (
-              <Button
-                sx={{
-                  backgroundColor: COLORS.PRIMARY_NAVY,
-                  color: "#fff",
-                  fontFamily: montserrat.style.fontFamily,
-                  fontWeight: 600,
-                  fontSize: "14px",
-                  borderRadius: "8px",
-                  "&:hover": {
-                    backgroundColor: "#e08e26",
-                  },
-                  p: 1.5,
-                }}
-                onClick={handleModalOpen}
-              >
-                Nominate Self For Training
-              </Button>
-            )}
+
+            <Button
+              sx={{
+                backgroundColor: COLORS.PRIMARY_NAVY,
+                color: "#fff",
+                fontFamily: montserrat.style.fontFamily,
+                fontWeight: 600,
+                fontSize: "14px",
+                borderRadius: "8px",
+                "&:hover": {
+                  backgroundColor: COLORS.ACCENT_TAN,
+                  color: COLORS.PRIMARY_NAVY,
+                },
+                p: 1.5,
+              }}
+              onClick={assignTeachers}
+            >
+              Assign Teachers
+            </Button>
           </Stack>
           <Tabs
             sx={{ mt: 2 }}

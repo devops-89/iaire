@@ -1,4 +1,5 @@
 import Breadcrumb from "@/components/widgets/Breadcrumb";
+import { useGetAllResearch } from "@/hooks/school/useResearch";
 import { RESEARCH_DATA, RESEARCH_HEADER } from "@/utils/constant";
 import { COLORS, USER_STATUS } from "@/utils/enum";
 import { aloeveraDisplay_medium, roboto } from "@/utils/fonts";
@@ -16,10 +17,19 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import moment from "moment";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 
 const ResearchManagement = () => {
+  const { researchData, fetchResearchData, loading } = useGetAllResearch();
+
+  useEffect(() => {
+    fetchResearchData();
+  }, []);
+
+  console.log("first", researchData);
+
   return (
     <Box>
       <Box>
@@ -80,12 +90,14 @@ const ResearchManagement = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {RESEARCH_DATA.map((item, index) => (
+              {researchData?.map((item, index) => (
                 <TableRow key={index}>
                   <TableCell>{item.id}</TableCell>
                   <TableCell>{item.title}</TableCell>
                   <TableCell>{item.topic}</TableCell>
-                  <TableCell>{item.date}</TableCell>
+                  <TableCell>
+                    {moment(item.createdAt).format("DD-MMM-YYYY")}
+                  </TableCell>
                   <TableCell>
                     <Chip
                       label={item.status}

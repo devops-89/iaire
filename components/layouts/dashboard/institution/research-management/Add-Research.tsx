@@ -18,9 +18,10 @@ import { MenuBook, Topic, Description } from "@mui/icons-material";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { RESEARCH_FORM_PROPS } from "@/utils/type";
 import AddResearchForm from "./components/Add-Research-Form";
+import { useCreateResearch } from "@/hooks/school/useResearch";
 
 const AddResearch = () => {
-  const [loading, setLoading] = useState(false);
+  const { addResearch, loading } = useCreateResearch();
   const formik = useFormik<RESEARCH_FORM_PROPS>({
     initialValues: {
       title: "",
@@ -29,7 +30,9 @@ const AddResearch = () => {
       teamId: "",
     },
     validationSchema: addResearchValidationSchema,
-    onSubmit: (values) => {},
+    onSubmit: (values) => {
+      addResearch(values);
+    },
   });
 
   return (
