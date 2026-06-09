@@ -1,13 +1,9 @@
 "use client";
-import React from "react";
-import InstitutionDashboardLayout from "@/components/layouts/dashboard/institution/Index";
+
+import ResourceAccessLayout from "@/components/layouts/dashboard/institution/resource-access/ResourceAccessLayout";
 
 const InstitutionResourceAccess = () => {
-  return (
-    <InstitutionDashboardLayout>
-      institution resource
-    </InstitutionDashboardLayout>
-  );
+  return <ResourceAccessLayout />;
 };
 
 export default InstitutionResourceAccess;

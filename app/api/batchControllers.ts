@@ -11,4 +11,15 @@ export const batchControllers = {
       throw error;
     }
   },
+  assignTeachers: async (data: {
+    batchId: number;
+    teacherIds: number[];
+  }) => {
+    try {
+      const result = await batchSecuredApi.post("/assign-teachers", data);
+      return result?.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

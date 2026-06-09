@@ -137,20 +137,6 @@ export const INSTITUTION_SIDEBAR_DATA = [
   {
     label: "Resource Access",
     url: "/dashboard/institution/resource-access",
-    subItems: [
-      {
-        label: "Playbooks",
-        url: "/dashboard/institution/resource-access/playbooks",
-      },
-      {
-        label: "Modules",
-        url: "/dashboard/institution/resource-access/modules",
-      },
-      {
-        label: "Templates",
-        url: "/dashboard/institution/resource-access/templates",
-      },
-    ],
   },
 ];
 
