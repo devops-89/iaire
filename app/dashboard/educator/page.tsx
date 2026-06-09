@@ -112,9 +112,6 @@ const EducatorDashboard = () => {
 
   const { educatorData } = useSignup();
 
-  // console.log("educatorData", educatorData);
-  const isMember = educatorData?.payments?.length;
-
   return (
     <EducatorDashboardLayout>
       <Box sx={{ p: { xs: 2, md: 3 }, maxWidth: "1600px", mx: "auto" }}>

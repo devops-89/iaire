@@ -86,10 +86,15 @@ const EducatorWelcomeBanner = () => {
   console.log("educatorData", educatorData);
 
   const stepperData = [
-    { label: "Registered Educator" },
-    { label: "Certified Practitioner" },
-    { label: "Distinguished Fellow" },
+    { label: "Fellow of Innovation or Research Education" },
+    { label: "Associate Fellow of Innovation or Research Education" },
+    { label: "Certified Innovation or Research Mentor" },
+    { label: "Educator Member" },
   ];
+
+  const membershipCode = educatorData?.payments?.map(
+    (val, i) => val.membership?.membershipCode,
+  );
 
   return (
     <Box sx={{ mb: 4 }}>
@@ -135,6 +140,17 @@ const EducatorWelcomeBanner = () => {
                   ? `${educatorData.firstName} ${educatorData.lastName}`
                   : "Educator"}
               </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  color: COLORS.ACCENT_TAN || "#D1A054",
+                  mt: 0.5,
+                  fontFamily: montserrat.style.fontFamily,
+                  fontSize: { xs: 20, md: 15 },
+                }}
+              >
+                Membership ID : {membershipCode}
+              </Typography>
 
               <Box
                 sx={{ mt: 3, display: "flex", flexDirection: "column", gap: 1 }}
@@ -147,7 +163,7 @@ const EducatorWelcomeBanner = () => {
                     fontWeight: 500,
                   }}
                 >
-                  {educatorData?.school?.name || "Global Innovation Academy"}
+                  {educatorData?.school?.name || ""}
                 </Typography>
                 <Box
                   sx={{
@@ -176,7 +192,7 @@ const EducatorWelcomeBanner = () => {
                       letterSpacing: "1px",
                     }}
                   >
-                    Certified Practitioner
+                    Educator Member
                   </Typography>
                 </Box>
               </Box>
@@ -226,7 +242,7 @@ const EducatorWelcomeBanner = () => {
               <Stepper
                 orientation="vertical"
                 connector={<DottedConnector />}
-                activeStep={1}
+                activeStep={3}
                 sx={{
                   "& .MuiStep-root": { pb: 0 },
                 }}
@@ -234,7 +250,9 @@ const EducatorWelcomeBanner = () => {
                 {stepperData.map((val, i) => (
                   <Step key={i}>
                     <StepLabel
-                      StepIconComponent={LevelStepIcon}
+                      slots={{
+                        stepIcon: LevelStepIcon,
+                      }}
                       sx={{
                         "& .MuiStepLabel-label": { ml: 2 },
                       }}
@@ -242,10 +260,10 @@ const EducatorWelcomeBanner = () => {
                       <Typography
                         sx={{
                           fontFamily: montserrat.style.fontFamily,
-                          fontWeight: i === 1 ? 700 : 500,
+                          fontWeight: i === 3 ? 700 : 500,
                           color:
-                            i === 1 ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.5)",
-                          fontSize: i === 1 ? "15px" : "13px",
+                            i === 3 ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.5)",
+                          fontSize: i === 3 ? "15px" : "13px",
                         }}
                       >
                         {val.label}
@@ -274,7 +292,7 @@ const EducatorWelcomeBanner = () => {
                     textTransform: "uppercase",
                   }}
                 >
-                  Progress to Distinguished Fellow
+                  Progress to Certified Innovation or Research Mentor
                 </Typography>
                 <Typography
                   sx={{
@@ -284,7 +302,7 @@ const EducatorWelcomeBanner = () => {
                     color: COLORS.PRIMARY_NAVY,
                   }}
                 >
-                  65%
+                  50%
                 </Typography>
               </Box>
               <Box

@@ -59,7 +59,7 @@ const MentorReview = () => {
         countryId: educatorData?.country?.id,
         primarySubjects: educatorData?.primarySubjects,
         gender: educatorData?.gender,
-        experienceYears: String(educatorData?.experience),
+        experienceinYears: String(educatorData?.experience),
         ...(educatorData?.country?.code === "US" && {
           isdCode: educatorData?.isdCode,
         }),

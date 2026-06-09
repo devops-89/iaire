@@ -1,8 +1,10 @@
 import { useGetAllInnovation } from "@/hooks/school/useInnovation";
+import { useModal } from "@/store/useModal";
+import { useSignup } from "@/store/useSignup";
 import { INNOVATION_HEADER } from "@/utils/constant";
-import { COLORS, USER_STATUS } from "@/utils/enum";
+import { COLORS, PLAN_STATUS, USER_ROLES, USER_STATUS } from "@/utils/enum";
 import { aloeveraDisplay_medium, newBlack_semiBold } from "@/utils/fonts";
-import { Add } from "@mui/icons-material";
+import { Add, Lock } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -20,8 +22,17 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Plans from "@/components/modals/common/Plans";
 
 const InnovationList = () => {
+  const { showModal } = useModal();
+  const { institutionData } = useSignup();
+  const isMember =
+    (institutionData?.payments || []).length > 0 &&
+    (institutionData?.payments || []).some(
+      (val) => val?.status === PLAN_STATUS.SUCCESS,
+    );
+
   const { loading, fetchInnovationList, innovationData } =
     useGetAllInnovation();
 
@@ -52,10 +63,28 @@ const InnovationList = () => {
               >
                 Innovation Management
               </Typography>
-              <Link href="/dashboard/institution/innovation-submission/add-innovation">
+              {isMember ? (
+                <Link href="/dashboard/institution/innovation-submission/add-innovation">
+                  <Button
+                    sx={{
+                      backgroundColor: COLORS.PRIMARY_NAVY,
+                      color: COLORS.WHITE,
+                      fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                      fontWeight: 400,
+                      fontSize: 14,
+                      borderRadius: "10px",
+                      padding: "8px 24px",
+                      textTransform: "none",
+                    }}
+                    endIcon={<Add />}
+                  >
+                    Add Innovation
+                  </Button>
+                </Link>
+              ) : (
                 <Button
                   sx={{
-                    backgroundColor: COLORS.PRIMARY_NAVY,
+                    backgroundColor: "#7e7e7e",
                     color: COLORS.WHITE,
                     fontFamily: aloeveraDisplay_medium.style.fontFamily,
                     fontWeight: 400,
@@ -64,11 +93,12 @@ const InnovationList = () => {
                     padding: "8px 24px",
                     textTransform: "none",
                   }}
-                  endIcon={<Add />}
+                  endIcon={<Lock />}
+                  onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
                 >
-                  Add Innovation
+                  Unlock Feature
                 </Button>
-              </Link>
+              )}
             </Stack>
 
             <TableContainer>

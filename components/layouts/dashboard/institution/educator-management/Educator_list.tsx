@@ -4,14 +4,22 @@ import {
   useGetAllUser,
   useUpdateTeacherStatus,
 } from "@/hooks/common/useGetAllUser";
+import { useSchoolSignup } from "@/hooks/school/useSignup";
 import { useModal } from "@/store/useModal";
+import { useSignup } from "@/store/useSignup";
 import useSnackbar from "@/store/useSnackbar";
 import { TEACHER_HEADER, USER_TABS } from "@/utils/constant";
-import { APPROVAL_STATUS, COLORS, USER_ROLES } from "@/utils/enum";
+import {
+  APPROVAL_STATUS,
+  COLORS,
+  PLAN_STATUS,
+  USER_ROLES,
+  USER_STATUS,
+} from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { TEACHER_REPONSE_PROPS } from "@/utils/type";
-import { Add, MoreVert } from "@mui/icons-material";
+import { Add, Lock, MoreVert } from "@mui/icons-material";
 import {
   Autocomplete,
   Box,
@@ -42,6 +50,7 @@ import {
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
+import Plans from "@/components/modals/common/Plans";
 
 const statusOptions = ["Member", "Not a Member"];
 
@@ -114,6 +123,15 @@ const EducatorList = () => {
     },
   ];
 
+  const { institutionData } = useSignup();
+  const isMember =
+    (institutionData?.payments || []).length > 0 &&
+    (institutionData?.payments || []).some(
+      (val) => val?.status === PLAN_STATUS.SUCCESS,
+    );
+
+  console.log("first", isMember);
+
   useEffect(() => {
     fetchUserData(data);
   }, [selectedStatus]);
@@ -139,10 +157,27 @@ const EducatorList = () => {
               },
             ]}
           />
-          <Link href="/dashboard/institution/educator-management/add-educator">
+          {isMember ? (
+            <Link href="/dashboard/institution/educator-management/add-educator">
+              <Button
+                sx={{
+                  backgroundColor: COLORS.PRIMARY_NAVY,
+                  color: COLORS.WHITE,
+                  fontFamily: roboto.style.fontFamily,
+                  fontWeight: 700,
+                  fontSize: 16,
+                  borderRadius: "10px",
+                  padding: "10px 20px",
+                }}
+                endIcon={<Add />}
+              >
+                Add Educator
+              </Button>
+            </Link>
+          ) : (
             <Button
               sx={{
-                backgroundColor: COLORS.PRIMARY_NAVY,
+                backgroundColor: "#7e7e7e",
                 color: COLORS.WHITE,
                 fontFamily: roboto.style.fontFamily,
                 fontWeight: 700,
@@ -150,11 +185,12 @@ const EducatorList = () => {
                 borderRadius: "10px",
                 padding: "10px 20px",
               }}
-              endIcon={<Add />}
+              endIcon={<Lock />}
+              onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
             >
-              Add Educator
+              Unlock Feature
             </Button>
-          </Link>
+          )}
         </Stack>
 
         <Tabs

@@ -6,12 +6,13 @@ import {
   useUpdateTeacherStatus,
 } from "@/hooks/common/useGetAllUser";
 import { useModal } from "@/store/useModal";
+import { useSignup } from "@/store/useSignup";
 import useSnackbar from "@/store/useSnackbar";
 import { STUDENT_HEADER_DATA } from "@/utils/constant";
-import { APPROVAL_STATUS, COLORS, USER_ROLES } from "@/utils/enum";
+import { APPROVAL_STATUS, COLORS, PLAN_STATUS, USER_ROLES } from "@/utils/enum";
 import { aloeveraDisplay_medium, newBlack_light, newBlack_medium, newBlack_semiBold, roboto } from "@/utils/fonts";
 import { STUDENT_RESPONSE_PROPS } from "@/utils/type";
-import { Add, MoreVert } from "@mui/icons-material";
+import { Add, Lock, MoreVert } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -38,8 +39,15 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
+import Plans from "@/components/modals/common/Plans";
 
 const StudentList = () => {
+  const { institutionData } = useSignup();
+  const isMember =
+    (institutionData?.payments || []).length > 0 &&
+    (institutionData?.payments || []).some(
+      (val) => val?.status === PLAN_STATUS.SUCCESS,
+    );
   const router = useRouter();
   const { showModal } = useModal();
   const { setSnackbar } = useSnackbar();
@@ -124,10 +132,27 @@ const StudentList = () => {
               },
             ]}
           />
-          <Link href="/dashboard/institution/student-management/add-student">
+          {isMember ? (
+            <Link href="/dashboard/institution/student-management/add-student">
+              <Button
+                sx={{
+                  backgroundColor: COLORS.PRIMARY_NAVY,
+                  color: COLORS.WHITE,
+                  fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                  fontWeight: 700,
+                  fontSize: 16,
+                  borderRadius: "10px",
+                  padding: "10px 20px",
+                }}
+                endIcon={<Add />}
+              >
+                Add Student
+              </Button>
+            </Link>
+          ) : (
             <Button
               sx={{
-                backgroundColor: COLORS.PRIMARY_NAVY,
+                backgroundColor: "#7e7e7e",
                 color: COLORS.WHITE,
                 fontFamily: aloeveraDisplay_medium.style.fontFamily,
                 fontWeight: 700,
@@ -135,11 +160,12 @@ const StudentList = () => {
                 borderRadius: "10px",
                 padding: "10px 20px",
               }}
-              endIcon={<Add />}
+              endIcon={<Lock />}
+              onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
             >
-              Add Student
+              Unlock Feature
             </Button>
-          </Link>
+          )}
         </Stack>
         <Box sx={{ mt: 2 }}>
           <TableContainer>

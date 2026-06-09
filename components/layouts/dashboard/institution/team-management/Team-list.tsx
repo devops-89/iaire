@@ -11,9 +11,9 @@ import {
 import React, { useEffect } from "react";
 import InstitutionDashboardLayout from "../Index";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
-import { COLORS } from "@/utils/enum";
+import { COLORS, PLAN_STATUS, USER_ROLES } from "@/utils/enum";
 import { aloeveraDisplay_medium, roboto } from "@/utils/fonts";
-import { Add } from "@mui/icons-material";
+import { Add, Lock } from "@mui/icons-material";
 import {
   CATEGORY_TYPES,
   TEAM_DATA_TABLE_DATA,
@@ -22,11 +22,19 @@ import {
 import TeamListTable from "./components/Team-List-Table";
 import Link from "next/link";
 import { useModal } from "@/store/useModal";
+import { useSignup } from "@/store/useSignup";
 import AddTeams from "@/components/modals/school/CreateTeam";
 import { useGetTeam } from "@/hooks/school/useTeam";
+import Plans from "@/components/modals/common/Plans";
 
 const TeamList = () => {
   const { showModal } = useModal();
+  const { institutionData } = useSignup();
+  const isMember =
+    (institutionData?.payments || []).length > 0 &&
+    (institutionData?.payments || []).some(
+      (val) => val?.status === PLAN_STATUS.SUCCESS,
+    );
 
   const handleAddTeam = () => {
     showModal(<AddTeams />);
@@ -67,19 +75,35 @@ const TeamList = () => {
               ]}
             />
 
-            <Button
-              sx={{
-                backgroundColor: COLORS.PRIMARY_NAVY,
-                color: COLORS.WHITE,
-                fontFamily: aloeveraDisplay_medium.style.fontFamily,
-                borderRadius: "10px",
-                padding: "10px 20px",
-              }}
-              endIcon={<Add />}
-              onClick={handleAddTeam}
-            >
-              Add Team
-            </Button>
+            {isMember ? (
+              <Button
+                sx={{
+                  backgroundColor: COLORS.PRIMARY_NAVY,
+                  color: COLORS.WHITE,
+                  fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                  borderRadius: "10px",
+                  padding: "10px 20px",
+                }}
+                endIcon={<Add />}
+                onClick={handleAddTeam}
+              >
+                Add Team
+              </Button>
+            ) : (
+              <Button
+                sx={{
+                  backgroundColor: "#7e7e7e",
+                  color: COLORS.WHITE,
+                  fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                  borderRadius: "10px",
+                  padding: "10px 20px",
+                }}
+                endIcon={<Lock />}
+                onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
+              >
+                Unlock Feature
+              </Button>
+            )}
           </Stack>
 
           <Grid container sx={{ mt: 2 }} spacing={3}>

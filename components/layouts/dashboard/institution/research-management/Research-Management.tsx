@@ -1,9 +1,11 @@
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { useGetAllResearch } from "@/hooks/school/useResearch";
+import { useModal } from "@/store/useModal";
+import { useSignup } from "@/store/useSignup";
 import { RESEARCH_DATA, RESEARCH_HEADER } from "@/utils/constant";
-import { COLORS, USER_STATUS } from "@/utils/enum";
+import { COLORS, PLAN_STATUS, USER_ROLES, USER_STATUS } from "@/utils/enum";
 import { aloeveraDisplay_medium, roboto } from "@/utils/fonts";
-import { Add, Delete, Edit } from "@mui/icons-material";
+import { Add, Delete, Edit, Lock } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -20,8 +22,17 @@ import {
 import moment from "moment";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import Plans from "@/components/modals/common/Plans";
 
 const ResearchManagement = () => {
+  const { showModal } = useModal();
+  const { institutionData } = useSignup();
+  const isMember =
+    (institutionData?.payments || []).length > 0 &&
+    (institutionData?.payments || []).some(
+      (val) => val?.status === PLAN_STATUS.SUCCESS,
+    );
+
   const { researchData, fetchResearchData, loading } = useGetAllResearch();
 
   useEffect(() => {
@@ -51,13 +62,30 @@ const ResearchManagement = () => {
               },
             ]}
           />
-          <Link
-            href="/dashboard/institution/research-submission/add-research"
-            style={{ textDecoration: "none" }}
-          >
+          {isMember ? (
+            <Link
+              href="/dashboard/institution/research-submission/add-research"
+              style={{ textDecoration: "none" }}
+            >
+              <Button
+                sx={{
+                  backgroundColor: COLORS.PRIMARY_NAVY,
+                  color: COLORS.WHITE,
+                  fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                  fontWeight: 600,
+                  fontSize: 16,
+                  borderRadius: "10px",
+                  padding: "10px 20px",
+                }}
+                endIcon={<Add />}
+              >
+                Add Research
+              </Button>
+            </Link>
+          ) : (
             <Button
               sx={{
-                backgroundColor: COLORS.PRIMARY_NAVY,
+                backgroundColor: "#7e7e7e",
                 color: COLORS.WHITE,
                 fontFamily: aloeveraDisplay_medium.style.fontFamily,
                 fontWeight: 600,
@@ -65,11 +93,12 @@ const ResearchManagement = () => {
                 borderRadius: "10px",
                 padding: "10px 20px",
               }}
-              endIcon={<Add />}
+              endIcon={<Lock />}
+              onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
             >
-              Add Research
+              Unlock Feature
             </Button>
-          </Link>
+          )}
         </Stack>
 
         <TableContainer sx={{ mt: 3 }}>

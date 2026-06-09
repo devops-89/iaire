@@ -1,10 +1,35 @@
 "use client";
+import Plans from "@/components/modals/common/Plans";
+import RejectReason from "@/components/modals/school/RejectReason";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
+import { useTrainingList } from "@/hooks/mentor/useNominateTeacher";
+import { useApprovedNominateTeacher } from "@/hooks/school/useTeacherAdd";
+import { useModal } from "@/store/useModal";
+import { useSignup } from "@/store/useSignup";
+import {
+  SCHOOL_TRAINING_LIST_TABS,
+  SCHOOL_TRAINING_NOMINATION_STATUS,
+  TRAINING_NOMINATION_TABLE_HEADER,
+  TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW,
+} from "@/utils/constant";
+import {
+  COLORS,
+  PLAN_STATUS,
+  TRAINING_MODE,
+  TRAINING_NOMINATION_STATUS,
+  USER_ROLES,
+} from "@/utils/enum";
+import {
+  aloeveraDisplay_medium,
+  montserrat,
+  newBlack_medium,
+} from "@/utils/fonts";
+import { TRAINING_NOMINATION_RESPONSE } from "@/utils/type";
+import { Lock, MoreVert } from "@mui/icons-material";
 import {
   Box,
   Button,
   Card,
-  FormControl,
   IconButton,
   MenuItem,
   Select,
@@ -18,44 +43,20 @@ import {
   TableRow,
   Tabs,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import EducatorDashboardLayout from "@/components/layouts/dashboard/educator/Index";
-import {
-  aloeveraDisplay_medium,
-  montserrat,
-  newBlack_medium,
-  roboto,
-} from "@/utils/fonts";
-import {
-  COLORS,
-  TRAINING_MODE,
-  TRAINING_NOMINATION_STATUS,
-  USER_ROLES,
-} from "@/utils/enum";
-import { useModal } from "@/store/useModal";
-import EducatorNomination from "@/components/modals/TeacherNomination";
-import {
-  SCHOOL_TRAINING_LIST_TABS,
-  SCHOOL_TRAINING_NOMINATION_STATUS,
-  TRAINING_NOMINATION_TABLE_HEADER,
-  TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW,
-} from "@/utils/constant";
-import { useTrainingList } from "@/hooks/mentor/useNominateTeacher";
-import { MoreVert } from "@mui/icons-material";
 import moment from "moment";
-import { useApprovedNominateTeacher } from "@/hooks/school/useTeacherAdd";
-import { Atom } from "react-loading-indicators";
-import RejectReason from "@/components/modals/school/RejectReason";
-import TeacherSelfNomination from "@/components/modals/mentor/SelfNomination";
-import InstitutionDashboardLayout from "../Index";
-import {
-  TRAINING_DETAILS_PROPS,
-  TRAINING_NOMINATION_RESPONSE,
-} from "@/utils/type";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { Atom } from "react-loading-indicators";
+import InstitutionDashboardLayout from "../Index";
 
 const InstitutionTrainingList = () => {
   const { showModal } = useModal();
+  const { institutionData } = useSignup();
+  const isMember =
+    (institutionData?.payments || []).length > 0 &&
+    (institutionData?.payments || []).some(
+      (val) => val?.status === PLAN_STATUS.SUCCESS,
+    );
   const { loading, data, getTeacherTrainingList } = useTrainingList();
 
   const [status, setStatus] = useState();
@@ -118,24 +119,42 @@ const InstitutionTrainingList = () => {
               ]}
             />
 
-            <Button
-              sx={{
-                backgroundColor: COLORS.PRIMARY_NAVY,
-                color: "#fff",
-                fontFamily: montserrat.style.fontFamily,
-                fontWeight: 600,
-                fontSize: "14px",
-                borderRadius: "8px",
-                "&:hover": {
-                  backgroundColor: COLORS.ACCENT_TAN,
-                  color: COLORS.PRIMARY_NAVY,
-                },
-                p: 1.5,
-              }}
-              onClick={assignTeachers}
-            >
-              Assign Teachers
-            </Button>
+            {isMember ? (
+              <Button
+                sx={{
+                  backgroundColor: COLORS.PRIMARY_NAVY,
+                  color: "#fff",
+                  fontFamily: montserrat.style.fontFamily,
+                  fontWeight: 600,
+                  fontSize: "14px",
+                  borderRadius: "8px",
+                  "&:hover": {
+                    backgroundColor: COLORS.ACCENT_TAN,
+                    color: COLORS.PRIMARY_NAVY,
+                  },
+                  p: 1.5,
+                }}
+                onClick={assignTeachers}
+              >
+                Assign Teachers
+              </Button>
+            ) : (
+              <Button
+                sx={{
+                  backgroundColor: "#7e7e7e",
+                  color: "#fff",
+                  fontFamily: montserrat.style.fontFamily,
+                  fontWeight: 600,
+                  fontSize: "14px",
+                  borderRadius: "8px",
+                  p: 1.5,
+                }}
+                endIcon={<Lock />}
+                onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
+              >
+                Unlock Feature
+              </Button>
+            )}
           </Stack>
           <Tabs
             sx={{ mt: 2 }}
