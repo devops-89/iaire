@@ -93,7 +93,7 @@ const EducatorWelcomeBanner = () => {
   ];
 
   const membershipCode = educatorData?.payments?.map(
-    (val, i) => val.membership?.membershipCode,
+    (val) => val.membership?.membershipCode,
   );
 
   return (

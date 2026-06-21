@@ -24,6 +24,10 @@ export const useVerifyOtp = ({ email, otp }: VERIFY_OTP_REQUEST) => {
         localStorage.setItem("role", USER_ROLES.EDUCATOR);
         router.push(`/signup/payment?role=${USER_ROLES.EDUCATOR}`);
         hideModal();
+      } else if (user?.role === USER_ROLES.STUDENT) {
+        localStorage.setItem("role", USER_ROLES.STUDENT);
+        router.push(`/signup/payment?role=${USER_ROLES.STUDENT}`);
+        hideModal();
       }
       return result;
     } catch (error) {

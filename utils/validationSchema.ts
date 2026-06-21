@@ -11,6 +11,49 @@ export const signupValidationSchema = Yup.object({
     .required("Confirm password is required"),
 });
 
+export const studentSignupValidationSchema = Yup.object({
+  profileImage: Yup.mixed()
+    .nullable()
+    .test("fileSize", "The file is too large", (value: any) => {
+      if (!value) return true;
+      const size = value.size / 1024 / 1024;
+      return size <= 5;
+    })
+    .test("fileType", "Only JPG, PNG, PDF images are allowed", (value: any) => {
+      if (!value) return true;
+      const allowedTypes = ["image/jpeg", "image/png", "application/pdf"];
+      return allowedTypes.includes(value.type);
+    }),
+  board: Yup.object().nullable().required("Board is required"),
+  school: Yup.object().nullable().required("School is required"),
+  firstName: Yup.string().required("First name is required"),
+  lastName: Yup.string().required("Last name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password")], "Passwords must match")
+    .required("Confirm password is required"),
+  country: Yup.object().required("Country is required"),
+  state: Yup.string().required("State is required"),
+  isdCode: Yup.string().when("country", {
+    is: (val: any) => val?.code === "US",
+    then: (schema) => schema.required("ISD Code is required"),
+    otherwise: (schema) => schema.optional(),
+  }),
+  grade: Yup.string().required("Grade is required"),
+  gender: Yup.string().required("Gender is required"),
+  fatherName: Yup.string().required("Father's name is required"),
+  fatherEmail: Yup.string().email("Invalid email").required("Father's email is required"),
+  fatherPhone: Yup.string().required("Father's phone is required"),
+  fatherProfession: Yup.string().required("Father's profession is required"),
+  motherName: Yup.string().required("Mother's name is required"),
+  motherEmail: Yup.string().email("Invalid email").required("Mother's email is required"),
+  motherPhone: Yup.string().required("Mother's phone is required"),
+  motherProfession: Yup.string().required("Mother's profession is required"),
+});
+
 export const paymentValidationSchema = Yup.object({
   cardholderName: Yup.string().required("Cardholder name is required"),
   cardNumber: Yup.string()

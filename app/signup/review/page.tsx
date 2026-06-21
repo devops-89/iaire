@@ -23,6 +23,7 @@ import VerifyOtp from "@/components/modals/common/VerifyOtp";
 import { InstitutionInfo } from "@/utils/type";
 import InstitutionReview from "@/components/layouts/signup/review/InstitutionReview";
 import MentorReview from "@/components/layouts/signup/review/MentorReview";
+import StudentReview from "@/components/layouts/signup/review/StudentReview";
 
 const ReviewPage = () => {
   const { educatorData, institutionData, data } = useSignup();
@@ -45,11 +46,12 @@ const ReviewPage = () => {
       if (!storedRole) {
         if (educatorData) storedRole = educatorData.role ?? null;
         else if (institutionData) storedRole = USER_ROLES.INSTITUTION;
+        else if (data) storedRole = data.role ?? null;
       }
 
       setRole(storedRole);
     }
-  }, [educatorData, institutionData]);
+  }, [educatorData, institutionData, data]);
 
   return (
     <Box>
@@ -57,6 +59,8 @@ const ReviewPage = () => {
         <InstitutionReview />
       ) : role === USER_ROLES.EDUCATOR ? (
         <MentorReview />
+      ) : role === USER_ROLES.STUDENT ? (
+        <StudentReview />
       ) : (
         <Box></Box>
       )}

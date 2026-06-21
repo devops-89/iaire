@@ -27,7 +27,7 @@ const EducatorDashboard = () => {
       title: "Students & Mentorship",
       data: [
         {
-          title: "Trained on Innovation & Research",
+          title: "Trained on Innovation",
           count: "150",
           icon: Lightbulb,
         },
@@ -40,6 +40,11 @@ const EducatorDashboard = () => {
           title: "Working as Assistant Mentors",
           count: "50",
           icon: Hail,
+        },
+        {
+          title: "Trained on Research",
+          count: "120",
+          icon: Lightbulb,
         },
       ],
     },
@@ -57,7 +62,7 @@ const EducatorDashboard = () => {
           icon: VerifiedUser,
         },
         {
-          title: "Pending Members",
+          title: "Not a Member",
           count: "20",
           icon: PendingActions,
         },

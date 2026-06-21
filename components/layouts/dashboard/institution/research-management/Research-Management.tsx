@@ -9,6 +9,7 @@ import { Add, Delete, Edit, Lock } from "@mui/icons-material";
 import {
   Box,
   Button,
+  Card,
   Chip,
   IconButton,
   Stack,
@@ -43,7 +44,7 @@ const ResearchManagement = () => {
 
   return (
     <Box>
-      <Box>
+      <Card sx={{ p: 2 }}>
         <Stack
           direction={"row"}
           alignItems={"center"}
@@ -169,7 +170,7 @@ const ResearchManagement = () => {
             </TableBody>
           </Table>
         </TableContainer>
-      </Box>
+      </Card>
     </Box>
   );
 };
