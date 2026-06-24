@@ -1255,3 +1255,30 @@ export interface RESEARCH_SUBMISSION_RESPONSE_DATA_PROPS {
   deletedAt: string | null;
   attachmentsDownloadUrls: string[];
 }
+
+export interface STUDENT_SELF_REGISTRATION_RESPONSE_DATA_PROPS {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  countryCode: string;
+  isdCode: string | null;
+  state: string | null;
+  board: any;
+  school: any;
+  country: any;
+  isd: string | null;
+  profileImage: File | null;
+  gender: string;
+  fatherName: string;
+  fatherEmail: string;
+  fatherPhone: string;
+  fatherProfession: string;
+  motherName: string;
+  motherEmail: string;
+  motherPhone: string;
+  motherProfession: string;
+  password?: string;
+  confirmPassword?: string;
+  grade?: string;
+}

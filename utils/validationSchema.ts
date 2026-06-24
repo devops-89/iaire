@@ -45,11 +45,15 @@ export const studentSignupValidationSchema = Yup.object({
   grade: Yup.string().required("Grade is required"),
   gender: Yup.string().required("Gender is required"),
   fatherName: Yup.string().required("Father's name is required"),
-  fatherEmail: Yup.string().email("Invalid email").required("Father's email is required"),
+  fatherEmail: Yup.string()
+    .email("Invalid email")
+    .required("Father's email is required"),
   fatherPhone: Yup.string().required("Father's phone is required"),
   fatherProfession: Yup.string().required("Father's profession is required"),
   motherName: Yup.string().required("Mother's name is required"),
-  motherEmail: Yup.string().email("Invalid email").required("Mother's email is required"),
+  motherEmail: Yup.string()
+    .email("Invalid email")
+    .required("Mother's email is required"),
   motherPhone: Yup.string().required("Mother's phone is required"),
   motherProfession: Yup.string().required("Mother's profession is required"),
 });
@@ -339,4 +343,55 @@ export const updateProfileValidationSchema = Yup.object({
   ),
   gender: Yup.string().required("Please select your gender"),
   confirmPassword: Yup.string().required("Please Enter Confirm Password"),
+});
+
+export const studentSelfValidationSchema = Yup.object({
+  firstName: Yup.string().required("First name is required"),
+  lastName: Yup.string().required("Last name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  phoneNumber: Yup.string()
+    .test(
+      "is-valid-phone",
+      "Phone number must be at least 10 digits",
+      (value) => {
+        const digits = value?.replace(/\D/g, "");
+        return digits ? digits.length >= 10 : false;
+      },
+    )
+    .required("Phone number is required"),
+  grade: Yup.string().required("Please Enter Grade"),
+  gender: Yup.string().required("Please Select Gender"),
+  fatherName: Yup.string().required("Father's name is required"),
+  fatherEmail: Yup.string()
+    .email("Invalid email")
+    .required("Father's email is required"),
+  fatherProfession: Yup.string().required("Father's profession is required"),
+  motherName: Yup.string().required("Mother's name is required"),
+  motherPhone: Yup.string()
+    .test(
+      "is-valid-phone",
+      "Phone number must be at least 10 digits",
+      (value) => {
+        const digits = value?.replace(/\D/g, "");
+        return digits ? digits.length >= 10 : false;
+      },
+    )
+    .required("Mother's phone number is required"),
+  motherEmail: Yup.string()
+    .email("Invalid email")
+    .required("Mother's email is required"),
+  motherProfession: Yup.string().required("Mother's profession is required"),
+
+  fatherPhone: Yup.string()
+    .test(
+      "is-valid-phone",
+      "Phone number must be at least 10 digits",
+      (value) => {
+        const digits = value?.replace(/\D/g, "");
+        return digits ? digits.length >= 10 : false;
+      },
+    )
+    .required("Father's phone number is required"),
+  password: Yup.string().required("Password is required"),
+  confirmPassword: Yup.string().required("Confirm password is required"),
 });

@@ -1,4 +1,5 @@
 "use client";
+import { getUserDetails } from "@/hooks/common/getUserDetails";
 import { STUDENT_SIDEBAR_DATA } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
@@ -16,6 +17,8 @@ import React from "react";
 const StudentSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
+
+  const { loading, data } = getUserDetails();
   return (
     <Box>
       <Box

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 export const useGetPlans = ({ role }: { role: string }) => {
   const [planData, setPlanData] = useState<PLAN_RESPONSE_PROPS[]>([]);
   const [planLoading, setPlanLoading] = useState(false);
+  // console.log("first")
 
   useEffect(() => {
     const fetchPlans = async () => {

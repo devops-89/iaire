@@ -12,7 +12,13 @@ const PaymentLayout = () => {
   const router = useRouter();
   const { data, institutionData, educatorData } = useSignup();
 
-  const role = data?.role || institutionData?.role || educatorData?.role;
+  const role =
+    data?.role ||
+    institutionData?.role ||
+    educatorData?.role ||
+    localStorage.getItem("role");
+
+  // console.log("role", role);
 
   let finalRole = role;
 
@@ -21,6 +27,9 @@ const PaymentLayout = () => {
   }
   if (role === USER_ROLES.EDUCATOR) {
     finalRole = USER_ROLES.TEACHER;
+  }
+  if (role === USER_ROLES.STUDENT) {
+    finalRole = USER_ROLES.STUDENT;
   }
 
   const { planData, planLoading } = useGetPlans({ role: finalRole || "" });
@@ -40,6 +49,9 @@ const PaymentLayout = () => {
     }
     if (role === USER_ROLES?.EDUCATOR) {
       router.push(`/dashboard/educator`);
+    }
+    if (role === USER_ROLES?.STUDENT) {
+      router.push(`/dashboard/student`);
     }
   };
 

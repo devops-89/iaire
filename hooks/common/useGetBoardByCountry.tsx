@@ -1,6 +1,4 @@
 import { countryControllers } from "@/app/api/countryControllers";
-import { userControllers } from "@/app/api/userControllers";
-import { COUNTRIES } from "@/utils/constant";
 import { BOARDDATAPROPS, COUNTRYDATAPROPS } from "@/utils/type";
 import { useEffect, useState } from "react";
 

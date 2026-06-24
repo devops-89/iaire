@@ -15,7 +15,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { getUserDetails } from "@/hooks/common/getUserDetails";
-import logo from '@/images/logo/logo.png'
+import logo from "@/images/logo/logo.png";
 import Image from "next/image";
 const InstitutionSidebar = () => {
   const pathname = usePathname();
