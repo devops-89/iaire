@@ -112,6 +112,18 @@ researchSecuredApi.interceptors.request.use((config) => {
   return config;
 });
 
+const resourcesSecuredApi = axios.create({
+  baseURL: serverConstants.resources,
+});
+
+resourcesSecuredApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
 export {
   userPublicApi,
   userSecuredApi,
@@ -125,4 +137,5 @@ export {
   teamSecuredApi,
   innovationSecuredApi,
   researchSecuredApi,
+  resourcesSecuredApi,
 };

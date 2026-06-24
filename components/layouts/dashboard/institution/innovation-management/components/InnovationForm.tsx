@@ -20,20 +20,27 @@ import { useEffect, useState } from "react";
 interface INNOVATIONFORMPROPS {
   formik: FormikProps<INNOVATION_FORM_PROPS>;
   submitLoading?: boolean;
+  hideTeam?: boolean;
 }
 
-const InnovationForm = ({ formik, submitLoading }: INNOVATIONFORMPROPS) => {
+const InnovationForm = ({
+  formik,
+  submitLoading,
+  hideTeam,
+}: INNOVATIONFORMPROPS) => {
   const { teamData, fetchData, loading: teamLoading } = useGetTeam();
   const [dragActive, setDragActive] = useState(false);
 
   useEffect(() => {
-    fetchData({ type: CATEGORY.INNOVATION });
+    if (!hideTeam) {
+      fetchData({ type: CATEGORY.INNOVATION });
+    }
   }, []);
   return (
     <Box sx={{ mt: 2 }}>
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={2}>
-          <Grid size={6}>
+          <Grid size={hideTeam ? 12 : 6}>
             <TextField
               label="Innovation Title*"
               fullWidth
@@ -46,51 +53,53 @@ const InnovationForm = ({ formik, submitLoading }: INNOVATIONFORMPROPS) => {
               helperText={formik.touched.title && formik.errors.title}
             />
           </Grid>
-          <Grid size={6}>
-            <Autocomplete
-              value={formik.values.team}
-              onChange={(event, newValue) => {
-                formik.setFieldValue("team", newValue);
-              }}
-              onBlur={() => formik.setFieldTouched("team", true)}
-              options={teamData?.data || []}
-              getOptionLabel={(option) => option.title || ""}
-              filterOptions={(options, { inputValue }) => {
-                const search = inputValue.toLowerCase().trim();
-                return options.filter(
-                  (option) =>
-                    option.title?.toLowerCase().includes(search) ||
-                    option.teamCode?.toLowerCase().includes(search),
-                );
-              }}
-              renderOption={(props, option) => (
-                <Box {...props} component={"li"}>
-                  <Typography
-                    sx={{
-                      fontSize: 14,
-                      fontFamily: newBlack_light.style.fontFamily,
-                      textTransform: "capitalize",
-                    }}
-                  >
-                    {option.title} ({option.teamCode})
-                  </Typography>
-                </Box>
-              )}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Select Team*"
-                  error={formik.touched.team && Boolean(formik.errors.team)}
-                  helperText={
-                    formik.touched.team &&
-                    typeof formik.errors.team === "string"
-                      ? formik.errors.team
-                      : undefined
-                  }
-                />
-              )}
-            />
-          </Grid>
+          {!hideTeam && (
+            <Grid size={6}>
+              <Autocomplete
+                value={formik.values.team}
+                onChange={(event, newValue) => {
+                  formik.setFieldValue("team", newValue);
+                }}
+                onBlur={() => formik.setFieldTouched("team", true)}
+                options={teamData?.data || []}
+                getOptionLabel={(option) => option.title || ""}
+                filterOptions={(options, { inputValue }) => {
+                  const search = inputValue.toLowerCase().trim();
+                  return options.filter(
+                    (option) =>
+                      option.title?.toLowerCase().includes(search) ||
+                      option.teamCode?.toLowerCase().includes(search),
+                  );
+                }}
+                renderOption={(props, option) => (
+                  <Box {...props} component={"li"}>
+                    <Typography
+                      sx={{
+                        fontSize: 14,
+                        fontFamily: newBlack_light.style.fontFamily,
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {option.title} ({option.teamCode})
+                    </Typography>
+                  </Box>
+                )}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Select Team*"
+                    error={formik.touched.team && Boolean(formik.errors.team)}
+                    helperText={
+                      formik.touched.team &&
+                      typeof formik.errors.team === "string"
+                        ? formik.errors.team
+                        : undefined
+                    }
+                  />
+                )}
+              />
+            </Grid>
+          )}
           <Grid size={12}>
             <TextField
               fullWidth
@@ -328,17 +337,22 @@ const InnovationForm = ({ formik, submitLoading }: INNOVATIONFORMPROPS) => {
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   fontFamily: newBlack_light.style.fontFamily,
                   textTransform: "none",
+                  width: 150,
+                  p: 1,
                 }}
               >
                 {submitLoading ? (
-                  <CircularProgress
-                    sx={{ color: COLORS.WHITE, height: 25, width: 25 }}
-                  />
+                  <CircularProgress sx={{ color: COLORS.WHITE, fontSize: 5 }} />
                 ) : (
                   "Add Innovation"
                 )}
               </Button>
               <Button
+                type="button"
+                onClick={() => {
+                  formik.setFieldValue("isDraft", true);
+                  formik.handleSubmit();
+                }}
                 disabled={submitLoading || teamLoading}
                 sx={{
                   backgroundColor: "transparent",
@@ -355,7 +369,7 @@ const InnovationForm = ({ formik, submitLoading }: INNOVATIONFORMPROPS) => {
               >
                 {submitLoading ? (
                   <CircularProgress
-                    sx={{ color: COLORS.PRIMARY_NAVY, height: 25, width: 25 }}
+                    sx={{ color: COLORS.PRIMARY_NAVY, height: 10, width: 10 }}
                   />
                 ) : (
                   "Save as Draft"

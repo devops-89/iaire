@@ -186,11 +186,26 @@ export const addInstitutionInnovationValidationSchema = Yup.object({
   file: Yup.mixed().nullable().required("Template file is required"),
 });
 
+export const addEducatorInnovationValidationSchema = Yup.object({
+  title: Yup.string().required("Innovation Title is required"),
+  problemDescription: Yup.string().required("Problem Description is required"),
+  solutionDescription: Yup.string().required(
+    "Solution Description is required",
+  ),
+  file: Yup.mixed().nullable().required("Template file is required"),
+});
+
 export const addResearchValidationSchema = Yup.object({
   title: Yup.string().required("Research title is required"),
   topic: Yup.string().required("Topic is required"),
   description: Yup.string().required("Please enter description"),
   teamId: Yup.string().required("Please select at least one team"),
+});
+
+export const addEducatorResearchValidationSchema = Yup.object({
+  title: Yup.string().required("Research title is required"),
+  topic: Yup.string().required("Topic is required"),
+  description: Yup.string().required("Please enter description"),
 });
 
 export const addStartupValidationSchema = Yup.object({
@@ -395,3 +410,21 @@ export const studentSelfValidationSchema = Yup.object({
   password: Yup.string().required("Password is required"),
   confirmPassword: Yup.string().required("Confirm password is required"),
 });
+
+export const requestHonorariumValidationSchema = Yup.object({
+  teamId: Yup.string().required("Team ID is required"),
+  type: Yup.string().required("Type is required"),
+  achievement: Yup.string().required("Achievement is required"),
+  description: Yup.string().required("Description is required"),
+  amount: Yup.string().optional(),
+  accountHolderName: Yup.string().required("Account holder name is required"),
+  bankName: Yup.string().required("Bank name is required"),
+  accountNumber: Yup.string()
+    .matches(/^\d{9,18}$/, "Account number must be between 9 and 18 digits")
+    .required("Account number is required"),
+  ifscCode: Yup.string()
+    .matches(/^[A-Z]{4}0[A-Z0-9]{6}$/, "Invalid IFSC Code format")
+    .required("IFSC Code is required"),
+  branchName: Yup.string().required("Branch name is required"),
+});
+

@@ -17,15 +17,18 @@ import React, { useEffect } from "react";
 interface AddResearchFormProps {
   formik: FormikProps<RESEARCH_FORM_PROPS>;
   isLoading: boolean;
+  hideTeam?: boolean;
 }
 
-const AddResearchForm = ({ formik, isLoading }: AddResearchFormProps) => {
+const AddResearchForm = ({ formik, isLoading, hideTeam }: AddResearchFormProps) => {
   const { fetchData, loading: teamLoading, teamData } = useGetTeam();
 
   useEffect(() => {
-    fetchData({
-      type: CATEGORY.RESEARCH,
-    });
+    if (!hideTeam) {
+      fetchData({
+        type: CATEGORY.RESEARCH,
+      });
+    }
   }, []);
 
   return (
@@ -72,29 +75,31 @@ const AddResearchForm = ({ formik, isLoading }: AddResearchFormProps) => {
                 }
               />
             </Grid>
-            <Grid size={12}>
-              <Autocomplete
-                options={teamData?.data || []}
-                getOptionLabel={(option) => option.title}
-                isOptionEqualToValue={(option, value) => option.id === value.id}
-                value={
-                  teamData?.data?.find(
-                    (team) => team.id === formik.values.teamId,
-                  ) || null
-                }
-                onChange={(_, newValue) => {
-                  formik.setFieldValue("teamId", newValue ? newValue.id : "");
-                }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Please Select Team"
-                    error={formik.touched.teamId && !!formik.errors.teamId}
-                    helperText={formik.touched.teamId && formik.errors.teamId}
-                  />
-                )}
-              />
-            </Grid>
+            {!hideTeam && (
+              <Grid size={12}>
+                <Autocomplete
+                  options={teamData?.data || []}
+                  getOptionLabel={(option) => option.title}
+                  isOptionEqualToValue={(option, value) => option.id === value.id}
+                  value={
+                    teamData?.data?.find(
+                      (team) => team.id === formik.values.teamId,
+                    ) || null
+                  }
+                  onChange={(_, newValue) => {
+                    formik.setFieldValue("teamId", newValue ? newValue.id : "");
+                  }}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Please Select Team"
+                      error={formik.touched.teamId && !!formik.errors.teamId}
+                      helperText={formik.touched.teamId && formik.errors.teamId}
+                    />
+                  )}
+                />
+              </Grid>
+            )}
             <Grid size={6}>
               <Button
                 sx={{

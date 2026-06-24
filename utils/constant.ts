@@ -83,20 +83,7 @@ export const EDUCATOR_SIDEBAR_DATA = [
   },
   {
     label: "Resource Access",
-    subItems: [
-      {
-        label: "Playbooks",
-        url: "/dashboard/educator/resource-access/playbooks",
-      },
-      {
-        label: "Modules",
-        url: "/dashboard/educator/resource-access/modules",
-      },
-      {
-        label: "Templates",
-        url: "/dashboard/educator/resource-access/templates",
-      },
-    ],
+    url: "/dashboard/educator/resource-access",
   },
 ];
 

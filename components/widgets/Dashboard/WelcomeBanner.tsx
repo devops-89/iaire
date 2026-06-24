@@ -90,7 +90,7 @@ const WelcomeBanner = () => {
     { label: "Accredited Institution Member" },
   ];
 
-  console.log("first", institutionData);
+  // console.log("first", institutionData);
 
   return (
     <Box sx={{ p: { xs: 2, md: 0 } }}>

@@ -1,8 +1,13 @@
 import {
   MENTOR_SIGNUP_REQUEST,
   NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
+  TEACHER_SELF_INNOVATION,
 } from "@/utils/type";
-import { trainingSecuredApi, userPublicApi } from "./config";
+import {
+  innovationSecuredApi,
+  trainingSecuredApi,
+  userPublicApi,
+} from "./config";
 
 export const teacherController = {
   signup: async (data: MENTOR_SIGNUP_REQUEST) => {
@@ -47,6 +52,24 @@ export const teacherController = {
       let result = await trainingSecuredApi.get("/teachers/all", {
         params: status ? { status } : {},
       });
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  innovationCreateByTeacher: async (data: TEACHER_SELF_INNOVATION) => {
+    try {
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          if (Array.isArray(value)) {
+            value.forEach((val) => formData.append(key, val as any));
+          } else {
+            formData.append(key, value as any);
+          }
+        }
+      });
+      let result = await innovationSecuredApi.post("/create-teacher", formData);
       return result;
     } catch (error) {
       throw error;

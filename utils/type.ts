@@ -799,6 +799,7 @@ export interface USER_DETAILS_RESPONSE {
   publications?: number;
   hasSelectionBoardApproval?: boolean;
   registrationNumber?: string;
+  membershipCode?: string;
 }
 
 export interface UPDATE_PROFILE_FORM_PROPS {
@@ -1281,4 +1282,12 @@ export interface STUDENT_SELF_REGISTRATION_RESPONSE_DATA_PROPS {
   password?: string;
   confirmPassword?: string;
   grade?: string;
+}
+
+export interface TEACHER_SELF_INNOVATION {
+  title: string;
+  problemDescription: string;
+  solution: string;
+  attomeyFinalTemplate: File;
+  isDraft?: boolean;
 }

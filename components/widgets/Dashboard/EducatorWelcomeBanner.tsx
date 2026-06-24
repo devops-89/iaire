@@ -83,7 +83,7 @@ const LevelStepIcon = (props: { active?: boolean; icon: React.ReactNode }) => {
 const EducatorWelcomeBanner = () => {
   const { educatorData } = useSignup();
 
-  console.log("educatorData", educatorData);
+  // console.log("educatorData", educatorData);
 
   const stepperData = [
     { label: "Fellow of Innovation or Research Education" },
@@ -92,9 +92,7 @@ const EducatorWelcomeBanner = () => {
     { label: "Educator Member" },
   ];
 
-  const membershipCode = educatorData?.payments?.map(
-    (val) => val.membership?.membershipCode,
-  );
+  const membershipCode = educatorData?.membershipCode;
 
   return (
     <Box sx={{ mb: 4 }}>
