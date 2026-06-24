@@ -1,10 +1,12 @@
 import {
+  ASSISTANCE_RESPONSE_DATA_PROPS,
   MENTOR_SIGNUP_REQUEST,
   NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
   TEACHER_SELF_INNOVATION,
 } from "@/utils/type";
 import {
   innovationSecuredApi,
+  needAssistance,
   trainingSecuredApi,
   userPublicApi,
 } from "./config";
@@ -71,6 +73,22 @@ export const teacherController = {
       });
       let result = await innovationSecuredApi.post("/create-teacher", formData);
       return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  needAssistance: async (data: ASSISTANCE_RESPONSE_DATA_PROPS) => {
+    try {
+      let result = await needAssistance.post("/create", data);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getAllTickets: async () => {
+    try {
+      let result = await needAssistance.get("/all");
+      return result.data;
     } catch (error) {
       throw error;
     }

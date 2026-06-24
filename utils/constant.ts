@@ -8,6 +8,8 @@ import {
   TRAINING_NOMINATION_STATUS,
   USER_ROLES,
   USER_STATUS,
+  ASSISTANCE_CATEGORY,
+  PRIORITY,
 } from "./enum";
 import {
   STATSCARDDATA,
@@ -2402,5 +2404,28 @@ export const INNOVATION_TABLE_HEADER = [
   "Id",
   "Innovation Title",
   "Team Name",
+  "Status",
+];
+
+export const CATEGORY_OPTIONS = [
+  { label: "Technical Support", value: ASSISTANCE_CATEGORY.TECHNICAL_SUPPORT },
+  { label: "Training", value: ASSISTANCE_CATEGORY.TRAINING },
+  { label: "Resource Access", value: ASSISTANCE_CATEGORY.RESOURCE_ACCESS },
+  { label: "Billing", value: ASSISTANCE_CATEGORY.BILLING },
+  { label: "Other", value: ASSISTANCE_CATEGORY.OTHER },
+];
+
+export const PRIORITY_OPTIONS = [
+  { label: "Low", value: PRIORITY.LOW },
+  { label: "Medium", value: PRIORITY.MEDIUM },
+  { label: "High", value: PRIORITY.HIGH },
+];
+
+export const SUPPORT_TICKET_HEADER = [
+  "Ticket ID",
+  "Subject",
+  "Category",
+  "Date Created",
+  "Priority",
   "Status",
 ];

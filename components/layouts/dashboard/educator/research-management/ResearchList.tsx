@@ -129,17 +129,14 @@ const ResearchList = () => {
               <TableBody>
                 {loading ? (
                   <TableRow>
-                    <TableCell
-                      colSpan={RESEARCH_HEADER.length}
-                      align="center"
-                    >
+                    <TableCell colSpan={RESEARCH_HEADER.length} align="center">
                       <Atom color={COLORS.PRIMARY_NAVY} size={"small"} />
                     </TableCell>
                   </TableRow>
                 ) : researchData && researchData.length > 0 ? (
                   researchData.map((item, index) => (
                     <TableRow key={index}>
-                      <TableCell>{item.id}</TableCell>
+                      <TableCell>{item.displayId}</TableCell>
                       <TableCell>{item.title}</TableCell>
                       <TableCell>{item.topic}</TableCell>
                       <TableCell>
@@ -179,10 +176,7 @@ const ResearchList = () => {
                   ))
                 ) : (
                   <TableRow>
-                    <TableCell
-                      colSpan={RESEARCH_HEADER.length}
-                      align="center"
-                    >
+                    <TableCell colSpan={RESEARCH_HEADER.length} align="center">
                       No research submissions found
                     </TableCell>
                   </TableRow>

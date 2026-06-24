@@ -129,7 +129,7 @@ const InnovationList = () => {
                   ) : innovationData && innovationData.length > 0 ? (
                     innovationData.map((val, i) => (
                       <TableRow key={i}>
-                        <TableCell>{val.id}</TableCell>
+                        <TableCell>{val.displayId}</TableCell>
                         <TableCell>
                           <Link
                             href={`/dashboard/educator/innovation-management/innovation-details/${val.id}`}

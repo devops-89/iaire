@@ -6,6 +6,8 @@ import {
   USER_ROLES,
   TRAINING_NOMINATION_STATUS,
   APPROVAL_STATUS,
+  ASSISTANCE_CATEGORY,
+  PRIORITY,
 } from "./enum";
 
 export enum MEMBERSHIP_LEVEL {
@@ -835,6 +837,7 @@ export interface INNOVATION_FORM_PROPS {
 
 export interface INNOVATION_RESPONSE_DATA_PROPS {
   id: number;
+  displayId?: string;
   title: string;
   problemDescription: string;
   solution: string;
@@ -1162,11 +1165,12 @@ export interface RESEARCH_FORM_PROPS {
   title: string;
   description: string;
   topic?: string;
-  teamId: number | string;
+  teamId?: number | string;
 }
 
 export interface RESEARCH_SUBMISSION_RESPONSE_DATA_PROPS {
   id: number;
+  displayId?: string;
   title: string;
   description: string;
   topic: string;
@@ -1290,4 +1294,11 @@ export interface TEACHER_SELF_INNOVATION {
   solution: string;
   attomeyFinalTemplate: File;
   isDraft?: boolean;
+}
+
+export interface ASSISTANCE_RESPONSE_DATA_PROPS {
+  subject: string;
+  description: string;
+  category: ASSISTANCE_CATEGORY;
+  priority: PRIORITY;
 }

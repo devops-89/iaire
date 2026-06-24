@@ -21,7 +21,8 @@ const AddResearch = () => {
     },
     validationSchema: addEducatorResearchValidationSchema,
     onSubmit: (values) => {
-      addResearch(values);
+      const { teamId, ...payload } = values;
+      addResearch(payload);
     },
   });
 

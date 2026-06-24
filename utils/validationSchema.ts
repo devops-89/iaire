@@ -428,3 +428,10 @@ export const requestHonorariumValidationSchema = Yup.object({
   branchName: Yup.string().required("Branch name is required"),
 });
 
+export const raiseSupportTicketValidationSchema = Yup.object({
+  subject: Yup.string().required("Subject is required"),
+  category: Yup.string().required("Category is required"),
+  priority: Yup.string().required("Priority is required"),
+  description: Yup.string().required("Description is required"),
+});
+
