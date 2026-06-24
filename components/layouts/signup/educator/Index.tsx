@@ -17,6 +17,7 @@ import {
   Avatar,
   Box,
   Button,
+  Card,
   Container,
   FormHelperText,
   Grid,
@@ -30,7 +31,6 @@ import { useFormik } from "formik";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import { useRouter } from "next/navigation";
 import React, { SyntheticEvent, useState } from "react";
-import SignupLayout from "../Index";
 import { useGetCountries } from "@/hooks/common/useGetCountry";
 import { useBoardByCountry } from "@/hooks/common/useGetBoardByCountry";
 import SignupStepper from "../SignupStepper";
@@ -164,8 +164,16 @@ const EducatorSignup = () => {
         },
       }}
     >
-      <SignupLayout>
-        <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        <Card
+          sx={{
+            py: 5,
+            px: { xs: 3, md: 5 },
+            backgroundColor: COLORS.WHITE,
+            borderRadius: "24px",
+            boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.4)",
+          }}
+        >
           <Box sx={{ mt: 3 }}>
             <SignupStepper activeStep={0} />
           </Box>
@@ -607,8 +615,8 @@ const EducatorSignup = () => {
               </Grid>
             </form>
           </Box>
-        </Container>
-      </SignupLayout>
+        </Card>
+      </Container>
     </Box>
   );
 };

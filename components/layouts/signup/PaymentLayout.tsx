@@ -16,7 +16,7 @@ const PaymentLayout = () => {
     data?.role ||
     institutionData?.role ||
     educatorData?.role ||
-    localStorage.getItem("role");
+    (typeof window !== "undefined" ? localStorage.getItem("role") : null);
 
   // console.log("role", role);
 
