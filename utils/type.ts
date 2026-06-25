@@ -577,7 +577,7 @@ export interface SCHOOL_ADD_INNOVATION_REQUEST_PROPS {
   title: string;
   problemDescription: string;
   solution: string;
-  teamId: string | number;
+  teamId?: string | number;
   isDraft?: boolean;
   attomeyFinalTemplate?: File | null;
 }
@@ -1301,4 +1301,16 @@ export interface ASSISTANCE_RESPONSE_DATA_PROPS {
   description: string;
   category: ASSISTANCE_CATEGORY;
   priority: PRIORITY;
+}
+
+export interface REQUEST_HONORARIUM_REQUEST_PROPS {
+  teamId: string | number;
+  type: string;
+  achievementType: string;
+  description: string;
+  accountHolderName: string;
+  bankName: string;
+  accountNumber: string;
+  ifscCode: string;
+  branchName: string;
 }

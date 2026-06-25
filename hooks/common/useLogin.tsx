@@ -25,6 +25,10 @@ export const useLogin = () => {
           localStorage.setItem("role", USER_ROLES.EDUCATOR);
           router.push("/dashboard/educator");
         }
+        if (res.data.user.role === USER_ROLES.STUDENT) {
+          localStorage.setItem("role", USER_ROLES.STUDENT);
+          router.push("/dashboard/student");
+        }
 
         setSnackbar("Login successful!", "success");
       })

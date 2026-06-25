@@ -5,6 +5,45 @@ import {
   SCHOOL_ADD_INNOVATION_REQUEST_PROPS,
 } from "@/utils/type";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import useSnackbar from "@/store/useSnackbar";
+
+export const useCreateStudentInnovation = () => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const { setSnackbar } = useSnackbar();
+
+  const createStudentInnovation = async (data: any, isDraft: boolean) => {
+    setLoading(true);
+
+    const payload: SCHOOL_ADD_INNOVATION_REQUEST_PROPS = {
+      title: data.title,
+      problemDescription: data.problemDescription,
+      solution: data.solutionDescription,
+      attomeyFinalTemplate: data.file,
+    };
+    if (isDraft) {
+      payload.isDraft = true;
+    }
+
+    try {
+      const res = await schoolControllers.addInnovationBySchool(payload);
+      setSnackbar(
+        res?.message || "Innovation created successfully!",
+        "success",
+      );
+      router.back();
+    } catch (err: any) {
+      console.log("Error creating student innovation:", err);
+      const errMsg = err?.response?.data?.message || "Something went wrong";
+      setSnackbar(errMsg, "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { loading, createStudentInnovation };
+};
 
 export const useCreateInnovation = () => {
   const [loading, setLoading] = useState(false);
@@ -60,7 +99,8 @@ export const useGetAllInnovation = () => {
 
 export const useGetInnovationDetails = (id: number) => {
   const [loading, setLoading] = useState(false);
-  const [innovationDetails, setInnovationDetails] = useState<INNOVATION_RESPONSE_DATA_PROPS | null>(null);
+  const [innovationDetails, setInnovationDetails] =
+    useState<INNOVATION_RESPONSE_DATA_PROPS | null>(null);
 
   const fetchInnovationDetails = () => {
     if (!id) return;

@@ -1,11 +1,25 @@
 "use client";
 import { COLORS } from "@/utils/enum";
-import { Person } from "@mui/icons-material";
-import { Avatar, Box } from "@mui/material";
+import { Person, PersonOutline, Logout } from "@mui/icons-material";
+import {
+  Avatar,
+  Box,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  ListItemText,
+  Divider,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useSignup } from "@/store/useSignup";
 
 const StudentHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const router = useRouter();
+  const { data: studentData } = useSignup();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +28,19 @@ const StudentHeader = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    handleClose();
+    localStorage.clear();
+    router.push("/login");
+  };
 
   return (
     <Box
@@ -40,6 +67,8 @@ const StudentHeader = () => {
       }}
     >
       <Avatar
+        onClick={handleClick}
+        src={studentData?.profileImageDownloadUrl || studentData?.profileImage || ""}
         sx={{
           bgcolor: COLORS.PRIMARY_NAVY,
           cursor: "pointer",
@@ -47,8 +76,78 @@ const StudentHeader = () => {
           "&:hover": { transform: "scale(1.05)" },
         }}
       >
-        <Person />
+        {!studentData?.profileImage && <Person />}
       </Avatar>
+
+      <Menu
+        anchorEl={anchorEl}
+        id="student-account-menu"
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        sx={{ zIndex: 10000 }}
+        PaperProps={{
+          elevation: 0,
+          sx: {
+            overflow: "visible",
+            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.12))",
+            mt: 1.5,
+            borderRadius: "12px",
+            minWidth: "190px",
+            "&:before": {
+              content: '""',
+              display: "block",
+              position: "absolute",
+              top: 0,
+              right: 14,
+              width: 10,
+              height: 10,
+              bgcolor: "background.paper",
+              transform: "translateY(-50%) rotate(45deg)",
+              zIndex: 9999,
+            },
+          },
+        }}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      >
+        <MenuItem
+          onClick={() => {
+            handleClose();
+            router.push("/dashboard/student/profile-settings");
+          }}
+          sx={{ py: 1.5, px: 2 }}
+        >
+          <ListItemIcon>
+            <PersonOutline fontSize="small" sx={{ color: COLORS.PRIMARY_NAVY }} />
+          </ListItemIcon>
+          <ListItemText
+            primary="Account Settings"
+            primaryTypographyProps={{
+              sx: {
+                fontSize: "14px",
+                fontWeight: 600,
+                color: COLORS.PRIMARY_NAVY,
+              },
+            }}
+          />
+        </MenuItem>
+        <Divider sx={{ my: 0.5 }} />
+        <MenuItem
+          onClick={handleLogout}
+          sx={{ py: 1.5, px: 2, color: COLORS.RED }}
+        >
+          <ListItemIcon>
+            <Logout fontSize="small" sx={{ color: COLORS.RED }} />
+          </ListItemIcon>
+          <ListItemText
+            primary="Logout"
+            primaryTypographyProps={{
+              sx: { fontSize: "14px", fontWeight: 600 },
+            }}
+          />
+        </MenuItem>
+      </Menu>
     </Box>
   );
 };

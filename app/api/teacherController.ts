@@ -2,9 +2,11 @@ import {
   ASSISTANCE_RESPONSE_DATA_PROPS,
   MENTOR_SIGNUP_REQUEST,
   NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
+  REQUEST_HONORARIUM_REQUEST_PROPS,
   TEACHER_SELF_INNOVATION,
 } from "@/utils/type";
 import {
+  honorariumSecuredApi,
   innovationSecuredApi,
   needAssistance,
   trainingSecuredApi,
@@ -88,6 +90,30 @@ export const teacherController = {
   getAllTickets: async () => {
     try {
       let result = await needAssistance.get("/all");
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  requestHonorarium: async (data: REQUEST_HONORARIUM_REQUEST_PROPS) => {
+    try {
+      let result = await honorariumSecuredApi.post("/create", data);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getAllHonorariums: async () => {
+    try {
+      let result = await honorariumSecuredApi.get("/all");
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getHonorariumsDetails: async (id: string) => {
+    try {
+      let result = await honorariumSecuredApi.get(`/${id}`);
       return result.data;
     } catch (error) {
       throw error;

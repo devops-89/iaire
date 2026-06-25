@@ -1,37 +1,9 @@
 import Breadcrumb from "@/components/widgets/Breadcrumb";
-import {
-  Box,
-  Button,
-  Card,
-  Grid,
-  MenuItem,
-  TextField,
-  Typography,
-  InputAdornment,
-  Stack,
-  Autocomplete,
-  IconButton,
-  CircularProgress,
-} from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useFormik } from "formik";
-import { addInstitutionInnovationValidationSchema } from "@/utils/validationSchema";
-import { CATEGORY, COLORS, USER_STATUS } from "@/utils/enum";
-import { roboto, montserrat, newBlack_light } from "@/utils/fonts";
-import {
-  Title,
-  Category,
-  Description,
-  CheckCircle,
-  CloudUpload,
-  Delete,
-  InsertDriveFile,
-} from "@mui/icons-material";
-import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
-import { useGetTeam } from "@/hooks/school/useTeam";
 import { useCreateInnovation } from "@/hooks/school/useInnovation";
+import { addInstitutionInnovationValidationSchema } from "@/utils/validationSchema";
+import { Box, Card } from "@mui/material";
+import { useFormik } from "formik";
 import InnovationForm from "./components/InnovationForm";
-import { INNOVATION_FORM_PROPS } from "@/utils/type";
 
 const AddInnovation = () => {
   const { loading: createLoading, createInnovation } = useCreateInnovation();

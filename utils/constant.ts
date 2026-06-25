@@ -42,8 +42,8 @@ export const STUDENT_SIDEBAR_DATA = [
     url: "/dashboard/student/innovation-management",
   },
   {
-    label: "Startup Management",
-    url: "/dashboard/student/startup-management",
+    label: "Research Management",
+    url: "/dashboard/student/research-management",
   },
   {
     label: "Resource Access",
@@ -95,6 +95,10 @@ export const INSTITUTION_SIDEBAR_DATA = [
     url: "/dashboard/institution",
   },
   {
+    label: "Membership Management",
+    url: "/dashboard/institution/membership-management",
+  },
+  {
     label: "Educator Management",
     url: "/dashboard/institution/educator-management",
   },
@@ -129,119 +133,6 @@ export const INSTITUTION_SIDEBAR_DATA = [
   },
 ];
 
-export const TEACHER_DATA = [
-  {
-    id: "E-001",
-    name: "Dr. Rajesh Kumar",
-    email: "rajesh@edu.in",
-    phone: "9876543210",
-    subject: "Mathematics",
-    status: "Member",
-    membershipId: "AI-M-001",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "E-002",
-    name: "Priya Sharma",
-    email: "priya@edu.in",
-    phone: "9876543211",
-    subject: "Physics",
-    status: "Not a member",
-    membershipId: "-",
-    gender: GENDER_TYPE.FEMALE,
-  },
-  {
-    id: "E-003",
-    name: "Ankit Verma",
-    email: "ankit@edu.in",
-    phone: "9876543212",
-    subject: "Chemistry",
-    status: "Member",
-    membershipId: "AI-M-003",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "E-004",
-    name: "Sunita Rao",
-    email: "sunita@edu.in",
-    phone: "9876543213",
-    subject: "Biology",
-    status: "Not a member",
-    membershipId: "-",
-    gender: GENDER_TYPE.FEMALE,
-  },
-  {
-    id: "E-005",
-    name: "Vikram Singh",
-    email: "vikram@edu.in",
-    phone: "9876543214",
-    subject: "Computer Science",
-    status: "Member",
-    membershipId: "AI-M-006",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "E-006",
-    name: "Meera Iyer",
-    email: "meera@edu.in",
-    phone: "9876543215",
-    subject: "History",
-    status: "Member",
-    membershipId: "AI-M-007",
-    gender: GENDER_TYPE.FEMALE,
-  },
-  {
-    id: "E-007",
-    name: "Rohan Das",
-    email: "rohan@edu.in",
-    phone: "9876543216",
-    subject: "Geography",
-    status: "Member",
-    membershipId: "AI-M-008",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "E-008",
-    name: "Sneha Gupta",
-    email: "sneha@edu.in",
-    phone: "9876543217",
-    subject: "English",
-    status: "Member",
-    membershipId: "AI-M-009",
-    gender: GENDER_TYPE.FEMALE,
-  },
-  {
-    id: "E-009",
-    name: "Amit Patel",
-    email: "amit@edu.in",
-    phone: "9876543218",
-    subject: "Economics",
-    status: "Member",
-    membershipId: "AI-M-010",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "E-010",
-    name: "Kavita Reddy",
-    email: "kavita@edu.in",
-    phone: "9876543219",
-    subject: "Political Science",
-    status: "Member",
-    membershipId: "AI-M-011",
-    gender: GENDER_TYPE.PREFER_NOT_TO_SAY,
-  },
-  {
-    id: "E-011",
-    name: "Sanjay Joshi",
-    email: "sanjay@edu.in",
-    phone: "9876543220",
-    subject: "Physical Education",
-    status: "Member",
-    membershipId: "AI-M-012",
-    gender: GENDER_TYPE.MALE,
-  },
-];
-
 export const STUDENT_HEADER_DATA = [
   "Id",
   "Name",
@@ -252,109 +143,6 @@ export const STUDENT_HEADER_DATA = [
   "Status",
   "Membership Id",
   "Actions",
-];
-
-export const STUDENT_TABLE_DATA = [
-  {
-    id: "S-01",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "12th",
-    membershipId: "M-01",
-    status: "Member",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "S-02",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "12th",
-    membershipId: "-",
-    status: "Not a member",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "S-03",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "12th",
-    membershipId: "M-03",
-    status: "Member",
-    gender: GENDER_TYPE.FEMALE,
-  },
-  {
-    id: "S-04",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "12th",
-    membershipId: "-",
-    status: "Not a member",
-    gender: GENDER_TYPE.FEMALE,
-  },
-  {
-    id: "S-05",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "12th",
-    membershipId: "M-05",
-    status: "Member",
-    gender: GENDER_TYPE.PREFER_NOT_TO_SAY,
-  },
-  {
-    id: "S-06",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "12th",
-    membershipId: "M-06",
-    status: "Member",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "S-07",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "11th",
-    membershipId: "-",
-    status: "Not a member",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "S-08",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "12th",
-    membershipId: "M-08",
-    status: "Member",
-    gender: GENDER_TYPE.MALE,
-  },
-  {
-    id: "S-09",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "10th",
-    membershipId: "M-09",
-    status: "Member",
-    gender: GENDER_TYPE.FEMALE,
-  },
-  {
-    id: "S-10",
-    name: "Kunal Sharma",
-    email: "kunal.sharma@digixito.com",
-    phone: "9354678205",
-    grade: "12th",
-    membershipId: "-",
-    status: "Not a member",
-    gender: GENDER_TYPE.FEMALE,
-  },
 ];
 
 export const MEMBER_TYPE = [
@@ -376,69 +164,6 @@ export const TEACHER_HEADER = [
 
 export const INNOVATION_HEADER = ["Id", "Title", "Team", "Status"];
 
-export const INNOVATION_DATA = [
-  {
-    id: "I-001",
-    title: "Innovation 1",
-    category: "Category 1",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "I-002",
-    title: "Innovation 2",
-    category: "Category 2",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "I-003",
-    title: "Innovation 3",
-    category: "Category 3",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "I-004",
-    title: "Innovation 4",
-    category: "Category 4",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "I-005",
-    title: "Innovation 5",
-    category: "Category 5",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "I-006",
-    title: "Innovation 6",
-    category: "Category 6",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "I-007",
-    title: "Innovation 7",
-    category: "Category 7",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "I-008",
-    title: "Innovation 8",
-    category: "Category 8",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "I-009",
-    title: "Innovation 9",
-    category: "Category 9",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "I-010",
-    title: "Innovation 10",
-    category: "Category 10",
-    status: USER_STATUS.ACTIVE,
-  },
-];
-
 export const RESEARCH_HEADER = [
   "Id",
   "Research Title",
@@ -448,53 +173,7 @@ export const RESEARCH_HEADER = [
   "Actions",
 ];
 
-export const RESEARCH_DATA = [
-  {
-    id: "R-001",
-    title: "Impact of AI on Primary Education",
-    topic: "AI in Education",
-    date: "Sep 20, 2023",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "R-002",
-    title: "Renewable Energy in School Curriculums",
-    topic: "Sustainability",
-    date: "Jan 10, 2024",
-    status: USER_STATUS.PENDING,
-  },
-  {
-    id: "R-003",
-    title: "Mental Health Strategies for Students",
-    topic: "Student Well-being",
-    date: "Feb 15, 2024",
-    status: USER_STATUS.ACTIVE,
-  },
-  {
-    id: "R-004",
-    title: "STEM Education in Rural Areas",
-    topic: "STEM",
-    date: "Mar 05, 2024",
-    status: "Not a member",
-  },
-  {
-    id: "R-005",
-    title: "Digital Literacy: A New Core Skill",
-    topic: "Digital Education",
-    date: "Apr 12, 2024",
-    status: USER_STATUS.ACTIVE,
-  },
-];
-
 export const BOARDS = ["CBSE", "ICSE", "State Board", "IB", "IGCSE"];
-
-export const SCHOOLS = [
-  "St. Xavier's International",
-  "Greenwood High",
-  "The Delhi Public School",
-  "Oakridge International",
-  "Global Indian School",
-];
 
 interface CountryType {
   code: string;
@@ -2428,4 +2107,13 @@ export const SUPPORT_TICKET_HEADER = [
   "Date Created",
   "Priority",
   "Status",
+];
+
+export const HONORARIUM_CATEGORY = [
+  {
+    label: CATEGORY.INNOVATION,
+  },
+  {
+    label: CATEGORY.RESEARCH,
+  },
 ];

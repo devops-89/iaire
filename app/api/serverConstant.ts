@@ -13,4 +13,5 @@ export const serverConstants = {
   research: `${baseURL}/research-submissions`,
   resources: `${baseURL}/resources`,
   assistance: `${baseURL}/need-assistance`,
+  honorarium: `${baseURL}/honorariums`,
 };

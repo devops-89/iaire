@@ -32,6 +32,7 @@ const innovationSecuredApi = createSecuredApi(serverConstants.innovation);
 const researchSecuredApi = createSecuredApi(serverConstants.research);
 const resourcesSecuredApi = createSecuredApi(serverConstants.resources);
 const needAssistance = createSecuredApi(serverConstants.assistance);
+const honorariumSecuredApi = createSecuredApi(serverConstants.honorarium);
 
 export {
   userPublicApi,
@@ -48,4 +49,5 @@ export {
   researchSecuredApi,
   resourcesSecuredApi,
   needAssistance,
+  honorariumSecuredApi,
 };

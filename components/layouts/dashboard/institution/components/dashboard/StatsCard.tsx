@@ -8,7 +8,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
     <Box sx={{ mt: 3, position: "relative" }}>
       <Card
         sx={{
-          boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+          boxShadow: "0 8px 32px rgba(31, 38, 135, 0.03)",
           borderRadius: "24px",
           display: "flex",
           alignItems: "flex-start",
@@ -17,12 +17,14 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
           flexDirection: "column",
           position: "relative",
           overflow: "hidden",
-          background: "linear-gradient(135deg, #ffffff 0%, #f9fafb 100%)",
-          border: "1px solid rgba(0,0,0,0.03)",
-          transition: "transform 0.3s ease, box-shadow 0.3s ease",
+          background: "rgba(255, 255, 255, 0.75)",
+          backdropFilter: "blur(20px)",
+          border: "1px solid rgba(255, 255, 255, 0.5)",
+          transition: "transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease",
           "&:hover": {
             transform: "translateY(-4px)",
-            boxShadow: "0 20px 40px rgba(0,0,0,0.08)",
+            boxShadow: "0 12px 40px rgba(31, 38, 135, 0.08)",
+            borderColor: "rgba(223, 186, 115, 0.3)",
           },
         }}
       >

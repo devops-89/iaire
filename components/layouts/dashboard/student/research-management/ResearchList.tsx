@@ -1,16 +1,19 @@
 "use client";
+import Plans from "@/components/modals/common/Plans";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
-import { useGetAllInnovation } from "@/hooks/school/useInnovation";
-import { INNOVATION_HEADER } from "@/utils/constant";
-import { COLORS, USER_STATUS } from "@/utils/enum";
+import { useGetAllResearch } from "@/hooks/school/useResearch";
+import { useModal } from "@/store/useModal";
+import { useSignup } from "@/store/useSignup";
+import { RESEARCH_HEADER } from "@/utils/constant";
+import { COLORS, USER_ROLES, USER_STATUS } from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
-import { Add, Delete, Edit } from "@mui/icons-material";
+import { Add, Lock } from "@mui/icons-material";
 import {
   Box,
   Button,
+  Card,
   Chip,
   CircularProgress,
-  IconButton,
   Stack,
   Table,
   TableBody,
@@ -18,47 +21,84 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
 } from "@mui/material";
+import moment from "moment";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
-const InnovationList = () => {
-  const { loading, fetchInnovationList, innovationData } =
-    useGetAllInnovation();
+const ResearchList = () => {
+  const { showModal } = useModal();
+  const { data: studentData } = useSignup();
+
+  const isMember =
+    (studentData?.payments?.length ?? 0) > 0 &&
+    studentData?.payments?.some(
+      (v: any) => v.membership?.status === USER_STATUS.ACTIVE.toUpperCase(),
+    );
+
+  const { researchData, fetchResearchData, loading } = useGetAllResearch();
 
   useEffect(() => {
-    fetchInnovationList();
+    fetchResearchData();
   }, []);
 
   return (
     <Box>
-      <Box>
+      <Card
+        sx={{
+          p: 4,
+          borderRadius: "20px",
+          boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.05)",
+        }}
+      >
         <Stack
           direction={"row"}
           alignItems={"center"}
           justifyContent={"space-between"}
+          sx={{ mb: 3 }}
         >
           <Breadcrumb
-            title="My Innovations"
+            title="Research Submissions"
             data={[
               {
                 title: "Dashboard",
                 href: "/dashboard/student",
               },
               {
-                title: "Innovation Management",
-                href: "/dashboard/student/innovation-management",
+                title: "Research Management",
+                href: "/dashboard/student/research-management",
               },
             ]}
           />
-          <Link
-            href="/dashboard/student/innovation-management/add-innovation"
-            style={{ textDecoration: "none" }}
-          >
+          {isMember ? (
+            <Link
+              href="/dashboard/student/research-management/add-research"
+              style={{ textDecoration: "none" }}
+            >
+              <Button
+                sx={{
+                  backgroundColor: COLORS.PRIMARY_NAVY,
+                  color: COLORS.WHITE,
+                  fontFamily: roboto.style.fontFamily,
+                  fontWeight: 700,
+                  fontSize: 16,
+                  borderRadius: "10px",
+                  padding: "10px 20px",
+                  textTransform: "none",
+                  "&:hover": {
+                    backgroundColor: COLORS.PRIMARY_NAVY,
+                    opacity: 0.9,
+                  },
+                }}
+                endIcon={<Add />}
+              >
+                Add Research
+              </Button>
+            </Link>
+          ) : (
             <Button
               sx={{
-                backgroundColor: COLORS.PRIMARY_NAVY,
+                backgroundColor: "#7e7e7e",
                 color: COLORS.WHITE,
                 fontFamily: roboto.style.fontFamily,
                 fontWeight: 700,
@@ -67,21 +107,22 @@ const InnovationList = () => {
                 padding: "10px 20px",
                 textTransform: "none",
                 "&:hover": {
-                  backgroundColor: COLORS.PRIMARY_NAVY,
+                  backgroundColor: "#7e7e7e",
                 },
               }}
-              endIcon={<Add />}
+              endIcon={<Lock />}
+              onClick={() => showModal(<Plans role={USER_ROLES.STUDENT} />)}
             >
-              New Innovation
+              Unlock Feature
             </Button>
-          </Link>
+          )}
         </Stack>
 
         <TableContainer sx={{ mt: 3 }}>
           <Table>
             <TableHead>
               <TableRow>
-                {INNOVATION_HEADER.map((item, index) => (
+                {RESEARCH_HEADER.map((item, index) => (
                   <TableCell
                     key={index}
                     sx={{
@@ -93,55 +134,36 @@ const InnovationList = () => {
                     {item}
                   </TableCell>
                 ))}
-                <TableCell
-                  sx={{
-                    fontFamily: roboto.style.fontFamily,
-                    fontSize: 16,
-                    fontWeight: 600,
-                  }}
-                >
-                  Actions
-                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {loading ? (
                 <TableRow>
-                  <TableCell colSpan={5} align="center" sx={{ py: 6 }}>
+                  <TableCell
+                    colSpan={RESEARCH_HEADER.length}
+                    align="center"
+                    sx={{ py: 6 }}
+                  >
                     <CircularProgress
                       size={30}
                       sx={{ color: COLORS.PRIMARY_NAVY }}
                     />
                   </TableCell>
                 </TableRow>
-              ) : innovationData && innovationData.length > 0 ? (
-                innovationData.map((item, index) => (
-                  <TableRow key={item.id || index} hover>
+              ) : researchData && researchData.length > 0 ? (
+                researchData.map((item, index) => (
+                  <TableRow key={index} hover>
                     <TableCell sx={{ fontFamily: roboto.style.fontFamily }}>
-                      {item.displayId || item.id}
-                    </TableCell>
-                    <TableCell>
-                      <Link
-                        href={`/dashboard/student/innovation-management/innovation-details/${item.id}`}
-                        style={{ textDecoration: "none", color: "inherit" }}
-                      >
-                        <Typography
-                          sx={{
-                            color: COLORS.PRIMARY_NAVY || "#1a2a3a",
-                            fontWeight: 500,
-                            fontSize: 15,
-                            textDecoration: "underline",
-                            textTransform: "capitalize",
-                            fontFamily: roboto.style.fontFamily,
-                            cursor: "pointer",
-                          }}
-                        >
-                          {item.title}
-                        </Typography>
-                      </Link>
+                      {item.displayId}
                     </TableCell>
                     <TableCell sx={{ fontFamily: roboto.style.fontFamily }}>
-                      {item.team?.title || "-"}
+                      {item.title}
+                    </TableCell>
+                    <TableCell sx={{ fontFamily: roboto.style.fontFamily }}>
+                      {item.topic}
+                    </TableCell>
+                    <TableCell sx={{ fontFamily: roboto.style.fontFamily }}>
+                      {moment(item.createdAt).format("DD-MMM-YYYY")}
                     </TableCell>
                     <TableCell>
                       <Chip
@@ -155,55 +177,45 @@ const InnovationList = () => {
                           padding: "4px 8px",
                           textTransform: "uppercase",
                           ...(item.status?.toUpperCase() ===
-                            USER_STATUS.ACTIVE && {
+                            USER_STATUS.ACTIVE.toUpperCase() && {
                             bgcolor: "#ECFDF5",
                             color: "#10B981",
                           }),
                           ...(item.status?.toUpperCase() ===
-                            USER_STATUS.PENDING && {
+                            USER_STATUS.PENDING.toUpperCase() && {
                             bgcolor: "#FFFBEB",
                             color: "#F59E0B",
                           }),
                           ...(item.status?.toUpperCase() ===
-                            USER_STATUS.INACTIVE && {
+                            USER_STATUS.INACTIVE.toUpperCase() && {
                             bgcolor: "#FEF2F2",
                             color: "#EF4444",
-                          }),
-                          ...(item.status?.toUpperCase() ===
-                            USER_STATUS.BANNED && {
-                            bgcolor: "#F9FAFB",
-                            color: "#6B7280",
                           }),
                         }}
                       />
                     </TableCell>
-                    <TableCell>
-                      <IconButton>
-                        <Edit fontSize="small" sx={{ color: COLORS.BLACK }} />
-                      </IconButton>
-                      <IconButton>
-                        <Delete fontSize="small" sx={{ color: COLORS.BLACK }} />
-                      </IconButton>
+                    <TableCell sx={{ fontFamily: roboto.style.fontFamily }}>
+                      -
                     </TableCell>
                   </TableRow>
                 ))
               ) : (
                 <TableRow>
                   <TableCell
-                    colSpan={5}
+                    colSpan={RESEARCH_HEADER.length}
                     align="center"
                     sx={{ py: 6, fontFamily: roboto.style.fontFamily }}
                   >
-                    No innovations found
+                    No research submissions found
                   </TableCell>
                 </TableRow>
               )}
             </TableBody>
           </Table>
         </TableContainer>
-      </Box>
+      </Card>
     </Box>
   );
 };
 
-export default InnovationList;
+export default ResearchList;

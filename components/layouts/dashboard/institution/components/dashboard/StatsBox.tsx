@@ -26,9 +26,9 @@ const StatsBox = ({ title, data }: STATSCARDPROPS) => {
           borderRadius: "20px",
         }}
       />
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         {data.map((val, i) => (
-          <Grid size={3} key={i}>
+          <Grid size={{ xs: 12, sm: 6, lg: 3 }} key={i}>
             <StatsCard title={val.title} count={val.count} icon={val.icon} />
           </Grid>
         ))}
