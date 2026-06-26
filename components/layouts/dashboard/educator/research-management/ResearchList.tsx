@@ -152,19 +152,19 @@ const ResearchList = () => {
                             borderRadius: "8px",
                             fontSize: "13px",
                             padding: "4px 8px",
-                            ...(item.status === USER_STATUS.ACTIVE && {
+                            ...(item.status?.toUpperCase() === "PUBLISHED" && {
                               bgcolor: "#ECFDF5",
                               color: "#10B981",
                             }),
-                            ...(item.status === USER_STATUS.PENDING && {
+                            ...(item.status?.toUpperCase() === "PENDING" && {
                               bgcolor: "#FFFBEB",
                               color: "#F59E0B",
                             }),
-                            ...(item.status === USER_STATUS.INACTIVE && {
+                            ...(item.status?.toUpperCase() === "NOT_PUBLISHED" && {
                               bgcolor: "#FEF2F2",
                               color: "#EF4444",
                             }),
-                            ...(item.status === USER_STATUS.BANNED && {
+                            ...(item.status?.toUpperCase() === "ARCHIVED" && {
                               bgcolor: "#F9FAFB",
                               color: "#6B7280",
                             }),

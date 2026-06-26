@@ -37,18 +37,25 @@ const DottedConnector = styled(StepConnector)(({ theme }) => ({
   },
 }));
 
-const FlightStepIcon = (props: { active?: boolean; completed?: boolean; icon: React.ReactNode }) => {
+const FlightStepIcon = (props: {
+  active?: boolean;
+  completed?: boolean;
+  icon: React.ReactNode;
+}) => {
   const { active, completed, icon } = props;
 
   if (Number(icon) === 4) {
     return (
       <AirplanemodeActive
         sx={{
-          color: (active || completed) ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.25)",
+          color: active || completed ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.25)",
           fontSize: 32,
           transform: "rotate(0deg)", // Points up
           ml: "-2px",
-          filter: (active || completed) ? `drop-shadow(0 0 8px ${COLORS.PRIMARY_NAVY}44)` : "none", // Premium glow
+          filter:
+            active || completed
+              ? `drop-shadow(0 0 8px ${COLORS.PRIMARY_NAVY}44)`
+              : "none", // Premium glow
         }}
       />
     );
@@ -63,7 +70,7 @@ const FlightStepIcon = (props: { active?: boolean; completed?: boolean; icon: Re
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        border: `1.5px solid ${ (active || completed) ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.1)" }`,
+        border: `1.5px solid ${active || completed ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.1)"}`,
         backgroundColor: "rgba(255,255,255,0.8)",
         ml: "8px",
         position: "relative",
@@ -73,7 +80,7 @@ const FlightStepIcon = (props: { active?: boolean; completed?: boolean; icon: Re
           width: 22,
           height: 22,
           borderRadius: "50%",
-          border: `1px solid ${ (active || completed) ? `${COLORS.PRIMARY_NAVY}22` : "rgba(0,0,0,0.05)" }`,
+          border: `1px solid ${active || completed ? `${COLORS.PRIMARY_NAVY}22` : "rgba(0,0,0,0.05)"}`,
         },
       }}
     >
@@ -83,7 +90,7 @@ const FlightStepIcon = (props: { active?: boolean; completed?: boolean; icon: Re
           height: 6,
           borderRadius: "50%",
           backgroundColor:
-            (active || completed) ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.2)",
+            active || completed ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.2)",
         }}
       />
     </Box>
@@ -96,7 +103,8 @@ const WelcomeBanner = () => {
   // Fetch school-level counts from API hooks
   const { innovationData, fetchInnovationList } = useGetAllInnovation();
   const { researchData, fetchResearchData } = useGetAllResearch();
-  const { userData: teachersData, fetchUserData: fetchTeachers } = useGetAllUser();
+  const { userData: teachersData, fetchUserData: fetchTeachers } =
+    useGetAllUser();
 
   useEffect(() => {
     fetchInnovationList();
@@ -114,7 +122,6 @@ const WelcomeBanner = () => {
   const numResearch = researchData?.length || 0;
   const numEducators = teachersData?.data?.length || 0;
 
-  // Compute active membership status
   const isMember =
     ((institutionData?.payments?.length ?? 0) > 0 &&
       institutionData?.payments?.some(
@@ -122,16 +129,19 @@ const WelcomeBanner = () => {
       )) ??
     false;
 
-  // Dynamic Gamification of Institution Status / Progression
   let currentTier = "Institutional Member";
   let nextTier = "Certified Institutional Member";
   let progressPercent = 0;
   let activeStep = 0;
 
-  // Level thresholds
   const isCertifiedEligible = numEducators >= 2;
-  const isAssociateEligible = isCertifiedEligible && numInnovations >= 3 && numResearch >= 3;
-  const isFellowEligible = isCertifiedEligible && numEducators >= 4 && numInnovations > 5 && numResearch > 5;
+  const isAssociateEligible =
+    isCertifiedEligible && numInnovations >= 3 && numResearch >= 3;
+  const isFellowEligible =
+    isCertifiedEligible &&
+    numEducators >= 4 &&
+    numInnovations > 5 &&
+    numResearch > 5;
 
   if (isFellowEligible) {
     currentTier = "Fellow Institution";
@@ -167,20 +177,41 @@ const WelcomeBanner = () => {
   if (currentTier === "Institutional Member") {
     checklist = [
       { text: "Admission into the Academy & active dues", met: isMember },
-      { text: "Maintain not fewer than 2 IAIRE-certified educators", met: numEducators >= 2 },
+      {
+        text: "Maintain not fewer than 2 IAIRE-certified educators",
+        met: numEducators >= 2,
+      },
     ];
   } else if (currentTier === "Certified Institutional Member") {
     checklist = [
-      { text: "Meet Certified Institutional Member status requirements", met: isCertifiedEligible },
-      { text: "Submit 3+ patents or innovation projects", met: numInnovations >= 3 },
-      { text: "Publish 3+ peer-reviewed research papers", met: numResearch >= 3 },
+      {
+        text: "Meet Certified Institutional Member status requirements",
+        met: isCertifiedEligible,
+      },
+      {
+        text: "Submit 3+ patents or innovation projects",
+        met: numInnovations >= 3,
+      },
+      {
+        text: "Publish 3+ peer-reviewed research papers",
+        met: numResearch >= 3,
+      },
     ];
   } else {
     // Associate Fellow upgrading to Fellow
     checklist = [
-      { text: "Maintain 4+ IAIRE-trained certified educators", met: numEducators >= 4 },
-      { text: "Excellence through more than 5 granted patents", met: numInnovations > 5 },
-      { text: "More than 5 peer-reviewed research publications", met: numResearch > 5 },
+      {
+        text: "Maintain 4+ IAIRE-trained certified educators",
+        met: numEducators >= 4,
+      },
+      {
+        text: "Excellence through more than 5 granted patents",
+        met: numInnovations > 5,
+      },
+      {
+        text: "More than 5 peer-reviewed research publications",
+        met: numResearch > 5,
+      },
     ];
   }
 
@@ -286,9 +317,7 @@ const WelcomeBanner = () => {
                   }}
                 >
                   IAIRE member since:{" "}
-                  {moment(val?.membership?.activatedAt).format(
-                    "MMM DD, YYYY",
-                  )}
+                  {moment(val?.membership?.activatedAt).format("MMM DD, YYYY")}
                 </Typography>
               </Box>
             ))}
@@ -382,7 +411,9 @@ const WelcomeBanner = () => {
                         fontFamily: montserrat.style.fontFamily,
                         fontWeight: i === activeStep ? 800 : 500,
                         color:
-                          i === activeStep ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.5)",
+                          i === activeStep
+                            ? COLORS.PRIMARY_NAVY
+                            : "rgba(0,0,0,0.5)",
                         fontSize: i === activeStep ? "15px" : "13px",
                         letterSpacing: i === activeStep ? "0px" : "0.5px",
                         lineHeight: 1.2,
@@ -501,16 +532,29 @@ const WelcomeBanner = () => {
                 </Typography>
                 <Stack spacing={1}>
                   {checklist.map((item, idx) => (
-                    <Box key={idx} sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}>
+                    <Box
+                      key={idx}
+                      sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}
+                    >
                       {item.met ? (
-                        <CheckCircle sx={{ color: "#10B981", fontSize: 16, mt: 0.2 }} />
+                        <CheckCircle
+                          sx={{ color: "#10B981", fontSize: 16, mt: 0.2 }}
+                        />
                       ) : (
-                        <RadioButtonUnchecked sx={{ color: "rgba(0,0,0,0.25)", fontSize: 16, mt: 0.2 }} />
+                        <RadioButtonUnchecked
+                          sx={{
+                            color: "rgba(0,0,0,0.25)",
+                            fontSize: 16,
+                            mt: 0.2,
+                          }}
+                        />
                       )}
                       <Typography
                         sx={{
                           fontSize: 12,
-                          color: item.met ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.5)",
+                          color: item.met
+                            ? COLORS.PRIMARY_NAVY
+                            : "rgba(0,0,0,0.5)",
                           fontWeight: item.met ? 600 : 500,
                           lineHeight: 1.3,
                           fontFamily: montserrat.style.fontFamily,

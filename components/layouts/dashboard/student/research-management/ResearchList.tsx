@@ -176,20 +176,21 @@ const ResearchList = () => {
                           fontSize: "13px",
                           padding: "4px 8px",
                           textTransform: "uppercase",
-                          ...(item.status?.toUpperCase() ===
-                            USER_STATUS.ACTIVE.toUpperCase() && {
+                          ...(item.status?.toUpperCase() === "PUBLISHED" && {
                             bgcolor: "#ECFDF5",
                             color: "#10B981",
                           }),
-                          ...(item.status?.toUpperCase() ===
-                            USER_STATUS.PENDING.toUpperCase() && {
+                          ...(item.status?.toUpperCase() === "PENDING" && {
                             bgcolor: "#FFFBEB",
                             color: "#F59E0B",
                           }),
-                          ...(item.status?.toUpperCase() ===
-                            USER_STATUS.INACTIVE.toUpperCase() && {
+                          ...(item.status?.toUpperCase() === "NOT_PUBLISHED" && {
                             bgcolor: "#FEF2F2",
                             color: "#EF4444",
+                          }),
+                          ...(item.status?.toUpperCase() === "ARCHIVED" && {
+                            bgcolor: "#F9FAFB",
+                            color: "#6B7280",
                           }),
                         }}
                       />
