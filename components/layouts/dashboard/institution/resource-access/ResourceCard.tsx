@@ -1,7 +1,7 @@
 "use client";
 
 import { COLORS } from "@/utils/enum";
-import { montserrat, roboto } from "@/utils/fonts";
+import { montserrat, roboto, inter } from "@/utils/fonts";
 import {
   Box,
   Button,
@@ -12,33 +12,53 @@ import {
 } from "@mui/material";
 import {
   ArticleOutlined,
-  DownloadOutlined,
+  Lock,
   MenuBookOutlined,
   OpenInNewOutlined,
+  VerifiedUserOutlined,
   ViewModuleOutlined,
 } from "@mui/icons-material";
 
 export type ResourceType = "playbook" | "module" | "template";
 
 export interface ResourceCardProps {
+  id?: number | string;
   title: string;
   description: string;
-  type: ResourceType;
-  category: string;
-  level: string;
-  duration: string;
+  type?: string;
+  category?: string;
+  level?: string;
+  duration?: string;
+  fileUrl?: string;
+  isMember: boolean;
+  handleAccess: (url?: string) => void;
 }
 
-const resourceIcon = {
-  playbook: MenuBookOutlined,
-  module: ViewModuleOutlined,
-  template: ArticleOutlined,
+const getIcon = (type?: string) => {
+  const t = type?.toLowerCase() || "";
+  if (t.includes("playbook")) return <MenuBookOutlined sx={{ fontSize: 24 }} />;
+  if (t.includes("module")) return <ViewModuleOutlined sx={{ fontSize: 24 }} />;
+  if (t.includes("template")) return <ArticleOutlined sx={{ fontSize: 24 }} />;
+  return <MenuBookOutlined sx={{ fontSize: 24 }} />;
 };
 
-const resourceLabel = {
-  playbook: "Playbook",
-  module: "Module",
-  template: "Template",
+const getThemeColor = (type?: string) => {
+  const t = type?.toLowerCase() || "";
+  if (t.includes("playbook")) return COLORS.PRIMARY_NAVY || "#015A50";
+  if (t.includes("module")) return "#EE8E26";
+  if (t.includes("template")) return "#3F51B5";
+  return "#78909C";
+};
+
+const getGradientHeader = (type?: string) => {
+  const t = type?.toLowerCase() || "";
+  if (t.includes("playbook"))
+    return `linear-gradient(90deg, #015A50 0%, #00897b 100%)`;
+  if (t.includes("module"))
+    return `linear-gradient(90deg, #EE8E26 0%, #ffb74d 100%)`;
+  if (t.includes("template"))
+    return `linear-gradient(90deg, #3F51B5 0%, #7986cb 100%)`;
+  return `linear-gradient(90deg, #78909C 0%, #b0bec5 100%)`;
 };
 
 const ResourceCard = ({
@@ -48,115 +68,259 @@ const ResourceCard = ({
   category,
   level,
   duration,
+  fileUrl,
+  isMember,
+  handleAccess,
 }: ResourceCardProps) => {
-  const Icon = resourceIcon[type];
+  const themeColor = getThemeColor(type);
+  const gradientHeader = getGradientHeader(type);
 
   return (
     <Card
       sx={{
-        p: { xs: 2, md: 2.75 },
         height: "100%",
-        borderRadius: "8px",
-        boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.06)",
-        border: "1px solid #E6E9EE",
-        transition: "transform 0.2s ease, box-shadow 0.2s ease",
+        borderRadius: "20px",
+        boxShadow: "0px 8px 24px rgba(11, 23, 39, 0.02)",
+        border: "1px solid #f1f5f9",
+        background: "#ffffff",
+        display: "flex",
+        flexDirection: "column",
+        position: "relative",
+        overflow: "hidden",
+        transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "5px",
+          background: gradientHeader,
+        },
         "&:hover": {
-          transform: "translateY(-2px)",
-          boxShadow: "0px 12px 28px rgba(0, 0, 0, 0.09)",
+          transform: "translateY(-6px)",
+          boxShadow: "0px 20px 35px rgba(1, 90, 80, 0.08)",
+          borderColor: "rgba(1, 90, 80, 0.15)",
         },
       }}
     >
-      <Stack spacing={2.25} sx={{ height: "100%" }}>
-        <Stack direction="row" alignItems="center" spacing={1.5}>
+      <Stack spacing={2} sx={{ p: 3.5, pb: 2.5, flexGrow: 1 }}>
+        {/* Top Icon and Label section */}
+        <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1.5}>
           <Box
             sx={{
-              width: 42,
-              height: 42,
-              borderRadius: "8px",
-              backgroundColor: COLORS.UNLOCKED_BUTTON_GREEN,
+              width: 44,
+              height: 44,
+              borderRadius: "12px",
+              background: `linear-gradient(135deg, ${themeColor}12 0%, ${themeColor}05 100%)`,
               display: "grid",
               placeItems: "center",
-              color: COLORS.PRIMARY_NAVY,
-              flexShrink: 0,
+              color: themeColor,
+              border: `1px solid ${themeColor}20`,
             }}
           >
-            <Icon fontSize="small" />
+            {getIcon(type)}
           </Box>
-          <Box>
-            <Typography
+
+          {/* Resource Status Badge */}
+          {!isMember ? (
+            <Chip
+              icon={<Lock sx={{ fontSize: "12px !important", color: "#D97706 !important" }} />}
+              label="Premium"
+              size="small"
               sx={{
                 fontFamily: montserrat.style.fontFamily,
-                fontSize: 16,
                 fontWeight: 700,
-                color: COLORS.BLACK,
+                fontSize: 10,
+                bgcolor: "#FFFBEB",
+                color: "#D97706",
+                border: "1px solid #FDE68A",
+                borderRadius: "6px",
+                pl: 0.5,
               }}
-            >
-              {title}
-            </Typography>
-            <Typography
+            />
+          ) : (
+            <Chip
+              icon={
+                <VerifiedUserOutlined
+                  sx={{ fontSize: "12px !important", color: "#10B981 !important" }}
+                />
+              }
+              label="Unlocked"
+              size="small"
               sx={{
-                fontFamily: roboto.style.fontFamily,
-                fontSize: 12,
-                color: "rgba(0,0,0,0.58)",
+                fontFamily: montserrat.style.fontFamily,
+                fontWeight: 700,
+                fontSize: 10,
+                bgcolor: "#ECFDF5",
+                color: "#10B981",
+                border: "1px solid #A7F3D0",
+                borderRadius: "6px",
+                pl: 0.5,
               }}
-            >
-              {resourceLabel[type]}
-            </Typography>
-          </Box>
+            />
+          )}
         </Stack>
 
+        {/* Title & Type */}
+        <Box>
+          <Typography
+            sx={{
+              fontFamily: montserrat.style.fontFamily,
+              fontSize: 16,
+              fontWeight: 750,
+              color: "#0f172a",
+              lineHeight: 1.4,
+              mb: 0.5,
+            }}
+          >
+            {title}
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: inter.style.fontFamily,
+              fontSize: 11,
+              fontWeight: 700,
+              color: themeColor,
+              textTransform: "uppercase",
+              letterSpacing: "1px",
+            }}
+          >
+            {type || "Resource"}
+          </Typography>
+        </Box>
+
+        {/* Description */}
         <Typography
           sx={{
-            fontFamily: roboto.style.fontFamily,
+            fontFamily: inter.style.fontFamily,
             fontSize: 14,
-            color: "rgba(0,0,0,0.72)",
-            lineHeight: 1.5,
-            flex: 1,
+            color: "#64748b",
+            lineHeight: 1.6,
+            flexGrow: 1,
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
           }}
         >
-          {description}
+          {description ||
+            "Access custom materials, toolkits, and curated playbooks designed to structure your classroom workflow."}
         </Typography>
 
-        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
-          <Chip label={category} size="small" />
-          <Chip label={level} size="small" />
-          <Chip label={duration} size="small" />
+        {/* Category Tags */}
+        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mt: 1 }}>
+          {category && (
+            <Chip
+              label={category}
+              size="small"
+              sx={{
+                fontFamily: inter.style.fontFamily,
+                fontWeight: 600,
+                fontSize: 11,
+                bgcolor: "#f1f5f9",
+                color: "#475569",
+                borderRadius: "8px",
+              }}
+            />
+          )}
+          {level && (
+            <Chip
+              label={level}
+              size="small"
+              sx={{
+                fontFamily: inter.style.fontFamily,
+                fontWeight: 600,
+                fontSize: 11,
+                bgcolor: "#f1f5f9",
+                color: "#475569",
+                borderRadius: "8px",
+              }}
+            />
+          )}
+          {duration && (
+            <Chip
+              label={duration}
+              size="small"
+              sx={{
+                fontFamily: inter.style.fontFamily,
+                fontWeight: 600,
+                fontSize: 11,
+                bgcolor: "#f1f5f9",
+                color: "#475569",
+                borderRadius: "8px",
+              }}
+            />
+          )}
+          <Chip
+            label="Resource File"
+            size="small"
+            sx={{
+              fontFamily: inter.style.fontFamily,
+              fontWeight: 600,
+              fontSize: 11,
+              bgcolor: "rgba(15, 23, 42, 0.04)",
+              color: "#64748b",
+              borderRadius: "8px",
+            }}
+          />
         </Stack>
+      </Stack>
 
-        <Stack direction="row" spacing={1.25} flexWrap="wrap" useFlexGap>
+      {/* Card Footer Button Container */}
+      <Box sx={{ p: 3, pt: 0 }}>
+        {isMember ? (
           <Button
             variant="contained"
-            startIcon={<OpenInNewOutlined />}
+            fullWidth
+            endIcon={<OpenInNewOutlined />}
+            onClick={() => handleAccess(fileUrl)}
             sx={{
-              backgroundColor: COLORS.PRIMARY_NAVY,
+              background: "linear-gradient(135deg, #015A50 0%, #003630 100%)",
               color: COLORS.WHITE,
               textTransform: "none",
-              borderRadius: "8px",
+              borderRadius: "12px",
+              padding: "11px 0",
               fontFamily: montserrat.style.fontFamily,
-              minWidth: 110,
+              fontWeight: 700,
+              fontSize: 14,
+              transition: "all 0.25s",
               "&:hover": {
-                backgroundColor: COLORS.PRIMARY_NAVY,
+                background: "linear-gradient(135deg, #003630 0%, #00221e 100%)",
+                boxShadow: "0px 8px 20px rgba(1, 90, 80, 0.25)",
+                transform: "scale(1.02)",
               },
             }}
           >
-            Open
+            Access Resource
           </Button>
+        ) : (
           <Button
-            variant="outlined"
-            startIcon={<DownloadOutlined />}
+            variant="contained"
+            fullWidth
+            startIcon={<Lock />}
+            onClick={() => handleAccess()}
             sx={{
-              borderColor: COLORS.PRIMARY_NAVY,
-              color: COLORS.PRIMARY_NAVY,
+              background: "linear-gradient(135deg, #EE8E26 0%, #D97706 100%)",
+              color: COLORS.WHITE,
               textTransform: "none",
-              borderRadius: "8px",
+              borderRadius: "12px",
+              padding: "11px 0",
               fontFamily: montserrat.style.fontFamily,
-              minWidth: 120,
+              fontWeight: 700,
+              fontSize: 14,
+              transition: "all 0.25s",
+              "&:hover": {
+                background: "linear-gradient(135deg, #D97706 0%, #B45309 100%)",
+                boxShadow: "0px 8px 20px rgba(217, 119, 6, 0.3)",
+                transform: "scale(1.02)",
+              },
             }}
           >
-            Download
+            Unlock to Access
           </Button>
-        </Stack>
-      </Stack>
+        )}
+      </Box>
     </Card>
   );
 };

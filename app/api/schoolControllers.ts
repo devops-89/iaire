@@ -8,6 +8,7 @@ import {
 } from "@/utils/type";
 import {
   innovationSecuredApi,
+  platformSecuredApi,
   researchSecuredApi,
   teamSecuredApi,
   trainingSecuredApi,
@@ -153,6 +154,14 @@ export const schoolControllers = {
   getAllResearch: async () => {
     try {
       let result = await researchSecuredApi.get("/all");
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  dashboardAnalytics: async () => {
+    try {
+      let result = await platformSecuredApi.get("/dashboard/school-admin");
       return result.data;
     } catch (error) {
       throw error;

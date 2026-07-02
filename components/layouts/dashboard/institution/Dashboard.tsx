@@ -1,5 +1,5 @@
 import WelcomeBanner from "@/components/widgets/Dashboard/WelcomeBanner";
-import { Box, Stack, Typography, Grid, Card } from "@mui/material";
+import { Box, Stack, Typography, Grid, Card, CircularProgress } from "@mui/material";
 import React from "react";
 import StatsBox from "./components/dashboard/StatsBox";
 import { DASHBOARD_STAT_CARDS } from "@/utils/constant";
@@ -13,8 +13,201 @@ import {
   ArrowForward,
 } from "@mui/icons-material";
 import Link from "next/link";
+import { useSchoolDashboard } from "@/hooks/school/useSchoolDashboard";
 
 const InstitutionDashboards = () => {
+  const { dashboardData, loading } = useSchoolDashboard();
+
+  // Helper function to safely extract values from API response (supporting flat or nested shapes)
+  const getApiValue = (keys: string[], fallback: string | number) => {
+    if (!dashboardData) return String(fallback);
+    for (const key of keys) {
+      if (key.includes(".")) {
+        const parts = key.split(".");
+        let current = dashboardData;
+        for (const part of parts) {
+          if (current && current[part] !== undefined && current[part] !== null) {
+            current = current[part];
+          } else {
+            current = undefined;
+            break;
+          }
+        }
+        if (current !== undefined) {
+          return String(current);
+        }
+      } else {
+        if (dashboardData[key] !== undefined && dashboardData[key] !== null) {
+          return String(dashboardData[key]);
+        }
+      }
+    }
+    return String(fallback);
+  };
+
+  // Dynamically map API response keys to target counts
+  const dynamicStatsCards = DASHBOARD_STAT_CARDS.map((section) => {
+    let updatedData = [...section.data];
+
+    if (section.title === "Educators") {
+      updatedData = [
+        {
+          ...section.data[0],
+          count: getApiValue(
+            ["educators.total", "totalTeachers", "teachersCount", "totalNumberOfTeachers", "noOfTeachers"],
+            section.data[0].count
+          ),
+        },
+        {
+          ...section.data[1],
+          count: getApiValue(
+            ["educators.members", "totalMemberTeachers", "memberTeachersCount", "memberTeachers", "totalMemberEducators"],
+            section.data[1].count
+          ),
+        },
+        {
+          ...section.data[2],
+          count: getApiValue(
+            ["educators.trainedInnovation", "totalTrainedTeachersInInnovation", "trainedTeachersInInnovation", "trainedTeachersInnovation", "teachersTrainedInInnovation"],
+            section.data[2].count
+          ),
+        },
+        {
+          ...section.data[3],
+          count: getApiValue(
+            ["educators.trainedResearch", "totalTrainedTeachersInResearch", "trainedTeachersInResearch", "trainedTeachersResearch", "teachersTrainedInResearch"],
+            section.data[3].count
+          ),
+        },
+      ];
+    } else if (section.title === "Students") {
+      updatedData = [
+        {
+          ...section.data[0],
+          count: getApiValue(
+            ["students.trainedInnovation", "studentsTrainedOnInnovation", "studentsTrainedInInnovation", "trainedStudentsInnovation", "totalStudentsTrainedOnInnovation"],
+            section.data[0].count
+          ),
+        },
+        {
+          ...section.data[1],
+          count: getApiValue(
+            ["students.trainedResearch", "studentsTrainedOnResearch", "studentsTrainedInResearch", "trainedStudentsResearch", "totalStudentsTrainedOnResearch"],
+            section.data[1].count
+          ),
+        },
+        {
+          ...section.data[2],
+          count: getApiValue(
+            ["students.launchedStartups", "studentsLaunchedStartups", "totalStudentsLaunchedStartups", "studentsLaunchedStartup", "startupsLaunchedByStudents"],
+            section.data[2].count
+          ),
+        },
+        {
+          ...section.data[3],
+          count: getApiValue(
+            ["students.assistantMentors", "studentsWorkingAsAssistantMentors", "assistantMentorsCount", "totalAssistantMentors", "assistantMentors"],
+            section.data[3].count
+          ),
+        },
+      ];
+    } else if (section.title === "Patent") {
+      updatedData = section.data.map((card) => {
+        if (card.title.toLowerCase().includes("pending")) {
+          return {
+            ...card,
+            count: getApiValue(
+              ["patents.pending", "patentPending", "totalPatentPending", "patentsPending", "patentPendingCount"],
+              card.count
+            ),
+          };
+        } else if (card.title.toLowerCase().includes("granted")) {
+          return {
+            ...card,
+            count: getApiValue(
+              ["patents.granted", "patentGranted", "totalPatentGranted", "patentsGranted", "patentGrantedCount"],
+              card.count
+            ),
+          };
+        }
+        return card;
+      });
+    } else if (section.title === "Research Submission") {
+      updatedData = section.data.map((card) => {
+        if (card.title.toLowerCase().includes("submitted")) {
+          return {
+            ...card,
+            count: getApiValue(
+              ["researchSubmissions.submitted", "researchSubmitted", "totalResearchSubmitted", "submittedResearch", "researchSubmissionsCount"],
+              card.count
+            ),
+          };
+        } else if (card.title.toLowerCase().includes("accepted")) {
+          return {
+            ...card,
+            count: getApiValue(
+              ["researchSubmissions.accepted", "researchAccepted", "totalResearchAccepted", "acceptedResearch"],
+              card.count
+            ),
+          };
+        } else if (card.title.toLowerCase().includes("pending")) {
+          return {
+            ...card,
+            count: getApiValue(
+              ["researchSubmissions.pending", "researchPending", "totalResearchPending", "pendingResearch"],
+              card.count
+            ),
+          };
+        } else if (card.title.toLowerCase().includes("granted") || card.title.toLowerCase().includes("published")) {
+          return {
+            ...card,
+            count: getApiValue(
+              ["researchSubmissions.granted", "researchSubmissions.published", "researchGranted", "totalResearchGranted", "grantedResearch", "researchPublished", "publishedResearch"],
+              card.count
+            ),
+          };
+        }
+        return card;
+      });
+    } else if (section.title === "Startups") {
+      updatedData = [
+        {
+          ...section.data[0],
+          count: getApiValue(
+            ["startups.launched", "startupsLaunched", "totalStartupsLaunched", "startupsCount", "launchedStartups"],
+            section.data[0].count
+          ),
+        },
+        {
+          ...section.data[1],
+          count: getApiValue(
+            ["startups.funded", "startupsFunded", "totalStartupsFunded", "fundedStartups"],
+            section.data[1].count
+          ),
+        },
+        {
+          ...section.data[2],
+          count: getApiValue(
+            ["startups.nonFunded", "startupsNonFunded", "totalStartupsNonFunded", "nonFundedStartups"],
+            section.data[2].count
+          ),
+        },
+        {
+          ...section.data[3],
+          count: getApiValue(
+            ["startups.activeMentorships", "activeMentorships", "totalActiveMentorships", "mentorshipsCount"],
+            section.data[3].count
+          ),
+        },
+      ];
+    }
+
+    return {
+      ...section,
+      data: updatedData,
+    };
+  });
+
   const quickActions = [
     {
       title: "Membership Management",
@@ -74,7 +267,8 @@ const InstitutionDashboards = () => {
             fontWeight: 500,
           }}
         >
-          Manage your educators, student teams, innovations, and institutional membership.
+          Manage your educators, student teams, innovations, and institutional
+          membership.
         </Typography>
       </Box>
 
@@ -102,7 +296,8 @@ const InstitutionDashboards = () => {
                   sx={{
                     p: 3,
                     borderRadius: "20px",
-                    background: "linear-gradient(135deg, #ffffff 0%, #f6f8fb 100%)",
+                    background:
+                      "linear-gradient(135deg, #ffffff 0%, #f6f8fb 100%)",
                     boxShadow: "0 6px 20px rgba(0,0,0,0.02)",
                     border: "1px solid rgba(0,0,0,0.03)",
                     display: "flex",
@@ -151,7 +346,9 @@ const InstitutionDashboards = () => {
                       {action.desc}
                     </Typography>
                   </Box>
-                  <ArrowForward sx={{ color: "rgba(0,0,0,0.2)", fontSize: 16 }} />
+                  <ArrowForward
+                    sx={{ color: "rgba(0,0,0,0.2)", fontSize: 16 }}
+                  />
                 </Card>
               </Link>
             </Grid>
@@ -160,8 +357,29 @@ const InstitutionDashboards = () => {
       </Box>
 
       {/* Main Statistics Sections */}
-      <Box>
-        {DASHBOARD_STAT_CARDS.map((val, i) => (
+      <Box sx={{ position: "relative" }}>
+        {loading && (
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              bgcolor: "rgba(255, 255, 255, 0.4)",
+              backdropFilter: "blur(2px)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 10,
+              borderRadius: "24px",
+              minHeight: "200px",
+            }}
+          >
+            <CircularProgress sx={{ color: COLORS.PRIMARY_NAVY }} />
+          </Box>
+        )}
+        {dynamicStatsCards.map((val, i) => (
           <StatsBox title={val.title} data={val.data} key={i} />
         ))}
       </Box>

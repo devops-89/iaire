@@ -132,7 +132,8 @@ const InnovationList = () => {
                         </Link>
                       </TableCell>
                       <TableCell>
-                        {val.team.title} <br />({val.team.teamCode})
+                        {val.team?.title || "Individual"} <br />
+                        {val.team?.teamCode ? `(${val.team.teamCode})` : ""}
                       </TableCell>
                       <TableCell>
                         <Chip

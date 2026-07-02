@@ -1314,3 +1314,17 @@ export interface REQUEST_HONORARIUM_REQUEST_PROPS {
   ifscCode: string;
   branchName: string;
 }
+
+export interface STARTUP_REQUEST_DATA {
+  startupName: string;
+  sector: string;
+  businessIdea: string;
+  problemStatement: string;
+  teamId?: string | number;
+  businessPlan?: any;
+  cashFlow?: any;
+  template?: any;
+  videoUrl?: string;
+}
+
+export type startup_request_data = STARTUP_REQUEST_DATA;
