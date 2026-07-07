@@ -30,6 +30,7 @@ const InstitutionSidebar = () => {
   };
 
   const { data, loading } = getUserDetails();
+  console.log("data", data);
 
   return (
     <Box>

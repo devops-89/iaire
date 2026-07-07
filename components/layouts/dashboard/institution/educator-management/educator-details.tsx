@@ -193,7 +193,11 @@ const EducatorDetails = () => {
                                 <Typography
                                   sx={{ fontSize: "14px", fontWeight: 500 }}
                                 >
-                                  {educator?.phone ? (educator.phone.startsWith("+") ? educator.phone : `+${educator.phone}`) : "-"}
+                                  {educator?.phone
+                                    ? educator.phone.startsWith("+")
+                                      ? educator.phone
+                                      : `+${educator.phone}`
+                                    : "-"}
                                 </Typography>
                               }
                             />
@@ -497,15 +501,26 @@ const EducatorDetails = () => {
                                   label={payment.status}
                                   size="small"
                                   icon={
-                                    payment.status?.toUpperCase() === "SUCCESS" ? (
-                                      <CheckCircle style={{ color: "#2e7d32" }} />
+                                    payment.status?.toUpperCase() ===
+                                    "SUCCESS" ? (
+                                      <CheckCircle
+                                        style={{ color: "#2e7d32" }}
+                                      />
                                     ) : (
                                       <Cancel style={{ color: "#c62828" }} />
                                     )
                                   }
                                   sx={{
-                                    backgroundColor: payment.status?.toUpperCase() === "SUCCESS" ? "#e8f5e9" : "#ffebee",
-                                    color: payment.status?.toUpperCase() === "SUCCESS" ? "#2e7d32" : "#c62828",
+                                    backgroundColor:
+                                      payment.status?.toUpperCase() ===
+                                      "SUCCESS"
+                                        ? "#e8f5e9"
+                                        : "#ffebee",
+                                    color:
+                                      payment.status?.toUpperCase() ===
+                                      "SUCCESS"
+                                        ? "#2e7d32"
+                                        : "#c62828",
                                     fontWeight: 600,
                                   }}
                                 />

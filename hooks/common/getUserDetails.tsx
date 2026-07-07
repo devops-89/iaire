@@ -16,13 +16,13 @@ export const getUserDetails = () => {
         .getUserDetails()
         .then((res) => {
           if (role === USER_ROLES.EDUCATOR) {
-            setEducatorData(res.data.data);
+            setEducatorData(res.data);
           }
           if (role === USER_ROLES.INSTITUTION) {
-            setInstitutionData(res.data.data);
+            setInstitutionData(res.data);
           }
           if (role === USER_ROLES.STUDENT) {
-            setUserData(res.data.data);
+            setUserData(res.data);
           }
         })
         .catch((err) => {
@@ -70,7 +70,7 @@ export const useGetUserDetailsById = (userId: string | null) => {
       await userControllers
         .getUserDetailsById({ userId: userId })
         .then((res) => {
-          setData(res.data.data);
+          setData(res.data);
           setLoading(false);
         })
         .catch((err) => {

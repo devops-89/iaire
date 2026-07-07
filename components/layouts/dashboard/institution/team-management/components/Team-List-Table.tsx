@@ -163,38 +163,6 @@ const TeamListTable = ({
           </TableBody>
         </Table>
       </TableContainer>
-      {/* <Popover
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-        sx={{
-          p: 2,
-          borderRadius: "10px",
-          "& .MuiPopover-paper": {
-            backgroundColor: "rgba(255,255,255,0.5)",
-            backdropFilter: "blur(10px)",
-            boxShadow: "rgba(0, 0, 0, 0.15) 0px 5px 15px",
-            borderRadius: "10px",
-          },
-          //   color: COLORS.WHITE,
-        }}
-      >
-        <List>
-          {listdata.map((val, i) => (
-            <ListItemButton key={i}>
-              <ListItemText primary={val.label} />
-            </ListItemButton>
-          ))}
-        </List>
-      </Popover> */}
     </Box>
   );
 };

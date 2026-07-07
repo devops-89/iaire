@@ -107,12 +107,12 @@ const HonorariumForm = ({ onSubmitSuccess }: HonorariumFormProps) => {
 
         <Grid size={{ xs: 12, md: 6 }}>
           <Autocomplete
-            options={teamData?.data || []}
+            options={teamData}
             getOptionLabel={(o) => `${o.title} (${o.teamCode})`}
             isOptionEqualToValue={(o, v) => o.id === v.id}
             loading={teamLoading}
             value={
-              teamData?.data?.find(
+              teamData.find(
                 (t) => t.id.toString() === formik.values.teamId,
               ) || null
             }

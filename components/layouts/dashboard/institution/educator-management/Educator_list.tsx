@@ -104,7 +104,7 @@ const EducatorList = () => {
 
   const { userData, loading, fetchUserData } = useGetAllUser();
 
-  // console.log("user datat", userData);
+  console.log("user datat", userData);
 
   const listItems = [
     {
@@ -129,8 +129,6 @@ const EducatorList = () => {
     (institutionData?.payments || []).some(
       (val) => val?.status === PLAN_STATUS.SUCCESS,
     );
-
-  console.log("first", isMember);
 
   useEffect(() => {
     fetchUserData(data);
@@ -276,8 +274,8 @@ const EducatorList = () => {
               </TableBody>
             ) : (
               <TableBody>
-                {userData?.data.length ? (
-                  userData?.data?.map((teacher: TEACHER_REPONSE_PROPS) => (
+                {userData?.length ? (
+                  userData?.map((teacher: TEACHER_REPONSE_PROPS) => (
                     <TableRow key={teacher.id}>
                       <TableCell>{teacher.userId}</TableCell>
                       <TableCell>

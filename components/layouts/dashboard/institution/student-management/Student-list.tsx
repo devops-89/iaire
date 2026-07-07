@@ -10,7 +10,13 @@ import { useSignup } from "@/store/useSignup";
 import useSnackbar from "@/store/useSnackbar";
 import { STUDENT_HEADER_DATA } from "@/utils/constant";
 import { APPROVAL_STATUS, COLORS, PLAN_STATUS, USER_ROLES } from "@/utils/enum";
-import { aloeveraDisplay_medium, newBlack_light, newBlack_medium, newBlack_semiBold, roboto } from "@/utils/fonts";
+import {
+  aloeveraDisplay_medium,
+  newBlack_light,
+  newBlack_medium,
+  newBlack_semiBold,
+  roboto,
+} from "@/utils/fonts";
 import { STUDENT_RESPONSE_PROPS } from "@/utils/type";
 import { Add, Lock, MoreVert } from "@mui/icons-material";
 import {
@@ -33,7 +39,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography
+  Typography,
 } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -78,7 +84,9 @@ const StudentList = () => {
       label: "View Profile",
       onclick: () => {
         if (selectedStudent?.id) {
-          router.push(`/dashboard/institution/student-management/${selectedStudent.id}/view-student`);
+          router.push(
+            `/dashboard/institution/student-management/${selectedStudent.id}/view-student`,
+          );
           handleClosePopover();
         }
       },
@@ -173,7 +181,14 @@ const StudentList = () => {
               <TableHead>
                 <TableRow>
                   {STUDENT_HEADER_DATA.map((val, i) => (
-                    <TableCell key={i} sx={{ fontWeight: 600, fontFamily: newBlack_semiBold.style.fontFamily, fontSize: 16 }}>
+                    <TableCell
+                      key={i}
+                      sx={{
+                        fontWeight: 600,
+                        fontFamily: newBlack_semiBold.style.fontFamily,
+                        fontSize: 16,
+                      }}
+                    >
                       {val}
                     </TableCell>
                   ))}
@@ -186,94 +201,115 @@ const StudentList = () => {
                       <Atom color={COLORS.PRIMARY_NAVY} />
                     </TableCell>
                   </TableRow>
-                ) : userData?.data.length ? (
-                  userData?.data.map(
-                    (val: STUDENT_RESPONSE_PROPS, i: number) => (
-                      <TableRow key={i}>
-                        <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.userId}</TableCell>
-                        <TableCell>
-                          <Link
-                            href={`/dashboard/institution/student-management/${val.id}/view-student`}
-                            style={{ color: "inherit", textDecoration: "none" }}
+                ) : userData?.length ? (
+                  userData?.map((val: STUDENT_RESPONSE_PROPS, i: number) => (
+                    <TableRow key={i}>
+                      <TableCell
+                        sx={{ fontFamily: newBlack_medium.style.fontFamily }}
+                      >
+                        {val.userId}
+                      </TableCell>
+                      <TableCell>
+                        <Link
+                          href={`/dashboard/institution/student-management/${val.id}/view-student`}
+                          style={{ color: "inherit", textDecoration: "none" }}
+                        >
+                          <Typography
+                            sx={{
+                              color: COLORS.BLACK,
+                              fontWeight: 500,
+                              fontSize: 15,
+                              fontFamily: newBlack_medium.style.fontFamily,
+                              "&:hover": {
+                                color: COLORS.PRIMARY_NAVY,
+                              },
+                            }}
                           >
-                            <Typography
+                            {val.fullName}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              fontSize: 12,
+                              fontFamily: newBlack_medium.style.fontFamily,
+                            }}
+                          >
+                            {val.email}
+                          </Typography>
+                        </Link>
+                      </TableCell>
+                      <TableCell
+                        sx={{ fontFamily: newBlack_medium.style.fontFamily }}
+                      >
+                        {val.phone}
+                      </TableCell>
+                      <TableCell
+                        sx={{ fontFamily: newBlack_medium.style.fontFamily }}
+                      >
+                        {val.grade}
+                      </TableCell>
+                      <TableCell
+                        sx={{ fontFamily: newBlack_medium.style.fontFamily }}
+                      >
+                        {val.gender}
+                      </TableCell>
+                      <TableCell>
+                        {val?.approvalStatus === APPROVAL_STATUS.APPROVED ? (
+                          <Chip label={val?.approvalStatus} color="success" />
+                        ) : (
+                          <FormControl
+                            size="small"
+                            fullWidth
+                            sx={{ minWidth: 120 }}
+                          >
+                            <Select
+                              value={val?.approvalStatus}
+                              onChange={(e) =>
+                                handleStatusChange(val.id, e.target.value)
+                              }
                               sx={{
-                                color: COLORS.BLACK,
-                                fontWeight: 500,
-                                fontSize: 15,
-                                fontFamily: newBlack_medium.style.fontFamily,
-                                "&:hover": {
-                                  color: COLORS.PRIMARY_NAVY,
-                                }
+                                fontSize: "13px",
+                                height: "32px",
+                                "& .MuiSelect-select": {
+                                  color:
+                                    val?.approvalStatus ===
+                                    APPROVAL_STATUS.APPROVED
+                                      ? "#2e7d32"
+                                      : val?.approvalStatus ===
+                                          APPROVAL_STATUS.PENDING
+                                        ? "#ed6c02"
+                                        : "#d32f2f",
+                                  fontWeight: 600,
+                                  fontFamily: newBlack_medium.style.fontFamily,
+                                },
                               }}
                             >
-                              {val.fullName}
-                            </Typography>
-                            <Typography sx={{ fontSize: 12, fontFamily: newBlack_medium.style.fontFamily }}>
-                              {val.email}
-                            </Typography>
-                          </Link>
-                        </TableCell>
-                        <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.phone}</TableCell>
-                        <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.grade}</TableCell>
-                        <TableCell sx={{ fontFamily: newBlack_medium.style.fontFamily }}>{val.gender}</TableCell>
-                        <TableCell>
-                          {val?.approvalStatus === APPROVAL_STATUS.APPROVED ? (
-                            <Chip label={val?.approvalStatus} color="success" />
-                          ) : (
-                            <FormControl
-                              size="small"
-                              fullWidth
-                              sx={{ minWidth: 120 }}
-                            >
-                              <Select
-                                value={val?.approvalStatus}
-                                onChange={(e) =>
-                                  handleStatusChange(val.id, e.target.value)
-                                }
-                                sx={{
-                                  fontSize: "13px",
-                                  height: "32px",
-                                  "& .MuiSelect-select": {
-                                    color:
-                                      val?.approvalStatus ===
-                                        APPROVAL_STATUS.APPROVED
-                                        ? "#2e7d32"
-                                        : val?.approvalStatus ===
-                                          APPROVAL_STATUS.PENDING
-                                          ? "#ed6c02"
-                                          : "#d32f2f",
-                                    fontWeight: 600,
-                                    fontFamily: newBlack_medium.style.fontFamily
-                                  },
-                                }}
-                              >
-                                {Object.values(APPROVAL_STATUS).map(
-                                  (status) => (
-                                    <MenuItem
-                                      key={status}
-                                      value={status}
-                                      sx={{ fontSize: "13px", fontFamily: newBlack_medium.style.fontFamily }}
-                                    >
-                                      {status}
-                                    </MenuItem>
-                                  ),
-                                )}
-                              </Select>
-                            </FormControl>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {val.memberships?.[0]?.membershipCode || "--"}
-                        </TableCell>
-                        <TableCell>
-                          <IconButton onClick={(e) => handlePopover(e, val)}>
-                            <MoreVert />
-                          </IconButton>
-                        </TableCell>
-                      </TableRow>
-                    ),
-                  )
+                              {Object.values(APPROVAL_STATUS).map((status) => (
+                                <MenuItem
+                                  key={status}
+                                  value={status}
+                                  sx={{
+                                    fontSize: "13px",
+                                    fontFamily:
+                                      newBlack_medium.style.fontFamily,
+                                  }}
+                                >
+                                  {status}
+                                </MenuItem>
+                              ))}
+                            </Select>
+                          </FormControl>
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        {val.memberships?.[0]?.membershipCode || "--"}
+                      </TableCell>
+                      <TableCell>
+                        <IconButton onClick={(e) => handlePopover(e, val)}>
+                          <MoreVert />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  ))
                 ) : (
                   <TableRow>
                     <TableCell colSpan={12}>

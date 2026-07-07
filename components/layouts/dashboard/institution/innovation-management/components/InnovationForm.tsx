@@ -61,7 +61,7 @@ const InnovationForm = ({
                   formik.setFieldValue("team", newValue);
                 }}
                 onBlur={() => formik.setFieldTouched("team", true)}
-                options={teamData?.data || []}
+                options={teamData}
                 getOptionLabel={(option) => option.title || ""}
                 filterOptions={(options, { inputValue }) => {
                   const search = inputValue.toLowerCase().trim();

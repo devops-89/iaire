@@ -13,10 +13,11 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
-
+import logo from "@/images/logo/iaire_logo.png";
 const Header = () => {
   const pathname = usePathname();
   return (
@@ -47,34 +48,7 @@ const Header = () => {
             alignItems={"center"}
             justifyContent={"space-between"}
           >
-            <Stack direction="row" alignItems={"center"} spacing={1}>
-              <Avatar
-                variant="rounded"
-                sx={{
-                  borderRadius: "50%",
-                  width: 40,
-                  height: 40,
-                  backgroundColor: COLORS.ACCENT_TAN,
-                  color: COLORS.PRIMARY_NAVY,
-                  textTransform: "uppercase",
-                  fontFamily: aloeveraDisplay_medium.style.fontFamily,
-                  fontSize: 20,
-                  fontWeight: 500,
-                }}
-              >
-                I
-              </Avatar>
-              <Typography
-                sx={{
-                  fontSize: 20,
-                  fontWeight: 500,
-                  fontFamily: aloeveraDisplay_medium.style.fontFamily,
-                  color: COLORS.PRIMARY_NAVY,
-                }}
-              >
-                IAIRE
-              </Typography>
-            </Stack>
+            <Image src={logo} alt="" width={150} />
             <Stack
               direction={"row"}
               alignItems={"center"}

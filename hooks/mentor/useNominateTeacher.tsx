@@ -14,7 +14,7 @@ export const useTrainingList = () => {
       .getTeacherSelfNominatedList(status)
       .then((res) => {
         // console.log("res", res);
-        setData(res.data.data.data);
+        setData(res.data.data);
         setLoading(false);
       })
       .catch((err) => {

@@ -78,11 +78,11 @@ const AddResearchForm = ({ formik, isLoading, hideTeam }: AddResearchFormProps) 
             {!hideTeam && (
               <Grid size={12}>
                 <Autocomplete
-                  options={teamData?.data || []}
+                  options={teamData}
                   getOptionLabel={(option) => option.title}
                   isOptionEqualToValue={(option, value) => option.id === value.id}
                   value={
-                    teamData?.data?.find(
+                    teamData.find(
                       (team) => team.id === formik.values.teamId,
                     ) || null
                   }

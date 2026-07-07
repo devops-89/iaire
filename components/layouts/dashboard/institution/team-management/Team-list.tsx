@@ -121,7 +121,7 @@ const TeamList = () => {
           </Grid>
           <TeamListTable
             tableHeader={TEAM_LIST_HEADER_DATA}
-            tableData={teamData?.data || []}
+            tableData={teamData || []}
           />
         </Card>
       </InstitutionDashboardLayout>

@@ -82,8 +82,7 @@ export const useGetAllInnovation = () => {
     schoolControllers
       .getAllInnovations()
       .then((res) => {
-        // console.log("data in Innovation List>>>>>>", res);
-        const data = res.data.data;
+        const data = res.data;
 
         setInnovationData(data);
         setLoading(false);

@@ -11,6 +11,8 @@ const InstitutionDashboard = () => {
   const { institutionData: institutionInfo } = useSignup();
   const [mounted, setMounted] = useState(false);
 
+  console.log("test", institutionInfo);
+
   useEffect(() => {
     setMounted(true);
   }, []);

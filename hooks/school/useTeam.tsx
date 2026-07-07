@@ -27,13 +27,14 @@ export const useAddTeam = () => {
 
 export const useGetTeam = () => {
   const [loading, setLoading] = useState(false);
-  const [teamData, setTeamData] = useState<{ data: TEAM_DETAILS_RESPONSE[] }>();
+  const [teamData, setTeamData] = useState<TEAM_DETAILS_RESPONSE[]>([]);
 
   const fetchData = (params?: { type?: CATEGORY }) => {
+    setLoading(true);
     schoolControllers
       .getTeam({ type: params?.type })
       .then((res) => {
-        setTeamData(res.data);
+        setTeamData(res.data?.data || res.data || []);
         setLoading(false);
       })
       .catch((err) => {
@@ -57,7 +58,7 @@ export const useGetTeamDetails = (id: number) => {
     schoolControllers
       .getTeamDetails(id)
       .then((res) => {
-        setTeamDetails(res.data.data);
+        setTeamDetails(res.data);
         setLoading(false);
       })
       .catch((err) => {
