@@ -421,6 +421,8 @@ export interface USER_DETAILS_PROPS {
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
+  membershipCode: string;
+  membershipTier: string;
 }
 
 export interface SCHOOL_DETAILS_PROPS {
@@ -802,6 +804,7 @@ export interface USER_DETAILS_RESPONSE {
   hasSelectionBoardApproval?: boolean;
   registrationNumber?: string;
   membershipCode?: string;
+  membershipTier: string;
 }
 
 export interface UPDATE_PROFILE_FORM_PROPS {

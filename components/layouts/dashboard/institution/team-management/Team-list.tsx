@@ -16,7 +16,6 @@ import { aloeveraDisplay_medium, roboto } from "@/utils/fonts";
 import { Add, Lock } from "@mui/icons-material";
 import {
   CATEGORY_TYPES,
-  TEAM_DATA_TABLE_DATA,
   TEAM_LIST_HEADER_DATA,
 } from "@/utils/constant";
 import TeamListTable from "./components/Team-List-Table";

@@ -89,13 +89,9 @@ const SignupStepper = ({
 
     switch (data?.role) {
       case USER_ROLES.INSTITUTION:
-        return [
-          "Institution Details",
-          "Review Information",
-          "Payment Verification",
-        ];
+        return ["Institution Details", "Review Information"];
       case USER_ROLES.EDUCATOR:
-        return ["Educator Details", "Verify OTP", "Payment Verification"];
+        return ["Educator Details", "Verify OTP"];
       case USER_ROLES.STUDENT:
         return ["Student Details", "Verify OTP", "Payment Verification"];
       default:

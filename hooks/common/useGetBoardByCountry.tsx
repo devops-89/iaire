@@ -15,7 +15,7 @@ export const useBoardByCountry = (country: COUNTRYDATAPROPS | null) => {
             const result = await countryControllers.getBoardByCountry(
               country?.code,
             );
-            setBoardData(result?.data?.data || result);
+            setBoardData(result?.data || result);
           } catch (error) {
             console.log("Error in fetching board by country", error);
           } finally {

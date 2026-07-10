@@ -36,7 +36,7 @@ export const getUserDetails = () => {
 };
 
 export const useGetUserDetailsPublic = (userId: string | null) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

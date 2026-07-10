@@ -307,10 +307,20 @@ const Institution = () => {
                 />
               </Grid>
               <Grid size={6}>
-                <FormTextField label="Total Number Of Teachers" name="noOfTeachers" value={formik.values.noOfTeachers} formik={formik} />
+                <FormTextField
+                  label="Total Number Of Teachers"
+                  name="noOfTeachers"
+                  value={formik.values.noOfTeachers}
+                  formik={formik}
+                />
               </Grid>
               <Grid size={6}>
-                <FormTextField label="Total Number Of Students" name="noOfStudents" value={formik.values.noOfStudents} formik={formik} />
+                <FormTextField
+                  label="Total Number Of Students"
+                  name="noOfStudents"
+                  value={formik.values.noOfStudents}
+                  formik={formik}
+                />
               </Grid>
               {country?.code === "US" && (
                 <Grid size={{ xs: 12, md: 6 }}>

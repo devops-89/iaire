@@ -6,12 +6,16 @@ import {
   Grid,
   Card,
   CircularProgress,
+  Chip,
 } from "@mui/material";
 import React from "react";
 import StatsBox from "./components/dashboard/StatsBox";
-import { DASHBOARD_STAT_CARDS } from "@/utils/constant";
+import {
+  DASHBOARD_STAT_CARDS,
+  INSTITUTION_MEMBERSHIP_LEVEL,
+} from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
-import { roboto, montserrat } from "@/utils/fonts";
+import { roboto, montserrat, aloeveraDisplay_medium } from "@/utils/fonts";
 import {
   School,
   Groups,
@@ -21,6 +25,11 @@ import {
 } from "@mui/icons-material";
 import Link from "next/link";
 import { useSchoolDashboard } from "@/hooks/school/useSchoolDashboard";
+import { useSignup } from "@/store/useSignup";
+import { Poppins } from "next/font/google";
+import moment from "moment";
+import Tierprogress from "@/components/widgets/Dashboard/Tierprogress";
+import LeadershipCard from "@/components/widgets/Dashboard/LeadershipCard";
 
 const InstitutionDashboards = () => {
   const { dashboardData, loading } = useSchoolDashboard();
@@ -362,40 +371,64 @@ const InstitutionDashboards = () => {
     },
   ];
 
+  const { institutionData } = useSignup();
+  console.log("data", institutionData);
+
   return (
     <Stack spacing={4} sx={{ width: "100%", pb: 4 }}>
-      {/* Premium Header */}
       <Box>
+        <Stack direction={"row"} alignItems={"center"} spacing={2}>
+          <Typography
+            sx={{
+              fontSize: 30,
+              fontFamily: roboto.style.fontFamily,
+              fontWeight: 700,
+            }}
+          >
+            {institutionData?.school?.name}
+          </Typography>
+          <Chip
+            label={institutionData?.membershipTier?.replace(/_/g, " ")}
+            sx={{
+              background: COLORS.ACCENT_TAN,
+              color: COLORS.PRIMARY_BLUE,
+              fontSize: 16,
+              fontFamily: aloeveraDisplay_medium.style.fontFamily,
+            }}
+          />
+        </Stack>
         <Typography
           sx={{
+            fontSize: 15,
             fontFamily: roboto.style.fontFamily,
-            fontSize: { xs: 28, md: 36 },
-            fontWeight: 800,
-            color: COLORS.PRIMARY_NAVY,
-            letterSpacing: "-0.5px",
+            fontWeight: 600,
+            color: "#2B3447",
           }}
         >
-          Institution Dashboard
+          {institutionData?.membershipCode}
         </Typography>
         <Typography
           sx={{
-            fontFamily: montserrat.style.fontFamily,
-            fontSize: { xs: 13, md: 15 },
-            color: "rgba(0,0,0,0.5)",
-            mt: 0.5,
-            fontWeight: 500,
+            fontSize: 15,
+            fontFamily: roboto.style.fontFamily,
+            fontWeight: 600,
           }}
         >
-          Manage your educators, student teams, innovations, and institutional
-          membership.
+          Member Since :{" "}
+          {moment(institutionData?.createdAt).format("DD MMM YYYY")}
         </Typography>
       </Box>
 
-      {/* Welcome Banner Card & Tier Progress (side by side) */}
-      <WelcomeBanner />
+      <Grid container spacing={4}>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Tierprogress data={INSTITUTION_MEMBERSHIP_LEVEL} />
+        </Grid>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <LeadershipCard />
+        </Grid>
+      </Grid>
 
-      {/* Quick Actions Section */}
-      <Box>
+      {/* <Box>
         <Typography
           sx={{
             fontFamily: roboto.style.fontFamily,
@@ -475,7 +508,6 @@ const InstitutionDashboards = () => {
         </Grid>
       </Box>
 
-      {/* Main Statistics Sections */}
       <Box sx={{ position: "relative" }}>
         {loading && (
           <Box
@@ -501,7 +533,7 @@ const InstitutionDashboards = () => {
         {dynamicStatsCards.map((val, i) => (
           <StatsBox title={val.title} data={val.data} key={i} />
         ))}
-      </Box>
+      </Box> */}
     </Stack>
   );
 };

@@ -18,11 +18,11 @@ export const useVerifyOtp = ({ email, otp }: VERIFY_OTP_REQUEST) => {
       localStorage.setItem("token", tokens?.accessToken);
       if (user?.role === USER_ROLES.SCHOOL_ADMIN) {
         localStorage.setItem("role", USER_ROLES.INSTITUTION);
-        router.push(`/signup/payment?role=${USER_ROLES.INSTITUTION}`);
+        router.push("/dashboard/institution");
         hideModal();
       } else if (user?.role === USER_ROLES.TEACHER) {
         localStorage.setItem("role", USER_ROLES.EDUCATOR);
-        router.push(`/signup/payment?role=${USER_ROLES.EDUCATOR}`);
+        router.push("/dashboard/educator");
         hideModal();
       } else if (user?.role === USER_ROLES.STUDENT) {
         localStorage.setItem("role", USER_ROLES.STUDENT);

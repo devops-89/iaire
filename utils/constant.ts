@@ -832,60 +832,6 @@ export const GENDER = [
   GENDER_TYPE.PREFER_NOT_TO_SAY && "PREFER NOT TO SAY",
 ];
 
-export const TEAM_LIST_HEADER_DATA: TEAM_LIST_HEADER[] = [
-  {
-    label: "Id",
-  },
-  {
-    label: "Team Name",
-  },
-  {
-    label: "Category",
-  },
-  {
-    label: "Mentor Name",
-  },
-  {
-    label: "Assistant Mentor Name",
-  },
-  {
-    label: "Actions",
-  },
-];
-
-export const TEAM_DATA_TABLE_DATA: TEAM_LIST_DATA_PROPS[] = [
-  {
-    id: "I01-T01-E01-2026-001",
-    teamName: "Team 1",
-    mentorName: "Mentor 1",
-    assistantMentorName: "Assistant Mentor 1",
-  },
-  {
-    id: "I01-T01-E01-2026-002",
-    teamName: "Team 2",
-    mentorName: "Mentor 2",
-    assistantMentorName: "Assistant Mentor 2",
-  },
-  {
-    id: "I01-T01-E01-2026-003",
-    teamName: "Team 3",
-    mentorName: "Mentor 3",
-    assistantMentorName: "Assistant Mentor 3",
-  },
-  {
-    id: "I01-T01-E01-2026-004",
-    teamName: "Team 4",
-    mentorName: "Mentor 4",
-    assistantMentorName: "Assistant Mentor 4",
-  },
-  {
-    id: "I01-T01-E01-2026-005",
-    teamName: "Team 5",
-    mentorName: "Mentor 5",
-    assistantMentorName: "Assistant Mentor 5",
-  },
-];
-
 export const USER_TABS = [
   {
     label: "All",
@@ -2117,3 +2063,37 @@ export const HONORARIUM_CATEGORY = [
     label: CATEGORY.RESEARCH,
   },
 ];
+
+export const INSTITUTION_MEMBERSHIP_LEVEL = [
+  {
+    label: "Institutional Member",
+  },
+  {
+    label: "Certified Institutional Member",
+  },
+  {
+    label: "Associate Fellow Institution",
+  },
+  {
+    label: "Fellow Institution",
+  },
+];
+
+export const TEAM_LIST_HEADER_DATA: TEAM_LIST_HEADER[] = [
+  {
+    label: "Id",
+  },
+  {
+    label: "Team Name",
+  },
+  {
+    label: "Mentor Name",
+  },
+  {
+    label: "Assistant Mentor Name",
+  },
+  {
+    label: "Actions",
+  },
+];
+
