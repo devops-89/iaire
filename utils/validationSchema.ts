@@ -158,15 +158,15 @@ export const addEducatorValidationSchema = Yup.object({
     otherwise: (schema) => schema.notRequired(),
   }),
   gender: Yup.string().required("Please Select Gender"),
-  primarySubjects: Yup.array()
-    .min(1, "At least one primary subject is required")
-    .required("Primary Subjects are required"),
-  experienceMonth: Yup.number().max(11).optional(),
-  experienceYear: Yup.number().required("Experiecne is required"),
+  // primarySubjects: Yup.array()
+  //   .min(1, "At least one primary subject is required")
+  //   .required("Primary Subjects are required"),
+  // experienceMonth: Yup.number().max(11).optional(),
+  // experienceYear: Yup.number().required("Experiecne is required"),
   password: Yup.string().required("Password is required"),
-  whoWillPay: Yup.string().required(
-    "Please Select Who Will Pay For Membership",
-  ),
+  // whoWillPay: Yup.string().required(
+  //   "Please Select Who Will Pay For Membership",
+  // ),
 });
 
 export const addInnovationValidationSchema = Yup.object({
@@ -434,4 +434,3 @@ export const raiseSupportTicketValidationSchema = Yup.object({
   priority: Yup.string().required("Priority is required"),
   description: Yup.string().required("Description is required"),
 });
-

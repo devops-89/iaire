@@ -94,10 +94,10 @@ export const INSTITUTION_SIDEBAR_DATA = [
     label: "Dashboard",
     url: "/dashboard/institution",
   },
-  {
-    label: "Membership Management",
-    url: "/dashboard/institution/membership-management",
-  },
+  // {
+  //   label: "Membership Management",
+  //   url: "/dashboard/institution/membership-management",
+  // },
   {
     label: "Educator Management",
     url: "/dashboard/institution/educator-management",
@@ -900,14 +900,14 @@ export const SCHOOL_TRAINING_LIST_TABS = [
     label: "Rejected",
     value: TRAINING_NOMINATION_STATUS.REJECTED,
   },
-  {
-    label: "Interview Scheduled",
-    value: TRAINING_NOMINATION_STATUS.INTERVIEW_SCHEDULED,
-  },
-  {
-    label: "Interview Completed",
-    value: TRAINING_NOMINATION_STATUS.INTERVIEW_COMPLETED,
-  },
+  // {
+  //   label: "Interview Scheduled",
+  //   value: TRAINING_NOMINATION_STATUS.INTERVIEW_SCHEDULED,
+  // },
+  // {
+  //   label: "Interview Completed",
+  //   value: TRAINING_NOMINATION_STATUS.INTERVIEW_COMPLETED,
+  // },
 ];
 
 export const PLAN_LIMITS_DATA = [
@@ -2096,4 +2096,3 @@ export const TEAM_LIST_HEADER_DATA: TEAM_LIST_HEADER[] = [
     label: "Actions",
   },
 ];
-

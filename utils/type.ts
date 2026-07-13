@@ -90,7 +90,7 @@ export interface STATSCARDDATA {
 
 export interface STATSCARDPROPS {
   title: string;
-  data: STATSCARDDATA[];
+  data?: STATSCARDDATA[];
 }
 
 export interface TEAM_LIST_HEADER {
@@ -637,6 +637,21 @@ export interface PAYMENT_DETAILS_PROPS {
   updatedAt?: string;
 }
 
+export interface TIER_REQUIREMENT {
+  current: number;
+  required: number;
+  description: string;
+}
+
+export interface TIER_PROGRESS {
+  requirements: TIER_REQUIREMENT[];
+  membershipTier: string;
+}
+
+export interface TIER_PROGRESS_DETAILS {
+  [role: string]: TIER_PROGRESS[];
+}
+
 export interface USER_DETAILS_RESPONSE {
   id?: number;
   email?: string;
@@ -683,6 +698,7 @@ export interface USER_DETAILS_RESPONSE {
   motherEmail?: string | null;
   motherPhone?: string | null;
   motherProfession?: string | null;
+  tierProgressDetails?: TIER_PROGRESS_DETAILS;
   school?: {
     id?: number;
     name?: string;

@@ -167,4 +167,14 @@ export const schoolControllers = {
       throw error;
     }
   },
+  getTopSchools: async () => {
+    try {
+      let result = await userSecuredApi.get(
+        "/school-admin/board-schools-stats",
+      );
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

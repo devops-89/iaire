@@ -2,8 +2,11 @@ import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
 import { STATSCARDDATA } from "@/utils/type";
 import { Box, Card, Typography } from "@mui/material";
+import { Assessment } from "@mui/icons-material";
 
 const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
+  const RenderIcon = Icon || Assessment;
+
   return (
     <Box sx={{ mt: 3, position: "relative" }}>
       <Card
@@ -55,7 +58,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
             },
           }}
         >
-          <Icon />
+          <RenderIcon />
         </Box>
 
         <Box sx={{ position: "relative", zIndex: 1, width: "100%" }}>
@@ -76,7 +79,7 @@ const StatsCard = ({ title, count, icon: Icon }: STATSCARDDATA) => {
                 display: "flex",
               }}
             >
-              <Icon sx={{ fontSize: 20 }} />
+              <RenderIcon sx={{ fontSize: 20 }} />
             </Box>
           </Box>
 

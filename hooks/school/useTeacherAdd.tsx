@@ -27,18 +27,24 @@ export const useTeacherAddBySchool = () => {
       .createTeacher(data)
       .then((res) => {
         const userId = res.data.data.id;
-        if (data?.isSchoolPay && planId) {
-          makePayment({ planId, userId });
-        } else {
-          router.push("/dashboard/institution/educator-management");
-        }
+        // if (data?.isSchoolPay && planId) {
+        //   makePayment({ planId, userId });
+        // } else {
+        //   router.push("/dashboard/institution/educator-management");
+        // }
+        router.push("/dashboard/institution/educator-management");
 
         setLoading(false);
       })
       .catch((err) => {
-        const error = err.data || err.data.message || console.log("err", err);
-        setSnackbar(error, "error");
         setLoading(false);
+
+        const error =
+          err.response?.data?.message ||
+          err.response?.data?.error ||
+          err.message ||
+          "Something went wrong";
+        setSnackbar(error, "error");
       });
   };
   return { loading, addTeacher };
@@ -60,7 +66,11 @@ export const useNominateTeacherForTraining = () => {
         hideModal();
       })
       .catch((err) => {
-        const error = err.data || err.data.message || "Something Went Wrong";
+        const error =
+          err.response?.data?.message ||
+          err.response?.data?.error ||
+          err.message ||
+          "Something went wrong";
         setSnackbar(error, "error");
         setNominateLoading(false);
       });

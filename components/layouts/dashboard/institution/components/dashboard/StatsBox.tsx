@@ -6,7 +6,7 @@ import StatsCard from "./StatsCard";
 import { TEACHER_STATS_CARD } from "@/utils/constant";
 import { STATSCARDPROPS } from "@/utils/type";
 
-const StatsBox = ({ title, data }: STATSCARDPROPS) => {
+const StatsBox = ({ title, data = [] }: STATSCARDPROPS) => {
   return (
     <Box sx={{ mt: 4 }}>
       <Typography
@@ -27,7 +27,7 @@ const StatsBox = ({ title, data }: STATSCARDPROPS) => {
         }}
       />
       <Grid container spacing={3}>
-        {data.map((val, i) => (
+        {data?.map((val, i) => (
           <Grid size={{ xs: 12, sm: 6, lg: 3 }} key={i}>
             <StatsCard title={val.title} count={val.count} icon={val.icon} />
           </Grid>

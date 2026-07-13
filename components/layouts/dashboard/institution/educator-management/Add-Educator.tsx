@@ -96,7 +96,6 @@ const AddEducatorcomponent = () => {
       ) as any;
 
       addTeacher({ data, planId: planData?.[0]?.id });
-      // console.log("data => ", data);
     },
   });
   const { planData, planLoading } = useGetPlans({
@@ -204,7 +203,7 @@ const AddEducatorcomponent = () => {
                 />
               </Grid>
             )}
-            <Grid size={12}>
+            {/* <Grid size={12}>
               <Autocomplete
                 value={
                   PAYMENT_ROLE.find(
@@ -230,7 +229,7 @@ const AddEducatorcomponent = () => {
                   />
                 )}
               />
-            </Grid>
+            </Grid> */}
 
             <Grid size={{ xs: 12, md: 6 }}>
               <TextField
@@ -294,19 +293,7 @@ const AddEducatorcomponent = () => {
               />
             </Grid>
 
-            <Grid size={{ xs: 12, md: 6 }}>
-              {/* <TextField
-                fullWidth
-                name="subject"
-                label="Primary Subject"
-                placeholder="e.g. Mathematics"
-                value={formik.values.subject}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={formik.touched.subject && Boolean(formik.errors.subject)}
-                helperText={formik.touched.subject && formik.errors.subject}
-                sx={TEXTFIELD_STYLE_VALIDATION}
-              /> */}
+            {/* <Grid size={{ xs: 12, md: 6 }}>
               <Autocomplete
                 multiple
                 freeSolo
@@ -331,7 +318,7 @@ const AddEducatorcomponent = () => {
                   />
                 )}
               />
-            </Grid>
+            </Grid> */}
 
             <Grid size={{ xs: 12, md: 6 }}>
               <Autocomplete
@@ -376,7 +363,7 @@ const AddEducatorcomponent = () => {
               />
             </Grid>
 
-            <Grid size={{ xs: 12, md: 6 }}>
+            {/* <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth
                 name="experienceYear"
@@ -395,7 +382,7 @@ const AddEducatorcomponent = () => {
                 sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
                 type="number"
               />
-            </Grid>
+            </Grid> */}
             {/* <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth

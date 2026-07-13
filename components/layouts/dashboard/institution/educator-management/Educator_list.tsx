@@ -124,11 +124,11 @@ const EducatorList = () => {
   ];
 
   const { institutionData } = useSignup();
-  const isMember =
-    (institutionData?.payments || []).length > 0 &&
-    (institutionData?.payments || []).some(
-      (val) => val?.status === PLAN_STATUS.SUCCESS,
-    );
+  // const isMember =
+  //   (institutionData?.payments || []).length > 0 &&
+  //   (institutionData?.payments || []).some(
+  //     (val) => val?.status === PLAN_STATUS.SUCCESS,
+  //   );
 
   useEffect(() => {
     fetchUserData(data);
@@ -155,7 +155,7 @@ const EducatorList = () => {
               },
             ]}
           />
-          {isMember ? (
+          {/* {isMember ? (
             <Link href="/dashboard/institution/educator-management/add-educator">
               <Button
                 sx={{
@@ -188,7 +188,23 @@ const EducatorList = () => {
             >
               Unlock Feature
             </Button>
-          )}
+          )} */}
+          <Link href="/dashboard/institution/educator-management/add-educator">
+            <Button
+              sx={{
+                backgroundColor: COLORS.PRIMARY_NAVY,
+                color: COLORS.WHITE,
+                fontFamily: roboto.style.fontFamily,
+                fontWeight: 700,
+                fontSize: 16,
+                borderRadius: "10px",
+                padding: "10px 20px",
+              }}
+              endIcon={<Add />}
+            >
+              Add Educator
+            </Button>
+          </Link>
         </Stack>
 
         <Tabs

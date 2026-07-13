@@ -11,9 +11,6 @@ export const useSchoolDashboard = () => {
     setError(null);
     try {
       const res = await schoolControllers.dashboardAnalytics();
-      console.log("School Dashboard API Response:", res);
-      // The API return structure: schoolControllers.dashboardAnalytics returns result.data
-      // Let's support both nested data structures just in case
       const payload = res?.data !== undefined ? res.data : res;
       setDashboardData(payload);
     } catch (err: any) {
