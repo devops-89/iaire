@@ -63,7 +63,7 @@ const ResearchManagement = () => {
               },
             ]}
           />
-          {isMember ? (
+          {/* {isMember ? (
             <Link
               href="/dashboard/institution/research-submission/add-research"
               style={{ textDecoration: "none" }}
@@ -99,7 +99,26 @@ const ResearchManagement = () => {
             >
               Unlock Feature
             </Button>
-          )}
+          )} */}
+          <Link
+            href="/dashboard/institution/research-submission/add-research"
+            style={{ textDecoration: "none" }}
+          >
+            <Button
+              sx={{
+                backgroundColor: COLORS.PRIMARY_NAVY,
+                color: COLORS.WHITE,
+                fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                fontWeight: 600,
+                fontSize: 16,
+                borderRadius: "10px",
+                padding: "10px 20px",
+              }}
+              endIcon={<Add />}
+            >
+              Add Research
+            </Button>
+          </Link>
         </Stack>
 
         <TableContainer sx={{ mt: 3 }}>

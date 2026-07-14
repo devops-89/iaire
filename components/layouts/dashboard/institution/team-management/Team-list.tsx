@@ -14,10 +14,7 @@ import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { COLORS, PLAN_STATUS, USER_ROLES } from "@/utils/enum";
 import { aloeveraDisplay_medium, roboto } from "@/utils/fonts";
 import { Add, Lock } from "@mui/icons-material";
-import {
-  CATEGORY_TYPES,
-  TEAM_LIST_HEADER_DATA,
-} from "@/utils/constant";
+import { CATEGORY_TYPES, TEAM_LIST_HEADER_DATA } from "@/utils/constant";
 import TeamListTable from "./components/Team-List-Table";
 import Link from "next/link";
 import { useModal } from "@/store/useModal";
@@ -74,7 +71,7 @@ const TeamList = () => {
               ]}
             />
 
-            {isMember ? (
+            {/* {isMember ? (
               <Button
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
@@ -102,7 +99,20 @@ const TeamList = () => {
               >
                 Unlock Feature
               </Button>
-            )}
+            )} */}
+            <Button
+              sx={{
+                backgroundColor: COLORS.PRIMARY_NAVY,
+                color: COLORS.WHITE,
+                fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                borderRadius: "10px",
+                padding: "10px 20px",
+              }}
+              endIcon={<Add />}
+              onClick={handleAddTeam}
+            >
+              Add Team
+            </Button>
           </Stack>
 
           <Grid container sx={{ mt: 2 }} spacing={3}>

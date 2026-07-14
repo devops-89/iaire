@@ -2,14 +2,7 @@
 
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto, inter } from "@/utils/fonts";
-import {
-  Box,
-  Button,
-  Card,
-  Chip,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, Chip, Stack, Typography } from "@mui/material";
 import {
   ArticleOutlined,
   Lock,
@@ -106,7 +99,12 @@ const ResourceCard = ({
     >
       <Stack spacing={2} sx={{ p: 3.5, pb: 2.5, flexGrow: 1 }}>
         {/* Top Icon and Label section */}
-        <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={1.5}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          spacing={1.5}
+        >
           <Box
             sx={{
               width: 44,
@@ -125,7 +123,14 @@ const ResourceCard = ({
           {/* Resource Status Badge */}
           {!isMember ? (
             <Chip
-              icon={<Lock sx={{ fontSize: "12px !important", color: "#D97706 !important" }} />}
+              icon={
+                <Lock
+                  sx={{
+                    fontSize: "12px !important",
+                    color: "#D97706 !important",
+                  }}
+                />
+              }
               label="Premium"
               size="small"
               sx={{
@@ -143,7 +148,10 @@ const ResourceCard = ({
             <Chip
               icon={
                 <VerifiedUserOutlined
-                  sx={{ fontSize: "12px !important", color: "#10B981 !important" }}
+                  sx={{
+                    fontSize: "12px !important",
+                    color: "#10B981 !important",
+                  }}
                 />
               }
               label="Unlocked"
@@ -209,7 +217,13 @@ const ResourceCard = ({
         </Typography>
 
         {/* Category Tags */}
-        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mt: 1 }}>
+        <Stack
+          direction="row"
+          spacing={1}
+          flexWrap="wrap"
+          useFlexGap
+          sx={{ mt: 1 }}
+        >
           {category && (
             <Chip
               label={category}
@@ -269,7 +283,7 @@ const ResourceCard = ({
 
       {/* Card Footer Button Container */}
       <Box sx={{ p: 3, pt: 0 }}>
-        {isMember ? (
+        {/* {isMember ? (
           <Button
             variant="contained"
             fullWidth
@@ -319,7 +333,31 @@ const ResourceCard = ({
           >
             Unlock to Access
           </Button>
-        )}
+        )} */}
+        <Button
+          variant="contained"
+          fullWidth
+          endIcon={<OpenInNewOutlined />}
+          onClick={() => handleAccess(fileUrl)}
+          sx={{
+            background: "linear-gradient(135deg, #015A50 0%, #003630 100%)",
+            color: COLORS.WHITE,
+            textTransform: "none",
+            borderRadius: "12px",
+            padding: "11px 0",
+            fontFamily: montserrat.style.fontFamily,
+            fontWeight: 700,
+            fontSize: 14,
+            transition: "all 0.25s",
+            "&:hover": {
+              background: "linear-gradient(135deg, #003630 0%, #00221e 100%)",
+              boxShadow: "0px 8px 20px rgba(1, 90, 80, 0.25)",
+              transform: "scale(1.02)",
+            },
+          }}
+        >
+          Access Resource
+        </Button>
       </Box>
     </Card>
   );

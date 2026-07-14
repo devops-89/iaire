@@ -63,7 +63,7 @@ const InnovationList = () => {
               >
                 Innovation Management
               </Typography>
-              {isMember ? (
+              {/* {isMember ? (
                 <Link href="/dashboard/institution/innovation-submission/add-innovation">
                   <Button
                     sx={{
@@ -98,7 +98,24 @@ const InnovationList = () => {
                 >
                   Unlock Feature
                 </Button>
-              )}
+              )} */}
+              <Link href="/dashboard/institution/innovation-submission/add-innovation">
+                <Button
+                  sx={{
+                    backgroundColor: COLORS.PRIMARY_NAVY,
+                    color: COLORS.WHITE,
+                    fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                    fontWeight: 400,
+                    fontSize: 14,
+                    borderRadius: "10px",
+                    padding: "8px 24px",
+                    textTransform: "none",
+                  }}
+                  endIcon={<Add />}
+                >
+                  Add Innovation
+                </Button>
+              </Link>
             </Stack>
 
             <TableContainer>

@@ -140,7 +140,7 @@ const StudentList = () => {
               },
             ]}
           />
-          {isMember ? (
+          {/* {isMember ? (
             <Link href="/dashboard/institution/student-management/add-student">
               <Button
                 sx={{
@@ -173,7 +173,24 @@ const StudentList = () => {
             >
               Unlock Feature
             </Button>
-          )}
+          )} */}
+
+          <Link href="/dashboard/institution/student-management/add-student">
+            <Button
+              sx={{
+                backgroundColor: COLORS.PRIMARY_NAVY,
+                color: COLORS.WHITE,
+                fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                fontWeight: 700,
+                fontSize: 16,
+                borderRadius: "10px",
+                padding: "10px 20px",
+              }}
+              endIcon={<Add />}
+            >
+              Add Student
+            </Button>
+          </Link>
         </Stack>
         <Box sx={{ mt: 2 }}>
           <TableContainer>
