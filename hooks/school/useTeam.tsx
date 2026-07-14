@@ -1,5 +1,6 @@
 import { schoolControllers } from "@/app/api/schoolControllers";
 import { useModal } from "@/store/useModal";
+import useSnackbar from "@/store/useSnackbar";
 import { CATEGORY } from "@/utils/enum";
 import { CREATE_TEAM_REQUEST, TEAM_DETAILS_RESPONSE } from "@/utils/type";
 import { useEffect, useState } from "react";
@@ -7,17 +8,25 @@ import { useEffect, useState } from "react";
 export const useAddTeam = () => {
   const [loading, setLoading] = useState(false);
   const { hideModal } = useModal();
+  const { setSnackbar } = useSnackbar();
   const createTeam = async (data: CREATE_TEAM_REQUEST) => {
     setLoading(true);
     schoolControllers
       .createTeam(data)
       .then((res) => {
         console.log("res", res);
+        setSnackbar(res?.message || "Team created successfully!", "success");
         hideModal();
         setLoading(false);
       })
       .catch((err) => {
         console.log("error in creating team", err);
+        const errorMessage =
+          err.response?.data?.message ||
+          err.response?.data?.error ||
+          err.message ||
+          "Something went wrong";
+        setSnackbar(errorMessage, "error");
         setLoading(false);
       });
   };
@@ -77,14 +86,24 @@ export const useGetTeamDetails = (id: number) => {
 export const useEditTeam = () => {
   const [loading, setLoading] = useState(false);
   const { hideModal } = useModal();
+  const { setSnackbar } = useSnackbar();
   const editTeamData = async (data: CREATE_TEAM_REQUEST, id: number) => {
+    setLoading(true);
     schoolControllers
       .editTeam(id, data)
       .then((res) => {
+        setSnackbar(res?.message || "Team updated successfully!", "success");
         setLoading(false);
         hideModal();
       })
       .catch((err) => {
+        console.log("error in editing team", err);
+        const errorMessage =
+          err.response?.data?.message ||
+          err.response?.data?.error ||
+          err.message ||
+          "Something went wrong";
+        setSnackbar(errorMessage, "error");
         setLoading(false);
       });
   };

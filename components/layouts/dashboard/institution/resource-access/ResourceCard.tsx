@@ -37,7 +37,7 @@ const getIcon = (type?: string) => {
 
 const getThemeColor = (type?: string) => {
   const t = type?.toLowerCase() || "";
-  if (t.includes("playbook")) return COLORS.PRIMARY_NAVY || "#015A50";
+  if (t.includes("playbook")) return COLORS.PRIMARY_NAVY || "#F85D00";
   if (t.includes("module")) return "#EE8E26";
   if (t.includes("template")) return "#3F51B5";
   return "#78909C";
@@ -46,7 +46,7 @@ const getThemeColor = (type?: string) => {
 const getGradientHeader = (type?: string) => {
   const t = type?.toLowerCase() || "";
   if (t.includes("playbook"))
-    return `linear-gradient(90deg, #015A50 0%, #00897b 100%)`;
+    return `linear-gradient(90deg, #F85D00 0%, #ff7b2b 100%)`;
   if (t.includes("module"))
     return `linear-gradient(90deg, #EE8E26 0%, #ffb74d 100%)`;
   if (t.includes("template"))
@@ -92,8 +92,8 @@ const ResourceCard = ({
         },
         "&:hover": {
           transform: "translateY(-6px)",
-          boxShadow: "0px 20px 35px rgba(1, 90, 80, 0.08)",
-          borderColor: "rgba(1, 90, 80, 0.15)",
+          boxShadow: "0px 20px 35px rgba(248, 93, 0, 0.08)",
+          borderColor: "rgba(248, 93, 0, 0.15)",
         },
       }}
     >
@@ -290,7 +290,7 @@ const ResourceCard = ({
             endIcon={<OpenInNewOutlined />}
             onClick={() => handleAccess(fileUrl)}
             sx={{
-              background: "linear-gradient(135deg, #015A50 0%, #003630 100%)",
+              background: "linear-gradient(135deg, #F85D00 0%, #8C3100 100%)",
               color: COLORS.WHITE,
               textTransform: "none",
               borderRadius: "12px",
@@ -300,8 +300,8 @@ const ResourceCard = ({
               fontSize: 14,
               transition: "all 0.25s",
               "&:hover": {
-                background: "linear-gradient(135deg, #003630 0%, #00221e 100%)",
-                boxShadow: "0px 8px 20px rgba(1, 90, 80, 0.25)",
+                background: "linear-gradient(135deg, #8C3100 0%, #4f1b00 100%)",
+                boxShadow: "0px 8px 20px rgba(248, 93, 0, 0.25)",
                 transform: "scale(1.02)",
               },
             }}
@@ -340,7 +340,7 @@ const ResourceCard = ({
           endIcon={<OpenInNewOutlined />}
           onClick={() => handleAccess(fileUrl)}
           sx={{
-            background: "linear-gradient(135deg, #015A50 0%, #003630 100%)",
+            background: "linear-gradient(135deg, #F85D00 0%, #8C3100 100%)",
             color: COLORS.WHITE,
             textTransform: "none",
             borderRadius: "12px",
@@ -350,8 +350,8 @@ const ResourceCard = ({
             fontSize: 14,
             transition: "all 0.25s",
             "&:hover": {
-              background: "linear-gradient(135deg, #003630 0%, #00221e 100%)",
-              boxShadow: "0px 8px 20px rgba(1, 90, 80, 0.25)",
+              background: "linear-gradient(135deg, #8C3100 0%, #4f1b00 100%)",
+              boxShadow: "0px 8px 20px rgba(248, 93, 0, 0.25)",
               transform: "scale(1.02)",
             },
           }}

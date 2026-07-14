@@ -95,12 +95,12 @@ const ResourceAccessLayout = () => {
           <Card
             sx={{
               p: { xs: 4, md: 5 },
-              background: `linear-gradient(135deg, #015A50 0%, #002d27 100%)`,
+              background: `linear-gradient(135deg, #F85D00 0%, #8c3100 100%)`,
               color: "#fff",
               borderRadius: "24px",
               position: "relative",
               overflow: "hidden",
-              boxShadow: "0px 15px 35px rgba(1, 90, 80, 0.25)",
+              boxShadow: "0px 15px 35px rgba(248, 93, 0, 0.25)",
               border: "1px solid rgba(255, 255, 255, 0.08)",
             }}
           >
@@ -227,7 +227,7 @@ const ResourceAccessLayout = () => {
                       border: "1px solid transparent",
                       "&.Mui-selected": {
                         bgcolor: "#fff",
-                        color: "#015A50",
+                        color: "#F85D00",
                         borderColor: "#e2e8f0",
                         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.04)",
                         fontWeight: 700,
@@ -279,7 +279,7 @@ const ResourceAccessLayout = () => {
                       borderColor: "#cbd5e1 !important",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#015A50 !important",
+                      borderColor: "#F85D00 !important",
                       borderWidth: "1.5px",
                     },
                   },
@@ -290,7 +290,7 @@ const ResourceAccessLayout = () => {
             {/* Resources List Grid */}
             {loading ? (
               <Box sx={{ display: "flex", justifyContent: "center", py: 12 }}>
-                <Atom color="#015A50" size="medium" />
+                <Atom color="#F85D00" size="medium" />
               </Box>
             ) : (
               <Grid container spacing={3.5}>

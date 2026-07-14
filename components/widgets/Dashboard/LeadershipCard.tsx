@@ -282,7 +282,7 @@ const LeadershipCard = () => {
                     borderBottom: "1px solid rgba(0, 0, 0, 0.04)",
                     transition: "all 0.25s ease",
                     "&:hover": {
-                      backgroundColor: "rgba(1, 90, 80, 0.03)",
+                      backgroundColor: "rgba(248, 93, 0, 0.03)",
                       transform: "scale(1.008)",
                       boxShadow: "0 4px 15px rgba(0,0,0,0.02)",
                     },

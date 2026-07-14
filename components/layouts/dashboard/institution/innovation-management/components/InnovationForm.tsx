@@ -165,25 +165,25 @@ const InnovationForm = ({
                     ? "#d32f2f"
                     : dragActive
                       ? COLORS.PRIMARY_NAVY
-                      : "rgba(1, 90, 80, 0.2)",
+                      : "rgba(248, 93, 0, 0.2)",
                 borderRadius: "16px",
                 textAlign: "center",
                 bgcolor: dragActive
-                  ? "rgba(1, 90, 80, 0.05)"
-                  : "rgba(1, 90, 80, 0.01)",
+                  ? "rgba(248, 93, 0, 0.05)"
+                  : "rgba(248, 93, 0, 0.01)",
                 boxShadow: dragActive
-                  ? "0 8px 24px rgba(1, 90, 80, 0.08)"
+                  ? "0 8px 24px rgba(248, 93, 0, 0.08)"
                   : "none",
                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 cursor: "pointer",
                 "&:hover": {
-                  bgcolor: "rgba(1, 90, 80, 0.03)",
+                  bgcolor: "rgba(248, 93, 0, 0.03)",
                   borderColor:
                     formik.touched.file && formik.errors.file
                       ? "#d32f2f"
                       : COLORS.PRIMARY_NAVY,
                   transform: "translateY(-2px)",
-                  boxShadow: "0 6px 20px rgba(1, 90, 80, 0.05)",
+                  boxShadow: "0 6px 20px rgba(248, 93, 0, 0.05)",
                 },
               }}
             >
@@ -209,7 +209,7 @@ const InnovationForm = ({
                       width: 64,
                       height: 64,
                       borderRadius: "50%",
-                      bgcolor: "rgba(1, 90, 80, 0.08)",
+                      bgcolor: "rgba(248, 93, 0, 0.08)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -248,8 +248,8 @@ const InnovationForm = ({
                   sx={{
                     p: 1.5,
                     borderRadius: "12px",
-                    bgcolor: "rgba(1, 90, 80, 0.04)",
-                    border: "1px solid rgba(1, 90, 80, 0.1)",
+                    bgcolor: "rgba(248, 93, 0, 0.04)",
+                    border: "1px solid rgba(248, 93, 0, 0.1)",
                   }}
                 >
                   <Stack direction="row" spacing={2} alignItems="center">
@@ -258,7 +258,7 @@ const InnovationForm = ({
                         width: 48,
                         height: 48,
                         borderRadius: "8px",
-                        bgcolor: "rgba(1, 90, 80, 0.1)",
+                        bgcolor: "rgba(248, 93, 0, 0.1)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -359,7 +359,7 @@ const InnovationForm = ({
                   fontFamily: newBlack_light.style.fontFamily,
                   textTransform: "none",
                   color: COLORS.PRIMARY_NAVY,
-                  border: "1px solid rgba(1, 90, 80, 0.1)",
+                  border: "1px solid rgba(248, 93, 0, 0.1)",
                   borderColor: COLORS.PRIMARY_NAVY,
                   "&:hover": {
                     backgroundColor: "transparent",

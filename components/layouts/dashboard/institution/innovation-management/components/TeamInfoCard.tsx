@@ -193,7 +193,7 @@ const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInf
                       <Stack direction="row" alignItems="center" spacing={2}>
                         <Lightbulb
                           sx={{
-                            color: isCurrent ? "#015A50" : "rgba(0,0,0,0.3)",
+                            color: isCurrent ? "#F85D00" : "rgba(0,0,0,0.3)",
                             fontSize: 20,
                           }}
                         />
@@ -202,7 +202,7 @@ const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInf
                             sx={{
                               fontSize: "13px",
                               fontWeight: 600,
-                              color: isCurrent ? "#015A50" : "inherit",
+                              color: isCurrent ? "#F85D00" : "inherit",
                             }}
                           >
                             {item.title} {isCurrent && "(Current)"}

@@ -74,7 +74,7 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
                       alignItems="center"
                       gap={2}
                     >
-                      <Avatar sx={{ bgcolor: "rgba(1, 90, 80, 0.08)", color: "#015A50" }}>
+                      <Avatar sx={{ bgcolor: "rgba(248, 93, 0, 0.08)", color: "#F85D00" }}>
                         <Lightbulb />
                       </Avatar>
                       <Box>
@@ -145,7 +145,7 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
                           fontWeight: 600,
                           "&:hover": {
                             borderColor: COLORS.PRIMARY_NAVY,
-                            backgroundColor: "rgba(1, 90, 80, 0.04)",
+                            backgroundColor: "rgba(248, 93, 0, 0.04)",
                           },
                         }}
                       >

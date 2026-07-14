@@ -47,7 +47,7 @@ const MentorshipDetailsCard = ({ teamDetails }: MentorshipDetailsCardProps) => {
           <Grid size={{ xs: 12, sm: 6 }}>
             <Stack spacing={2}>
               <Stack direction="row" alignItems="center" spacing={1}>
-                <Stars sx={{ color: "#015A50", fontSize: 20 }} />
+                <Stars sx={{ color: "#F85D00", fontSize: 20 }} />
                 <Typography
                   sx={{
                     fontSize: "14px",

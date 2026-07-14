@@ -45,7 +45,7 @@ const ProfileCard = ({ innovationDetails }: ProfileCardProps) => {
       <Box
         sx={{
           height: "100px",
-          background: "linear-gradient(135deg, #015A50 0%, #032C46 100%)",
+          background: "linear-gradient(135deg, #F85D00 0%, #032C46 100%)",
           position: "relative",
         }}
       />
@@ -64,7 +64,7 @@ const ProfileCard = ({ innovationDetails }: ProfileCardProps) => {
             height: 100,
             border: "4px solid #ffffff",
             boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)",
-            bgcolor: "#015A50",
+            bgcolor: "#F85D00",
             fontSize: "2.25rem",
             fontWeight: 700,
             color: "#ffffff",

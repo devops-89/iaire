@@ -1,0 +1,157 @@
+"use client";
+
+import React, { useRef, Suspense, useEffect } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { useGLTF, Stage } from "@react-three/drei";
+import * as THREE from "three";
+import { Box } from "@mui/material";
+
+// Suppress WebGL-related console errors in sandboxed or headless environments
+if (typeof window !== "undefined") {
+  const originalError = console.error;
+  console.error = (...args) => {
+    if (
+      args[0] &&
+      typeof args[0] === "string" &&
+      (args[0].includes("WebGLRenderer") ||
+        args[0].includes("WebGL context") ||
+        args[0].includes("Could not create a WebGL context") ||
+        args[0].includes("Error creating WebGL context"))
+    ) {
+      return;
+    }
+    originalError(...args);
+  };
+}
+
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: any) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error: any, errorInfo: any) {
+    // Suppress logging of WebGL renderer errors to console
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return null;
+    }
+    return this.props.children;
+  }
+}
+
+const EarthModel = () => {
+  const { scene } = useGLTF("/images/homepage/earth_ultra_pbr.glb");
+  const earthRef = useRef<THREE.Group>(null);
+  const { gl } = useThree();
+  const isDragging = useRef(false);
+  const previousMousePosition = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    if (scene) {
+      const box = new THREE.Box3().setFromObject(scene);
+      const size = new THREE.Vector3();
+      box.getSize(size);
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const targetSize = 2.3;
+      const scale = targetSize / maxDim;
+      scene.scale.set(scale, scale, scale);
+    }
+  }, [scene]);
+
+  useEffect(() => {
+    const domElement = gl.domElement;
+
+    const handlePointerDown = (e: PointerEvent) => {
+      isDragging.current = true;
+      previousMousePosition.current = { x: e.clientX, y: e.clientY };
+    };
+
+    const handlePointerMove = (e: PointerEvent) => {
+      if (!isDragging.current || !earthRef.current) return;
+      const deltaX = e.clientX - previousMousePosition.current.x;
+      const deltaY = e.clientY - previousMousePosition.current.y;
+
+      // Rotate horizontally (around Y axis) and vertically (around X axis)
+      earthRef.current.rotation.y += deltaX * 0.005;
+      earthRef.current.rotation.x = Math.max(
+        -Math.PI / 4,
+        Math.min(Math.PI / 4, earthRef.current.rotation.x + deltaY * 0.005),
+      );
+
+      previousMousePosition.current = { x: e.clientX, y: e.clientY };
+    };
+
+    const handlePointerUp = () => {
+      isDragging.current = false;
+    };
+
+    domElement.addEventListener("pointerdown", handlePointerDown);
+    domElement.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
+
+    return () => {
+      domElement.removeEventListener("pointerdown", handlePointerDown);
+      domElement.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", handlePointerUp);
+    };
+  }, [gl]);
+
+  useFrame((state, delta) => {
+    // Continuous auto-rotation when user is not dragging
+    if (earthRef.current && !isDragging.current) {
+      earthRef.current.rotation.y += delta * 0.15;
+    }
+  });
+
+  return <primitive object={scene} ref={earthRef} />;
+};
+
+const ThreeEarth = ({ height = "500px" }: { height?: any }) => {
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        height: height,
+        position: "relative",
+        zIndex: 1,
+        overflow: "hidden",
+      }}
+    >
+      <ErrorBoundary>
+        <Canvas
+          shadows={false}
+          camera={{ position: [0, 0, 3.8], fov: 45 }}
+          gl={{ antialias: false, powerPreference: "default" }}
+        >
+          <Suspense fallback={null}>
+            <Stage
+              environment="city"
+              intensity={1.5}
+              shadows={false}
+              adjustCamera={false}
+            >
+              <EarthModel />
+            </Stage>
+          </Suspense>
+        </Canvas>
+      </ErrorBoundary>
+    </Box>
+  );
+};
+
+// Only preload if in a browser context to avoid SSR errors
+if (typeof window !== "undefined") {
+  useGLTF.preload("/images/homepage/earth_ultra_pbr.glb");
+}
+
+export default ThreeEarth;

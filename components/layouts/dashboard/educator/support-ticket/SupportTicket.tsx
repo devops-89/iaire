@@ -163,7 +163,7 @@ const SupportTicket = () => {
               <CardContent sx={{ display: "flex", alignItems: "center", p: 3 }}>
                 <Box
                   sx={{
-                    bgcolor: "rgba(1, 90, 80, 0.08)",
+                    bgcolor: "rgba(248, 93, 0, 0.08)",
                     p: 2,
                     borderRadius: "12px",
                     mr: 2,

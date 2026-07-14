@@ -129,7 +129,7 @@ const ResourceAccess = ({
 
   const getThemeColor = (type?: string) => {
     const t = type?.toLowerCase() || "";
-    if (t.includes("playbook")) return COLORS.PRIMARY_NAVY || "#015A50";
+    if (t.includes("playbook")) return COLORS.PRIMARY_NAVY || "#F85D00";
     if (t.includes("module")) return "#EE8E26";
     if (t.includes("template")) return "#3F51B5";
     return "#78909C";
@@ -138,7 +138,7 @@ const ResourceAccess = ({
   const getGradientHeader = (type?: string) => {
     const t = type?.toLowerCase() || "";
     if (t.includes("playbook"))
-      return `linear-gradient(90deg, #015A50 0%, #00897b 100%)`;
+      return `linear-gradient(90deg, #F85D00 0%, #ff7b2b 100%)`;
     if (t.includes("module"))
       return `linear-gradient(90deg, #EE8E26 0%, #ffb74d 100%)`;
     if (t.includes("template"))
@@ -170,12 +170,12 @@ const ResourceAccess = ({
           <Card
             sx={{
               p: { xs: 4, md: 5 },
-              background: `linear-gradient(135deg, #015A50 0%, #002d27 100%)`,
+              background: `linear-gradient(135deg, #F85D00 0%, #8c3100 100%)`,
               color: "#fff",
               borderRadius: "24px",
               position: "relative",
               overflow: "hidden",
-              boxShadow: "0px 15px 35px rgba(1, 90, 80, 0.25)",
+              boxShadow: "0px 15px 35px rgba(248, 93, 0, 0.25)",
               border: "1px solid rgba(255, 255, 255, 0.08)",
             }}
           >
@@ -303,7 +303,7 @@ const ResourceAccess = ({
                       border: "1px solid transparent",
                       "&.Mui-selected": {
                         bgcolor: "#fff",
-                        color: "#015A50",
+                        color: "#F85D00",
                         borderColor: "#e2e8f0",
                         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.04)",
                         fontWeight: 700,
@@ -355,7 +355,7 @@ const ResourceAccess = ({
                       borderColor: "#cbd5e1 !important",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#015A50 !important",
+                      borderColor: "#F85D00 !important",
                       borderWidth: "1.5px",
                     },
                   },
@@ -366,7 +366,7 @@ const ResourceAccess = ({
             {/* Resources List Grid */}
             {loading ? (
               <Box sx={{ display: "flex", justifyContent: "center", py: 12 }}>
-                <Atom color="#015A50" size="medium" />
+                <Atom color="#F85D00" size="medium" />
               </Box>
             ) : (
               <Grid container spacing={3.5}>
@@ -399,8 +399,8 @@ const ResourceAccess = ({
                           },
                           "&:hover": {
                             transform: "translateY(-6px)",
-                            boxShadow: "0px 20px 35px rgba(1, 90, 80, 0.08)",
-                            borderColor: "rgba(1, 90, 80, 0.15)",
+                            boxShadow: "0px 20px 35px rgba(248, 93, 0, 0.08)",
+                            borderColor: "rgba(248, 93, 0, 0.15)",
                           },
                         }}
                       >
@@ -573,7 +573,7 @@ const ResourceAccess = ({
                               onClick={() => handleAccess(item.fileUrl)}
                               sx={{
                                 background:
-                                  "linear-gradient(135deg, #015A50 0%, #003630 100%)",
+                                  "linear-gradient(135deg, #F85D00 0%, #8C3100 100%)",
                                 color: COLORS.WHITE,
                                 textTransform: "none",
                                 borderRadius: "12px",
@@ -584,9 +584,9 @@ const ResourceAccess = ({
                                 transition: "all 0.25s",
                                 "&:hover": {
                                   background:
-                                    "linear-gradient(135deg, #003630 0%, #00221e 100%)",
+                                    "linear-gradient(135deg, #8C3100 0%, #4f1b00 100%)",
                                   boxShadow:
-                                    "0px 8px 20px rgba(1, 90, 80, 0.25)",
+                                    "0px 8px 20px rgba(248, 93, 0, 0.25)",
                                   transform: "scale(1.02)",
                                 },
                               }}
