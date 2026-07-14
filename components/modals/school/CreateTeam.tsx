@@ -149,7 +149,7 @@ const AddTeams = () => {
           <Grid size={12}>
             <Autocomplete
               onOpen={handleOpenMentor}
-              options={userData?.data || []}
+              options={userData || []}
               getOptionLabel={(option: TEACHER_REPONSE_PROPS) =>
                 `${option.firstName} ${option.lastName} (${option.email})`
               }
@@ -179,7 +179,7 @@ const AddTeams = () => {
               multiple
               filterSelectedOptions
               onOpen={handleOpenStudent}
-              options={userData?.data || []}
+              options={userData || []}
               getOptionLabel={(option: STUDENT_RESPONSE_PROPS) =>
                 `${option.fullName || option.firstName + " " + option.lastName} (${option.email})`
               }
