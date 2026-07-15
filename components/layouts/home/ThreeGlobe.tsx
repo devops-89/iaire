@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, Suspense, useEffect } from "react";
+import React, { useRef, Suspense, useEffect, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, Stage } from "@react-three/drei";
 import * as THREE from "three";
@@ -56,18 +56,44 @@ const EarthModel = () => {
   const isDragging = useRef(false);
   const previousMousePosition = useRef({ x: 0, y: 0 });
 
+  const [baseScale, setBaseScale] = useState<number | null>(null);
+  const scrollYRef = useRef(0);
+
+  // Normalize base scale on load (mesh-only bounding box to ignore helpers/empty nodes)
   useEffect(() => {
     if (scene) {
-      const box = new THREE.Box3().setFromObject(scene);
+      const box = new THREE.Box3();
+      let hasMesh = false;
+      scene.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          box.expandByObject(child);
+          hasMesh = true;
+        }
+      });
+
       const size = new THREE.Vector3();
-      box.getSize(size);
+      if (hasMesh) {
+        box.getSize(size);
+      } else {
+        new THREE.Box3().setFromObject(scene).getSize(size);
+      }
+
       const maxDim = Math.max(size.x, size.y, size.z);
-      const targetSize = 2.3;
-      const scale = targetSize / maxDim;
-      scene.scale.set(scale, scale, scale);
+      // Target a baseline size of 2.5 units
+      setBaseScale(2.5 / maxDim);
     }
   }, [scene]);
 
+  // Track page scroll position using a ref to prevent unnecessary React re-renders
+  useEffect(() => {
+    const handleScroll = () => {
+      scrollYRef.current = window.scrollY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Drag rotation handlers
   useEffect(() => {
     const domElement = gl.domElement;
 
@@ -107,13 +133,42 @@ const EarthModel = () => {
   }, [gl]);
 
   useFrame((state, delta) => {
-    // Continuous auto-rotation when user is not dragging
-    if (earthRef.current && !isDragging.current) {
-      earthRef.current.rotation.y += delta * 0.15;
+    if (earthRef.current) {
+      // 1. Continuous auto-rotation when user is not dragging
+      if (!isDragging.current) {
+        earthRef.current.rotation.y += delta * 0.15;
+      }
+
+      // 2. Smooth scroll-scale animation via LERP
+      if (baseScale !== null) {
+        // Capped between 1.0x (normal) and 1.65x (scaled up)
+        const scrollMultiplier = Math.min(
+          1.65,
+          Math.max(1.0, 1.0 + (scrollYRef.current / 700) * 0.65),
+        );
+        const targetScale = baseScale * scrollMultiplier;
+
+        // Smoothly interpolate current scale to target scale
+        const currentScale = earthRef.current.scale.x;
+        const lerpedScale = THREE.MathUtils.lerp(
+          currentScale,
+          targetScale,
+          0.08,
+        );
+        earthRef.current.scale.set(lerpedScale, lerpedScale, lerpedScale);
+      }
     }
   });
 
-  return <primitive object={scene} ref={earthRef} />;
+  if (baseScale === null) return null;
+
+  return (
+    <primitive
+      object={scene}
+      ref={earthRef}
+      scale={[baseScale, baseScale, baseScale]}
+    />
+  );
 };
 
 const ThreeEarth = ({ height = "500px" }: { height?: any }) => {
@@ -130,7 +185,7 @@ const ThreeEarth = ({ height = "500px" }: { height?: any }) => {
       <ErrorBoundary>
         <Canvas
           shadows={false}
-          camera={{ position: [0, 0, 3.8], fov: 45 }}
+          camera={{ position: [0, 0, 4.2], fov: 45 }}
           gl={{ antialias: false, powerPreference: "default" }}
         >
           <Suspense fallback={null}>

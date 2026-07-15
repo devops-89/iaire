@@ -7,45 +7,27 @@ import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 
 const OrangeCheck = () => (
-  <Box
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      flexShrink: 0,
-      mt: 0.25,
-    }}
-  >
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-        fill="rgba(248, 93, 0, 0.12)"
-        stroke="#F85D00"
-        strokeWidth="2"
-      />
-      <path
-        d="M8.5 12.5l2.5 2.5 4.5-5"
-        stroke="#F85D00"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" fill="rgba(248, 93, 0, 0.12)" stroke="#F85D00" strokeWidth="2" />
+      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#F85D00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </Box>
 );
 
-const competitionOpportunities = [
-  "Present real-world solutions",
-  "Receive expert feedback",
-  "Gain national/international visibility",
-  "Build confidence",
-  "Explore research, patent & IP pathways",
-  "Join a global community of innovators",
+const schoolBenefits = [
+  "Structured implementation framework",
+  "Teacher training and certification",
+  "Student innovation learning programs",
+  "School Innovation Hub support",
+  "Access to digital resources",
+  "Research and IP guidance",
+  "National & international recognition",
+  "Awards & institutional distinction",
+  "Alignment with future-ready goals",
 ];
 
-const CompetitionSection = () => {
+const ForSchoolsSection = () => {
   return (
     <Box
       sx={{
@@ -55,6 +37,7 @@ const CompetitionSection = () => {
         overflow: "hidden",
       }}
     >
+      {/* Background decoration - very subtle warm accent glow on the bottom-right */}
       <Box
         sx={{
           position: "absolute",
@@ -63,8 +46,7 @@ const CompetitionSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background: "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -73,7 +55,9 @@ const CompetitionSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          <Grid size={{ xs: 12, md: 6 }}>
+          
+          {/* Left Column: Custom Coded School Illustration */}
+          <Grid size={{ xs: 12, md: 6 }} sx={{ order: { xs: 2, md: 1 } }}>
             <Box
               sx={{
                 position: "relative",
@@ -92,8 +76,8 @@ const CompetitionSection = () => {
               }}
             >
               <Image
-                src="/images/homepage/top_young_innovator.png"
-                alt="Top Young Innovator"
+                src="/images/homepage/school_innovation.png"
+                alt="For Schools Innovation Hub"
                 width={1024}
                 height={1024}
                 layout="responsive"
@@ -107,13 +91,11 @@ const CompetitionSection = () => {
             </Box>
           </Grid>
 
-          {/* Right Column: Heading & Content */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          {/* Right Column: Heading, Benefits & Content */}
+          <Grid size={{ xs: 12, md: 6 }} sx={{ order: { xs: 1, md: 2 } }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
-                />
+                <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -124,7 +106,7 @@ const CompetitionSection = () => {
                     textTransform: "uppercase",
                   }}
                 >
-                  GLOBAL PLATFORM
+                  FOR INSTITUTIONS
                 </Typography>
               </Box>
 
@@ -139,7 +121,7 @@ const CompetitionSection = () => {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Global Recognition Through Top Young Innovator
+                Turn Your School Into a Center of Innovation
               </Typography>
 
               <Stack spacing={2.5}>
@@ -152,7 +134,7 @@ const CompetitionSection = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  Innovation deserves a platform.
+                  IAIRE helps schools build sustainable innovation ecosystems that empower teachers and students to think, research, create, and solve.
                 </Typography>
                 <Typography
                   sx={{
@@ -162,27 +144,11 @@ const CompetitionSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  IAIRE’s Top Young Innovator Competition is designed to
-                  identify, mentor, celebrate, and recognize outstanding student
-                  innovators from around the world.
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "15px",
-                    color: "#5F5F6A",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  Unlike traditional competitions, IAIRE emphasizes learning
-                  before evaluation. Students first receive access to innovation
-                  resources, learning frameworks, mentoring, and project
-                  development support. They then showcase their solutions on a
-                  national and international platform.
+                  By joining IAIRE, schools gain access to structured programs, educator certification, student learning resources, implementation frameworks, mentoring support, innovation competitions, and recognition opportunities.
                 </Typography>
               </Stack>
 
-              {/* Opportunity List (2-column layout) */}
+              {/* Benefits Checklist Grid */}
               <Box sx={{ pt: 1 }}>
                 <Typography
                   sx={{
@@ -195,16 +161,12 @@ const CompetitionSection = () => {
                     letterSpacing: "0.03em",
                   }}
                 >
-                  The competition gives students an opportunity to:
+                  Benefits for Schools
                 </Typography>
-                <Grid container spacing={2}>
-                  {competitionOpportunities.map((op, index) => (
+                <Grid container spacing={1.5}>
+                  {schoolBenefits.map((benefit, index) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                      <Stack
-                        direction="row"
-                        spacing={1.5}
-                        alignItems="flex-start"
-                      >
+                      <Stack direction="row" spacing={1.5} alignItems="flex-start">
                         <OrangeCheck />
                         <Typography
                           sx={{
@@ -215,13 +177,31 @@ const CompetitionSection = () => {
                             lineHeight: 1.4,
                           }}
                         >
-                          {op}
+                          {benefit}
                         </Typography>
                       </Stack>
                     </Grid>
                   ))}
                 </Grid>
               </Box>
+
+              {/* Why Schools Join Callout */}
+              <Typography
+                sx={{
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "14.5px",
+                  color: "#F85D00",
+                  fontWeight: 500,
+                  lineHeight: 1.65,
+                  borderLeft: "2px solid #F85D00",
+                  pl: 2.5,
+                }}
+              >
+                <Box component="span" sx={{ fontWeight: 700, display: "block", mb: 0.5 }}>
+                  Why Schools Join IAIRE
+                </Box>
+                Schools join IAIRE to move from activity-based innovation to culture-based innovation. IAIRE helps schools make innovation visible, structured, measurable, and sustainable.
+              </Typography>
 
               <Box sx={{ pt: 1.5 }}>
                 <Button
@@ -243,15 +223,16 @@ const CompetitionSection = () => {
                     },
                   }}
                 >
-                  Participate in Top Young Innovator
+                  Enroll Your School
                 </Button>
               </Box>
             </Stack>
           </Grid>
+
         </Grid>
       </Container>
     </Box>
   );
 };
 
-export default CompetitionSection;
+export default ForSchoolsSection;

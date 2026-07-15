@@ -10,6 +10,7 @@ import InstitutionHeader from "./dashboard/institution/components/Header";
 import EducatorSidebar from "./dashboard/educator/components/Sidebar";
 import EducatorHeader from "./dashboard/educator/components/Header";
 import Header from "../widgets/Header";
+import Header2 from "../widgets/Header2";
 
 const HIDE_LAYOUT_ROUTES = [
   "/login",
@@ -41,7 +42,7 @@ export default function LayoutWrapper({
 
   return (
     <>
-      {!shouldHideMainLayout && <Header />}
+      {!shouldHideMainLayout && <Header2 />}
       {isStudentDashboard && <StudentSidebar />}
       {isStudentDashboard && <StudentHeader />}
       {isInstitutionDashboard && <InstitutionSidebar />}

@@ -13,7 +13,7 @@ const statsSets = [
       { label: "Institutions", value: "150+", badge: "+12%" },
       { label: "Teachers", value: "2.4k+", badge: "+15%" },
       { label: "Students", value: "45k+", badge: "+20%" },
-    ]
+    ],
   },
   {
     title: "Impact & Output",
@@ -21,8 +21,8 @@ const statsSets = [
       { label: "Patents", value: "85+", badge: "+18%" },
       { label: "Publications", value: "340+", badge: "+25%" },
       { label: "Startups", value: "18", badge: "+10%" },
-    ]
-  }
+    ],
+  },
 ];
 
 const HeroSection2 = () => {
@@ -101,7 +101,8 @@ const HeroSection2 = () => {
           width: "60vw",
           height: "60vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(243, 94, 5, 0.35) 0%, rgba(243, 94, 5, 0.1) 45%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(243, 94, 5, 0.35) 0%, rgba(243, 94, 5, 0.1) 45%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(80px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -115,14 +116,18 @@ const HeroSection2 = () => {
           width: "55vw",
           height: "55vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(243, 94, 5, 0.15) 0%, rgba(243, 94, 5, 0.05) 50%, rgba(255, 255, 255, 0) 80%)",
+          background:
+            "radial-gradient(circle, rgba(243, 94, 5, 0.15) 0%, rgba(243, 94, 5, 0.05) 50%, rgba(255, 255, 255, 0) 80%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, py: { xs: 8, md: 0 } }}>
+      <Container
+        maxWidth="lg"
+        sx={{ position: "relative", zIndex: 1, py: { xs: 8, md: 0 } }}
+      >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
           <Grid size={{ xs: 12, md: 6 }} sx={{ pr: { md: 5 } }}>
             <Typography
@@ -135,9 +140,10 @@ const HeroSection2 = () => {
                 color: "#0A0A0B",
               }}
             >
-              Shaping the Next Generation of Innovators, Researchers & Entrepreneurs
+              Shaping the Next Generation of Innovators, Researchers &
+              Entrepreneurs
             </Typography>
-            
+
             <Typography
               sx={{
                 fontSize: { xs: "14px", md: "16px" },
@@ -148,7 +154,9 @@ const HeroSection2 = () => {
                 mt: 3,
               }}
             >
-              IAIRE is a global platform dedicated to building a future where students do not just learn about the world — they learn how to improve it.
+              IAIRE is a global platform dedicated to building a future where
+              students do not just learn about the world — they learn how to
+              improve it.
             </Typography>
 
             <Typography
@@ -161,7 +169,10 @@ const HeroSection2 = () => {
                 mt: 1.5,
               }}
             >
-              Through structured innovation education, research mentoring, educator certification, and global recognition platforms, we empower schools, teachers, and students to transform ideas into real-world solutions.
+              Through structured innovation education, research mentoring,
+              educator certification, and global recognition platforms, we
+              empower schools, teachers, and students to transform ideas into
+              real-world solutions.
             </Typography>
 
             <Stack
@@ -212,7 +223,7 @@ const HeroSection2 = () => {
               </Button>
             </Stack>
           </Grid>
-          
+
           <Grid
             size={{ xs: 12, md: 6 }}
             sx={{
@@ -227,7 +238,7 @@ const HeroSection2 = () => {
               sx={{
                 position: "relative",
                 width: "100%",
-                height: { xs: "350px", sm: "450px", md: "550px" },
+                height: { xs: "350px", sm: "450px", md: "600px" },
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -248,7 +259,7 @@ const HeroSection2 = () => {
                 borderRadius: "16px",
                 boxShadow: "0 15px 35px rgba(0, 0, 0, 0.08)",
                 border: "1px solid rgba(0, 0, 0, 0.08)",
-                p: 2.5,
+                p: 2,
                 zIndex: 5,
                 width: "100%",
                 maxWidth: "440px",
@@ -266,13 +277,14 @@ const HeroSection2 = () => {
                   opacity: fade ? 1 : 0,
                   transform: fade ? "translateY(0)" : "translateY(-3px)",
                   transition: "opacity 0.25s ease, transform 0.25s ease",
+                  textAlign: "center",
                 }}
               >
                 {currentSet.title}
               </Typography>
-              
-              <Grid 
-                container 
+
+              <Grid
+                container
                 spacing={2}
                 sx={{
                   opacity: fade ? 1 : 0,
@@ -281,7 +293,7 @@ const HeroSection2 = () => {
                 }}
               >
                 {currentSet.metrics.map((metric, i) => (
-                  <Grid size={4} key={i}>
+                  <Grid size={4} key={i} sx={{ textAlign: "center" }}>
                     <Typography
                       sx={{
                         color: "#8E8E93",
@@ -298,7 +310,14 @@ const HeroSection2 = () => {
                     >
                       {metric.label}
                     </Typography>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 0.5,
+                        justifyContent: "center",
+                      }}
+                    >
                       <Typography
                         sx={{
                           fontSize: "20px",

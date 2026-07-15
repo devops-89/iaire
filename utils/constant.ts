@@ -2004,15 +2004,38 @@ export const HEADER_CONTENT = [
   },
   {
     label: "Membership",
-    url: "/membership",
+    subModules: [
+      {
+        label: "Become a member",
+        url: "/membership/become-member",
+      },
+      {
+        label: "Benefit of Become a member",
+        url: "/membership/benefits",
+      },
+    ],
   },
   {
-    label: "Fellows",
-    url: "/fellows",
+    label: "Chapters",
+    subModules: [
+      {
+        label: "IAIRE India Chapter",
+        url: "/chapters/india",
+      },
+    ],
   },
   {
-    label: "Programs",
-    url: "/programs",
+    label: "Innovation Competition",
+    subModules: [
+      {
+        label: "Top Young Innovators",
+        url: "#",
+      },
+    ],
+  },
+  {
+    label: "Awards & Honors",
+    url: "/awards",
   },
 ];
 

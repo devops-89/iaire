@@ -7,64 +7,45 @@ import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 
 const OrangeCheck = () => (
-  <Box
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      flexShrink: 0,
-      mt: 0.25,
-    }}
-  >
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <circle
-        cx="12"
-        cy="12"
-        r="10"
-        fill="rgba(248, 93, 0, 0.12)"
-        stroke="#F85D00"
-        strokeWidth="2"
-      />
-      <path
-        d="M8.5 12.5l2.5 2.5 4.5-5"
-        stroke="#F85D00"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" fill="rgba(248, 93, 0, 0.12)" stroke="#F85D00" strokeWidth="2" />
+      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#F85D00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </Box>
 );
 
-const competitionOpportunities = [
-  "Present real-world solutions",
-  "Receive expert feedback",
-  "Gain national/international visibility",
-  "Build confidence",
-  "Explore research, patent & IP pathways",
-  "Join a global community of innovators",
+const hubActivities = [
+  "Student innovation teams",
+  "Research and problem-solving projects",
+  "Design thinking sessions",
+  "Innovation documentation",
+  "Prototype development guidance",
+  "Competition preparation",
+  "Patentability review pathways",
+  "Recognition of student innovators",
 ];
 
-const CompetitionSection = () => {
+const AboutHubsSection = () => {
   return (
     <Box
       sx={{
         py: { xs: 10, md: 14 },
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#F9F9FB",
         position: "relative",
         overflow: "hidden",
       }}
     >
+      {/* Background decoration - very subtle warm accent glow on the top-left */}
       <Box
         sx={{
           position: "absolute",
-          bottom: "-10%",
-          right: "-10%",
+          top: "-10%",
+          left: "-10%",
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background: "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -73,6 +54,8 @@ const CompetitionSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
+          
+          {/* Left Column: Custom Coded School Illustration */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Box
               sx={{
@@ -92,8 +75,8 @@ const CompetitionSection = () => {
               }}
             >
               <Image
-                src="/images/homepage/top_young_innovator.png"
-                alt="Top Young Innovator"
+                src="/images/homepage/hub_room.png"
+                alt="IAIRE School Innovation Hub"
                 width={1024}
                 height={1024}
                 layout="responsive"
@@ -107,13 +90,11 @@ const CompetitionSection = () => {
             </Box>
           </Grid>
 
-          {/* Right Column: Heading & Content */}
+          {/* Right Column: Heading, Benefits & Content */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
-                />
+                <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -124,7 +105,7 @@ const CompetitionSection = () => {
                     textTransform: "uppercase",
                   }}
                 >
-                  GLOBAL PLATFORM
+                  SCHOOL ECOSYSTEM
                 </Typography>
               </Box>
 
@@ -139,7 +120,7 @@ const CompetitionSection = () => {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Global Recognition Through Top Young Innovator
+                Building Innovation Inside Schools
               </Typography>
 
               <Stack spacing={2.5}>
@@ -152,7 +133,7 @@ const CompetitionSection = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  Innovation deserves a platform.
+                  An IAIRE Innovation Hub is a structured school-based ecosystem where students and teachers work together on innovation, research, and entrepreneurship.
                 </Typography>
                 <Typography
                   sx={{
@@ -162,27 +143,11 @@ const CompetitionSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  IAIRE’s Top Young Innovator Competition is designed to
-                  identify, mentor, celebrate, and recognize outstanding student
-                  innovators from around the world.
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "15px",
-                    color: "#5F5F6A",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  Unlike traditional competitions, IAIRE emphasizes learning
-                  before evaluation. Students first receive access to innovation
-                  resources, learning frameworks, mentoring, and project
-                  development support. They then showcase their solutions on a
-                  national and international platform.
+                  It is led by certified teachers and supported by IAIRE’s curriculum, resources, mentoring frameworks, documentation templates, and digital platform.
                 </Typography>
               </Stack>
 
-              {/* Opportunity List (2-column layout) */}
+              {/* Benefits Checklist Grid */}
               <Box sx={{ pt: 1 }}>
                 <Typography
                   sx={{
@@ -195,16 +160,12 @@ const CompetitionSection = () => {
                     letterSpacing: "0.03em",
                   }}
                 >
-                  The competition gives students an opportunity to:
+                  What Happens in an Innovation Hub?
                 </Typography>
-                <Grid container spacing={2}>
-                  {competitionOpportunities.map((op, index) => (
+                <Grid container spacing={1.5}>
+                  {hubActivities.map((act, index) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                      <Stack
-                        direction="row"
-                        spacing={1.5}
-                        alignItems="flex-start"
-                      >
+                      <Stack direction="row" spacing={1.5} alignItems="flex-start">
                         <OrangeCheck />
                         <Typography
                           sx={{
@@ -215,13 +176,31 @@ const CompetitionSection = () => {
                             lineHeight: 1.4,
                           }}
                         >
-                          {op}
+                          {act}
                         </Typography>
                       </Stack>
                     </Grid>
                   ))}
                 </Grid>
               </Box>
+
+              {/* Why Schools Need Innovation Hubs Callout */}
+              <Typography
+                sx={{
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "14.5px",
+                  color: "#F85D00",
+                  fontWeight: 500,
+                  lineHeight: 1.65,
+                  borderLeft: "2px solid #F85D00",
+                  pl: 2.5,
+                }}
+              >
+                <Box component="span" sx={{ fontWeight: 700, display: "block", mb: 0.5 }}>
+                  Why Schools Need Innovation Hubs
+                </Box>
+                Innovation becomes sustainable when it has a home inside the school. An IAIRE Innovation Hub gives that home structure, purpose, and continuity.
+              </Typography>
 
               <Box sx={{ pt: 1.5 }}>
                 <Button
@@ -243,15 +222,16 @@ const CompetitionSection = () => {
                     },
                   }}
                 >
-                  Participate in Top Young Innovator
+                  Create an Innovation Hub
                 </Button>
               </Box>
             </Stack>
           </Grid>
+
         </Grid>
       </Container>
     </Box>
   );
 };
 
-export default CompetitionSection;
+export default AboutHubsSection;
