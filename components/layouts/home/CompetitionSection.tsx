@@ -5,6 +5,7 @@ import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
+import Link from "next/link";
 
 const OrangeCheck = () => (
   <Box
@@ -224,27 +225,29 @@ const CompetitionSection = () => {
               </Box>
 
               <Box sx={{ pt: 1.5 }}>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#F85D00",
-                    borderRadius: "30px",
-                    p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#e05400",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
-                    },
-                  }}
-                >
-                  Participate in Top Young Innovator
-                </Button>
+                <Link href="https://topyounginnovators.vercel.app/" target="_blank">
+                  <Button
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#F85D00",
+                      borderRadius: "30px",
+                      p: "12px 28px",
+                      boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#e05400",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
+                      },
+                    }}
+                  >
+                    Participate in Top Young Innovator
+                  </Button>
+                </Link>
               </Box>
             </Stack>
           </Grid>

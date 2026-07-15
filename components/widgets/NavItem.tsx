@@ -7,15 +7,10 @@ import Link from "next/link";
 import { COLORS } from "@/utils/enum";
 import { newBlack_medium } from "@/utils/fonts";
 
+import { NavigationItem } from "@/utils/type";
+
 interface NavItemProps {
-  val: {
-    label: string;
-    url?: string;
-    subModules?: Array<{
-      label: string;
-      url: string;
-    }>;
-  };
+  val: NavigationItem;
   pathname: string;
 }
 
@@ -91,8 +86,14 @@ const NavItem = ({ val, pathname }: NavItemProps) => {
             },
           }}
         >
-          {val.subModules?.map((sub: any, idx: number) => (
-            <Link href={sub.url} key={idx} style={{ textDecoration: "none" }} onClick={handleClose}>
+          {val.subModules?.map((sub, idx) => (
+            <Link
+              href={sub.url}
+              key={idx}
+              style={{ textDecoration: "none" }}
+              onClick={handleClose}
+              target={sub.target}
+            >
               <MenuItem
                 sx={{
                   fontFamily: newBlack_medium.style.fontFamily,

@@ -93,6 +93,18 @@ export interface STATSCARDPROPS {
   data?: STATSCARDDATA[];
 }
 
+export interface SubModuleItem {
+  label: string;
+  url: string;
+  target?: string;
+}
+
+export interface NavigationItem {
+  label: string;
+  url?: string;
+  subModules?: SubModuleItem[];
+}
+
 export interface TEAM_LIST_HEADER {
   label: string;
 }

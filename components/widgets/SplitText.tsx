@@ -120,7 +120,7 @@ if (!ref.current || !ready) return;
 );
 
 /* ---------- RENDER ---------- */
-const Tag = tag || "p";
+const Tag = (tag || "p") as any;
 
 return (
 <Tag

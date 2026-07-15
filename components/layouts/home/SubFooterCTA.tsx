@@ -4,13 +4,15 @@ import React from "react";
 import { Box, Button, Container, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import Link from "next/link";
 
 const SubFooterCTA = () => {
   return (
     <Box
       sx={{
         py: { xs: 12, md: 16 },
-        background: "radial-gradient(circle at 50% 120%, rgba(248, 93, 0, 0.1) 0%, #090A0E 70%)",
+        background:
+          "radial-gradient(circle at 50% 120%, rgba(248, 93, 0, 0.1) 0%, #090A0E 70%)",
         backgroundColor: "#090A0E",
         position: "relative",
         overflow: "hidden",
@@ -35,7 +37,6 @@ const SubFooterCTA = () => {
 
       <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
         <Stack spacing={4} alignItems="center" textAlign="center">
-          
           {/* Tag */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
             <Box sx={{ width: 12, height: 2, backgroundColor: "#F85D00" }} />
@@ -81,7 +82,8 @@ const SubFooterCTA = () => {
                 opacity: 0.95,
               }}
             >
-              IAIRE is more than an organization. It is a movement to redefine how schools prepare students for the future.
+              IAIRE is more than an organization. It is a movement to redefine
+              how schools prepare students for the future.
             </Typography>
             <Typography
               sx={{
@@ -91,33 +93,39 @@ const SubFooterCTA = () => {
                 lineHeight: 1.6,
               }}
             >
-              We invite schools, teachers, students, parents, institutions, researchers, policymakers, industry leaders, and innovation partners to join us in building a world where every learner has the opportunity to become a creator, researcher, problem-solver, and changemaker.
+              We invite schools, teachers, students, parents, institutions,
+              researchers, policymakers, industry leaders, and innovation
+              partners to join us in building a world where every learner has
+              the opportunity to become a creator, researcher, problem-solver,
+              and changemaker.
             </Typography>
           </Stack>
 
           {/* CTA Buttons */}
           <Box sx={{ pt: 2 }}>
-            <Button
-              sx={{
-                fontFamily: inter.style.fontFamily,
-                fontSize: "15px",
-                fontWeight: 700,
-                textTransform: "none",
-                color: "#FFFFFF",
-                backgroundColor: "#F85D00",
-                borderRadius: "30px",
-                p: "14px 36px",
-                boxShadow: "0 4px 20px rgba(248, 93, 0, 0.3)",
-                transition: "all 0.3s ease",
-                "&:hover": {
-                  backgroundColor: "#e05400",
-                  transform: "translateY(-3px)",
-                  boxShadow: "0 8px 25px rgba(248, 93, 0, 0.45)",
-                },
-              }}
-            >
-              Become a Member →
-            </Button>
+            <Link href="/login">
+              <Button
+                sx={{
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  textTransform: "none",
+                  color: "#FFFFFF",
+                  backgroundColor: "#F85D00",
+                  borderRadius: "30px",
+                  p: "14px 36px",
+                  boxShadow: "0 4px 20px rgba(248, 93, 0, 0.3)",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    backgroundColor: "#e05400",
+                    transform: "translateY(-3px)",
+                    boxShadow: "0 8px 25px rgba(248, 93, 0, 0.45)",
+                  },
+                }}
+              >
+                Become a Member →
+              </Button>
+            </Link>
           </Box>
 
           {/* Concluding highlight statement */}
@@ -134,9 +142,9 @@ const SubFooterCTA = () => {
               opacity: 0.9,
             }}
           >
-            "The future will be shaped by those who can imagine better possibilities — and build them."
+            "The future will be shaped by those who can imagine better
+            possibilities — and build them."
           </Typography>
-
         </Stack>
       </Container>
     </Box>

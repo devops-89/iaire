@@ -5,6 +5,7 @@ import { inter } from "@/utils/fonts";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import ThreeEarth from "./ThreeGlobe";
+import Link from "next/link";
 
 const statsSets = [
   {
@@ -180,47 +181,57 @@ const HeroSection2 = () => {
               sx={{ alignItems: "center", mt: 4 }}
               spacing={2}
             >
-              <Button
-                sx={{
-                  fontSize: "14px",
-                  fontFamily: inter.style.fontFamily,
-                  textTransform: "none",
-                  fontWeight: 600,
-                  color: COLORS.WHITE,
-                  backgroundColor: "#f35e05",
-                  borderRadius: "30px",
-                  p: "10px 24px",
-                  boxShadow: "0 4px 14px rgba(243, 94, 5, 0.3)",
-                  transition: "all 0.3s ease",
-                  "&:hover": {
-                    backgroundColor: "#d14e03",
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 6px 20px rgba(243, 94, 5, 0.4)",
-                  },
-                }}
+              <Link
+                href="/signup/role-selection"
+                style={{ textDecoration: "none" }}
               >
-                Join the Ecosystem →
-              </Button>
-              <Button
-                sx={{
-                  fontSize: "14px",
-                  color: COLORS.WHITE,
-                  fontFamily: inter.style.fontFamily,
-                  backgroundColor: COLORS.BLACK,
-                  borderRadius: "30px",
-                  textTransform: "none",
-                  fontWeight: 600,
-                  p: "10px 24px",
-                  transition: "all 0.3s ease",
-                  "&:hover": {
-                    backgroundColor: "#222",
-                    transform: "translateY(-2px)",
-                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.25)",
-                  },
-                }}
+                <Button
+                  sx={{
+                    fontSize: "14px",
+                    fontFamily: inter.style.fontFamily,
+                    textTransform: "none",
+                    fontWeight: 600,
+                    color: COLORS.WHITE,
+                    backgroundColor: "#f35e05",
+                    borderRadius: "30px",
+                    p: "10px 24px",
+                    boxShadow: "0 4px 14px rgba(243, 94, 5, 0.3)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      backgroundColor: "#d14e03",
+                      transform: "translateY(-2px)",
+                      boxShadow: "0 6px 20px rgba(243, 94, 5, 0.4)",
+                    },
+                  }}
+                >
+                  Join the Ecosystem →
+                </Button>
+              </Link>
+              <Link
+                href="/signup/role-selection"
+                style={{ textDecoration: "none" }}
               >
-                Explore Programs
-              </Button>
+                <Button
+                  sx={{
+                    fontSize: "14px",
+                    color: COLORS.WHITE,
+                    fontFamily: inter.style.fontFamily,
+                    backgroundColor: COLORS.BLACK,
+                    borderRadius: "30px",
+                    textTransform: "none",
+                    fontWeight: 600,
+                    p: "10px 24px",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      backgroundColor: "#222",
+                      transform: "translateY(-2px)",
+                      boxShadow: "0 6px 20px rgba(0, 0, 0, 0.25)",
+                    },
+                  }}
+                >
+                  Become an IAIRE Partner
+                </Button>
+              </Link>
             </Stack>
           </Grid>
 

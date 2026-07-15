@@ -4,6 +4,7 @@ import React from "react";
 import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import Link from "next/link";
 
 const VisionSection = () => {
   return (
@@ -24,7 +25,8 @@ const VisionSection = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.05) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.05) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(60px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -37,7 +39,9 @@ const VisionSection = () => {
           <Grid size={{ xs: 12, md: 5.5 }}>
             <Stack spacing={2}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+                <Box
+                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
+                />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -62,7 +66,9 @@ const VisionSection = () => {
                 }}
               >
                 The World Is Changing. <br />
-                <span style={{ color: "#F85D00" }}>Education Must Change With It.</span>
+                <span style={{ color: "#F85D00" }}>
+                  Education Must Change With It.
+                </span>
               </Typography>
             </Stack>
           </Grid>
@@ -79,7 +85,9 @@ const VisionSection = () => {
                   lineHeight: 1.6,
                 }}
               >
-                Artificial Intelligence, automation, robotics, climate change, healthcare challenges, sustainability issues, and rapid technological disruption are reshaping the future.
+                Artificial Intelligence, automation, robotics, climate change,
+                healthcare challenges, sustainability issues, and rapid
+                technological disruption are reshaping the future.
               </Typography>
 
               <Typography
@@ -91,7 +99,11 @@ const VisionSection = () => {
                   lineHeight: 1.7,
                 }}
               >
-                The students of today will not succeed by memorizing answers alone. They will need to ask better questions, identify real problems, think critically, conduct research, design solutions, protect ideas, and build innovations that create meaningful impact.
+                The students of today will not succeed by memorizing answers
+                alone. They will need to ask better questions, identify real
+                problems, think critically, conduct research, design solutions,
+                protect ideas, and build innovations that create meaningful
+                impact.
               </Typography>
 
               <Typography
@@ -103,32 +115,38 @@ const VisionSection = () => {
                   lineHeight: 1.7,
                 }}
               >
-                <strong>IAIRE exists to support this transformation.</strong> We work with schools, educators, students, researchers, innovators, and institutions to make innovation and research a structured part of education — not an occasional activity, competition, or exhibition.
+                <strong>IAIRE exists to support this transformation.</strong> We
+                work with schools, educators, students, researchers, innovators,
+                and institutions to make innovation and research a structured
+                part of education — not an occasional activity, competition, or
+                exhibition.
               </Typography>
 
               <Box sx={{ pt: 2 }}>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "15px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: COLORS.WHITE,
-                    backgroundColor: "#F85D00",
-                    borderRadius: "50px",
-                    px: 4,
-                    py: 1.5,
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#d14e03",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
-                    },
-                  }}
-                >
-                  Learn About the IAIRE Vision →
-                </Button>
+                <Link href="/about">
+                  <Button
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "15px",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      color: COLORS.WHITE,
+                      backgroundColor: "#F85D00",
+                      borderRadius: "50px",
+                      px: 4,
+                      py: 1.5,
+                      boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#d14e03",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
+                      },
+                    }}
+                  >
+                    Learn About the IAIRE Vision →
+                  </Button>
+                </Link>
               </Box>
             </Stack>
           </Grid>

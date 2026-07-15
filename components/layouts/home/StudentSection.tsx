@@ -4,6 +4,7 @@ import React from "react";
 import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import Link from "next/link";
 
 const studentSteps = [
   { label: "Innovation mindset", phase: "INITIALIZE", num: "01" },
@@ -35,7 +36,8 @@ const StudentSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(80px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -48,7 +50,9 @@ const StudentSection = () => {
           <Grid size={{ xs: 12, md: 5 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+                <Box
+                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
+                />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -87,7 +91,8 @@ const StudentSection = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  Students are naturally curious. IAIRE helps convert that curiosity into structured innovation.
+                  Students are naturally curious. IAIRE helps convert that
+                  curiosity into structured innovation.
                 </Typography>
                 <Typography
                   sx={{
@@ -97,7 +102,10 @@ const StudentSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  Through IAIRE’s Student Innovation Program, students learn how to identify real-world problems, think creatively, conduct research, develop solutions, document their ideas, and present innovations with confidence.
+                  Through IAIRE’s Student Innovation Program, students learn how
+                  to identify real-world problems, think creatively, conduct
+                  research, develop solutions, document their ideas, and present
+                  innovations with confidence.
                 </Typography>
                 <Typography
                   sx={{
@@ -107,7 +115,8 @@ const StudentSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  They are guided through a step-by-step journey that builds confidence and critical skills.
+                  They are guided through a step-by-step journey that builds
+                  confidence and critical skills.
                 </Typography>
                 <Typography
                   sx={{
@@ -120,32 +129,35 @@ const StudentSection = () => {
                     pl: 2,
                   }}
                 >
-                  The goal is not only to create projects. The goal is to create future-ready thinkers.
+                  The goal is not only to create projects. The goal is to create
+                  future-ready thinkers.
                 </Typography>
               </Stack>
 
               <Box sx={{ pt: 1.5 }}>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#F85D00",
-                    borderRadius: "30px",
-                    p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#e05400",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
-                    },
-                  }}
-                >
-                  Start the Student Innovation Journey
-                </Button>
+                <Link href="/login">
+                  <Button
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#F85D00",
+                      borderRadius: "30px",
+                      p: "12px 28px",
+                      boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#e05400",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
+                      },
+                    }}
+                  >
+                    Start the Student Innovation Journey
+                  </Button>
+                </Link>
               </Box>
             </Stack>
           </Grid>
@@ -154,7 +166,11 @@ const StudentSection = () => {
           <Grid size={{ xs: 12, md: 7 }}>
             <Grid container spacing={2.5}>
               {studentSteps.map((step, index) => (
-                <Grid size={{ xs: 12, sm: 6 }} key={index} sx={{ display: "flex" }}>
+                <Grid
+                  size={{ xs: 12, sm: 6 }}
+                  key={index}
+                  sx={{ display: "flex" }}
+                >
                   <Box
                     sx={{
                       backgroundColor: "#FFFFFF",
@@ -205,7 +221,7 @@ const StudentSection = () => {
                       >
                         {step.num} / {step.phase}
                       </Typography>
-                      
+
                       <Typography
                         sx={{
                           fontFamily: inter.style.fontFamily,

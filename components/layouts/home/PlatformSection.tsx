@@ -4,6 +4,7 @@ import React from "react";
 import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import Link from "next/link";
 
 const platformFeatures = [
   "Teacher training",
@@ -55,8 +56,23 @@ const PlatformDashboardMockup = () => (
       <Stack spacing={2.5}>
         {/* Logo block */}
         <Stack direction="row" spacing={1} alignItems="center">
-          <Box sx={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#F85D00" }} />
-          <Typography sx={{ fontSize: "11px", fontWeight: 700, color: "#FFFFFF", letterSpacing: "0.05em", fontFamily: "monospace" }}>
+          <Box
+            sx={{
+              width: 10,
+              height: 10,
+              borderRadius: "50%",
+              backgroundColor: "#F85D00",
+            }}
+          />
+          <Typography
+            sx={{
+              fontSize: "11px",
+              fontWeight: 700,
+              color: "#FFFFFF",
+              letterSpacing: "0.05em",
+              fontFamily: "monospace",
+            }}
+          >
             IAIRE PORTAL
           </Typography>
         </Stack>
@@ -76,17 +92,27 @@ const PlatformDashboardMockup = () => (
                 px: 1.5,
                 py: 1,
                 borderRadius: "6px",
-                backgroundColor: item.active ? "rgba(248, 93, 0, 0.12)" : "transparent",
+                backgroundColor: item.active
+                  ? "rgba(248, 93, 0, 0.12)"
+                  : "transparent",
                 color: item.active ? "#F85D00" : "#8E8E93",
                 cursor: "pointer",
                 transition: "all 0.2s",
                 "&:hover": {
-                  backgroundColor: item.active ? "rgba(248, 93, 0, 0.12)" : "rgba(255, 255, 255, 0.04)",
+                  backgroundColor: item.active
+                    ? "rgba(248, 93, 0, 0.12)"
+                    : "rgba(255, 255, 255, 0.04)",
                   color: item.active ? "#F85D00" : "#FFFFFF",
                 },
               }}
             >
-              <Typography sx={{ fontSize: "10.5px", fontWeight: 600, fontFamily: inter.style.fontFamily }}>
+              <Typography
+                sx={{
+                  fontSize: "10.5px",
+                  fontWeight: 600,
+                  fontFamily: inter.style.fontFamily,
+                }}
+              >
                 {item.label}
               </Typography>
             </Box>
@@ -95,11 +121,38 @@ const PlatformDashboardMockup = () => (
       </Stack>
 
       {/* User profile node */}
-      <Stack direction="row" spacing={1} alignItems="center" sx={{ opacity: 0.8 }}>
-        <Box sx={{ width: 22, height: 22, borderRadius: "50%", backgroundColor: "#F85D00", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "9px", fontWeight: 800, color: "#FFFFFF" }}>
+      <Stack
+        direction="row"
+        spacing={1}
+        alignItems="center"
+        sx={{ opacity: 0.8 }}
+      >
+        <Box
+          sx={{
+            width: 22,
+            height: 22,
+            borderRadius: "50%",
+            backgroundColor: "#F85D00",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "9px",
+            fontWeight: 800,
+            color: "#FFFFFF",
+          }}
+        >
           M
         </Box>
-        <Typography sx={{ fontSize: "9px", fontWeight: 600, color: "#FFFFFF", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+        <Typography
+          sx={{
+            fontSize: "9px",
+            fontWeight: 600,
+            color: "#FFFFFF",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
           Mentor Hub
         </Typography>
       </Stack>
@@ -110,62 +163,218 @@ const PlatformDashboardMockup = () => (
       {/* Top Stats Cards */}
       <Grid container spacing={1.5}>
         <Grid size={6}>
-          <Box sx={{ backgroundColor: "rgba(255, 255, 255, 0.03)", border: "1px solid rgba(255, 255, 255, 0.05)", borderRadius: "10px", p: 1.5 }}>
-            <Typography sx={{ fontSize: "9px", color: "#8E8E93", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "monospace" }}>
+          <Box
+            sx={{
+              backgroundColor: "rgba(255, 255, 255, 0.03)",
+              border: "1px solid rgba(255, 255, 255, 0.05)",
+              borderRadius: "10px",
+              p: 1.5,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "9px",
+                color: "#8E8E93",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+                fontFamily: "monospace",
+              }}
+            >
               Training Progress
             </Typography>
-            <Stack direction="row" spacing={1} alignItems="baseline" sx={{ mt: 0.5 }}>
-              <Typography sx={{ fontSize: "18px", fontWeight: 700, color: "#FFFFFF", fontFamily: inter.style.fontFamily }}>
+            <Stack
+              direction="row"
+              spacing={1}
+              alignItems="baseline"
+              sx={{ mt: 0.5 }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#FFFFFF",
+                  fontFamily: inter.style.fontFamily,
+                }}
+              >
                 84%
               </Typography>
-              <Typography sx={{ fontSize: "9px", color: "#00B159", fontWeight: 700 }}>
+              <Typography
+                sx={{ fontSize: "9px", color: "#00B159", fontWeight: 700 }}
+              >
                 +12%
               </Typography>
             </Stack>
             {/* Mini Progress Bar */}
-            <Box sx={{ width: "100%", height: 3, backgroundColor: "rgba(255,255,255,0.06)", borderRadius: 10, mt: 1, overflow: "hidden" }}>
-              <Box sx={{ width: "84%", height: "100%", backgroundColor: "#00B159" }} />
+            <Box
+              sx={{
+                width: "100%",
+                height: 3,
+                backgroundColor: "rgba(255,255,255,0.06)",
+                borderRadius: 10,
+                mt: 1,
+                overflow: "hidden",
+              }}
+            >
+              <Box
+                sx={{
+                  width: "84%",
+                  height: "100%",
+                  backgroundColor: "#00B159",
+                }}
+              />
             </Box>
           </Box>
         </Grid>
         <Grid size={6}>
-          <Box sx={{ backgroundColor: "rgba(255, 255, 255, 0.03)", border: "1px solid rgba(255, 255, 255, 0.05)", borderRadius: "10px", p: 1.5 }}>
-            <Typography sx={{ fontSize: "9px", color: "#8E8E93", textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "monospace" }}>
+          <Box
+            sx={{
+              backgroundColor: "rgba(255, 255, 255, 0.03)",
+              border: "1px solid rgba(255, 255, 255, 0.05)",
+              borderRadius: "10px",
+              p: 1.5,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "9px",
+                color: "#8E8E93",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+                fontFamily: "monospace",
+              }}
+            >
               Ecosystem Reach
             </Typography>
-            <Stack direction="row" spacing={1} alignItems="baseline" sx={{ mt: 0.5 }}>
-              <Typography sx={{ fontSize: "18px", fontWeight: 700, color: "#FFFFFF", fontFamily: inter.style.fontFamily }}>
+            <Stack
+              direction="row"
+              spacing={1}
+              alignItems="baseline"
+              sx={{ mt: 0.5 }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#FFFFFF",
+                  fontFamily: inter.style.fontFamily,
+                }}
+              >
                 45k+
               </Typography>
-              <Typography sx={{ fontSize: "9px", color: "#F85D00", fontWeight: 700 }}>
+              <Typography
+                sx={{ fontSize: "9px", color: "#F85D00", fontWeight: 700 }}
+              >
                 Students
               </Typography>
             </Stack>
             {/* Mini Progress Bar */}
-            <Box sx={{ width: "100%", height: 3, backgroundColor: "rgba(255,255,255,0.06)", borderRadius: 10, mt: 1, overflow: "hidden" }}>
-              <Box sx={{ width: "70%", height: "100%", backgroundColor: "#F85D00" }} />
+            <Box
+              sx={{
+                width: "100%",
+                height: 3,
+                backgroundColor: "rgba(255,255,255,0.06)",
+                borderRadius: 10,
+                mt: 1,
+                overflow: "hidden",
+              }}
+            >
+              <Box
+                sx={{
+                  width: "70%",
+                  height: "100%",
+                  backgroundColor: "#F85D00",
+                }}
+              />
             </Box>
           </Box>
         </Grid>
       </Grid>
 
       {/* Active Projects Registry Feed */}
-      <Box sx={{ flex: 1, backgroundColor: "rgba(255, 255, 255, 0.015)", border: "1px solid rgba(255, 255, 255, 0.05)", borderRadius: "12px", p: 2, display: "flex", flexDirection: "column", gap: 1.5, overflow: "hidden" }}>
-        <Typography sx={{ fontSize: "11px", fontWeight: 700, color: "#FFFFFF", fontFamily: inter.style.fontFamily, borderBottom: "1px solid rgba(255,255,255,0.05)", pb: 1 }}>
+      <Box
+        sx={{
+          flex: 1,
+          backgroundColor: "rgba(255, 255, 255, 0.015)",
+          border: "1px solid rgba(255, 255, 255, 0.05)",
+          borderRadius: "12px",
+          p: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: 1.5,
+          overflow: "hidden",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "11px",
+            fontWeight: 700,
+            color: "#FFFFFF",
+            fontFamily: inter.style.fontFamily,
+            borderBottom: "1px solid rgba(255,255,255,0.05)",
+            pb: 1,
+          }}
+        >
           Active Projects Registry
         </Typography>
 
         <Stack spacing={1} sx={{ overflow: "hidden" }}>
           {[
-            { name: "Solar Desalination Rover", status: "IP Pending", color: "#3B82F6", bg: "rgba(59, 130, 246, 0.12)" },
-            { name: "Biodegradable Filter V2", status: "Mentoring", color: "#F85D00", bg: "rgba(248, 93, 0, 0.12)" },
-            { name: "AI Agriculture Crop Health", status: "Certified", color: "#00B159", bg: "rgba(0, 177, 89, 0.12)" },
+            {
+              name: "Solar Desalination Rover",
+              status: "IP Pending",
+              color: "#3B82F6",
+              bg: "rgba(59, 130, 246, 0.12)",
+            },
+            {
+              name: "Biodegradable Filter V2",
+              status: "Mentoring",
+              color: "#F85D00",
+              bg: "rgba(248, 93, 0, 0.12)",
+            },
+            {
+              name: "AI Agriculture Crop Health",
+              status: "Certified",
+              color: "#00B159",
+              bg: "rgba(0, 177, 89, 0.12)",
+            },
           ].map((proj, idx) => (
-            <Stack key={idx} direction="row" alignItems="center" justifyContent="space-between" sx={{ p: 1, backgroundColor: "rgba(255, 255, 255, 0.02)", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.03)" }}>
-              <Typography sx={{ fontSize: "11px", fontWeight: 500, color: "#E2E2E9", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "160px" }}>
+            <Stack
+              key={idx}
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              sx={{
+                p: 1,
+                backgroundColor: "rgba(255, 255, 255, 0.02)",
+                borderRadius: "6px",
+                border: "1px solid rgba(255,255,255,0.03)",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "11px",
+                  fontWeight: 500,
+                  color: "#E2E2E9",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  maxWidth: "160px",
+                }}
+              >
                 {proj.name}
               </Typography>
-              <Box sx={{ fontSize: "9px", fontWeight: 700, color: proj.color, backgroundColor: proj.bg, px: 1, py: 0.25, borderRadius: "4px", textTransform: "uppercase" }}>
+              <Box
+                sx={{
+                  fontSize: "9px",
+                  fontWeight: 700,
+                  color: proj.color,
+                  backgroundColor: proj.bg,
+                  px: 1,
+                  py: 0.25,
+                  borderRadius: "4px",
+                  textTransform: "uppercase",
+                }}
+              >
                 {proj.status}
               </Box>
             </Stack>
@@ -177,10 +386,31 @@ const PlatformDashboardMockup = () => (
 );
 
 const OrangeCheck = () => (
-  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      mt: 0.25,
+    }}
+  >
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill="rgba(248, 93, 0, 0.12)" stroke="#F85D00" strokeWidth="2" />
-      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#F85D00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        fill="rgba(248, 93, 0, 0.12)"
+        stroke="#F85D00"
+        strokeWidth="2"
+      />
+      <path
+        d="M8.5 12.5l2.5 2.5 4.5-5"
+        stroke="#F85D00"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   </Box>
 );
@@ -204,7 +434,8 @@ const PlatformSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -213,12 +444,13 @@ const PlatformSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Heading & Content */}
           <Grid size={{ xs: 12, md: 5 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+                <Box
+                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
+                />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -257,7 +489,8 @@ const PlatformSection = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  To make innovation education accessible globally, IAIRE uses a digital-first delivery model.
+                  To make innovation education accessible globally, IAIRE uses a
+                  digital-first delivery model.
                 </Typography>
                 <Typography
                   sx={{
@@ -267,7 +500,11 @@ const PlatformSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  Through the IAIRE digital platform, schools, teachers, and students can access learning modules, mentoring resources, templates, implementation guides, certification pathways, research support, innovation documentation, and program updates.
+                  Through the IAIRE digital platform, schools, teachers, and
+                  students can access learning modules, mentoring resources,
+                  templates, implementation guides, certification pathways,
+                  research support, innovation documentation, and program
+                  updates.
                 </Typography>
               </Stack>
 
@@ -289,7 +526,11 @@ const PlatformSection = () => {
                 <Grid container spacing={2}>
                   {platformFeatures.map((feat, index) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                      <Stack direction="row" spacing={1.5} alignItems="flex-start">
+                      <Stack
+                        direction="row"
+                        spacing={1.5}
+                        alignItems="flex-start"
+                      >
                         <OrangeCheck />
                         <Typography
                           sx={{
@@ -319,31 +560,34 @@ const PlatformSection = () => {
                   pl: 2,
                 }}
               >
-                This enables IAIRE programs to reach schools across cities, regions, countries, and continents.
+                This enables IAIRE programs to reach schools across cities,
+                regions, countries, and continents.
               </Typography>
 
               <Box sx={{ pt: 1.5 }}>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#F85D00",
-                    borderRadius: "30px",
-                    p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#e05400",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
-                    },
-                  }}
-                >
-                  Explore the Digital Platform
-                </Button>
+                <Link href="/login">
+                  <Button
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#F85D00",
+                      borderRadius: "30px",
+                      p: "12px 28px",
+                      boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#e05400",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
+                      },
+                    }}
+                  >
+                    Explore the Digital Platform
+                  </Button>
+                </Link>
               </Box>
             </Stack>
           </Grid>
@@ -352,7 +596,6 @@ const PlatformSection = () => {
           <Grid size={{ xs: 12, md: 7 }}>
             <PlatformDashboardMockup />
           </Grid>
-
         </Grid>
       </Container>
     </Box>

@@ -10,29 +10,35 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import Image from "next/image";
 import logo from "@/images/logo/iaire_logo_white.png";
+import NextLink from "next/link";
 
-const FooterLink = ({ href, children, icon }: { href: string; children: React.ReactNode; icon?: React.ReactNode }) => (
-  <Link
-    href={href}
-    sx={{
-      fontFamily: inter.style.fontFamily,
-      color: "rgba(255, 255, 255, 0.5)",
-      textDecoration: "none",
-      fontSize: "14px",
-      display: "flex",
-      alignItems: "center",
-      gap: 1.25,
-      transition: "all 0.25s ease",
-      "&:hover": {
-        color: "#F85D00",
-        transform: "translateX(4px)",
-      },
-    }}
-  >
-    {icon}
-    {children}
-  </Link>
-);
+const FooterLink = ({ href, children, icon }: { href: string; children: React.ReactNode; icon?: React.ReactNode }) => {
+  const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+  return (
+    <Link
+      href={href}
+      component={isExternal ? "a" : NextLink}
+      {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
+      sx={{
+        fontFamily: inter.style.fontFamily,
+        color: "rgba(255, 255, 255, 0.5)",
+        textDecoration: "none",
+        fontSize: "14px",
+        display: "flex",
+        alignItems: "center",
+        gap: 1.25,
+        transition: "all 0.25s ease",
+        "&:hover": {
+          color: "#F85D00",
+          transform: "translateX(4px)",
+        },
+      }}
+    >
+      {icon}
+      {children}
+    </Link>
+  );
+};
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -222,15 +228,15 @@ const Footer = () => {
                 </Typography>
                 
                 <Stack spacing={2}>
-                  <FooterLink href="#">About Us</FooterLink>
-                  <FooterLink href="#">Membership</FooterLink>
-                  <FooterLink href="#">Programs</FooterLink>
-                  <FooterLink href="#">Awards & Grants</FooterLink>
+                  <FooterLink href="/">Home</FooterLink>
+                  <FooterLink href="/about">About Us</FooterLink>
+                  <FooterLink href="/chapters/india">IAIRE India Chapter</FooterLink>
+                  <FooterLink href="/programs">Programs</FooterLink>
                 </Stack>
               </Stack>
             </Grid>
 
-            {/* Column 3: Resources */}
+            {/* Column 3: Membership */}
             <Grid size={{ xs: 12, sm: 4, md: 2.5 }}>
               <Stack spacing={3}>
                 <Typography
@@ -243,14 +249,13 @@ const Footer = () => {
                     textTransform: "uppercase",
                   }}
                 >
-                  Resources
+                  Membership
                 </Typography>
                 
                 <Stack spacing={2}>
-                  <FooterLink href="#">Webinars & Events</FooterLink>
-                  <FooterLink href="#">Success Stories</FooterLink>
-                  <FooterLink href="#">Resource Center</FooterLink>
-                  <FooterLink href="#">Community Portal</FooterLink>
+                  <FooterLink href="/membership/become-member">Become a Member</FooterLink>
+                  <FooterLink href="/membership/benefits">Membership Benefits</FooterLink>
+                  <FooterLink href="https://topyounginnovators.vercel.app/">Top Young Innovators</FooterLink>
                 </Stack>
               </Stack>
             </Grid>
@@ -272,7 +277,7 @@ const Footer = () => {
                 </Typography>
                 
                 <Stack spacing={2}>
-                  <FooterLink href="#">Contact Us</FooterLink>
+                  <FooterLink href="/about#contact">Contact Us</FooterLink>
                   <FooterLink href="mailto:info@iaire.org" icon={<MailOutlineIcon sx={{ fontSize: 16 }} />}>
                     info@iaire.org
                   </FooterLink>

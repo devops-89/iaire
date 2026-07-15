@@ -4,7 +4,15 @@ import React, { useState } from "react";
 import { HEADER_CONTENT } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
 import { newBlack_medium, inter } from "@/utils/fonts";
-import { Box, Button, Container, Stack, Drawer, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Stack,
+  Drawer,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Image from "next/image";
 import Link from "next/link";
@@ -86,7 +94,9 @@ const Header2 = () => {
             justifyContent="space-between"
           >
             {/* Left Side: Animated Hamburger Trigger */}
-            <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-start" }}>
+            <Box
+              sx={{ flex: 1, display: "flex", justifyContent: "flex-start" }}
+            >
               <IconButton
                 onClick={() => setMenuOpen(!menuOpen)}
                 sx={{
@@ -105,7 +115,9 @@ const Header2 = () => {
                       height: 2,
                       backgroundColor: menuOpen ? "#F85D00" : "#2C2C30",
                       borderRadius: "2px",
-                      transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
+                      transform: menuOpen
+                        ? "rotate(45deg) translate(5px, 5px)"
+                        : "none",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                   />
@@ -126,7 +138,9 @@ const Header2 = () => {
                       height: 2,
                       backgroundColor: menuOpen ? "#F85D00" : "#2C2C30",
                       borderRadius: "2px",
-                      transform: menuOpen ? "rotate(-45deg) translate(6px, -6px)" : "none",
+                      transform: menuOpen
+                        ? "rotate(-45deg) translate(6px, -6px)"
+                        : "none",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                   />
@@ -172,7 +186,7 @@ const Header2 = () => {
                     },
                   }}
                 >
-                  Join IAIRE
+                  Join the Ecosystem
                 </Button>
               </Link>
             </Box>
@@ -211,14 +225,18 @@ const Header2 = () => {
       >
         <Stack spacing={4} sx={{ width: "100%" }}>
           {/* Drawer Header (Logo & Close Button) */}
-          <Stack direction="row" alignItems="center" justifyContent="space-between">
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+          >
             <Image
               src={logo}
               alt="IAIRE Logo"
               width={120}
               style={{ objectFit: "contain" }}
             />
-            
+
             <IconButton
               onClick={() => setMenuOpen(false)}
               sx={{
@@ -285,7 +303,9 @@ const Header2 = () => {
                         width: 52,
                         height: 52,
                         borderRadius: "14px",
-                        backgroundColor: isExpanded ? "rgba(248, 93, 0, 0.12)" : "rgba(0, 0, 0, 0.04)",
+                        backgroundColor: isExpanded
+                          ? "rgba(248, 93, 0, 0.12)"
+                          : "rgba(0, 0, 0, 0.04)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -307,7 +327,10 @@ const Header2 = () => {
                         fontFamily: inter.style.fontFamily,
                         fontSize: "15px",
                         fontWeight: 700,
-                        color: isExpanded || pathname === val.url ? "#F85D00" : "#1D1D1F",
+                        color:
+                          isExpanded || pathname === val.url
+                            ? "#F85D00"
+                            : "#1D1D1F",
                         transition: "color 0.2s ease",
                       }}
                     >
@@ -321,7 +344,9 @@ const Header2 = () => {
                       sx={{
                         color: isExpanded ? "#F85D00" : "rgba(0, 0, 0, 0.25)",
                         transition: "transform 0.3s ease, color 0.3s ease",
-                        transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+                        transform: isExpanded
+                          ? "rotate(180deg)"
+                          : "rotate(0deg)",
                       }}
                     />
                   )}
@@ -334,7 +359,9 @@ const Header2 = () => {
                   sx={{
                     opacity: 0,
                     transform: "translateY(20px)",
-                    animation: menuOpen ? "menuItemFadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards" : "none",
+                    animation: menuOpen
+                      ? "menuItemFadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards"
+                      : "none",
                     animationDelay: menuOpen ? `${i * 0.08}s` : "0s",
                     "@keyframes menuItemFadeSlideUp": {
                       "0%": {
@@ -372,13 +399,17 @@ const Header2 = () => {
                             key={idx}
                             onClick={() => setMenuOpen(false)}
                             style={{ textDecoration: "none" }}
+                            target={sub.target || "_self"}
                           >
                             <Typography
                               sx={{
                                 fontFamily: inter.style.fontFamily,
                                 fontSize: "14px",
                                 fontWeight: 600,
-                                color: pathname === sub.url ? "#F85D00" : "rgba(0, 0, 0, 0.65)",
+                                color:
+                                  pathname === sub.url
+                                    ? "#F85D00"
+                                    : "rgba(0, 0, 0, 0.65)",
                                 transition: "color 0.2s ease",
                                 "&:hover": {
                                   color: "#1D1D1F",

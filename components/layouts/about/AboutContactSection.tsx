@@ -112,6 +112,7 @@ const AboutContactSection = () => {
 
   return (
     <Box
+      id="contact"
       sx={{
         py: { xs: 10, md: 14 },
         backgroundColor: "#F9F9FB",

@@ -16,6 +16,7 @@ import {
   STATSCARDPROPS,
   TEAM_LIST_DATA_PROPS,
   TEAM_LIST_HEADER,
+  NavigationItem,
 } from "./type";
 import {
   Groups,
@@ -1993,7 +1994,7 @@ export const CURRENCIES = [
   // },
 ];
 
-export const HEADER_CONTENT = [
+export const HEADER_CONTENT: NavigationItem[] = [
   {
     label: "Home",
     url: "/",
@@ -2029,14 +2030,15 @@ export const HEADER_CONTENT = [
     subModules: [
       {
         label: "Top Young Innovators",
-        url: "#",
+        url: "https://topyounginnovators.vercel.app/",
+        target: "_blank",
       },
     ],
   },
-  {
-    label: "Awards & Honors",
-    url: "/awards",
-  },
+  // {
+  //   label: "Awards & Honors",
+  //   url: "/awards",
+  // },
 ];
 
 export const PAYMENT_ROLE = [

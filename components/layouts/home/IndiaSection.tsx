@@ -5,12 +5,34 @@ import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
+import Link from "next/link";
 
 const OrangeCheck = () => (
-  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      mt: 0.25,
+    }}
+  >
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill="rgba(248, 93, 0, 0.12)" stroke="#F85D00" strokeWidth="2" />
-      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#F85D00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        fill="rgba(248, 93, 0, 0.12)"
+        stroke="#F85D00"
+        strokeWidth="2"
+      />
+      <path
+        d="M8.5 12.5l2.5 2.5 4.5-5"
+        stroke="#F85D00"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   </Box>
 );
@@ -45,7 +67,8 @@ const IndiaSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -54,12 +77,13 @@ const IndiaSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Heading & Content */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+                <Box
+                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
+                />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -98,7 +122,8 @@ const IndiaSection = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  IAIRE India Chapter is dedicated to bringing the global IAIRE ecosystem to schools, teachers, and students across India.
+                  IAIRE India Chapter is dedicated to bringing the global IAIRE
+                  ecosystem to schools, teachers, and students across India.
                 </Typography>
                 <Typography
                   sx={{
@@ -108,7 +133,10 @@ const IndiaSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  Aligned with the vision of the National Education Policy 2020, IAIRE India supports institutions in promoting creativity, critical thinking, experiential learning, innovation, research orientation, entrepreneurship, and real-world problem-solving.
+                  Aligned with the vision of the National Education Policy 2020,
+                  IAIRE India supports institutions in promoting creativity,
+                  critical thinking, experiential learning, innovation, research
+                  orientation, entrepreneurship, and real-world problem-solving.
                 </Typography>
                 <Typography
                   sx={{
@@ -118,7 +146,10 @@ const IndiaSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  IAIRE India works with schools, education boards, educators, parents, students, and partners to establish sustainable Innovation, Research & Entrepreneurship ecosystems across India.
+                  IAIRE India works with schools, education boards, educators,
+                  parents, students, and partners to establish sustainable
+                  Innovation, Research & Entrepreneurship ecosystems across
+                  India.
                 </Typography>
               </Stack>
 
@@ -140,7 +171,11 @@ const IndiaSection = () => {
                 <Grid container spacing={2}>
                   {indiaFocusAreas.map((area, index) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                      <Stack direction="row" spacing={1.5} alignItems="flex-start">
+                      <Stack
+                        direction="row"
+                        spacing={1.5}
+                        alignItems="flex-start"
+                      >
                         <OrangeCheck />
                         <Typography
                           sx={{
@@ -160,27 +195,29 @@ const IndiaSection = () => {
               </Box>
 
               <Box sx={{ pt: 1.5 }}>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#F85D00",
-                    borderRadius: "30px",
-                    p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#e05400",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
-                    },
-                  }}
-                >
-                  Visit IAIRE India Chapter
-                </Button>
+                <Link href="/chapters/india">
+                  <Button
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#F85D00",
+                      borderRadius: "30px",
+                      p: "12px 28px",
+                      boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#e05400",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
+                      },
+                    }}
+                  >
+                    Visit IAIRE India Chapter
+                  </Button>
+                </Link>
               </Box>
             </Stack>
           </Grid>
@@ -219,7 +256,6 @@ const IndiaSection = () => {
               />
             </Box>
           </Grid>
-
         </Grid>
       </Container>
     </Box>
