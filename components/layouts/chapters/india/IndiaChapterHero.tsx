@@ -156,7 +156,7 @@ const IndiaChapterHero = () => {
                       borderRadius: "50px",
                       px: 4.5,
                       py: 1.6,
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       color: "#FFFFFF",
                       textTransform: "none",
                       boxShadow: "0 10px 25px rgba(248, 93, 0, 0.35)",
@@ -165,7 +165,7 @@ const IndiaChapterHero = () => {
                         transition: "transform 0.25s ease",
                       },
                       "&:hover": {
-                        backgroundColor: "#d14e03",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
                         boxShadow: "0 12px 30px rgba(248, 93, 0, 0.45)",
                         "& .arrow-icon": {

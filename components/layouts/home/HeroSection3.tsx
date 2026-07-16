@@ -1,0 +1,425 @@
+"use client";
+
+import { COLORS } from "@/utils/enum";
+import { inter } from "@/utils/fonts";
+import { Box, Button, Container, Grid, Stack, Typography, useTheme, useMediaQuery } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import ThreeEarth from "./ThreeGlobe";
+import Link from "next/link";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import CardMembershipIcon from "@mui/icons-material/CardMembershipOutlined";
+import PublicIcon from "@mui/icons-material/Public";
+
+const HeroSection3 = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  return (
+    <Box
+      sx={{
+        position: "relative",
+        height: { xs: "auto", md: "100vh" },
+        minHeight: { xs: "auto", md: "650px" },
+        maxHeight: { xs: "auto", md: "100vh" },
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "#FFFFFF",
+        overflow: "hidden",
+        zIndex: 1,
+        pt: { xs: "100px", md: "85px" },
+        pb: { xs: "40px", md: "0px" },
+        boxSizing: "border-box",
+      }}
+    >
+      {/* Decorative Minimal Background Grid lines */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+          maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Modern High-End Radial Glow Blobs */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "-10%",
+          right: "-10%",
+          width: "45vw",
+          height: "45vw",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(248, 93, 0, 0.1) 0%, rgba(248, 93, 0, 0.02) 50%, rgba(255, 255, 255, 0) 80%)",
+          filter: "blur(100px)",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "-15%",
+          left: "-10%",
+          width: "40vw",
+          height: "40vw",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(248, 93, 0, 0.06) 0%, rgba(248, 93, 0, 0.01) 60%, rgba(255, 255, 255, 0) 80%)",
+          filter: "blur(90px)",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          opacity: loaded ? 1 : 0,
+          transform: loaded ? "translateY(0)" : "translateY(15px)",
+          transition: "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      >
+        <Grid container spacing={{ xs: 4, md: 4 }} alignItems="center">
+          {/* Left Column: Premium content */}
+          <Grid size={{ xs: 12, md: 7 }} sx={{ pr: { md: 2 } }}>
+            {/* Super Title / Organization Tag */}
+            <Box
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 1.25,
+                backgroundColor: "rgba(248, 93, 0, 0.05)",
+                border: "1px solid rgba(248, 93, 0, 0.12)",
+                borderRadius: "50px",
+                px: 1.75,
+                py: 0.5,
+                mb: 2,
+              }}
+            >
+              <Box
+                sx={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  backgroundColor: "#1B365D",
+                  boxShadow: "0 0 8px #1B365D",
+                  animation: "pulse 2s infinite",
+                  "@keyframes pulse": {
+                    "0%": { transform: "scale(0.9)", opacity: 0.6 },
+                    "50%": { transform: "scale(1.2)", opacity: 1 },
+                    "100%": { transform: "scale(0.9)", opacity: 0.6 },
+                  },
+                }}
+              />
+              <Typography
+                sx={{
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  fontFamily: inter.style.fontFamily,
+                  color: "#1B365D",
+                  letterSpacing: "0.05em",
+                  textTransform: "uppercase",
+                }}
+              >
+                IAIRE ACADEMIC & PROFESSIONAL SOCIETY
+              </Typography>
+            </Box>
+
+            {/* Headline */}
+            <Typography
+              component="h1"
+              sx={{
+                fontSize: { xs: "28px", sm: "36px", md: "40px", lg: "44px" },
+                fontFamily: inter.style.fontFamily,
+                fontWeight: 850,
+                lineHeight: 1.15,
+                letterSpacing: "-0.03em",
+                color: "#111827",
+                mb: 2.5,
+              }}
+            >
+              Advancing{" "}
+              <Box
+                component="span"
+                sx={{
+                  background: "linear-gradient(135deg, #1B365D 30%, #4F83C3 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Innovation, Research & Entrepreneurship
+              </Box>{" "}
+              Education for the Next Generation
+            </Typography>
+
+            {/* Paragraph 1 */}
+            <Typography
+              sx={{
+                fontSize: { xs: "13.5px", md: "14.5px" },
+                fontFamily: inter.style.fontFamily,
+                fontWeight: 400,
+                color: "#374151",
+                lineHeight: 1.6,
+                mb: 1.75,
+              }}
+            >
+              <strong>IAIRE</strong> — the International Academy of Innovation, Research and Entrepreneurship — is an independent U.S. nonprofit academic and professional society dedicated to advancing innovation, research, and entrepreneurship education through standards development, certification frameworks, fellowship recognition, mentorship, professional development, and quality-assurance mechanisms.
+            </Typography>
+
+            {/* Paragraph 2 */}
+            <Typography
+              sx={{
+                fontSize: { xs: "13.5px", md: "14px" },
+                fontFamily: inter.style.fontFamily,
+                fontWeight: 400,
+                color: "#4B5563",
+                lineHeight: 1.6,
+                mb: 3.5,
+              }}
+            >
+              We bring together schools, educators, students, scientists, researchers, inventors, entrepreneurs, and institutions to build a future where young learners do not merely consume knowledge — they create knowledge, protect ideas, conduct research, develop innovations, and solve meaningful real-world problems.
+            </Typography>
+
+            {/* CTA Action Buttons Group */}
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={1.5}
+              alignItems={{ xs: "stretch", sm: "center" }}
+            >
+              <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    width: "100%",
+                    fontSize: "14px",
+                    fontFamily: inter.style.fontFamily,
+                    textTransform: "none",
+                    fontWeight: 700,
+                    color: COLORS.WHITE,
+                    backgroundColor: "#1B365D",
+                    borderRadius: "100px",
+                    px: 3,
+                    py: 1.25,
+                    boxShadow: "0 8px 20px rgba(248, 93, 0, 0.2)",
+                    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "&:hover": {
+                      backgroundColor: "#122744",
+                      transform: "translateY(-2px)",
+                      boxShadow: "0 10px 25px rgba(248, 93, 0, 0.3)",
+                    },
+                  }}
+                >
+                  Become a Member
+                </Button>
+              </Link>
+
+              <Link href="/programs" style={{ textDecoration: "none" }}>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    width: "100%",
+                    fontSize: "14px",
+                    fontFamily: inter.style.fontFamily,
+                    textTransform: "none",
+                    fontWeight: 700,
+                    color: "#1F2937",
+                    backgroundColor: "transparent",
+                    border: "1.5px solid #D1D5DB",
+                    borderRadius: "100px",
+                    px: 3,
+                    py: 1.25,
+                    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "&:hover": {
+                      borderColor: "#1F2937",
+                      backgroundColor: "rgba(0, 0, 0, 0.02)",
+                      transform: "translateY(-2px)",
+                    },
+                  }}
+                >
+                  Explore What We Do
+                </Button>
+              </Link>
+
+              <Link href="/about" style={{ textDecoration: "none", display: "inline-flex", justifyContent: "center" }}>
+                <Button
+                  variant="text"
+                  endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                  sx={{
+                    fontSize: "14px",
+                    fontFamily: inter.style.fontFamily,
+                    textTransform: "none",
+                    fontWeight: 700,
+                    color: "#1B365D",
+                    py: 1,
+                    px: 1.75,
+                    borderRadius: "100px",
+                    transition: "all 0.25s ease",
+                    "&:hover": {
+                      backgroundColor: "rgba(248, 93, 0, 0.04)",
+                      "& .arrow-icon": {
+                        transform: "translateX(4px)",
+                      },
+                    },
+                  }}
+                >
+                  Learn About IAIRE
+                </Button>
+              </Link>
+            </Stack>
+          </Grid>
+
+          {/* Right Column: Globe & Visual accents */}
+          <Grid
+            size={{ xs: 12, md: 5 }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+            }}
+          >
+            {/* Glassmorphic Glow Container behind Globe */}
+            <Box
+              sx={{
+                position: "absolute",
+                width: { xs: "260px", md: "350px" },
+                height: { xs: "260px", md: "350px" },
+                borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(248, 93, 0, 0.04) 0%, rgba(248, 93, 0, 0) 70%)",
+                zIndex: 0,
+              }}
+            />
+
+            {/* Rotating 3D Globe */}
+            <Box
+              sx={{
+                position: "relative",
+                width: "100%",
+                height: { xs: "280px", sm: "360px", md: "440px", lg: "480px" },
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 2,
+              }}
+            >
+              <ThreeEarth height="100%" cameraZ={5.2} />
+            </Box>
+
+            {/* Floating Glassmorphism Accents */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: "15%",
+                right: { xs: "4%", md: "-2%" },
+                backgroundColor: "rgba(255, 255, 255, 0.8)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255, 255, 255, 0.6)",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.06)",
+                borderRadius: "16px",
+                p: 1.75,
+                display: "flex",
+                alignItems: "center",
+                gap: 1.25,
+                zIndex: 3,
+                animation: "floatUp 6s ease-in-out infinite",
+                "@keyframes floatUp": {
+                  "0%, 100%": { transform: "translateY(0)" },
+                  "50%": { transform: "translateY(-8px)" },
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: "8px",
+                  backgroundColor: "rgba(248, 93, 0, 0.08)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#1B365D",
+                }}
+              >
+                <CardMembershipIcon sx={{ fontSize: 18 }} />
+              </Box>
+              <Box>
+                <Typography sx={{ fontSize: "9px", fontWeight: 700, color: "#8E8E93", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  Membership
+                </Typography>
+                <Typography sx={{ fontSize: "12px", fontWeight: 700, color: "#1D1D1F", fontFamily: inter.style.fontFamily }}>
+                  Global Academic Society
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: "12%",
+                left: { xs: "2%", md: "-4%" },
+                backgroundColor: "rgba(255, 255, 255, 0.8)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255, 255, 255, 0.6)",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.06)",
+                borderRadius: "16px",
+                p: 1.75,
+                display: "flex",
+                alignItems: "center",
+                gap: 1.25,
+                zIndex: 3,
+                animation: "floatDown 6s ease-in-out infinite",
+                animationDelay: "3s",
+                "@keyframes floatDown": {
+                  "0%, 100%": { transform: "translateY(0)" },
+                  "50%": { transform: "translateY(8px)" },
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: "8px",
+                  backgroundColor: "rgba(0, 108, 71, 0.08)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#006C47",
+                }}
+              >
+                <PublicIcon sx={{ fontSize: 18 }} />
+              </Box>
+              <Box>
+                <Typography sx={{ fontSize: "9px", fontWeight: 700, color: "#8E8E93", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  Accreditation
+                </Typography>
+                <Typography sx={{ fontSize: "12px", fontWeight: 700, color: "#1D1D1F", fontFamily: inter.style.fontFamily }}>
+                  Standards & Quality Assurance
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
+
+export default HeroSection3;

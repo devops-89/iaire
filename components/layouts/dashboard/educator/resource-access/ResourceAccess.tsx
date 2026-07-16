@@ -129,7 +129,7 @@ const ResourceAccess = ({
 
   const getThemeColor = (type?: string) => {
     const t = type?.toLowerCase() || "";
-    if (t.includes("playbook")) return COLORS.PRIMARY_NAVY || "#F85D00";
+    if (t.includes("playbook")) return COLORS.PRIMARY_NAVY || "#1B365D";
     if (t.includes("module")) return "#EE8E26";
     if (t.includes("template")) return "#3F51B5";
     return "#78909C";
@@ -138,7 +138,7 @@ const ResourceAccess = ({
   const getGradientHeader = (type?: string) => {
     const t = type?.toLowerCase() || "";
     if (t.includes("playbook"))
-      return `linear-gradient(90deg, #F85D00 0%, #ff7b2b 100%)`;
+      return `linear-gradient(90deg, #1B365D 0%, #ff7b2b 100%)`;
     if (t.includes("module"))
       return `linear-gradient(90deg, #EE8E26 0%, #ffb74d 100%)`;
     if (t.includes("template"))
@@ -170,7 +170,7 @@ const ResourceAccess = ({
           <Card
             sx={{
               p: { xs: 4, md: 5 },
-              background: `linear-gradient(135deg, #F85D00 0%, #8c3100 100%)`,
+              background: `linear-gradient(135deg, #1B365D 0%, #8c3100 100%)`,
               color: "#fff",
               borderRadius: "24px",
               position: "relative",
@@ -303,7 +303,7 @@ const ResourceAccess = ({
                       border: "1px solid transparent",
                       "&.Mui-selected": {
                         bgcolor: "#fff",
-                        color: "#F85D00",
+                        color: "#1B365D",
                         borderColor: "#e2e8f0",
                         boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.04)",
                         fontWeight: 700,
@@ -355,7 +355,7 @@ const ResourceAccess = ({
                       borderColor: "#cbd5e1 !important",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#F85D00 !important",
+                      borderColor: "#1B365D !important",
                       borderWidth: "1.5px",
                     },
                   },
@@ -366,7 +366,7 @@ const ResourceAccess = ({
             {/* Resources List Grid */}
             {loading ? (
               <Box sx={{ display: "flex", justifyContent: "center", py: 12 }}>
-                <Atom color="#F85D00" size="medium" />
+                <Atom color="#1B365D" size="medium" />
               </Box>
             ) : (
               <Grid container spacing={3.5}>
@@ -573,7 +573,7 @@ const ResourceAccess = ({
                               onClick={() => handleAccess(item.fileUrl)}
                               sx={{
                                 background:
-                                  "linear-gradient(135deg, #F85D00 0%, #8C3100 100%)",
+                                  "linear-gradient(135deg, #1B365D 0%, #8C3100 100%)",
                                 color: COLORS.WHITE,
                                 textTransform: "none",
                                 borderRadius: "12px",

@@ -192,13 +192,13 @@ const HeroSection2 = () => {
                     textTransform: "none",
                     fontWeight: 600,
                     color: COLORS.WHITE,
-                    backgroundColor: "#f35e05",
+                    backgroundColor: "#1B365D",
                     borderRadius: "30px",
                     p: "10px 24px",
                     boxShadow: "0 4px 14px rgba(243, 94, 5, 0.3)",
                     transition: "all 0.3s ease",
                     "&:hover": {
-                      backgroundColor: "#d14e03",
+                      backgroundColor: "#122744",
                       transform: "translateY(-2px)",
                       boxShadow: "0 6px 20px rgba(243, 94, 5, 0.4)",
                     },
@@ -279,7 +279,7 @@ const HeroSection2 = () => {
             >
               <Typography
                 sx={{
-                  color: "#f35e05",
+                  color: "#1B365D",
                   fontSize: "14px",
                   fontWeight: 600,
                   fontFamily: inter.style.fontFamily,

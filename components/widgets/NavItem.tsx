@@ -45,7 +45,7 @@ const NavItem = ({ val, pathname }: NavItemProps) => {
             fontFamily: newBlack_medium.style.fontFamily,
             fontSize: 14,
             fontWeight: 600,
-            color: open ? "#F85D00" : "#2C2C30",
+            color: open ? "#1B365D" : "#2C2C30",
             px: 2.5,
             py: 1,
             borderRadius: "50px",
@@ -53,7 +53,7 @@ const NavItem = ({ val, pathname }: NavItemProps) => {
             transition: "all 0.25s ease",
             backgroundColor: open ? "rgba(248, 93, 0, 0.05)" : "transparent",
             "&:hover": {
-              color: "#F85D00",
+              color: "#1B365D",
               backgroundColor: "rgba(248, 93, 0, 0.05)",
             },
           }}
@@ -99,14 +99,14 @@ const NavItem = ({ val, pathname }: NavItemProps) => {
                   fontFamily: newBlack_medium.style.fontFamily,
                   fontSize: 13.5,
                   fontWeight: 600,
-                  color: pathname === sub.url ? "#F85D00" : "#2C2C30",
+                  color: pathname === sub.url ? "#1B365D" : "#2C2C30",
                   py: 1.25,
                   px: 2,
                   borderRadius: "10px",
                   transition: "all 0.25s ease",
                   backgroundColor: pathname === sub.url ? "rgba(248, 93, 0, 0.03)" : "transparent",
                   "&:hover": {
-                    color: "#F85D00",
+                    color: "#1B365D",
                     backgroundColor: "rgba(248, 93, 0, 0.05)",
                   },
                 }}
@@ -133,17 +133,17 @@ const NavItem = ({ val, pathname }: NavItemProps) => {
           fontSize: 14,
           fontWeight: 600,
           color: pathname === val.url ? COLORS.WHITE : "#2C2C30",
-          backgroundColor: pathname === val.url ? "#F85D00" : "transparent",
+          backgroundColor: pathname === val.url ? "#1B365D" : "transparent",
           px: 2.5,
           py: 1,
           borderRadius: "50px",
           textAlign: "center",
           transition: "all 0.25s ease",
           "&:hover": {
-            color: pathname === val.url ? COLORS.WHITE : "#F85D00",
+            color: pathname === val.url ? COLORS.WHITE : "#1B365D",
             backgroundColor:
               pathname === val.url
-                ? "#d14e03"
+                ? "#122744"
                 : "rgba(248, 93, 0, 0.05)",
           },
         }}

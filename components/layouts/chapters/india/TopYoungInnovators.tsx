@@ -48,7 +48,7 @@ const TopYoungInnovators = () => {
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "2px",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -119,7 +119,7 @@ const TopYoungInnovators = () => {
                         fontSize: "16px",
                         fontWeight: 700,
                         color: "#1D1D1F",
-                        borderBottom: "2px solid #F85D00",
+                        borderBottom: "2px solid #1B365D",
                         pb: 1,
                         width: "fit-content",
                       }}
@@ -130,7 +130,7 @@ const TopYoungInnovators = () => {
                     <Stack spacing={1.5}>
                       {studentGains.map((gain, idx) => (
                         <Stack key={idx} direction="row" spacing={1.5} alignItems="flex-start">
-                          <CheckCircleOutlineIcon sx={{ color: "#F85D00", mt: 0.25, fontSize: 16 }} />
+                          <CheckCircleOutlineIcon sx={{ color: "#1B365D", mt: 0.25, fontSize: 16 }} />
                           <Typography
                             sx={{
                               fontFamily: inter.style.fontFamily,
@@ -156,7 +156,7 @@ const TopYoungInnovators = () => {
                         fontSize: "16px",
                         fontWeight: 700,
                         color: "#1D1D1F",
-                        borderBottom: "2px solid #F85D00",
+                        borderBottom: "2px solid #1B365D",
                         pb: 1,
                         width: "fit-content",
                       }}
@@ -167,7 +167,7 @@ const TopYoungInnovators = () => {
                     <Stack spacing={1.5}>
                       {schoolGains.map((gain, idx) => (
                         <Stack key={idx} direction="row" spacing={1.5} alignItems="flex-start">
-                          <CheckCircleOutlineIcon sx={{ color: "#F85D00", mt: 0.25, fontSize: 16 }} />
+                          <CheckCircleOutlineIcon sx={{ color: "#1B365D", mt: 0.25, fontSize: 16 }} />
                           <Typography
                             sx={{
                               fontFamily: inter.style.fontFamily,

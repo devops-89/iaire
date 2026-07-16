@@ -23,12 +23,12 @@ const OrangeCheck = () => (
         cy="12"
         r="10"
         fill="rgba(248, 93, 0, 0.12)"
-        stroke="#F85D00"
+        stroke="#1B365D"
         strokeWidth="2"
       />
       <path
         d="M8.5 12.5l2.5 2.5 4.5-5"
-        stroke="#F85D00"
+        stroke="#1B365D"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -82,7 +82,7 @@ const IndiaSection = () => {
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
+                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
                 />
                 <Typography
                   sx={{
@@ -90,7 +90,7 @@ const IndiaSection = () => {
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "0.15em",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -203,7 +203,7 @@ const IndiaSection = () => {
                       fontWeight: 600,
                       textTransform: "none",
                       color: "#FFFFFF",
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       borderRadius: "30px",
                       p: "12px 28px",
                       boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",

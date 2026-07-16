@@ -54,7 +54,7 @@ const EducatorCertification = () => {
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "2px",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -83,7 +83,7 @@ const EducatorCertification = () => {
                     fontFamily: inter.style.fontFamily,
                     fontWeight: 600,
                     fontSize: { xs: "18px", sm: "20px" },
-                    color: "#F85D00",
+                    color: "#1B365D",
                     lineHeight: 1.3,
                   }}
                 >
@@ -127,7 +127,7 @@ const EducatorCertification = () => {
                         fontSize: "16px",
                         fontWeight: 700,
                         color: "#1D1D1F",
-                        borderBottom: "2px solid #F85D00",
+                        borderBottom: "2px solid #1B365D",
                         pb: 1,
                         width: "fit-content",
                       }}
@@ -138,7 +138,7 @@ const EducatorCertification = () => {
                     <Stack spacing={1.5}>
                       {programCovers.map((item, idx) => (
                         <Stack key={idx} direction="row" spacing={1.5} alignItems="flex-start">
-                          <CheckCircleOutlineIcon sx={{ color: "#F85D00", mt: 0.25, fontSize: 16 }} />
+                          <CheckCircleOutlineIcon sx={{ color: "#1B365D", mt: 0.25, fontSize: 16 }} />
                           <Typography
                             sx={{
                               fontFamily: inter.style.fontFamily,
@@ -167,7 +167,7 @@ const EducatorCertification = () => {
                           fontSize: "16px",
                           fontWeight: 700,
                           color: "#1D1D1F",
-                          borderBottom: "2px solid #F85D00",
+                          borderBottom: "2px solid #1B365D",
                           pb: 1,
                           width: "fit-content",
                         }}
@@ -178,7 +178,7 @@ const EducatorCertification = () => {
                       <Stack spacing={1.5}>
                         {educatorOutcomes.map((item, idx) => (
                           <Stack key={idx} direction="row" spacing={1.5} alignItems="flex-start">
-                            <CheckCircleOutlineIcon sx={{ color: "#F85D00", mt: 0.25, fontSize: 16 }} />
+                            <CheckCircleOutlineIcon sx={{ color: "#1B365D", mt: 0.25, fontSize: 16 }} />
                             <Typography
                               sx={{
                                 fontFamily: inter.style.fontFamily,
@@ -245,7 +245,7 @@ const EducatorCertification = () => {
                       borderRadius: "50px",
                       px: 4.5,
                       py: 1.6,
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       color: "#FFFFFF",
                       textTransform: "none",
                       boxShadow: "0 10px 25px rgba(248, 93, 0, 0.25)",
@@ -254,7 +254,7 @@ const EducatorCertification = () => {
                         transition: "transform 0.25s ease",
                       },
                       "&:hover": {
-                        backgroundColor: "#d14e03",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
                         boxShadow: "0 12px 30px rgba(248, 93, 0, 0.35)",
                         "& .arrow-icon": {

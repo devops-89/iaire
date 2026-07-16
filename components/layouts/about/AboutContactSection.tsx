@@ -48,7 +48,7 @@ const FormField = ({ label, placeholder, value, onChange, type = "text", require
         letterSpacing: "0.03em",
       }}
     >
-      {label} {required && <Box component="span" sx={{ color: "#F85D00" }}>*</Box>}
+      {label} {required && <Box component="span" sx={{ color: "#1B365D" }}>*</Box>}
     </Typography>
     <Box
       sx={{
@@ -59,7 +59,7 @@ const FormField = ({ label, placeholder, value, onChange, type = "text", require
         py: 1.25,
         transition: "all 0.25s ease",
         "&:focus-within": {
-          borderColor: "#F85D00",
+          borderColor: "#1B365D",
           boxShadow: "0 0 10px rgba(248, 93, 0, 0.08)",
         },
       }}
@@ -145,14 +145,14 @@ const AboutContactSection = () => {
               
               <Stack spacing={2.5}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+                  <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
                   <Typography
                     sx={{
                       fontFamily: inter.style.fontFamily,
                       fontSize: "12px",
                       fontWeight: 700,
                       letterSpacing: "0.15em",
-                      color: "#F85D00",
+                      color: "#1B365D",
                       textTransform: "uppercase",
                     }}
                   >
@@ -223,7 +223,7 @@ const AboutContactSection = () => {
                           fontFamily: inter.style.fontFamily,
                           fontSize: "15px",
                           fontWeight: 700,
-                          color: "#F85D00",
+                          color: "#1B365D",
                         }}
                       >
                         {opt.title}
@@ -319,7 +319,7 @@ const AboutContactSection = () => {
                       letterSpacing: "0.03em",
                     }}
                   >
-                    I am interested in <Box component="span" sx={{ color: "#F85D00" }}>*</Box>
+                    I am interested in <Box component="span" sx={{ color: "#1B365D" }}>*</Box>
                   </Typography>
                   
                   <Box
@@ -344,14 +344,14 @@ const AboutContactSection = () => {
                             fontSize: "13px",
                             fontWeight: 600,
                             border: "1px solid",
-                            borderColor: isSelected ? "#F85D00" : "#E5E5E9",
+                            borderColor: isSelected ? "#1B365D" : "#E5E5E9",
                             backgroundColor: isSelected ? "rgba(248, 93, 0, 0.06)" : "transparent",
-                            color: isSelected ? "#F85D00" : "#5F5F6A",
+                            color: isSelected ? "#1B365D" : "#5F5F6A",
                             transition: "all 0.2s ease",
                             userSelect: "none",
                             "&:hover": {
-                              borderColor: "#F85D00",
-                              color: "#F85D00",
+                              borderColor: "#1B365D",
+                              color: "#1B365D",
                             },
                           }}
                         >
@@ -374,7 +374,7 @@ const AboutContactSection = () => {
                       letterSpacing: "0.03em",
                     }}
                   >
-                    Message <Box component="span" sx={{ color: "#F85D00" }}>*</Box>
+                    Message <Box component="span" sx={{ color: "#1B365D" }}>*</Box>
                   </Typography>
                   <Box
                     sx={{
@@ -385,7 +385,7 @@ const AboutContactSection = () => {
                       py: 1.5,
                       transition: "all 0.25s ease",
                       "&:focus-within": {
-                        borderColor: "#F85D00",
+                        borderColor: "#1B365D",
                         boxShadow: "0 0 10px rgba(248, 93, 0, 0.08)",
                       },
                     }}
@@ -422,7 +422,7 @@ const AboutContactSection = () => {
                       fontWeight: 600,
                       textTransform: "none",
                       color: "#FFFFFF",
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       borderRadius: "30px",
                       py: 1.75,
                       boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",

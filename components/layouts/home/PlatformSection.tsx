@@ -61,7 +61,7 @@ const PlatformDashboardMockup = () => (
               width: 10,
               height: 10,
               borderRadius: "50%",
-              backgroundColor: "#F85D00",
+              backgroundColor: "#1B365D",
             }}
           />
           <Typography
@@ -95,14 +95,14 @@ const PlatformDashboardMockup = () => (
                 backgroundColor: item.active
                   ? "rgba(248, 93, 0, 0.12)"
                   : "transparent",
-                color: item.active ? "#F85D00" : "#8E8E93",
+                color: item.active ? "#1B365D" : "#8E8E93",
                 cursor: "pointer",
                 transition: "all 0.2s",
                 "&:hover": {
                   backgroundColor: item.active
                     ? "rgba(248, 93, 0, 0.12)"
                     : "rgba(255, 255, 255, 0.04)",
-                  color: item.active ? "#F85D00" : "#FFFFFF",
+                  color: item.active ? "#1B365D" : "#FFFFFF",
                 },
               }}
             >
@@ -132,7 +132,7 @@ const PlatformDashboardMockup = () => (
             width: 22,
             height: 22,
             borderRadius: "50%",
-            backgroundColor: "#F85D00",
+            backgroundColor: "#1B365D",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -262,7 +262,7 @@ const PlatformDashboardMockup = () => (
                 45k+
               </Typography>
               <Typography
-                sx={{ fontSize: "9px", color: "#F85D00", fontWeight: 700 }}
+                sx={{ fontSize: "9px", color: "#1B365D", fontWeight: 700 }}
               >
                 Students
               </Typography>
@@ -282,7 +282,7 @@ const PlatformDashboardMockup = () => (
                 sx={{
                   width: "70%",
                   height: "100%",
-                  backgroundColor: "#F85D00",
+                  backgroundColor: "#1B365D",
                 }}
               />
             </Box>
@@ -328,7 +328,7 @@ const PlatformDashboardMockup = () => (
             {
               name: "Biodegradable Filter V2",
               status: "Mentoring",
-              color: "#F85D00",
+              color: "#1B365D",
               bg: "rgba(248, 93, 0, 0.12)",
             },
             {
@@ -401,12 +401,12 @@ const OrangeCheck = () => (
         cy="12"
         r="10"
         fill="rgba(248, 93, 0, 0.12)"
-        stroke="#F85D00"
+        stroke="#1B365D"
         strokeWidth="2"
       />
       <path
         d="M8.5 12.5l2.5 2.5 4.5-5"
-        stroke="#F85D00"
+        stroke="#1B365D"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -449,7 +449,7 @@ const PlatformSection = () => {
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
+                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
                 />
                 <Typography
                   sx={{
@@ -457,7 +457,7 @@ const PlatformSection = () => {
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "0.15em",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -553,10 +553,10 @@ const PlatformSection = () => {
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: "15px",
-                  color: "#F85D00",
+                  color: "#1B365D",
                   fontWeight: 500,
                   lineHeight: 1.6,
-                  borderLeft: "2px solid #F85D00",
+                  borderLeft: "2px solid #1B365D",
                   pl: 2,
                 }}
               >
@@ -573,7 +573,7 @@ const PlatformSection = () => {
                       fontWeight: 600,
                       textTransform: "none",
                       color: "#FFFFFF",
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       borderRadius: "30px",
                       p: "12px 28px",
                       boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",

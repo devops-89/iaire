@@ -29,7 +29,7 @@ const JoinIndiaMovement = () => {
           width: "450px",
           height: "450px",
           borderRadius: "50%",
-          backgroundColor: "#F85D00",
+          backgroundColor: "#1B365D",
           filter: "blur(180px)",
           opacity: 0.05,
           pointerEvents: "none",
@@ -52,7 +52,7 @@ const JoinIndiaMovement = () => {
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "2.5px",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -150,7 +150,7 @@ const JoinIndiaMovement = () => {
                       borderRadius: "50px",
                       px: 4.5,
                       py: 1.6,
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       color: "#FFFFFF",
                       textTransform: "none",
                       boxShadow: "0 10px 25px rgba(248, 93, 0, 0.35)",
@@ -159,7 +159,7 @@ const JoinIndiaMovement = () => {
                         transition: "transform 0.25s ease",
                       },
                       "&:hover": {
-                        backgroundColor: "#d14e03",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
                         boxShadow: "0 12px 30px rgba(248, 93, 0, 0.45)",
                         "& .arrow-icon": {

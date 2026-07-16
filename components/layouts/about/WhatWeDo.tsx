@@ -7,7 +7,7 @@ import { COLORS } from "@/utils/enum";
 
 // Custom vector SVG icons representing the 9 support categories
 const FrameworkIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="3" width="7" height="9" rx="1" />
     <rect x="14" y="3" width="7" height="5" rx="1" />
     <rect x="14" y="12" width="7" height="9" rx="1" />
@@ -16,14 +16,14 @@ const FrameworkIcon = () => (
 );
 
 const CertificateIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     <path d="M9 11l2 2 4-4" />
   </svg>
 );
 
 const PathwaysIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="6" cy="6" r="3" />
     <circle cx="18" cy="18" r="3" />
     <circle cx="18" cy="6" r="3" />
@@ -32,7 +32,7 @@ const PathwaysIcon = () => (
 );
 
 const HubsIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <ellipse cx="12" cy="5" rx="9" ry="3" />
     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
     <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
@@ -40,20 +40,20 @@ const HubsIcon = () => (
 );
 
 const ResearchIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
     <path d="M7 11V7a5 5 0 0 1 10 0v4" />
   </svg>
 );
 
 const TrophyIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34M12 2a7 7 0 0 1 7 7c0 3.18-2.12 5.86-5 6.71V2H10v6.71c-2.88-.85-5-3.53-5-6.71a7 7 0 0 1 7-7z" />
   </svg>
 );
 
 const LaptopIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
     <line x1="2" y1="20" x2="22" y2="20" />
     <line x1="12" y1="17" x2="12" y2="20" />
@@ -61,14 +61,14 @@ const LaptopIcon = () => (
 );
 
 const RibbonIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="8" r="7" />
     <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
   </svg>
 );
 
 const GlobeIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
     <line x1="2" y1="12" x2="22" y2="12" />
     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -119,20 +119,20 @@ const WhatWeDo = () => {
           {/* Header */}
           <Stack spacing={2.5} alignItems="center" textAlign="center">
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: "12px",
                   fontWeight: 700,
                   letterSpacing: "0.15em",
-                  color: "#F85D00",
+                  color: "#1B365D",
                   textTransform: "uppercase",
                 }}
               >
                 WHAT IAIRE DOES
               </Typography>
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
             </Box>
 
             <Typography
@@ -252,7 +252,7 @@ const WhatWeDo = () => {
                       fontSize: "12px",
                       fontWeight: 700,
                       letterSpacing: "0.15em",
-                      color: "#F85D00",
+                      color: "#1B365D",
                       textTransform: "uppercase",
                     }}
                   >
@@ -292,7 +292,7 @@ const WhatWeDo = () => {
                     fontWeight: 600,
                     textTransform: "none",
                     color: "#FFFFFF",
-                    backgroundColor: "#F85D00",
+                    backgroundColor: "#1B365D",
                     borderRadius: "30px",
                     p: "14px 32px",
                     boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",

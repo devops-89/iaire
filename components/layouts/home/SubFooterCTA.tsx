@@ -5,6 +5,7 @@ import { Box, Button, Container, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const SubFooterCTA = () => {
   return (
@@ -12,7 +13,7 @@ const SubFooterCTA = () => {
       sx={{
         py: { xs: 12, md: 16 },
         background:
-          "radial-gradient(circle at 50% 120%, rgba(248, 93, 0, 0.1) 0%, #090A0E 70%)",
+          "radial-gradient(circle at 50% 120%, rgba(27, 54, 93, 0.2) 0%, #090A0E 70%)",
         backgroundColor: "#090A0E",
         position: "relative",
         overflow: "hidden",
@@ -27,7 +28,7 @@ const SubFooterCTA = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          opacity: 0.02,
+          opacity: 0.03,
           backgroundImage: "radial-gradient(#FFFFFF 1px, transparent 1px)",
           backgroundSize: "24px 24px",
           zIndex: 0,
@@ -36,23 +37,24 @@ const SubFooterCTA = () => {
       />
 
       <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack spacing={4} alignItems="center" textAlign="center">
+        <Stack spacing={5} alignItems="center" textAlign="center">
+          
           {/* Tag */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-            <Box sx={{ width: 12, height: 2, backgroundColor: "#F85D00" }} />
+            <Box sx={{ width: 12, height: 2, backgroundColor: "#3B82F6" }} />
             <Typography
               sx={{
                 fontFamily: inter.style.fontFamily,
                 fontSize: "12px",
                 fontWeight: 700,
                 letterSpacing: "0.20em",
-                color: "#F85D00",
+                color: "#3B82F6",
                 textTransform: "uppercase",
               }}
             >
-              JOIN THE ECOSYSTEM
+              Join the Ecosystem
             </Typography>
-            <Box sx={{ width: 12, height: 2, backgroundColor: "#F85D00" }} />
+            <Box sx={{ width: 12, height: 2, backgroundColor: "#3B82F6" }} />
           </Box>
 
           {/* Heading */}
@@ -61,85 +63,151 @@ const SubFooterCTA = () => {
             sx={{
               fontFamily: inter.style.fontFamily,
               fontSize: { xs: "36px", md: "52px" },
-              fontWeight: 800,
+              fontWeight: 850,
               color: "#FFFFFF",
               lineHeight: 1.15,
               letterSpacing: "-0.03em",
             }}
           >
-            Join a Global Movement
+            Join the IAIRE Community
           </Typography>
 
           {/* Subtext paragraphs */}
-          <Stack spacing={2} sx={{ maxWidth: "700px" }}>
+          <Stack spacing={2.5} sx={{ maxWidth: "720px" }}>
             <Typography
               sx={{
                 fontFamily: inter.style.fontFamily,
-                fontSize: "16px",
-                fontWeight: 600,
-                color: "#FFFFFF",
+                fontSize: "16.5px",
+                fontWeight: 500,
+                color: "#E2E2E9",
                 lineHeight: 1.6,
-                opacity: 0.95,
               }}
             >
-              IAIRE is more than an organization. It is a movement to redefine
-              how schools prepare students for the future.
+              IAIRE invites schools, educators, students, researchers, inventors, entrepreneurs, policymakers, and institutions to join a professional community committed to advancing innovation, research, and entrepreneurship education.
             </Typography>
+            
             <Typography
               sx={{
                 fontFamily: inter.style.fontFamily,
-                fontSize: "15px",
+                fontSize: "14.5px",
                 color: "#9D9DA7",
-                lineHeight: 1.6,
+                lineHeight: 1.65,
               }}
             >
-              We invite schools, teachers, students, parents, institutions,
-              researchers, policymakers, industry leaders, and innovation
-              partners to join us in building a world where every learner has
-              the opportunity to become a creator, researcher, problem-solver,
-              and changemaker.
+              Whether you are a school seeking to build institutional capacity, an educator aspiring to mentor innovation, a student ready to solve real-world problems, or an expert willing to guide the next generation, IAIRE provides a structured platform for participation, recognition, and impact.
             </Typography>
           </Stack>
 
-          {/* CTA Buttons */}
-          <Box sx={{ pt: 2 }}>
-            <Link href="/login">
+          {/* Three CTA Buttons Stack */}
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            sx={{ pt: 2, width: { xs: "100%", sm: "auto" } }}
+            justifyContent="center"
+          >
+            <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
               <Button
+                variant="contained"
                 sx={{
+                  width: { xs: "100%", sm: "auto" },
+                  whiteSpace: "nowrap",
                   fontFamily: inter.style.fontFamily,
-                  fontSize: "15px",
+                  fontSize: "14.5px",
                   fontWeight: 700,
                   textTransform: "none",
-                  color: "#FFFFFF",
-                  backgroundColor: "#F85D00",
-                  borderRadius: "30px",
-                  p: "14px 36px",
-                  boxShadow: "0 4px 20px rgba(248, 93, 0, 0.3)",
-                  transition: "all 0.3s ease",
+                  color: "#090A0E",
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "100px",
+                  px: 4,
+                  py: 1.4,
+                  boxShadow: "0 8px 25px rgba(255, 255, 255, 0.15)",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                   "&:hover": {
-                    backgroundColor: "#e05400",
-                    transform: "translateY(-3px)",
-                    boxShadow: "0 8px 25px rgba(248, 93, 0, 0.45)",
+                    backgroundColor: "#F3F4F6",
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 12px 30px rgba(255, 255, 255, 0.25)",
                   },
                 }}
               >
-                Become a Member →
+                Join IAIRE
               </Button>
             </Link>
-          </Box>
+
+            <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+              <Button
+                variant="outlined"
+                sx={{
+                  width: { xs: "100%", sm: "auto" },
+                  whiteSpace: "nowrap",
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "14.5px",
+                  fontWeight: 700,
+                  textTransform: "none",
+                  color: "#FFFFFF",
+                  borderColor: "rgba(255, 255, 255, 0.25)",
+                  borderWidth: "1.5px",
+                  borderRadius: "100px",
+                  px: 4,
+                  py: 1.4,
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  "&:hover": {
+                    borderWidth: "1.5px",
+                    borderColor: "#FFFFFF",
+                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    transform: "translateY(-2px)",
+                  },
+                }}
+              >
+                Partner With IAIRE
+              </Button>
+            </Link>
+
+            <Link href="/about#contact" style={{ textDecoration: "none" }}>
+              <Button
+                variant="outlined"
+                endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                sx={{
+                  width: { xs: "100%", sm: "auto" },
+                  whiteSpace: "nowrap",
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "14.5px",
+                  fontWeight: 700,
+                  textTransform: "none",
+                  color: "#9D9DA7",
+                  borderColor: "rgba(255, 255, 255, 0.15)",
+                  borderWidth: "1.5px",
+                  borderRadius: "100px",
+                  px: 4,
+                  py: 1.4,
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  "&:hover": {
+                    borderWidth: "1.5px",
+                    borderColor: "#FFFFFF",
+                    color: "#FFFFFF",
+                    backgroundColor: "rgba(255, 255, 255, 0.03)",
+                    transform: "translateY(-2px)",
+                    "& .arrow-icon": {
+                      transform: "translateX(4px)",
+                    },
+                  },
+                }}
+              >
+                Contact Us
+              </Button>
+            </Link>
+          </Stack>
 
           {/* Concluding highlight statement */}
           <Typography
             sx={{
               fontFamily: inter.style.fontFamily,
-              fontSize: "14px",
-              color: "#F85D00",
+              fontSize: "14.5px",
+              color: "#C5A059",
               fontWeight: 500,
               fontStyle: "italic",
               lineHeight: 1.6,
-              pt: 4,
+              pt: 3,
               maxWidth: "600px",
-              opacity: 0.9,
             }}
           >
             "The future will be shaped by those who can imagine better

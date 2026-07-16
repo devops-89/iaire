@@ -11,7 +11,7 @@ const OrangeBullet = () => (
       width: 6,
       height: 6,
       borderRadius: "50%",
-      backgroundColor: "#F85D00",
+      backgroundColor: "#1B365D",
       flexShrink: 0,
     }}
   />
@@ -63,14 +63,14 @@ const EducatorCertSection = () => {
           <Grid size={{ xs: 12, md: 6 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+                <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "0.15em",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -131,10 +131,10 @@ const EducatorCertSection = () => {
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: "14.5px",
-                  color: "#F85D00",
+                  color: "#1B365D",
                   fontWeight: 500,
                   lineHeight: 1.65,
-                  borderLeft: "2px solid #F85D00",
+                  borderLeft: "2px solid #1B365D",
                   pl: 2.5,
                 }}
               >
@@ -152,7 +152,7 @@ const EducatorCertSection = () => {
                     fontWeight: 600,
                     textTransform: "none",
                     color: "#FFFFFF",
-                    backgroundColor: "#F85D00",
+                    backgroundColor: "#1B365D",
                     borderRadius: "30px",
                     p: "12px 28px",
                     boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",

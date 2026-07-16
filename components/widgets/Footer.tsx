@@ -21,7 +21,7 @@ const FooterLink = ({ href, children, icon }: { href: string; children: React.Re
       {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
       sx={{
         fontFamily: inter.style.fontFamily,
-        color: "rgba(255, 255, 255, 0.5)",
+        color: "rgba(255, 255, 255, 0.55)",
         textDecoration: "none",
         fontSize: "14px",
         display: "flex",
@@ -29,7 +29,7 @@ const FooterLink = ({ href, children, icon }: { href: string; children: React.Re
         gap: 1.25,
         transition: "all 0.25s ease",
         "&:hover": {
-          color: "#F85D00",
+          color: "#3B82F6",
           transform: "translateX(4px)",
         },
       }}
@@ -59,7 +59,7 @@ const Footer = () => {
         pb: 5,
         position: "relative",
         overflow: "hidden",
-        borderTop: "1px solid rgba(248, 93, 0, 0.12)",
+        borderTop: "1px solid rgba(27, 54, 93, 0.25)",
       }}
     >
       {/* Background glow flares */}
@@ -71,7 +71,7 @@ const Footer = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background: "radial-gradient(circle, rgba(27, 54, 93, 0.06) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -132,8 +132,8 @@ const Footer = () => {
                     ml: { md: "auto" },
                     transition: "all 0.3s ease",
                     "&:focus-within": {
-                      borderColor: "rgba(248, 93, 0, 0.4)",
-                      boxShadow: "0 0 15px rgba(248, 93, 0, 0.1)",
+                      borderColor: "rgba(59, 130, 246, 0.4)",
+                      boxShadow: "0 0 15px rgba(59, 130, 246, 0.1)",
                     },
                   }}
                 >
@@ -158,7 +158,7 @@ const Footer = () => {
                   <Button
                     type="submit"
                     sx={{
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       color: "#FFFFFF",
                       fontFamily: inter.style.fontFamily,
                       fontWeight: 600,
@@ -167,9 +167,10 @@ const Footer = () => {
                       borderRadius: "30px",
                       px: 3,
                       py: 1,
-                      boxShadow: "0 4px 10px rgba(248, 93, 0, 0.2)",
+                      boxShadow: "0 4px 10px rgba(27, 54, 93, 0.2)",
+                      transition: "all 0.2s ease",
                       "&:hover": {
-                        backgroundColor: "#e05400",
+                        backgroundColor: "#122744",
                       },
                     }}
                   >
@@ -184,7 +185,7 @@ const Footer = () => {
           <Grid container spacing={{ xs: 5, md: 4 }}>
             
             {/* Column 1: Logo and About Pitch */}
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid size={{ xs: 12, md: 4.5 }}>
               <Stack spacing={3.5} sx={{ pr: { md: 5 } }}>
                 <Box sx={{ mb: -0.5 }}>
                   <Image
@@ -208,10 +209,23 @@ const Footer = () => {
                 >
                   Nurturing a culture of innovation, research, and entrepreneurship among youth globally. Helping schools build sustainable future-ready ecosystems.
                 </Typography>
+
+                {/* Social Links Stack */}
+                <Stack direction="row" spacing={2}>
+                  <Link href="#" sx={{ color: "rgba(255, 255, 255, 0.4)", "&:hover": { color: "#3B82F6" }, transition: "color 0.2s ease" }}>
+                    <LinkedInIcon sx={{ fontSize: 20 }} />
+                  </Link>
+                  <Link href="#" sx={{ color: "rgba(255, 255, 255, 0.4)", "&:hover": { color: "#3B82F6" }, transition: "color 0.2s ease" }}>
+                    <TwitterIcon sx={{ fontSize: 20 }} />
+                  </Link>
+                  <Link href="#" sx={{ color: "rgba(255, 255, 255, 0.4)", "&:hover": { color: "#3B82F6" }, transition: "color 0.2s ease" }}>
+                    <InstagramIcon sx={{ fontSize: 20 }} />
+                  </Link>
+                </Stack>
               </Stack>
             </Grid>
 
-            {/* Column 2: Quick Links */}
+            {/* Column 2: Explore (Main Sections) */}
             <Grid size={{ xs: 12, sm: 4, md: 2.5 }}>
               <Stack spacing={3}>
                 <Typography
@@ -224,44 +238,46 @@ const Footer = () => {
                     textTransform: "uppercase",
                   }}
                 >
-                  Quick Links
+                  Explore
                 </Typography>
                 
                 <Stack spacing={2}>
-                  <FooterLink href="/">Home</FooterLink>
-                  <FooterLink href="/about">About Us</FooterLink>
-                  <FooterLink href="/chapters/india">IAIRE India Chapter</FooterLink>
+                  <FooterLink href="/">Home Page</FooterLink>
+                  <FooterLink href="/about">Who We Are</FooterLink>
+                  <FooterLink href="/programs">What We Do</FooterLink>
+                  <FooterLink href="/signup/role-selection">Get Involved</FooterLink>
+                  <FooterLink href="/about#contact">Contact Us</FooterLink>
+                </Stack>
+              </Stack>
+            </Grid>
+
+            {/* Column 3: Ecosystem (Pathways) */}
+            <Grid size={{ xs: 12, sm: 4, md: 2.5 }}>
+              <Stack spacing={3}>
+                <Typography
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "11px",
+                    fontWeight: 800,
+                    color: "#FFFFFF",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Ecosystem
+                </Typography>
+                
+                <Stack spacing={2}>
+                  <FooterLink href="/membership">Membership</FooterLink>
                   <FooterLink href="/programs">Programs</FooterLink>
+                  <FooterLink href="/programs">Resources</FooterLink>
+                  <FooterLink href="/about">News & Impact</FooterLink>
                 </Stack>
               </Stack>
             </Grid>
 
-            {/* Column 3: Membership */}
+            {/* Column 4: Contact & Login Info */}
             <Grid size={{ xs: 12, sm: 4, md: 2.5 }}>
-              <Stack spacing={3}>
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    color: "#FFFFFF",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Membership
-                </Typography>
-                
-                <Stack spacing={2}>
-                  <FooterLink href="/membership/become-member">Become a Member</FooterLink>
-                  <FooterLink href="/membership/benefits">Membership Benefits</FooterLink>
-                  <FooterLink href="https://topyounginnovators.vercel.app/">Top Young Innovators</FooterLink>
-                </Stack>
-              </Stack>
-            </Grid>
-
-            {/* Column 4: Connect */}
-            <Grid size={{ xs: 12, sm: 4, md: 3 }}>
               <Stack spacing={3}>
                 <Typography
                   sx={{
@@ -277,19 +293,11 @@ const Footer = () => {
                 </Typography>
                 
                 <Stack spacing={2}>
-                  <FooterLink href="/about#contact">Contact Us</FooterLink>
                   <FooterLink href="mailto:info@iaire.org" icon={<MailOutlineIcon sx={{ fontSize: 16 }} />}>
                     info@iaire.org
                   </FooterLink>
-                  <FooterLink href="#" icon={<LinkedInIcon sx={{ fontSize: 16 }} />}>
-                    LinkedIn
-                  </FooterLink>
-                  <FooterLink href="#" icon={<TwitterIcon sx={{ fontSize: 16 }} />}>
-                    Twitter
-                  </FooterLink>
-                  <FooterLink href="#" icon={<InstagramIcon sx={{ fontSize: 16 }} />}>
-                    Instagram
-                  </FooterLink>
+                  <FooterLink href="/login">Member Login</FooterLink>
+                  <FooterLink href="/signup/role-selection">Join IAIRE</FooterLink>
                 </Stack>
               </Stack>
             </Grid>
@@ -313,7 +321,7 @@ const Footer = () => {
                 color: "rgba(255, 255, 255, 0.4)",
               }}
             >
-              © {new Date().getFullYear()} IAIRE Academy. All rights reserved.
+              © {new Date().getFullYear()} IAIRE. All rights reserved.
             </Typography>
 
             <Stack direction="row" spacing={3} alignItems="center">

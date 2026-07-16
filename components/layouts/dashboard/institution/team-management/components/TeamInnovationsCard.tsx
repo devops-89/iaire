@@ -74,7 +74,7 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
                       alignItems="center"
                       gap={2}
                     >
-                      <Avatar sx={{ bgcolor: "rgba(248, 93, 0, 0.08)", color: "#F85D00" }}>
+                      <Avatar sx={{ bgcolor: "rgba(248, 93, 0, 0.08)", color: "#1B365D" }}>
                         <Lightbulb />
                       </Avatar>
                       <Box>

@@ -7,7 +7,7 @@ import { COLORS } from "@/utils/enum";
 
 // Custom vector SVG icons for the two pillars
 const TeacherPillarIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
     <circle cx="9" cy="7" r="4" />
     <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
@@ -15,14 +15,14 @@ const TeacherPillarIcon = () => (
 );
 
 const StudentPillarIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
     <path d="M13.73 21a2 2 0 0 1-3.46 0" />
   </svg>
 );
 
 const GoalIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
     <circle cx="12" cy="12" r="6" />
     <circle cx="12" cy="12" r="2" />
@@ -62,14 +62,14 @@ const InitiativeSection = () => {
           <Grid size={{ xs: 12, md: 5 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+                <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "0.15em",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -133,7 +133,7 @@ const InitiativeSection = () => {
                     fontWeight: 600,
                     textTransform: "none",
                     color: "#FFFFFF",
-                    backgroundColor: "#F85D00",
+                    backgroundColor: "#1B365D",
                     borderRadius: "30px",
                     p: "12px 28px",
                     boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
@@ -269,7 +269,7 @@ const InitiativeSection = () => {
                     <Box sx={{ width: 32, height: 32, borderRadius: "6px", backgroundColor: "rgba(248, 93, 0, 0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <GoalIcon />
                     </Box>
-                    <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", color: "#F85D00", textTransform: "uppercase" }}>
+                    <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", color: "#1B365D", textTransform: "uppercase" }}>
                       THE GOAL
                     </Typography>
                   </Stack>

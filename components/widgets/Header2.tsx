@@ -12,6 +12,7 @@ import {
   Drawer,
   IconButton,
   Typography,
+  Grid,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Image from "next/image";
@@ -27,6 +28,9 @@ import CardMembershipIcon from "@mui/icons-material/CardMembershipOutlined";
 import LanguageIcon from "@mui/icons-material/LanguageOutlined";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEventsOutlined";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
+import BookIcon from "@mui/icons-material/BookOutlined";
+import FeedIcon from "@mui/icons-material/FeedOutlined";
+import EmailIcon from "@mui/icons-material/EmailOutlined";
 
 const getMenuMetaData = (label: string, index: number) => {
   const code = `IA-0${index + 1}`;
@@ -36,20 +40,29 @@ const getMenuMetaData = (label: string, index: number) => {
     case "home":
       icon = <HomeIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
       break;
-    case "about":
+    case "who we are":
       icon = <InfoIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
+      break;
+    case "what we do":
+      icon = <EmojiEventsIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
+      break;
+    case "get involved":
+      icon = <LanguageIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
       break;
     case "membership":
       icon = <CardMembershipIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
       break;
-    case "chapters":
-      icon = <LanguageIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
-      break;
-    case "innovation competition":
-      icon = <EmojiEventsIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
-      break;
-    case "awards & honors":
+    case "programs":
       icon = <WorkspacePremiumIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
+      break;
+    case "resources":
+      icon = <BookIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
+      break;
+    case "news & impact":
+      icon = <FeedIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
+      break;
+    case "contact":
+      icon = <EmailIcon sx={{ color: "#FFFFFF", fontSize: 22 }} />;
       break;
   }
   return { code, icon };
@@ -113,7 +126,7 @@ const Header2 = () => {
                     sx={{
                       width: 22,
                       height: 2,
-                      backgroundColor: menuOpen ? "#F85D00" : "#2C2C30",
+                      backgroundColor: menuOpen ? "#1B365D" : "#2C2C30",
                       borderRadius: "2px",
                       transform: menuOpen
                         ? "rotate(45deg) translate(5px, 5px)"
@@ -125,7 +138,7 @@ const Header2 = () => {
                     sx={{
                       width: menuOpen ? 22 : 16,
                       height: 2,
-                      backgroundColor: menuOpen ? "#F85D00" : "#2C2C30",
+                      backgroundColor: menuOpen ? "#1B365D" : "#2C2C30",
                       borderRadius: "2px",
                       opacity: menuOpen ? 0 : 1,
                       transform: menuOpen ? "scale(0)" : "none",
@@ -136,7 +149,7 @@ const Header2 = () => {
                     sx={{
                       width: 22,
                       height: 2,
-                      backgroundColor: menuOpen ? "#F85D00" : "#2C2C30",
+                      backgroundColor: menuOpen ? "#1B365D" : "#2C2C30",
                       borderRadius: "2px",
                       transform: menuOpen
                         ? "rotate(-45deg) translate(6px, -6px)"
@@ -172,16 +185,16 @@ const Header2 = () => {
                     fontSize: 13,
                     fontWeight: 700,
                     fontFamily: inter.style.fontFamily,
-                    border: "1.5px solid #F85D00",
+                    border: "1.5px solid #1B365D",
                     px: 3,
                     py: 0.75,
                     borderRadius: "50px",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "none",
                     transition: "all 0.25s ease",
                     "&:hover": {
-                      border: "1.5px solid #d14e03",
-                      color: "#d14e03",
+                      border: "1.5px solid #122744",
+                      color: "#122744",
                       backgroundColor: "rgba(248, 93, 0, 0.04)",
                     },
                   }}
@@ -195,27 +208,26 @@ const Header2 = () => {
       </Container>
 
       {/* Floating Rounded Navigation Drawer Overlay */}
+      {/* Mega Menu Dropdown Overlay */}
       <Drawer
-        anchor="left"
+        anchor="top"
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
         PaperProps={{
           sx: {
-            width: { xs: "calc(100vw - 40px)", sm: "380px" },
-            height: "calc(100vh - 40px)",
-            m: 2.5, // Float with space from screen edges
+            width: "100vw",
+            height: "100vh",
+            maxHeight: "100vh",
+            m: 0,
             boxSizing: "border-box",
-            background: "rgba(255, 255, 255, 0.72)",
-            backdropFilter: "blur(30px) saturate(190%)",
-            border: "1px solid rgba(255, 255, 255, 0.5)",
-            borderRadius: "32px",
+            background: "rgba(255, 255, 255, 0.98)",
+            backdropFilter: "blur(20px)",
+            borderBottom: "1px solid rgba(0, 0, 0, 0.08)",
+            borderRadius: "0px",
             color: "#1D1D1F",
-            px: 3.5,
-            py: 4,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            boxShadow: "0 30px 80px rgba(0, 0, 0, 0.12)",
+            px: { xs: 4, md: 8 },
+            py: { xs: 4, md: 6 },
+            boxShadow: "0 30px 80px rgba(0, 0, 0, 0.15)",
             overflowY: "auto",
             "&::-webkit-scrollbar": {
               display: "none",
@@ -223,7 +235,7 @@ const Header2 = () => {
           },
         }}
       >
-        <Stack spacing={4} sx={{ width: "100%" }}>
+        <Stack spacing={5} sx={{ width: "100%" }}>
           {/* Drawer Header (Logo & Close Button) */}
           <Stack
             direction="row"
@@ -233,7 +245,7 @@ const Header2 = () => {
             <Image
               src={logo}
               alt="IAIRE Logo"
-              width={120}
+              width={130}
               style={{ objectFit: "contain" }}
             />
 
@@ -245,8 +257,8 @@ const Header2 = () => {
                 backgroundColor: "rgba(0, 0, 0, 0.04)",
                 color: "#1D1D1F",
                 "&:hover": {
-                  backgroundColor: "rgba(248, 93, 0, 0.1)",
-                  color: "#F85D00",
+                  backgroundColor: "rgba(27, 54, 93, 0.08)",
+                  color: "#1B365D",
                 },
               }}
             >
@@ -272,210 +284,197 @@ const Header2 = () => {
             </IconButton>
           </Stack>
 
-          {/* Custom Navigation Menu List Items */}
-          <Stack spacing={2} sx={{ pt: 1 }}>
-            {HEADER_CONTENT.map((val, i) => {
-              const hasSub = val.subModules && val.subModules.length > 0;
-              const isExpanded = expandedItem === val.label;
+          {/* Grid of Columns for Mega Menu Links */}
+          <Grid container spacing={{ xs: 4, md: 5 }} sx={{ pb: 2 }}>
+            {HEADER_CONTENT.filter(val => val.subModules && val.subModules.length > 0).map((val, i) => {
               const { icon } = getMenuMetaData(val.label, i);
+              return (
+                <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={i}>
+                  <Stack spacing={2.5}>
+                    {/* Column Header */}
+                    <Stack direction="row" spacing={1.5} alignItems="center" sx={{ pb: 1, borderBottom: "1.5px solid rgba(27, 54, 93, 0.08)" }}>
+                      <Box
+                        sx={{
+                          width: 32,
+                          height: 32,
+                          borderRadius: "8px",
+                          backgroundColor: "rgba(27, 54, 93, 0.06)",
+                          color: "#1B365D",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexShrink: 0,
+                        }}
+                      >
+                        {React.cloneElement(icon as React.ReactElement<any>, {
+                          sx: { color: "#1B365D", fontSize: 18 },
+                        })}
+                      </Box>
+                      <Typography
+                        sx={{
+                          fontFamily: inter.style.fontFamily,
+                          fontSize: "14px",
+                          fontWeight: 800,
+                          color: "#1B365D",
+                          letterSpacing: "0.05em",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {val.label}
+                      </Typography>
+                    </Stack>
 
-              const cardContent = (
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  onClick={hasSub ? () => toggleExpand(val.label) : undefined}
-                  sx={{
-                    cursor: "pointer",
-                    py: 1,
-                    px: 1.5,
-                    borderRadius: "20px",
-                    transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                    "&:hover": {
-                      backgroundColor: "rgba(0, 0, 0, 0.03)",
-                    },
-                  }}
-                >
-                  <Stack direction="row" spacing={2} alignItems="center">
-                    {/* Floating Premium Icon Container */}
-                    <Box
-                      sx={{
-                        width: 52,
-                        height: 52,
-                        borderRadius: "14px",
-                        backgroundColor: isExpanded
-                          ? "rgba(248, 93, 0, 0.12)"
-                          : "rgba(0, 0, 0, 0.04)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        transition: "all 0.25s ease",
-                      }}
-                    >
-                      {React.cloneElement(icon as React.ReactElement<any>, {
-                        sx: {
-                          color: isExpanded ? "#F85D00" : "#1D1D1F",
-                          fontSize: 22,
-                          transition: "color 0.25s ease",
-                        },
-                      })}
-                    </Box>
+                    {/* Column Links List */}
+                    <Stack spacing={1.25} alignItems="flex-start">
+                      {val.subModules?.map((sub, idx) => (
+                        <Link
+                          href={sub.url}
+                          key={idx}
+                          onClick={() => setMenuOpen(false)}
+                          style={{ textDecoration: "none" }}
+                          target={sub.target || "_self"}
+                        >
+                          <Typography
+                            sx={{
+                              fontFamily: inter.style.fontFamily,
+                              fontSize: "13.5px",
+                              fontWeight: 600,
+                              color: pathname === sub.url ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
+                              transition: "all 0.2s ease",
+                              "&:hover": {
+                                color: "#1B365D",
+                                transform: "translateX(4px)",
+                              },
+                            }}
+                          >
+                            • {sub.label}
+                          </Typography>
+                        </Link>
+                      ))}
+                    </Stack>
+                  </Stack>
+                </Grid>
+              );
+            })}
 
-                    {/* Title Text */}
+            {/* Column 8: Quick Access */}
+            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+              <Stack spacing={2.5}>
+                {/* Column Header */}
+                <Stack direction="row" spacing={1.5} alignItems="center" sx={{ pb: 1, borderBottom: "1.5px solid rgba(27, 54, 93, 0.08)" }}>
+                  <Box
+                    sx={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: "8px",
+                      backgroundColor: "rgba(27, 54, 93, 0.06)",
+                      color: "#1B365D",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <HomeIcon sx={{ color: "#1B365D", fontSize: 18 }} />
+                  </Box>
+                  <Typography
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 800,
+                      color: "#1B365D",
+                      letterSpacing: "0.05em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Quick Links
+                  </Typography>
+                </Stack>
+
+                {/* Column Links List */}
+                <Stack spacing={1.5} alignItems="flex-start" sx={{ pt: 0.5 }}>
+                  <Link href="/" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
                     <Typography
                       sx={{
                         fontFamily: inter.style.fontFamily,
-                        fontSize: "15px",
+                        fontSize: "13.5px",
                         fontWeight: 700,
-                        color:
-                          isExpanded || pathname === val.url
-                            ? "#F85D00"
-                            : "#1D1D1F",
-                        transition: "color 0.2s ease",
+                        color: pathname === "/" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
+                        transition: "all 0.2s ease",
+                        "&:hover": {
+                          color: "#1B365D",
+                          transform: "translateX(4px)",
+                        },
                       }}
                     >
-                      {val.label}
+                      Home Page
                     </Typography>
-                  </Stack>
+                  </Link>
 
-                  {/* Right End Icon indicator */}
-                  {hasSub && (
-                    <KeyboardArrowDownIcon
+                  <Link href="/about#contact" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
+                    <Typography
                       sx={{
-                        color: isExpanded ? "#F85D00" : "rgba(0, 0, 0, 0.25)",
-                        transition: "transform 0.3s ease, color 0.3s ease",
-                        transform: isExpanded
-                          ? "rotate(180deg)"
-                          : "rotate(0deg)",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "13.5px",
+                        fontWeight: 700,
+                        color: pathname === "/about#contact" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
+                        transition: "all 0.2s ease",
+                        "&:hover": {
+                          color: "#1B365D",
+                          transform: "translateX(4px)",
+                        },
                       }}
-                    />
-                  )}
-                </Stack>
-              );
-
-              return (
-                <Box
-                  key={i}
-                  sx={{
-                    opacity: 0,
-                    transform: "translateY(20px)",
-                    animation: menuOpen
-                      ? "menuItemFadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards"
-                      : "none",
-                    animationDelay: menuOpen ? `${i * 0.08}s` : "0s",
-                    "@keyframes menuItemFadeSlideUp": {
-                      "0%": {
-                        opacity: 0,
-                        transform: "translateY(20px)",
-                      },
-                      "100%": {
-                        opacity: 1,
-                        transform: "translateY(0)",
-                      },
-                    },
-                  }}
-                >
-                  {hasSub ? (
-                    <Box>
-                      {cardContent}
-                      {/* Submenu Accordion Panel (Indented to align under details) */}
-                      <Box
-                        sx={{
-                          maxHeight: isExpanded ? "260px" : "0px",
-                          overflow: "hidden",
-                          transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-                          pl: "84px", // Matches icon width (52) + gap (16) + side offset (16)
-                          borderLeft: "1.5px solid rgba(0, 0, 0, 0.05)",
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: 1.5,
-                          mt: isExpanded ? 1 : 0,
-                          mb: isExpanded ? 2 : 0,
-                        }}
-                      >
-                        {val.subModules?.map((sub, idx) => (
-                          <Link
-                            href={sub.url}
-                            key={idx}
-                            onClick={() => setMenuOpen(false)}
-                            style={{ textDecoration: "none" }}
-                            target={sub.target || "_self"}
-                          >
-                            <Typography
-                              sx={{
-                                fontFamily: inter.style.fontFamily,
-                                fontSize: "14px",
-                                fontWeight: 600,
-                                color:
-                                  pathname === sub.url
-                                    ? "#F85D00"
-                                    : "rgba(0, 0, 0, 0.65)",
-                                transition: "color 0.2s ease",
-                                "&:hover": {
-                                  color: "#1D1D1F",
-                                },
-                              }}
-                            >
-                              • {sub.label}
-                            </Typography>
-                          </Link>
-                        ))}
-                      </Box>
-                    </Box>
-                  ) : (
-                    <Link
-                      href={val.url || "#"}
-                      onClick={() => setMenuOpen(false)}
-                      style={{ textDecoration: "none" }}
                     >
-                      {cardContent}
-                    </Link>
-                  )}
-                </Box>
-              );
-            })}
-          </Stack>
-        </Stack>
+                      Contact Us
+                    </Typography>
+                  </Link>
 
-        {/* Drawer Bottom Ecosystem Link CTA */}
-        <Box
-          sx={{
-            mt: 4,
-            pt: 2,
-            borderTop: "1px solid rgba(0, 0, 0, 0.06)",
-            display: "flex",
-            justifyContent: "flex-start",
-            pl: 1.5,
-          }}
-        >
-          <Link
-            href="/about"
-            onClick={() => setMenuOpen(false)}
-            style={{ textDecoration: "none" }}
-          >
-            <Typography
-              sx={{
-                fontFamily: inter.style.fontFamily,
-                fontSize: "14px",
-                fontWeight: 700,
-                color: "#1D1D1F",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 0.5,
-                borderBottom: "1.5px solid rgba(0, 0, 0, 0.15)",
-                pb: 0.5,
-                transition: "all 0.25s ease",
-                "&:hover": {
-                  color: "#F85D00",
-                  borderColor: "#F85D00",
-                  transform: "translateX(3px)",
-                },
-              }}
-            >
-              Explore IAIRE Ecosystem →
-            </Typography>
-          </Link>
-        </Box>
+                  <Link href="/login" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
+                    <Typography
+                      sx={{
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "13.5px",
+                        fontWeight: 700,
+                        color: pathname === "/login" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
+                        transition: "all 0.2s ease",
+                        "&:hover": {
+                          color: "#1B365D",
+                          transform: "translateX(4px)",
+                        },
+                      }}
+                    >
+                      Member Login
+                    </Typography>
+                  </Link>
+
+                  <Link href="/signup/role-selection" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none", marginTop: "8px" }}>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "12px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: "#FFFFFF",
+                        backgroundColor: "#1B365D",
+                        borderRadius: "100px",
+                        px: 2.5,
+                        py: 0.8,
+                        boxShadow: "none",
+                        "&:hover": {
+                          backgroundColor: "#122744",
+                          boxShadow: "none",
+                        },
+                      }}
+                    >
+                      Join IAIRE
+                    </Button>
+                  </Link>
+                </Stack>
+              </Stack>
+            </Grid>
+          </Grid>
+        </Stack>
       </Drawer>
     </Box>
   );

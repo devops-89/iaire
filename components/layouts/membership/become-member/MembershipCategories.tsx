@@ -60,7 +60,7 @@ const MembershipCategories = () => {
           width: "350px",
           height: "350px",
           borderRadius: "50%",
-          backgroundColor: "#F85D00",
+          backgroundColor: "#1B365D",
           filter: "blur(150px)",
           opacity: 0.08,
           pointerEvents: "none",
@@ -90,7 +90,7 @@ const MembershipCategories = () => {
               fontSize: "12px",
               fontWeight: 700,
               letterSpacing: "2.5px",
-              color: "#F85D00",
+              color: "#1B365D",
               textTransform: "uppercase",
             }}
           >
@@ -184,7 +184,7 @@ const MembershipCategories = () => {
                         fontWeight: 700,
                         letterSpacing: "1px",
                         textTransform: "uppercase",
-                        color: "#F85D00",
+                        color: "#1B365D",
                         backgroundColor: "rgba(248, 93, 0, 0.1)",
                         px: 2,
                         py: 0.5,
@@ -228,8 +228,8 @@ const MembershipCategories = () => {
                           transition: "transform 0.25s ease",
                         },
                         "&:hover": {
-                          borderColor: "#F85D00",
-                          backgroundColor: "#F85D00",
+                          borderColor: "#1B365D",
+                          backgroundColor: "#1B365D",
                           color: "#FFFFFF",
                           boxShadow: "0 8px 20px rgba(248, 93, 0, 0.25)",
                           "& .arrow-icon": {

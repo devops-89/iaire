@@ -13,7 +13,7 @@ const PatentIcon = () => (
     height="22"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -29,7 +29,7 @@ const TrophyIcon = () => (
     height="22"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -44,7 +44,7 @@ const NodesIcon = () => (
     height="22"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -63,7 +63,7 @@ const StarIcon = () => (
     height="22"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -129,7 +129,7 @@ const HubSection = () => {
                     sx={{
                       alignSelf: "flex-start",
                       backgroundColor: "rgba(248, 93, 0, 0.12)",
-                      color: "#F85D00",
+                      color: "#1B365D",
                       px: 1.5,
                       py: 0.5,
                       borderRadius: "6px",
@@ -328,7 +328,7 @@ const HubSection = () => {
                     sx={{
                       display: "inline-block",
                       backgroundColor: "rgba(248, 93, 0, 0.12)",
-                      color: "#F85D00",
+                      color: "#1B365D",
                       px: 1,
                       py: 0.25,
                       borderRadius: "4px",
@@ -412,7 +412,7 @@ const HubSection = () => {
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
+                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
                 />
                 <Typography
                   sx={{
@@ -420,7 +420,7 @@ const HubSection = () => {
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "0.15em",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -484,7 +484,7 @@ const HubSection = () => {
                       fontWeight: 600,
                       textTransform: "none",
                       color: "#FFFFFF",
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       borderRadius: "30px",
                       p: "12px 28px",
                       boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",

@@ -2000,45 +2000,85 @@ export const HEADER_CONTENT: NavigationItem[] = [
     url: "/",
   },
   {
-    label: "About",
-    url: "/about",
+    label: "Who We Are",
+    subModules: [
+      { label: "About IAIRE", url: "/about" },
+      { label: "Mission, Vision & Values", url: "/about#mission" },
+      { label: "Governance & Scientific Board", url: "/about#leadership" },
+      { label: "Standards & Quality Assurance", url: "/about#standards" },
+      { label: "Legal & Academic Standing", url: "/about#legal" },
+    ],
+  },
+  {
+    label: "What We Do",
+    subModules: [
+      { label: "Standards & Certification", url: "/what-we-do" },
+      { label: "Innovation & Research Education", url: "/what-we-do" },
+      { label: "Educator Development", url: "/what-we-do" },
+      { label: "Student Pathways", url: "/what-we-do" },
+      { label: "School Innovation Ecosystems", url: "/what-we-do" },
+      { label: "Intellectual Property & Research Support", url: "/what-we-do" },
+      { label: "Awards, Fellowships & Recognition", url: "/what-we-do" },
+      { label: "Events, Meetings & Knowledge Exchange", url: "/what-we-do" },
+    ],
+  },
+  {
+    label: "Get Involved",
+    subModules: [
+      { label: "Schools & Institutions", url: "/get-involved" },
+      { label: "Educators & Mentors", url: "/get-involved" },
+      { label: "Students & Young Innovators", url: "/get-involved" },
+      { label: "Scientific Board & Expert Mentors", url: "/about#leadership" },
+      { label: "Partners & Chapters", url: "/chapters/india" },
+      { label: "Volunteer & Serve", url: "/get-involved" },
+    ],
   },
   {
     label: "Membership",
     subModules: [
-      {
-        label: "Become a member",
-        url: "/membership/become-member",
-      },
-      {
-        label: "Benefit of Become a member",
-        url: "/membership/benefits",
-      },
+      { label: "Institutional Membership", url: "/membership#institutional" },
+      { label: "Educator Membership", url: "/membership#educator" },
+      { label: "Student Membership", url: "/membership#student" },
+      { label: "Certification & Fellowship Pathways", url: "/membership#pathways" },
+      { label: "Member Benefits", url: "/membership/benefits" },
+      { label: "Join IAIRE", url: "/signup/role-selection" },
     ],
   },
   {
-    label: "Chapters",
+    label: "Programs",
     subModules: [
-      {
-        label: "IAIRE India Chapter",
-        url: "/chapters/india",
-      },
+      { label: "IAIRE Innovation Educator Certification", url: "/programs" },
+      { label: "IAIRE Research Mentor Certification", url: "/programs" },
+      { label: "IAIRE School Innovation Hubs", url: "/programs" },
+      { label: "India’s Top Young Innovators", url: "https://topyounginnovators.vercel.app/", target: "_blank" },
+      { label: "IAIRE Student Innovation & Research Pathway", url: "/programs" },
+      { label: "IAIRE Critical Thinking-Integrated Teaching Support", url: "/programs" },
     ],
   },
   {
-    label: "Innovation Competition",
+    label: "Resources",
     subModules: [
-      {
-        label: "Top Young Innovators",
-        url: "https://topyounginnovators.vercel.app/",
-        target: "_blank",
-      },
+      { label: "Standards & Rubrics", url: "/programs" },
+      { label: "Innovation Templates", url: "/programs" },
+      { label: "Research Templates", url: "/programs" },
+      { label: "IP & Publication Guidance", url: "/programs" },
+      { label: "Case Studies", url: "/programs" },
+      { label: "Policies & Ethics", url: "/about#legal" },
     ],
   },
-  // {
-  //   label: "Awards & Honors",
-  //   url: "/awards",
-  // },
+  {
+    label: "News & Impact",
+    subModules: [
+      { label: "Outcomes", url: "/about" },
+      { label: "Patents & Publications", url: "/about" },
+      { label: "Awards & Recognition", url: "/about" },
+      { label: "Member News", url: "/about" },
+    ],
+  },
+  {
+    label: "Contact",
+    url: "/about#contact",
+  },
 ];
 
 export const PAYMENT_ROLE = [

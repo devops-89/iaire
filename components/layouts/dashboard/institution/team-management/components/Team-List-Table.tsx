@@ -110,7 +110,7 @@ const TeamListTable = ({
                   >
                     <Typography
                       sx={{
-                        "&:hover": { color: "#F85D00" },
+                        "&:hover": { color: "#1B365D" },
                         fontSize: 14,
                         fontWeight: 600,
                         fontFamily: newBlack_medium.style.fontFamily,

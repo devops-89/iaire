@@ -20,11 +20,10 @@ import React, { useState } from "react";
 
 const navLinks = [
   { title: "Home", href: "/" },
-  { title: "About", href: "/about" },
+  { title: "Who We Are", href: "/about" },
+  { title: "What We Do", href: "/programs" },
   { title: "Membership", href: "/membership" },
   { title: "Fellows", href: "/fellows" },
-  { title: "Programs", href: "/programs" },
-  // { title: "Awards & Grants", href: "#" },
 ];
 
 const Navbar = () => {

@@ -28,7 +28,7 @@ const ProgramHero = () => {
           width: "400px",
           height: "400px",
           borderRadius: "50%",
-          backgroundColor: "#F85D00",
+          backgroundColor: "#1B365D",
           filter: "blur(180px)",
           opacity: 0.05,
           pointerEvents: "none",
@@ -64,7 +64,7 @@ const ProgramHero = () => {
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "2.5px",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >

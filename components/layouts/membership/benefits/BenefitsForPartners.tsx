@@ -66,7 +66,7 @@ const BenefitsForPartners = () => {
                   fontSize: "12px",
                   fontWeight: 700,
                   letterSpacing: "2px",
-                  color: "#F85D00",
+                  color: "#1B365D",
                   textTransform: "uppercase",
                 }}
               >
@@ -106,13 +106,13 @@ const BenefitsForPartners = () => {
                       borderRadius: "50px",
                       px: 4.5,
                       py: 1.6,
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       color: "#FFFFFF",
                       textTransform: "none",
                       boxShadow: "0 10px 25px rgba(248, 93, 0, 0.25)",
                       transition: "all 0.25s ease",
                       "&:hover": {
-                        backgroundColor: "#d14e03",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
                         boxShadow: "0 12px 30px rgba(248, 93, 0, 0.35)",
                       },
@@ -148,7 +148,7 @@ const BenefitsForPartners = () => {
                         fontFamily: inter.style.fontFamily,
                         fontSize: "13px",
                         fontWeight: 800,
-                        color: "#F85D00",
+                        color: "#1B365D",
                         backgroundColor: "rgba(248, 93, 0, 0.06)",
                         width: 32,
                         height: 32,

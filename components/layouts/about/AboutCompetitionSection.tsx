@@ -8,8 +8,8 @@ import { COLORS } from "@/utils/enum";
 const CheckBadge = () => (
   <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill="rgba(248, 93, 0, 0.12)" stroke="#F85D00" strokeWidth="2" />
-      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#F85D00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="12" cy="12" r="10" fill="rgba(248, 93, 0, 0.12)" stroke="#1B365D" strokeWidth="2" />
+      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#1B365D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </Box>
 );
@@ -57,14 +57,14 @@ const AboutCompetitionSection = () => {
           <Grid size={{ xs: 12, md: 5.5 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+                <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "0.15em",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -125,10 +125,10 @@ const AboutCompetitionSection = () => {
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: "14.5px",
-                  color: "#F85D00",
+                  color: "#1B365D",
                   fontWeight: 500,
                   lineHeight: 1.65,
-                  borderLeft: "2px solid #F85D00",
+                  borderLeft: "2px solid #1B365D",
                   pl: 2.5,
                 }}
               >
@@ -146,7 +146,7 @@ const AboutCompetitionSection = () => {
                     fontWeight: 600,
                     textTransform: "none",
                     color: "#FFFFFF",
-                    backgroundColor: "#F85D00",
+                    backgroundColor: "#1B365D",
                     borderRadius: "30px",
                     p: "12px 28px",
                     boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
@@ -239,7 +239,7 @@ const AboutCompetitionSection = () => {
                       boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)",
                     }}
                   >
-                    <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "10.5px", fontWeight: 700, color: "#F85D00", letterSpacing: "0.1em" }}>
+                    <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "10.5px", fontWeight: 700, color: "#1B365D", letterSpacing: "0.1em" }}>
                       GLOBAL STAGE
                     </Typography>
                     <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "13.5px", fontWeight: 700, color: "#FFFFFF", lineHeight: 1.4 }}>

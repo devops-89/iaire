@@ -7,14 +7,14 @@ import { COLORS } from "@/utils/enum";
 
 // Custom vector SVG icons representing the 6 core programs
 const EducatorCapIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
     <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
   </svg>
 );
 
 const StudentPathIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="6" cy="6" r="3" />
     <circle cx="18" cy="18" r="3" />
     <circle cx="18" cy="6" r="3" />
@@ -23,7 +23,7 @@ const StudentPathIcon = () => (
 );
 
 const HubNodesIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
     <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
     <line x1="12" y1="22.08" x2="12" y2="12" />
@@ -31,13 +31,13 @@ const HubNodesIcon = () => (
 );
 
 const TrophyIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34M12 2a7 7 0 0 1 7 7c0 3.18-2.12 5.86-5 6.71V2H10v6.71c-2.88-.85-5-3.53-5-6.71a7 7 0 0 1 7-7z" />
   </svg>
 );
 
 const DesktopDashboardIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
     <line x1="2" y1="20" x2="22" y2="20" />
     <line x1="12" y1="17" x2="12" y2="20" />
@@ -45,7 +45,7 @@ const DesktopDashboardIcon = () => (
 );
 
 const ScienceLockIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F85D00" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
     <path d="M7 11V7a5 5 0 0 1 10 0v4" />
   </svg>
@@ -116,20 +116,20 @@ const AboutPrograms = () => {
           {/* Header */}
           <Stack spacing={2.5} alignItems="center" textAlign="center">
             <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: "12px",
                   fontWeight: 700,
                   letterSpacing: "0.15em",
-                  color: "#F85D00",
+                  color: "#1B365D",
                   textTransform: "uppercase",
                 }}
               >
                 CORE OFFERINGS
               </Typography>
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
             </Box>
 
             <Typography
@@ -233,7 +233,7 @@ const AboutPrograms = () => {
                 fontWeight: 600,
                 textTransform: "none",
                 color: "#FFFFFF",
-                backgroundColor: "#F85D00",
+                backgroundColor: "#1B365D",
                 borderRadius: "30px",
                 p: "14px 36px",
                 boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",

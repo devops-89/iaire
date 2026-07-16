@@ -29,7 +29,7 @@ const BenefitsHero = () => {
           width: "350px",
           height: "350px",
           borderRadius: "50%",
-          backgroundColor: "#F85D00",
+          backgroundColor: "#1B365D",
           filter: "blur(150px)",
           opacity: 0.1,
           pointerEvents: "none",
@@ -53,7 +53,7 @@ const BenefitsHero = () => {
                     fontWeight: 700,
                     letterSpacing: "1.5px",
                     textTransform: "uppercase",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     backgroundColor: "rgba(248, 93, 0, 0.08)",
                     border: "1px solid rgba(248, 93, 0, 0.2)",
                     borderRadius: "50px",
@@ -98,7 +98,7 @@ const BenefitsHero = () => {
                   fontSize: { xs: "18px", md: "21px" },
                   fontWeight: 700,
                   lineHeight: "1.4",
-                  color: "#F85D00",
+                  color: "#1B365D",
                   letterSpacing: "-0.01em",
                 }}
               >
@@ -130,7 +130,7 @@ const BenefitsHero = () => {
                       borderRadius: "50px",
                       px: 4.5,
                       py: 1.6,
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       color: "#FFFFFF",
                       textTransform: "none",
                       boxShadow: "0 10px 25px rgba(248, 93, 0, 0.35)",
@@ -139,7 +139,7 @@ const BenefitsHero = () => {
                         transition: "transform 0.25s ease",
                       },
                       "&:hover": {
-                        backgroundColor: "#d14e03",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
                         boxShadow: "0 12px 30px rgba(248, 93, 0, 0.45)",
                         "& .arrow-icon": {

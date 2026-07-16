@@ -171,7 +171,7 @@ const EarthModel = () => {
   );
 };
 
-const ThreeEarth = ({ height = "500px" }: { height?: any }) => {
+const ThreeEarth = ({ height = "500px", cameraZ = 4.2 }: { height?: any; cameraZ?: number }) => {
   return (
     <Box
       sx={{
@@ -185,7 +185,7 @@ const ThreeEarth = ({ height = "500px" }: { height?: any }) => {
       <ErrorBoundary>
         <Canvas
           shadows={false}
-          camera={{ position: [0, 0, 4.2], fov: 45 }}
+          camera={{ position: [0, 0, cameraZ], fov: 45 }}
           gl={{ antialias: false, powerPreference: "default" }}
         >
           <Suspense fallback={null}>

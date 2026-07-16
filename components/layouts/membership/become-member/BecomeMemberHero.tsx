@@ -29,7 +29,7 @@ const BecomeMemberHero = () => {
           width: "300px",
           height: "300px",
           borderRadius: "50%",
-          backgroundColor: "#F85D00",
+          backgroundColor: "#1B365D",
           filter: "blur(140px)",
           opacity: 0.12,
           pointerEvents: "none",
@@ -53,7 +53,7 @@ const BecomeMemberHero = () => {
                     fontWeight: 700,
                     letterSpacing: "1.5px",
                     textTransform: "uppercase",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     backgroundColor: "rgba(248, 93, 0, 0.08)",
                     border: "1px solid rgba(248, 93, 0, 0.2)",
                     borderRadius: "50px",
@@ -109,7 +109,7 @@ const BecomeMemberHero = () => {
               <Stack spacing={3} sx={{ py: 1 }}>
                 
                 <Stack direction="row" spacing={2} alignItems="flex-start">
-                  <CheckCircleOutlineIcon sx={{ color: "#F85D00", mt: 0.25, fontSize: 20 }} />
+                  <CheckCircleOutlineIcon sx={{ color: "#1B365D", mt: 0.25, fontSize: 20 }} />
                   <Typography
                     sx={{
                       fontFamily: inter.style.fontFamily,
@@ -135,13 +135,13 @@ const BecomeMemberHero = () => {
                       borderRadius: "50px",
                       px: 4.5,
                       py: 1.6,
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       color: "#FFFFFF",
                       textTransform: "none",
                       boxShadow: "0 10px 25px rgba(248, 93, 0, 0.35)",
                       transition: "all 0.25s ease",
                       "&:hover": {
-                        backgroundColor: "#d14e03",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
                         boxShadow: "0 12px 30px rgba(248, 93, 0, 0.45)",
                       },

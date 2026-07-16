@@ -26,7 +26,7 @@ const MemberAdvantage = () => {
           width: "450px",
           height: "450px",
           borderRadius: "50%",
-          backgroundColor: "#F85D00",
+          backgroundColor: "#1B365D",
           filter: "blur(180px)",
           opacity: 0.06,
           pointerEvents: "none",
@@ -44,7 +44,7 @@ const MemberAdvantage = () => {
               fontSize: "12px",
               fontWeight: 700,
               letterSpacing: "2.5px",
-              color: "#F85D00",
+              color: "#1B365D",
               textTransform: "uppercase",
             }}
           >
@@ -130,13 +130,13 @@ const MemberAdvantage = () => {
                   borderRadius: "50px",
                   px: 5,
                   py: 1.8,
-                  backgroundColor: "#F85D00",
+                  backgroundColor: "#1B365D",
                   color: "#FFFFFF",
                   textTransform: "none",
                   boxShadow: "0 10px 25px rgba(248, 93, 0, 0.35)",
                   transition: "all 0.25s ease",
                   "&:hover": {
-                    backgroundColor: "#d14e03",
+                    backgroundColor: "#122744",
                     transform: "translateY(-2px)",
                     boxShadow: "0 12px 30px rgba(248, 93, 0, 0.45)",
                   },

@@ -76,20 +76,20 @@ const AboutNewsSection = () => {
           {/* Section Header */}
           <Stack spacing={2} sx={{ textAlign: "center", maxWidth: "800px" }}>
             <Stack direction="row" spacing={1.5} alignItems="center" justifyContent="center">
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: "12px",
                   fontWeight: 700,
                   letterSpacing: "0.15em",
-                  color: "#F85D00",
+                  color: "#1B365D",
                   textTransform: "uppercase",
                 }}
               >
                 COMMUNITY UPDATES
               </Typography>
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }} />
+              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
             </Stack>
 
             <Typography
@@ -145,14 +145,14 @@ const AboutNewsSection = () => {
                     fontSize: "13px",
                     fontWeight: 600,
                     border: "1px solid",
-                    borderColor: isActive ? "#F85D00" : "#E5E5E9",
+                    borderColor: isActive ? "#1B365D" : "#E5E5E9",
                     backgroundColor: isActive ? "rgba(248, 93, 0, 0.05)" : "transparent",
-                    color: isActive ? "#F85D00" : "#5F5F6A",
+                    color: isActive ? "#1B365D" : "#5F5F6A",
                     transition: "all 0.25s ease",
                     userSelect: "none",
                     "&:hover": {
-                      borderColor: "#F85D00",
-                      color: "#F85D00",
+                      borderColor: "#1B365D",
+                      color: "#1B365D",
                       backgroundColor: "rgba(248, 93, 0, 0.02)",
                     },
                   }}
@@ -184,7 +184,7 @@ const AboutNewsSection = () => {
                       boxShadow: "0 20px 40px rgba(248, 93, 0, 0.08)",
                       borderColor: "rgba(248, 93, 0, 0.2)",
                       "& .news-title": {
-                        color: "#F85D00",
+                        color: "#1B365D",
                       },
                       "& .news-img": {
                         transform: "scale(1.04)",
@@ -213,7 +213,7 @@ const AboutNewsSection = () => {
                         fontFamily: "monospace",
                         fontSize: "11px",
                         fontWeight: 700,
-                        color: "#F85D00",
+                        color: "#1B365D",
                         textTransform: "uppercase",
                         letterSpacing: "0.08em",
                       }}
@@ -261,7 +261,7 @@ const AboutNewsSection = () => {
                 fontWeight: 600,
                 textTransform: "none",
                 color: "#FFFFFF",
-                backgroundColor: "#F85D00",
+                backgroundColor: "#1B365D",
                 borderRadius: "30px",
                 p: "12px 28px",
                 boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",

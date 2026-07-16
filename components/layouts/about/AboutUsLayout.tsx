@@ -8,18 +8,16 @@ import MissionVision from "@/components/layouts/about/MissionVision";
 import LeadershipSection from "@/components/layouts/about/LeadershipSection";
 import WhatWeDo from "@/components/layouts/about/WhatWeDo";
 import GovernanceSection from "@/components/layouts/about/GovernanceSection";
-import Footer from "@/components/widgets/Footer";
 
 const AboutUsLayout = () => {
   return (
     <Box sx={{ bgcolor: "#FFFFFF" }}>
-      <AboutHero />
       <WhoWeAre />
       <MissionVision />
+      <AboutHero />
       <LeadershipSection />
       <WhatWeDo />
       <GovernanceSection />
-      <Footer />
     </Box>
   );
 };

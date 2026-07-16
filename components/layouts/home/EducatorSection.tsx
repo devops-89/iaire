@@ -13,7 +13,7 @@ const ProblemIcon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -29,7 +29,7 @@ const DesignIcon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -44,7 +44,7 @@ const ResearchIcon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -60,7 +60,7 @@ const InnovationIcon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -76,7 +76,7 @@ const IpIcon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -92,7 +92,7 @@ const DocIcon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -108,7 +108,7 @@ const MentorIcon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -125,7 +125,7 @@ const AssessmentIcon = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="#F85D00"
+    stroke="#1B365D"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -238,7 +238,7 @@ const EducatorSection = () => {
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#F85D00" }}
+                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
                 />
                 <Typography
                   sx={{
@@ -246,7 +246,7 @@ const EducatorSection = () => {
                     fontSize: "12px",
                     fontWeight: 700,
                     letterSpacing: "0.15em",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     textTransform: "uppercase",
                   }}
                 >
@@ -309,10 +309,10 @@ const EducatorSection = () => {
                   sx={{
                     fontFamily: inter.style.fontFamily,
                     fontSize: "15px",
-                    color: "#F85D00",
+                    color: "#1B365D",
                     fontWeight: 500,
                     lineHeight: 1.6,
-                    borderLeft: "2px solid #F85D00",
+                    borderLeft: "2px solid #1B365D",
                     pl: 2,
                   }}
                 >
@@ -330,7 +330,7 @@ const EducatorSection = () => {
                       fontWeight: 600,
                       textTransform: "none",
                       color: "#FFFFFF",
-                      backgroundColor: "#F85D00",
+                      backgroundColor: "#1B365D",
                       borderRadius: "30px",
                       p: "12px 28px",
                       boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
