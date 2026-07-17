@@ -37,7 +37,7 @@ const AboutLayout = () => {
       <AboutResearchSection />
       <AboutResourcesSection />
       <AboutNewsSection />
-      <AboutContactSection />
+      {/* <AboutContactSection /> */}
     </Box>
   );
 };

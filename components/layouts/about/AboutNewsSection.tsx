@@ -22,21 +22,24 @@ const mockNews = [
   {
     image: "/images/homepage/news_student_coder.png",
     category: "Student success stories",
-    title: "Young Innovator Designs Smart IoT Prototype for Sustainable Agriculture",
+    title:
+      "Young Innovator Designs Smart IoT Prototype for Sustainable Agriculture",
     date: "July 12, 2026",
     readTime: "3 min read",
   },
   {
     image: "/images/homepage/news_global_network.png",
     category: "Global partnerships",
-    title: "IAIRE Announces International Research Exchange Program with Top Tech Hubs",
+    title:
+      "IAIRE Announces International Research Exchange Program with Top Tech Hubs",
     date: "July 09, 2026",
     readTime: "5 min read",
   },
   {
     image: "/images/homepage/news_educator_badge.png",
     category: "Teacher certification updates",
-    title: "Over 500 Educators Achieve Certified Innovation Mentor Status This Quarter",
+    title:
+      "Over 500 Educators Achieve Certified Innovation Mentor Status This Quarter",
     date: "July 05, 2026",
     readTime: "4 min read",
   },
@@ -64,7 +67,8 @@ const AboutNewsSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.02) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.02) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -73,10 +77,14 @@ const AboutNewsSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Stack spacing={6} alignItems="center">
-          
           {/* Section Header */}
           <Stack spacing={2} sx={{ textAlign: "center", maxWidth: "800px" }}>
-            <Stack direction="row" spacing={1.5} alignItems="center" justifyContent="center">
+            <Stack
+              direction="row"
+              spacing={1.5}
+              alignItems="center"
+              justifyContent="center"
+            >
               <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
               <Typography
                 sx={{
@@ -115,7 +123,9 @@ const AboutNewsSection = () => {
                 lineHeight: 1.6,
               }}
             >
-              Stay updated with the latest announcements, partnerships, competitions, student achievements, educator certifications, research milestones, Innovation Hub launches, and IAIRE events.
+              Stay updated with the latest announcements, partnerships,
+              competitions, student achievements, educator certifications,
+              research milestones, Innovation Hub launches, and IAIRE events.
             </Typography>
           </Stack>
 
@@ -147,7 +157,9 @@ const AboutNewsSection = () => {
                     fontWeight: 600,
                     border: "1px solid",
                     borderColor: isActive ? "#1B365D" : "#E5E5E9",
-                    backgroundColor: isActive ? "rgba(248, 93, 0, 0.05)" : "transparent",
+                    backgroundColor: isActive
+                      ? "rgba(248, 93, 0, 0.05)"
+                      : "transparent",
                     color: isActive ? "#1B365D" : "#5F5F6A",
                     transition: "all 0.25s ease",
                     userSelect: "none",
@@ -194,7 +206,14 @@ const AboutNewsSection = () => {
                   }}
                 >
                   {/* Thumbnail Image */}
-                  <Box sx={{ overflow: "hidden", position: "relative", pt: "75%", width: "100%" }}>
+                  <Box
+                    sx={{
+                      overflow: "hidden",
+                      position: "relative",
+                      pt: "75%",
+                      width: "100%",
+                    }}
+                  >
                     <Image
                       className="news-img"
                       src={news.image}
@@ -239,11 +258,28 @@ const AboutNewsSection = () => {
                     <Box sx={{ flexGrow: 1 }} />
 
                     {/* Metadata Footer */}
-                    <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ pt: 1 }}>
-                      <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "12px", color: "rgba(0,0,0,0.4)" }}>
+                    <Stack
+                      direction="row"
+                      justifyContent="space-between"
+                      alignItems="center"
+                      sx={{ pt: 1 }}
+                    >
+                      <Typography
+                        sx={{
+                          fontFamily: inter.style.fontFamily,
+                          fontSize: "12px",
+                          color: "rgba(0,0,0,0.4)",
+                        }}
+                      >
                         {news.date}
                       </Typography>
-                      <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "12px", color: "rgba(0,0,0,0.4)" }}>
+                      <Typography
+                        sx={{
+                          fontFamily: inter.style.fontFamily,
+                          fontSize: "12px",
+                          color: "rgba(0,0,0,0.4)",
+                        }}
+                      >
                         {news.readTime}
                       </Typography>
                     </Stack>
@@ -254,7 +290,7 @@ const AboutNewsSection = () => {
           </Grid>
 
           {/* CTA Action */}
-          <Box sx={{ pt: 2 }}>
+          {/* <Box sx={{ pt: 2 }}>
             <Button
               sx={{
                 fontFamily: inter.style.fontFamily,
@@ -276,8 +312,7 @@ const AboutNewsSection = () => {
             >
               Read Latest Updates
             </Button>
-          </Box>
-
+          </Box> */}
         </Stack>
       </Container>
     </Box>

@@ -6,6 +6,7 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import resources from "@/images/about/resources.jpeg";
+import Link from "next/link";
 const OrangeCheck = () => (
   <Box
     sx={{
@@ -203,6 +204,7 @@ const AboutResourcesSection = () => {
               </Typography>
 
               <Box sx={{ pt: 1.5 }}>
+                <Link href="/resources"></Link>
                 <Button
                   sx={{
                     fontFamily: inter.style.fontFamily,

@@ -13,6 +13,7 @@ import {
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
+import SectionBadge from "@/components/widgets/SectionBadge";
 import Image from "next/image";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
@@ -66,31 +67,14 @@ const EducatorDevelopment = () => {
           {/* Left Column: Heading, Details, Scope Checklist & Buttons */}
           <Grid size={{ xs: 12, md: 6.5 }}>
             <Stack spacing={3.5} sx={{ width: "100%" }}>
-              {/* Badge */}
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: { xs: "center", md: "flex-start" },
-                }}
-              >
-                <Box
-                  sx={{
-                    width: "auto",
-                    backgroundColor: "rgba(27, 54, 93, 0.06)",
-                    color: "#1B365D",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Educator Development
-                </Box>
-              </Box>
+              <SectionBadge
+                label="Educator Development"
+                align="left"
+                textColor="#1B365D"
+                glowColor="#1B365D"
+                borderColor="rgba(27, 54, 93, 0.25)"
+                backgroundColor="rgba(27, 54, 93, 0.08)"
+              />
 
               {/* Title & Description */}
               <Stack spacing={1.5}>

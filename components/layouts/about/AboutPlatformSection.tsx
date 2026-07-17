@@ -5,12 +5,34 @@ import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
+import Link from "next/link";
 
 const OrangeCheck = () => (
-  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      mt: 0.25,
+    }}
+  >
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill="rgba(248, 93, 0, 0.12)" stroke="#1B365D" strokeWidth="2" />
-      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#1B365D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        fill="rgba(248, 93, 0, 0.12)"
+        stroke="#1B365D"
+        strokeWidth="2"
+      />
+      <path
+        d="M8.5 12.5l2.5 2.5 4.5-5"
+        stroke="#1B365D"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   </Box>
 );
@@ -47,7 +69,8 @@ const AboutPlatformSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -56,12 +79,13 @@ const AboutPlatformSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Heading, Features & Copy */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
+                <Box
+                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
+                />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -110,7 +134,10 @@ const AboutPlatformSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  The IAIRE Digital Platform enables schools, teachers, and students to access innovation education from anywhere, supporting learning, mentoring, and certification through one integrated system.
+                  The IAIRE Digital Platform enables schools, teachers, and
+                  students to access innovation education from anywhere,
+                  supporting learning, mentoring, and certification through one
+                  integrated system.
                 </Typography>
               </Stack>
 
@@ -132,7 +159,11 @@ const AboutPlatformSection = () => {
                 <Grid container spacing={1.5}>
                   {platformFeatures.map((feat, index) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                      <Stack direction="row" spacing={1.5} alignItems="flex-start">
+                      <Stack
+                        direction="row"
+                        spacing={1.5}
+                        alignItems="flex-start"
+                      >
                         <OrangeCheck />
                         <Typography
                           sx={{
@@ -163,34 +194,40 @@ const AboutPlatformSection = () => {
                   pl: 2.5,
                 }}
               >
-                <Box component="span" sx={{ fontWeight: 700, display: "block", mb: 0.5 }}>
+                <Box
+                  component="span"
+                  sx={{ fontWeight: 700, display: "block", mb: 0.5 }}
+                >
                   Scalable. Accessible. Connected.
                 </Box>
-                The digital-first model allows IAIRE to serve schools across geographies while maintaining consistency and quality.
+                The digital-first model allows IAIRE to serve schools across
+                geographies while maintaining consistency and quality.
               </Typography>
 
               <Box sx={{ pt: 1.5 }}>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#1B365D",
-                    borderRadius: "30px",
-                    p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#122744",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
-                    },
-                  }}
-                >
-                  Access the IAIRE Platform
-                </Button>
+                <Link href="/login">
+                  <Button
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#1B365D",
+                      borderRadius: "30px",
+                      p: "12px 28px",
+                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#122744",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                      },
+                    }}
+                  >
+                    Access the IAIRE Platform
+                  </Button>
+                </Link>
               </Box>
             </Stack>
           </Grid>
@@ -229,7 +266,6 @@ const AboutPlatformSection = () => {
               />
             </Box>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

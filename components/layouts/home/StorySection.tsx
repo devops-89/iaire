@@ -6,6 +6,7 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const milestones = [
   {
@@ -43,7 +44,8 @@ const StorySection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -57,7 +59,8 @@ const StorySection = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(37, 99, 235, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(80px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -66,43 +69,21 @@ const StorySection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="flex-start">
-          
           {/* Left Column: Sticky Title and High-Contrast CTAs */}
-          <Grid size={{ xs: 12, md: 4.8 }} sx={{ position: { md: "sticky" }, top: "140px" }}>
+          <Grid
+            size={{ xs: 12, md: 4.8 }}
+            sx={{
+              position: { md: "sticky" },
+              top: { md: "140px" },
+              height: { md: "fit-content" },
+              alignSelf: "flex-start",
+            }}
+          >
             <Stack spacing={4}>
-              
               {/* Overtitle Header */}
               <Stack spacing={2}>
-                <Box sx={{ display: "inline-flex", alignItems: "center", gap: 1.25, width: "fit-content" }}>
-                  <Box
-                    sx={{
-                      width: 6,
-                      height: 6,
-                      borderRadius: "50%",
-                      backgroundColor: "#3B82F6",
-                      boxShadow: "0 0 8px #3B82F6",
-                      animation: "pulse 2s infinite",
-                      "@keyframes pulse": {
-                        "0%": { transform: "scale(0.9)", opacity: 0.6 },
-                        "50%": { transform: "scale(1.2)", opacity: 1 },
-                        "100%": { transform: "scale(0.9)", opacity: 0.6 },
-                      },
-                    }}
-                  />
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "11px",
-                      fontWeight: 700,
-                      color: "#3B82F6",
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    The Genesis of IAIRE
-                  </Typography>
-                </Box>
-                
+                <SectionBadge label="The Genesis of IAIRE" align="left" />
+
                 {/* Headline */}
                 <Typography
                   component="h2"
@@ -129,7 +110,9 @@ const StorySection = () => {
                   lineHeight: 1.65,
                 }}
               >
-                IAIRE emerged from the need to create a robust standards and quality-assurance framework for innovation and research education.
+                IAIRE emerged from the need to create a robust standards and
+                quality-assurance framework for innovation and research
+                education.
               </Typography>
 
               {/* High-Contrast Action Buttons */}
@@ -138,7 +121,10 @@ const StorySection = () => {
                 spacing={2}
                 sx={{ pt: 1, width: "100%" }}
               >
-                <Link href="/about" style={{ textDecoration: "none", width: "100%" }}>
+                <Link
+                  href="/about"
+                  style={{ textDecoration: "none", width: "100%" }}
+                >
                   <Button
                     variant="contained"
                     sx={{
@@ -165,10 +151,18 @@ const StorySection = () => {
                   </Button>
                 </Link>
 
-                <Link href="/about#leadership" style={{ textDecoration: "none", width: "100%" }}>
+                {/* <Link
+                  href="/about#leadership"
+                  style={{ textDecoration: "none", width: "100%" }}
+                >
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       fontFamily: inter.style.fontFamily,
@@ -195,16 +189,14 @@ const StorySection = () => {
                   >
                     Meet the Board
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
-              
             </Stack>
           </Grid>
 
           {/* Right Column: Premium Glowing Timeline */}
           <Grid size={{ xs: 12, md: 7.2 }}>
             <Box sx={{ position: "relative", pl: { xs: 4, md: 6 } }}>
-              
               {/* Timeline Vertical Line */}
               <Box
                 sx={{
@@ -213,7 +205,8 @@ const StorySection = () => {
                   bottom: 12,
                   left: { xs: "16px", md: "24px" },
                   width: "2px",
-                  background: "linear-gradient(to bottom, #3B82F6 0%, rgba(59, 130, 246, 0.4) 60%, rgba(59, 130, 246, 0.05) 100%)",
+                  background:
+                    "linear-gradient(to bottom, #3B82F6 0%, rgba(59, 130, 246, 0.4) 60%, rgba(59, 130, 246, 0.05) 100%)",
                   zIndex: 0,
                 }}
               />
@@ -245,7 +238,9 @@ const StorySection = () => {
                           border: `2.5px solid ${isHovered ? "#3B82F6" : "rgba(59, 130, 246, 0.5)"}`,
                           boxShadow: isHovered ? "0 0 12px #3B82F6" : "none",
                           zIndex: 2,
-                          transform: isHovered ? "translate(-2px, -2px)" : "none",
+                          transform: isHovered
+                            ? "translate(-2px, -2px)"
+                            : "none",
                           transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                       />
@@ -253,12 +248,20 @@ const StorySection = () => {
                       {/* Content Card Panel */}
                       <Box
                         sx={{
-                          backgroundColor: isHovered ? "rgba(255, 255, 255, 0.03)" : "rgba(255, 255, 255, 0.01)",
-                          border: isHovered ? "1px solid rgba(59, 130, 246, 0.3)" : "1px solid rgba(255, 255, 255, 0.03)",
+                          backgroundColor: isHovered
+                            ? "rgba(255, 255, 255, 0.03)"
+                            : "rgba(255, 255, 255, 0.01)",
+                          border: isHovered
+                            ? "1px solid rgba(59, 130, 246, 0.3)"
+                            : "1px solid rgba(255, 255, 255, 0.03)",
                           borderRadius: "18px",
                           p: { xs: 3, md: 4 },
-                          transform: isHovered ? "translateX(6px)" : "translateX(0)",
-                          boxShadow: isHovered ? "0 15px 35px rgba(0, 0, 0, 0.35)" : "none",
+                          transform: isHovered
+                            ? "translateX(6px)"
+                            : "translateX(0)",
+                          boxShadow: isHovered
+                            ? "0 15px 35px rgba(0, 0, 0, 0.35)"
+                            : "none",
                           transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                         }}
                       >
@@ -293,10 +296,8 @@ const StorySection = () => {
                   );
                 })}
               </Stack>
-
             </Box>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

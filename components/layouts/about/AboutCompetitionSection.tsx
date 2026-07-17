@@ -4,11 +4,13 @@ import React from "react";
 import { Box, Button, Card, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import Link from "next/link";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const CheckBadge = () => (
   <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill="rgba(248, 93, 0, 0.12)" stroke="#1B365D" strokeWidth="2" />
+      <circle cx="12" cy="12" r="10" fill="rgba(59, 130, 246, 0.08)" stroke="#1B365D" strokeWidth="2" />
       <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#1B365D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </Box>
@@ -34,7 +36,7 @@ const AboutCompetitionSection = () => {
         overflow: "hidden",
       }}
     >
-      {/* Background decoration - very subtle warm accent glow on the bottom-left */}
+      {/* Background decoration - very subtle blue accent glow on the bottom-left */}
       <Box
         sx={{
           position: "absolute",
@@ -43,7 +45,7 @@ const AboutCompetitionSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background: "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -56,28 +58,21 @@ const AboutCompetitionSection = () => {
           {/* Left Column: Heading, Callout & Copy */}
           <Grid size={{ xs: 12, md: 5.5 }}>
             <Stack spacing={3.5}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "0.15em",
-                    color: "#1B365D",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  THE COMPETITION
-                </Typography>
-              </Box>
+              <SectionBadge
+                label="The Competition"
+                align="left"
+                textColor="#1B365D"
+                glowColor="#1B365D"
+                borderColor="rgba(27, 54, 93, 0.25)"
+                backgroundColor="rgba(27, 54, 93, 0.08)"
+              />
 
               <Typography
                 variant="h2"
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: { xs: "32px", md: "40px" },
-                  fontWeight: 800,
+                  fontWeight: 900,
                   color: "#0B1727",
                   lineHeight: 1.25,
                   letterSpacing: "-0.02em",
@@ -91,7 +86,7 @@ const AboutCompetitionSection = () => {
                   sx={{
                     fontFamily: inter.style.fontFamily,
                     fontSize: "16px",
-                    fontWeight: 600,
+                    fontWeight: 650,
                     color: "#121214",
                     lineHeight: 1.5,
                   }}
@@ -139,27 +134,31 @@ const AboutCompetitionSection = () => {
               </Typography>
 
               <Box sx={{ pt: 1.5 }}>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#1B365D",
-                    borderRadius: "30px",
-                    p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#e05400",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
-                    },
-                  }}
-                >
-                  Enter the Competition
-                </Button>
+                <Link href="https://topyounginnovators.org/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#1B365D",
+                      borderRadius: "100px",
+                      px: 4.5,
+                      py: 1.4,
+                      boxShadow: "0 8px 25px rgba(27, 54, 93, 0.2)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      "&:hover": {
+                        backgroundColor: "#122744",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 12px 30px rgba(27, 54, 93, 0.32)",
+                      },
+                    }}
+                  >
+                    Enter the Competition
+                  </Button>
+                </Link>
               </Box>
             </Stack>
           </Grid>
@@ -195,12 +194,12 @@ const AboutCompetitionSection = () => {
                         border: "1px solid #E5E5E9",
                         display: "flex",
                         flexDirection: "column",
-                        gap: 2,
-                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                        gap: 1.5,
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                         "&:hover": {
-                          borderColor: "rgba(248, 93, 0, 0.25)",
-                          transform: "translateY(-4px)",
-                          boxShadow: "0 10px 25px rgba(248, 93, 0, 0.04)",
+                          borderColor: "rgba(59, 130, 246, 0.25)",
+                          transform: "translateY(-3px)",
+                          boxShadow: "0 8px 20px rgba(59, 130, 246, 0.04)",
                         },
                       }}
                     >
@@ -208,10 +207,10 @@ const AboutCompetitionSection = () => {
                       <Typography
                         sx={{
                           fontFamily: inter.style.fontFamily,
-                          fontSize: "14px",
-                          fontWeight: 700,
-                          color: "#0B1727",
-                          lineHeight: 1.4,
+                          fontSize: "13.5px",
+                          fontWeight: 600,
+                          color: "#3D3D48",
+                          lineHeight: 1.45,
                         }}
                       >
                         {gain}
@@ -228,7 +227,7 @@ const AboutCompetitionSection = () => {
                       p: 3,
                       width: "100%",
                       borderRadius: "16px",
-                      background: "linear-gradient(135deg, #090A0E 0%, #161720 100%)",
+                      background: "linear-gradient(135deg, #090B10 0%, #161922 100%)",
                       border: "1px solid rgba(255, 255, 255, 0.05)",
                       display: "flex",
                       flexDirection: "column",
@@ -239,7 +238,7 @@ const AboutCompetitionSection = () => {
                       boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)",
                     }}
                   >
-                    <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "10.5px", fontWeight: 700, color: "#1B365D", letterSpacing: "0.1em" }}>
+                    <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "10.5px", fontWeight: 700, color: "#3B82F6", letterSpacing: "0.1em" }}>
                       GLOBAL STAGE
                     </Typography>
                     <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "13.5px", fontWeight: 700, color: "#FFFFFF", lineHeight: 1.4 }}>

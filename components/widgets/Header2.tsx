@@ -292,37 +292,56 @@ const Header2 = () => {
                 <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={i}>
                   <Stack spacing={2.5}>
                     {/* Column Header */}
-                    <Stack direction="row" spacing={1.5} alignItems="center" sx={{ pb: 1, borderBottom: "1.5px solid rgba(27, 54, 93, 0.08)" }}>
-                      <Box
+                    <Link
+                      href={val.url || "#"}
+                      onClick={() => setMenuOpen(false)}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Stack
+                        direction="row"
+                        spacing={1.5}
+                        alignItems="center"
                         sx={{
-                          width: 32,
-                          height: 32,
-                          borderRadius: "8px",
-                          backgroundColor: "rgba(27, 54, 93, 0.06)",
-                          color: "#1B365D",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
+                          pb: 1,
+                          borderBottom: "1.5px solid rgba(27, 54, 93, 0.08)",
+                          cursor: "pointer",
+                          transition: "opacity 0.2s ease",
+                          "&:hover": {
+                            opacity: 0.8,
+                          },
                         }}
                       >
-                        {React.cloneElement(icon as React.ReactElement<any>, {
-                          sx: { color: "#1B365D", fontSize: 18 },
-                        })}
-                      </Box>
-                      <Typography
-                        sx={{
-                          fontFamily: inter.style.fontFamily,
-                          fontSize: "14px",
-                          fontWeight: 800,
-                          color: "#1B365D",
-                          letterSpacing: "0.05em",
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {val.label}
-                      </Typography>
-                    </Stack>
+                        <Box
+                          sx={{
+                            width: 32,
+                            height: 32,
+                            borderRadius: "8px",
+                            backgroundColor: "rgba(27, 54, 93, 0.06)",
+                            color: "#1B365D",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexShrink: 0,
+                          }}
+                        >
+                          {React.cloneElement(icon as React.ReactElement<any>, {
+                            sx: { color: "#1B365D", fontSize: 18 },
+                          })}
+                        </Box>
+                        <Typography
+                          sx={{
+                            fontFamily: inter.style.fontFamily,
+                            fontSize: "14px",
+                            fontWeight: 800,
+                            color: "#1B365D",
+                            letterSpacing: "0.05em",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {val.label}
+                        </Typography>
+                      </Stack>
+                    </Link>
 
                     {/* Column Links List */}
                     <Stack spacing={1.25} alignItems="flex-start">

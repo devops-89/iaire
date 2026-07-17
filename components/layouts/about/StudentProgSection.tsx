@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import Link from "next/link";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const phase1Steps = [
   { step: "01", label: "Introduction to Innovation" },
@@ -195,23 +197,14 @@ const StudentProgSection = () => {
             <Stack spacing={4.5}>
               {/* Header texts */}
               <Stack spacing={2.5}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Box
-                    sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
-                  />
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "11px",
-                      fontWeight: 700,
-                      letterSpacing: "0.15em",
-                      color: "#1B365D",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    FOR STUDENTS
-                  </Typography>
-                </Box>
+              <SectionBadge
+                label="For Students"
+                align="left"
+                textColor="#1B365D"
+                glowColor="#1B365D"
+                borderColor="rgba(27, 54, 93, 0.25)"
+                backgroundColor="rgba(27, 54, 93, 0.08)"
+              />
 
                 <Typography
                   variant="h2"
@@ -307,27 +300,31 @@ const StudentProgSection = () => {
 
               {/* CTA button */}
               <Box>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "13.5px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#1B365D",
-                    borderRadius: "30px",
-                    p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#e05400",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
-                    },
-                  }}
-                >
-                  Start Your Innovation Journey
-                </Button>
+                <Link href="/login" style={{ textDecoration: "none" }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "13.5px",
+                      fontWeight: 700,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#1B365D",
+                      borderRadius: "100px",
+                      px: 4.5,
+                      py: 1.4,
+                      boxShadow: "0 8px 25px rgba(27, 54, 93, 0.2)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      "&:hover": {
+                        backgroundColor: "#122744",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 12px 30px rgba(27, 54, 93, 0.32)",
+                      },
+                    }}
+                  >
+                    Start Your Innovation Journey
+                  </Button>
+                </Link>
               </Box>
             </Stack>
           </Grid>

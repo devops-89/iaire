@@ -2001,6 +2001,7 @@ export const HEADER_CONTENT: NavigationItem[] = [
   },
   {
     label: "Who We Are",
+    url: "/about",
     subModules: [
       { label: "About IAIRE", url: "/about#about" },
       { label: "Mission, Vision & Values", url: "/about#mission" },
@@ -2011,6 +2012,7 @@ export const HEADER_CONTENT: NavigationItem[] = [
   },
   {
     label: "What We Do",
+    url: "/what-we-do",
     subModules: [
       { label: "Standards & Certification", url: "/what-we-do#standards" },
       { label: "Innovation & Research Education", url: "/what-we-do#education" },
@@ -2024,6 +2026,7 @@ export const HEADER_CONTENT: NavigationItem[] = [
   },
   {
     label: "Get Involved",
+    url: "/get-involved",
     subModules: [
       { label: "Schools & Institutions", url: "/get-involved#schools" },
       { label: "Educators & Mentors", url: "/get-involved#educators" },
@@ -2035,6 +2038,7 @@ export const HEADER_CONTENT: NavigationItem[] = [
   },
   {
     label: "Membership",
+    url: "/membership",
     subModules: [
       { label: "Institutional Membership", url: "/membership#institutional" },
       { label: "Educator Membership", url: "/membership#educator" },
@@ -2046,6 +2050,7 @@ export const HEADER_CONTENT: NavigationItem[] = [
   },
   {
     label: "Programs",
+    url: "/programs",
     subModules: [
       { label: "IAIRE Innovation Educator Certification", url: "/programs#educator-certification" },
       { label: "IAIRE Research Mentor Certification", url: "/programs#research-certification" },
@@ -2057,6 +2062,7 @@ export const HEADER_CONTENT: NavigationItem[] = [
   },
   {
     label: "Resources",
+    url: "/resources",
     subModules: [
       { label: "Standards & Rubrics", url: "/resources#standards-rubrics" },
       { label: "Innovation Templates", url: "/resources" },
@@ -2068,6 +2074,7 @@ export const HEADER_CONTENT: NavigationItem[] = [
   },
   {
     label: "News & Impact",
+    url: "/about#news",
     subModules: [
       { label: "Outcomes", url: "/about#news" },
       { label: "Patents & Publications", url: "/about#news" },

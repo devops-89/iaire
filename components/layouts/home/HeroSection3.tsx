@@ -221,10 +221,7 @@ const HeroSection3 = () => {
               spacing={1.5}
               alignItems={{ xs: "stretch", sm: "center" }}
             >
-              <Link
-                href="/signup/role-selection"
-                style={{ textDecoration: "none" }}
-              >
+              <Link href="/login" style={{ textDecoration: "none" }}>
                 <Button
                   variant="contained"
                   sx={{

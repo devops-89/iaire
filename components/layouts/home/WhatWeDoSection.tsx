@@ -6,6 +6,7 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const activities = [
   "Standards development for innovation, research, and entrepreneurship education",
@@ -84,23 +85,14 @@ const WhatWeDoSection = () => {
             <Stack spacing={4}>
               
               <Stack spacing={1.5}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Box
-                    sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
-                  />
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "12px",
-                      fontWeight: 700,
-                      letterSpacing: "0.15em",
-                      color: "#1B365D",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Core Operations
-                  </Typography>
-                </Box>
+                <SectionBadge
+                  label="Core Operations"
+                  align="left"
+                  textColor="#1B365D"
+                  glowColor="#1B365D"
+                  borderColor="rgba(27, 54, 93, 0.25)"
+                  backgroundColor="rgba(27, 54, 93, 0.08)"
+                />
 
                 <Typography
                   component="h2"

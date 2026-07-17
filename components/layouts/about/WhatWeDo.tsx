@@ -4,6 +4,7 @@ import React from "react";
 import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import Link from "next/link";
 
 // Custom vector SVG icons representing the 9 support categories
 const FrameworkIcon = () => (
@@ -221,7 +222,7 @@ const WhatWeDo = () => {
             sx={{
               width: "100%",
               borderRadius: "24px",
-              background: "linear-gradient(135deg, #090A0E 0%, #161720 100%)",
+              background: "linear-gradient(135deg, #090B10 0%, #161922 100%)",
               p: { xs: 5, md: 7 },
               position: "relative",
               overflow: "hidden",
@@ -229,7 +230,7 @@ const WhatWeDo = () => {
               boxShadow: "0 20px 45px rgba(0, 0, 0, 0.15)",
             }}
           >
-            {/* Ambient orange glow inside the banner */}
+            {/* Ambient blue glow inside the banner */}
             <Box
               sx={{
                 position: "absolute",
@@ -238,7 +239,7 @@ const WhatWeDo = () => {
                 width: "250px",
                 height: "250px",
                 borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(248, 93, 0, 0.15) 0%, rgba(255, 255, 255, 0) 70%)",
+                background: "radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(255, 255, 255, 0) 70%)",
                 filter: "blur(50px)",
                 zIndex: 0,
               }}
@@ -253,7 +254,7 @@ const WhatWeDo = () => {
                       fontSize: "12px",
                       fontWeight: 700,
                       letterSpacing: "0.15em",
-                      color: "#1B365D",
+                      color: "#3B82F6",
                       textTransform: "uppercase",
                     }}
                   >
@@ -270,7 +271,8 @@ const WhatWeDo = () => {
                       letterSpacing: "-0.01em",
                     }}
                   >
-                    Preparing Learners for a Future that Belongs to Innovators
+                    Preparing Learners for a Future that Belongs to{" "}
+                    <span style={{ color: "#3B82F6" }}>Innovators</span>
                   </Typography>
                   <Typography
                     sx={{
@@ -286,27 +288,30 @@ const WhatWeDo = () => {
               </Grid>
 
               <Grid size={{ xs: 12, md: 4 }} sx={{ display: "flex", justifyContent: { xs: "flex-start", md: "flex-end" } }}>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#1B365D",
-                    borderRadius: "30px",
-                    p: "14px 32px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#e05400",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
-                    },
-                  }}
-                >
-                  Explore IAIRE Programs
-                </Button>
+                <Link href="/programs" style={{ textDecoration: "none" }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      textTransform: "none",
+                      color: "#090A0E",
+                      backgroundColor: "#FFFFFF",
+                      borderRadius: "100px",
+                      p: "14px 32px",
+                      boxShadow: "0 10px 25px rgba(255, 255, 255, 0.08)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      "&:hover": {
+                        backgroundColor: "#E2E8F0",
+                        transform: "translateY(-3px)",
+                        boxShadow: "0 15px 30px rgba(255, 255, 255, 0.15)",
+                      },
+                    }}
+                  >
+                    Explore IAIRE Programs
+                  </Button>
+                </Link>
               </Grid>
             </Grid>
           </Box>

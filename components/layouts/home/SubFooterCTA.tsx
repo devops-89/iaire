@@ -6,6 +6,7 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const SubFooterCTA = () => {
   return (
@@ -38,24 +39,7 @@ const SubFooterCTA = () => {
 
       <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
         <Stack spacing={5} alignItems="center" textAlign="center">
-          
-          {/* Tag */}
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-            <Box sx={{ width: 12, height: 2, backgroundColor: "#3B82F6" }} />
-            <Typography
-              sx={{
-                fontFamily: inter.style.fontFamily,
-                fontSize: "12px",
-                fontWeight: 700,
-                letterSpacing: "0.20em",
-                color: "#3B82F6",
-                textTransform: "uppercase",
-              }}
-            >
-              Join the Ecosystem
-            </Typography>
-            <Box sx={{ width: 12, height: 2, backgroundColor: "#3B82F6" }} />
-          </Box>
+          <SectionBadge label="Join the Ecosystem" align="center" />
 
           {/* Heading */}
           <Typography
@@ -83,9 +67,12 @@ const SubFooterCTA = () => {
                 lineHeight: 1.6,
               }}
             >
-              IAIRE invites schools, educators, students, researchers, inventors, entrepreneurs, policymakers, and institutions to join a professional community committed to advancing innovation, research, and entrepreneurship education.
+              IAIRE invites schools, educators, students, researchers,
+              inventors, entrepreneurs, policymakers, and institutions to join a
+              professional community committed to advancing innovation,
+              research, and entrepreneurship education.
             </Typography>
-            
+
             <Typography
               sx={{
                 fontFamily: inter.style.fontFamily,
@@ -94,7 +81,11 @@ const SubFooterCTA = () => {
                 lineHeight: 1.65,
               }}
             >
-              Whether you are a school seeking to build institutional capacity, an educator aspiring to mentor innovation, a student ready to solve real-world problems, or an expert willing to guide the next generation, IAIRE provides a structured platform for participation, recognition, and impact.
+              Whether you are a school seeking to build institutional capacity,
+              an educator aspiring to mentor innovation, a student ready to
+              solve real-world problems, or an expert willing to guide the next
+              generation, IAIRE provides a structured platform for
+              participation, recognition, and impact.
             </Typography>
           </Stack>
 
@@ -105,7 +96,10 @@ const SubFooterCTA = () => {
             sx={{ pt: 2, width: { xs: "100%", sm: "auto" } }}
             justifyContent="center"
           >
-            <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+            {/* <Link
+              href="/signup/role-selection"
+              style={{ textDecoration: "none" }}
+            >
               <Button
                 variant="contained"
                 sx={{
@@ -133,7 +127,10 @@ const SubFooterCTA = () => {
               </Button>
             </Link>
 
-            <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+            <Link
+              href="/signup/role-selection"
+              style={{ textDecoration: "none" }}
+            >
               <Button
                 variant="outlined"
                 sx={{
@@ -160,12 +157,17 @@ const SubFooterCTA = () => {
               >
                 Partner With IAIRE
               </Button>
-            </Link>
+            </Link> */}
 
             <Link href="/contact" style={{ textDecoration: "none" }}>
               <Button
                 variant="outlined"
-                endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                endIcon={
+                  <ArrowForwardIcon
+                    className="arrow-icon"
+                    sx={{ transition: "transform 0.25s ease" }}
+                  />
+                }
                 sx={{
                   width: { xs: "100%", sm: "auto" },
                   whiteSpace: "nowrap",

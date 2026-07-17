@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
@@ -68,7 +76,8 @@ const WhatWeDoHero = () => {
           width: "50vw",
           height: "50vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(120px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -82,7 +91,8 @@ const WhatWeDoHero = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.15) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.15) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(110px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -91,11 +101,9 @@ const WhatWeDoHero = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Stack spacing={{ xs: 6, md: 7.5 }} alignItems="center">
-          
           {/* Top Section: Centered Title Copy */}
           <Box sx={{ textAlign: "center", width: "100%", maxWidth: "880px" }}>
             <Stack spacing={3} alignItems="center">
-              
               {/* Badge */}
               <Box
                 sx={{
@@ -124,7 +132,8 @@ const WhatWeDoHero = () => {
                   fontSize: { xs: "2.6rem", sm: "3.2rem", md: "4rem" },
                   lineHeight: 1.15,
                   letterSpacing: "-0.03em",
-                  background: "linear-gradient(180deg, #FFFFFF 30%, #AEB5C0 100%)",
+                  background:
+                    "linear-gradient(180deg, #FFFFFF 30%, #AEB5C0 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -142,9 +151,12 @@ const WhatWeDoHero = () => {
                   maxWidth: "740px",
                 }}
               >
-                <strong>IAIRE</strong> serves the emerging field of innovation, research, and entrepreneurship education by developing the standards, systems, and recognition structures needed to transform isolated school activities into measurable educational ecosystems.
+                <strong>IAIRE</strong> serves the emerging field of innovation,
+                research, and entrepreneurship education by developing the
+                standards, systems, and recognition structures needed to
+                transform isolated school activities into measurable educational
+                ecosystems.
               </Typography>
-
             </Stack>
           </Box>
 
@@ -169,7 +181,11 @@ const WhatWeDoHero = () => {
               {pillars.map((pillar, idx) => {
                 const isHovered = hoveredIdx === idx;
                 return (
-                  <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx} sx={{ display: "flex" }}>
+                  <Grid
+                    size={{ xs: 12, sm: 6, md: 4 }}
+                    key={idx}
+                    sx={{ display: "flex" }}
+                  >
                     <Card
                       elevation={0}
                       onMouseEnter={() => setHoveredIdx(idx)}
@@ -178,15 +194,23 @@ const WhatWeDoHero = () => {
                         width: "100%",
                         p: 3,
                         borderRadius: "20px",
-                        border: isHovered ? "1px solid #93C5FD" : "1px solid rgba(255, 255, 255, 0.08)",
-                        backgroundColor: isHovered ? "rgba(147, 197, 253, 0.05)" : "rgba(255, 255, 255, 0.02)",
+                        border: isHovered
+                          ? "1px solid #93C5FD"
+                          : "1px solid rgba(255, 255, 255, 0.08)",
+                        backgroundColor: isHovered
+                          ? "rgba(147, 197, 253, 0.05)"
+                          : "rgba(255, 255, 255, 0.02)",
                         display: "flex",
                         flexDirection: "column",
                         gap: 2,
                         cursor: "default",
                         transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                        transform: isHovered ? "translateY(-4px)" : "translateY(0)",
-                        boxShadow: isHovered ? "0 12px 30px rgba(147, 197, 253, 0.12)" : "none",
+                        transform: isHovered
+                          ? "translateY(-4px)"
+                          : "translateY(0)",
+                        boxShadow: isHovered
+                          ? "0 12px 30px rgba(147, 197, 253, 0.12)"
+                          : "none",
                       }}
                     >
                       {/* Monospace Indicator Badge */}
@@ -195,7 +219,9 @@ const WhatWeDoHero = () => {
                           width: 28,
                           height: 28,
                           borderRadius: "8px",
-                          backgroundColor: isHovered ? "#93C5FD" : "rgba(255, 255, 255, 0.08)",
+                          backgroundColor: isHovered
+                            ? "#93C5FD"
+                            : "rgba(255, 255, 255, 0.08)",
                           color: isHovered ? "#070C15" : "#93C5FD",
                           display: "flex",
                           alignItems: "center",
@@ -215,7 +241,9 @@ const WhatWeDoHero = () => {
                           fontFamily: inter.style.fontFamily,
                           fontSize: "16px",
                           fontWeight: 700,
-                          color: isHovered ? "#FFFFFF" : "rgba(255, 255, 255, 0.9)",
+                          color: isHovered
+                            ? "#FFFFFF"
+                            : "rgba(255, 255, 255, 0.9)",
                           transition: "color 0.2s ease",
                         }}
                       >
@@ -233,7 +261,6 @@ const WhatWeDoHero = () => {
                       >
                         {pillar.desc}
                       </Typography>
-
                     </Card>
                   </Grid>
                 );
@@ -245,7 +272,12 @@ const WhatWeDoHero = () => {
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={2.25}
-            sx={{ pt: 2, width: "100%", justifyItems: "center", justifyContent: "center" }}
+            sx={{
+              pt: 2,
+              width: "100%",
+              justifyItems: "center",
+              justifyContent: "center",
+            }}
             alignItems="center"
           >
             <Link href="/programs" style={{ textDecoration: "none" }}>
@@ -276,10 +308,15 @@ const WhatWeDoHero = () => {
               </Button>
             </Link>
 
-            <Link href="/membership" style={{ textDecoration: "none" }}>
+            <Link href="/login" style={{ textDecoration: "none" }}>
               <Button
                 variant="outlined"
-                endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                endIcon={
+                  <ArrowForwardIcon
+                    className="arrow-icon"
+                    sx={{ transition: "transform 0.25s ease" }}
+                  />
+                }
                 sx={{
                   whiteSpace: "nowrap",
                   fontFamily: inter.style.fontFamily,
@@ -309,7 +346,6 @@ const WhatWeDoHero = () => {
               </Button>
             </Link>
           </Stack>
-
         </Stack>
       </Container>
     </Box>

@@ -8,6 +8,7 @@ import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
 import PsychologyIcon from "@mui/icons-material/PsychologyOutlined";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const SchoolEcosystemSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -30,7 +31,8 @@ const SchoolEcosystemSection = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(80px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -39,29 +41,18 @@ const SchoolEcosystemSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Heading, Subtitle & CTAs */}
           <Grid size={{ xs: 12, md: 5 }}>
             <Stack spacing={4}>
-              
               <Stack spacing={1.5}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Box
-                    sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
-                  />
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "12px",
-                      fontWeight: 700,
-                      letterSpacing: "0.15em",
-                      color: "#1B365D",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Dual Framework
-                  </Typography>
-                </Box>
+                <SectionBadge
+                  label="Dual Framework"
+                  align="left"
+                  textColor="#1B365D"
+                  glowColor="#1B365D"
+                  borderColor="rgba(27, 54, 93, 0.25)"
+                  backgroundColor="rgba(27, 54, 93, 0.08)"
+                />
 
                 <Typography
                   component="h2"
@@ -88,9 +79,10 @@ const SchoolEcosystemSection = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  Innovation cannot remain an occasional event. It must become a continuous educational practice.
+                  Innovation cannot remain an occasional event. It must become a
+                  continuous educational practice.
                 </Typography>
-                
+
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -99,7 +91,8 @@ const SchoolEcosystemSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  IAIRE helps schools build sustainable innovation and research ecosystems through a dual implementation framework.
+                  IAIRE helps schools build sustainable innovation and research
+                  ecosystems through a dual implementation framework.
                 </Typography>
               </Stack>
 
@@ -109,7 +102,14 @@ const SchoolEcosystemSection = () => {
                 sx={{ pt: 1, width: "100%" }}
                 alignItems={{ xs: "stretch", sm: "center", md: "flex-start" }}
               >
-                <Link href="/signup/role-selection" style={{ textDecoration: "none", width: "100%", maxWidth: "340px" }}>
+                <Link
+                  href="/login"
+                  style={{
+                    textDecoration: "none",
+                    width: "100%",
+                    maxWidth: "340px",
+                  }}
+                >
                   <Button
                     variant="contained"
                     sx={{
@@ -137,10 +137,22 @@ const SchoolEcosystemSection = () => {
                   </Button>
                 </Link>
 
-                <Link href="/membership" style={{ textDecoration: "none", width: "100%", maxWidth: "340px" }}>
+                {/* <Link
+                  href="/membership"
+                  style={{
+                    textDecoration: "none",
+                    width: "100%",
+                    maxWidth: "340px",
+                  }}
+                >
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -169,7 +181,7 @@ const SchoolEcosystemSection = () => {
                   >
                     Explore School Membership
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
             </Stack>
           </Grid>
@@ -177,7 +189,6 @@ const SchoolEcosystemSection = () => {
           {/* Right Column: Dynamic Dual Framework Implementation Cards */}
           <Grid size={{ xs: 12, md: 7 }} sx={{ pl: { md: 4 } }}>
             <Stack spacing={4}>
-              
               {/* Card 1: Top-down capacity building */}
               <Box
                 onMouseEnter={() => setHoveredCard(1)}
@@ -191,9 +202,14 @@ const SchoolEcosystemSection = () => {
                   gap: 3,
                   alignItems: "flex-start",
                   transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                  transform: hoveredCard === 1 ? "translateY(-4px)" : "translateY(0)",
-                  boxShadow: hoveredCard === 1 ? "0 15px 35px rgba(27, 54, 93, 0.06)" : "none",
-                  borderColor: hoveredCard === 1 ? "rgba(27, 54, 93, 0.25)" : "#E5E5E9",
+                  transform:
+                    hoveredCard === 1 ? "translateY(-4px)" : "translateY(0)",
+                  boxShadow:
+                    hoveredCard === 1
+                      ? "0 15px 35px rgba(27, 54, 93, 0.06)"
+                      : "none",
+                  borderColor:
+                    hoveredCard === 1 ? "rgba(27, 54, 93, 0.25)" : "#E5E5E9",
                 }}
               >
                 <Box
@@ -201,7 +217,8 @@ const SchoolEcosystemSection = () => {
                     width: 52,
                     height: 52,
                     borderRadius: "14px",
-                    backgroundColor: hoveredCard === 1 ? "#1B365D" : "rgba(27, 54, 93, 0.07)",
+                    backgroundColor:
+                      hoveredCard === 1 ? "#1B365D" : "rgba(27, 54, 93, 0.07)",
                     color: hoveredCard === 1 ? "#FFFFFF" : "#1B365D",
                     display: "flex",
                     alignItems: "center",
@@ -243,7 +260,10 @@ const SchoolEcosystemSection = () => {
                       lineHeight: 1.55,
                     }}
                   >
-                    Training and certifying educators as <strong>Innovation and Research Mentors</strong> to lead internal knowledge development and maintain institutional excellence.
+                    Training and certifying educators as{" "}
+                    <strong>Innovation and Research Mentors</strong> to lead
+                    internal knowledge development and maintain institutional
+                    excellence.
                   </Typography>
                 </Stack>
               </Box>
@@ -261,9 +281,14 @@ const SchoolEcosystemSection = () => {
                   gap: 3,
                   alignItems: "flex-start",
                   transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                  transform: hoveredCard === 2 ? "translateY(-4px)" : "translateY(0)",
-                  boxShadow: hoveredCard === 2 ? "0 15px 35px rgba(27, 54, 93, 0.06)" : "none",
-                  borderColor: hoveredCard === 2 ? "rgba(27, 54, 93, 0.25)" : "#E5E5E9",
+                  transform:
+                    hoveredCard === 2 ? "translateY(-4px)" : "translateY(0)",
+                  boxShadow:
+                    hoveredCard === 2
+                      ? "0 15px 35px rgba(27, 54, 93, 0.06)"
+                      : "none",
+                  borderColor:
+                    hoveredCard === 2 ? "rgba(27, 54, 93, 0.25)" : "#E5E5E9",
                 }}
               >
                 <Box
@@ -271,7 +296,8 @@ const SchoolEcosystemSection = () => {
                     width: 52,
                     height: 52,
                     borderRadius: "14px",
-                    backgroundColor: hoveredCard === 2 ? "#1B365D" : "rgba(27, 54, 93, 0.07)",
+                    backgroundColor:
+                      hoveredCard === 2 ? "#1B365D" : "rgba(27, 54, 93, 0.07)",
                     color: hoveredCard === 2 ? "#FFFFFF" : "#1B365D",
                     display: "flex",
                     alignItems: "center",
@@ -313,7 +339,12 @@ const SchoolEcosystemSection = () => {
                       lineHeight: 1.55,
                     }}
                   >
-                    Motivating and guiding students through structured <strong>innovation, research, intellectual property, and entrepreneurship pathways</strong>.
+                    Motivating and guiding students through structured{" "}
+                    <strong>
+                      innovation, research, intellectual property, and
+                      entrepreneurship pathways
+                    </strong>
+                    .
                   </Typography>
                 </Stack>
               </Box>
@@ -330,12 +361,13 @@ const SchoolEcosystemSection = () => {
                   fontStyle: "italic",
                 }}
               >
-                Together, these pathways help schools develop long-term institutional capability while preparing students to become innovators, researchers, inventors, entrepreneurs, and responsible problem-solvers.
+                Together, these pathways help schools develop long-term
+                institutional capability while preparing students to become
+                innovators, researchers, inventors, entrepreneurs, and
+                responsible problem-solvers.
               </Typography>
-
             </Stack>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

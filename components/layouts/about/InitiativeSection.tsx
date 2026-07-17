@@ -4,6 +4,8 @@ import React from "react";
 import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import Link from "next/link";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 // Custom vector SVG icons for the two pillars
 const TeacherPillarIcon = () => (
@@ -22,7 +24,7 @@ const StudentPillarIcon = () => (
 );
 
 const GoalIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <circle cx="12" cy="12" r="10" />
     <circle cx="12" cy="12" r="6" />
     <circle cx="12" cy="12" r="2" />
@@ -61,28 +63,21 @@ const InitiativeSection = () => {
           {/* Left Column: Heading & Content */}
           <Grid size={{ xs: 12, md: 5 }}>
             <Stack spacing={3.5}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "0.15em",
-                    color: "#1B365D",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  THE INITIATIVE
-                </Typography>
-              </Box>
+              <SectionBadge
+                label="The Initiative"
+                align="left"
+                textColor="#1B365D"
+                glowColor="#1B365D"
+                borderColor="rgba(27, 54, 93, 0.25)"
+                backgroundColor="rgba(27, 54, 93, 0.08)"
+              />
 
               <Typography
                 variant="h2"
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: { xs: "32px", md: "40px" },
-                  fontWeight: 800,
+                  fontWeight: 900,
                   color: "#0B1727",
                   lineHeight: 1.25,
                   letterSpacing: "-0.02em",
@@ -96,7 +91,7 @@ const InitiativeSection = () => {
                   sx={{
                     fontFamily: inter.style.fontFamily,
                     fontSize: "16px",
-                    fontWeight: 600,
+                    fontWeight: 650,
                     color: "#121214",
                     lineHeight: 1.5,
                   }}
@@ -126,27 +121,31 @@ const InitiativeSection = () => {
               </Stack>
 
               <Box sx={{ pt: 1.5 }}>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#1B365D",
-                    borderRadius: "30px",
-                    p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#e05400",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
-                    },
-                  }}
-                >
-                  Bring the IAIRE Initiative to Your Institution
-                </Button>
+                <Link href="/contact" style={{ textDecoration: "none" }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#1B365D",
+                      borderRadius: "100px",
+                      px: 3.5,
+                      py: 1.4,
+                      boxShadow: "0 8px 25px rgba(27, 54, 93, 0.2)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      "&:hover": {
+                        backgroundColor: "#122744",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 12px 30px rgba(27, 54, 93, 0.32)",
+                      },
+                    }}
+                  >
+                    Bring the IAIRE Initiative to Your Institution
+                  </Button>
+                </Link>
               </Box>
             </Stack>
           </Grid>
@@ -169,11 +168,11 @@ const InitiativeSection = () => {
                       display: "flex",
                       flexDirection: "column",
                       gap: 2,
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       "&:hover": {
-                        borderColor: "rgba(248, 93, 0, 0.25)",
+                        borderColor: "rgba(27, 54, 93, 0.25)",
                         transform: "translateY(-4px)",
-                        boxShadow: "0 10px 25px rgba(248, 93, 0, 0.05)",
+                        boxShadow: "0 10px 25px rgba(27, 54, 93, 0.05)",
                       },
                     }}
                   >
@@ -182,7 +181,8 @@ const InitiativeSection = () => {
                         width: 40,
                         height: 40,
                         borderRadius: "8px",
-                        backgroundColor: "rgba(248, 93, 0, 0.08)",
+                        backgroundColor: "rgba(27, 54, 93, 0.06)",
+                        color: "#1B365D",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -213,11 +213,11 @@ const InitiativeSection = () => {
                       display: "flex",
                       flexDirection: "column",
                       gap: 2,
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       "&:hover": {
-                        borderColor: "rgba(248, 93, 0, 0.25)",
+                        borderColor: "rgba(59, 130, 246, 0.25)",
                         transform: "translateY(-4px)",
-                        boxShadow: "0 10px 25px rgba(248, 93, 0, 0.05)",
+                        boxShadow: "0 10px 25px rgba(59, 130, 246, 0.05)",
                       },
                     }}
                   >
@@ -226,7 +226,8 @@ const InitiativeSection = () => {
                         width: 40,
                         height: 40,
                         borderRadius: "8px",
-                        backgroundColor: "rgba(248, 93, 0, 0.08)",
+                        backgroundColor: "rgba(59, 130, 246, 0.06)",
+                        color: "#3B82F6",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -256,7 +257,7 @@ const InitiativeSection = () => {
                 sx={{
                   width: "100%",
                   borderRadius: "20px",
-                  background: "linear-gradient(135deg, #090A0E 0%, #161720 100%)",
+                  background: "linear-gradient(135deg, #090B10 0%, #161922 100%)",
                   p: 4,
                   position: "relative",
                   overflow: "hidden",
@@ -264,12 +265,27 @@ const InitiativeSection = () => {
                   boxShadow: "0 15px 35px rgba(0, 0, 0, 0.1)",
                 }}
               >
+                {/* Subtle blue ambient flare */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    bottom: "-60%",
+                    right: "-10%",
+                    width: "180px",
+                    height: "180px",
+                    borderRadius: "50%",
+                    background: "radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(255, 255, 255, 0) 70%)",
+                    filter: "blur(30px)",
+                    zIndex: 0,
+                  }}
+                />
+
                 <Stack spacing={2} sx={{ position: "relative", zIndex: 1 }}>
                   <Stack direction="row" spacing={1.5} alignItems="center">
-                    <Box sx={{ width: 32, height: 32, borderRadius: "6px", backgroundColor: "rgba(248, 93, 0, 0.12)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Box sx={{ width: 32, height: 32, borderRadius: "6px", backgroundColor: "rgba(59, 130, 246, 0.12)", color: "#3B82F6", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <GoalIcon />
                     </Box>
-                    <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", color: "#1B365D", textTransform: "uppercase" }}>
+                    <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "12px", fontWeight: 700, letterSpacing: "0.15em", color: "#3B82F6", textTransform: "uppercase" }}>
                       THE GOAL
                     </Typography>
                   </Stack>

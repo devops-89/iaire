@@ -7,6 +7,7 @@ import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import SectionBadge from "@/components/widgets/SectionBadge";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import standardsImpactImg from "@/images/homepage/academic_standard.jpeg";
 
@@ -107,23 +108,14 @@ const StandardsImpactSection = () => {
             <Stack spacing={4}>
               {/* Heading Group */}
               <Stack spacing={1.5}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Box
-                    sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
-                  />
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "12px",
-                      fontWeight: 700,
-                      color: "#1B365D",
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Institutional Frameworks
-                  </Typography>
-                </Box>
+                <SectionBadge
+                  label="Rigorous Standards"
+                  align="left"
+                  textColor="#1B365D"
+                  glowColor="#1B365D"
+                  borderColor="rgba(27, 54, 93, 0.25)"
+                  backgroundColor="rgba(27, 54, 93, 0.08)"
+                />
 
                 <Typography
                   component="h2"

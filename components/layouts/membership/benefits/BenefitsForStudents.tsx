@@ -101,7 +101,7 @@ const BenefitsForStudents = () => {
               </Typography>
               
               <Box sx={{ pt: 1 }}>
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
                     sx={{
                       fontSize: 15,

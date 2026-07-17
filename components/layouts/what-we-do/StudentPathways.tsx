@@ -5,9 +5,10 @@ import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
+import SectionBadge from "@/components/widgets/SectionBadge";
 import Image from "next/image";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
-import studentPathwaysImg from "@/public/images/what-we-do/student-pathways.png";
+import studentPathwaysImg from "@/public/images/what-we-do/student-pathways.jpeg";
 
 const benefits = [
   "Development of creativity, critical thinking, and problem-solving skills",
@@ -71,31 +72,17 @@ const StudentPathways = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 7 }} alignItems="center">
-          
           {/* Left Column: Heading, Details, Benefits Checklist & Buttons */}
           <Grid size={{ xs: 12, md: 6.8 }}>
             <Stack spacing={3.5} sx={{ width: "100%" }}>
-              
-              {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
-                <Box
-                  sx={{
-                    width: "auto",
-                    backgroundColor: "rgba(27, 54, 93, 0.06)",
-                    color: "#1B365D",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Student Pathways
-                </Box>
-              </Box>
+              <SectionBadge
+                label="Student Pathways"
+                align="left"
+                textColor="#1B365D"
+                glowColor="#1B365D"
+                borderColor="rgba(27, 54, 93, 0.25)"
+                backgroundColor="rgba(27, 54, 93, 0.08)"
+              />
 
               {/* Title & Description */}
               <Stack spacing={1.5}>
@@ -111,7 +98,9 @@ const StudentPathways = () => {
                   }}
                 >
                   Students as Innovators, <br />
-                  <span style={{ color: "#1B365D" }}>Researchers & Leaders</span>
+                  <span style={{ color: "#1B365D" }}>
+                    Researchers & Leaders
+                  </span>
                 </Typography>
 
                 <Typography
@@ -125,7 +114,7 @@ const StudentPathways = () => {
                 >
                   Beneficiaries of the IAIRE Innovation & Research Ecosystem
                 </Typography>
-                
+
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -134,7 +123,12 @@ const StudentPathways = () => {
                     color: "#4B5563",
                   }}
                 >
-                  Students are the primary beneficiaries of the <strong>IAIRE</strong> Innovation, Research and Entrepreneurship ecosystem. Through structured learning, continuous mentoring, and hands-on innovation projects, they develop the knowledge, skills, and mindset required to become future innovators, researchers, and entrepreneurs.
+                  Students are the primary beneficiaries of the{" "}
+                  <strong>IAIRE</strong> Innovation, Research and
+                  Entrepreneurship ecosystem. Through structured learning,
+                  continuous mentoring, and hands-on innovation projects, they
+                  develop the knowledge, skills, and mindset required to become
+                  future innovators, researchers, and entrepreneurs.
                 </Typography>
               </Stack>
 
@@ -166,7 +160,9 @@ const StudentPathways = () => {
                           onMouseLeave={() => setHoveredIdx(null)}
                           sx={{
                             cursor: "default",
-                            transform: isHovered ? "translateX(4px)" : "translateX(0)",
+                            transform: isHovered
+                              ? "translateX(4px)"
+                              : "translateX(0)",
                             transition: "transform 0.2s ease",
                           }}
                         >
@@ -205,7 +201,10 @@ const StudentPathways = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link href="/membership#student" style={{ textDecoration: "none" }}>
+                <Link
+                  href="/membership#student"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="contained"
                     sx={{
@@ -233,12 +232,19 @@ const StudentPathways = () => {
                   </Button>
                 </Link>
               </Stack>
-
             </Stack>
           </Grid>
 
           {/* Right Column: Premium Glowing Illustration of Student Pathways */}
-          <Grid size={{ xs: 12, md: 5.2 }} sx={{ display: "flex", justifyContent: "center", alignItems: "center", pl: { md: 2 } }}>
+          <Grid
+            size={{ xs: 12, md: 5.2 }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              pl: { md: 2 },
+            }}
+          >
             <Box
               sx={{
                 position: "relative",
@@ -271,7 +277,6 @@ const StudentPathways = () => {
               />
             </Box>
           </Grid>
-
         </Grid>
       </Container>
     </Box>
