@@ -5,12 +5,33 @@ import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
-
+import resources from "@/images/about/resources.jpeg";
 const OrangeCheck = () => (
-  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      mt: 0.25,
+    }}
+  >
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill="rgba(248, 93, 0, 0.12)" stroke="#1B365D" strokeWidth="2" />
-      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#1B365D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        fill="rgba(248, 93, 0, 0.12)"
+        stroke="#1B365D"
+        strokeWidth="2"
+      />
+      <path
+        d="M8.5 12.5l2.5 2.5 4.5-5"
+        stroke="#1B365D"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   </Box>
 );
@@ -47,7 +68,8 @@ const AboutResourcesSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -56,12 +78,13 @@ const AboutResourcesSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Heading, Available Resources Grid & Copy */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
+                <Box
+                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
+                />
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -110,7 +133,9 @@ const AboutResourcesSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  IAIRE provides resources that help participants understand, implement, and grow within the innovation ecosystem. Access tools to build capability at every stage of the journey.
+                  IAIRE provides resources that help participants understand,
+                  implement, and grow within the innovation ecosystem. Access
+                  tools to build capability at every stage of the journey.
                 </Typography>
               </Stack>
 
@@ -132,7 +157,11 @@ const AboutResourcesSection = () => {
                 <Grid container spacing={1.5}>
                   {availableResources.map((res, index) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                      <Stack direction="row" spacing={1.5} alignItems="flex-start">
+                      <Stack
+                        direction="row"
+                        spacing={1.5}
+                        alignItems="flex-start"
+                      >
                         <OrangeCheck />
                         <Typography
                           sx={{
@@ -163,10 +192,14 @@ const AboutResourcesSection = () => {
                   pl: 2.5,
                 }}
               >
-                <Box component="span" sx={{ fontWeight: 700, display: "block", mb: 0.5 }}>
+                <Box
+                  component="span"
+                  sx={{ fontWeight: 700, display: "block", mb: 0.5 }}
+                >
                   Learn. Build. Innovate.
                 </Box>
-                The IAIRE resource library is designed to support every stage of the innovation journey.
+                The IAIRE resource library is designed to support every stage of
+                the innovation journey.
               </Typography>
 
               <Box sx={{ pt: 1.5 }}>
@@ -180,12 +213,12 @@ const AboutResourcesSection = () => {
                     backgroundColor: "#1B365D",
                     borderRadius: "30px",
                     p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
+                    boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
                     transition: "all 0.3s ease",
                     "&:hover": {
-                      backgroundColor: "#e05400",
+                      backgroundColor: "#122744",
                       transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
+                      boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
                     },
                   }}
                 >
@@ -209,16 +242,16 @@ const AboutResourcesSection = () => {
                 transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 "&:hover": {
                   transform: "translateY(-6px)",
-                  boxShadow: "0 30px 60px rgba(248, 93, 0, 0.08)",
-                  borderColor: "rgba(248, 93, 0, 0.2)",
+                  boxShadow: "0 30px 60px rgba(27, 54, 93, 0.05)",
+                  borderColor: "rgba(27, 54, 93, 0.15)",
                 },
               }}
             >
               <Image
-                src="/images/homepage/resource_library.png"
+                src={resources}
                 alt="IAIRE Digital Resource Library Index"
-                width={1024}
-                height={1024}
+                width={640}
+                height={640}
                 layout="responsive"
                 priority
                 style={{
@@ -229,7 +262,6 @@ const AboutResourcesSection = () => {
               />
             </Box>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

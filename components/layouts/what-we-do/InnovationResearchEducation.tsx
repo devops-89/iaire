@@ -49,7 +49,8 @@ const InnovationResearchEducation = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(120px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -63,22 +64,35 @@ const InnovationResearchEducation = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
-          
           {/* Left Column: Heading Copy, Description & Buttons */}
           <Grid size={{ xs: 12, md: 5.8 }}>
             <Stack spacing={3} sx={{ width: "100%" }}>
-              
               {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "center", md: "flex-start" },
+                }}
+              >
                 <Box
                   sx={{
                     width: "auto",
@@ -114,7 +128,7 @@ const InnovationResearchEducation = () => {
                   Innovation & <br />
                   <span style={{ color: "#1B365D" }}>Research Education</span>
                 </Typography>
-                
+
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -129,7 +143,10 @@ const InnovationResearchEducation = () => {
               </Stack>
 
               {/* Copy Paragraphs */}
-              <Stack spacing={1.75} sx={{ color: "#4B5563", maxWidth: "560px" }}>
+              <Stack
+                spacing={1.75}
+                sx={{ color: "#4B5563", maxWidth: "560px" }}
+              >
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -137,7 +154,10 @@ const InnovationResearchEducation = () => {
                     lineHeight: 1.55,
                   }}
                 >
-                  <strong>IAIRE</strong> supports schools in teaching students how to identify meaningful problems, apply innovation and research methodologies, document ideas, develop intellectual outputs, and communicate solutions.
+                  <strong>IAIRE</strong> supports schools in teaching students
+                  how to identify meaningful problems, apply innovation and
+                  research methodologies, document ideas, develop intellectual
+                  outputs, and communicate solutions.
                 </Typography>
 
                 <Typography
@@ -147,7 +167,8 @@ const InnovationResearchEducation = () => {
                     lineHeight: 1.55,
                   }}
                 >
-                  Student learning is organized around ten core curriculum domains:
+                  Student learning is organized around ten core curriculum
+                  domains:
                 </Typography>
               </Stack>
 
@@ -186,7 +207,7 @@ const InnovationResearchEducation = () => {
                   </Button>
                 </Link>
 
-                <Link href="/programs" style={{ textDecoration: "none" }}>
+                {/* <Link href="/programs" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
                     sx={{
@@ -216,10 +237,18 @@ const InnovationResearchEducation = () => {
                   </Button>
                 </Link>
 
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -248,9 +277,8 @@ const InnovationResearchEducation = () => {
                   >
                     Start a School Hub
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
-
             </Stack>
           </Grid>
 
@@ -261,7 +289,11 @@ const InnovationResearchEducation = () => {
                 const isHovered = hoveredIdx === idx;
                 const formattedNum = String(idx + 1).padStart(2, "0");
                 return (
-                  <Grid size={{ xs: 12, sm: 6 }} key={idx} sx={{ display: "flex" }}>
+                  <Grid
+                    size={{ xs: 12, sm: 6 }}
+                    key={idx}
+                    sx={{ display: "flex" }}
+                  >
                     <Box
                       onMouseEnter={() => setHoveredIdx(idx)}
                       onMouseLeave={() => setHoveredIdx(null)}
@@ -275,9 +307,15 @@ const InnovationResearchEducation = () => {
                         gap: 1.75,
                         width: "100%",
                         transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                        transform: isHovered ? "translateY(-3px)" : "translateY(0)",
-                        boxShadow: isHovered ? "0 10px 20px rgba(27, 54, 93, 0.04)" : "0 2px 6px rgba(0, 0, 0, 0.01)",
-                        borderColor: isHovered ? "rgba(27, 54, 93, 0.2)" : "rgba(0, 0, 0, 0.05)",
+                        transform: isHovered
+                          ? "translateY(-3px)"
+                          : "translateY(0)",
+                        boxShadow: isHovered
+                          ? "0 10px 20px rgba(27, 54, 93, 0.04)"
+                          : "0 2px 6px rgba(0, 0, 0, 0.01)",
+                        borderColor: isHovered
+                          ? "rgba(27, 54, 93, 0.2)"
+                          : "rgba(0, 0, 0, 0.05)",
                       }}
                     >
                       {/* Monospace Badge number */}
@@ -286,7 +324,9 @@ const InnovationResearchEducation = () => {
                           width: 36,
                           height: 36,
                           borderRadius: "50%",
-                          backgroundColor: isHovered ? "rgba(59, 130, 246, 0.1)" : "rgba(27, 54, 93, 0.04)",
+                          backgroundColor: isHovered
+                            ? "rgba(59, 130, 246, 0.1)"
+                            : "rgba(27, 54, 93, 0.04)",
                           color: isHovered ? "#3B82F6" : "#1B365D",
                           display: "flex",
                           alignItems: "center",
@@ -317,7 +357,6 @@ const InnovationResearchEducation = () => {
               })}
             </Grid>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

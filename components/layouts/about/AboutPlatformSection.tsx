@@ -180,12 +180,12 @@ const AboutPlatformSection = () => {
                     backgroundColor: "#1B365D",
                     borderRadius: "30px",
                     p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(248, 93, 0, 0.25)",
+                    boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
                     transition: "all 0.3s ease",
                     "&:hover": {
-                      backgroundColor: "#e05400",
+                      backgroundColor: "#122744",
                       transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(248, 93, 0, 0.35)",
+                      boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
                     },
                   }}
                 >
@@ -209,8 +209,8 @@ const AboutPlatformSection = () => {
                 transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 "&:hover": {
                   transform: "translateY(-6px)",
-                  boxShadow: "0 30px 60px rgba(248, 93, 0, 0.08)",
-                  borderColor: "rgba(248, 93, 0, 0.2)",
+                  boxShadow: "0 30px 60px rgba(27, 54, 93, 0.05)",
+                  borderColor: "rgba(27, 54, 93, 0.15)",
                 },
               }}
             >

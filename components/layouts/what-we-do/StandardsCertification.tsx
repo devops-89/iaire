@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -48,20 +56,28 @@ const StandardsCertification = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
-          
           {/* Left Column: Title, Details & CTA Buttons */}
           <Grid size={{ xs: 12, md: 6.8 }}>
             <Stack spacing={3.25}>
-              
               {/* Heading Section */}
               <Stack spacing={0.75}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
@@ -81,7 +97,7 @@ const StandardsCertification = () => {
                     Standards & Certification
                   </Typography>
                 </Box>
-                
+
                 <Typography
                   component="h2"
                   sx={{
@@ -94,7 +110,9 @@ const StandardsCertification = () => {
                   }}
                 >
                   Certification Based on <br />
-                  <span style={{ color: "#1B365D" }}>Demonstrated Competence</span>
+                  <span style={{ color: "#1B365D" }}>
+                    Demonstrated Competence
+                  </span>
                 </Typography>
               </Stack>
 
@@ -107,7 +125,12 @@ const StandardsCertification = () => {
                     lineHeight: 1.55,
                   }}
                 >
-                  <strong>IAIRE</strong>’s certification framework emphasizes demonstrated competence rather than attendance alone. While participants receive structured training and mentorship, certification is intended to recognize the ability to successfully apply innovation or research methodologies in practice.
+                  <strong>IAIRE</strong>’s certification framework emphasizes
+                  demonstrated competence rather than attendance alone. While
+                  participants receive structured training and mentorship,
+                  certification is intended to recognize the ability to
+                  successfully apply innovation or research methodologies in
+                  practice.
                 </Typography>
 
                 <Typography
@@ -117,7 +140,9 @@ const StandardsCertification = () => {
                     lineHeight: 1.55,
                   }}
                 >
-                  This outcome-based approach helps ensure that certified educators, students, and institutions possess both theoretical understanding and practical experience.
+                  This outcome-based approach helps ensure that certified
+                  educators, students, and institutions possess both theoretical
+                  understanding and practical experience.
                 </Typography>
               </Stack>
 
@@ -156,7 +181,10 @@ const StandardsCertification = () => {
                   </Button>
                 </Link>
 
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                {/* <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="outlined"
                     sx={{
@@ -189,7 +217,12 @@ const StandardsCertification = () => {
                 <Link href="/programs" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -218,9 +251,8 @@ const StandardsCertification = () => {
                   >
                     Download Standards
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
-              
             </Stack>
           </Grid>
 
@@ -232,13 +264,13 @@ const StandardsCertification = () => {
                 p: 3.5,
                 borderRadius: "24px",
                 border: "1px solid rgba(27, 54, 93, 0.08)",
-                background: "linear-gradient(135deg, rgba(27, 54, 93, 0.01) 0%, rgba(255, 255, 255, 0.95) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(27, 54, 93, 0.01) 0%, rgba(255, 255, 255, 0.95) 100%)",
                 boxShadow: "0 15px 35px rgba(27, 54, 93, 0.03)",
                 borderLeft: "6px solid #1B365D",
               }}
             >
               <Stack spacing={3}>
-                
                 {/* Panel Header */}
                 <Stack direction="row" spacing={1.75} alignItems="center">
                   <Box
@@ -276,7 +308,8 @@ const StandardsCertification = () => {
                     color: "#4B5563",
                   }}
                 >
-                  IAIRE awards voluntary certifications and fellowships across defined academic, educator, and student excellence tracks:
+                  IAIRE awards voluntary certifications and fellowships across
+                  defined academic, educator, and student excellence tracks:
                 </Typography>
 
                 {/* Checklist Stack */}
@@ -293,7 +326,9 @@ const StandardsCertification = () => {
                         onMouseLeave={() => setHoveredIdx(null)}
                         sx={{
                           cursor: "default",
-                          transform: isHovered ? "translateX(4px)" : "translateX(0)",
+                          transform: isHovered
+                            ? "translateX(4px)"
+                            : "translateX(0)",
                           transition: "transform 0.2s ease",
                         }}
                       >
@@ -322,11 +357,9 @@ const StandardsCertification = () => {
                     );
                   })}
                 </Stack>
-
               </Stack>
             </Card>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

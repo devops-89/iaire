@@ -162,7 +162,7 @@ const SubFooterCTA = () => {
               </Button>
             </Link>
 
-            <Link href="/about#contact" style={{ textDecoration: "none" }}>
+            <Link href="/contact" style={{ textDecoration: "none" }}>
               <Button
                 variant="outlined"
                 endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}

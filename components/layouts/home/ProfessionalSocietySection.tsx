@@ -8,8 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUserOutlined";
-import professionalSocietyImg from "@/images/homepage/professional_society.png";
-
+import professionalSocietyImg from "@/images/homepage/professional_society_vector.jpeg";
 const ProfessionalSocietySection = () => {
   const [hovered, setHovered] = useState(false);
 
@@ -22,7 +21,6 @@ const ProfessionalSocietySection = () => {
         overflow: "hidden",
       }}
     >
-      {/* Subtle background decoration */}
       <Box
         sx={{
           position: "absolute",
@@ -31,7 +29,8 @@ const ProfessionalSocietySection = () => {
           width: "35vw",
           height: "35vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(80px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -40,7 +39,6 @@ const ProfessionalSocietySection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Image with Sleek Glassmorphic Frame */}
           <Grid size={{ xs: 12, md: 5.5 }}>
             <Box
@@ -67,7 +65,7 @@ const ProfessionalSocietySection = () => {
                   transform: hovered ? "scale(1.04)" : "scale(1)",
                 }}
               />
-              
+
               {/* Floating Badge on Image */}
               <Box
                 sx={{
@@ -105,7 +103,6 @@ const ProfessionalSocietySection = () => {
           {/* Right Column: Text & CTAs */}
           <Grid size={{ xs: 12, md: 6.5 }}>
             <Stack spacing={3.5}>
-              
               {/* Overtitle Section */}
               <Stack spacing={1.5}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
@@ -125,7 +122,7 @@ const ProfessionalSocietySection = () => {
                     Global Frameworks
                   </Typography>
                 </Box>
-                
+
                 {/* Section Headline */}
                 <Typography
                   component="h2"
@@ -139,7 +136,9 @@ const ProfessionalSocietySection = () => {
                   }}
                 >
                   A Professional Society for an <br />
-                  <span style={{ color: "#1B365D" }}>Innovation-Driven World</span>
+                  <span style={{ color: "#1B365D" }}>
+                    Innovation-Driven World
+                  </span>
                 </Typography>
               </Stack>
 
@@ -154,7 +153,17 @@ const ProfessionalSocietySection = () => {
                     lineHeight: 1.65,
                   }}
                 >
-                  The world is being reshaped by artificial intelligence, automation, robotics, biotechnology, climate change, healthcare transformation, sustainability challenges, and rapid technological disruption. The learners of today will need more than academic recall. They will need <strong>curiosity, critical thinking, research ability, ethical judgment, creativity, collaboration, intellectual property awareness, and entrepreneurial confidence</strong>.
+                  The world is being reshaped by artificial intelligence,
+                  automation, robotics, biotechnology, climate change,
+                  healthcare transformation, sustainability challenges, and
+                  rapid technological disruption. The learners of today will
+                  need more than academic recall. They will need{" "}
+                  <strong>
+                    curiosity, critical thinking, research ability, ethical
+                    judgment, creativity, collaboration, intellectual property
+                    awareness, and entrepreneurial confidence
+                  </strong>
+                  .
                 </Typography>
 
                 <Typography
@@ -166,7 +175,8 @@ const ProfessionalSocietySection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  IAIRE exists to help educational institutions build these capabilities systematically.
+                  IAIRE exists to help educational institutions build these
+                  capabilities systematically.
                 </Typography>
 
                 <Typography
@@ -178,7 +188,12 @@ const ProfessionalSocietySection = () => {
                     lineHeight: 1.65,
                   }}
                 >
-                  As a professional society, IAIRE develops standards, competency frameworks, curricula, rubrics, documentation processes, certification pathways, fellowship criteria, mentoring structures, and quality-assurance mechanisms for the emerging field of innovation, research, and entrepreneurship education.
+                  As a professional society, IAIRE develops standards,
+                  competency frameworks, curricula, rubrics, documentation
+                  processes, certification pathways, fellowship criteria,
+                  mentoring structures, and quality-assurance mechanisms for the
+                  emerging field of innovation, research, and entrepreneurship
+                  education.
                 </Typography>
               </Stack>
 
@@ -218,7 +233,12 @@ const ProfessionalSocietySection = () => {
                 <Link href="/programs" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       fontFamily: inter.style.fontFamily,
@@ -248,10 +268,8 @@ const ProfessionalSocietySection = () => {
                   </Button>
                 </Link>
               </Stack>
-              
             </Stack>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

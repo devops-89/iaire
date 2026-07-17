@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
-import standardsImpactImg from "@/images/homepage/standards_impact.png";
+import standardsImpactImg from "@/images/homepage/academic_standard.jpeg";
 
 const StandardsImpactSection = () => {
   const [hovered, setHovered] = useState(false);
@@ -31,7 +31,8 @@ const StandardsImpactSection = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -40,7 +41,6 @@ const StandardsImpactSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Premium Vector Image Frame */}
           <Grid size={{ xs: 12, md: 5.5 }}>
             <Box
@@ -67,7 +67,7 @@ const StandardsImpactSection = () => {
                   transform: hovered ? "scale(1.03)" : "scale(1)",
                 }}
               />
-              
+
               {/* Floating Badge on Image */}
               <Box
                 sx={{
@@ -105,7 +105,6 @@ const StandardsImpactSection = () => {
           {/* Right Column: Copy Content & CTAs */}
           <Grid size={{ xs: 12, md: 6.5 }} sx={{ pl: { md: 2 } }}>
             <Stack spacing={4}>
-              
               {/* Heading Group */}
               <Stack spacing={1.5}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
@@ -125,7 +124,7 @@ const StandardsImpactSection = () => {
                     Institutional Frameworks
                   </Typography>
                 </Box>
-                
+
                 <Typography
                   component="h2"
                   sx={{
@@ -153,7 +152,12 @@ const StandardsImpactSection = () => {
                     lineHeight: 1.65,
                   }}
                 >
-                  IAIRE's certifications and fellowships are <strong>voluntary academic and professional recognitions</strong> awarded on the basis of defined standards, demonstrated competencies, peer review, and measurable achievements.
+                  IAIRE's certifications and fellowships are{" "}
+                  <strong>
+                    voluntary academic and professional recognitions
+                  </strong>{" "}
+                  awarded on the basis of defined standards, demonstrated
+                  competencies, peer review, and measurable achievements.
                 </Typography>
 
                 <Typography
@@ -165,7 +169,14 @@ const StandardsImpactSection = () => {
                     lineHeight: 1.65,
                   }}
                 >
-                  IAIRE is not a government agency, statutory regulator, licensing authority, degree-granting institution, accreditation body for school-board affiliation, or substitute for any regulatory or governmental function. Its value comes from the <strong>rigor of its standards</strong>, the quality of its governance and review processes, the expertise of its Scientific Board, and the measurable outcomes achieved by participating schools, educators, and students.
+                  IAIRE is not a government agency, statutory regulator,
+                  licensing authority, degree-granting institution,
+                  accreditation body for school-board affiliation, or substitute
+                  for any regulatory or governmental function. Its value comes
+                  from the <strong>rigor of its standards</strong>, the quality
+                  of its governance and review processes, the expertise of its
+                  Scientific Board, and the measurable outcomes achieved by
+                  participating schools, educators, and students.
                 </Typography>
               </Stack>
 
@@ -205,7 +216,12 @@ const StandardsImpactSection = () => {
                 <Link href="/membership" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       fontFamily: inter.style.fontFamily,
@@ -235,10 +251,8 @@ const StandardsImpactSection = () => {
                   </Button>
                 </Link>
               </Stack>
-              
             </Stack>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

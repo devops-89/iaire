@@ -47,6 +47,7 @@ const AboutNewsSection = () => {
 
   return (
     <Box
+      id="news"
       sx={{
         py: { xs: 10, md: 14 },
         backgroundColor: "#FFFFFF",

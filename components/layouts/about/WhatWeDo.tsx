@@ -90,6 +90,7 @@ const supportFrameworks = [
 const WhatWeDo = () => {
   return (
     <Box
+      id="what-we-do"
       sx={{
         py: { xs: 10, md: 14 },
         backgroundColor: "#F9F9FB",

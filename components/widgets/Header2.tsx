@@ -411,13 +411,13 @@ const Header2 = () => {
                     </Typography>
                   </Link>
 
-                  <Link href="/about#contact" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
+                  <Link href="/contact" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
                     <Typography
                       sx={{
                         fontFamily: inter.style.fontFamily,
                         fontSize: "13.5px",
                         fontWeight: 700,
-                        color: pathname === "/about#contact" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
+                        color: pathname === "/contact" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
                         transition: "all 0.2s ease",
                         "&:hover": {
                           color: "#1B365D",

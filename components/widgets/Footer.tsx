@@ -246,7 +246,7 @@ const Footer = () => {
                   <FooterLink href="/about">Who We Are</FooterLink>
                   <FooterLink href="/programs">What We Do</FooterLink>
                   <FooterLink href="/signup/role-selection">Get Involved</FooterLink>
-                  <FooterLink href="/about#contact">Contact Us</FooterLink>
+                  <FooterLink href="/contact">Contact Us</FooterLink>
                 </Stack>
               </Stack>
             </Grid>

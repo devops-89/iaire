@@ -1,305 +1,314 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
-import { inter, newBlack_medium } from "@/utils/fonts";
-import Image from "next/image";
+import { inter } from "@/utils/fonts";
+import { COLORS } from "@/utils/enum";
 import Link from "next/link";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import heroImg from "@/public/images/programs/teacher_mentorship_blueprint.png";
+import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 
-const programCovers = [
-  "Foundations of innovation and creative thinking",
-  "Design thinking methodology",
-  "Research fundamentals and methodology",
-  "Problem identification and root-cause analysis",
-  "Student mentoring and facilitation techniques",
-  "Innovation project management and documentation",
-  "Intellectual property basics",
-  "Assessment frameworks for student innovation",
-  "Building an innovation culture in the classroom",
-];
-
-const educatorOutcomes = [
-  "Official IAIRE Innovation Educator Certification",
-  "Practical tools and resources for classroom use",
-  "Confidence to mentor student innovation projects end-to-end",
-  "Recognition within the IAIRE global educator network",
-  "Continued access to professional development resources",
+const trainingModules = [
+  "Introduction to Innovation",
+  "Innovation Mindset",
+  "Lifecycle of Innovation",
+  "Identifying a Problem",
+  "Writing a Problem Statement",
+  "STAR Method of Thinking",
+  "Dividing Complex Problems",
+  "Brainstorming for Innovation",
+  "Root-Cause Analysis",
+  "Design Thinking",
+  "Basics of Patentability and Intellectual Property",
 ];
 
 const EducatorCertification = () => {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
   return (
     <Box
+      id="educator-certification"
       sx={{
-        py: { xs: "80px", sm: "100px", md: "120px" },
-        backgroundColor: "#FFFFFF",
-        borderBottom: "1px solid rgba(0, 0, 0, 0.06)",
+        height: { xs: "auto", md: "100vh" },
+        minHeight: { xs: "auto", md: "100vh" },
+        display: "flex",
+        alignItems: "center",
+        pt: { xs: "120px", md: "90px" },
+        pb: { xs: "60px", md: "35px" },
+        background: "linear-gradient(135deg, #0B1528 0%, #1A2847 100%)",
         position: "relative",
+        overflow: "hidden",
+        boxSizing: "border-box",
       }}
     >
-      <Container maxWidth="lg">
-        <Grid container spacing={6} alignItems="center">
-          
-          {/* Left Column: Heading Copy, Lists, Who Should Enroll & CTA */}
-          <Grid size={{ xs: 12, md: 6.5 }}>
-            <Stack spacing={4}>
-              
-              {/* Category tag badge */}
-              <Box sx={{ display: "flex" }}>
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "2px",
-                    color: "#1B365D",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Professional Certification
-                </Typography>
+      {/* Background decoration glows */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "-10%",
+          right: "-10%",
+          width: "50vw",
+          height: "50vw",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 70%)",
+          filter: "blur(120px)",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "-10%",
+          left: "-10%",
+          width: "40vw",
+          height: "40vw",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(27, 54, 93, 0.2) 0%, rgba(255, 255, 255, 0) 70%)",
+          filter: "blur(100px)",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        
+        {/* Top Section: Title & Description Header */}
+        <Box sx={{ mb: { xs: 4, md: 4.5 }, width: "100%" }}>
+          <Stack spacing={2.5}>
+            {/* Badge */}
+            <Box sx={{ display: "flex" }}>
+              <Box
+                sx={{
+                  width: "auto",
+                  backgroundColor: "rgba(255, 255, 255, 0.08)",
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
+                  color: "#93C5FD",
+                  px: 2,
+                  py: 0.5,
+                  borderRadius: "20px",
+                  fontSize: "11px",
+                  fontWeight: 800,
+                  fontFamily: "monospace",
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Innovation Educator Certification
               </Box>
+            </Box>
 
-              {/* Titles */}
-              <Stack spacing={1.5}>
-                <Typography
-                  variant="h2"
-                  sx={{
-                    fontFamily: newBlack_medium.style.fontFamily,
-                    fontWeight: 800,
-                    fontSize: { xs: "30px", sm: "36px", md: "40px" },
-                    color: "#1D1D1F",
-                    letterSpacing: "-0.015em",
-                    lineHeight: 1.15,
-                  }}
-                >
-                  Innovation Educator Certification
-                </Typography>
-                <Typography
-                  variant="h3"
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontWeight: 600,
-                    fontSize: { xs: "18px", sm: "20px" },
-                    color: "#1B365D",
-                    lineHeight: 1.3,
-                  }}
-                >
-                  Empowering Teachers to Lead Innovation in Their Schools
-                </Typography>
-              </Stack>
+            {/* Title & Subtitle & Description */}
+            <Stack spacing={1.5}>
+              <Typography
+                component="h1"
+                sx={{
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: { xs: "28px", sm: "36px", md: "42px" },
+                  fontWeight: 900,
+                  lineHeight: 1.12,
+                  letterSpacing: "-0.03em",
+                  color: COLORS.WHITE,
+                }}
+              >
+                IAIRE Innovation <br />
+                <span style={{ color: "#93C5FD", textShadow: "0 0 35px rgba(147, 197, 253, 0.2)" }}>
+                  Educator Certification
+                </span>
+              </Typography>
+              
+              <Typography
+                sx={{
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  color: "#93C5FD",
+                  letterSpacing: "0.05em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Train. Experience. Certify. Lead.
+              </Typography>
 
-              {/* Description Paragraphs */}
-              <Stack spacing={2}>
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "15px",
-                    color: "rgba(0, 0, 0, 0.7)",
-                    lineHeight: "1.65",
-                  }}
-                >
-                  Teachers are the most powerful force for lasting change in any school. When educators understand innovation, they can inspire it in every student they teach.
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "15px",
-                    color: "rgba(0, 0, 0, 0.7)",
-                    lineHeight: "1.65",
-                  }}
-                >
-                  The IAIRE Innovation Educator Certification is a professional development program that trains and certifies teachers as Innovation & Research Mentors — equipping them with the methodologies, tools, confidence, and practical experience needed to guide students through the complete innovation journey.
-                </Typography>
-              </Stack>
+              <Typography
+                sx={{
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "13.5px",
+                  lineHeight: 1.55,
+                  color: "rgba(255, 255, 255, 0.8)",
+                  maxWidth: "850px",
+                }}
+              >
+                The IAIRE Innovation Educator Certification Programme prepares teachers to become Innovation Mentors capable of guiding students through the complete innovation lifecycle.
+              </Typography>
+            </Stack>
+          </Stack>
+        </Box>
 
-              {/* Two Column Grid: Covers & Outcomes */}
-              <Grid container spacing={3} sx={{ pt: 1 }}>
-                
-                {/* Covers */}
-                <Grid size={{ xs: 12, sm: 6 }}>
-                  <Stack spacing={2}>
+        {/* Middle Section: Symmetrical Grid of 11 Training syllabus items */}
+        <Box sx={{ mb: { xs: 4, md: 4.5 }, width: "100%" }}>
+          <Typography
+            sx={{
+              fontFamily: inter.style.fontFamily,
+              fontSize: "11px",
+              fontWeight: 800,
+              color: "#93C5FD",
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              mb: 2,
+            }}
+          >
+            Training Curriculum Includes:
+          </Typography>
+
+          <Grid container spacing={2}>
+            {trainingModules.map((module, idx) => {
+              const isHovered = hoveredIdx === idx;
+              const isThirdRow = idx >= 8;
+              return (
+                <Grid size={isThirdRow ? { xs: 12, sm: 6, md: 4 } : { xs: 12, sm: 6, md: 3 }} key={idx} sx={{ display: "flex" }}>
+                  <Box
+                    onMouseEnter={() => setHoveredIdx(idx)}
+                    onMouseLeave={() => setHoveredIdx(null)}
+                    sx={{
+                      width: "100%",
+                      p: 2,
+                      borderRadius: "12px",
+                      border: isHovered ? "1px solid #93C5FD" : "1px solid rgba(255, 255, 255, 0.08)",
+                      backgroundColor: isHovered ? "rgba(147, 197, 253, 0.05)" : "rgba(255, 255, 255, 0.03)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1.5,
+                      transition: "all 0.25s ease-in-out",
+                      cursor: "default",
+                      transform: isHovered ? "translateY(-2px)" : "translateY(0)",
+                      boxShadow: isHovered ? "0 8px 24px rgba(147, 197, 253, 0.1)" : "none",
+                    }}
+                  >
+                    <CheckCircleIcon
+                      sx={{
+                        color: isHovered ? "#93C5FD" : "rgba(255, 255, 255, 0.6)",
+                        fontSize: 18,
+                        flexShrink: 0,
+                        transition: "color 0.2s ease",
+                      }}
+                    />
                     <Typography
                       sx={{
                         fontFamily: inter.style.fontFamily,
-                        fontSize: "16px",
-                        fontWeight: 700,
-                        color: "#1D1D1F",
-                        borderBottom: "2px solid #1B365D",
-                        pb: 1,
-                        width: "fit-content",
+                        fontSize: "11.5px",
+                        fontWeight: 600,
+                        lineHeight: 1.35,
+                        color: isHovered ? "#FFFFFF" : "rgba(255, 255, 255, 0.8)",
+                        transition: "color 0.2s ease",
                       }}
                     >
-                      What the Program Covers
+                      {module}
                     </Typography>
-                    
-                    <Stack spacing={1.5}>
-                      {programCovers.map((item, idx) => (
-                        <Stack key={idx} direction="row" spacing={1.5} alignItems="flex-start">
-                          <CheckCircleOutlineIcon sx={{ color: "#1B365D", mt: 0.25, fontSize: 16 }} />
-                          <Typography
-                            sx={{
-                              fontFamily: inter.style.fontFamily,
-                              fontSize: "14px",
-                              color: "rgba(0, 0, 0, 0.65)",
-                              lineHeight: "1.4",
-                            }}
-                          >
-                            {item}
-                          </Typography>
-                        </Stack>
-                      ))}
-                    </Stack>
-                  </Stack>
+                  </Box>
                 </Grid>
-
-                {/* Outcomes */}
-                <Grid size={{ xs: 12, sm: 6 }}>
-                  <Stack spacing={3}>
-                    
-                    {/* Outcomes Block */}
-                    <Stack spacing={2}>
-                      <Typography
-                        sx={{
-                          fontFamily: inter.style.fontFamily,
-                          fontSize: "16px",
-                          fontWeight: 700,
-                          color: "#1D1D1F",
-                          borderBottom: "2px solid #1B365D",
-                          pb: 1,
-                          width: "fit-content",
-                        }}
-                      >
-                        Outcomes for Educators
-                      </Typography>
-                      
-                      <Stack spacing={1.5}>
-                        {educatorOutcomes.map((item, idx) => (
-                          <Stack key={idx} direction="row" spacing={1.5} alignItems="flex-start">
-                            <CheckCircleOutlineIcon sx={{ color: "#1B365D", mt: 0.25, fontSize: 16 }} />
-                            <Typography
-                              sx={{
-                                fontFamily: inter.style.fontFamily,
-                                fontSize: "14px",
-                                color: "rgba(0, 0, 0, 0.65)",
-                                lineHeight: "1.4",
-                              }}
-                            >
-                              {item}
-                            </Typography>
-                          </Stack>
-                        ))}
-                      </Stack>
-                    </Stack>
-
-                    {/* Who Should Enroll */}
-                    <Box
-                      sx={{
-                        backgroundColor: "rgba(0, 0, 0, 0.02)",
-                        border: "1px solid rgba(0, 0, 0, 0.04)",
-                        borderRadius: "16px",
-                        p: 2.5,
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontFamily: inter.style.fontFamily,
-                          fontSize: "13px",
-                          fontWeight: 700,
-                          color: "#1D1D1F",
-                          mb: 0.75,
-                          textTransform: "uppercase",
-                          letterSpacing: "0.5px",
-                        }}
-                      >
-                        Who Should Enroll
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontFamily: inter.style.fontFamily,
-                          fontSize: "13px",
-                          color: "rgba(0, 0, 0, 0.6)",
-                          lineHeight: "1.5",
-                        }}
-                      >
-                        This program is designed for school teachers, department heads, academic coordinators, and education leaders who want to make innovation a structured part of their teaching practice.
-                      </Typography>
-                    </Box>
-
-                  </Stack>
-                </Grid>
-
-              </Grid>
-
-              {/* Action Button */}
-              <Box sx={{ pt: 1 }}>
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-                  <Button
-                    endIcon={<ArrowForwardIcon className="arrow-icon" />}
-                    sx={{
-                      fontSize: 15,
-                      fontWeight: 700,
-                      fontFamily: inter.style.fontFamily,
-                      borderRadius: "50px",
-                      px: 4.5,
-                      py: 1.6,
-                      backgroundColor: "#1B365D",
-                      color: "#FFFFFF",
-                      textTransform: "none",
-                      boxShadow: "0 10px 25px rgba(248, 93, 0, 0.25)",
-                      transition: "all 0.25s ease",
-                      "& .arrow-icon": {
-                        transition: "transform 0.25s ease",
-                      },
-                      "&:hover": {
-                        backgroundColor: "#122744",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 12px 30px rgba(248, 93, 0, 0.35)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
-                      },
-                    }}
-                  >
-                    Become a Certified Innovation Educator
-                  </Button>
-                </Link>
-              </Box>
-
-            </Stack>
+              );
+            })}
           </Grid>
+        </Box>
 
-          {/* Right Column: Blueprint Frame */}
-          <Grid size={{ xs: 12, md: 5.5 }}>
-            <Box
+        {/* Bottom Section: Centered Actions Row */}
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={2.25}
+          sx={{ width: "100%", justifyContent: "center", gap: 1.5 }}
+          alignItems="center"
+        >
+          <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+            <Button
+              variant="contained"
               sx={{
-                position: "relative",
-                borderRadius: "24px",
-                overflow: "hidden",
-                border: "1px solid rgba(0, 0, 0, 0.08)",
-                boxShadow: "0 25px 50px rgba(0, 0, 0, 0.08)",
-                width: "100%",
-                aspectRatio: "1/1",
-                transition: "all 0.3s ease",
+                whiteSpace: "nowrap",
+                fontFamily: inter.style.fontFamily,
+                fontSize: "13px",
+                fontWeight: 700,
+                textTransform: "none",
+                color: "#0B1528",
+                backgroundColor: COLORS.WHITE,
+                borderRadius: "100px",
+                px: 3.5,
+                py: 1.2,
+                boxShadow: "0 4px 14px rgba(255, 255, 255, 0.15)",
+                transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                 "&:hover": {
-                  boxShadow: "0 30px 60px rgba(248, 93, 0, 0.1)",
-                  transform: "translateY(-4px)",
+                  backgroundColor: "#E2E8F0",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 6px 20px rgba(255, 255, 255, 0.25)",
                 },
               }}
             >
-              <Image
-                src={heroImg}
-                alt="Teacher Mentoring & Professional Development Cycles CAD Schematic"
-                fill
-                style={{ objectFit: "cover" }}
-                priority
-              />
-            </Box>
-          </Grid>
+              Apply for Educator Certification
+            </Button>
+          </Link>
 
-        </Grid>
+          <Link href="/contact" style={{ textDecoration: "none" }}>
+            <Button
+              variant="outlined"
+              sx={{
+                whiteSpace: "nowrap",
+                fontFamily: inter.style.fontFamily,
+                fontSize: "13px",
+                fontWeight: 700,
+                textTransform: "none",
+                color: COLORS.WHITE,
+                borderColor: COLORS.WHITE,
+                borderWidth: "1.5px",
+                borderRadius: "100px",
+                px: 3.5,
+                py: 1.2,
+                transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                "&:hover": {
+                  borderWidth: "1.5px",
+                  borderColor: "#93C5FD",
+                  color: "#93C5FD",
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  transform: "translateY(-2px)",
+                },
+              }}
+            >
+              Request Training Schedule
+            </Button>
+          </Link>
+
+          <Link href="/membership#educator" style={{ textDecoration: "none" }}>
+            <Button
+              variant="outlined"
+              endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+              sx={{
+                whiteSpace: "nowrap",
+                fontFamily: inter.style.fontFamily,
+                fontSize: "13px",
+                fontWeight: 700,
+                textTransform: "none",
+                color: "rgba(255, 255, 255, 0.7)",
+                borderColor: "rgba(255, 255, 255, 0.25)",
+                borderWidth: "1.5px",
+                borderRadius: "100px",
+                px: 3.5,
+                py: 1.2,
+                transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                "&:hover": {
+                  borderWidth: "1.5px",
+                  borderColor: COLORS.WHITE,
+                  color: COLORS.WHITE,
+                  backgroundColor: "rgba(255, 255, 255, 0.05)",
+                  transform: "translateY(-2px)",
+                  "& .arrow-icon": {
+                    transform: "translateX(4px)",
+                  },
+                },
+              }}
+            >
+              View Teacher Pathway
+            </Button>
+          </Link>
+        </Stack>
+
       </Container>
     </Box>
   );

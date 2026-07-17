@@ -2,7 +2,16 @@
 
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
-import { Box, Button, Container, Grid, Stack, Typography, useTheme, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import React, { useState, useEffect } from "react";
 import ThreeEarth from "./ThreeGlobe";
 import Link from "next/link";
@@ -36,7 +45,6 @@ const HeroSection3 = () => {
         boxSizing: "border-box",
       }}
     >
-      {/* Decorative Minimal Background Grid lines */}
       <Box
         sx={{
           position: "absolute",
@@ -49,14 +57,15 @@ const HeroSection3 = () => {
             linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px)
           `,
           backgroundSize: "60px 60px",
-          maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-          WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+          maskImage:
+            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      {/* Modern High-End Radial Glow Blobs */}
       <Box
         sx={{
           position: "absolute",
@@ -65,7 +74,8 @@ const HeroSection3 = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.1) 0%, rgba(248, 93, 0, 0.02) 50%, rgba(255, 255, 255, 0) 80%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.1) 0%, rgba(248, 93, 0, 0.02) 50%, rgba(255, 255, 255, 0) 80%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -79,7 +89,8 @@ const HeroSection3 = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.06) 0%, rgba(248, 93, 0, 0.01) 60%, rgba(255, 255, 255, 0) 80%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.06) 0%, rgba(248, 93, 0, 0.01) 60%, rgba(255, 255, 255, 0) 80%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -93,13 +104,12 @@ const HeroSection3 = () => {
           zIndex: 1,
           opacity: loaded ? 1 : 0,
           transform: loaded ? "translateY(0)" : "translateY(15px)",
-          transition: "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+          transition:
+            "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
         <Grid container spacing={{ xs: 4, md: 4 }} alignItems="center">
-          {/* Left Column: Premium content */}
           <Grid size={{ xs: 12, md: 7 }} sx={{ pr: { md: 2 } }}>
-            {/* Super Title / Organization Tag */}
             <Box
               sx={{
                 display: "inline-flex",
@@ -142,7 +152,6 @@ const HeroSection3 = () => {
               </Typography>
             </Box>
 
-            {/* Headline */}
             <Typography
               component="h1"
               sx={{
@@ -159,7 +168,8 @@ const HeroSection3 = () => {
               <Box
                 component="span"
                 sx={{
-                  background: "linear-gradient(135deg, #1B365D 30%, #4F83C3 100%)",
+                  background:
+                    "linear-gradient(135deg, #1B365D 30%, #4F83C3 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -169,7 +179,6 @@ const HeroSection3 = () => {
               Education for the Next Generation
             </Typography>
 
-            {/* Paragraph 1 */}
             <Typography
               sx={{
                 fontSize: { xs: "13.5px", md: "14.5px" },
@@ -180,7 +189,13 @@ const HeroSection3 = () => {
                 mb: 1.75,
               }}
             >
-              <strong>IAIRE</strong> — the International Academy of Innovation, Research and Entrepreneurship — is an independent U.S. nonprofit academic and professional society dedicated to advancing innovation, research, and entrepreneurship education through standards development, certification frameworks, fellowship recognition, mentorship, professional development, and quality-assurance mechanisms.
+              <strong>IAIRE</strong> the International Academy of Innovation,
+              Research and Entrepreneurship is an independent U.S. based
+              nonprofit academic and professional society dedicated to advancing
+              innovation, research, and entrepreneurship education through
+              standards development, certification frameworks, fellowship
+              recognition, mentorship, professional development, and
+              quality-assurance mechanisms.
             </Typography>
 
             {/* Paragraph 2 */}
@@ -194,16 +209,22 @@ const HeroSection3 = () => {
                 mb: 3.5,
               }}
             >
-              We bring together schools, educators, students, scientists, researchers, inventors, entrepreneurs, and institutions to build a future where young learners do not merely consume knowledge — they create knowledge, protect ideas, conduct research, develop innovations, and solve meaningful real-world problems.
+              We bring together schools, educators, students, scientists,
+              researchers, inventors, entrepreneurs, and institutions to build a
+              future where young learners do not merely consume knowledge they
+              create knowledge, protect ideas, conduct research, develop
+              innovations, and solve meaningful real-world problems.
             </Typography>
 
-            {/* CTA Action Buttons Group */}
             <Stack
               direction={{ xs: "column", sm: "row" }}
               spacing={1.5}
               alignItems={{ xs: "stretch", sm: "center" }}
             >
-              <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+              <Link
+                href="/signup/role-selection"
+                style={{ textDecoration: "none" }}
+              >
                 <Button
                   variant="contained"
                   sx={{
@@ -257,10 +278,22 @@ const HeroSection3 = () => {
                 </Button>
               </Link>
 
-              <Link href="/about" style={{ textDecoration: "none", display: "inline-flex", justifyContent: "center" }}>
+              {/* <Link
+                href="/about"
+                style={{
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  justifyContent: "center",
+                }}
+              >
                 <Button
                   variant="text"
-                  endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                  endIcon={
+                    <ArrowForwardIcon
+                      className="arrow-icon"
+                      sx={{ transition: "transform 0.25s ease" }}
+                    />
+                  }
                   sx={{
                     fontSize: "14px",
                     fontFamily: inter.style.fontFamily,
@@ -281,7 +314,7 @@ const HeroSection3 = () => {
                 >
                   Learn About IAIRE
                 </Button>
-              </Link>
+              </Link> */}
             </Stack>
           </Grid>
 
@@ -302,7 +335,8 @@ const HeroSection3 = () => {
                 width: { xs: "260px", md: "350px" },
                 height: { xs: "260px", md: "350px" },
                 borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(248, 93, 0, 0.04) 0%, rgba(248, 93, 0, 0) 70%)",
+                background:
+                  "radial-gradient(circle, rgba(248, 93, 0, 0.04) 0%, rgba(248, 93, 0, 0) 70%)",
                 zIndex: 0,
               }}
             />
@@ -360,10 +394,25 @@ const HeroSection3 = () => {
                 <CardMembershipIcon sx={{ fontSize: 18 }} />
               </Box>
               <Box>
-                <Typography sx={{ fontSize: "9px", fontWeight: 700, color: "#8E8E93", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                <Typography
+                  sx={{
+                    fontSize: "9px",
+                    fontWeight: 700,
+                    color: "#8E8E93",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                  }}
+                >
                   Membership
                 </Typography>
-                <Typography sx={{ fontSize: "12px", fontWeight: 700, color: "#1D1D1F", fontFamily: inter.style.fontFamily }}>
+                <Typography
+                  sx={{
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    color: "#1D1D1F",
+                    fontFamily: inter.style.fontFamily,
+                  }}
+                >
                   Global Academic Society
                 </Typography>
               </Box>
@@ -407,10 +456,25 @@ const HeroSection3 = () => {
                 <PublicIcon sx={{ fontSize: 18 }} />
               </Box>
               <Box>
-                <Typography sx={{ fontSize: "9px", fontWeight: 700, color: "#8E8E93", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                <Typography
+                  sx={{
+                    fontSize: "9px",
+                    fontWeight: 700,
+                    color: "#8E8E93",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                  }}
+                >
                   Accreditation
                 </Typography>
-                <Typography sx={{ fontSize: "12px", fontWeight: 700, color: "#1D1D1F", fontFamily: inter.style.fontFamily }}>
+                <Typography
+                  sx={{
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    color: "#1D1D1F",
+                    fontFamily: inter.style.fontFamily,
+                  }}
+                >
                   Standards & Quality Assurance
                 </Typography>
               </Box>

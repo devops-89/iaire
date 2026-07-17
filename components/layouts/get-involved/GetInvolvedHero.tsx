@@ -168,7 +168,7 @@ const GetInvolvedHero = () => {
                   </Button>
                 </Link>
 
-                <Link href="/about#contact" style={{ textDecoration: "none" }}>
+                <Link href="/contact" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
                     sx={{

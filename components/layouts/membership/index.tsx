@@ -1,19 +1,19 @@
 import { Box } from "@mui/material";
 import MemberHero from "./MemberHero";
-import MembershipAdvancement from "./MembershipAdvancement";
-import MembershipSection from "./MembershipSection";
-import VerifyMembership from "./VerifyMembership";
-import WhyBecomeMember from "./WhyBecomeMember";
+import InstitutionalMember from "./InstitutionalMember";
+import EducatorMember from "./EducatorMember";
+import StudentMember from "./StudentMember";
+import CertificationPathways from "./CertificationPathways";
 
-const MemberShipLayout=()=>{
-    return(
-        <Box>
-            <MemberHero/>
-            <MembershipSection/>
-            <WhyBecomeMember/>
-            <MembershipAdvancement/>
-            <VerifyMembership/>
-        </Box>
-    );
+const MemberShipLayout = () => {
+  return (
+    <Box>
+      <MemberHero />
+      <InstitutionalMember />
+      <EducatorMember />
+      <StudentMember />
+      <CertificationPathways />
+    </Box>
+  );
 };
 export default MemberShipLayout;

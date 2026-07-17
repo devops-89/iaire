@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/widgets/Navbar";
 import Footer from "@/components/widgets/Footer";
@@ -29,6 +30,32 @@ export default function LayoutWrapper({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScrollToHash = () => {
+      if (typeof window !== "undefined" && window.location.hash) {
+        const hash = window.location.hash;
+        // Decode in case of special characters
+        const decodedHash = decodeURIComponent(hash);
+        const targetElement = document.querySelector(decodedHash);
+        if (targetElement) {
+          // Brief timeout to let page render and layout settle
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 200);
+        }
+      }
+    };
+
+    // Run on initial page load / route change
+    handleScrollToHash();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleScrollToHash);
+    return () => {
+      window.removeEventListener("hashchange", handleScrollToHash);
+    };
+  }, [pathname]);
 
   const isStudentDashboard = pathname.startsWith("/dashboard/student");
   const isInstitutionDashboard = pathname.startsWith("/dashboard/institution");
