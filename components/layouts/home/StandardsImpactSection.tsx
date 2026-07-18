@@ -43,7 +43,7 @@ const StandardsImpactSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           {/* Left Column: Premium Vector Image Frame */}
-          <Grid size={{ xs: 12, md: 5.5 }}>
+          <Grid size={{ xs: 12, md: 5.5 }} data-aos="fade-right" data-aos-duration="800">
             <Box
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
@@ -104,7 +104,7 @@ const StandardsImpactSection = () => {
           </Grid>
 
           {/* Right Column: Copy Content & CTAs */}
-          <Grid size={{ xs: 12, md: 6.5 }} sx={{ pl: { md: 2 } }}>
+          <Grid size={{ xs: 12, md: 6.5 }} data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" sx={{ pl: { md: 2 } }}>
             <Stack spacing={4}>
               {/* Heading Group */}
               <Stack spacing={1.5}>

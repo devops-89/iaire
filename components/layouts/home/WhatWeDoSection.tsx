@@ -7,7 +7,6 @@ import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
-
 const activities = [
   "Standards development for innovation, research, and entrepreneurship education",
   "Certification frameworks for schools, educators, and students",
@@ -81,7 +80,7 @@ const WhatWeDoSection = () => {
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           
           {/* Left Column: Heading & Content */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid size={{ xs: 12, md: 5 }} data-aos="fade-right" data-aos-duration="800">
             <Stack spacing={4}>
               
               <Stack spacing={1.5}>
@@ -189,7 +188,7 @@ const WhatWeDoSection = () => {
           </Grid>
 
           {/* Right Column: Grid of Activities */}
-          <Grid size={{ xs: 12, md: 7 }}>
+          <Grid size={{ xs: 12, md: 7 }} data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">
             <Grid container spacing={2.5}>
               {activities.map((activity, index) => {
                 const isHovered = hoveredIndex === index;

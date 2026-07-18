@@ -9,7 +9,6 @@ import AssignmentIcon from "@mui/icons-material/AssignmentTurnedInOutlined";
 import VisibilityIcon from "@mui/icons-material/VisibilityOutlined";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import SectionBadge from "@/components/widgets/SectionBadge";
-
 const valuesList = [
   { title: "Scientific Integrity", desc: "Rigorous standards & peer review" },
   { title: "Academic Excellence", desc: "Highest benchmarks of pedagogy" },
@@ -101,7 +100,7 @@ const MissionVision = () => {
         <Grid container spacing={{ xs: 6, lg: 8 }} alignItems="center">
           
           {/* Left Column: Interactive Swapper Menu */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 5 }}>
             <Stack spacing={4}>
               <Stack spacing={2}>
                 <SectionBadge
@@ -207,7 +206,7 @@ const MissionVision = () => {
           </Grid>
 
           {/* Right Column: Sliding/Fading Dynamic Content Display Screen */}
-          <Grid size={{ xs: 12, md: 7 }}>
+          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 7 }}>
             <Box
               sx={{
                 width: "100%",
@@ -438,7 +437,6 @@ const MissionVision = () => {
                   </Grid>
                 </Stack>
               )}
-
             </Box>
           </Grid>
 

@@ -58,7 +58,9 @@ const AboutHubsSection = () => {
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           
           {/* Left Column: Custom Coded School Illustration */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Box
               sx={{
                 position: "relative",
@@ -93,7 +95,10 @@ const AboutHubsSection = () => {
           </Grid>
 
           {/* Right Column: Heading, Benefits & Content */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150">
             <Stack spacing={3.5}>
               <SectionBadge
                 label="School Ecosystem"

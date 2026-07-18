@@ -69,7 +69,9 @@ const MemberHero = () => {
       >
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
           {/* Left Column: Title, Copy, and CTA Buttons */}
-          <Grid size={{ xs: 12, md: 6.5 }}>
+          <Grid size={{ xs: 12, md: 6.5 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Stack spacing={4} sx={{ width: "100%" }}>
               {/* Badge */}
               <Box

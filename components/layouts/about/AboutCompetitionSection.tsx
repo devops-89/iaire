@@ -56,7 +56,9 @@ const AboutCompetitionSection = () => {
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           
           {/* Left Column: Heading, Callout & Copy */}
-          <Grid size={{ xs: 12, md: 5.5 }}>
+          <Grid size={{ xs: 12, md: 5.5 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Stack spacing={3.5}>
               <SectionBadge
                 label="The Competition"
@@ -164,7 +166,10 @@ const AboutCompetitionSection = () => {
           </Grid>
 
           {/* Right Column: Balanced Outcomes Grid */}
-          <Grid size={{ xs: 12, md: 6.5 }}>
+          <Grid size={{ xs: 12, md: 6.5 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150">
             <Stack spacing={3}>
               <Typography
                 sx={{

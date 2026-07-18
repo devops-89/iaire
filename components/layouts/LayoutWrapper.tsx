@@ -12,6 +12,8 @@ import EducatorSidebar from "./dashboard/educator/components/Sidebar";
 import EducatorHeader from "./dashboard/educator/components/Header";
 import Header from "../widgets/Header";
 import Header2 from "../widgets/Header2";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const HIDE_LAYOUT_ROUTES = [
   "/login",
@@ -32,6 +34,14 @@ export default function LayoutWrapper({
   const pathname = usePathname();
 
   useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 60,
+    });
+
     const handleScrollToHash = () => {
       if (typeof window !== "undefined" && window.location.hash) {
         const hash = window.location.hash;
@@ -49,6 +59,8 @@ export default function LayoutWrapper({
 
     // Run on initial page load / route change
     handleScrollToHash();
+    // Refresh AOS on route change so new page elements are picked up
+    AOS.refresh();
 
     // Listen for hash changes
     window.addEventListener("hashchange", handleScrollToHash);

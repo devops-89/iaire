@@ -73,7 +73,9 @@ const StudentPathways = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 7 }} alignItems="center">
           {/* Left Column: Heading, Details, Benefits Checklist & Buttons */}
-          <Grid size={{ xs: 12, md: 6.8 }}>
+          <Grid size={{ xs: 12, md: 6.8 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Stack spacing={3.5} sx={{ width: "100%" }}>
               <SectionBadge
                 label="Student Pathways"

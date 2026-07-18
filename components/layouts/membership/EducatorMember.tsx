@@ -52,7 +52,10 @@ const EducatorMember = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Top Header Section */}
         <Box sx={{ mb: { xs: 6, md: 8 } }}>
-          <Stack spacing={3.5}>
+          <Stack spacing={3.5}
+          data-aos="fade-up"
+          data-aos-duration="800"
+          >
             <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
               <SectionBadge
                 label="Educator Membership"

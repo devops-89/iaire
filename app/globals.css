@@ -2,3 +2,158 @@ body {
   margin: 0;
   overflow-x: clip;
 }
+
+/* ─────────────────────────────────────────────────────────
+   AOS — Smooth overrides for a premium feel
+───────────────────────────────────────────────────────── */
+[data-aos] {
+  pointer-events: none;
+}
+[data-aos].aos-animate {
+  pointer-events: auto;
+}
+
+/* ─────────────────────────────────────────────────────────
+   TEXT ANIMATION — Word-reveal on scroll (works with AOS)
+   Usage: add class="text-reveal" to any heading/paragraph
+   element that also has data-aos="fade-up"
+───────────────────────────────────────────────────────── */
+
+/* Shimmer gradient for hero headings */
+@keyframes shimmer-text {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.shimmer-heading {
+  background: linear-gradient(
+    90deg,
+    #0B1727 30%,
+    #4F83C3 50%,
+    #0B1727 70%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-text 4s linear infinite;
+}
+
+/* Letter-by-letter appear for short headings */
+@keyframes letter-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.text-reveal-word {
+  display: inline-block;
+  opacity: 0;
+  animation: letter-appear 0.6s ease forwards;
+}
+
+/* Typewriter underline sweep */
+@keyframes underline-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.underline-animate {
+  position: relative;
+  display: inline-block;
+}
+.underline-animate::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.underline-animate.aos-animate::after {
+  transform: scaleX(1);
+}
+
+/* Count-up badge pulse */
+@keyframes count-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   AOS custom animations — extend the built-in set
+───────────────────────────────────────────────────────── */
+
+/* Blur-in: elements appear from blurred to sharp */
+[data-aos="blur-in"] {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(16px);
+  transition-property: opacity, filter, transform;
+}
+[data-aos="blur-in"].aos-animate {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* Scale-up: subtle zoom entrance */
+[data-aos="scale-up"] {
+  opacity: 0;
+  transform: scale(0.94);
+  transition-property: opacity, transform;
+}
+[data-aos="scale-up"].aos-animate {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide-from-left */
+[data-aos="slide-right"] {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition-property: opacity, transform;
+}
+[data-aos="slide-right"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide-from-right */
+[data-aos="slide-left"] {
+  opacity: 0;
+  transform: translateX(40px);
+  transition-property: opacity, transform;
+}
+[data-aos="slide-left"].aos-animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Card stagger helper — each card child gets a stagger delay */
+[data-aos-stagger] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+[data-aos-stagger].aos-animate > *:nth-child(1)  { opacity: 1; transform: none; transition-delay: 0ms;   }
+[data-aos-stagger].aos-animate > *:nth-child(2)  { opacity: 1; transform: none; transition-delay: 80ms;  }
+[data-aos-stagger].aos-animate > *:nth-child(3)  { opacity: 1; transform: none; transition-delay: 160ms; }
+[data-aos-stagger].aos-animate > *:nth-child(4)  { opacity: 1; transform: none; transition-delay: 240ms; }
+[data-aos-stagger].aos-animate > *:nth-child(5)  { opacity: 1; transform: none; transition-delay: 320ms; }
+[data-aos-stagger].aos-animate > *:nth-child(6)  { opacity: 1; transform: none; transition-delay: 400ms; }
+[data-aos-stagger].aos-animate > *:nth-child(7)  { opacity: 1; transform: none; transition-delay: 480ms; }
+[data-aos-stagger].aos-animate > *:nth-child(8)  { opacity: 1; transform: none; transition-delay: 560ms; }
+[data-aos-stagger].aos-animate > *:nth-child(9)  { opacity: 1; transform: none; transition-delay: 640ms; }
+[data-aos-stagger].aos-animate > *:nth-child(10) { opacity: 1; transform: none; transition-delay: 720ms; }

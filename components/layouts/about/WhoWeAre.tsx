@@ -14,7 +14,6 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
 const responsibilities = [
   "Reviewing and recommending certification standards and competency frameworks",
   "Reviewing fellowship criteria and progression requirements",
@@ -89,7 +88,7 @@ const WhoWeAre = () => {
       >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
           {/* Left Column: Title, Narrative Descriptions & CTAs */}
-          <Grid size={{ xs: 12, md: 5.2 }} sx={{ pr: { md: 2 } }}>
+          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 5.2 }} sx={{ pr: { md: 2 } }}>
             <Stack spacing={3.5} sx={{ width: "100%" }}>
               {/* Badge */}
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
@@ -292,7 +291,7 @@ const WhoWeAre = () => {
           </Grid>
 
           {/* Right Column: Board Responsibilities Grid (6 in 2-cols + 1 full-width at the bottom) */}
-          <Grid size={{ xs: 12, md: 6.8 }} sx={{ pl: { md: 4 } }}>
+          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 6.8 }} sx={{ pl: { md: 4 } }}>
             <Stack spacing={2}>
               <Typography
                 sx={{

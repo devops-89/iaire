@@ -58,7 +58,9 @@ const AboutResearchSection = () => {
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           
           {/* Left Column: Research Support Coded Illustration */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Box
               sx={{
                 position: "relative",
@@ -93,7 +95,10 @@ const AboutResearchSection = () => {
           </Grid>
 
           {/* Right Column: Heading, Support Areas & Copy */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150">
             <Stack spacing={3.5}>
               <SectionBadge
                 label="Intellectual Property"

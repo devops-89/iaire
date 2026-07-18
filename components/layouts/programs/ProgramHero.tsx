@@ -53,7 +53,9 @@ const ProgramHero = () => {
         <Grid container spacing={6} alignItems="center">
           
           {/* Left Column: Heading Copy & Description */}
-          <Grid size={{ xs: 12, md: 6.5 }}>
+          <Grid size={{ xs: 12, md: 6.5 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Stack spacing={4}>
               
               {/* Category tag badge */}
@@ -116,7 +118,10 @@ const ProgramHero = () => {
           </Grid>
 
           {/* Right Column: Blueprint Schematic Visual */}
-          <Grid size={{ xs: 12, md: 5.5 }}>
+          <Grid size={{ xs: 12, md: 5.5 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150">
             <Box
               sx={{
                 position: "relative",

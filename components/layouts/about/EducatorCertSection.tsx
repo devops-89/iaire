@@ -62,7 +62,7 @@ const EducatorCertSection = () => {
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           
           {/* Left Column: Heading, Callout & Copy */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 6 }}>
             <Stack spacing={3.5}>
               <SectionBadge
                 label="For Teachers"

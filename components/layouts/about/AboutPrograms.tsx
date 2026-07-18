@@ -113,7 +113,10 @@ const AboutPrograms = () => {
       />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack spacing={8} alignItems="center">
+        <Stack spacing={8} alignItems="center"
+          data-aos="fade-up"
+          data-aos-duration="800"
+          >
           
           {/* Header */}
           <Stack spacing={2.5} alignItems="center" textAlign="center">

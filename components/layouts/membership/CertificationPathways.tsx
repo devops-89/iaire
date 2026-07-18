@@ -95,7 +95,10 @@ const CertificationPathways = () => {
       >
         {/* Top Section: Title Header (Full Width) */}
         <Box sx={{ mb: { xs: 4, md: 4.5 }, width: "100%" }}>
-          <Stack spacing={2.5}>
+          <Stack spacing={2.5}
+          data-aos="fade-up"
+          data-aos-duration="800"
+          >
             {/* Badge */}
             <Box sx={{ display: "flex" }}>
               <Box

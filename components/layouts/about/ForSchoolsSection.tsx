@@ -7,7 +7,6 @@ import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
-
 const BlueCheck = () => (
   <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -59,7 +58,7 @@ const ForSchoolsSection = () => {
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           
           {/* Left Column: Custom Coded School Illustration */}
-          <Grid size={{ xs: 12, md: 6 }} sx={{ order: { xs: 2, md: 1 } }}>
+          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 6 }} sx={{ order: { xs: 2, md: 1 } }}>
             <Box
               sx={{
                 position: "relative",
@@ -94,7 +93,7 @@ const ForSchoolsSection = () => {
           </Grid>
 
           {/* Right Column: Heading, Benefits & Content */}
-          <Grid size={{ xs: 12, md: 6 }} sx={{ order: { xs: 1, md: 2 } }}>
+          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 6 }} sx={{ order: { xs: 1, md: 2 } }}>
             <Stack spacing={3.5}>
               <SectionBadge
                 label="For Institutions"

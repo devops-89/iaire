@@ -9,7 +9,6 @@ import SchoolIcon from "@mui/icons-material/SchoolOutlined";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import PsychologyIcon from "@mui/icons-material/PsychologyOutlined";
 import SectionBadge from "@/components/widgets/SectionBadge";
-
 interface RecognitionCardProps {
   title: string;
   icon: React.ReactNode;
@@ -217,6 +216,8 @@ const RecognitionSection = () => {
         <Stack spacing={6} alignItems="center">
           {/* Centered Heading */}
           <Stack
+            data-aos="fade-up"
+            data-aos-duration="800"
             spacing={2}
             alignItems="center"
             sx={{ textAlign: "center", maxWidth: "800px" }}
@@ -276,6 +277,9 @@ const RecognitionSection = () => {
 
           {/* Centered CTA Buttons */}
           <Stack
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="150"
             direction={{ xs: "column", sm: "row" }}
             spacing={2.5}
             sx={{ pt: 2, width: { xs: "100%", sm: "auto" } }}

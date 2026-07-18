@@ -7,7 +7,6 @@ import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
-
 const SubFooterCTA = () => {
   return (
     <Box
@@ -38,7 +37,7 @@ const SubFooterCTA = () => {
       />
 
       <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack spacing={5} alignItems="center" textAlign="center">
+        <Stack data-aos="fade-up" data-aos-duration="900" spacing={5} alignItems="center" textAlign="center">
           <SectionBadge label="Join the Ecosystem" align="center" />
 
           {/* Heading */}

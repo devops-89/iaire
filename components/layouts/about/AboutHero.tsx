@@ -8,7 +8,7 @@ import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
 import OrbitingSystem from "./OrbitingSystem";
-
+import TextReveal from "@/components/animations/TextReveal";
 const AboutHero = () => {
   return (
     <Box
@@ -79,7 +79,7 @@ const AboutHero = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
-          <Grid size={{ xs: 12, md: 6.7 }}>
+          <Grid data-aos="fade-right" data-aos-duration="900" size={{ xs: 12, md: 6.7 }}>
             <Stack spacing={3} sx={{ textAlign: { xs: "center", md: "left" } }}>
               <SectionBadge
                 label="Academic & Professional Society"
@@ -87,27 +87,21 @@ const AboutHero = () => {
               />
 
               <Stack spacing={1}>
-                <Typography
-                  variant="h1"
-                  sx={{
+                <TextReveal
+                  tag="h1"
+                  text="About IAIRE"
+                  delay={100}
+                  stagger={120}
+                  style={{
                     fontFamily: inter.style.fontFamily,
                     fontWeight: 900,
-                    fontSize: { xs: "2.8rem", sm: "3.5rem", md: "4.2rem" },
+                    fontSize: "clamp(2.8rem, 5vw, 4.2rem)",
                     lineHeight: 1.05,
                     letterSpacing: "-0.04em",
                     color: "#FFFFFF",
+                    display: "block",
                   }}
-                >
-                  About{" "}
-                  <span
-                    style={{
-                      color: "#3B82F6",
-                      textShadow: "0 0 35px rgba(59, 130, 246, 0.18)",
-                    }}
-                  >
-                    IAIRE
-                  </span>
-                </Typography>
+                />
 
                 <Typography
                   sx={{

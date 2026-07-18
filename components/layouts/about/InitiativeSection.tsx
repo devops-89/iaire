@@ -6,7 +6,6 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
-
 // Custom vector SVG icons for the two pillars
 const TeacherPillarIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -61,7 +60,7 @@ const InitiativeSection = () => {
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="flex-start">
           
           {/* Left Column: Heading & Content */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 5 }}>
             <Stack spacing={3.5}>
               <SectionBadge
                 label="The Initiative"
@@ -151,7 +150,7 @@ const InitiativeSection = () => {
           </Grid>
 
           {/* Right Column: Pillars Grid & Anchor Goal Box */}
-          <Grid size={{ xs: 12, md: 7 }}>
+          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 7 }}>
             <Stack spacing={4}>
               <Grid container spacing={3}>
                 

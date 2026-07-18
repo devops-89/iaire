@@ -9,7 +9,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
 import PsychologyIcon from "@mui/icons-material/PsychologyOutlined";
 import SectionBadge from "@/components/widgets/SectionBadge";
-
 const SchoolEcosystemSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -42,7 +41,7 @@ const SchoolEcosystemSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           {/* Left Column: Heading, Subtitle & CTAs */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid size={{ xs: 12, md: 5 }} data-aos="fade-right" data-aos-duration="800">
             <Stack spacing={4}>
               <Stack spacing={1.5}>
                 <SectionBadge
@@ -187,7 +186,7 @@ const SchoolEcosystemSection = () => {
           </Grid>
 
           {/* Right Column: Dynamic Dual Framework Implementation Cards */}
-          <Grid size={{ xs: 12, md: 7 }} sx={{ pl: { md: 4 } }}>
+          <Grid size={{ xs: 12, md: 7 }} data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" sx={{ pl: { md: 4 } }}>
             <Stack spacing={4}>
               {/* Card 1: Top-down capacity building */}
               <Box

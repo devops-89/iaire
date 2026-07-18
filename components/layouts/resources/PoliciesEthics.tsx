@@ -168,7 +168,7 @@ const PoliciesEthics = () => {
               </Box>
 
               {/* Title & Description */}
-              <Stack spacing={1.5}>
+              <Stack spacing={1.5} data-aos="fade-up" data-aos-duration="800">
                 <Typography
                   component="h2"
                   sx={{
@@ -291,7 +291,7 @@ const PoliciesEthics = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link
+                {/* <Link
                   href="/signup/role-selection"
                   style={{ textDecoration: "none" }}
                 >
@@ -350,11 +350,11 @@ const PoliciesEthics = () => {
                   >
                     Contact Compliance Team
                   </Button>
-                </Link>
+                </Link> */}
 
-                <Link href="/resources" style={{ textDecoration: "none" }}>
+                <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
-                    variant="outlined"
+                    variant="contained"
                     endIcon={
                       <ArrowForwardIcon
                         className="arrow-icon"
@@ -368,22 +368,17 @@ const PoliciesEthics = () => {
                       fontSize: "13px",
                       fontWeight: 700,
                       textTransform: "none",
-                      color: "#4B5563",
-                      borderColor: "rgba(0, 0, 0, 0.15)",
-                      borderWidth: "1.5px",
+                      color: COLORS.WHITE,
+                      backgroundColor: "#1B365D",
                       borderRadius: "100px",
                       px: 3.5,
                       py: 1.1,
+                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
                       transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#1B365D",
-                        color: "#1B365D",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
+                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
                       },
                     }}
                   >

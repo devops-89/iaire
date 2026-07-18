@@ -80,7 +80,9 @@ const AboutPlatformSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           {/* Left Column: Heading, Features & Copy */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Box
@@ -233,7 +235,10 @@ const AboutPlatformSection = () => {
           </Grid>
 
           {/* Right Column: Platform Dashboard Mockup */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150">
             <Box
               sx={{
                 position: "relative",

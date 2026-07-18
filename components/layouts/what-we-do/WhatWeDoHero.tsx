@@ -14,6 +14,7 @@ import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import TextReveal from "@/components/animations/TextReveal";
 
 const pillars = [
   {
@@ -103,7 +104,10 @@ const WhatWeDoHero = () => {
         <Stack spacing={{ xs: 6, md: 7.5 }} alignItems="center">
           {/* Top Section: Centered Title Copy */}
           <Box sx={{ textAlign: "center", width: "100%", maxWidth: "880px" }}>
-            <Stack spacing={3} alignItems="center">
+            <Stack spacing={3} alignItems="center"
+          data-aos="fade-up"
+          data-aos-duration="800"
+          >
               {/* Badge */}
               <Box
                 sx={{
@@ -124,22 +128,24 @@ const WhatWeDoHero = () => {
               </Box>
 
               {/* Title */}
-              <Typography
-                variant="h1"
-                sx={{
+              <TextReveal
+                tag="h1"
+                text="Advancing the Field of Innovation & Research Education"
+                delay={200}
+                stagger={55}
+                style={{
                   fontFamily: inter.style.fontFamily,
                   fontWeight: 900,
-                  fontSize: { xs: "2.6rem", sm: "3.2rem", md: "4rem" },
+                  fontSize: "clamp(2.6rem, 4.5vw, 4rem)",
                   lineHeight: 1.15,
                   letterSpacing: "-0.03em",
-                  background:
-                    "linear-gradient(180deg, #FFFFFF 30%, #AEB5C0 100%)",
+                  background: "linear-gradient(180deg, #FFFFFF 30%, #AEB5C0 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  display: "block",
                 }}
-              >
-                Advancing the Field of Innovation & Research Education
-              </Typography>
+              />
 
               {/* Description */}
               <Typography

@@ -86,7 +86,7 @@ const Header2 = () => {
         left: 0,
         right: 0,
         zIndex: 1000,
-        width: "100%",
+        boxSizing: "border-box",
       }}
     >
       <Container>
@@ -94,9 +94,9 @@ const Header2 = () => {
           sx={{
             backgroundColor: COLORS.WHITE,
             borderRadius: "100px",
-            px: 3,
-            py: 1.25,
-            width: "100%",
+            px: { xs: 2.5, sm: 3 },
+            py: { xs: 1, sm: 1.25 },
+            boxSizing: "border-box",
             boxShadow: "0 10px 30px rgba(0, 0, 0, 0.05)",
             border: "1px solid rgba(0, 0, 0, 0.04)",
           }}
@@ -105,10 +105,11 @@ const Header2 = () => {
             direction="row"
             alignItems="center"
             justifyContent="space-between"
+            sx={{ position: "relative" }}
           >
             {/* Left Side: Animated Hamburger Trigger */}
             <Box
-              sx={{ flex: 1, display: "flex", justifyContent: "flex-start" }}
+              sx={{ display: "flex", justifyContent: "flex-start", zIndex: 1 }}
             >
               <IconButton
                 onClick={() => setMenuOpen(!menuOpen)}
@@ -161,20 +162,29 @@ const Header2 = () => {
               </IconButton>
             </Box>
 
-            {/* Center: Logo */}
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
+            {/* Center: Logo — absolutely positioned for perfect centering */}
+            <Box
+              sx={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <Link href="/" style={{ display: "flex", alignItems: "center" }}>
                 <Image
                   src={logo}
                   alt="IAIRE Logo"
-                  width={140}
+                  width={110}
                   style={{ objectFit: "contain" }}
                 />
               </Link>
             </Box>
 
             {/* Right Side: Join Button */}
-            <Box sx={{ flex: 1, display: "flex", justifyContent: "flex-end" }}>
+            <Box sx={{ display: "flex", justifyContent: "flex-end", zIndex: 1 }}>
               <Link
                 href="/signup/role-selection"
                 style={{ textDecoration: "none" }}
@@ -182,15 +192,16 @@ const Header2 = () => {
                 <Button
                   variant="outlined"
                   sx={{
-                    fontSize: 13,
+                    fontSize: { xs: 11, sm: 13 },
                     fontWeight: 700,
                     fontFamily: inter.style.fontFamily,
                     border: "1.5px solid #1B365D",
-                    px: 3,
-                    py: 0.75,
+                    px: { xs: 1.75, sm: 3 },
+                    py: { xs: 0.6, sm: 0.75 },
                     borderRadius: "50px",
                     color: "#1B365D",
                     textTransform: "none",
+                    whiteSpace: "nowrap",
                     transition: "all 0.25s ease",
                     "&:hover": {
                       border: "1.5px solid #122744",
@@ -199,7 +210,7 @@ const Header2 = () => {
                     },
                   }}
                 >
-                  Join the Ecosystem
+                  Join IAIRE
                 </Button>
               </Link>
             </Box>

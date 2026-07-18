@@ -99,7 +99,7 @@ const EducatorCertification = () => {
       >
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center" sx={{ mb: 5 }}>
           {/* Left Column: Title, description, and module tags list */}
-          <Grid size={{ xs: 12, md: 7 }}>
+          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 7 }}>
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex" }}>
                 <SectionBadge
@@ -204,7 +204,7 @@ const EducatorCertification = () => {
           </Grid>
 
           {/* Right Column: Milestone Journey Tracker Card */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 5 }}>
             <Card
               elevation={0}
               sx={{

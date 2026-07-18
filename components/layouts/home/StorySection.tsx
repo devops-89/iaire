@@ -7,7 +7,6 @@ import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
-
 const milestones = [
   {
     title: "DiscoverSTEM Advisory Panel",
@@ -72,6 +71,8 @@ const StorySection = () => {
           {/* Left Column: Sticky Title and High-Contrast CTAs */}
           <Grid
             size={{ xs: 12, md: 4.8 }}
+            data-aos="fade-right"
+            data-aos-duration="800"
             sx={{
               position: { md: "sticky" },
               top: { md: "140px" },
@@ -195,7 +196,7 @@ const StorySection = () => {
           </Grid>
 
           {/* Right Column: Premium Glowing Timeline */}
-          <Grid size={{ xs: 12, md: 7.2 }}>
+          <Grid size={{ xs: 12, md: 7.2 }} data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
             <Box sx={{ position: "relative", pl: { xs: 4, md: 6 } }}>
               {/* Timeline Vertical Line */}
               <Box

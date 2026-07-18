@@ -5,7 +5,6 @@ import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/mate
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
-
 // Custom vector SVG icons representing the 9 support categories
 const FrameworkIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -116,7 +115,7 @@ const WhatWeDo = () => {
       />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack spacing={7} alignItems="center">
+        <Stack data-aos="fade-up" data-aos-duration="800" spacing={7} alignItems="center">
           
           {/* Header */}
           <Stack spacing={2.5} alignItems="center" textAlign="center">

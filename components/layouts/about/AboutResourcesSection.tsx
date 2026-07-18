@@ -80,7 +80,9 @@ const AboutResourcesSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           {/* Left Column: Heading, Available Resources Grid & Copy */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Box
@@ -231,7 +233,10 @@ const AboutResourcesSection = () => {
           </Grid>
 
           {/* Right Column: Resource Library Coded Illustration */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150">
             <Box
               sx={{
                 position: "relative",

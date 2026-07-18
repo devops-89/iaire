@@ -140,7 +140,9 @@ const AboutContactSection = () => {
         <Grid container spacing={{ xs: 8, md: 6 }} alignItems="flex-start">
           
           {/* Left Column: Heading & Stacked Cards */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid size={{ xs: 12, md: 5 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Stack spacing={4}>
               
               <Stack spacing={2.5}>
@@ -247,7 +249,10 @@ const AboutContactSection = () => {
           </Grid>
 
           {/* Right Column: Premium Contact Form Card */}
-          <Grid size={{ xs: 12, md: 7 }}>
+          <Grid size={{ xs: 12, md: 7 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150">
             <Box
               component="form"
               onSubmit={handleSubmit}

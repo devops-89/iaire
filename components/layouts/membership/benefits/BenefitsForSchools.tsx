@@ -134,7 +134,9 @@ const BenefitsForSchools = () => {
           </Grid>
 
           {/* Right Column: Detailed Benefits List */}
-          <Grid size={{ xs: 12, md: 7.5 }}>
+          <Grid size={{ xs: 12, md: 7.5 }}
+            data-aos="fade-right"
+            data-aos-duration="800">
             <Stack spacing={0}>
               {schoolBenefits.map((benefit, idx) => (
                 <Box

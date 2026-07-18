@@ -3,12 +3,11 @@
 import { Box, Card, Container, Typography, Stack, Button } from "@mui/material";
 import React from "react";
 import { COLORS } from "@/utils/enum";
-
 const LeadershipSection = () => {
   return (
     <Box sx={{ py: { xs: 8, md: 10 }, bgcolor: "#FFFFFF" }}>
       <Container maxWidth="lg">
-        <Stack spacing={4}>
+        <Stack data-aos="fade-up" data-aos-duration="800" spacing={4}>
           <Typography
             variant="h4"
             sx={{
@@ -20,7 +19,6 @@ const LeadershipSection = () => {
           >
             Leadership & Advisory Board
           </Typography>
-
           <Card
             elevation={0}
             sx={{

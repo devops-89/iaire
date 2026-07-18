@@ -4,7 +4,6 @@ import { COLORS } from "@/utils/enum";
 import { Box, Card, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-
 const documents = [
   { title: "Charter & Constitution", icon: "/images/icon/researchGrantIcon.png",},
   { title: "Bylaws", icon: "/images/icon/researchGrantIcon.png", },
@@ -16,7 +15,7 @@ const GovernanceSection = () => {
   return (
     <Box sx={{ py: { xs: 6, sm: 8, md: 12 },px: { xs: 2, sm: 3, md: 0 }, bgcolor: "#F9F7F5" }}>
       <Container maxWidth="lg">
-        <Stack spacing={8} alignItems="center">
+        <Stack data-aos="fade-up" data-aos-duration="800" spacing={8} alignItems="center">
           <Typography
             variant="h2"
             sx={{
@@ -30,7 +29,6 @@ const GovernanceSection = () => {
           >
             Governance
           </Typography>
-
           <Stack spacing={4} sx={{ width: "100%", maxWidth: "800px" }}>
             {/* Funding Card */}
             <Card

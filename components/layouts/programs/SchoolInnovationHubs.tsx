@@ -85,7 +85,10 @@ const SchoolInnovationHubs = () => {
               </Box>
 
               {/* Title & Description */}
-              <Stack spacing={1.5}>
+              <Stack spacing={1.5}
+          data-aos="fade-up"
+          data-aos-duration="800"
+          >
                 <Typography
                   component="h2"
                   sx={{

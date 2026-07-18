@@ -6,7 +6,6 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
-
 const phase1Steps = [
   { step: "01", label: "Introduction to Innovation" },
   { step: "02", label: "Innovation Mindset" },
@@ -193,7 +192,7 @@ const StudentProgSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 8, md: 6 }} alignItems="flex-start">
           {/* Left Column: Program Detail, Outcomes & CTA */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 5 }}>
             <Stack spacing={4.5}>
               {/* Header texts */}
               <Stack spacing={2.5}>
@@ -330,7 +329,7 @@ const StudentProgSection = () => {
           </Grid>
 
           {/* Right Column: Interactive Accordion Roadmap */}
-          <Grid size={{ xs: 12, md: 7 }} sx={{ pl: { md: 4 } }}>
+          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 7 }} sx={{ pl: { md: 4 } }}>
             <Stack spacing={3}>
               <Typography
                 sx={{

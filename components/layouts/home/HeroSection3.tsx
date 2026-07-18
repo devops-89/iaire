@@ -18,6 +18,7 @@ import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CardMembershipIcon from "@mui/icons-material/CardMembershipOutlined";
 import PublicIcon from "@mui/icons-material/Public";
+import TextReveal from "@/components/animations/TextReveal";
 
 const HeroSection3 = () => {
   const theme = useTheme();
@@ -111,6 +112,9 @@ const HeroSection3 = () => {
         <Grid container spacing={{ xs: 4, md: 4 }} alignItems="center">
           <Grid size={{ xs: 12, md: 7 }} sx={{ pr: { md: 2 } }}>
             <Box
+              data-aos="fade-up"
+              data-aos-duration="700"
+              data-aos-delay="100"
               sx={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -152,34 +156,27 @@ const HeroSection3 = () => {
               </Typography>
             </Box>
 
-            <Typography
-              component="h1"
-              sx={{
-                fontSize: { xs: "28px", sm: "36px", md: "40px", lg: "44px" },
+            <TextReveal
+              tag="h1"
+              text="Advancing Innovation, Research & Entrepreneurship Education for the Next Generation"
+              delay={200}
+              stagger={60}
+              style={{
+                fontSize: "clamp(28px, 4vw, 44px)",
                 fontFamily: inter.style.fontFamily,
                 fontWeight: 850,
                 lineHeight: 1.15,
                 letterSpacing: "-0.03em",
                 color: "#111827",
-                mb: 2.5,
+                marginBottom: "20px",
+                display: "block",
               }}
-            >
-              Advancing{" "}
-              <Box
-                component="span"
-                sx={{
-                  background:
-                    "linear-gradient(135deg, #1B365D 30%, #4F83C3 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Innovation, Research & Entrepreneurship
-              </Box>{" "}
-              Education for the Next Generation
-            </Typography>
+            />
 
             <Typography
+              data-aos="fade-up"
+              data-aos-duration="700"
+              data-aos-delay="300"
               sx={{
                 fontSize: { xs: "13.5px", md: "14.5px" },
                 fontFamily: inter.style.fontFamily,
@@ -217,6 +214,9 @@ const HeroSection3 = () => {
             </Typography>
 
             <Stack
+              data-aos="fade-up"
+              data-aos-duration="700"
+              data-aos-delay="450"
               direction={{ xs: "column", sm: "row" }}
               spacing={1.5}
               alignItems={{ xs: "stretch", sm: "center" }}
@@ -318,6 +318,9 @@ const HeroSection3 = () => {
           {/* Right Column: Globe & Visual accents */}
           <Grid
             size={{ xs: 12, md: 5 }}
+            data-aos="fade-left"
+            data-aos-duration="900"
+            data-aos-delay="200"
             sx={{
               display: "flex",
               alignItems: "center",

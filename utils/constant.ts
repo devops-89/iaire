@@ -2074,12 +2074,12 @@ export const HEADER_CONTENT: NavigationItem[] = [
   },
   {
     label: "News & Impact",
-    url: "/about#news",
+    url: "/news-impact",
     subModules: [
-      { label: "Outcomes", url: "/about#news" },
-      { label: "Patents & Publications", url: "/about#news" },
-      { label: "Awards & Recognition", url: "/about#news" },
-      { label: "Member News", url: "/about#news" },
+      { label: "Outcomes", url: "/news-impact#outcomes" },
+      { label: "Patents & Publications", url: "/news-impact#patents" },
+      { label: "Awards & Recognition", url: "/news-impact#awards" },
+      { label: "Member News", url: "/news-impact#member-news" },
     ],
   },
   {
