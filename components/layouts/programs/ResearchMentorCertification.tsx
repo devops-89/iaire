@@ -51,21 +51,35 @@ const ResearchMentorCertification = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
-          
           {/* Left Column: Visual Research Lab Illustration (ordered first on desktop, second on mobile) */}
           <Grid
             size={{ xs: 12, md: 5 }}
             order={{ xs: 2, md: 1 }}
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", pr: { md: 2 } }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              pr: { md: 2 },
+            }}
           >
             <Box
               sx={{
@@ -89,13 +103,14 @@ const ResearchMentorCertification = () => {
                   position: "absolute",
                   inset: -4,
                   borderRadius: "28px",
-                  background: "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(27, 54, 93, 0.05) 100%)",
+                  background:
+                    "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(27, 54, 93, 0.05) 100%)",
                   filter: "blur(12px)",
                   opacity: 0.6,
                   zIndex: 1,
                 }}
               />
-              
+
               <Box
                 sx={{
                   position: "relative",
@@ -121,11 +136,19 @@ const ResearchMentorCertification = () => {
           </Grid>
 
           {/* Right Column: Title, Details, Grid of Competencies & CTA Buttons (ordered second on desktop, first on mobile) */}
-          <Grid size={{ xs: 12, md: 7 }} order={{ xs: 1, md: 2 }} sx={{ pl: { md: 4 } }}>
+          <Grid
+            size={{ xs: 12, md: 7 }}
+            order={{ xs: 1, md: 2 }}
+            sx={{ pl: { md: 4 } }}
+          >
             <Stack spacing={3.25} sx={{ width: "100%" }}>
-              
               {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "center", md: "flex-start" },
+                }}
+              >
                 <Box
                   sx={{
                     width: "auto",
@@ -161,7 +184,7 @@ const ResearchMentorCertification = () => {
                   IAIRE Research <br />
                   <span style={{ color: "#1B365D" }}>Mentor Certification</span>
                 </Typography>
-                
+
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -184,7 +207,11 @@ const ResearchMentorCertification = () => {
                     maxWidth: "600px",
                   }}
                 >
-                  The IAIRE Research Mentor Certification pathway equips educators to guide students through research design, literature review, hypothesis development, experimentation, data analysis, ethical research practices, manuscript drafting, peer review, and publication preparation.
+                  The IAIRE Research Mentor Certification pathway equips
+                  educators to guide students through research design,
+                  literature review, hypothesis development, experimentation,
+                  data analysis, ethical research practices, manuscript
+                  drafting, peer review, and publication preparation.
                 </Typography>
               </Stack>
 
@@ -207,7 +234,11 @@ const ResearchMentorCertification = () => {
                   {competencies.map((comp, idx) => {
                     const isHovered = hoveredIdx === idx;
                     return (
-                      <Grid size={{ xs: 12, sm: 4 }} key={idx} sx={{ display: "flex" }}>
+                      <Grid
+                        size={{ xs: 12, sm: 4 }}
+                        key={idx}
+                        sx={{ display: "flex" }}
+                      >
                         <Box
                           onMouseEnter={() => setHoveredIdx(idx)}
                           onMouseLeave={() => setHoveredIdx(null)}
@@ -216,13 +247,17 @@ const ResearchMentorCertification = () => {
                             p: 1.5,
                             borderRadius: "10px",
                             border: "1px solid rgba(27, 54, 93, 0.06)",
-                            backgroundColor: isHovered ? "rgba(59, 130, 246, 0.03)" : "rgba(27, 54, 93, 0.02)",
+                            backgroundColor: isHovered
+                              ? "rgba(59, 130, 246, 0.03)"
+                              : "rgba(27, 54, 93, 0.02)",
                             display: "flex",
                             alignItems: "center",
                             gap: 1.25,
                             transition: "all 0.25s ease-in-out",
                             cursor: "default",
-                            transform: isHovered ? "translateY(-1.5px)" : "translateY(0)",
+                            transform: isHovered
+                              ? "translateY(-1.5px)"
+                              : "translateY(0)",
                           }}
                         >
                           <CheckCircleIcon
@@ -258,7 +293,7 @@ const ResearchMentorCertification = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
                     variant="contained"
                     sx={{
@@ -286,7 +321,10 @@ const ResearchMentorCertification = () => {
                   </Button>
                 </Link>
 
-                <Link href="#research-modules" style={{ textDecoration: "none" }}>
+                {/* <Link
+                  href="#research-modules"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="outlined"
                     sx={{
@@ -314,12 +352,17 @@ const ResearchMentorCertification = () => {
                   >
                     View Research Modules
                   </Button>
-                </Link>
+                </Link> */}
 
-                <Link href="/contact" style={{ textDecoration: "none" }}>
+                {/* <Link href="/contact" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -348,12 +391,10 @@ const ResearchMentorCertification = () => {
                   >
                     Contact Program Team
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
-
             </Stack>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

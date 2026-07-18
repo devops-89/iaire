@@ -36,7 +36,8 @@ const GetInvolvedHero = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.15) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.15) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -50,7 +51,8 @@ const GetInvolvedHero = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.12) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.12) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(80px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -73,15 +75,30 @@ const GetInvolvedHero = () => {
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
-          
           {/* Left Column: Heading Copy */}
           <Grid size={{ xs: 12, md: 6.5 }}>
-            <Stack spacing={3.25} sx={{ textAlign: { xs: "center", md: "left" } }}>
-              
+            <Stack
+              spacing={3.25}
+              sx={{ textAlign: { xs: "center", md: "left" } }}
+            >
               {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "center", md: "flex-start" },
+                }}
+              >
                 <Box
                   sx={{
                     backgroundColor: "rgba(59, 130, 246, 0.15)",
@@ -111,7 +128,8 @@ const GetInvolvedHero = () => {
                     fontSize: { xs: "2.6rem", sm: "3rem", md: "3.4rem" },
                     lineHeight: 1.15,
                     letterSpacing: "-0.03em",
-                    background: "linear-gradient(180deg, #FFFFFF 30%, #AEB5C0 100%)",
+                    background:
+                      "linear-gradient(180deg, #FFFFFF 30%, #AEB5C0 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                   }}
@@ -130,7 +148,11 @@ const GetInvolvedHero = () => {
                   maxWidth: "580px",
                 }}
               >
-                <strong>IAIRE</strong> welcomes schools, educators, students, scientists, researchers, inventors, entrepreneurs, institutional leaders, partners, and volunteers who share a commitment to advancing innovation, research, and entrepreneurship education globally.
+                <strong>IAIRE</strong> welcomes schools, educators, students,
+                scientists, researchers, inventors, entrepreneurs, institutional
+                leaders, partners, and volunteers who share a commitment to
+                advancing innovation, research, and entrepreneurship education
+                globally.
               </Typography>
 
               {/* Action Buttons Row */}
@@ -140,7 +162,7 @@ const GetInvolvedHero = () => {
                 sx={{ pt: 1.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link href="/membership" style={{ textDecoration: "none" }}>
+                <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
                     variant="contained"
                     sx={{
@@ -168,7 +190,7 @@ const GetInvolvedHero = () => {
                   </Button>
                 </Link>
 
-                <Link href="/contact" style={{ textDecoration: "none" }}>
+                {/* <Link href="/contact" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
                     sx={{
@@ -229,14 +251,20 @@ const GetInvolvedHero = () => {
                   >
                     Volunteer as a Mentor
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
-
             </Stack>
           </Grid>
 
           {/* Right Column: Premium Glowing Global Connections Visual */}
-          <Grid size={{ xs: 12, md: 5.5 }} sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <Grid
+            size={{ xs: 12, md: 5.5 }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Box
               sx={{
                 position: "relative",
@@ -259,13 +287,14 @@ const GetInvolvedHero = () => {
                   position: "absolute",
                   inset: -4,
                   borderRadius: "28px",
-                  background: "linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(27, 54, 93, 0.08) 100%)",
+                  background:
+                    "linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(27, 54, 93, 0.08) 100%)",
                   filter: "blur(12px)",
                   opacity: 0.6,
                   zIndex: 1,
                 }}
               />
-              
+
               <Box
                 sx={{
                   position: "relative",
@@ -289,7 +318,6 @@ const GetInvolvedHero = () => {
               </Box>
             </Box>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

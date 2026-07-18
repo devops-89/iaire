@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import React from "react";
+import { Box, Card, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
-import Link from "next/link";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
+import SectionBadge from "@/components/widgets/SectionBadge";
+
+// Import Modular Components
+import { RubricsActions } from "./components/RubricsActions";
 
 const assessmentAreas = [
   "Problem discovery",
@@ -21,9 +22,30 @@ const assessmentAreas = [
   "Impact and sustainability",
 ];
 
-const StandardsRubrics = () => {
-  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+const rubricLevels = [
+  {
+    label: "L1 — Emerging",
+    desc: "Student identifies surface-level problems with limited scope or validation.",
+    color: "#64748B",
+  },
+  {
+    label: "L2 — Developing",
+    desc: "Applies basic research methods and adapts known solutions with modifications.",
+    color: "#3B82F6",
+  },
+  {
+    label: "L3 — Proficient",
+    desc: "Conducts structured analysis, builds working prototypes, and validates hypotheses.",
+    color: "#10B981",
+  },
+  {
+    label: "L4 — Advanced",
+    desc: "Demonstrates originality, publishes research, and creates IP-ready innovations.",
+    color: "#F59E0B",
+  },
+];
 
+const StandardsRubrics = () => {
   return (
     <Box
       id="standards-rubrics"
@@ -45,7 +67,7 @@ const StandardsRubrics = () => {
         sx={{
           position: "absolute",
           top: "-10%",
-          left: "-10%",
+          right: "-10%",
           width: "50vw",
           height: "50vw",
           borderRadius: "50%",
@@ -59,7 +81,7 @@ const StandardsRubrics = () => {
         sx={{
           position: "absolute",
           bottom: "-10%",
-          right: "-10%",
+          left: "-10%",
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
@@ -70,243 +92,223 @@ const StandardsRubrics = () => {
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        
-        {/* Top Section: Title & Description Header */}
-        <Box sx={{ mb: { xs: 4, md: 4.5 }, width: "100%" }}>
-          <Stack spacing={2.5}>
-            {/* Badge */}
-            <Box sx={{ display: "flex" }}>
-              <Box
-                sx={{
-                  width: "auto",
-                  backgroundColor: "rgba(255, 255, 255, 0.08)",
-                  border: "1px solid rgba(255, 255, 255, 0.15)",
-                  color: "#93C5FD",
-                  px: 2,
-                  py: 0.5,
-                  borderRadius: "20px",
-                  fontSize: "11px",
-                  fontWeight: 800,
-                  fontFamily: "monospace",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Academic Quality Assurance
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center" sx={{ mb: 5 }}>
+          {/* Left Column: Title, description, and assessment area tags */}
+          <Grid size={{ xs: 12, md: 7 }}>
+            <Stack spacing={3.5}>
+              <Box sx={{ display: "flex" }}>
+                <SectionBadge
+                  label="Academic Quality Assurance"
+                  align="left"
+                  textColor="#93C5FD"
+                  glowColor="#93C5FD"
+                  borderColor="rgba(147, 197, 253, 0.25)"
+                  backgroundColor="rgba(255, 255, 255, 0.08)"
+                />
               </Box>
-            </Box>
 
-            {/* Title & Subtitle & Description */}
-            <Stack spacing={1.5}>
-              <Typography
-                component="h1"
-                sx={{
-                  fontFamily: inter.style.fontFamily,
-                  fontSize: { xs: "28px", sm: "36px", md: "42px" },
-                  fontWeight: 900,
-                  lineHeight: 1.12,
-                  letterSpacing: "-0.03em",
-                  color: COLORS.WHITE,
-                }}
-              >
-                Standards & <br />
-                <span style={{ color: "#93C5FD", textShadow: "0 0 35px rgba(147, 197, 253, 0.2)" }}>
-                  Rubrics Framework
-                </span>
-              </Typography>
-              
-              <Typography
-                sx={{
-                  fontFamily: inter.style.fontFamily,
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  color: "#93C5FD",
-                  letterSpacing: "0.05em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Transparent Standards for Measurable Outcomes
-              </Typography>
+              <Stack spacing={2}>
+                <Typography
+                  component="h1"
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: { xs: "28px", sm: "36px", md: "40px" },
+                    fontWeight: 900,
+                    lineHeight: 1.15,
+                    letterSpacing: "-0.03em",
+                    color: COLORS.WHITE,
+                  }}
+                >
+                  Standards & <br />
+                  <span style={{ color: "#93C5FD", textShadow: "0 0 35px rgba(147, 197, 253, 0.2)" }}>
+                    Rubrics Framework
+                  </span>
+                </Typography>
 
-              <Typography
-                sx={{
-                  fontFamily: inter.style.fontFamily,
-                  fontSize: "13.5px",
-                  lineHeight: 1.55,
-                  color: "rgba(255, 255, 255, 0.8)",
-                  maxWidth: "850px",
-                }}
-              >
-                IAIRE provides structured rubrics and assessment frameworks for innovation, research, and entrepreneurship education.
-              </Typography>
-            </Stack>
-          </Stack>
-        </Box>
+                <Typography
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    color: "#93C5FD",
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Transparent Standards for Measurable Outcomes
+                </Typography>
 
-        {/* Middle Section: Symmetrical Grid of 10 Assessment Areas (5 columns on desktop!) */}
-        <Box sx={{ mb: { xs: 4, md: 4.5 }, width: "100%" }}>
-          <Typography
-            sx={{
-              fontFamily: inter.style.fontFamily,
-              fontSize: "11px",
-              fontWeight: 800,
-              color: "#93C5FD",
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              mb: 2,
-            }}
-          >
-            Core Assessment Areas:
-          </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "14.5px",
+                    lineHeight: 1.6,
+                    color: "rgba(255, 255, 255, 0.8)",
+                  }}
+                >
+                  IAIRE provides structured rubrics and assessment frameworks for innovation, research, and entrepreneurship education.
+                </Typography>
+              </Stack>
 
-          <Grid container spacing={2}>
-            {assessmentAreas.map((area, idx) => {
-              const isHovered = hoveredIdx === idx;
-              return (
-                <Grid size={{ xs: 12, sm: 6, md: 2.4 }} key={idx} sx={{ display: "flex" }}>
-                  <Box
-                    onMouseEnter={() => setHoveredIdx(idx)}
-                    onMouseLeave={() => setHoveredIdx(null)}
-                    sx={{
-                      width: "100%",
-                      p: 2,
-                      borderRadius: "12px",
-                      border: isHovered ? "1px solid #93C5FD" : "1px solid rgba(255, 255, 255, 0.08)",
-                      backgroundColor: isHovered ? "rgba(147, 197, 253, 0.05)" : "rgba(255, 255, 255, 0.03)",
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      gap: 1.25,
-                      transition: "all 0.25s ease-in-out",
-                      cursor: "default",
-                      transform: isHovered ? "translateY(-2px)" : "translateY(0)",
-                      boxShadow: isHovered ? "0 8px 24px rgba(147, 197, 253, 0.1)" : "none",
-                    }}
-                  >
-                    <CheckCircleIcon
+              {/* Assessment Area Tags */}
+              <Stack spacing={1.5}>
+                <Typography
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "11px",
+                    fontWeight: 800,
+                    color: "#93C5FD",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                  }}
+                >
+                  Core Assessment Areas:
+                </Typography>
+
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1.25 }}>
+                  {assessmentAreas.map((area, idx) => (
+                    <Box
+                      key={idx}
                       sx={{
-                        color: isHovered ? "#93C5FD" : "rgba(255, 255, 255, 0.6)",
-                        fontSize: 18,
-                        transition: "color 0.2s ease",
-                      }}
-                    />
-                    <Typography
-                      sx={{
-                        fontFamily: inter.style.fontFamily,
-                        fontSize: "11px",
+                        px: 2,
+                        py: 0.75,
+                        borderRadius: "100px",
+                        border: "1px solid rgba(147, 197, 253, 0.12)",
+                        backgroundColor: "rgba(255, 255, 255, 0.02)",
+                        color: "rgba(255, 255, 255, 0.8)",
+                        fontSize: "12px",
                         fontWeight: 600,
-                        lineHeight: 1.35,
-                        color: isHovered ? "#FFFFFF" : "rgba(255, 255, 255, 0.8)",
-                        transition: "color 0.2s ease",
+                        fontFamily: inter.style.fontFamily,
+                        transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+                        cursor: "default",
+                        "&:hover": {
+                          borderColor: "#93C5FD",
+                          backgroundColor: "rgba(147, 197, 253, 0.08)",
+                          color: "#FFFFFF",
+                          transform: "translateY(-1.5px)",
+                          boxShadow: "0 4px 12px rgba(147, 197, 253, 0.1)",
+                        },
                       }}
                     >
                       {area}
-                    </Typography>
-                  </Box>
-                </Grid>
-              );
-            })}
+                    </Box>
+                  ))}
+                </Box>
+              </Stack>
+            </Stack>
           </Grid>
-        </Box>
+
+          {/* Right Column: Rubric Levels Progression Card */}
+          <Grid size={{ xs: 12, md: 5 }}>
+            <Card
+              elevation={0}
+              sx={{
+                p: { xs: 3.5, md: 4 },
+                borderRadius: "24px",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)",
+                backdropFilter: "blur(16px)",
+                boxShadow: "0 30px 60px rgba(0, 0, 0, 0.35)",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "11px",
+                  fontWeight: 800,
+                  color: "#93C5FD",
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  mb: 3.5,
+                }}
+              >
+                Rubric Progression Levels
+              </Typography>
+
+              <Stack spacing={3.5} sx={{ position: "relative" }}>
+                {/* Continuous connector line */}
+                <Box
+                  sx={{
+                    position: "absolute",
+                    left: 15,
+                    top: 20,
+                    bottom: 20,
+                    width: 2,
+                    background: "linear-gradient(to bottom, #64748B 0%, #3B82F6 33%, #10B981 66%, #F59E0B 100%)",
+                  }}
+                />
+
+                {rubricLevels.map((level, idx) => (
+                  <Stack
+                    key={idx}
+                    direction="row"
+                    spacing={2.5}
+                    alignItems="flex-start"
+                    sx={{ position: "relative", zIndex: 1 }}
+                  >
+                    <Box
+                      sx={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: "50%",
+                        backgroundColor: "#0B1528",
+                        border: `2px solid ${level.color}`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: level.color,
+                        fontFamily: "monospace",
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        boxShadow: `0 0 12px ${level.color}66`,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {idx + 1}
+                    </Box>
+                    <Box>
+                      <Typography
+                        sx={{
+                          fontFamily: inter.style.fontFamily,
+                          fontSize: "14px",
+                          fontWeight: 800,
+                          color: "#FFFFFF",
+                        }}
+                      >
+                        {level.label}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontFamily: inter.style.fontFamily,
+                          fontSize: "12px",
+                          color: "rgba(255, 255, 255, 0.65)",
+                          mt: 0.5,
+                          lineHeight: 1.45,
+                        }}
+                      >
+                        {level.desc}
+                      </Typography>
+                    </Box>
+                  </Stack>
+                ))}
+              </Stack>
+            </Card>
+          </Grid>
+        </Grid>
 
         {/* Bottom Section: Centered Actions Row */}
-        <Stack
-          direction={{ xs: "column", sm: "row" }}
-          spacing={2.25}
-          sx={{ width: "100%", justifyContent: "center", gap: 1.5 }}
-          alignItems="center"
-        >
-          <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-            <Button
-              variant="contained"
-              sx={{
-                whiteSpace: "nowrap",
-                fontFamily: inter.style.fontFamily,
-                fontSize: "13px",
-                fontWeight: 700,
-                textTransform: "none",
-                color: "#0B1528",
-                backgroundColor: COLORS.WHITE,
-                borderRadius: "100px",
-                px: 3.5,
-                py: 1.2,
-                boxShadow: "0 4px 14px rgba(255, 255, 255, 0.15)",
-                transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                "&:hover": {
-                  backgroundColor: "#E2E8F0",
-                  transform: "translateY(-2px)",
-                  boxShadow: "0 6px 20px rgba(255, 255, 255, 0.25)",
-                },
-              }}
-            >
-              View Rubrics
-            </Button>
-          </Link>
-
-          <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-            <Button
-              variant="outlined"
-              sx={{
-                whiteSpace: "nowrap",
-                fontFamily: inter.style.fontFamily,
-                fontSize: "13px",
-                fontWeight: 700,
-                textTransform: "none",
-                color: COLORS.WHITE,
-                borderColor: COLORS.WHITE,
-                borderWidth: "1.5px",
-                borderRadius: "100px",
-                px: 3.5,
-                py: 1.2,
-                transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                "&:hover": {
-                  borderWidth: "1.5px",
-                  borderColor: "#93C5FD",
-                  color: "#93C5FD",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
-                  transform: "translateY(-2px)",
-                },
-              }}
-            >
-              Access Member Resources
-            </Button>
-          </Link>
-
-          <Link href="/contact" style={{ textDecoration: "none" }}>
-            <Button
-              variant="outlined"
-              endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
-              sx={{
-                whiteSpace: "nowrap",
-                fontFamily: inter.style.fontFamily,
-                fontSize: "13px",
-                fontWeight: 700,
-                textTransform: "none",
-                color: "rgba(255, 255, 255, 0.7)",
-                borderColor: "rgba(255, 255, 255, 0.25)",
-                borderWidth: "1.5px",
-                borderRadius: "100px",
-                px: 3.5,
-                py: 1.2,
-                transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                "&:hover": {
-                  borderWidth: "1.5px",
-                  borderColor: COLORS.WHITE,
-                  color: COLORS.WHITE,
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
-                  transform: "translateY(-2px)",
-                  "& .arrow-icon": {
-                    transform: "translateX(4px)",
-                  },
-                },
-              }}
-            >
-              Request Standards Overview
-            </Button>
-          </Link>
-        </Stack>
-
+        <RubricsActions />
       </Container>
     </Box>
   );

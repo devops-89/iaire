@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Stack, Typography, Card } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  Card,
+} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -66,15 +74,25 @@ const CertificationPathways = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
         {/* Top Section: Title Header (Full Width) */}
         <Box sx={{ mb: { xs: 4, md: 4.5 }, width: "100%" }}>
           <Stack spacing={2.5}>
@@ -115,7 +133,7 @@ const CertificationPathways = () => {
                 Certification & <br />
                 <span style={{ color: "#1B365D" }}>Fellowship Pathways</span>
               </Typography>
-              
+
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
@@ -125,7 +143,9 @@ const CertificationPathways = () => {
                   maxWidth: "900px",
                 }}
               >
-                All advancement criteria are subject to published IAIRE standards. Where summary pathway descriptions and published standards conflict, the published standards shall control.
+                All advancement criteria are subject to published IAIRE
+                standards. Where summary pathway descriptions and published
+                standards conflict, the published standards shall control.
               </Typography>
             </Stack>
           </Stack>
@@ -137,7 +157,11 @@ const CertificationPathways = () => {
             {pathwaysData.map((pathway, pathIdx) => {
               const isHovered = hoveredIdx === pathIdx;
               return (
-                <Grid size={{ xs: 12, md: 4 }} key={pathIdx} sx={{ display: "flex" }}>
+                <Grid
+                  size={{ xs: 12, md: 4 }}
+                  key={pathIdx}
+                  sx={{ display: "flex" }}
+                >
                   <Card
                     elevation={0}
                     onMouseEnter={() => setHoveredIdx(pathIdx)}
@@ -146,11 +170,17 @@ const CertificationPathways = () => {
                       width: "100%",
                       p: 3,
                       borderRadius: "20px",
-                      border: isHovered ? "1px solid #1B365D" : "1px solid rgba(27, 54, 93, 0.08)",
+                      border: isHovered
+                        ? "1px solid #1B365D"
+                        : "1px solid rgba(27, 54, 93, 0.08)",
                       backgroundColor: "#FFFFFF",
-                      boxShadow: isHovered ? "0 15px 30px rgba(27, 54, 93, 0.05)" : "none",
+                      boxShadow: isHovered
+                        ? "0 15px 30px rgba(27, 54, 93, 0.05)"
+                        : "none",
                       transition: "all 0.3s ease-in-out",
-                      transform: isHovered ? "translateY(-4px)" : "translateY(0)",
+                      transform: isHovered
+                        ? "translateY(-4px)"
+                        : "translateY(0)",
                     }}
                   >
                     <Stack spacing={2.5}>
@@ -169,13 +199,20 @@ const CertificationPathways = () => {
 
                       <Stack spacing={2} sx={{ position: "relative" }}>
                         {pathway.steps.map((step, idx) => (
-                          <Stack key={idx} direction="row" spacing={2} alignItems="center">
+                          <Stack
+                            key={idx}
+                            direction="row"
+                            spacing={2}
+                            alignItems="center"
+                          >
                             <Box
                               sx={{
                                 width: 24,
                                 height: 24,
                                 borderRadius: "50%",
-                                backgroundColor: isHovered ? "#1B365D" : "rgba(27, 54, 93, 0.06)",
+                                backgroundColor: isHovered
+                                  ? "#1B365D"
+                                  : "rgba(27, 54, 93, 0.06)",
                                 color: isHovered ? "#FFFFFF" : "#1B365D",
                                 display: "flex",
                                 alignItems: "center",
@@ -215,10 +252,10 @@ const CertificationPathways = () => {
         <Stack
           direction={{ xs: "column", sm: "row" }}
           spacing={2.25}
-          sx={{ width: "100%", justifyContent: "center", gap: 1.5 }}
+          sx={{ width: "100%", justifyContent: "flex-start", gap: 1.5 }}
           alignItems="center"
         >
-          <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+          <Link href="/login" style={{ textDecoration: "none" }}>
             <Button
               variant="contained"
               sx={{
@@ -245,7 +282,10 @@ const CertificationPathways = () => {
             </Button>
           </Link>
 
-          <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+          {/* <Link
+            href="/signup/role-selection"
+            style={{ textDecoration: "none" }}
+          >
             <Button
               variant="outlined"
               sx={{
@@ -272,12 +312,17 @@ const CertificationPathways = () => {
             >
               Apply for Recognition
             </Button>
-          </Link>
+          </Link> */}
 
-          <Link href="/contact" style={{ textDecoration: "none" }}>
+          {/* <Link href="/contact" style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
-              endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+              endIcon={
+                <ArrowForwardIcon
+                  className="arrow-icon"
+                  sx={{ transition: "transform 0.25s ease" }}
+                />
+              }
               sx={{
                 whiteSpace: "nowrap",
                 fontFamily: inter.style.fontFamily,
@@ -305,9 +350,8 @@ const CertificationPathways = () => {
             >
               Contact Certification Team
             </Button>
-          </Link>
+          </Link> */}
         </Stack>
-
       </Container>
     </Box>
   );

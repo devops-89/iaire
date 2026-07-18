@@ -36,7 +36,8 @@ const ForEducators = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(120px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -50,18 +51,36 @@ const ForEducators = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
-          
           {/* Image Column on Left (for desktop, second on mobile) */}
-          <Grid size={{ xs: 12, md: 5.2 }} order={{ xs: 2, md: 1 }} sx={{ display: "flex", justifyContent: "center", alignItems: "center", pr: { md: 2 } }}>
+          <Grid
+            size={{ xs: 12, md: 5.2 }}
+            order={{ xs: 2, md: 1 }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              pr: { md: 2 },
+            }}
+          >
             <Box
               sx={{
                 position: "relative",
@@ -84,13 +103,14 @@ const ForEducators = () => {
                   position: "absolute",
                   inset: -4,
                   borderRadius: "28px",
-                  background: "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(27, 54, 93, 0.05) 100%)",
+                  background:
+                    "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(27, 54, 93, 0.05) 100%)",
                   filter: "blur(12px)",
                   opacity: 0.6,
                   zIndex: 1,
                 }}
               />
-              
+
               <Box
                 sx={{
                   position: "relative",
@@ -116,11 +136,19 @@ const ForEducators = () => {
           </Grid>
 
           {/* Text/CTA Column on Right (for desktop, first on mobile) */}
-          <Grid size={{ xs: 12, md: 6.8 }} order={{ xs: 1, md: 2 }} sx={{ pl: { md: 4 } }}>
+          <Grid
+            size={{ xs: 12, md: 6.8 }}
+            order={{ xs: 1, md: 2 }}
+            sx={{ pl: { md: 4 } }}
+          >
             <Stack spacing={3.25} sx={{ width: "100%" }}>
-              
               {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "center", md: "flex-start" },
+                }}
+              >
                 <Box
                   sx={{
                     width: "auto",
@@ -154,18 +182,9 @@ const ForEducators = () => {
                   }}
                 >
                   Become an IAIRE Certified <br />
-                  <span style={{ color: "#1B365D" }}>Innovation or Research Mentor</span>
-                </Typography>
-                
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "13.5px",
-                    lineHeight: 1.55,
-                    color: "#4B5563",
-                  }}
-                >
-                  Educators play a central role in transforming student curiosity into structured innovation and research. <strong>IAIRE</strong> provides training, certification, mentoring resources, case studies, documentation templates, assessment rubrics, and ongoing support to help educators guide student teams.
+                  <span style={{ color: "#1B365D" }}>
+                    Innovation or Research Mentor
+                  </span>
                 </Typography>
 
                 <Typography
@@ -176,7 +195,26 @@ const ForEducators = () => {
                     color: "#4B5563",
                   }}
                 >
-                  Our curriculum frameworks and continuous mentor-advisory forums allow school leaders and teachers to exchange classroom insights, elevate pedagogy standards, and foster student publication/patenting.
+                  Educators play a central role in transforming student
+                  curiosity into structured innovation and research.{" "}
+                  <strong>IAIRE</strong> provides training, certification,
+                  mentoring resources, case studies, documentation templates,
+                  assessment rubrics, and ongoing support to help educators
+                  guide student teams.
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "13.5px",
+                    lineHeight: 1.55,
+                    color: "#4B5563",
+                  }}
+                >
+                  Our curriculum frameworks and continuous mentor-advisory
+                  forums allow school leaders and teachers to exchange classroom
+                  insights, elevate pedagogy standards, and foster student
+                  publication/patenting.
                 </Typography>
               </Stack>
 
@@ -187,7 +225,10 @@ const ForEducators = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                {/* <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="contained"
                     sx={{
@@ -213,11 +254,10 @@ const ForEducators = () => {
                   >
                     Apply for Mentor Certification
                   </Button>
-                </Link>
+                </Link> */}
 
-                <Link href="/membership#educator" style={{ textDecoration: "none" }}>
+                <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
-                    variant="outlined"
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -225,19 +265,17 @@ const ForEducators = () => {
                       fontSize: "13px",
                       fontWeight: 700,
                       textTransform: "none",
-                      color: "#1B365D",
-                      borderColor: "#1B365D",
-                      borderWidth: "1.5px",
+                      color: COLORS.WHITE,
+                      backgroundColor: "#1B365D",
                       borderRadius: "100px",
                       px: 3,
                       py: 1.1,
+                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
                       transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#122744",
-                        color: "#122744",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
                       },
                     }}
                   >
@@ -245,10 +283,18 @@ const ForEducators = () => {
                   </Button>
                 </Link>
 
-                <Link href="/membership#educator" style={{ textDecoration: "none" }}>
+                {/* <Link
+                  href="/membership#educator"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -277,12 +323,10 @@ const ForEducators = () => {
                   >
                     View Teacher Benefits
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
-
             </Stack>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

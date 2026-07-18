@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -57,7 +65,8 @@ const AwardsFellowships = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(120px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -71,22 +80,35 @@ const AwardsFellowships = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
-          
           {/* Left Column: Title, Details & CTA Buttons */}
           <Grid size={{ xs: 12, md: 6.8 }}>
             <Stack spacing={3} sx={{ width: "100%" }}>
-              
               {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "center", md: "flex-start" },
+                }}
+              >
                 <Box
                   sx={{
                     width: "auto",
@@ -120,18 +142,9 @@ const AwardsFellowships = () => {
                   }}
                 >
                   Recognition for Achievement, <br />
-                  <span style={{ color: "#1B365D" }}>Leadership & Contribution</span>
-                </Typography>
-                
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "13.5px",
-                    lineHeight: 1.55,
-                    color: "#4B5563",
-                  }}
-                >
-                  <strong>IAIRE</strong> recognizes schools, educators, and students who demonstrate sustained achievement and contribution within innovation, research, and entrepreneurship education.
+                  <span style={{ color: "#1B365D" }}>
+                    Leadership & Contribution
+                  </span>
                 </Typography>
 
                 <Typography
@@ -142,7 +155,27 @@ const AwardsFellowships = () => {
                     color: "#4B5563",
                   }}
                 >
-                  Advancement within the IAIRE framework is based upon demonstrated achievement rather than participation alone. Higher distinctions such as Associate Fellow and Fellow are awarded only upon satisfying defined criteria relating to innovation, research, intellectual property creation, publications, mentorship, leadership, entrepreneurship, and sustained contribution to the field.
+                  <strong>IAIRE</strong> recognizes schools, educators, and
+                  students who demonstrate sustained achievement and
+                  contribution within innovation, research, and entrepreneurship
+                  education.
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "13.5px",
+                    lineHeight: 1.55,
+                    color: "#4B5563",
+                  }}
+                >
+                  Advancement within the IAIRE framework is based upon
+                  demonstrated achievement rather than participation alone.
+                  Higher distinctions such as Associate Fellow and Fellow are
+                  awarded only upon satisfying defined criteria relating to
+                  innovation, research, intellectual property creation,
+                  publications, mentorship, leadership, entrepreneurship, and
+                  sustained contribution to the field.
                 </Typography>
               </Stack>
 
@@ -153,7 +186,7 @@ const AwardsFellowships = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link href="/fellows" style={{ textDecoration: "none" }}>
+                {/* <Link href="/fellows" style={{ textDecoration: "none" }}>
                   <Button
                     variant="contained"
                     sx={{
@@ -181,7 +214,10 @@ const AwardsFellowships = () => {
                   </Button>
                 </Link>
 
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="outlined"
                     sx={{
@@ -209,12 +245,17 @@ const AwardsFellowships = () => {
                   >
                     Nominate a Fellow
                   </Button>
-                </Link>
+                </Link> */}
 
-                <Link href="/fellows" style={{ textDecoration: "none" }}>
+                <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -245,7 +286,6 @@ const AwardsFellowships = () => {
                   </Button>
                 </Link>
               </Stack>
-
             </Stack>
           </Grid>
 
@@ -257,13 +297,13 @@ const AwardsFellowships = () => {
                 p: 3.5,
                 borderRadius: "24px",
                 border: "1px solid rgba(27, 54, 93, 0.08)",
-                background: "linear-gradient(135deg, rgba(27, 54, 93, 0.01) 0%, rgba(255, 255, 255, 0.95) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(27, 54, 93, 0.01) 0%, rgba(255, 255, 255, 0.95) 100%)",
                 boxShadow: "0 15px 35px rgba(27, 54, 93, 0.03)",
                 borderLeft: "6px solid #1B365D",
               }}
             >
               <Stack spacing={3}>
-                
                 {/* Panel Header */}
                 <Stack direction="row" spacing={1.75} alignItems="center">
                   <Box
@@ -306,7 +346,9 @@ const AwardsFellowships = () => {
                         onMouseLeave={() => setHoveredIdx(null)}
                         sx={{
                           cursor: "default",
-                          transform: isHovered ? "translateX(4px)" : "translateX(0)",
+                          transform: isHovered
+                            ? "translateX(4px)"
+                            : "translateX(0)",
                           transition: "transform 0.2s ease",
                         }}
                       >
@@ -315,7 +357,9 @@ const AwardsFellowships = () => {
                             width: 34,
                             height: 34,
                             borderRadius: "8px",
-                            backgroundColor: isHovered ? "rgba(59, 130, 246, 0.1)" : "rgba(27, 54, 93, 0.04)",
+                            backgroundColor: isHovered
+                              ? "rgba(59, 130, 246, 0.1)"
+                              : "rgba(27, 54, 93, 0.04)",
                             color: isHovered ? "#3B82F6" : "#1B365D",
                             display: "flex",
                             alignItems: "center",
@@ -326,7 +370,7 @@ const AwardsFellowships = () => {
                         >
                           {path.icon}
                         </Box>
-                        
+
                         <Stack spacing={0.25}>
                           <Typography
                             sx={{
@@ -354,11 +398,9 @@ const AwardsFellowships = () => {
                     );
                   })}
                 </Stack>
-
               </Stack>
             </Card>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

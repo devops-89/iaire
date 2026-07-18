@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -50,22 +58,35 @@ const ForStudents = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
-          
           {/* Left Column: Title, Details & CTA Buttons */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Stack spacing={3.5} sx={{ width: "100%" }}>
-              
               {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "center", md: "flex-start" },
+                }}
+              >
                 <Box
                   sx={{
                     width: "auto",
@@ -101,7 +122,7 @@ const ForStudents = () => {
                   Start Your Innovation & <br />
                   <span style={{ color: "#1B365D" }}>Research Journey</span>
                 </Typography>
-                
+
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -111,7 +132,10 @@ const ForStudents = () => {
                     maxWidth: "560px",
                   }}
                 >
-                  <strong>IAIRE</strong> helps students learn how to identify problems, research deeply, think creatively, design solutions, document ideas, present innovations, understand intellectual property, and explore entrepreneurship.
+                  <strong>IAIRE</strong> helps students learn how to identify
+                  problems, research deeply, think creatively, design solutions,
+                  document ideas, present innovations, understand intellectual
+                  property, and explore entrepreneurship.
                 </Typography>
               </Stack>
 
@@ -122,7 +146,7 @@ const ForStudents = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link href="/membership#student" style={{ textDecoration: "none" }}>
+                <Link href="login" style={{ textDecoration: "none" }}>
                   <Button
                     variant="contained"
                     sx={{
@@ -150,7 +174,10 @@ const ForStudents = () => {
                   </Button>
                 </Link>
 
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                {/* <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="outlined"
                     sx={{
@@ -183,7 +210,12 @@ const ForStudents = () => {
                 <Link href="/programs" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -212,9 +244,8 @@ const ForStudents = () => {
                   >
                     Explore Top Young Innovators
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
-
             </Stack>
           </Grid>
 
@@ -226,12 +257,12 @@ const ForStudents = () => {
                 p: 3,
                 borderRadius: "24px",
                 border: "1px solid rgba(27, 54, 93, 0.08)",
-                background: "linear-gradient(135deg, rgba(27, 54, 93, 0.01) 0%, rgba(255, 255, 255, 0.98) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(27, 54, 93, 0.01) 0%, rgba(255, 255, 255, 0.98) 100%)",
                 boxShadow: "0 15px 35px rgba(27, 54, 93, 0.03)",
               }}
             >
               <Stack spacing={2.5}>
-                
                 {/* Flat Vector Student Innovation Visual */}
                 <Box
                   sx={{
@@ -273,7 +304,11 @@ const ForStudents = () => {
                     {participationWays.map((way, idx) => {
                       const isHovered = hoveredIdx === idx;
                       return (
-                        <Grid size={{ xs: 12, sm: 6 }} key={idx} sx={{ display: "flex" }}>
+                        <Grid
+                          size={{ xs: 12, sm: 6 }}
+                          key={idx}
+                          sx={{ display: "flex" }}
+                        >
                           <Stack
                             direction="row"
                             spacing={1}
@@ -282,7 +317,9 @@ const ForStudents = () => {
                             onMouseLeave={() => setHoveredIdx(null)}
                             sx={{
                               cursor: "default",
-                              transform: isHovered ? "translateX(3px)" : "translateX(0)",
+                              transform: isHovered
+                                ? "translateX(3px)"
+                                : "translateX(0)",
                               transition: "transform 0.2s ease",
                             }}
                           >
@@ -312,11 +349,9 @@ const ForStudents = () => {
                     })}
                   </Grid>
                 </Box>
-
               </Stack>
             </Card>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

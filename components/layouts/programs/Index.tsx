@@ -5,6 +5,7 @@ import EducatorCertification from "./EducatorCertification";
 import ResearchMentorCertification from "./ResearchMentorCertification";
 import SchoolInnovationHubs from "./SchoolInnovationHubs";
 import YoungInnovators from "./YoungInnovators";
+import SubFooterCTA from "../home/SubFooterCTA";
 
 const ProgramLayout = () => {
   return (
@@ -13,8 +14,9 @@ const ProgramLayout = () => {
       <ResearchMentorCertification />
       <SchoolInnovationHubs />
       <YoungInnovators />
-      <ProgramsSection />
-      <IreJourney />
+      <SubFooterCTA />
+      {/* <ProgramsSection /> */}
+      {/* <IreJourney /> */}
     </Box>
   );
 };

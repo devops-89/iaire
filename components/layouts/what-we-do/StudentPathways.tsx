@@ -201,10 +201,7 @@ const StudentPathways = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link
-                  href="/membership#student"
-                  style={{ textDecoration: "none" }}
-                >
+                <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
                     variant="contained"
                     sx={{

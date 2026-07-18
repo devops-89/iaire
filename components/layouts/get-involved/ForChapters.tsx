@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -50,22 +58,35 @@ const ForChapters = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
-          
           {/* Left Column: Title, Details & CTA Buttons */}
           <Grid size={{ xs: 12, md: 6.2 }}>
             <Stack spacing={3.25} sx={{ width: "100%" }}>
-              
               {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "center", md: "flex-start" },
+                }}
+              >
                 <Box
                   sx={{
                     width: "auto",
@@ -99,9 +120,11 @@ const ForChapters = () => {
                   }}
                 >
                   Build Local Capacity <br />
-                  <span style={{ color: "#1B365D" }}>With Global Standards</span>
+                  <span style={{ color: "#1B365D" }}>
+                    With Global Standards
+                  </span>
                 </Typography>
-                
+
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -110,7 +133,10 @@ const ForChapters = () => {
                     color: "#4B5563",
                   }}
                 >
-                  <strong>IAIRE</strong> supports partnerships and chapters that help deliver innovation, research, and entrepreneurship education in local contexts while maintaining consistent standards, ethics, and quality-assurance processes.
+                  <strong>IAIRE</strong> supports partnerships and chapters that
+                  help deliver innovation, research, and entrepreneurship
+                  education in local contexts while maintaining consistent
+                  standards, ethics, and quality-assurance processes.
                 </Typography>
               </Stack>
 
@@ -121,7 +147,10 @@ const ForChapters = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                {/* <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="contained"
                     sx={{
@@ -147,9 +176,9 @@ const ForChapters = () => {
                   >
                     Start a Chapter
                   </Button>
-                </Link>
+                </Link> */}
 
-                <Link href="/contact" style={{ textDecoration: "none" }}>
+                {/* <Link href="/contact" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
                     sx={{
@@ -177,12 +206,17 @@ const ForChapters = () => {
                   >
                     Partner With IAIRE
                   </Button>
-                </Link>
+                </Link> */}
 
                 <Link href="/contact" style={{ textDecoration: "none" }}>
                   <Button
-                    variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
+                    variant="contained"
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -190,22 +224,17 @@ const ForChapters = () => {
                       fontSize: "13px",
                       fontWeight: 700,
                       textTransform: "none",
-                      color: "#4B5563",
-                      borderColor: "rgba(0, 0, 0, 0.15)",
-                      borderWidth: "1.5px",
+                      color: COLORS.WHITE,
+                      backgroundColor: "#1B365D",
                       borderRadius: "100px",
                       px: 3,
                       py: 1.15,
+                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
                       transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#1B365D",
-                        color: "#1B365D",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
+                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
                       },
                     }}
                   >
@@ -213,7 +242,6 @@ const ForChapters = () => {
                   </Button>
                 </Link>
               </Stack>
-
             </Stack>
           </Grid>
 
@@ -225,12 +253,12 @@ const ForChapters = () => {
                 p: 3,
                 borderRadius: "24px",
                 border: "1px solid rgba(27, 54, 93, 0.08)",
-                background: "linear-gradient(135deg, rgba(27, 54, 93, 0.01) 0%, rgba(255, 255, 255, 0.98) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(27, 54, 93, 0.01) 0%, rgba(255, 255, 255, 0.98) 100%)",
                 boxShadow: "0 15px 35px rgba(27, 54, 93, 0.03)",
               }}
             >
               <Stack spacing={2.5} alignItems="center">
-                
                 {/* Flat Vector Chapter Launch Visual */}
                 <Box
                   sx={{
@@ -272,7 +300,11 @@ const ForChapters = () => {
                     {supportAreas.map((area, idx) => {
                       const isHovered = hoveredIdx === idx;
                       return (
-                        <Grid size={{ xs: 12, sm: 6 }} key={idx} sx={{ display: "flex" }}>
+                        <Grid
+                          size={{ xs: 12, sm: 6 }}
+                          key={idx}
+                          sx={{ display: "flex" }}
+                        >
                           <Stack
                             direction="row"
                             spacing={1}
@@ -281,7 +313,9 @@ const ForChapters = () => {
                             onMouseLeave={() => setHoveredIdx(null)}
                             sx={{
                               cursor: "default",
-                              transform: isHovered ? "translateX(3px)" : "translateX(0)",
+                              transform: isHovered
+                                ? "translateX(3px)"
+                                : "translateX(0)",
                               transition: "transform 0.2s ease",
                             }}
                           >
@@ -311,11 +345,9 @@ const ForChapters = () => {
                     })}
                   </Grid>
                 </Box>
-
               </Stack>
             </Card>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

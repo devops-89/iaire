@@ -36,7 +36,8 @@ const ForBoardMembers = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(120px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -50,18 +51,36 @@ const ForBoardMembers = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
-          
           {/* Image Column on Left (for desktop, second on mobile) */}
-          <Grid size={{ xs: 12, md: 5.2 }} order={{ xs: 2, md: 1 }} sx={{ display: "flex", justifyContent: "center", alignItems: "center", pr: { md: 2 } }}>
+          <Grid
+            size={{ xs: 12, md: 5.2 }}
+            order={{ xs: 2, md: 1 }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              pr: { md: 2 },
+            }}
+          >
             <Box
               sx={{
                 position: "relative",
@@ -84,13 +103,14 @@ const ForBoardMembers = () => {
                   position: "absolute",
                   inset: -4,
                   borderRadius: "28px",
-                  background: "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(27, 54, 93, 0.05) 100%)",
+                  background:
+                    "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(27, 54, 93, 0.05) 100%)",
                   filter: "blur(12px)",
                   opacity: 0.6,
                   zIndex: 1,
                 }}
               />
-              
+
               <Box
                 sx={{
                   position: "relative",
@@ -116,11 +136,19 @@ const ForBoardMembers = () => {
           </Grid>
 
           {/* Text/CTA Column on Right (for desktop, first on mobile) */}
-          <Grid size={{ xs: 12, md: 6.8 }} order={{ xs: 1, md: 2 }} sx={{ pl: { md: 4 } }}>
+          <Grid
+            size={{ xs: 12, md: 6.8 }}
+            order={{ xs: 1, md: 2 }}
+            sx={{ pl: { md: 4 } }}
+          >
             <Stack spacing={3.25} sx={{ width: "100%" }}>
-              
               {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "center", md: "flex-start" },
+                }}
+              >
                 <Box
                   sx={{
                     width: "auto",
@@ -154,18 +182,9 @@ const ForBoardMembers = () => {
                   }}
                 >
                   Guide the Next <br />
-                  <span style={{ color: "#1B365D" }}>Generation of Innovators</span>
-                </Typography>
-                
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "13.5px",
-                    lineHeight: 1.55,
-                    color: "#4B5563",
-                  }}
-                >
-                  <strong>IAIRE</strong> invites qualified scientists, researchers, inventors, entrepreneurs, educators, policy leaders, and industry experts to contribute to standards development, mentoring, review, certification, fellowship evaluation, ethics, and knowledge exchange.
+                  <span style={{ color: "#1B365D" }}>
+                    Generation of Innovators
+                  </span>
                 </Typography>
 
                 <Typography
@@ -176,7 +195,25 @@ const ForBoardMembers = () => {
                     color: "#4B5563",
                   }}
                 >
-                  By joining our scientific advisory panels or expert mentor networks, you play a vital role in providing the academic rigor, quality assurance, and real-world credibility that empowers future innovators.
+                  <strong>IAIRE</strong> invites qualified scientists,
+                  researchers, inventors, entrepreneurs, educators, policy
+                  leaders, and industry experts to contribute to standards
+                  development, mentoring, review, certification, fellowship
+                  evaluation, ethics, and knowledge exchange.
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "13.5px",
+                    lineHeight: 1.55,
+                    color: "#4B5563",
+                  }}
+                >
+                  By joining our scientific advisory panels or expert mentor
+                  networks, you play a vital role in providing the academic
+                  rigor, quality assurance, and real-world credibility that
+                  empowers future innovators.
                 </Typography>
               </Stack>
 
@@ -187,7 +224,10 @@ const ForBoardMembers = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="contained"
                     sx={{
@@ -215,7 +255,7 @@ const ForBoardMembers = () => {
                   </Button>
                 </Link>
 
-                <Link href="/contact" style={{ textDecoration: "none" }}>
+                {/* <Link href="/contact" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
                     sx={{
@@ -248,7 +288,12 @@ const ForBoardMembers = () => {
                 <Link href="/contact" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -277,12 +322,10 @@ const ForBoardMembers = () => {
                   >
                     Contact IAIRE Leadership
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
-
             </Stack>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

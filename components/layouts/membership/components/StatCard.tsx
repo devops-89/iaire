@@ -1,0 +1,52 @@
+"use client";
+
+import React from "react";
+import { Box, Card, Typography } from "@mui/material";
+import { inter } from "@/utils/fonts";
+
+interface StatCardProps {
+  value: string;
+  label: string;
+  icon: React.ReactNode;
+  color: string;
+  bgColor: string;
+}
+
+export const StatCard = ({ value, label, icon, color, bgColor }: StatCardProps) => (
+  <Card
+    elevation={0}
+    sx={{
+      p: 2.5,
+      borderRadius: "16px",
+      border: "1px solid rgba(27, 54, 93, 0.08)",
+      background: "linear-gradient(135deg, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0.98) 100%)",
+      display: "flex",
+      alignItems: "center",
+      gap: 2,
+      boxShadow: "0 10px 25px rgba(27, 54, 93, 0.02)",
+    }}
+  >
+    <Box
+      sx={{
+        width: 44,
+        height: 44,
+        borderRadius: "10px",
+        backgroundColor: bgColor,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color,
+      }}
+    >
+      {icon}
+    </Box>
+    <Box>
+      <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "18px", fontWeight: 800, color: "#0B1727" }}>
+        {value}
+      </Typography>
+      <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "12px", color: "#5F5F6A" }}>
+        {label}
+      </Typography>
+    </Box>
+  </Card>
+);
