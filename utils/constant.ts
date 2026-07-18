@@ -2006,6 +2006,7 @@ export const HEADER_CONTENT: NavigationItem[] = [
       { label: "About IAIRE", url: "/about#about" },
       { label: "Mission, Vision & Values", url: "/about#mission" },
       { label: "Governance & Scientific Board", url: "/about#leadership" },
+      { label: "Board Members", url: "/about/board" },
       { label: "Standards & Quality Assurance", url: "/about#what-we-do" },
       { label: "Legal & Academic Standing", url: "/about#legal" },
     ],

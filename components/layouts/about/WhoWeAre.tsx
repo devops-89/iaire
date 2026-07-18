@@ -188,7 +188,7 @@ const WhoWeAre = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link
-                  href="/about#leadership"
+                  href="/about/board"
                   style={{ textDecoration: "none" }}
                 >
                   <Button

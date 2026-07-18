@@ -12,6 +12,7 @@ import ForSchoolsSection from "@/components/layouts/about/ForSchoolsSection";
 import InitiativeSection from "@/components/layouts/about/InitiativeSection";
 import StudentProgSection from "@/components/layouts/about/StudentProgSection";
 import WhatWeDo from "@/components/layouts/about/WhatWeDo";
+import BoardMembersSection from "@/components/layouts/about/BoardMembersSection";
 import WhoWeAre from "@/components/layouts/about/WhoWeAre";
 import { COLORS } from "@/utils/enum";
 import { Box } from "@mui/material";
@@ -24,6 +25,7 @@ const AboutLayout = () => {
       <AboutHero />
       <MissionVision />
       <WhoWeAre />
+      <BoardMembersSection />
       <LegalStanding />
       <WhatWeDo />
       <InitiativeSection />
