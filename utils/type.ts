@@ -1359,3 +1359,22 @@ export interface STARTUP_REQUEST_DATA {
 }
 
 export type startup_request_data = STARTUP_REQUEST_DATA;
+
+export interface MetricItem {
+  number: string;
+  label: string;
+  desc: string;
+  icon: React.ReactNode;
+}
+
+export interface ArticleItem {
+  category:
+    | "Announcements"
+    | "Partnerships"
+    | "Chapter Highlights"
+    | "Student Success";
+  title: string;
+  date: string;
+  readTime: string;
+  summary: string;
+}

@@ -42,7 +42,8 @@ const EducatorMember = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -52,10 +53,7 @@ const EducatorMember = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Top Header Section */}
         <Box sx={{ mb: { xs: 6, md: 8 } }}>
-          <Stack spacing={3.5}
-          data-aos="fade-up"
-          data-aos-duration="800"
-          >
+          <Stack spacing={3.5} data-aos="fade-up" data-aos-duration="800">
             <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
               <SectionBadge
                 label="Educator Membership"
@@ -80,9 +78,11 @@ const EducatorMember = () => {
                 }}
               >
                 IAIRE Educator <br />
-                <span style={{ color: "#1B365D" }}>Membership & Mentorship</span>
+                <span style={{ color: "#1B365D" }}>
+                  Membership & Mentorship
+                </span>
               </Typography>
-              
+
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
@@ -92,7 +92,13 @@ const EducatorMember = () => {
                   maxWidth: "800px",
                 }}
               >
-                Educator Membership is the entry-level designation conferred upon educators admitted to the Academy. Educator Members are eligible to participate in Academy-approved training, certification, and professional development programs in Innovation, Research, and Entrepreneurship Education and receive access to Academy resources, frameworks, and mentorship tools to guide students in innovation and research activities.
+                Educator Membership is the entry-level designation conferred
+                upon educators admitted to the Academy. Educator Members are
+                eligible to participate in Academy-approved training,
+                certification, and professional development programs in
+                Innovation, Research, and Entrepreneurship Education and receive
+                access to Academy resources, frameworks, and mentorship tools to
+                guide students in innovation and research activities.
               </Typography>
             </Stack>
           </Stack>
@@ -118,7 +124,11 @@ const EducatorMember = () => {
             {educatorBenefits.map((benefit, idx) => {
               const isLastItem = idx === educatorBenefits.length - 1;
               return (
-                <Grid size={isLastItem ? { xs: 12 } : { xs: 12, sm: 6, md: 4 }} key={idx} sx={{ display: "flex" }}>
+                <Grid
+                  size={isLastItem ? { xs: 12 } : { xs: 12, sm: 6, md: 4 }}
+                  key={idx}
+                  sx={{ display: "flex" }}
+                >
                   <BenefitCard
                     benefit={benefit}
                     isHovered={hoveredIdx === idx}

@@ -9,7 +9,7 @@ import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUserOutlined";
 import SectionBadge from "@/components/widgets/SectionBadge";
-import professionalSocietyImg from "@/images/homepage/professional_society_vector.jpeg";
+import professionalSocietyImg from "@/images/homepage/global_frameworks.jpeg";
 const ProfessionalSocietySection = () => {
   const [hovered, setHovered] = useState(false);
 
@@ -40,8 +40,11 @@ const ProfessionalSocietySection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          {/* Left Column: Image with Sleek Glassmorphic Frame */}
-          <Grid size={{ xs: 12, md: 5.5 }} data-aos="fade-right" data-aos-duration="800">
+          <Grid
+            size={{ xs: 12, md: 5.5 }}
+            data-aos="fade-right"
+            data-aos-duration="800"
+          >
             <Box
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
@@ -103,10 +106,13 @@ const ProfessionalSocietySection = () => {
             </Box>
           </Grid>
 
-          {/* Right Column: Text & CTAs */}
-          <Grid size={{ xs: 12, md: 6.5 }} data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">
+          <Grid
+            size={{ xs: 12, md: 6.5 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150"
+          >
             <Stack spacing={3.5}>
-              {/* Overtitle Section */}
               <Stack spacing={1.5}>
                 <SectionBadge
                   label="Global Frameworks"
@@ -117,7 +123,6 @@ const ProfessionalSocietySection = () => {
                   backgroundColor="rgba(27, 54, 93, 0.08)"
                 />
 
-                {/* Section Headline */}
                 <Typography
                   component="h2"
                   sx={{
@@ -136,7 +141,6 @@ const ProfessionalSocietySection = () => {
                 </Typography>
               </Stack>
 
-              {/* Body Text */}
               <Stack spacing={2.5}>
                 <Typography
                   sx={{
@@ -150,10 +154,10 @@ const ProfessionalSocietySection = () => {
                   The world is being reshaped by artificial intelligence,
                   automation, robotics, biotechnology, climate change,
                   healthcare transformation, sustainability challenges, and
-                  rapid technological disruption. The learners of today will
-                  need more than academic recall. They will need{" "}
+                  rapid technological disruption. Today's learners will need
+                  more than academic recall. They will need{" "}
                   <strong>
-                    curiosity, critical thinking, research ability, ethical
+                    curiosity, critical thinking, research skills, ethical
                     judgment, creativity, collaboration, intellectual property
                     awareness, and entrepreneurial confidence
                   </strong>

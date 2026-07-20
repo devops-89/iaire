@@ -14,8 +14,8 @@ const ForBoardMembers = () => {
     <Box
       id="board-members"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto" },
+        minHeight: { xs: "auto", md: "auto" },
         display: "flex",
         alignItems: "center",
         pt: { xs: "100px", md: "85px" },
@@ -169,10 +169,7 @@ const ForBoardMembers = () => {
               </Box>
 
               {/* Title & Description */}
-              <Stack spacing={1.5}
-          data-aos="fade-up"
-          data-aos-duration="800"
-          >
+              <Stack spacing={1.5} data-aos="fade-up" data-aos-duration="800">
                 <Typography
                   component="h2"
                   sx={{

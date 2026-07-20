@@ -57,10 +57,9 @@ const WhatWeDoSection = () => {
         py: { xs: 8, sm: 10, md: 14 },
         backgroundColor: "#FFFFFF",
         position: "relative",
-        overflow: "hidden",
+        overflow: "clip",
       }}
     >
-      {/* Background decoration - very subtle warm accent glow on the side */}
       <Box
         sx={{
           position: "absolute",
@@ -69,7 +68,8 @@ const WhatWeDoSection = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(70px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -77,12 +77,19 @@ const WhatWeDoSection = () => {
       />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
-          {/* Left Column: Heading & Content */}
-          <Grid size={{ xs: 12, md: 5 }} data-aos="fade-right" data-aos-duration="800">
+        <Grid container spacing={{ xs: 6, md: 8 }} alignItems="flex-start">
+          <Grid
+            size={{ xs: 12, md: 5 }}
+            data-aos="fade-right"
+            data-aos-duration="800"
+            sx={{
+              position: { md: "sticky" },
+              top: { md: "140px" },
+              height: { md: "fit-content" },
+              alignSelf: "flex-start",
+            }}
+          >
             <Stack spacing={4}>
-              
               <Stack spacing={1.5}>
                 <SectionBadge
                   label="Core Operations"
@@ -116,79 +123,98 @@ const WhatWeDoSection = () => {
                   lineHeight: 1.6,
                 }}
               >
-                IAIRE supports the complete innovation, research, and entrepreneurship education ecosystem through:
+                IAIRE supports the complete innovation, research, and
+                entrepreneurship education ecosystem through:
               </Typography>
 
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={2}
-                sx={{ pt: 1 }}
-              >
-                <Link href="/about" style={{ textDecoration: "none", width: "100%" }}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      width: "100%",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14.5px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: COLORS.WHITE,
-                      backgroundColor: "#1B365D",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.4,
-                      boxShadow: "0 8px 20px rgba(27, 54, 93, 0.2)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#122744",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 10px 25px rgba(27, 54, 93, 0.3)",
-                      },
-                    }}
+              <Box sx={{ display: { lg: "block", xs: "none" } }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={2}
+                  sx={{ pt: 1 }}
+                >
+                  <Link
+                    href="/about"
+                    style={{ textDecoration: "none", width: "100%" }}
                   >
-                    Explore Our Work
-                  </Button>
-                </Link>
-
-                <Link href="/programs" style={{ textDecoration: "none", width: "100%" }}>
-                  <Button
-                    variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
-                    sx={{
-                      width: "100%",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14.5px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#1B365D",
-                      borderColor: "#1B365D",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.4,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#122744",
-                        color: "#122744",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
-                        transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
+                    <Button
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "14.5px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: COLORS.WHITE,
+                        backgroundColor: "#1B365D",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.4,
+                        boxShadow: "0 8px 20px rgba(27, 54, 93, 0.2)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#122744",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 10px 25px rgba(27, 54, 93, 0.3)",
                         },
-                      },
-                    }}
+                      }}
+                    >
+                      Explore Our Work
+                    </Button>
+                  </Link>
+
+                  <Link
+                    href="/programs"
+                    style={{ textDecoration: "none", width: "100%" }}
                   >
-                    View Programs
-                  </Button>
-                </Link>
-              </Stack>
+                    <Button
+                      variant="outlined"
+                      endIcon={
+                        <ArrowForwardIcon
+                          className="arrow-icon"
+                          sx={{ transition: "transform 0.25s ease" }}
+                        />
+                      }
+                      sx={{
+                        width: "100%",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "14.5px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: "#1B365D",
+                        borderColor: "#1B365D",
+                        borderWidth: "1.5px",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.4,
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          borderWidth: "1.5px",
+                          borderColor: "#122744",
+                          color: "#122744",
+                          backgroundColor: "rgba(27, 54, 93, 0.04)",
+                          transform: "translateY(-2px)",
+                          "& .arrow-icon": {
+                            transform: "translateX(4px)",
+                          },
+                        },
+                      }}
+                    >
+                      View Programs
+                    </Button>
+                  </Link>
+                </Stack>
+              </Box>
             </Stack>
           </Grid>
 
           {/* Right Column: Grid of Activities */}
-          <Grid size={{ xs: 12, md: 7 }} data-aos="fade-left" data-aos-duration="800" data-aos-delay="150">
+          <Grid
+            size={{ xs: 12, md: 7 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150"
+          >
             <Grid container spacing={2.5}>
               {activities.map((activity, index) => {
                 const isHovered = hoveredIndex === index;
@@ -211,9 +237,15 @@ const WhatWeDoSection = () => {
                         gap: 2.5,
                         width: "100%",
                         transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                        transform: isHovered ? "translateY(-4px)" : "translateY(0)",
-                        boxShadow: isHovered ? "0 10px 25px rgba(27, 54, 93, 0.05)" : "none",
-                        borderColor: isHovered ? "rgba(27, 54, 93, 0.25)" : "#E5E5E9",
+                        transform: isHovered
+                          ? "translateY(-4px)"
+                          : "translateY(0)",
+                        boxShadow: isHovered
+                          ? "0 10px 25px rgba(27, 54, 93, 0.05)"
+                          : "none",
+                        borderColor: isHovered
+                          ? "rgba(27, 54, 93, 0.25)"
+                          : "#E5E5E9",
                         "&:hover .check-box": {
                           backgroundColor: "#1B365D",
                           color: "#FFFFFF",
@@ -237,9 +269,89 @@ const WhatWeDoSection = () => {
                   </Grid>
                 );
               })}
+
+              <Box sx={{ display: { lg: "none", xs: "block" }, width: "100%" }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={2}
+                  sx={{ pt: 1, width: "100%" }}
+                >
+                  <Link
+                    href="/about"
+                    style={{ textDecoration: "none", width: "100%" }}
+                  >
+                    <Button
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "14.5px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: COLORS.WHITE,
+                        backgroundColor: "#1B365D",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.4,
+                        boxShadow: "0 8px 20px rgba(27, 54, 93, 0.2)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#122744",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 10px 25px rgba(27, 54, 93, 0.3)",
+                        },
+                      }}
+                      fullWidth
+                    >
+                      Explore Our Work
+                    </Button>
+                  </Link>
+
+                  <Link
+                    href="/programs"
+                    style={{ textDecoration: "none", width: "100%" }}
+                  >
+                    <Button
+                      variant="outlined"
+                      endIcon={
+                        <ArrowForwardIcon
+                          className="arrow-icon"
+                          sx={{ transition: "transform 0.25s ease" }}
+                        />
+                      }
+                      sx={{
+                        width: "100%",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "14.5px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: "#1B365D",
+                        borderColor: "#1B365D",
+                        borderWidth: "1.5px",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.4,
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          borderWidth: "1.5px",
+                          borderColor: "#122744",
+                          color: "#122744",
+                          backgroundColor: "rgba(27, 54, 93, 0.04)",
+                          transform: "translateY(-2px)",
+                          "& .arrow-icon": {
+                            transform: "translateX(4px)",
+                          },
+                        },
+                      }}
+                      fullWidth
+                    >
+                      View Programs
+                    </Button>
+                  </Link>
+                </Stack>
+              </Box>
             </Grid>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

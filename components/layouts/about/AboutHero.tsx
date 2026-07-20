@@ -1,7 +1,15 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
@@ -10,6 +18,7 @@ import SectionBadge from "@/components/widgets/SectionBadge";
 import OrbitingSystem from "./OrbitingSystem";
 import TextReveal from "@/components/animations/TextReveal";
 const AboutHero = () => {
+  const phone = useMediaQuery("(max-width:600px)");
   return (
     <Box
       id="about"
@@ -79,11 +88,16 @@ const AboutHero = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
-          <Grid data-aos="fade-right" data-aos-duration="900" size={{ xs: 12, md: 6.7 }}>
+          <Grid
+            data-aos="fade-right"
+            data-aos-duration="900"
+            size={{ xs: 12, md: 6.7 }}
+          >
             <Stack spacing={3} sx={{ textAlign: { xs: "center", md: "left" } }}>
               <SectionBadge
                 label="Academic & Professional Society"
-                align="left"
+                // align={lg:"left",xs:"center"}
+                align={phone ? "center" : "left"}
               />
 
               <Stack spacing={1}>
@@ -209,7 +223,7 @@ const AboutHero = () => {
               </Stack>
 
               {/* Grid Stats Row - Fits perfectly in single viewport */}
-              <Grid
+              {/* <Grid
                 container
                 spacing={2}
                 sx={{
@@ -269,7 +283,7 @@ const AboutHero = () => {
                     </Box>
                   </Grid>
                 ))}
-              </Grid>
+              </Grid> */}
             </Stack>
           </Grid>
 

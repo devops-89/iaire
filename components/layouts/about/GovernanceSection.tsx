@@ -5,17 +5,37 @@ import { Box, Card, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 const documents = [
-  { title: "Charter & Constitution", icon: "/images/icon/researchGrantIcon.png",},
-  { title: "Bylaws", icon: "/images/icon/researchGrantIcon.png", },
-  { title: "Code of Ethics & Conduct", icon: "/images/icon/researchGrantIcon.png", },
-  { title: "Financial Transparency Reports", icon: "/images/icon/researchGrantIcon.png", },
+  {
+    title: "Charter & Constitution",
+    icon: "/images/icon/researchGrantIcon.png",
+  },
+  { title: "Bylaws", icon: "/images/icon/researchGrantIcon.png" },
+  {
+    title: "Code of Ethics & Conduct",
+    icon: "/images/icon/researchGrantIcon.png",
+  },
+  {
+    title: "Financial Transparency Reports",
+    icon: "/images/icon/researchGrantIcon.png",
+  },
 ];
 
 const GovernanceSection = () => {
   return (
-    <Box sx={{ py: { xs: 6, sm: 8, md: 12 },px: { xs: 2, sm: 3, md: 0 }, bgcolor: "#F9F7F5" }}>
+    <Box
+      sx={{
+        py: { xs: 6, sm: 8, md: 12 },
+        px: { xs: 2, sm: 3, md: 0 },
+        bgcolor: "#F9F7F5",
+      }}
+    >
       <Container maxWidth="lg">
-        <Stack data-aos="fade-up" data-aos-duration="800" spacing={8} alignItems="center">
+        <Stack
+          data-aos="fade-up"
+          data-aos-duration="800"
+          spacing={8}
+          alignItems="center"
+        >
           <Typography
             variant="h2"
             sx={{
@@ -61,7 +81,10 @@ const GovernanceSection = () => {
                     lineHeight: { xs: 1.6, md: 1.7 },
                   }}
                 >
-                  IAIRE is supported through a combination of membership fees, grants from foundations committed to youth education, corporate partnerships, and donations from individuals who believe in nurturing the next generation of innovators.
+                  IAIRE is supported through a combination of membership fees,
+                  grants from foundations committed to youth education,
+                  corporate partnerships, and donations from individuals who
+                  believe in nurturing the next generation of innovators.
                 </Typography>
                 <Typography
                   sx={{
@@ -71,7 +94,9 @@ const GovernanceSection = () => {
                     lineHeight: { xs: 1.6, md: 1.7 },
                   }}
                 >
-                  All funding is transparently managed and directed toward programs, resources, and support for our members and their initiatives.
+                  All funding is transparently managed and directed toward
+                  programs, resources, and support for our members and their
+                  initiatives.
                 </Typography>
               </Stack>
             </Card>
@@ -99,11 +124,16 @@ const GovernanceSection = () => {
                 >
                   Governing Documents
                 </Typography>
-                
+
                 <Box>
                   {documents.map((doc, index) => (
                     <React.Fragment key={index}>
-                      <Stack direction="row" spacing={2} alignItems="center" sx={{ py: 2 }}>
+                      <Stack
+                        direction="row"
+                        spacing={2}
+                        alignItems="center"
+                        sx={{ py: 2 }}
+                      >
                         <Box
                           sx={{
                             width: 32,
@@ -111,7 +141,8 @@ const GovernanceSection = () => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                          }}>
+                          }}
+                        >
                           <Image
                             src={doc.icon}
                             alt={doc.title}
@@ -142,7 +173,8 @@ const GovernanceSection = () => {
                     fontStyle: "italic",
                   }}
                 >
-                  Detailed governing documents are available to members through the member portal.
+                  Detailed governing documents are available to members through
+                  the member portal.
                 </Typography>
               </Stack>
             </Card>

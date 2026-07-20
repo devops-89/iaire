@@ -33,8 +33,8 @@ const EventsMeetings = () => {
     <Box
       id="events"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto", xl: "auto" },
+        minHeight: { xs: "auto", md: "auto", xl: "auto" },
         display: "flex",
         alignItems: "center",
         pt: { xs: "100px", md: "85px" },
@@ -75,9 +75,11 @@ const EventsMeetings = () => {
       >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
           {/* Left Column: Title, Details & CTA Buttons */}
-          <Grid size={{ xs: 12, md: 6.8 }}
+          <Grid
+            size={{ xs: 12, md: 6.8 }}
             data-aos="fade-right"
-            data-aos-duration="800">
+            data-aos-duration="800"
+          >
             <Stack spacing={3} sx={{ width: "100%" }}>
               {/* Badge */}
               <Box

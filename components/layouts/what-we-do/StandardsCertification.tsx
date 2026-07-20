@@ -34,8 +34,8 @@ const StandardsCertification = () => {
     <Box
       id="standards"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto", xl: "auto" },
+        minHeight: { xs: "auto", md: "auto", xl: "auto" },
         display: "flex",
         alignItems: "center",
         pt: { xs: "100px", md: "85px" },
@@ -76,9 +76,11 @@ const StandardsCertification = () => {
       >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
           {/* Left Column: Title, Details & CTA Buttons */}
-          <Grid size={{ xs: 12, md: 6.8 }}
+          <Grid
+            size={{ xs: 12, md: 6.8 }}
             data-aos="fade-right"
-            data-aos-duration="800">
+            data-aos-duration="800"
+          >
             <Stack spacing={3.25}>
               {/* Heading Section */}
               <Stack spacing={0.75}>
@@ -148,7 +150,6 @@ const StandardsCertification = () => {
                 </Typography>
               </Stack>
 
-              {/* Action Buttons Row */}
               <Stack
                 direction={{ xs: "column", sm: "row" }}
                 spacing={1.75}
@@ -182,78 +183,6 @@ const StandardsCertification = () => {
                     View Membership Tiers
                   </Button>
                 </Link>
-
-                {/* <Link
-                  href="/signup/role-selection"
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13.5px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#1B365D",
-                      borderColor: "#1B365D",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3.25,
-                      py: 1.15,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#122744",
-                        color: "#122744",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
-                        transform: "translateY(-2px)",
-                      },
-                    }}
-                  >
-                    Apply for Certification
-                  </Button>
-                </Link>
-
-                <Link href="/programs" style={{ textDecoration: "none" }}>
-                  <Button
-                    variant="outlined"
-                    endIcon={
-                      <ArrowForwardIcon
-                        className="arrow-icon"
-                        sx={{ transition: "transform 0.25s ease" }}
-                      />
-                    }
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13.5px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#4B5563",
-                      borderColor: "rgba(0, 0, 0, 0.15)",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3.25,
-                      py: 1.15,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#1B365D",
-                        color: "#1B365D",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
-                        transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
-                      },
-                    }}
-                  >
-                    Download Standards
-                  </Button>
-                </Link> */}
               </Stack>
             </Stack>
           </Grid>

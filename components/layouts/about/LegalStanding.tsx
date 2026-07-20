@@ -1,20 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import { COLORS } from "@/utils/enum";
+import { inter } from "@/utils/fonts";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
   Button,
+  Card,
   Container,
   Grid,
   Stack,
   Typography,
-  Card,
+  useMediaQuery,
 } from "@mui/material";
-import { inter } from "@/utils/fonts";
-import { COLORS } from "@/utils/enum";
 import Link from "next/link";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
+import { useState } from "react";
 
 const pillars = [
   "Credibility of peer standards",
@@ -26,6 +26,8 @@ const pillars = [
 
 const LegalStanding = () => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  const phone = useMediaQuery("(max-width:600px)");
 
   return (
     <Box
@@ -194,7 +196,6 @@ const LegalStanding = () => {
                       gap: 1.5,
                     }}
                   >
-                    {/* Monospace Indicator Badge */}
                     <Box
                       sx={{
                         width: 24,
@@ -236,14 +237,16 @@ const LegalStanding = () => {
           </Grid>
         </Box>
 
-        {/* Bottom Section: Centered Actions Row */}
         <Stack
           direction={{ xs: "column", sm: "row" }}
           spacing={2.25}
           sx={{ width: "100%", justifyContent: "center", gap: 1.5 }}
           alignItems="center"
         >
-          <Link href="/membership" style={{ textDecoration: "none" }}>
+          <Link
+            href="/membership"
+            style={{ textDecoration: "none", width: phone ? "100%" : "" }}
+          >
             <Button
               variant="contained"
               sx={{
@@ -265,41 +268,16 @@ const LegalStanding = () => {
                   boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
                 },
               }}
+              fullWidth={phone ? true : false}
             >
               View Pathways
             </Button>
           </Link>
 
-          {/* <Link href="/about#leadership" style={{ textDecoration: "none" }}>
-            <Button
-              variant="outlined"
-              sx={{
-                whiteSpace: "nowrap",
-                fontFamily: inter.style.fontFamily,
-                fontSize: "13px",
-                fontWeight: 700,
-                textTransform: "none",
-                color: "#1B365D",
-                borderColor: "#1B365D",
-                borderWidth: "1.5px",
-                borderRadius: "100px",
-                px: 3.5,
-                py: 1.2,
-                transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                "&:hover": {
-                  borderWidth: "1.5px",
-                  borderColor: "#122744",
-                  color: "#122744",
-                  backgroundColor: "rgba(27, 54, 93, 0.04)",
-                  transform: "translateY(-2px)",
-                },
-              }}
-            >
-              Explore Governance
-            </Button>
-          </Link> */}
-
-          <Link href="/contact" style={{ textDecoration: "none" }}>
+          <Link
+            href="/contact"
+            style={{ textDecoration: "none", width: phone ? "100%" : "" }}
+          >
             <Button
               variant="outlined"
               endIcon={
@@ -332,6 +310,7 @@ const LegalStanding = () => {
                   },
                 },
               }}
+              fullWidth={phone ? true : false}
             >
               Contact IAIRE
             </Button>

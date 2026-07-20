@@ -43,8 +43,8 @@ const AwardsFellowships = () => {
     <Box
       id="fellowships"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto", xl: "auto" },
+        minHeight: { xs: "auto", md: "auto", xl: "auto" },
         display: "flex",
         alignItems: "center",
         pt: { xs: "100px", md: "85px" },
@@ -100,9 +100,11 @@ const AwardsFellowships = () => {
       >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
           {/* Left Column: Title, Details & CTA Buttons */}
-          <Grid size={{ xs: 12, md: 6.8 }}
+          <Grid
+            size={{ xs: 12, md: 6.8 }}
             data-aos="fade-right"
-            data-aos-duration="800">
+            data-aos-duration="800"
+          >
             <Stack spacing={3} sx={{ width: "100%" }}>
               {/* Badge */}
               <Box
@@ -251,13 +253,13 @@ const AwardsFellowships = () => {
 
                 <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
-                    variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
                         className="arrow-icon"
                         sx={{ transition: "transform 0.25s ease" }}
                       />
                     }
+                    variant="contained"
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -265,22 +267,17 @@ const AwardsFellowships = () => {
                       fontSize: "13.5px",
                       fontWeight: 700,
                       textTransform: "none",
-                      color: "#4B5563",
-                      borderColor: "rgba(0, 0, 0, 0.15)",
-                      borderWidth: "1.5px",
+                      color: COLORS.WHITE,
+                      backgroundColor: "#1B365D",
                       borderRadius: "100px",
                       px: 3.25,
                       py: 1.15,
+                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
                       transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#1B365D",
-                        color: "#1B365D",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
+                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
                       },
                     }}
                   >

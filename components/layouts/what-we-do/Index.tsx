@@ -1,6 +1,10 @@
 "use client";
 
 import { Box } from "@mui/material";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import WhatWeDoHero from "./WhatWeDoHero";
 import StandardsCertification from "./StandardsCertification";
 import InnovationResearchEducation from "./InnovationResearchEducation";
@@ -11,6 +15,14 @@ import AwardsFellowships from "./AwardsFellowships";
 import EventsMeetings from "./EventsMeetings";
 
 const WhatWeDoLayout = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: "ease-out-cubic",
+    });
+  }, []);
+
   return (
     <Box sx={{ overflowX: "hidden" }}>
       <WhatWeDoHero />

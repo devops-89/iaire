@@ -21,7 +21,6 @@ const SchoolEcosystemSection = () => {
         overflow: "hidden",
       }}
     >
-      {/* Background decoration */}
       <Box
         sx={{
           position: "absolute",
@@ -40,8 +39,11 @@ const SchoolEcosystemSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          {/* Left Column: Heading, Subtitle & CTAs */}
-          <Grid size={{ xs: 12, md: 5 }} data-aos="fade-right" data-aos-duration="800">
+          <Grid
+            size={{ xs: 12, md: 5 }}
+            data-aos="fade-right"
+            data-aos-duration="800"
+          >
             <Stack spacing={4}>
               <Stack spacing={1.5}>
                 <SectionBadge
@@ -94,49 +96,49 @@ const SchoolEcosystemSection = () => {
                   ecosystems through a dual implementation framework.
                 </Typography>
               </Stack>
-
-              <Stack
-                direction={{ xs: "column", sm: "row", md: "column" }}
-                spacing={2}
-                sx={{ pt: 1, width: "100%" }}
-                alignItems={{ xs: "stretch", sm: "center", md: "flex-start" }}
-              >
-                <Link
-                  href="/login"
-                  style={{
-                    textDecoration: "none",
-                    width: "100%",
-                    maxWidth: "340px",
-                  }}
+              <Box sx={{ display: { lg: "block", xs: "none" } }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row", md: "column" }}
+                  spacing={2}
+                  sx={{ pt: 1, width: "100%" }}
+                  alignItems={{ xs: "stretch", sm: "center", md: "flex-start" }}
                 >
-                  <Button
-                    variant="contained"
-                    sx={{
+                  <Link
+                    href="/login"
+                    style={{
+                      textDecoration: "none",
                       width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: COLORS.WHITE,
-                      backgroundColor: "#1B365D",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.4,
-                      boxShadow: "0 8px 20px rgba(27, 54, 93, 0.2)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#122744",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 10px 25px rgba(27, 54, 93, 0.3)",
-                      },
+                      maxWidth: "340px",
                     }}
                   >
-                    Build an Innovation Ecosystem
-                  </Button>
-                </Link>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        whiteSpace: "nowrap",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "14px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: COLORS.WHITE,
+                        backgroundColor: "#1B365D",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.4,
+                        boxShadow: "0 8px 20px rgba(27, 54, 93, 0.2)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#122744",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 10px 25px rgba(27, 54, 93, 0.3)",
+                        },
+                      }}
+                    >
+                      Build an Innovation Ecosystem
+                    </Button>
+                  </Link>
 
-                {/* <Link
+                  {/* <Link
                   href="/membership"
                   style={{
                     textDecoration: "none",
@@ -181,12 +183,19 @@ const SchoolEcosystemSection = () => {
                     Explore School Membership
                   </Button>
                 </Link> */}
-              </Stack>
+                </Stack>
+              </Box>
             </Stack>
           </Grid>
 
           {/* Right Column: Dynamic Dual Framework Implementation Cards */}
-          <Grid size={{ xs: 12, md: 7 }} data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" sx={{ pl: { md: 4 } }}>
+          <Grid
+            size={{ xs: 12, md: 7 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150"
+            sx={{ pl: { md: 4 } }}
+          >
             <Stack spacing={4}>
               {/* Card 1: Top-down capacity building */}
               <Box
@@ -368,6 +377,94 @@ const SchoolEcosystemSection = () => {
             </Stack>
           </Grid>
         </Grid>
+        <Box sx={{ display: { lg: "none", xs: "block" } }}>
+          <Stack
+            direction={{ xs: "column", sm: "row", md: "column" }}
+            sx={{ pt: 1, width: "100%", justifyContent: "center" }}
+            alignItems={{ xs: "center", sm: "center", md: "flex-start" }}
+          >
+            <Link
+              href="/login"
+              style={{
+                textDecoration: "none",
+                width: "100%",
+                maxWidth: "340px",
+              }}
+            >
+              <Button
+                variant="contained"
+                sx={{
+                  width: "100%",
+                  whiteSpace: "nowrap",
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  textTransform: "none",
+                  color: COLORS.WHITE,
+                  backgroundColor: "#1B365D",
+                  borderRadius: "100px",
+                  px: 3.5,
+                  py: 1.4,
+                  boxShadow: "0 8px 20px rgba(27, 54, 93, 0.2)",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  "&:hover": {
+                    backgroundColor: "#122744",
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 10px 25px rgba(27, 54, 93, 0.3)",
+                  },
+                }}
+              >
+                Build an Innovation Ecosystem
+              </Button>
+            </Link>
+
+            {/* <Link
+                  href="/membership"
+                  style={{
+                    textDecoration: "none",
+                    width: "100%",
+                    maxWidth: "340px",
+                  }}
+                >
+                  <Button
+                    variant="outlined"
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
+                    sx={{
+                      width: "100%",
+                      whiteSpace: "nowrap",
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      textTransform: "none",
+                      color: "#1B365D",
+                      borderColor: "#1B365D",
+                      borderWidth: "1.5px",
+                      borderRadius: "100px",
+                      px: 3.5,
+                      py: 1.4,
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      "&:hover": {
+                        borderWidth: "1.5px",
+                        borderColor: "#122744",
+                        color: "#122744",
+                        backgroundColor: "rgba(27, 54, 93, 0.04)",
+                        transform: "translateY(-2px)",
+                        "& .arrow-icon": {
+                          transform: "translateX(4px)",
+                        },
+                      },
+                    }}
+                  >
+                    Explore School Membership
+                  </Button>
+                </Link> */}
+          </Stack>
+        </Box>
       </Container>
     </Box>
   );

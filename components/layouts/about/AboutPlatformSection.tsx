@@ -60,7 +60,6 @@ const AboutPlatformSection = () => {
         overflow: "hidden",
       }}
     >
-      {/* Background decoration - very subtle warm accent glow on the bottom-right */}
       <Box
         sx={{
           position: "absolute",
@@ -80,9 +79,11 @@ const AboutPlatformSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           {/* Left Column: Heading, Features & Copy */}
-          <Grid size={{ xs: 12, md: 6 }}
+          <Grid
+            size={{ xs: 12, md: 6 }}
             data-aos="fade-right"
-            data-aos-duration="800">
+            data-aos-duration="800"
+          >
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Box
@@ -206,7 +207,7 @@ const AboutPlatformSection = () => {
                 geographies while maintaining consistency and quality.
               </Typography>
 
-              <Box sx={{ pt: 1.5 }}>
+              <Box sx={{ pt: 1.5, display: { lg: "block", xs: "none" } }}>
                 <Link href="/login">
                   <Button
                     sx={{
@@ -235,10 +236,12 @@ const AboutPlatformSection = () => {
           </Grid>
 
           {/* Right Column: Platform Dashboard Mockup */}
-          <Grid size={{ xs: 12, md: 6 }}
+          <Grid
+            size={{ xs: 12, md: 6 }}
             data-aos="fade-left"
             data-aos-duration="800"
-            data-aos-delay="150">
+            data-aos-delay="150"
+          >
             <Box
               sx={{
                 position: "relative",
@@ -272,6 +275,31 @@ const AboutPlatformSection = () => {
             </Box>
           </Grid>
         </Grid>
+        <Box sx={{ pt: 1.5, display: { lg: "none", xs: "block" } }}>
+          <Link href="/login">
+            <Button
+              sx={{
+                fontFamily: inter.style.fontFamily,
+                fontSize: "14px",
+                fontWeight: 600,
+                textTransform: "none",
+                color: "#FFFFFF",
+                backgroundColor: "#1B365D",
+                borderRadius: "30px",
+                p: "12px 28px",
+                boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "#122744",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                },
+              }}
+            >
+              Access the IAIRE Platform
+            </Button>
+          </Link>
+        </Box>
       </Container>
     </Box>
   );

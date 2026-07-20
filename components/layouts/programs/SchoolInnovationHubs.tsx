@@ -27,8 +27,8 @@ const SchoolInnovationHubs = () => {
     <Box
       id="innovation-hubs"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto" },
+        minHeight: { xs: "auto", md: "auto" },
         display: "flex",
         alignItems: "center",
         pt: { xs: "100px", md: "85px" },
@@ -49,22 +49,39 @@ const SchoolInnovationHubs = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
       />
 
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
-          
           {/* Left Column: Title, Details, Grid of Features & CTA Buttons (ordered first on desktop, first on mobile) */}
-          <Grid size={{ xs: 12, md: 7 }} order={{ xs: 1, md: 1 }} sx={{ pr: { md: 4 } }}>
+          <Grid
+            size={{ xs: 12, md: 7 }}
+            order={{ xs: 1, md: 1 }}
+            sx={{ pr: { md: 4 } }}
+          >
             <Stack spacing={3.25} sx={{ width: "100%" }}>
-              
               {/* Badge */}
-              <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: { xs: "flex-start", md: "flex-start" },
+                }}
+              >
                 <Box
                   sx={{
                     width: "auto",
@@ -85,10 +102,7 @@ const SchoolInnovationHubs = () => {
               </Box>
 
               {/* Title & Description */}
-              <Stack spacing={1.5}
-          data-aos="fade-up"
-          data-aos-duration="800"
-          >
+              <Stack spacing={1.5} data-aos="fade-up" data-aos-duration="800">
                 <Typography
                   component="h2"
                   sx={{
@@ -103,7 +117,7 @@ const SchoolInnovationHubs = () => {
                   IAIRE School <br />
                   <span style={{ color: "#1B365D" }}>Innovation Hubs</span>
                 </Typography>
-                
+
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -126,7 +140,10 @@ const SchoolInnovationHubs = () => {
                     maxWidth: "600px",
                   }}
                 >
-                  An IAIRE School Innovation Hub is a structured ecosystem led by certified teachers and supported by IAIRE standards, resources, mentoring frameworks, digital tools, student pathways, and recognition programmes.
+                  An IAIRE School Innovation Hub is a structured ecosystem led
+                  by certified teachers and supported by IAIRE standards,
+                  resources, mentoring frameworks, digital tools, student
+                  pathways, and recognition programmes.
                 </Typography>
               </Stack>
 
@@ -150,7 +167,13 @@ const SchoolInnovationHubs = () => {
                     const isHovered = hoveredIdx === idx;
                     const isLastItem = idx === features.length - 1;
                     return (
-                      <Grid size={isLastItem ? { xs: 12 } : { xs: 12, sm: 6, md: 4 }} key={idx} sx={{ display: "flex" }}>
+                      <Grid
+                        size={
+                          isLastItem ? { xs: 12 } : { xs: 12, sm: 6, md: 4 }
+                        }
+                        key={idx}
+                        sx={{ display: "flex" }}
+                      >
                         <Box
                           onMouseEnter={() => setHoveredIdx(idx)}
                           onMouseLeave={() => setHoveredIdx(null)}
@@ -159,13 +182,17 @@ const SchoolInnovationHubs = () => {
                             p: 1.5,
                             borderRadius: "10px",
                             border: "1px solid rgba(27, 54, 93, 0.06)",
-                            backgroundColor: isHovered ? "rgba(59, 130, 246, 0.03)" : "rgba(27, 54, 93, 0.02)",
+                            backgroundColor: isHovered
+                              ? "rgba(59, 130, 246, 0.03)"
+                              : "rgba(27, 54, 93, 0.02)",
                             display: "flex",
                             alignItems: "center",
                             gap: 1.25,
                             transition: "all 0.25s ease-in-out",
                             cursor: "default",
-                            transform: isHovered ? "translateY(-1.5px)" : "translateY(0)",
+                            transform: isHovered
+                              ? "translateY(-1.5px)"
+                              : "translateY(0)",
                           }}
                         >
                           <CheckCircleIcon
@@ -201,7 +228,10 @@ const SchoolInnovationHubs = () => {
                 sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
+                {/* <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button
                     variant="contained"
                     sx={{
@@ -227,11 +257,11 @@ const SchoolInnovationHubs = () => {
                   >
                     Start an Innovation Hub
                   </Button>
-                </Link>
+                </Link> */}
 
-                <Link href="/membership#institutional" style={{ textDecoration: "none" }}>
+                <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
-                    variant="outlined"
+                    variant="contained"
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -239,19 +269,17 @@ const SchoolInnovationHubs = () => {
                       fontSize: "13px",
                       fontWeight: 700,
                       textTransform: "none",
-                      color: "#1B365D",
-                      borderColor: "#1B365D",
-                      borderWidth: "1.5px",
+                      color: COLORS.WHITE,
+                      backgroundColor: "#1B365D",
                       borderRadius: "100px",
                       px: 3.5,
                       py: 1.1,
+                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
                       transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#122744",
-                        color: "#122744",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
+                        backgroundColor: "#122744",
                         transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
                       },
                     }}
                   >
@@ -259,10 +287,15 @@ const SchoolInnovationHubs = () => {
                   </Button>
                 </Link>
 
-                <Link href="/contact" style={{ textDecoration: "none" }}>
+                {/* <Link href="/contact" style={{ textDecoration: "none" }}>
                   <Button
                     variant="outlined"
-                    endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                    endIcon={
+                      <ArrowForwardIcon
+                        className="arrow-icon"
+                        sx={{ transition: "transform 0.25s ease" }}
+                      />
+                    }
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -291,17 +324,20 @@ const SchoolInnovationHubs = () => {
                   >
                     Explore Implementation Support
                   </Button>
-                </Link>
+                </Link> */}
               </Stack>
-
             </Stack>
           </Grid>
 
-          {/* Right Column: Visual School Innovation Hubs Illustration (ordered second on desktop, second on mobile) */}
           <Grid
             size={{ xs: 12, md: 5 }}
             order={{ xs: 2, md: 2 }}
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", pl: { md: 2 } }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              pl: { md: 2 },
+            }}
           >
             <Box
               sx={{
@@ -325,13 +361,14 @@ const SchoolInnovationHubs = () => {
                   position: "absolute",
                   inset: -4,
                   borderRadius: "28px",
-                  background: "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(27, 54, 93, 0.05) 100%)",
+                  background:
+                    "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(27, 54, 93, 0.05) 100%)",
                   filter: "blur(12px)",
                   opacity: 0.6,
                   zIndex: 1,
                 }}
               />
-              
+
               <Box
                 sx={{
                   position: "relative",
@@ -355,7 +392,6 @@ const SchoolInnovationHubs = () => {
               </Box>
             </Box>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

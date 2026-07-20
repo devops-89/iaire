@@ -8,140 +8,122 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import PsychologyIcon from "@mui/icons-material/PsychologyOutlined";
-import SectionBadge from "@/components/widgets/SectionBadge";
+
 interface RecognitionCardProps {
   title: string;
   icon: React.ReactNode;
   pathways: string[];
-  isHovered: boolean;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
 }
 
-const RecognitionCard = ({
-  title,
-  icon,
-  pathways,
-  isHovered,
-  onMouseEnter,
-  onMouseLeave,
-}: RecognitionCardProps) => {
+const RecognitionCard = ({ title, icon, pathways }: RecognitionCardProps) => {
   return (
     <Box
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
       sx={{
-        backgroundColor: "rgba(255, 255, 255, 0.015)",
+        backgroundColor: "rgba(255, 255, 255, 0.02)",
         border: "1px solid rgba(255, 255, 255, 0.04)",
-        borderRadius: "24px",
-        p: { xs: 4, sm: 5 },
+        borderRadius: "20px",
+        p: { xs: 3.5, sm: 4.5 },
         width: "100%",
         display: "flex",
         flexDirection: "column",
-        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-        transform: isHovered ? "translateY(-6px)" : "translateY(0)",
-        borderColor: isHovered
-          ? "rgba(59, 130, 246, 0.4)"
-          : "rgba(255, 255, 255, 0.04)",
-        boxShadow: isHovered ? "0 20px 40px rgba(59, 130, 246, 0.15)" : "none",
+        transition: "all 0.3s ease",
+        boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
-      <Stack spacing={4} sx={{ height: "100%" }}>
-        <Stack direction="row" spacing={2.5} alignItems="center">
-          <Box
-            sx={{
-              width: 48,
-              height: 48,
-              borderRadius: "12px",
-              backgroundColor: isHovered
-                ? "rgba(59, 130, 246, 0.18)"
-                : "rgba(255, 255, 255, 0.03)",
-              color: isHovered ? "#93C5FD" : "#64748B",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transition: "all 0.25s ease",
-            }}
-          >
-            {icon}
-          </Box>
-          <Typography
-            variant="h5"
-            sx={{
-              fontFamily: inter.style.fontFamily,
-              fontSize: "19px",
-              fontWeight: 700,
-              color: isHovered ? "#FFFFFF" : "rgba(255, 255, 255, 0.85)",
-              transition: "color 0.25s ease",
-            }}
-          >
-            {title}
-          </Typography>
-        </Stack>
+      <Stack direction="row" spacing={2.5} alignItems="center" sx={{ mb: 5 }}>
+        <Box
+          sx={{
+            width: 44,
+            height: 44,
+            borderRadius: "14px",
+            backgroundColor: "rgba(255, 255, 255, 0.03)",
+            border: "1px solid rgba(255, 255, 255, 0.06)",
+            color: "#9CA3AF",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {icon}
+        </Box>
+        <Typography
+          sx={{
+            fontFamily: inter.style.fontFamily,
+            fontSize: "18px",
+            fontWeight: 700,
+            color: "#FFFFFF",
+          }}
+        >
+          {title}
+        </Typography>
+      </Stack>
 
-        {/* Level Steps */}
-        <Stack spacing={3.5} sx={{ flexGrow: 1, pl: 1, position: "relative" }}>
-          {/* Vertical Dashed Line */}
-          <Box
-            sx={{
-              position: "absolute",
-              top: 10,
-              bottom: 10,
-              left: 14,
-              width: "1.5px",
-              borderLeft: "1.5px dashed rgba(255, 255, 255, 0.1)",
-              zIndex: 0,
-            }}
-          />
-          {pathways.map((path, idx) => (
-            <Stack
-              direction="row"
-              spacing={3}
-              alignItems="center"
-              key={idx}
-              sx={{ position: "relative", zIndex: 1 }}
+      {/* Timeline / List */}
+      <Box sx={{ position: "relative", ml: 1.5 }}>
+        {/* Vertical Dashed Line */}
+        <Box
+          sx={{
+            position: "absolute",
+            left: 7.5,
+            top: 10,
+            bottom: 24,
+            width: "1px",
+            borderLeft: "1.5px dashed rgba(255, 255, 255, 0.12)",
+            zIndex: 0,
+          }}
+        />
+
+        <Stack spacing={4.5}>
+          {pathways.map((tier, tierIdx) => (
+            <Box
+              key={tierIdx}
+              sx={{
+                display: "flex",
+                alignItems: "flex-start",
+                position: "relative",
+                zIndex: 1,
+              }}
             >
-              {/* Circular Step Node Indicator */}
+              {/* Circle */}
               <Box
                 sx={{
-                  width: 12,
-                  height: 12,
+                  width: 16,
+                  height: 16,
                   borderRadius: "50%",
-                  backgroundColor: "#0D0D11",
-                  border: isHovered
-                    ? "2px solid #3B82F6"
-                    : "2px solid rgba(255, 255, 255, 0.15)",
-                  boxShadow: isHovered ? "0 0 8px #3B82F6" : "none",
-                  transition: "all 0.25s ease",
+                  border: "1.5px solid rgba(255, 255, 255, 0.2)",
+                  backgroundColor: "#0F1116", // match background approx
+                  mt: 0.15,
+                  mr: 3,
+                  flexShrink: 0,
                 }}
               />
+              {/* Text */}
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
-                  fontSize: "14px",
-                  fontWeight: 500,
-                  color: isHovered ? "#FFFFFF" : "#E2E2E9",
-                  transition: "color 0.25s ease",
-                  lineHeight: 1.3,
+                  fontSize: "13.5px",
+                  fontWeight: 600,
+                  color: "#E2E8F0",
+                  lineHeight: 1.4,
                 }}
               >
-                {path}
+                {tier}
               </Typography>
-            </Stack>
+            </Box>
           ))}
         </Stack>
-      </Stack>
+      </Box>
     </Box>
   );
 };
 
 const RecognitionSection = () => {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-
   const pathwaysData = [
     {
       title: "Institutions",
-      icon: <SchoolIcon sx={{ fontSize: 24 }} />,
+      icon: <SchoolIcon sx={{ fontSize: 20 }} />,
       pathways: [
         "Institutional Member",
         "Certified Institutional Member",
@@ -151,7 +133,7 @@ const RecognitionSection = () => {
     },
     {
       title: "Educators",
-      icon: <PsychologyIcon sx={{ fontSize: 24 }} />,
+      icon: <PsychologyIcon sx={{ fontSize: 20 }} />,
       pathways: [
         "Educator Member",
         "Certified Innovation or Research Mentor",
@@ -161,7 +143,7 @@ const RecognitionSection = () => {
     },
     {
       title: "Students",
-      icon: <WorkspacePremiumIcon sx={{ fontSize: 24 }} />,
+      icon: <WorkspacePremiumIcon sx={{ fontSize: 20 }} />,
       pathways: [
         "Student Member",
         "Student Innovation or Research Scholar",
@@ -175,76 +157,65 @@ const RecognitionSection = () => {
     <Box
       sx={{
         py: { xs: 8, sm: 10, md: 14 },
-        backgroundColor: "#0D0D11",
+        backgroundColor: "#070A0F", // Dark matching the screenshot
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Background decoration - glowing blobs */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: "20%",
-          left: "-10%",
-          width: "45vw",
-          height: "45vw",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, rgba(255, 255, 255, 0) 70%)",
-          filter: "blur(100px)",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: "-10%",
-          right: "-10%",
-          width: "45vw",
-          height: "45vw",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(27, 54, 93, 0.15) 0%, rgba(255, 255, 255, 0) 70%)",
-          filter: "blur(90px)",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
-
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack spacing={6} alignItems="center">
+        <Stack spacing={{ xs: 6, md: 8 }} alignItems="center">
           {/* Centered Heading */}
           <Stack
             data-aos="fade-up"
             data-aos-duration="800"
-            spacing={2}
+            spacing={3}
             alignItems="center"
             sx={{ textAlign: "center", maxWidth: "800px" }}
           >
-            <SectionBadge label="IAIRE Fellowships & Standards" align="center" />
+            {/* Pill Badge */}
+            <Box
+              sx={{
+                backgroundColor: "rgba(30, 58, 138, 0.3)",
+                border: "1px solid rgba(59, 130, 246, 0.3)",
+                color: "#93C5FD",
+                px: 2,
+                py: 0.5,
+                borderRadius: "20px",
+                fontSize: "10.5px",
+                fontWeight: 800,
+                fontFamily: "monospace",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+              }}
+            >
+              IAIRE Fellowships & Standards
+            </Box>
 
             <Typography
               component="h2"
               sx={{
                 fontFamily: inter.style.fontFamily,
                 fontSize: { xs: "32px", sm: "40px", md: "46px" },
-                fontWeight: 800,
-                lineHeight: 1.25,
+                fontWeight: 900,
+                lineHeight: 1.15,
                 letterSpacing: "-0.02em",
                 color: "#FFFFFF",
               }}
             >
-              Recognition That Motivates Excellence
+              Recognition That Motivates{" "}
+              <Box component="span" sx={{ display: "block" }}>
+                Excellence
+              </Box>
             </Typography>
 
             <Typography
               sx={{
                 fontFamily: inter.style.fontFamily,
-                fontSize: "15px",
-                color: "#9D9DA7",
+                fontSize: "14.5px",
+                color: "#94A3B8",
                 lineHeight: 1.6,
                 maxWidth: "760px",
+                mt: 1,
               }}
             >
               Innovation and research require sustained effort. IAIRE creates
@@ -256,7 +227,7 @@ const RecognitionSection = () => {
           </Stack>
 
           {/* Three-Column Recognition Pathways Grid */}
-          <Grid container spacing={4}>
+          <Grid container spacing={3} sx={{ width: "100%" }}>
             {pathwaysData.map((data, index) => (
               <Grid
                 size={{ xs: 12, md: 4 }}
@@ -267,62 +238,10 @@ const RecognitionSection = () => {
                   title={data.title}
                   icon={data.icon}
                   pathways={data.pathways}
-                  isHovered={hoveredCard === index}
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
                 />
               </Grid>
             ))}
           </Grid>
-
-          {/* Centered CTA Buttons */}
-          <Stack
-            data-aos="fade-up"
-            data-aos-duration="800"
-            data-aos-delay="150"
-            direction={{ xs: "column", sm: "row" }}
-            spacing={2.5}
-            sx={{ pt: 2, width: { xs: "100%", sm: "auto" } }}
-            justifyContent="center"
-          >
-            <Link href="/login" style={{ textDecoration: "none" }}>
-              <Button
-                variant="outlined"
-                endIcon={
-                  <ArrowForwardIcon
-                    className="arrow-icon"
-                    sx={{ transition: "transform 0.25s ease" }}
-                  />
-                }
-                sx={{
-                  width: { xs: "100%", sm: "auto" },
-                  whiteSpace: "nowrap",
-                  fontFamily: inter.style.fontFamily,
-                  fontSize: "14.5px",
-                  fontWeight: 700,
-                  textTransform: "none",
-                  color: "#FFFFFF",
-                  borderColor: "rgba(255, 255, 255, 0.25)",
-                  borderWidth: "1.5px",
-                  borderRadius: "100px",
-                  px: 4.5,
-                  py: 1.4,
-                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                  "&:hover": {
-                    borderWidth: "1.5px",
-                    borderColor: "#FFFFFF",
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
-                    transform: "translateY(-2px)",
-                    "& .arrow-icon": {
-                      transform: "translateX(4px)",
-                    },
-                  },
-                }}
-              >
-                Become a Member
-              </Button>
-            </Link>
-          </Stack>
         </Stack>
       </Container>
     </Box>

@@ -19,6 +19,8 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CardMembershipIcon from "@mui/icons-material/CardMembershipOutlined";
 import PublicIcon from "@mui/icons-material/Public";
 import TextReveal from "@/components/animations/TextReveal";
+import TextType from "@/components/widgets/animation/TextType";
+import BlurText from "@/components/widgets/animation/BlurText";
 
 const HeroSection3 = () => {
   const theme = useTheme();
@@ -156,12 +158,13 @@ const HeroSection3 = () => {
               </Typography>
             </Box>
 
-            <TextReveal
-              tag="h1"
-              text="Advancing Innovation, Research & Entrepreneurship Education for the Next Generation"
-              delay={200}
-              stagger={60}
-              style={{
+            <BlurText
+              variant="h1"
+              text="Advancing Innovation, Research & Entrepreneurship for the Next Generation"
+              delay={50}
+              animateBy="words"
+              direction="bottom"
+              sx={{
                 fontSize: "clamp(28px, 4vw, 44px)",
                 fontFamily: inter.style.fontFamily,
                 fontWeight: 850,
@@ -169,7 +172,6 @@ const HeroSection3 = () => {
                 letterSpacing: "-0.03em",
                 color: "#111827",
                 marginBottom: "20px",
-                display: "block",
               }}
             />
 

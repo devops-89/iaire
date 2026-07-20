@@ -8,13 +8,9 @@ import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import GavelIcon from "@mui/icons-material/GavelOutlined";
 import MenuBookIcon from "@mui/icons-material/MenuBookOutlined";
 import CorporateFareIcon from "@mui/icons-material/CorporateFareOutlined";
-
-interface MetricItem {
-  number: string;
-  label: string;
-  desc: string;
-  icon: React.ReactNode;
-}
+import StatsCard from "./components/StatsCard";
+import { MetricItem } from "@/utils/type";
+import AlumniChip from "./components/Alumni-Chip";
 
 const metrics: MetricItem[] = [
   {
@@ -74,7 +70,8 @@ const Outcomes = () => {
           width: "50vw",
           height: "50vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(120px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -88,7 +85,8 @@ const Outcomes = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.2) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.3) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -97,7 +95,16 @@ const Outcomes = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Header Block */}
-        <Stack spacing={2.5} sx={{ mb: { xs: 6, md: 9 }, textAlign: "center", alignItems: "center" }}>
+        <Stack
+          spacing={2.5}
+          sx={{
+            mb: { xs: 6, md: 9 },
+            textAlign: "center",
+            alignItems: "center",
+          }}
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
           <Box
             sx={{
               display: "inline-flex",
@@ -145,7 +152,12 @@ const Outcomes = () => {
             }}
           >
             Empowering the Next Generation of <br />
-            <span style={{ color: "#93C5FD", textShadow: "0 0 35px rgba(147, 197, 253, 0.2)" }}>
+            <span
+              style={{
+                color: "#93C5FD",
+                textShadow: "0 0 35px rgba(147, 197, 253, 0.2)",
+              }}
+            >
               Global Problem Solvers
             </span>
           </Typography>
@@ -159,7 +171,9 @@ const Outcomes = () => {
               maxWidth: "700px",
             }}
           >
-            IAIRE programs run globally to instill real-world credentials, legal asset creation, and academic rigour that distinguish student candidates in top-tier university placement procedures.
+            IAIRE programs run globally to instill real-world credentials, legal
+            asset creation, and academic rigour that distinguish student
+            candidates in top-tier university placement procedures.
           </Typography>
         </Stack>
 
@@ -167,86 +181,30 @@ const Outcomes = () => {
         <Grid container spacing={3.5} sx={{ mb: 8 }}>
           {metrics.map((metric, idx) => (
             <Grid size={{ xs: 12, sm: 6, md: 3 }} key={idx}>
-              <Card
-                sx={{
-                  p: 3.5,
-                  height: "100%",
-                  borderRadius: "20px",
-                  border: "1px solid rgba(147, 197, 253, 0.08)",
-                  background: "rgba(255, 255, 255, 0.02)",
-                  backdropFilter: "blur(10px)",
-                  boxShadow: "0 12px 30px rgba(0, 0, 0, 0.15)",
-                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                  "&:hover": {
-                    transform: "translateY(-5px)",
-                    borderColor: "#93C5FD",
-                    background: "rgba(255, 255, 255, 0.04)",
-                    boxShadow: "0 20px 40px rgba(147, 197, 253, 0.08)",
-                  },
-                }}
-              >
-                <Stack spacing={2.5}>
-                  <Box
-                    sx={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: "14px",
-                      backgroundColor: "rgba(147, 197, 253, 0.06)",
-                      border: "1px solid rgba(147, 197, 253, 0.15)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {metric.icon}
-                  </Box>
-
-                  <Stack spacing={1}>
-                    <Typography
-                      sx={{
-                        fontFamily: inter.style.fontFamily,
-                        fontSize: "36px",
-                        fontWeight: 900,
-                        color: "#FFFFFF",
-                        lineHeight: 1.1,
-                      }}
-                    >
-                      {metric.number}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontFamily: inter.style.fontFamily,
-                        fontSize: "14px",
-                        fontWeight: 700,
-                        color: "#93C5FD",
-                      }}
-                    >
-                      {metric.label}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontFamily: inter.style.fontFamily,
-                        fontSize: "13px",
-                        color: "rgba(255, 255, 255, 0.65)",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {metric.desc}
-                    </Typography>
-                  </Stack>
-                </Stack>
-              </Card>
+              <StatsCard
+                icon={metric.icon}
+                id={idx}
+                number={metric.number}
+                desc={metric.desc}
+                label={metric.label}
+              />
             </Grid>
           ))}
         </Grid>
 
         {/* Placement Section */}
         <Card
+          data-aos="fade-up"
+          data-aos-duration="700"
+          data-aos-delay="200"
           sx={{
             borderRadius: "24px",
             p: 4.5,
-            border: "1px solid rgba(255, 255, 255, 0.05)",
-            background: "rgba(255, 255, 255, 0.01)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            background:
+              "linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)",
+            backdropFilter: "blur(20px)",
+            boxShadow: "0 12px 30px rgba(0, 0, 0, 0.1)",
           }}
         >
           <Stack spacing={3.5} alignItems="center">
@@ -273,30 +231,7 @@ const Outcomes = () => {
               }}
             >
               {universityPlacements.map((univ, idx) => (
-                <Box
-                  key={idx}
-                  sx={{
-                    px: 3,
-                    py: 1.25,
-                    borderRadius: "100px",
-                    border: "1px solid rgba(255, 255, 255, 0.08)",
-                    backgroundColor: "rgba(255, 255, 255, 0.01)",
-                    color: "rgba(255, 255, 255, 0.8)",
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    fontFamily: inter.style.fontFamily,
-                    transition: "all 0.25s ease",
-                    cursor: "default",
-                    "&:hover": {
-                      borderColor: "#93C5FD",
-                      backgroundColor: "rgba(147, 197, 253, 0.08)",
-                      color: "#FFFFFF",
-                      transform: "scale(1.03)",
-                    },
-                  }}
-                >
-                  {univ}
-                </Box>
+                <AlumniChip key={idx} univ={univ} />
               ))}
             </Box>
           </Stack>

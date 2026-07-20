@@ -1,7 +1,15 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Typography, Stack, Card } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Typography,
+  Stack,
+  Card,
+} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -51,7 +59,8 @@ const EducatorCertSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(248, 93, 0, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -60,9 +69,12 @@ const EducatorCertSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Heading, Callout & Copy */}
-          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 6 }}>
+          <Grid
+            data-aos="fade-right"
+            data-aos-duration="800"
+            size={{ xs: 12, md: 6 }}
+          >
             <Stack spacing={3.5}>
               <SectionBadge
                 label="For Teachers"
@@ -107,7 +119,9 @@ const EducatorCertSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  The IAIRE Innovation Educator Certification prepares teachers to lead innovation and research initiatives within their schools.
+                  The IAIRE Innovation Educator Certification prepares teachers
+                  to lead innovation and research initiatives within their
+                  schools.
                 </Typography>
                 <Typography
                   sx={{
@@ -117,7 +131,9 @@ const EducatorCertSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  This program is designed for educators who want to inspire students, mentor innovation projects, guide research thinking, and build a future-ready learning environment.
+                  This program is designed for educators who want to inspire
+                  students, mentor innovation projects, guide research thinking,
+                  and build a future-ready learning environment.
                 </Typography>
               </Stack>
 
@@ -133,13 +149,19 @@ const EducatorCertSection = () => {
                   pl: 2.5,
                 }}
               >
-                <Box component="span" sx={{ fontWeight: 700, display: "block", mb: 0.5 }}>
+                <Box
+                  component="span"
+                  sx={{ fontWeight: 700, display: "block", mb: 0.5 }}
+                >
                   Why It Matters
                 </Box>
-                Teachers are most effective at mentoring innovation when they understand the innovation process themselves. IAIRE’s certification gives educators practical exposure, structured tools, and ongoing support to guide students confidently.
+                Teachers are most effective at mentoring innovation when they
+                understand the innovation process themselves. IAIRE’s
+                certification gives educators practical exposure, structured
+                tools, and ongoing support to guide students confidently.
               </Typography>
 
-              <Box sx={{ pt: 1.5 }}>
+              <Box sx={{ pt: 1.5, display: { lg: "block", xs: "none" } }}>
                 <Link href="/login" style={{ textDecoration: "none" }}>
                   <Button
                     variant="contained"
@@ -189,7 +211,11 @@ const EducatorCertSection = () => {
 
               <Grid container spacing={2}>
                 {educatorSkills.map((skill, index) => (
-                  <Grid size={{ xs: 12, sm: 6 }} key={index} sx={{ display: "flex" }}>
+                  <Grid
+                    size={{ xs: 12, sm: 6 }}
+                    key={index}
+                    sx={{ display: "flex" }}
+                  >
                     <Card
                       elevation={0}
                       sx={{
@@ -227,7 +253,33 @@ const EducatorCertSection = () => {
               </Grid>
             </Stack>
           </Grid>
-
+          <Box sx={{ pt: 1.5, display: { lg: "none", xs: "block" } }}>
+            <Link href="/login" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                sx={{
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  textTransform: "none",
+                  color: "#FFFFFF",
+                  backgroundColor: "#1B365D",
+                  borderRadius: "100px",
+                  px: 4.5,
+                  py: 1.4,
+                  boxShadow: "0 8px 25px rgba(27, 54, 93, 0.2)",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  "&:hover": {
+                    backgroundColor: "#122744",
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 12px 30px rgba(27, 54, 93, 0.32)",
+                  },
+                }}
+              >
+                Become a Certified Innovation Educator
+              </Button>
+            </Link>
+          </Box>
         </Grid>
       </Container>
     </Box>

@@ -13,6 +13,7 @@ import {
   IconButton,
   Typography,
   Grid,
+  useMediaQuery,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Image from "next/image";
@@ -76,6 +77,8 @@ const Header2 = () => {
   const toggleExpand = (label: string) => {
     setExpandedItem(expandedItem === label ? null : label);
   };
+
+  const phone = useMediaQuery("(max-width:600px)");
 
   return (
     <Box
@@ -162,7 +165,6 @@ const Header2 = () => {
               </IconButton>
             </Box>
 
-            {/* Center: Logo — absolutely positioned for perfect centering */}
             <Box
               sx={{
                 position: "absolute",
@@ -177,14 +179,16 @@ const Header2 = () => {
                 <Image
                   src={logo}
                   alt="IAIRE Logo"
-                  width={110}
+                  width={phone ? 100 : 180}
                   style={{ objectFit: "contain" }}
                 />
               </Link>
             </Box>
 
             {/* Right Side: Join Button */}
-            <Box sx={{ display: "flex", justifyContent: "flex-end", zIndex: 1 }}>
+            <Box
+              sx={{ display: "flex", justifyContent: "flex-end", zIndex: 1 }}
+            >
               <Link
                 href="/signup/role-selection"
                 style={{ textDecoration: "none" }}
@@ -297,7 +301,9 @@ const Header2 = () => {
 
           {/* Grid of Columns for Mega Menu Links */}
           <Grid container spacing={{ xs: 4, md: 5 }} sx={{ pb: 2 }}>
-            {HEADER_CONTENT.filter(val => val.subModules && val.subModules.length > 0).map((val, i) => {
+            {HEADER_CONTENT.filter(
+              (val) => val.subModules && val.subModules.length > 0,
+            ).map((val, i) => {
               const { icon } = getMenuMetaData(val.label, i);
               return (
                 <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={i}>
@@ -369,7 +375,10 @@ const Header2 = () => {
                               fontFamily: inter.style.fontFamily,
                               fontSize: "13.5px",
                               fontWeight: 600,
-                              color: pathname === sub.url ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
+                              color:
+                                pathname === sub.url
+                                  ? "#1B365D"
+                                  : "rgba(0, 0, 0, 0.6)",
                               transition: "all 0.2s ease",
                               "&:hover": {
                                 color: "#1B365D",
@@ -391,7 +400,15 @@ const Header2 = () => {
             <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
               <Stack spacing={2.5}>
                 {/* Column Header */}
-                <Stack direction="row" spacing={1.5} alignItems="center" sx={{ pb: 1, borderBottom: "1.5px solid rgba(27, 54, 93, 0.08)" }}>
+                <Stack
+                  direction="row"
+                  spacing={1.5}
+                  alignItems="center"
+                  sx={{
+                    pb: 1,
+                    borderBottom: "1.5px solid rgba(27, 54, 93, 0.08)",
+                  }}
+                >
                   <Box
                     sx={{
                       width: 32,
@@ -423,13 +440,18 @@ const Header2 = () => {
 
                 {/* Column Links List */}
                 <Stack spacing={1.5} alignItems="flex-start" sx={{ pt: 0.5 }}>
-                  <Link href="/" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
+                  <Link
+                    href="/"
+                    onClick={() => setMenuOpen(false)}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography
                       sx={{
                         fontFamily: inter.style.fontFamily,
                         fontSize: "13.5px",
                         fontWeight: 700,
-                        color: pathname === "/" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
+                        color:
+                          pathname === "/" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
                         transition: "all 0.2s ease",
                         "&:hover": {
                           color: "#1B365D",
@@ -441,13 +463,20 @@ const Header2 = () => {
                     </Typography>
                   </Link>
 
-                  <Link href="/contact" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
+                  <Link
+                    href="/contact"
+                    onClick={() => setMenuOpen(false)}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography
                       sx={{
                         fontFamily: inter.style.fontFamily,
                         fontSize: "13.5px",
                         fontWeight: 700,
-                        color: pathname === "/contact" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
+                        color:
+                          pathname === "/contact"
+                            ? "#1B365D"
+                            : "rgba(0, 0, 0, 0.6)",
                         transition: "all 0.2s ease",
                         "&:hover": {
                           color: "#1B365D",
@@ -459,13 +488,20 @@ const Header2 = () => {
                     </Typography>
                   </Link>
 
-                  <Link href="/login" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none" }}>
+                  <Link
+                    href="/login"
+                    onClick={() => setMenuOpen(false)}
+                    style={{ textDecoration: "none" }}
+                  >
                     <Typography
                       sx={{
                         fontFamily: inter.style.fontFamily,
                         fontSize: "13.5px",
                         fontWeight: 700,
-                        color: pathname === "/login" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
+                        color:
+                          pathname === "/login"
+                            ? "#1B365D"
+                            : "rgba(0, 0, 0, 0.6)",
                         transition: "all 0.2s ease",
                         "&:hover": {
                           color: "#1B365D",
@@ -477,7 +513,11 @@ const Header2 = () => {
                     </Typography>
                   </Link>
 
-                  <Link href="/signup/role-selection" onClick={() => setMenuOpen(false)} style={{ textDecoration: "none", marginTop: "8px" }}>
+                  <Link
+                    href="/signup/role-selection"
+                    onClick={() => setMenuOpen(false)}
+                    style={{ textDecoration: "none", marginTop: "8px" }}
+                  >
                     <Button
                       variant="contained"
                       sx={{

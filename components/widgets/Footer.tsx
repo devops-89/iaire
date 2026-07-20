@@ -1,7 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Container, Divider, Grid, Link, Stack, Typography, InputBase, Button } from "@mui/material";
+import {
+  Box,
+  Container,
+  Divider,
+  Grid,
+  Link,
+  Stack,
+  Typography,
+  InputBase,
+  Button,
+} from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -11,8 +21,17 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import Image from "next/image";
 import logo from "@/images/logo/iaire_logo_white.png";
 import NextLink from "next/link";
+import { HEADER_CONTENT } from "@/utils/constant";
 
-const FooterLink = ({ href, children, icon }: { href: string; children: React.ReactNode; icon?: React.ReactNode }) => {
+const FooterLink = ({
+  href,
+  children,
+  icon,
+}: {
+  href: string;
+  children: React.ReactNode;
+  icon?: React.ReactNode;
+}) => {
   const isExternal = href.startsWith("http") || href.startsWith("mailto:");
   return (
     <Link
@@ -71,7 +90,8 @@ const Footer = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.06) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.06) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -80,7 +100,6 @@ const Footer = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Stack spacing={{ xs: 6, md: 8 }}>
-          
           {/* Top Row: Newsletter Subscription Banner */}
           <Box
             sx={{
@@ -112,7 +131,8 @@ const Footer = () => {
                       lineHeight: 1.5,
                     }}
                   >
-                    Subscribe to receive insights, program updates, and youth competition announcements.
+                    Subscribe to receive insights, program updates, and youth
+                    competition announcements.
                   </Typography>
                 </Stack>
               </Grid>
@@ -181,127 +201,156 @@ const Footer = () => {
             </Grid>
           </Box>
 
-          {/* Middle Row: Links Grid */}
-          <Grid container spacing={{ xs: 5, md: 4 }}>
-            
-            {/* Column 1: Logo and About Pitch */}
-            <Grid size={{ xs: 12, md: 4.5 }}>
-              <Stack spacing={3.5} sx={{ pr: { md: 5 } }}>
-                <Box sx={{ mb: -0.5 }}>
-                  <Image
-                    src={logo}
-                    alt="IAIRE Logo"
-                    width={150}
-                    style={{
-                      objectFit: "contain",
-                      display: "block",
+          {/* Middle Row: Branding Centered */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              textAlign: "center",
+              mb: 8,
+              mt: 4,
+            }}
+          >
+            <Box sx={{ mb: 3 }}>
+              <Image
+                src={logo}
+                alt="IAIRE Logo"
+                width={160}
+                style={{
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
+            </Box>
+
+            <Typography
+              sx={{
+                fontFamily: inter.style.fontFamily,
+                fontSize: "15px",
+                color: "rgba(255, 255, 255, 0.5)",
+                lineHeight: 1.6,
+                maxWidth: "600px",
+                mb: 4,
+              }}
+            >
+              Nurturing a culture of innovation, research, and entrepreneurship
+              among youth globally. Helping schools build sustainable
+              future-ready ecosystems.
+            </Typography>
+
+            {/* Social Links Stack */}
+            <Stack direction="row" spacing={3}>
+              <Link
+                href="#"
+                sx={{
+                  color: "rgba(255, 255, 255, 0.4)",
+                  "&:hover": {
+                    color: "#3B82F6",
+                    transform: "translateY(-2px)",
+                  },
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <LinkedInIcon sx={{ fontSize: 24 }} />
+              </Link>
+              <Link
+                href="#"
+                sx={{
+                  color: "rgba(255, 255, 255, 0.4)",
+                  "&:hover": {
+                    color: "#3B82F6",
+                    transform: "translateY(-2px)",
+                  },
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <TwitterIcon sx={{ fontSize: 24 }} />
+              </Link>
+              <Link
+                href="#"
+                sx={{
+                  color: "rgba(255, 255, 255, 0.4)",
+                  "&:hover": {
+                    color: "#3B82F6",
+                    transform: "translateY(-2px)",
+                  },
+                  transition: "all 0.2s ease",
+                }}
+              >
+                <InstagramIcon sx={{ fontSize: 24 }} />
+              </Link>
+            </Stack>
+          </Box>
+
+          <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.04)", mb: 6 }} />
+
+          {/* Links Grid: Full Width spread */}
+          <Grid container spacing={{ xs: 4, sm: 4, md: 5 }}>
+            {HEADER_CONTENT.filter(
+              (cat) => cat.subModules && cat.subModules.length > 0,
+            ).map((category, idx) => (
+              <Grid size={{ xs: 6, sm: 4, md: 3 }} key={idx}>
+                <Stack spacing={3.5}>
+                  <Typography
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "12px",
+                      fontWeight: 800,
+                      color: "#FFFFFF",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
                     }}
-                  />
-                </Box>
-                
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    color: "rgba(255, 255, 255, 0.5)",
-                    lineHeight: 1.6,
-                  }}
-                >
-                  Nurturing a culture of innovation, research, and entrepreneurship among youth globally. Helping schools build sustainable future-ready ecosystems.
-                </Typography>
+                  >
+                    {category.label}
+                  </Typography>
 
-                {/* Social Links Stack */}
-                <Stack direction="row" spacing={2}>
-                  <Link href="#" sx={{ color: "rgba(255, 255, 255, 0.4)", "&:hover": { color: "#3B82F6" }, transition: "color 0.2s ease" }}>
-                    <LinkedInIcon sx={{ fontSize: 20 }} />
-                  </Link>
-                  <Link href="#" sx={{ color: "rgba(255, 255, 255, 0.4)", "&:hover": { color: "#3B82F6" }, transition: "color 0.2s ease" }}>
-                    <TwitterIcon sx={{ fontSize: 20 }} />
-                  </Link>
-                  <Link href="#" sx={{ color: "rgba(255, 255, 255, 0.4)", "&:hover": { color: "#3B82F6" }, transition: "color 0.2s ease" }}>
-                    <InstagramIcon sx={{ fontSize: 20 }} />
-                  </Link>
+                  <Stack spacing={2.5}>
+                    {category.subModules!.slice(0, 5).map((sub, subIdx) => (
+                      <FooterLink key={subIdx} href={sub.url || "#"}>
+                        {sub.label}
+                      </FooterLink>
+                    ))}
+                    {category.subModules!.length > 5 && (
+                      <FooterLink href={category.url || "#"}>
+                        View All &rarr;
+                      </FooterLink>
+                    )}
+                  </Stack>
                 </Stack>
-              </Stack>
-            </Grid>
+              </Grid>
+            ))}
 
-            {/* Column 2: Explore (Main Sections) */}
-            <Grid size={{ xs: 12, sm: 4, md: 2.5 }}>
-              <Stack spacing={3}>
+            {/* Custom Connect Column */}
+            <Grid size={{ xs: 12, sm: 4, md: 3 }}>
+              <Stack spacing={3.5}>
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
-                    fontSize: "11px",
+                    fontSize: "12px",
                     fontWeight: 800,
                     color: "#FFFFFF",
-                    letterSpacing: "0.1em",
+                    letterSpacing: "0.12em",
                     textTransform: "uppercase",
                   }}
                 >
-                  Explore
+                  Connect & Access
                 </Typography>
-                
-                <Stack spacing={2}>
-                  <FooterLink href="/">Home Page</FooterLink>
-                  <FooterLink href="/about">Who We Are</FooterLink>
-                  <FooterLink href="/programs">What We Do</FooterLink>
-                  <FooterLink href="/signup/role-selection">Get Involved</FooterLink>
-                  <FooterLink href="/contact">Contact Us</FooterLink>
-                </Stack>
-              </Stack>
-            </Grid>
 
-            {/* Column 3: Ecosystem (Pathways) */}
-            <Grid size={{ xs: 12, sm: 4, md: 2.5 }}>
-              <Stack spacing={3}>
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    color: "#FFFFFF",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Ecosystem
-                </Typography>
-                
-                <Stack spacing={2}>
-                  <FooterLink href="/membership">Membership</FooterLink>
-                  <FooterLink href="/programs">Programs</FooterLink>
-                  <FooterLink href="/programs">Resources</FooterLink>
-                  <FooterLink href="/about">News & Impact</FooterLink>
-                </Stack>
-              </Stack>
-            </Grid>
-
-            {/* Column 4: Contact & Login Info */}
-            <Grid size={{ xs: 12, sm: 4, md: 2.5 }}>
-              <Stack spacing={3}>
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    color: "#FFFFFF",
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Connect
-                </Typography>
-                
-                <Stack spacing={2}>
-                  <FooterLink href="mailto:info@iaire.org" icon={<MailOutlineIcon sx={{ fontSize: 16 }} />}>
+                <Stack spacing={2.5}>
+                  <FooterLink
+                    href="mailto:info@iaire.org"
+                    icon={<MailOutlineIcon sx={{ fontSize: 16 }} />}
+                  >
                     info@iaire.org
                   </FooterLink>
                   <FooterLink href="/login">Member Login</FooterLink>
-                  <FooterLink href="/signup/role-selection">Join IAIRE</FooterLink>
+                  <FooterLink href="/signup/role-selection">
+                    Join IAIRE
+                  </FooterLink>
                 </Stack>
               </Stack>
             </Grid>
-
           </Grid>
 
           {/* Divider */}
@@ -366,7 +415,6 @@ const Footer = () => {
               </Link>
             </Stack>
           </Stack>
-
         </Stack>
       </Container>
     </Box>

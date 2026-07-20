@@ -43,7 +43,11 @@ const StandardsImpactSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           {/* Left Column: Premium Vector Image Frame */}
-          <Grid size={{ xs: 12, md: 5.5 }} data-aos="fade-right" data-aos-duration="800">
+          <Grid
+            size={{ xs: 12, md: 5.5 }}
+            data-aos="fade-right"
+            data-aos-duration="800"
+          >
             <Box
               onMouseEnter={() => setHovered(true)}
               onMouseLeave={() => setHovered(false)}
@@ -104,7 +108,13 @@ const StandardsImpactSection = () => {
           </Grid>
 
           {/* Right Column: Copy Content & CTAs */}
-          <Grid size={{ xs: 12, md: 6.5 }} data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" sx={{ pl: { md: 2 } }}>
+          <Grid
+            size={{ xs: 12, md: 6.5 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150"
+            sx={{ pl: { md: 2 } }}
+          >
             <Stack spacing={4}>
               {/* Heading Group */}
               <Stack spacing={1.5}>
@@ -173,76 +183,78 @@ const StandardsImpactSection = () => {
               </Stack>
 
               {/* CTA Buttons stack */}
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={2}
-                sx={{ pt: 1 }}
-              >
-                <Link href="/programs" style={{ textDecoration: "none" }}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      width: "100%",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: COLORS.WHITE,
-                      backgroundColor: "#1B365D",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.35,
-                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#122744",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
-                      },
-                    }}
-                  >
-                    Understand Certification
-                  </Button>
-                </Link>
-
-                <Link href="/membership" style={{ textDecoration: "none" }}>
-                  <Button
-                    variant="outlined"
-                    endIcon={
-                      <ArrowForwardIcon
-                        className="arrow-icon"
-                        sx={{ transition: "transform 0.25s ease" }}
-                      />
-                    }
-                    sx={{
-                      width: "100%",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#1B365D",
-                      borderColor: "#1B365D",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.35,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#122744",
-                        color: "#122744",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
-                        transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
+              <Box sx={{ display: { lg: "flex", xs: "block" } }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={2}
+                  sx={{ pt: 1 }}
+                >
+                  <Link href="/programs" style={{ textDecoration: "none" }}>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "14px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: COLORS.WHITE,
+                        backgroundColor: "#1B365D",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.35,
+                        boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#122744",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
                         },
-                      },
-                    }}
-                  >
-                    View Membership Pathways
-                  </Button>
-                </Link>
-              </Stack>
+                      }}
+                    >
+                      Understand Certification
+                    </Button>
+                  </Link>
+
+                  <Link href="/membership" style={{ textDecoration: "none" }}>
+                    <Button
+                      variant="outlined"
+                      endIcon={
+                        <ArrowForwardIcon
+                          className="arrow-icon"
+                          sx={{ transition: "transform 0.25s ease" }}
+                        />
+                      }
+                      sx={{
+                        width: "100%",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "14px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: "#1B365D",
+                        borderColor: "#1B365D",
+                        borderWidth: "1.5px",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.35,
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          borderWidth: "1.5px",
+                          borderColor: "#122744",
+                          color: "#122744",
+                          backgroundColor: "rgba(27, 54, 93, 0.04)",
+                          transform: "translateY(-2px)",
+                          "& .arrow-icon": {
+                            transform: "translateX(4px)",
+                          },
+                        },
+                      }}
+                    >
+                      View Membership Pathways
+                    </Button>
+                  </Link>
+                </Stack>
+              </Box>
             </Stack>
           </Grid>
         </Grid>

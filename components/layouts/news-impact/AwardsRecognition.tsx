@@ -2,9 +2,8 @@
 
 import React from "react";
 import { Box, Card, Container, Grid, Stack, Typography, Chip, Divider } from "@mui/material";
-import { EmojiEventsOutlined, WorkspacePremiumOutlined, SchoolOutlined, StarBorderOutlined } from "@mui/icons-material";
+import { EmojiEventsOutlined, WorkspacePremiumOutlined, SchoolOutlined } from "@mui/icons-material";
 import { inter } from "@/utils/fonts";
-import { COLORS } from "@/utils/enum";
 
 interface AwardItem {
   title: string;
@@ -83,7 +82,7 @@ const AwardsRecognition = () => {
           transform: "translateX(-50%)",
           width: "70vw",
           height: "25vw",
-          background: "radial-gradient(circle, rgba(245, 158, 11, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background: "radial-gradient(circle, rgba(245, 158, 11, 0.05) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -92,7 +91,12 @@ const AwardsRecognition = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Header Block */}
-        <Stack spacing={2.5} sx={{ mb: { xs: 6, md: 8 }, textAlign: "center", alignItems: "center" }}>
+        <Stack
+          spacing={2.5}
+          sx={{ mb: { xs: 6, md: 8 }, textAlign: "center", alignItems: "center" }}
+          data-aos="fade-up"
+          data-aos-duration="700"
+        >
           <Box
             sx={{
               display: "inline-flex",
@@ -160,6 +164,9 @@ const AwardsRecognition = () => {
           {awards.map((award, idx) => (
             <Grid size={{ xs: 12, md: 4 }} key={idx}>
               <Card
+                data-aos="fade-up"
+                data-aos-duration="700"
+                data-aos-delay={(idx * 150).toString()}
                 sx={{
                   height: "100%",
                   display: "flex",
@@ -169,12 +176,12 @@ const AwardsRecognition = () => {
                   boxShadow: "0 10px 30px rgba(0, 0, 0, 0.02)",
                   background: "#FFFFFF",
                   overflow: "hidden",
-                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
                   position: "relative",
                   "&:hover": {
-                    transform: "translateY(-5px)",
-                    borderColor: award.themeColor,
-                    boxShadow: `0 20px 40px ${award.themeColor}12`,
+                    transform: "translateY(-8px)",
+                    borderColor: `${award.themeColor}50`,
+                    boxShadow: `0 24px 48px ${award.themeColor}20`,
                   },
                 }}
               >
@@ -182,7 +189,7 @@ const AwardsRecognition = () => {
                 <Box
                   sx={{
                     height: "5px",
-                    backgroundColor: award.themeColor,
+                    background: `linear-gradient(90deg, ${award.themeColor}, ${award.themeColor}80)`,
                   }}
                 />
 
@@ -208,12 +215,14 @@ const AwardsRecognition = () => {
                         label={award.badge}
                         size="small"
                         sx={{
-                          fontWeight: 700,
-                          fontSize: "11px",
-                          backgroundColor: `${award.themeColor}0F`,
+                          fontWeight: 800,
+                          fontSize: "10.5px",
+                          backgroundColor: `${award.themeColor}12`,
                           color: award.themeColor,
                           borderRadius: "6px",
                           fontFamily: inter.style.fontFamily,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.04em",
                         }}
                       />
                     </Stack>
@@ -225,7 +234,7 @@ const AwardsRecognition = () => {
                         sx={{
                           fontFamily: inter.style.fontFamily,
                           fontWeight: 800,
-                          fontSize: "17px",
+                          fontSize: "18px",
                           color: "#0F172A",
                           lineHeight: 1.35,
                         }}
@@ -237,7 +246,7 @@ const AwardsRecognition = () => {
                           fontFamily: inter.style.fontFamily,
                           fontSize: "13.5px",
                           color: "#475569",
-                          lineHeight: 1.55,
+                          lineHeight: 1.6,
                         }}
                       >
                         {award.desc}
@@ -247,7 +256,7 @@ const AwardsRecognition = () => {
                     <Divider sx={{ opacity: 0.6 }} />
 
                     {/* Criteria */}
-                    <Stack spacing={1.25} sx={{ flexGrow: 1 }}>
+                    <Stack spacing={1.5} sx={{ flexGrow: 1 }}>
                       <Typography
                         sx={{
                           fontFamily: inter.style.fontFamily,
@@ -260,9 +269,17 @@ const AwardsRecognition = () => {
                       >
                         Evaluation Criteria:
                       </Typography>
-                      <Stack spacing={1}>
+                      <Stack spacing={1.25}>
                         {award.criteria.map((crit, cIdx) => (
-                          <Stack key={cIdx} direction="row" spacing={1} alignItems="flex-start">
+                          <Stack
+                            key={cIdx}
+                            direction="row"
+                            spacing={1}
+                            alignItems="flex-start"
+                            data-aos="fade-right"
+                            data-aos-duration="600"
+                            data-aos-delay={(idx * 150 + cIdx * 100).toString()}
+                          >
                             <Box
                               sx={{
                                 width: 5,
@@ -307,7 +324,7 @@ const AwardsRecognition = () => {
                       <Typography
                         sx={{
                           fontFamily: inter.style.fontFamily,
-                          fontSize: "13.5px",
+                          fontSize: "14px",
                           color: "#1E293B",
                           fontWeight: 700,
                         }}

@@ -5,7 +5,7 @@ import PoliciesEthics from "./PoliciesEthics";
 
 const ResourcesLayout = () => {
   return (
-    <Box sx={{ overflowX: "hidden" }}>
+    <Box>
       <StandardsRubrics />
       <ResourcesHub />
       <PoliciesEthics />

@@ -65,9 +65,11 @@ const EducatorDevelopment = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 7 }} alignItems="center">
           {/* Left Column: Heading, Details, Scope Checklist & Buttons */}
-          <Grid size={{ xs: 12, md: 6.5 }}
+          <Grid
+            size={{ xs: 12, md: 6.5 }}
             data-aos="fade-right"
-            data-aos-duration="800">
+            data-aos-duration="800"
+          >
             <Stack spacing={3.5} sx={{ width: "100%" }}>
               <SectionBadge
                 label="Educator Development"

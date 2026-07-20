@@ -9,12 +9,14 @@ import {
   Grid,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import TextReveal from "@/components/animations/TextReveal";
+import BlurText from "@/components/widgets/animation/BlurText";
 
 const pillars = [
   {
@@ -51,6 +53,7 @@ const pillars = [
 
 const WhatWeDoHero = () => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const phone = useMediaQuery("(max-width:600px)");
 
   return (
     <Box
@@ -104,10 +107,12 @@ const WhatWeDoHero = () => {
         <Stack spacing={{ xs: 6, md: 7.5 }} alignItems="center">
           {/* Top Section: Centered Title Copy */}
           <Box sx={{ textAlign: "center", width: "100%", maxWidth: "880px" }}>
-            <Stack spacing={3} alignItems="center"
-          data-aos="fade-up"
-          data-aos-duration="800"
-          >
+            <Stack
+              spacing={3}
+              alignItems="center"
+              data-aos="fade-up"
+              data-aos-duration="800"
+            >
               {/* Badge */}
               <Box
                 sx={{
@@ -127,27 +132,26 @@ const WhatWeDoHero = () => {
                 What We Do
               </Box>
 
-              {/* Title */}
-              <TextReveal
-                tag="h1"
+              <BlurText
+                variant="h1"
                 text="Advancing the Field of Innovation & Research Education"
-                delay={200}
-                stagger={55}
-                style={{
+                delay={50}
+                animateBy="words"
+                direction="bottom"
+                sx={{
+                  fontSize: "clamp(28px, 4vw, 44px)",
                   fontFamily: inter.style.fontFamily,
-                  fontWeight: 900,
-                  fontSize: "clamp(2.6rem, 4.5vw, 4rem)",
+                  fontWeight: 850,
                   lineHeight: 1.15,
                   letterSpacing: "-0.03em",
-                  background: "linear-gradient(180deg, #FFFFFF 30%, #AEB5C0 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  display: "block",
+                  color: COLORS.WHITE,
+                  marginBottom: "20px",
+                  textAlign: "center",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               />
 
-              {/* Description */}
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
@@ -166,7 +170,6 @@ const WhatWeDoHero = () => {
             </Stack>
           </Box>
 
-          {/* Middle Section: Bento Grid of 6 Core Pillars */}
           <Box sx={{ width: "100%" }}>
             <Typography
               sx={{
@@ -219,7 +222,6 @@ const WhatWeDoHero = () => {
                           : "none",
                       }}
                     >
-                      {/* Monospace Indicator Badge */}
                       <Box
                         sx={{
                           width: 28,
@@ -241,7 +243,6 @@ const WhatWeDoHero = () => {
                         {pillar.num}
                       </Box>
 
-                      {/* Header Title */}
                       <Typography
                         sx={{
                           fontFamily: inter.style.fontFamily,
@@ -256,7 +257,6 @@ const WhatWeDoHero = () => {
                         {pillar.title}
                       </Typography>
 
-                      {/* Explanation Description */}
                       <Typography
                         sx={{
                           fontFamily: inter.style.fontFamily,
@@ -280,13 +280,16 @@ const WhatWeDoHero = () => {
             spacing={2.25}
             sx={{
               pt: 2,
-              width: "100%",
+              width: { lg: "", xs: "100%" },
               justifyItems: "center",
               justifyContent: "center",
             }}
             alignItems="center"
           >
-            <Link href="/programs" style={{ textDecoration: "none" }}>
+            <Link
+              href="/programs"
+              style={{ textDecoration: "none", width: phone ? "100%" : "" }}
+            >
               <Button
                 variant="outlined"
                 sx={{
@@ -308,13 +311,17 @@ const WhatWeDoHero = () => {
                     backgroundColor: "rgba(255, 255, 255, 0.05)",
                     transform: "translateY(-2px)",
                   },
+                  width: "100%",
                 }}
               >
                 View Programs
               </Button>
             </Link>
 
-            <Link href="/login" style={{ textDecoration: "none" }}>
+            <Link
+              href="/login"
+              style={{ textDecoration: "none", width: phone ? "100%" : "" }}
+            >
               <Button
                 variant="outlined"
                 endIcon={
@@ -346,6 +353,7 @@ const WhatWeDoHero = () => {
                       transform: "translateX(4px)",
                     },
                   },
+                  width: "100%",
                 }}
               >
                 Become a Member

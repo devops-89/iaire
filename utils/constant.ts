@@ -17,6 +17,7 @@ import {
   TEAM_LIST_DATA_PROPS,
   TEAM_LIST_HEADER,
   NavigationItem,
+  ArticleItem,
 } from "./type";
 import {
   Groups,
@@ -2016,13 +2017,28 @@ export const HEADER_CONTENT: NavigationItem[] = [
     url: "/what-we-do",
     subModules: [
       { label: "Standards & Certification", url: "/what-we-do#standards" },
-      { label: "Innovation & Research Education", url: "/what-we-do#education" },
+      {
+        label: "Innovation & Research Education",
+        url: "/what-we-do#education",
+      },
       { label: "Educator Development", url: "/what-we-do#educator" },
       { label: "Student Pathways", url: "/what-we-do#student-pathways" },
-      { label: "School Innovation Ecosystems", url: "/programs#innovation-hubs" },
-      { label: "Intellectual Property & Research Support", url: "/what-we-do#ip-support" },
-      { label: "Awards, Fellowships & Recognition", url: "/what-we-do#fellowships" },
-      { label: "Events, Meetings & Knowledge Exchange", url: "/what-we-do#events" },
+      {
+        label: "School Innovation Ecosystems",
+        url: "/programs#innovation-hubs",
+      },
+      {
+        label: "Intellectual Property & Research Support",
+        url: "/what-we-do#ip-support",
+      },
+      {
+        label: "Awards, Fellowships & Recognition",
+        url: "/what-we-do#fellowships",
+      },
+      {
+        label: "Events, Meetings & Knowledge Exchange",
+        url: "/what-we-do#events",
+      },
     ],
   },
   {
@@ -2032,7 +2048,10 @@ export const HEADER_CONTENT: NavigationItem[] = [
       { label: "Schools & Institutions", url: "/get-involved#schools" },
       { label: "Educators & Mentors", url: "/get-involved#educators" },
       { label: "Students & Young Innovators", url: "/get-involved#students" },
-      { label: "Scientific Board & Expert Mentors", url: "/get-involved#board-members" },
+      {
+        label: "Scientific Board & Expert Mentors",
+        url: "/get-involved#board-members",
+      },
       { label: "Partners & Chapters", url: "/get-involved#chapters" },
       { label: "Volunteer & Serve", url: "/get-involved#chapters" },
     ],
@@ -2044,7 +2063,10 @@ export const HEADER_CONTENT: NavigationItem[] = [
       { label: "Institutional Membership", url: "/membership#institutional" },
       { label: "Educator Membership", url: "/membership#educator" },
       { label: "Student Membership", url: "/membership#student" },
-      { label: "Certification & Fellowship Pathways", url: "/membership#pathways" },
+      {
+        label: "Certification & Fellowship Pathways",
+        url: "/membership#pathways",
+      },
       { label: "Member Benefits", url: "/membership#institutional" },
       { label: "Join IAIRE", url: "/signup/role-selection" },
     ],
@@ -2053,12 +2075,30 @@ export const HEADER_CONTENT: NavigationItem[] = [
     label: "Programs",
     url: "/programs",
     subModules: [
-      { label: "IAIRE Innovation Educator Certification", url: "/programs#educator-certification" },
-      { label: "IAIRE Research Mentor Certification", url: "/programs#research-certification" },
-      { label: "IAIRE School Innovation Hubs", url: "/programs#innovation-hubs" },
-      { label: "India’s Top Young Innovators", url: "/programs#top-young-innovators" },
-      { label: "IAIRE Student Innovation & Research Pathway", url: "/programs#top-young-innovators" },
-      { label: "IAIRE Critical Thinking-Integrated Teaching Support", url: "/programs#educator-certification" },
+      {
+        label: "IAIRE Innovation Educator Certification",
+        url: "/programs#educator-certification",
+      },
+      {
+        label: "IAIRE Research Mentor Certification",
+        url: "/programs#research-certification",
+      },
+      {
+        label: "IAIRE School Innovation Hubs",
+        url: "/programs#innovation-hubs",
+      },
+      {
+        label: "India’s Top Young Innovators",
+        url: "/programs#top-young-innovators",
+      },
+      {
+        label: "IAIRE Student Innovation & Research Pathway",
+        url: "/programs#top-young-innovators",
+      },
+      {
+        label: "IAIRE Critical Thinking-Integrated Teaching Support",
+        url: "/programs#educator-certification",
+      },
     ],
   },
   {
@@ -2167,5 +2207,43 @@ export const TEAM_LIST_HEADER_DATA: TEAM_LIST_HEADER[] = [
   },
   {
     label: "Actions",
+  },
+];
+
+export const articles: ArticleItem[] = [
+  {
+    category: "Student Success",
+    title:
+      "Young Innovator Designs Smart IoT Prototype for Sustainable Agriculture",
+    date: "July 12, 2026",
+    readTime: "3 min read",
+    summary:
+      "Rohan Sharma's soil chemistry tracking device is gaining international traction. The project recently completed initial testing across certified farm clusters in north India.",
+  },
+  {
+    category: "Partnerships",
+    title:
+      "IAIRE Announces International Research Exchange Program with Top Tech Hubs",
+    date: "July 09, 2026",
+    readTime: "5 min read",
+    summary:
+      "A new milestone initiative linking high-school research students directly with global academic exchange mentors. Selected student teams will present abstracts in Washington next spring.",
+  },
+  {
+    category: "Announcements",
+    title:
+      "Over 500 Educators Achieve Certified Innovation Mentor Status This Quarter",
+    date: "July 05, 2026",
+    readTime: "4 min read",
+    summary:
+      "Celebrating educator milestones! Over five hundred teachers completed the advanced academic quality assurance modules to lead student labs in their home schools.",
+  },
+  {
+    category: "Chapter Highlights",
+    title: "IAIRE India Chapter Launches Regional Young Innovator Summit 2026",
+    date: "June 28, 2026",
+    readTime: "3 min read",
+    summary:
+      "The Delhi chapter hosted over 35 schools, showcasing prototypes ranging from biodegradable packaging to decentralized solar microgrids.",
   },
 ];

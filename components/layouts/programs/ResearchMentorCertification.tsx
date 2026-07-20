@@ -29,8 +29,8 @@ const ResearchMentorCertification = () => {
     <Box
       id="research-certification"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto" },
+        minHeight: { xs: "auto", md: "auto" },
         display: "flex",
         alignItems: "center",
         pt: { xs: "100px", md: "85px" },
@@ -146,7 +146,7 @@ const ResearchMentorCertification = () => {
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: { xs: "center", md: "flex-start" },
+                  justifyContent: { xs: "flex-start", md: "flex-start" },
                 }}
               >
                 <Box
@@ -169,10 +169,7 @@ const ResearchMentorCertification = () => {
               </Box>
 
               {/* Title & Description */}
-              <Stack spacing={1.5}
-          data-aos="fade-up"
-          data-aos-duration="800"
-          >
+              <Stack spacing={1.5} data-aos="fade-up" data-aos-duration="800">
                 <Typography
                   component="h2"
                   sx={{

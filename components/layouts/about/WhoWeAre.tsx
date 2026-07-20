@@ -33,8 +33,8 @@ const WhoWeAre = () => {
       sx={{
         height: { xs: "auto", md: "100vh" },
         minHeight: { xs: "auto", md: "100vh" },
-        display: "flex",
-        alignItems: "center",
+        // display: "flex",
+        // alignItems: "center",
         pt: { xs: "100px", md: "85px" },
         pb: { xs: "60px", md: "35px" },
         background: "linear-gradient(135deg, #070C15 0%, #0F1726 100%)",
@@ -44,7 +44,6 @@ const WhoWeAre = () => {
         borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
       }}
     >
-      {/* Background decoration glows */}
       <Box
         sx={{
           position: "absolute",
@@ -75,7 +74,6 @@ const WhoWeAre = () => {
           pointerEvents: "none",
         }}
       />
-
       <Container
         maxWidth="lg"
         sx={{
@@ -87,10 +85,13 @@ const WhoWeAre = () => {
         }}
       >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
-          {/* Left Column: Title, Narrative Descriptions & CTAs */}
-          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 5.2 }} sx={{ pr: { md: 2 } }}>
+          <Grid
+            data-aos="fade-right"
+            data-aos-duration="800"
+            size={{ xs: 12, md: 5.2 }}
+            sx={{ pr: { md: 2 } }}
+          >
             <Stack spacing={3.5} sx={{ width: "100%" }}>
-              {/* Badge */}
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Box
                   sx={{
@@ -181,117 +182,82 @@ const WhoWeAre = () => {
               </Stack>
 
               {/* Action Buttons Row */}
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={2}
-                sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
-                alignItems={{ xs: "stretch", sm: "center" }}
-              >
-                <Link
-                  href="/about/board"
-                  style={{ textDecoration: "none" }}
+              <Box sx={{ display: { lg: "flex", xs: "none" } }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={2}
+                  sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
+                  alignItems={{ xs: "stretch", sm: "center" }}
                 >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#0B0C10",
-                      backgroundColor: COLORS.WHITE,
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.1,
-                      boxShadow: "0 4px 14px rgba(255, 255, 255, 0.15)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#E2E8F0",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 6px 20px rgba(255, 255, 255, 0.25)",
-                      },
-                    }}
-                  >
-                    Meet the Board
-                  </Button>
-                </Link>
-
-                <Link href="/resources" style={{ textDecoration: "none" }}>
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: COLORS.WHITE,
-                      borderColor: COLORS.WHITE,
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.1,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#93C5FD",
-                        color: "#93C5FD",
-                        backgroundColor: "rgba(255, 255, 255, 0.05)",
-                        transform: "translateY(-2px)",
-                      },
-                    }}
-                  >
-                    View Standards
-                  </Button>
-                </Link>
-
-                {/* <Link href="/programs" style={{ textDecoration: "none" }}>
-                  <Button
-                    variant="outlined"
-                    endIcon={
-                      <ArrowForwardIcon
-                        className="arrow-icon"
-                        sx={{ transition: "transform 0.25s ease" }}
-                      />
-                    }
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "rgba(255, 255, 255, 0.75)",
-                      borderColor: "rgba(255, 255, 255, 0.25)",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.1,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: COLORS.WHITE,
-                        color: COLORS.WHITE,
-                        backgroundColor: "rgba(255, 255, 255, 0.05)",
-                        transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
+                  <Link href="/about/board" style={{ textDecoration: "none" }}>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        whiteSpace: "nowrap",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: "#0B0C10",
+                        backgroundColor: COLORS.WHITE,
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.1,
+                        boxShadow: "0 4px 14px rgba(255, 255, 255, 0.15)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#E2E8F0",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 6px 20px rgba(255, 255, 255, 0.25)",
                         },
-                      },
-                    }}
-                  >
-                    Learn About Certification
-                  </Button>
-                </Link> */}
-              </Stack>
+                      }}
+                    >
+                      Meet the Board
+                    </Button>
+                  </Link>
+
+                  <Link href="/resources" style={{ textDecoration: "none" }}>
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        width: "100%",
+                        whiteSpace: "nowrap",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: COLORS.WHITE,
+                        borderColor: COLORS.WHITE,
+                        borderWidth: "1.5px",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.1,
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          borderWidth: "1.5px",
+                          borderColor: "#93C5FD",
+                          color: "#93C5FD",
+                          backgroundColor: "rgba(255, 255, 255, 0.05)",
+                          transform: "translateY(-2px)",
+                        },
+                      }}
+                    >
+                      View Standards
+                    </Button>
+                  </Link>
+                </Stack>
+              </Box>
             </Stack>
           </Grid>
 
-          {/* Right Column: Board Responsibilities Grid (6 in 2-cols + 1 full-width at the bottom) */}
-          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 6.8 }} sx={{ pl: { md: 4 } }}>
+          <Grid
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150"
+            size={{ xs: 12, md: 6.8 }}
+            sx={{ pl: { md: 4 } }}
+          >
             <Stack spacing={2}>
               <Typography
                 sx={{
@@ -344,7 +310,6 @@ const WhoWeAre = () => {
                             : "none",
                         }}
                       >
-                        {/* Monospace Indicator Badge */}
                         <Box
                           sx={{
                             width: 24,
@@ -386,6 +351,80 @@ const WhoWeAre = () => {
                   );
                 })}
               </Grid>
+              <Box sx={{ display: { lg: "none", xs: "block" }, width: "100%" }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={2}
+                  sx={{ pt: 0.5 }}
+                  alignItems={{ xs: "center", sm: "center" }}
+                >
+                  <Link
+                    href="/about/board"
+                    style={{ textDecoration: "none", width: "100%" }}
+                  >
+                    <Button
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        whiteSpace: "nowrap",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: "#0B0C10",
+                        backgroundColor: COLORS.WHITE,
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.1,
+                        boxShadow: "0 4px 14px rgba(255, 255, 255, 0.15)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#E2E8F0",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 6px 20px rgba(255, 255, 255, 0.25)",
+                        },
+                      }}
+                      fullWidth
+                    >
+                      Meet the Board
+                    </Button>
+                  </Link>
+
+                  <Link
+                    href="/resources"
+                    style={{ textDecoration: "none", width: "100%" }}
+                  >
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        width: "100%",
+                        whiteSpace: "nowrap",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: COLORS.WHITE,
+                        borderColor: COLORS.WHITE,
+                        borderWidth: "1.5px",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.1,
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          borderWidth: "1.5px",
+                          borderColor: "#93C5FD",
+                          color: "#93C5FD",
+                          backgroundColor: "rgba(255, 255, 255, 0.05)",
+                          transform: "translateY(-2px)",
+                        },
+                      }}
+                      fullWidth
+                    >
+                      View Standards
+                    </Button>
+                  </Link>
+                </Stack>
+              </Box>
             </Stack>
           </Grid>
         </Grid>

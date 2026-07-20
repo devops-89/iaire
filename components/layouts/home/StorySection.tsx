@@ -31,7 +31,7 @@ const StorySection = () => {
         py: { xs: 8, sm: 10, md: 14 },
         backgroundColor: "#0D0D11",
         position: "relative",
-        overflow: "hidden",
+        overflow: "clip",
       }}
     >
       {/* Background decoration - high-end glowing blue blobs */}
@@ -117,42 +117,43 @@ const StorySection = () => {
               </Typography>
 
               {/* High-Contrast Action Buttons */}
-              <Stack
-                direction={{ xs: "column", sm: "row", md: "column" }}
-                spacing={2}
-                sx={{ pt: 1, width: "100%" }}
-              >
-                <Link
-                  href="/about"
-                  style={{ textDecoration: "none", width: "100%" }}
+              <Box sx={{ display: { lg: "flex", xs: "none" } }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row", md: "column" }}
+                  spacing={2}
+                  sx={{ pt: 1, width: "100%" }}
                 >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      width: "100%",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#0D0D11",
-                      backgroundColor: "#FFFFFF",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.4,
-                      boxShadow: "0 4px 20px rgba(255, 255, 255, 0.15)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#F3F4F6",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 6px 24px rgba(255, 255, 255, 0.25)",
-                      },
-                    }}
+                  <Link
+                    href="/about"
+                    style={{ textDecoration: "none", width: "100%" }}
                   >
-                    Learn More About IAIRE
-                  </Button>
-                </Link>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "14px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: "#0D0D11",
+                        backgroundColor: "#FFFFFF",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.4,
+                        boxShadow: "0 4px 20px rgba(255, 255, 255, 0.15)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#F3F4F6",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 6px 24px rgba(255, 255, 255, 0.25)",
+                        },
+                      }}
+                    >
+                      Learn More About IAIRE
+                    </Button>
+                  </Link>
 
-                {/* <Link
+                  {/* <Link
                   href="/about#leadership"
                   style={{ textDecoration: "none", width: "100%" }}
                 >
@@ -191,12 +192,18 @@ const StorySection = () => {
                     Meet the Board
                   </Button>
                 </Link> */}
-              </Stack>
+                </Stack>
+              </Box>
             </Stack>
           </Grid>
 
           {/* Right Column: Premium Glowing Timeline */}
-          <Grid size={{ xs: 12, md: 7.2 }} data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+          <Grid
+            size={{ xs: 12, md: 7.2 }}
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="100"
+          >
             <Box sx={{ position: "relative", pl: { xs: 4, md: 6 } }}>
               {/* Timeline Vertical Line */}
               <Box
@@ -297,6 +304,43 @@ const StorySection = () => {
                   );
                 })}
               </Stack>
+              <Box sx={{ display: { lg: "none", xs: "flex" }, mt: 4 }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row", md: "column" }}
+                  spacing={2}
+                  sx={{ pt: 1, width: "100%" }}
+                >
+                  <Link
+                    href="/about"
+                    style={{ textDecoration: "none", width: "100%" }}
+                  >
+                    <Button
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "14px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: "#0D0D11",
+                        backgroundColor: "#FFFFFF",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.4,
+                        boxShadow: "0 4px 20px rgba(255, 255, 255, 0.15)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#F3F4F6",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 6px 24px rgba(255, 255, 255, 0.25)",
+                        },
+                      }}
+                    >
+                      Learn More About IAIRE
+                    </Button>
+                  </Link>
+                </Stack>
+              </Box>
             </Box>
           </Grid>
         </Grid>

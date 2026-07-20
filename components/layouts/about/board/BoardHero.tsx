@@ -26,7 +26,6 @@ const BoardHero = () => {
           left: "50%",
           transform: "translateX(-50%)",
           width: "50vw",
-          // height: "50vw",
           borderRadius: "50%",
           background:
             "radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 0) 70%)",

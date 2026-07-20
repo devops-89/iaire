@@ -45,7 +45,8 @@ const InstitutionalMember = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -55,10 +56,7 @@ const InstitutionalMember = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Top Header Section */}
         <Box sx={{ mb: { xs: 6, md: 8 } }}>
-          <Stack spacing={3.5}
-          data-aos="fade-up"
-          data-aos-duration="800"
-          >
+          <Stack spacing={3.5} data-aos="fade-up" data-aos-duration="800">
             <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
               <SectionBadge
                 label="Institutional Membership"
@@ -85,7 +83,7 @@ const InstitutionalMember = () => {
                 IAIRE Institutional <br />
                 <span style={{ color: "#1B365D" }}>Membership for Schools</span>
               </Typography>
-              
+
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
@@ -95,7 +93,13 @@ const InstitutionalMember = () => {
                   maxWidth: "800px",
                 }}
               >
-                Institutional Membership is the entry-level designation conferred upon admission to the Academy and payment of applicable annual membership dues. It entitles the institution to participate in Academy programs, access Academy resources, sponsor educators for training and certification, and use the corresponding Academy designation in accordance with <strong>IAIRE</strong> branding and usage policies.
+                Institutional Membership is the entry-level designation
+                conferred upon admission to the Academy and payment of
+                applicable annual membership dues. It entitles the institution
+                to participate in Academy programs, access Academy resources,
+                sponsor educators for training and certification, and use the
+                corresponding Academy designation in accordance with{" "}
+                <strong>IAIRE</strong> branding and usage policies.
               </Typography>
             </Stack>
           </Stack>
@@ -119,7 +123,11 @@ const InstitutionalMember = () => {
 
           <Grid container spacing={2}>
             {institutionalBenefits.map((benefit, idx) => (
-              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx} sx={{ display: "flex" }}>
+              <Grid
+                size={{ xs: 12, sm: 6, md: 4 }}
+                key={idx}
+                sx={{ display: "flex" }}
+              >
                 <BenefitCard
                   benefit={benefit}
                   isHovered={hoveredIdx === idx}
