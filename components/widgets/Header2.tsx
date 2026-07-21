@@ -1,12 +1,13 @@
 "use client";
 
+import BorderBeam from "@/components/animations/BorderBeam";
+
 import React, { useState } from "react";
 import { HEADER_CONTENT } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
 import { newBlack_medium, inter } from "@/utils/fonts";
 import {
   Box,
-  Button,
   Container,
   Stack,
   Drawer,
@@ -32,6 +33,7 @@ import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import BookIcon from "@mui/icons-material/BookOutlined";
 import FeedIcon from "@mui/icons-material/FeedOutlined";
 import EmailIcon from "@mui/icons-material/EmailOutlined";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const getMenuMetaData = (label: string, index: number) => {
   const code = `IA-0${index + 1}`;
@@ -104,11 +106,13 @@ const Header2 = () => {
             border: "1px solid rgba(0, 0, 0, 0.04)",
           }}
         >
-          <Stack
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ position: "relative" }}
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr auto 1fr",
+              alignItems: "center",
+              width: "100%",
+            }}
           >
             {/* Left Side: Animated Hamburger Trigger */}
             <Box
@@ -167,12 +171,9 @@ const Header2 = () => {
 
             <Box
               sx={{
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Link href="/" style={{ display: "flex", alignItems: "center" }}>
@@ -193,13 +194,15 @@ const Header2 = () => {
                 href="/signup/role-selection"
                 style={{ textDecoration: "none" }}
               >
-                <Button
+                <BeamButton
                   variant="outlined"
                   sx={{
+                    position: "relative",
+                    overflow: "hidden",
                     fontSize: { xs: 11, sm: 13 },
                     fontWeight: 700,
                     fontFamily: inter.style.fontFamily,
-                    border: "1.5px solid #1B365D",
+                    border: "1.5px solid" + COLORS.BEAM_COLOR,
                     px: { xs: 1.75, sm: 3 },
                     py: { xs: 0.6, sm: 0.75 },
                     borderRadius: "50px",
@@ -214,11 +217,16 @@ const Header2 = () => {
                     },
                   }}
                 >
+                  <BorderBeam
+                    duration={5}
+                    colorFrom="transparent"
+                    colorTo="#3B82F6"
+                  />
                   Join IAIRE
-                </Button>
+                </BeamButton>
               </Link>
             </Box>
-          </Stack>
+          </Box>
         </Box>
       </Container>
 
@@ -518,7 +526,7 @@ const Header2 = () => {
                     onClick={() => setMenuOpen(false)}
                     style={{ textDecoration: "none", marginTop: "8px" }}
                   >
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         fontFamily: inter.style.fontFamily,
@@ -538,7 +546,7 @@ const Header2 = () => {
                       }}
                     >
                       Join IAIRE
-                    </Button>
+                    </BeamButton>
                   </Link>
                 </Stack>
               </Stack>

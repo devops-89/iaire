@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import standardsImpactImg from "@/images/homepage/academic_standard.jpeg";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const StandardsImpactSection = () => {
   const [hovered, setHovered] = useState(false);
@@ -190,7 +191,7 @@ const StandardsImpactSection = () => {
                   sx={{ pt: 1 }}
                 >
                   <Link href="/programs" style={{ textDecoration: "none" }}>
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         width: "100%",
@@ -213,11 +214,11 @@ const StandardsImpactSection = () => {
                       }}
                     >
                       Understand Certification
-                    </Button>
+                    </BeamButton>
                   </Link>
 
                   <Link href="/membership" style={{ textDecoration: "none" }}>
-                    <Button
+                    <BeamButton
                       variant="outlined"
                       endIcon={
                         <ArrowForwardIcon
@@ -251,7 +252,7 @@ const StandardsImpactSection = () => {
                       }}
                     >
                       View Membership Pathways
-                    </Button>
+                    </BeamButton>
                   </Link>
                 </Stack>
               </Box>

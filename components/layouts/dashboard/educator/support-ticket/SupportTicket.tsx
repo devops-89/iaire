@@ -13,7 +13,6 @@ import {
 import {
   Autocomplete,
   Box,
-  Button,
   Card,
   CardContent,
   Chip,
@@ -29,8 +28,7 @@ import {
   TableHead,
   TableRow,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useModal } from "@/store/useModal";
@@ -38,6 +36,7 @@ import RaiseSupportTicketModal from "@/components/modals/mentor/RaiseSupportTick
 import { useGetAllSupportTickets } from "@/hooks/mentor/useTeacherSupport";
 import TicketDetailsDrawer, { Ticket } from "./components/TicketDetailsDrawer";
 import { CATEGORY_OPTIONS, SUPPORT_TICKET_HEADER } from "@/utils/constant";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const getCategoryLabel = (cat: string) => {
   const map: Record<string, string> = {
@@ -125,7 +124,7 @@ const SupportTicket = () => {
               },
             ]}
           />
-          <Button
+          <BeamButton
             variant="contained"
             startIcon={<Add />}
             onClick={() =>
@@ -147,7 +146,7 @@ const SupportTicket = () => {
             }}
           >
             Raise Support Ticket
-          </Button>
+          </BeamButton>
         </Stack>
 
         {/* Stats Grid */}

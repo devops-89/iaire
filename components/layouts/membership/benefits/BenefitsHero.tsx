@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter, newBlack_medium } from "@/utils/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import heroImg from "@/public/images/membership/benefits_dashboard_hero.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const BenefitsHero = () => {
   return (
@@ -123,7 +124,7 @@ const BenefitsHero = () => {
               {/* Action CTA Button */}
               <Box sx={{ pt: 1 }}>
                 <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     endIcon={<KeyboardArrowRightIcon className="arrow-icon" />}
                     sx={{
                       fontSize: 15,
@@ -151,7 +152,7 @@ const BenefitsHero = () => {
                     }}
                   >
                     Become a Member and Unlock These Benefits
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
 

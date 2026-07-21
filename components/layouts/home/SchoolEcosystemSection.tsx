@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
 import PsychologyIcon from "@mui/icons-material/PsychologyOutlined";
 import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 const SchoolEcosystemSection = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -111,7 +112,7 @@ const SchoolEcosystemSection = () => {
                       maxWidth: "340px",
                     }}
                   >
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         width: "100%",
@@ -135,7 +136,7 @@ const SchoolEcosystemSection = () => {
                       }}
                     >
                       Build an Innovation Ecosystem
-                    </Button>
+                    </BeamButton>
                   </Link>
 
                   {/* <Link
@@ -146,7 +147,7 @@ const SchoolEcosystemSection = () => {
                     maxWidth: "340px",
                   }}
                 >
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -181,7 +182,7 @@ const SchoolEcosystemSection = () => {
                     }}
                   >
                     Explore School Membership
-                  </Button>
+                  </BeamButton>
                 </Link> */}
                 </Stack>
               </Box>
@@ -391,7 +392,7 @@ const SchoolEcosystemSection = () => {
                 maxWidth: "340px",
               }}
             >
-              <Button
+              <BeamButton
                 variant="contained"
                 sx={{
                   width: "100%",
@@ -415,7 +416,7 @@ const SchoolEcosystemSection = () => {
                 }}
               >
                 Build an Innovation Ecosystem
-              </Button>
+              </BeamButton>
             </Link>
 
             {/* <Link
@@ -426,7 +427,7 @@ const SchoolEcosystemSection = () => {
                     maxWidth: "340px",
                   }}
                 >
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -461,7 +462,7 @@ const SchoolEcosystemSection = () => {
                     }}
                   >
                     Explore School Membership
-                  </Button>
+                  </BeamButton>
                 </Link> */}
           </Stack>
         </Box>

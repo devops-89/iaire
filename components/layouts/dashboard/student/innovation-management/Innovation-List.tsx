@@ -7,7 +7,6 @@ import { roboto } from "@/utils/fonts";
 import { Add, Delete, Edit } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Chip,
   CircularProgress,
   IconButton,
@@ -18,10 +17,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const InnovationList = () => {
   const { loading, fetchInnovationList, innovationData } =
@@ -56,7 +55,7 @@ const InnovationList = () => {
             href="/dashboard/student/innovation-management/add-innovation"
             style={{ textDecoration: "none" }}
           >
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
@@ -73,7 +72,7 @@ const InnovationList = () => {
               endIcon={<Add />}
             >
               New Innovation
-            </Button>
+            </BeamButton>
           </Link>
         </Stack>
 

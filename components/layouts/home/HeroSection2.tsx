@@ -2,10 +2,11 @@
 
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import ThreeEarth from "./ThreeGlobe";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const statsSets = [
   {
@@ -185,7 +186,7 @@ const HeroSection2 = () => {
                 href="/signup/role-selection"
                 style={{ textDecoration: "none" }}
               >
-                <Button
+                <BeamButton
                   sx={{
                     fontSize: "14px",
                     fontFamily: inter.style.fontFamily,
@@ -205,13 +206,13 @@ const HeroSection2 = () => {
                   }}
                 >
                   Join the Ecosystem →
-                </Button>
+                </BeamButton>
               </Link>
               <Link
                 href="/signup/role-selection"
                 style={{ textDecoration: "none" }}
               >
-                <Button
+                <BeamButton
                   sx={{
                     fontSize: "14px",
                     color: COLORS.WHITE,
@@ -230,7 +231,7 @@ const HeroSection2 = () => {
                   }}
                 >
                   Become an IAIRE Partner
-                </Button>
+                </BeamButton>
               </Link>
             </Stack>
           </Grid>

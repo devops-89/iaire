@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const newsCategories = [
   "IAIRE announcements",
@@ -294,7 +295,7 @@ const AboutNewsSection = () => {
 
           {/* CTA Action */}
           {/* <Box sx={{ pt: 2 }}>
-            <Button
+            <BeamButton
               sx={{
                 fontFamily: inter.style.fontFamily,
                 fontSize: "14px",
@@ -314,7 +315,7 @@ const AboutNewsSection = () => {
               }}
             >
               Read Latest Updates
-            </Button>
+            </BeamButton>
           </Box> */}
         </Stack>
       </Container>

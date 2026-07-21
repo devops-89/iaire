@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter, newBlack_medium } from "@/utils/fonts";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -18,6 +18,7 @@ import ComputerOutlinedIcon from "@mui/icons-material/ComputerOutlined";
 import ScienceOutlinedIcon from "@mui/icons-material/ScienceOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const audiences = [
   {
@@ -400,7 +401,7 @@ const WhatIndiaChapterDoes = () => {
             href="/signup/role-selection"
             style={{ textDecoration: "none" }}
           >
-            <Button
+            <BeamButton
               sx={{
                 fontSize: 15,
                 fontWeight: 700,
@@ -421,7 +422,7 @@ const WhatIndiaChapterDoes = () => {
               }}
             >
               Explore IAIRE India Programs
-            </Button>
+            </BeamButton>
           </Link>
         </Stack>
       </Container>

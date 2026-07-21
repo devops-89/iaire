@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import { Drawer, Stack, Typography, Divider, Box, Chip, Button } from "@mui/material";
+import { Drawer, Stack, Typography, Divider, Box, Chip} from "@mui/material";
 import { montserrat } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import moment from "moment";
+import BeamButton from "@/components/widgets/BeamButton";
 
 export interface Ticket {
   id: string;
@@ -172,7 +173,7 @@ const TicketDetailsDrawer = ({ ticket, open, onClose }: TicketDetailsDrawerProps
             </Typography>
           </Box>
           <Box sx={{ flexGrow: 1 }} />
-          <Button
+          <BeamButton
             variant="outlined"
             fullWidth
             onClick={onClose}
@@ -183,7 +184,7 @@ const TicketDetailsDrawer = ({ ticket, open, onClose }: TicketDetailsDrawerProps
             }}
           >
             Close details
-          </Button>
+          </BeamButton>
         </Stack>
       )}
     </Drawer>

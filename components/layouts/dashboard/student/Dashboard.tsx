@@ -25,19 +25,18 @@ import {
   Grid,
   Typography,
   Card,
-  Button,
   Chip,
   LinearProgress,
   CircularProgress,
   Stack,
   Tabs,
   Tab,
-  Divider,
-} from "@mui/material";
+  Divider} from "@mui/material";
 import { useGetAllInnovation } from "@/hooks/school/useInnovation";
 import { useGetAllResearch } from "@/hooks/school/useResearch";
 import Link from "next/link";
 import moment from "moment";
+import BeamButton from "@/components/widgets/BeamButton";
 
 // Styling constants for rich aesthetics
 const goldGradient = "linear-gradient(135deg, #DFBA73 0%, #C5A059 100%)";
@@ -347,7 +346,7 @@ const Dashboard = () => {
 
             <Box sx={{ mt: 3 }}>
               <Link href="/dashboard/student/membership-management" style={{ textDecoration: "none" }}>
-                <Button
+                <BeamButton
                   fullWidth
                   variant="outlined"
                   sx={{
@@ -366,7 +365,7 @@ const Dashboard = () => {
                   endIcon={<ArrowForward sx={{ fontSize: "14px !important" }} />}
                 >
                   Manage Membership Dues
-                </Button>
+                </BeamButton>
               </Link>
             </Box>
           </Card>
@@ -739,7 +738,7 @@ const Dashboard = () => {
                             }}
                           />
                           <Link href={`/dashboard/student/innovation-management/innovation-details/${item.id}`}>
-                            <Button
+                            <BeamButton
                               size="small"
                               sx={{
                                 color: COLORS.PRIMARY_NAVY,
@@ -750,7 +749,7 @@ const Dashboard = () => {
                               }}
                             >
                               Details
-                            </Button>
+                            </BeamButton>
                           </Link>
                         </Box>
                       </Box>
@@ -766,7 +765,7 @@ const Dashboard = () => {
                       Track your academic developments by registering your first innovation
                     </Typography>
                     <Link href="/dashboard/student/innovation-management/add-innovation" style={{ textDecoration: "none" }}>
-                      <Button
+                      <BeamButton
                         size="small"
                         variant="outlined"
                         sx={{
@@ -778,7 +777,7 @@ const Dashboard = () => {
                         }}
                       >
                         Create Project
-                      </Button>
+                      </BeamButton>
                     </Link>
                   </Box>
                 )}
@@ -857,7 +856,7 @@ const Dashboard = () => {
                       Submit your research papers to get them verified and published
                     </Typography>
                     <Link href="/dashboard/student/research-management/add-research" style={{ textDecoration: "none" }}>
-                      <Button
+                      <BeamButton
                         size="small"
                         variant="outlined"
                         sx={{
@@ -869,7 +868,7 @@ const Dashboard = () => {
                         }}
                       >
                         Submit Paper
-                      </Button>
+                      </BeamButton>
                     </Link>
                   </Box>
                 )}

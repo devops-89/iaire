@@ -6,7 +6,6 @@ import {
   Typography,
   Card,
   Grid,
-  Button,
   Tabs,
   Tab,
   Stack,
@@ -16,8 +15,7 @@ import {
   MenuItem,
   FormControl,
   InputLabel,
-  Select,
-} from "@mui/material";
+  Select} from "@mui/material";
 import {
   Person,
   Lock,
@@ -31,6 +29,7 @@ import useSnackbar from "@/store/useSnackbar";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
+import BeamButton from "@/components/widgets/BeamButton";
 
 // Design Styling Helpers
 const glassCardStyle = {
@@ -210,7 +209,7 @@ const ProfileSettings = () => {
                 onChange={handleAvatarChange}
               />
               <label htmlFor="avatar-upload-input">
-                <Button
+                <BeamButton
                   component="span"
                   sx={{
                     position: "absolute",
@@ -229,7 +228,7 @@ const ProfileSettings = () => {
                   }}
                 >
                   <PhotoCamera sx={{ fontSize: 20 }} />
-                </Button>
+                </BeamButton>
               </label>
             </Box>
             <Typography variant="caption" sx={{ mt: 2, color: "text.secondary", fontWeight: 600, textAlign: "center" }}>
@@ -299,7 +298,7 @@ const ProfileSettings = () => {
               </Grid>
 
               <Box sx={{ borderTop: "1px solid rgba(0,0,0,0.06)", pt: 3 }}>
-                <Button
+                <BeamButton
                   variant="contained"
                   type="submit"
                   disabled={loading}
@@ -315,7 +314,7 @@ const ProfileSettings = () => {
                   }}
                 >
                   {loading ? <CircularProgress size={20} color="inherit" /> : "Save Profile Details"}
-                </Button>
+                </BeamButton>
               </Box>
             </Stack>
           </Grid>
@@ -362,7 +361,7 @@ const ProfileSettings = () => {
             helperText={passwordFormik.touched.confirmNewPassword && passwordFormik.errors.confirmNewPassword}
           />
           <Box sx={{ pt: 2 }}>
-            <Button
+            <BeamButton
               variant="contained"
               type="submit"
               disabled={loading}
@@ -378,7 +377,7 @@ const ProfileSettings = () => {
               }}
             >
               {loading ? <CircularProgress size={20} color="inherit" /> : "Change Password"}
-            </Button>
+            </BeamButton>
           </Box>
         </Stack>
       </form>
@@ -422,7 +421,7 @@ const ProfileSettings = () => {
             defaultCountry="US"
           />
           <Box sx={{ pt: 2 }}>
-            <Button
+            <BeamButton
               variant="contained"
               type="submit"
               disabled={loading}
@@ -438,7 +437,7 @@ const ProfileSettings = () => {
               }}
             >
               {loading ? <CircularProgress size={20} color="inherit" /> : "Update Contact Details"}
-            </Button>
+            </BeamButton>
           </Box>
         </Stack>
       </form>

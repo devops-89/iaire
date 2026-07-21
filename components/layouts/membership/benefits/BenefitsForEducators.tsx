@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter, newBlack_medium } from "@/utils/fonts";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const educatorBenefits = [
   {
@@ -102,7 +103,7 @@ const BenefitsForEducators = () => {
               
               <Box sx={{ pt: 1 }}>
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     sx={{
                       fontSize: 15,
                       fontWeight: 700,
@@ -123,7 +124,7 @@ const BenefitsForEducators = () => {
                     }}
                   >
                     Become a Certified Innovation Educator
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>

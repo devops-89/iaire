@@ -8,7 +8,6 @@ import { aloeveraDisplay_medium, roboto } from "@/utils/fonts";
 import { Add, Delete, Edit, Lock } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   Chip,
   IconButton,
@@ -18,12 +17,12 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
-} from "@mui/material";
+  TableRow} from "@mui/material";
 import moment from "moment";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import Plans from "@/components/modals/common/Plans";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const ResearchManagement = () => {
   const { showModal } = useModal();
@@ -68,7 +67,7 @@ const ResearchManagement = () => {
               href="/dashboard/institution/research-submission/add-research"
               style={{ textDecoration: "none" }}
             >
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   color: COLORS.WHITE,
@@ -81,10 +80,10 @@ const ResearchManagement = () => {
                 endIcon={<Add />}
               >
                 Add Research
-              </Button>
+              </BeamButton>
             </Link>
           ) : (
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: "#7e7e7e",
                 color: COLORS.WHITE,
@@ -98,13 +97,13 @@ const ResearchManagement = () => {
               onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
             >
               Unlock Feature
-            </Button>
+            </BeamButton>
           )} */}
           <Link
             href="/dashboard/institution/research-submission/add-research"
             style={{ textDecoration: "none" }}
           >
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
@@ -117,7 +116,7 @@ const ResearchManagement = () => {
               endIcon={<Add />}
             >
               Add Research
-            </Button>
+            </BeamButton>
           </Link>
         </Stack>
 

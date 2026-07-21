@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const OrangeCheck = () => (
   <Box
@@ -226,7 +227,7 @@ const CompetitionSection = () => {
 
               <Box sx={{ pt: 1.5 }}>
                 <Link href="https://topyounginnovators.vercel.app/" target="_blank">
-                  <Button
+                  <BeamButton
                     sx={{
                       fontFamily: inter.style.fontFamily,
                       fontSize: "14px",
@@ -246,7 +247,7 @@ const CompetitionSection = () => {
                     }}
                   >
                     Participate in Top Young Innovator
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>

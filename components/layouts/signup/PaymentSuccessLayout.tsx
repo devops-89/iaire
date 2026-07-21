@@ -1,11 +1,12 @@
 "use client";
 import { COLORS, USER_ROLES } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
-import { Box, Card, Container, Typography, Button, Stack } from "@mui/material";
+import { Box, Card, Container, Typography, Stack } from "@mui/material";
 import { CheckCircleOutline, ArrowForward } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useSignup } from "@/store/useSignup";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const PaymentSuccessLayout = () => {
   const router = useRouter();
@@ -96,7 +97,7 @@ const PaymentSuccessLayout = () => {
               you can start exploring all premium features.
             </Typography>
 
-            <Button
+            <BeamButton
               variant="contained"
               fullWidth
               size="large"
@@ -120,7 +121,7 @@ const PaymentSuccessLayout = () => {
               }}
             >
               Go to Dashboard
-            </Button>
+            </BeamButton>
           </Stack>
         </Card>
       </Container>

@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter, newBlack_medium } from "@/utils/fonts";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const categories = [
   {
@@ -210,7 +211,7 @@ const MembershipCategories = () => {
 
                 <Box sx={{ mt: 4, position: "relative", zIndex: 2 }}>
                   <Link href={category.link} style={{ textDecoration: "none" }}>
-                    <Button
+                    <BeamButton
                       variant="outlined"
                       endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ fontSize: 16 }} />}
                       sx={{
@@ -239,7 +240,7 @@ const MembershipCategories = () => {
                       }}
                     >
                       {category.cta}
-                    </Button>
+                    </BeamButton>
                   </Link>
                 </Box>
               </Box>

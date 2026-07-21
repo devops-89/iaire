@@ -2,13 +2,11 @@
 import {
   Autocomplete,
   Box,
-  Button,
   Card,
   Grid,
   TextField,
   CircularProgress,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import React, { useState } from "react";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
@@ -28,6 +26,7 @@ import { useRouter } from "next/navigation";
 import InstitutionDashboardLayout from "@/components/layouts/dashboard/institution/Index";
 import { aloeveraDisplay_medium, newBlack_light, roboto } from "@/utils/fonts";
 import { useAddTeam } from "@/hooks/school/useTeam";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const AddTeams = () => {
   const { userData, fetchUserData, loading, setUserData } = useGetAllUser();
@@ -209,7 +208,7 @@ const AddTeams = () => {
             />
           </Grid>
           <Grid size={6}>
-            <Button
+            <BeamButton
               onClick={() => formik.handleSubmit()}
               disabled={formik.isSubmitting}
               sx={{
@@ -227,7 +226,7 @@ const AddTeams = () => {
               ) : (
                 "Submit"
               )}
-            </Button>
+            </BeamButton>
           </Grid>
         </Grid>
       </Box>

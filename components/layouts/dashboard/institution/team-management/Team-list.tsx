@@ -2,12 +2,10 @@
 import {
   Autocomplete,
   Box,
-  Button,
   Card,
   Grid,
   Stack,
-  TextField,
-} from "@mui/material";
+  TextField} from "@mui/material";
 import React, { useEffect } from "react";
 import InstitutionDashboardLayout from "../Index";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
@@ -22,6 +20,7 @@ import { useSignup } from "@/store/useSignup";
 import AddTeams from "@/components/modals/school/CreateTeam";
 import { useGetTeam } from "@/hooks/school/useTeam";
 import Plans from "@/components/modals/common/Plans";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const TeamList = () => {
   const { showModal } = useModal();
@@ -72,7 +71,7 @@ const TeamList = () => {
             />
 
             {/* {isMember ? (
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   color: COLORS.WHITE,
@@ -84,9 +83,9 @@ const TeamList = () => {
                 onClick={handleAddTeam}
               >
                 Add Team
-              </Button>
+              </BeamButton>
             ) : (
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: "#7e7e7e",
                   color: COLORS.WHITE,
@@ -98,9 +97,9 @@ const TeamList = () => {
                 onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
               >
                 Unlock Feature
-              </Button>
+              </BeamButton>
             )} */}
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
@@ -112,7 +111,7 @@ const TeamList = () => {
               onClick={handleAddTeam}
             >
               Add Team
-            </Button>
+            </BeamButton>
           </Stack>
 
           <Grid container sx={{ mt: 2 }} spacing={3}>

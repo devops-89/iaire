@@ -6,17 +6,16 @@ import { montserrat, roboto } from "@/utils/fonts";
 import { ArrowForward, Refresh, MailOutline } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   Container,
   Stack,
   Typography,
   Link,
-  IconButton,
-} from "@mui/material";
+  IconButton} from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect, useCallback } from "react";
 import { MuiOtpInput } from "mui-one-time-password-input";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const VerifyLayout = () => {
   const router = useRouter();
@@ -168,7 +167,7 @@ const VerifyLayout = () => {
             />
           </Box>
 
-          <Button
+          <BeamButton
             variant="contained"
             fullWidth
             size="large"
@@ -198,7 +197,7 @@ const VerifyLayout = () => {
             }}
           >
             Verify & Continue
-          </Button>
+          </BeamButton>
 
           <Stack
             direction="row"
@@ -216,7 +215,7 @@ const VerifyLayout = () => {
               Didn't receive the code?
             </Typography>
             {canResend ? (
-              <Button
+              <BeamButton
                 size="small"
                 onClick={handleResend}
                 startIcon={<Refresh />}
@@ -231,7 +230,7 @@ const VerifyLayout = () => {
                 }}
               >
                 Resend Code
-              </Button>
+              </BeamButton>
             ) : (
               <Typography
                 sx={{

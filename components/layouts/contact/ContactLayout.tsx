@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Typography, Stack, InputBase, MenuItem, Select } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack, InputBase, MenuItem, Select } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const rolesList = [
   "Educator",
@@ -247,7 +248,7 @@ const ContactLayout = () => {
               {/* Auxiliary CTAs */}
               <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ width: "100%" }}>
                 <Link href="/signup/role-selection" style={{ textDecoration: "none", flex: 1 }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -270,11 +271,11 @@ const ContactLayout = () => {
                     }}
                   >
                     Become a Member
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link href="/contact" style={{ textDecoration: "none", flex: 1 }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -299,7 +300,7 @@ const ContactLayout = () => {
                     }}
                   >
                     Schedule a Discussion
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Stack>
 
@@ -545,7 +546,7 @@ const ContactLayout = () => {
                   </Grid>
 
                   <Box sx={{ pt: 1 }}>
-                    <Button
+                    <BeamButton
                       type="submit"
                       variant="contained"
                       endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
@@ -571,7 +572,7 @@ const ContactLayout = () => {
                       }}
                     >
                       Submit Inquiry
-                    </Button>
+                    </BeamButton>
                   </Box>
                 </Stack>
               )}

@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
 import heroImg from "@/public/images/get-involved/board_meeting_scene.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const ForBoardMembers = () => {
   return (
@@ -228,7 +229,7 @@ const ForBoardMembers = () => {
                   href="/signup/role-selection"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -252,11 +253,11 @@ const ForBoardMembers = () => {
                     }}
                   >
                     Serve as an Expert Mentor
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -282,11 +283,11 @@ const ForBoardMembers = () => {
                     }}
                   >
                     Join a Committee
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -321,7 +322,7 @@ const ForBoardMembers = () => {
                     }}
                   >
                     Contact IAIRE Leadership
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

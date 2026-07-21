@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import Image from "next/image";
 import heroImg from "@/public/images/programs/school_innovation_hubs.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const features = [
   "Run structured innovation sessions",
@@ -232,7 +233,7 @@ const SchoolInnovationHubs = () => {
                   href="/signup/role-selection"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -256,11 +257,11 @@ const SchoolInnovationHubs = () => {
                     }}
                   >
                     Start an Innovation Hub
-                  </Button>
+                  </BeamButton>
                 </Link> */}
 
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -284,11 +285,11 @@ const SchoolInnovationHubs = () => {
                     }}
                   >
                     Become an Institutional Member
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -323,7 +324,7 @@ const SchoolInnovationHubs = () => {
                     }}
                   >
                     Explore Implementation Support
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

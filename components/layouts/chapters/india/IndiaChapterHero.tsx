@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter, newBlack_medium } from "@/utils/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import heroImg from "@/public/images/chapters/india_chapter_hero.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const IndiaChapterHero = () => {
   return (
@@ -147,7 +148,7 @@ const IndiaChapterHero = () => {
               {/* CTA Action Button */}
               <Box sx={{ pt: 1 }}>
                 <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     endIcon={<KeyboardArrowRightIcon className="arrow-icon" />}
                     sx={{
                       fontSize: 15,
@@ -175,7 +176,7 @@ const IndiaChapterHero = () => {
                     }}
                   >
                     Join the IAIRE India Chapter
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
 

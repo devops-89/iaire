@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { Button, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import BeamButton from "@/components/widgets/BeamButton";
 
 export const EducatorActionButtons = () => (
   <Stack
@@ -15,7 +16,7 @@ export const EducatorActionButtons = () => (
     alignItems="center"
   >
     <Link href="/login" style={{ textDecoration: "none" }}>
-      <Button
+      <BeamButton
         variant="contained"
         sx={{
           whiteSpace: "nowrap",
@@ -38,11 +39,11 @@ export const EducatorActionButtons = () => (
         }}
       >
         Join as an Educator
-      </Button>
+      </BeamButton>
     </Link>
     {/* 
     <Link href="/login" style={{ textDecoration: "none" }}>
-      <Button
+      <BeamButton
         variant="outlined"
         sx={{
           whiteSpace: "nowrap",
@@ -67,11 +68,11 @@ export const EducatorActionButtons = () => (
         }}
       >
         Apply for Certification
-      </Button>
+      </BeamButton>
     </Link>
 
     <Link href="#pathways" style={{ textDecoration: "none" }}>
-      <Button
+      <BeamButton
         variant="outlined"
         endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
         sx={{
@@ -100,7 +101,7 @@ export const EducatorActionButtons = () => (
         }}
       >
         Explore Fellowship Pathways
-      </Button>
+      </BeamButton>
     </Link> */}
   </Stack>
 );

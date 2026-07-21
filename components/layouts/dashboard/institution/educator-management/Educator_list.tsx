@@ -23,7 +23,6 @@ import { Add, Lock, MoreVert } from "@mui/icons-material";
 import {
   Autocomplete,
   Box,
-  Button,
   Card,
   Chip,
   FormControl,
@@ -45,12 +44,12 @@ import {
   TableRow,
   Tabs,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
 import Plans from "@/components/modals/common/Plans";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const statusOptions = ["Member", "Not a Member"];
 
@@ -157,7 +156,7 @@ const EducatorList = () => {
           />
           {/* {isMember ? (
             <Link href="/dashboard/institution/educator-management/add-educator">
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   color: COLORS.WHITE,
@@ -170,10 +169,10 @@ const EducatorList = () => {
                 endIcon={<Add />}
               >
                 Add Educator
-              </Button>
+              </BeamButton>
             </Link>
           ) : (
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: "#7e7e7e",
                 color: COLORS.WHITE,
@@ -187,10 +186,10 @@ const EducatorList = () => {
               onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
             >
               Unlock Feature
-            </Button>
+            </BeamButton>
           )} */}
           <Link href="/dashboard/institution/educator-management/add-educator">
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
@@ -203,7 +202,7 @@ const EducatorList = () => {
               endIcon={<Add />}
             >
               Add Educator
-            </Button>
+            </BeamButton>
           </Link>
         </Stack>
 

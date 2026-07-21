@@ -5,14 +5,13 @@ import { RESEARCH_FORM_PROPS } from "@/utils/type";
 import {
   Autocomplete,
   Box,
-  Button,
   CircularProgress,
   Grid,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { FormikProps } from "formik";
 import React, { useEffect } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface AddResearchFormProps {
   formik: FormikProps<RESEARCH_FORM_PROPS>;
@@ -101,7 +100,7 @@ const AddResearchForm = ({ formik, isLoading, hideTeam }: AddResearchFormProps) 
               </Grid>
             )}
             <Grid size={6}>
-              <Button
+              <BeamButton
                 sx={{
                   fontWeight: 600,
                   fontSize: 16,
@@ -116,7 +115,7 @@ const AddResearchForm = ({ formik, isLoading, hideTeam }: AddResearchFormProps) 
                 disabled={teamLoading || isLoading}
               >
                 {isLoading ? <CircularProgress size={20} /> : "Submit Research"}
-              </Button>
+              </BeamButton>
             </Grid>
           </Grid>
         </form>

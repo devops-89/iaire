@@ -1,13 +1,11 @@
 "use client";
 import {
   Box,
-  Button,
   CircularProgress,
   Divider,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { montserrat } from "@/utils/fonts";
@@ -19,6 +17,7 @@ import MentorshipDetailsCard from "./components/MentorshipDetailsCard";
 import TeamMembersCard from "./components/TeamMembersCard";
 import TeamInnovationsCard from "./components/TeamInnovationsCard";
 import InstitutionCard from "./components/InstitutionCard";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const TeamDetails = () => {
   const params = useParams();
@@ -50,7 +49,7 @@ const TeamDetails = () => {
         <Grid size={{ xs: 12, md: 8 }}>
           <Stack spacing={4}>
             <Box>
-              <Button
+              <BeamButton
                 startIcon={<ArrowBack />}
                 onClick={() => router.back()}
                 sx={{
@@ -62,7 +61,7 @@ const TeamDetails = () => {
                 }}
               >
                 Back
-              </Button>
+              </BeamButton>
 
               <Stack
                 direction="row"

@@ -2,7 +2,7 @@
 import { useGetUserDetailsPublic } from "@/hooks/common/getUserDetails";
 import { COLORS } from "@/utils/enum";
 import { aloeveraDisplay_medium } from "@/utils/fonts";
-import { Box, Button, Card, Container, Typography } from "@mui/material";
+import { Box, Card, Container, Typography } from "@mui/material";
 import { useSearchParams } from "next/navigation";
 import FatherInformation from "./Father-Information-Form";
 import MotherInformation from "./Mother-Information-form";
@@ -11,6 +11,7 @@ import { updateProfileValidationSchema } from "@/utils/validationSchema";
 import { UPDATE_PROFILE_FORM_PROPS, USER_DETAILS_RESPONSE } from "@/utils/type";
 import PersonalInformation from "./Personal-Information-Form";
 import { useUpdateProfileStudent } from "@/hooks/student/Update-Profile";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const UpdateProfileLayout = () => {
   const searchParams = useSearchParams();
@@ -110,7 +111,7 @@ const UpdateProfileLayout = () => {
             <MotherInformation formik={formik} />
 
             <Box>
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   mt: 2,
@@ -127,7 +128,7 @@ const UpdateProfileLayout = () => {
                 type="submit"
               >
                 Create Profile
-              </Button>
+              </BeamButton>
             </Box>
           </form>
         </Card>

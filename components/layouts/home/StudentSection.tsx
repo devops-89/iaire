@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const studentSteps = [
   { label: "Innovation mindset", phase: "INITIALIZE", num: "01" },
@@ -136,7 +137,7 @@ const StudentSection = () => {
 
               <Box sx={{ pt: 1.5 }}>
                 <Link href="/login">
-                  <Button
+                  <BeamButton
                     sx={{
                       fontFamily: inter.style.fontFamily,
                       fontSize: "14px",
@@ -156,7 +157,7 @@ const StudentSection = () => {
                     }}
                   >
                     Start the Student Innovation Journey
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>

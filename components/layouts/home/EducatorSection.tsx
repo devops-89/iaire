@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 
 // Custom premium vector SVG icons representing each skill
 const ProblemIcon = () => (
@@ -323,7 +324,7 @@ const EducatorSection = () => {
 
               <Box sx={{ pt: 1.5 }}>
                 <Link href="/login">
-                  <Button
+                  <BeamButton
                     sx={{
                       fontFamily: inter.style.fontFamily,
                       fontSize: "14px",
@@ -343,7 +344,7 @@ const EducatorSection = () => {
                     }}
                   >
                     Explore Innovation Educator Certification
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>

@@ -5,7 +5,6 @@ import {
   Box,
   Typography,
   Paper,
-  Button,
   Table,
   TableBody,
   TableCell,
@@ -18,8 +17,7 @@ import {
   MenuItem,
   ListItemIcon,
   ListItemText,
-  Divider,
-} from "@mui/material";
+  Divider} from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
 import { 
@@ -32,6 +30,7 @@ import {
   Assessment
 } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const startups = [
   { id: "ST-881", name: "GreenTech Solutions", sector: "Clean Energy", date: "Nov 05, 2023", status: "Incubated" },
@@ -75,7 +74,7 @@ const StartupManagementPage = () => {
               Incubate and track institutional startups and entrepreneurial projects.
             </Typography>
           </Box>
-          <Button
+          <BeamButton
             variant="contained"
             startIcon={<RocketLaunch />}
             onClick={() => router.push("/dashboard/institution/startup-management/add-startup")}
@@ -92,7 +91,7 @@ const StartupManagementPage = () => {
             }}
           >
             New Startup
-          </Button>
+          </BeamButton>
 
         </Box>
 

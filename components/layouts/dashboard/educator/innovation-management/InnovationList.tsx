@@ -10,7 +10,6 @@ import { aloeveraDisplay_medium, newBlack_semiBold } from "@/utils/fonts";
 import { Add, Lock } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   Chip,
   Stack,
@@ -20,11 +19,11 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { Atom } from "react-loading-indicators";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const InnovationList = () => {
   const { showModal } = useModal();
@@ -70,7 +69,7 @@ const InnovationList = () => {
                   href="/dashboard/educator/innovation-management/add-innovation"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     sx={{
                       backgroundColor: COLORS.PRIMARY_NAVY,
                       color: COLORS.WHITE,
@@ -88,10 +87,10 @@ const InnovationList = () => {
                     endIcon={<Add />}
                   >
                     Add Innovation
-                  </Button>
+                  </BeamButton>
                 </Link>
               ) : (
-                <Button
+                <BeamButton
                   sx={{
                     backgroundColor: "#7e7e7e",
                     color: COLORS.WHITE,
@@ -106,7 +105,7 @@ const InnovationList = () => {
                   onClick={() => showModal(<Plans role={USER_ROLES.TEACHER} />)}
                 >
                   Unlock Feature
-                </Button>
+                </BeamButton>
               )}
             </Stack>
 

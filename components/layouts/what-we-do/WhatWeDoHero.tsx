@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
@@ -17,6 +16,7 @@ import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import TextReveal from "@/components/animations/TextReveal";
 import BlurText from "@/components/widgets/animation/BlurText";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const pillars = [
   {
@@ -290,8 +290,8 @@ const WhatWeDoHero = () => {
               href="/programs"
               style={{ textDecoration: "none", width: phone ? "100%" : "" }}
             >
-              <Button
-                variant="outlined"
+              <BeamButton
+                variant="contained"
                 sx={{
                   whiteSpace: "nowrap",
                   fontFamily: inter.style.fontFamily,
@@ -315,14 +315,14 @@ const WhatWeDoHero = () => {
                 }}
               >
                 View Programs
-              </Button>
+              </BeamButton>
             </Link>
 
             <Link
               href="/login"
               style={{ textDecoration: "none", width: phone ? "100%" : "" }}
             >
-              <Button
+              <BeamButton
                 variant="outlined"
                 endIcon={
                   <ArrowForwardIcon
@@ -336,7 +336,7 @@ const WhatWeDoHero = () => {
                   fontSize: "13.5px",
                   fontWeight: 700,
                   textTransform: "none",
-                  color: "#9D9DA7",
+                  color: COLORS.WHITE,
                   borderColor: "rgba(255, 255, 255, 0.15)",
                   borderWidth: "1.5px",
                   borderRadius: "100px",
@@ -357,7 +357,7 @@ const WhatWeDoHero = () => {
                 }}
               >
                 Become a Member
-              </Button>
+              </BeamButton>
             </Link>
           </Stack>
         </Stack>

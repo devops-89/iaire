@@ -1,7 +1,8 @@
 import { COLORS } from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const RejectReason = () => {
   const [rejectReason, setRejectReason] = useState("");
@@ -57,7 +58,7 @@ const RejectReason = () => {
         />
       </Box>
 
-      <Button
+      <BeamButton
         sx={{
           backgroundColor: COLORS.PRIMARY_NAVY,
           color: COLORS.WHITE,
@@ -74,7 +75,7 @@ const RejectReason = () => {
         onClick={submitHandler}
       >
         Submit Rejection
-      </Button>
+      </BeamButton>
     </Box>
   );
 };

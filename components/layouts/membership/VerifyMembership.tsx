@@ -1,7 +1,8 @@
 "use client";
 import { inter } from "@/utils/fonts";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const VerifyMembership = () => {
 return (
@@ -34,7 +35,7 @@ return (
             verification of active membership status.
         </Typography>
 
-            <Button
+            <BeamButton
             sx={{
                 mt: 1,
                 background: "#F3F4F6",
@@ -59,7 +60,7 @@ return (
             }}
     >
             Apply for Membership <ArrowForwardIcon className="arrow" sx={{ fontSize: 18,transition:"transform 0.3s ease" }} />
-        </Button>
+        </BeamButton>
 
         </Stack>
 

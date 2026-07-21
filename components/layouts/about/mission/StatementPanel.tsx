@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface StatementPanelProps {
   icon: React.ReactNode;
@@ -67,7 +68,7 @@ const StatementPanel = ({
 
       <Box sx={{ pt: 1 }}>
         <Link href={buttonHref} style={{ textDecoration: "none" }}>
-          <Button
+          <BeamButton
             variant="outlined"
             endIcon={
               <ArrowForwardIcon
@@ -95,7 +96,7 @@ const StatementPanel = ({
             }}
           >
             {buttonText}
-          </Button>
+          </BeamButton>
         </Link>
       </Box>
     </Stack>

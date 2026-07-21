@@ -6,13 +6,11 @@ import { montserrat } from "@/utils/fonts";
 import { ArrowBack } from "@mui/icons-material";
 import {
   Box,
-  Button,
   CircularProgress,
   Divider,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
 
@@ -21,6 +19,7 @@ import InstitutionDetailsCard from "@/components/layouts/dashboard/institution/i
 import OverviewCard from "@/components/layouts/dashboard/institution/innovation-management/components/OverviewCard";
 import ProfileCard from "@/components/layouts/dashboard/institution/innovation-management/components/ProfileCard";
 import TeamInfoCard from "@/components/layouts/dashboard/institution/innovation-management/components/TeamInfoCard";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const InnovationDetails = () => {
   const params = useParams();
@@ -58,7 +57,7 @@ const InnovationDetails = () => {
         <Grid size={{ xs: 12, md: 8 }}>
           <Stack spacing={4}>
             <Box>
-              <Button
+              <BeamButton
                 startIcon={<ArrowBack />}
                 onClick={() => router.back()}
                 sx={{
@@ -70,7 +69,7 @@ const InnovationDetails = () => {
                 }}
               >
                 Back
-              </Button>
+              </BeamButton>
 
               <Stack
                 direction="row"

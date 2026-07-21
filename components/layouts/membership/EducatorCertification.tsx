@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const trainingModules = [
   "Introduction to Innovation",
@@ -192,7 +193,7 @@ const EducatorCertification = () => {
           alignItems="center"
         >
           <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-            <Button
+            <BeamButton
               variant="contained"
               sx={{
                 whiteSpace: "nowrap",
@@ -215,11 +216,11 @@ const EducatorCertification = () => {
               }}
             >
               Apply for Educator Certification
-            </Button>
+            </BeamButton>
           </Link>
 
           <Link href="/contact" style={{ textDecoration: "none" }}>
-            <Button
+            <BeamButton
               variant="outlined"
               sx={{
                 whiteSpace: "nowrap",
@@ -244,11 +245,11 @@ const EducatorCertification = () => {
               }}
             >
               Request Training Schedule
-            </Button>
+            </BeamButton>
           </Link>
 
           <Link href="#educator" style={{ textDecoration: "none" }}>
-            <Button
+            <BeamButton
               variant="outlined"
               endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
               sx={{
@@ -277,7 +278,7 @@ const EducatorCertification = () => {
               }}
             >
               View Teacher Pathway
-            </Button>
+            </BeamButton>
           </Link>
         </Stack>
 

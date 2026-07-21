@@ -1,14 +1,12 @@
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import {
   Box,
-  Button,
   Card,
   Grid,
   MenuItem,
   TextField,
   Typography,
-  InputAdornment,
-} from "@mui/material";
+  InputAdornment} from "@mui/material";
 import React from "react";
 import { useFormik } from "formik";
 import { addStartupValidationSchema } from "@/utils/validationSchema";
@@ -21,6 +19,7 @@ import {
   Person,
 } from "@mui/icons-material";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const AddStartup = () => {
   const formik = useFormik({
@@ -220,7 +219,7 @@ const AddStartup = () => {
             </Grid>
 
             <Grid size={{ xs: 12 }} sx={{ mt: 3, display: "flex", gap: 2 }}>
-              <Button
+              <BeamButton
                 type="submit"
                 variant="contained"
                 sx={{
@@ -239,8 +238,8 @@ const AddStartup = () => {
                 }}
               >
                 Submit Startup
-              </Button>
-              <Button
+              </BeamButton>
+              <BeamButton
                 onClick={() => formik.resetForm()}
                 sx={{
                   color: "rgba(0,0,0,0.5)",
@@ -250,7 +249,7 @@ const AddStartup = () => {
                 }}
               >
                 Reset
-              </Button>
+              </BeamButton>
             </Grid>
           </Grid>
         </form>

@@ -3,7 +3,6 @@
 import React from "react";
 import {
   Box,
-  Button,
   Container,
   Grid,
   Stack,
@@ -17,14 +16,15 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
 import OrbitingSystem from "./OrbitingSystem";
 import TextReveal from "@/components/animations/TextReveal";
+import BeamButton from "@/components/widgets/BeamButton";
 const AboutHero = () => {
   const phone = useMediaQuery("(max-width:600px)");
   return (
     <Box
       id="about"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto" },
+        minHeight: { xs: "auto", md: "auto" },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -156,35 +156,16 @@ const AboutHero = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link href="/membership" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#070C15",
-                      backgroundColor: "#FFFFFF",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.2,
-                      boxShadow: "0 8px 25px rgba(255, 255, 255, 0.12)",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        backgroundColor: "#F3F4F6",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 12px 30px rgba(255, 255, 255, 0.2)",
-                      },
-                    }}
+                    sx={{ width: "100%", whiteSpace: "nowrap" }}
                   >
                     Explore Membership
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -195,30 +176,11 @@ const AboutHero = () => {
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#94A3B8",
-                      borderColor: "rgba(255, 255, 255, 0.15)",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.2,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderColor: "#FFFFFF",
-                        color: "#FFFFFF",
-                        backgroundColor: "rgba(255, 255, 255, 0.03)",
-                        transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
-                      },
+                      color: COLORS.WHITE,
                     }}
                   >
                     Contact IAIRE
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Stack>
 

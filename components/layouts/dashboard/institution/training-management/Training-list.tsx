@@ -28,7 +28,6 @@ import { TRAINING_NOMINATION_RESPONSE } from "@/utils/type";
 import { Lock, MoreVert } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   IconButton,
   MenuItem,
@@ -41,13 +40,13 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Tabs,
-} from "@mui/material";
+  Tabs} from "@mui/material";
 import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
 import InstitutionDashboardLayout from "../Index";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const InstitutionTrainingList = () => {
   const { showModal } = useModal();
@@ -120,7 +119,7 @@ const InstitutionTrainingList = () => {
             />
 
             {/* {isMember ? (
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   color: "#fff",
@@ -137,9 +136,9 @@ const InstitutionTrainingList = () => {
                 onClick={assignTeachers}
               >
                 Assign Teachers
-              </Button>
+              </BeamButton>
             ) : (
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: "#7e7e7e",
                   color: "#fff",
@@ -153,9 +152,9 @@ const InstitutionTrainingList = () => {
                 onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
               >
                 Unlock Feature
-              </Button>
+              </BeamButton>
             )} */}
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: COLORS.PRIMARY_NAVY,
                 color: "#fff",
@@ -172,7 +171,7 @@ const InstitutionTrainingList = () => {
               onClick={assignTeachers}
             >
               Assign Teachers
-            </Button>
+            </BeamButton>
           </Stack>
           <Tabs
             sx={{ mt: 2 }}

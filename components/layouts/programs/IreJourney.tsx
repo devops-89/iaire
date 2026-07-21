@@ -1,7 +1,8 @@
 "use client";
 
 import { inter } from "@/utils/fonts";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const IreJourney = () => {
 return (
@@ -35,7 +36,7 @@ return (
             Join IAIRE and gain access to all our programs, resources, and opportunities
         </Typography>
 
-        <Button
+        <BeamButton
             sx={{
             width: { xs: "auto", md: "296px" },
             height: { xs: "auto", md: "44px" },
@@ -77,7 +78,7 @@ return (
                 →
             </span>
             </Typography>
-        </Button>
+        </BeamButton>
 
         </Stack>
     </Container>

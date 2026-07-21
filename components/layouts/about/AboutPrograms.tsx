@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Card, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 
 // Custom vector SVG icons representing the 6 core programs
 const EducatorCapIcon = () => (
@@ -224,7 +225,7 @@ const AboutPrograms = () => {
           {/* CTA Footer Block */}
           <Box sx={{ pt: 2 }}>
             <Link href="/programs" style={{ textDecoration: "none" }}>
-              <Button
+              <BeamButton
                 variant="contained"
                 sx={{
                   fontFamily: inter.style.fontFamily,
@@ -246,7 +247,7 @@ const AboutPrograms = () => {
                 }}
               >
                 Find the Right Program
-              </Button>
+              </BeamButton>
             </Link>
           </Box>
 

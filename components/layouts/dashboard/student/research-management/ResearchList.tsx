@@ -10,7 +10,6 @@ import { roboto } from "@/utils/fonts";
 import { Add, Lock } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   Chip,
   CircularProgress,
@@ -20,11 +19,11 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
-} from "@mui/material";
+  TableRow} from "@mui/material";
 import moment from "moment";
 import Link from "next/link";
 import React, { useEffect } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const ResearchList = () => {
   const { showModal } = useModal();
@@ -75,7 +74,7 @@ const ResearchList = () => {
               href="/dashboard/student/research-management/add-research"
               style={{ textDecoration: "none" }}
             >
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   color: COLORS.WHITE,
@@ -93,10 +92,10 @@ const ResearchList = () => {
                 endIcon={<Add />}
               >
                 Add Research
-              </Button>
+              </BeamButton>
             </Link>
           ) : (
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: "#7e7e7e",
                 color: COLORS.WHITE,
@@ -114,7 +113,7 @@ const ResearchList = () => {
               onClick={() => showModal(<Plans role={USER_ROLES.STUDENT} />)}
             >
               Unlock Feature
-            </Button>
+            </BeamButton>
           )}
         </Stack>
 

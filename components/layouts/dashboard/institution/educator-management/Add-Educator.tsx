@@ -1,7 +1,6 @@
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import {
   Box,
-  Button,
   Card,
   Grid,
   MenuItem,
@@ -9,8 +8,7 @@ import {
   Typography,
   InputAdornment,
   Autocomplete,
-  CircularProgress,
-} from "@mui/material";
+  CircularProgress} from "@mui/material";
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import { addEducatorValidationSchema } from "@/utils/validationSchema";
@@ -38,6 +36,7 @@ import useSnackbar from "@/store/useSnackbar";
 import { useRouter } from "next/navigation";
 import { useGetPlans } from "@/hooks/common/useGetPlans";
 import PlanCard from "@/components/widgets/PlanCard";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const AddEducatorcomponent = () => {
   const router = useRouter();
@@ -445,7 +444,7 @@ const AddEducatorcomponent = () => {
               ))}
 
             <Grid size={{ xs: 12 }} sx={{ mt: 3, display: "flex", gap: 2 }}>
-              <Button
+              <BeamButton
                 type="submit"
                 variant="contained"
                 disabled={loading}
@@ -463,8 +462,8 @@ const AddEducatorcomponent = () => {
                 }}
               >
                 {loading ? "Adding..." : "Add Educator"}
-              </Button>
-              <Button
+              </BeamButton>
+              <BeamButton
                 onClick={() => formik.resetForm()}
                 sx={{
                   color: "rgba(0,0,0,0.5)",
@@ -474,7 +473,7 @@ const AddEducatorcomponent = () => {
                 }}
               >
                 Reset
-              </Button>
+              </BeamButton>
             </Grid>
           </Grid>
         </form>

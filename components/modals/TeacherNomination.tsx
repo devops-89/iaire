@@ -12,16 +12,15 @@ import { TEACHERVALIDATIONSCHEMA } from "@/utils/validationSchema";
 import {
   Autocomplete,
   Box,
-  Button,
   Grid,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { useFormik } from "formik";
 import moment, { Moment } from "moment";
 import React from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const EducatorNomination = ({
   educatorId,
@@ -160,7 +159,7 @@ const EducatorNomination = ({
             />
           </Grid>
         </Grid>
-        <Button
+        <BeamButton
           sx={{
             border: "1px solid" + COLORS.PRIMARY_NAVY,
             backgroundColor: COLORS.PRIMARY_NAVY,
@@ -182,7 +181,7 @@ const EducatorNomination = ({
           type="submit"
         >
           {loading ? "Submitting..." : "Submit"}
-        </Button>
+        </BeamButton>
       </form>
     </Box>
   );

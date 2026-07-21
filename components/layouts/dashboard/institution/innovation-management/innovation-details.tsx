@@ -1,13 +1,11 @@
 "use client";
 import {
   Box,
-  Button,
   CircularProgress,
   Divider,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { montserrat } from "@/utils/fonts";
@@ -20,6 +18,7 @@ import OverviewCard from "./components/OverviewCard";
 import TeamInfoCard from "./components/TeamInfoCard";
 import DocumentsCard from "./components/DocumentsCard";
 import InstitutionDetailsCard from "./components/InstitutionDetailsCard";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const InnovationDetails = () => {
   const params = useParams();
@@ -57,7 +56,7 @@ const InnovationDetails = () => {
         <Grid size={{ xs: 12, md: 8 }}>
           <Stack spacing={4}>
             <Box>
-              <Button
+              <BeamButton
                 startIcon={<ArrowBack />}
                 onClick={() => router.back()}
                 sx={{
@@ -69,7 +68,7 @@ const InnovationDetails = () => {
                 }}
               >
                 Back
-              </Button>
+              </BeamButton>
 
               <Stack
                 direction="row"

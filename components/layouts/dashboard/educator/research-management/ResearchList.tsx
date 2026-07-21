@@ -10,7 +10,6 @@ import { aloeveraDisplay_medium, roboto } from "@/utils/fonts";
 import { Add, Lock } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   Chip,
   Stack,
@@ -20,12 +19,12 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import moment from "moment";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { Atom } from "react-loading-indicators";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const ResearchList = () => {
   const { showModal } = useModal();
@@ -69,7 +68,7 @@ const ResearchList = () => {
                 href="/dashboard/educator/research-management/add-research"
                 style={{ textDecoration: "none" }}
               >
-                <Button
+                <BeamButton
                   sx={{
                     backgroundColor: COLORS.PRIMARY_NAVY,
                     color: COLORS.WHITE,
@@ -87,10 +86,10 @@ const ResearchList = () => {
                   endIcon={<Add />}
                 >
                   Add Research
-                </Button>
+                </BeamButton>
               </Link>
             ) : (
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: "#7e7e7e",
                   color: COLORS.WHITE,
@@ -105,7 +104,7 @@ const ResearchList = () => {
                 onClick={() => showModal(<Plans role={USER_ROLES.TEACHER} />)}
               >
                 Unlock Feature
-              </Button>
+              </BeamButton>
             )}
           </Stack>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import Image from "next/image";
 import heroImg from "@/public/images/programs/research_mentor.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const competencies = [
   "Research Design",
@@ -294,7 +295,7 @@ const ResearchMentorCertification = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -318,14 +319,14 @@ const ResearchMentorCertification = () => {
                     }}
                   >
                     Become a Research Mentor
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link
                   href="#research-modules"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -351,11 +352,11 @@ const ResearchMentorCertification = () => {
                     }}
                   >
                     View Research Modules
-                  </Button>
+                  </BeamButton>
                 </Link> */}
 
                 {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -390,7 +391,7 @@ const ResearchMentorCertification = () => {
                     }}
                   >
                     Contact Program Team
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

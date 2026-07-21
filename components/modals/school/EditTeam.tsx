@@ -17,15 +17,14 @@ import { addTeamValidationSchema } from "@/utils/validationSchema";
 import {
   Autocomplete,
   Box,
-  Button,
   CircularProgress,
   Grid,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent, useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const EditTeams = ({ value }: { value: TEAM_DETAILS_RESPONSE }) => {
   const { userData, fetchUserData, loading, setUserData } = useGetAllUser();
@@ -206,7 +205,7 @@ const EditTeams = ({ value }: { value: TEAM_DETAILS_RESPONSE }) => {
             />
           </Grid>
           <Grid size={6}>
-            <Button
+            <BeamButton
               onClick={() => formik.handleSubmit()}
               disabled={formik.isSubmitting}
               sx={{
@@ -224,7 +223,7 @@ const EditTeams = ({ value }: { value: TEAM_DETAILS_RESPONSE }) => {
               ) : (
                 "Submit"
               )}
-            </Button>
+            </BeamButton>
           </Grid>
         </Grid>
       </Box>

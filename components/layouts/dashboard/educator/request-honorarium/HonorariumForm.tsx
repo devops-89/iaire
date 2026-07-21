@@ -7,15 +7,14 @@ import { requestHonorariumValidationSchema } from "@/utils/validationSchema";
 import { AccountBalance, Work } from "@mui/icons-material";
 import {
   Autocomplete,
-  Button,
   CircularProgress,
   Grid,
-  TextField,
-} from "@mui/material";
+  TextField} from "@mui/material";
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
 import SectionHeader from "./SectionHeader";
 import { HONORARIUM_CATEGORY } from "@/utils/constant";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const ACHIEVEMENT_MAP: Record<string, string[]> = {
   [CATEGORY.INNOVATION]: ["STARTUP", "PATENT", "OTHER"],
@@ -201,7 +200,7 @@ const HonorariumForm = ({ onSubmitSuccess }: HonorariumFormProps) => {
         ))}
 
         <Grid size={12} sx={{ mt: 3 }}>
-          <Button
+          <BeamButton
             type="submit"
             variant="contained"
             disabled={submitting}
@@ -224,7 +223,7 @@ const HonorariumForm = ({ onSubmitSuccess }: HonorariumFormProps) => {
             }}
           >
             {submitting ? "Submitting..." : "Submit Honorarium Request"}
-          </Button>
+          </BeamButton>
         </Grid>
       </Grid>
     </form>

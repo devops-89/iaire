@@ -21,7 +21,6 @@ import { STUDENT_RESPONSE_PROPS } from "@/utils/type";
 import { Add, Lock, MoreVert } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   Chip,
   FormControl,
@@ -39,13 +38,13 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
 import Plans from "@/components/modals/common/Plans";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const StudentList = () => {
   const { institutionData } = useSignup();
@@ -142,7 +141,7 @@ const StudentList = () => {
           />
           {/* {isMember ? (
             <Link href="/dashboard/institution/student-management/add-student">
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   color: COLORS.WHITE,
@@ -155,10 +154,10 @@ const StudentList = () => {
                 endIcon={<Add />}
               >
                 Add Student
-              </Button>
+              </BeamButton>
             </Link>
           ) : (
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: "#7e7e7e",
                 color: COLORS.WHITE,
@@ -172,11 +171,11 @@ const StudentList = () => {
               onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
             >
               Unlock Feature
-            </Button>
+            </BeamButton>
           )} */}
 
           <Link href="/dashboard/institution/student-management/add-student">
-            <Button
+            <BeamButton
               sx={{
                 backgroundColor: COLORS.PRIMARY_NAVY,
                 color: COLORS.WHITE,
@@ -189,7 +188,7 @@ const StudentList = () => {
               endIcon={<Add />}
             >
               Add Student
-            </Button>
+            </BeamButton>
           </Link>
         </Stack>
         <Box sx={{ mt: 2 }}>

@@ -14,12 +14,11 @@ import {
   Grid,
   Typography,
   Stack,
-  Button,
   useTheme,
-  useMediaQuery,
-} from "@mui/material";
+  useMediaQuery} from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const ROLES = [
   {
@@ -200,7 +199,7 @@ const RoleSelectionLayout = () => {
         </Grid>
 
         <Box sx={{ mt: 10, textAlign: "center" }}>
-          <Button
+          <BeamButton
             variant="contained"
             disabled={!selectedRole}
             onClick={() => {
@@ -227,7 +226,7 @@ const RoleSelectionLayout = () => {
             }}
           >
             Continue as {selectedRole ? selectedRole : "Selection"}
-          </Button>
+          </BeamButton>
 
           <Typography
             sx={{

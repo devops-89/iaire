@@ -62,6 +62,10 @@ const EarthModel = () => {
   // Normalize base scale on load (mesh-only bounding box to ignore helpers/empty nodes)
   useEffect(() => {
     if (scene) {
+      // Reset scale before measuring to fix caching issues when remounting
+      scene.scale.set(1, 1, 1);
+      scene.updateMatrixWorld(true);
+
       const box = new THREE.Box3();
       let hasMesh = false;
       scene.traverse((child) => {
@@ -79,8 +83,8 @@ const EarthModel = () => {
       }
 
       const maxDim = Math.max(size.x, size.y, size.z);
-      // Target a baseline size of 2.5 units
-      setBaseScale(2.5 / maxDim);
+      // Target a baseline size of 4.0 units
+      setBaseScale(3.0 / maxDim);
     }
   }, [scene]);
 
@@ -171,7 +175,13 @@ const EarthModel = () => {
   );
 };
 
-const ThreeEarth = ({ height = "500px", cameraZ = 4.2 }: { height?: any; cameraZ?: number }) => {
+const ThreeEarth = ({
+  height = "500px",
+  cameraZ = 4.2,
+}: {
+  height?: any;
+  cameraZ?: number;
+}) => {
   return (
     <Box
       sx={{

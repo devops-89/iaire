@@ -1,24 +1,25 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
 import Image from "next/image";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import heroImg from "@/public/images/get-involved/get_involved_hero.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const GetInvolvedHero = () => {
   return (
     <Box
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto" },
+        minHeight: { xs: "auto", md: "auto" },
         display: "flex",
         alignItems: "center",
-        pt: { xs: "120px", md: "100px" },
-        pb: { xs: "60px", md: "40px" },
+        pt: { xs: "120px", md: "150px" },
+        pb: { xs: "60px", md: "130px" },
         background: "linear-gradient(135deg, #090A0E 0%, #12131A 100%)",
         color: COLORS.WHITE,
         position: "relative",
@@ -87,9 +88,11 @@ const GetInvolvedHero = () => {
       >
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
           {/* Left Column: Heading Copy */}
-          <Grid size={{ xs: 12, md: 6.5 }}
+          <Grid
+            size={{ xs: 12, md: 6.5 }}
             data-aos="fade-right"
-            data-aos-duration="800">
+            data-aos-duration="800"
+          >
             <Stack
               spacing={3.25}
               sx={{ textAlign: { xs: "center", md: "left" } }}
@@ -165,7 +168,7 @@ const GetInvolvedHero = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -174,8 +177,8 @@ const GetInvolvedHero = () => {
                       fontSize: "13.5px",
                       fontWeight: 700,
                       textTransform: "none",
-                      color: "#090A0E",
-                      backgroundColor: "#FFFFFF",
+                      color: COLORS.WHITE,
+                      backgroundColor: COLORS.PRIMARY_BLUE,
                       borderRadius: "100px",
                       px: 3.5,
                       py: 1.2,
@@ -189,11 +192,11 @@ const GetInvolvedHero = () => {
                     }}
                   >
                     Become a Member
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -218,11 +221,11 @@ const GetInvolvedHero = () => {
                     }}
                   >
                     Partner With IAIRE
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
                     sx={{
@@ -252,7 +255,7 @@ const GetInvolvedHero = () => {
                     }}
                   >
                     Volunteer as a Mentor
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

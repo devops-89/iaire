@@ -12,13 +12,12 @@ import {
   Tabs,
   Typography,
   TextField,
-  Button,
-  Autocomplete,
-} from "@mui/material";
+  Autocomplete} from "@mui/material";
 import moment from "moment";
 import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import BeamButton from "@/components/widgets/BeamButton";
 import {
   useSelfNominateTeacher,
   useTrainingList,
@@ -199,7 +198,7 @@ const TeacherSelfNomination = ({ batchId }: { batchId?: string }) => {
                 })}
 
                 <Grid size={12}>
-                  <Button
+                  <BeamButton
                     type="submit"
                     sx={{
                       backgroundColor: COLORS.PRIMARY_NAVY,
@@ -212,7 +211,7 @@ const TeacherSelfNomination = ({ batchId }: { batchId?: string }) => {
                     }}
                   >
                     Submit
-                  </Button>
+                  </BeamButton>
                 </Grid>
               </Grid>
             </form>

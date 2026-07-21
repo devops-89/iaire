@@ -3,19 +3,18 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import SecurityIcon from "@mui/icons-material/SecurityOutlined";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const guidanceAreas = [
   "Patentability assessment & novelty evaluation",
@@ -189,7 +188,7 @@ const IpResearchSupport = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link href="/programs" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -213,11 +212,11 @@ const IpResearchSupport = () => {
                     }}
                   >
                     Explore Research Support
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link href="/programs" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -243,11 +242,11 @@ const IpResearchSupport = () => {
                     }}
                   >
                     Explore Research Support
-                  </Button>
+                  </BeamButton>
                 </Link> */}
 
                 {/* <Link href="/what-we-do" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
                     sx={{
@@ -277,7 +276,7 @@ const IpResearchSupport = () => {
                     }}
                   >
                     View Pathways
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

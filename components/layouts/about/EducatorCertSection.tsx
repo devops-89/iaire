@@ -3,17 +3,16 @@
 import React from "react";
 import {
   Box,
-  Button,
   Container,
   Grid,
   Typography,
   Stack,
-  Card,
-} from "@mui/material";
+  Card} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const OrangeBullet = () => (
   <Box
@@ -163,7 +162,7 @@ const EducatorCertSection = () => {
 
               <Box sx={{ pt: 1.5, display: { lg: "block", xs: "none" } }}>
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       fontFamily: inter.style.fontFamily,
@@ -185,7 +184,7 @@ const EducatorCertSection = () => {
                     }}
                   >
                     Become a Certified Innovation Educator
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>
@@ -255,7 +254,7 @@ const EducatorCertSection = () => {
           </Grid>
           <Box sx={{ pt: 1.5, display: { lg: "none", xs: "block" } }}>
             <Link href="/login" style={{ textDecoration: "none" }}>
-              <Button
+              <BeamButton
                 variant="contained"
                 sx={{
                   fontFamily: inter.style.fontFamily,
@@ -277,7 +276,7 @@ const EducatorCertSection = () => {
                 }}
               >
                 Become a Certified Innovation Educator
-              </Button>
+              </BeamButton>
             </Link>
           </Box>
         </Grid>

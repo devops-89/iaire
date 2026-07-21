@@ -5,7 +5,6 @@ import { inter } from "@/utils/fonts";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
@@ -15,6 +14,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const pillars = [
   "Credibility of peer standards",
@@ -33,11 +33,11 @@ const LegalStanding = () => {
     <Box
       id="legal"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto" },
+        minHeight: { xs: "auto", md: "auto" },
         display: "flex",
         alignItems: "center",
-        pt: { xs: "100px", md: "85px" },
+        pt: { xs: "100px", md: "80px" },
         pb: { xs: "60px", md: "35px" },
         backgroundColor: "#F8F9FC",
         position: "relative",
@@ -247,7 +247,7 @@ const LegalStanding = () => {
             href="/membership"
             style={{ textDecoration: "none", width: phone ? "100%" : "" }}
           >
-            <Button
+            <BeamButton
               variant="contained"
               sx={{
                 whiteSpace: "nowrap",
@@ -271,14 +271,14 @@ const LegalStanding = () => {
               fullWidth={phone ? true : false}
             >
               View Pathways
-            </Button>
+            </BeamButton>
           </Link>
 
           <Link
             href="/contact"
             style={{ textDecoration: "none", width: phone ? "100%" : "" }}
           >
-            <Button
+            <BeamButton
               variant="outlined"
               endIcon={
                 <ArrowForwardIcon
@@ -313,7 +313,7 @@ const LegalStanding = () => {
               fullWidth={phone ? true : false}
             >
               Contact IAIRE
-            </Button>
+            </BeamButton>
           </Link>
         </Stack>
       </Container>

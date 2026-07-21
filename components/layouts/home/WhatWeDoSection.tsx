@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 const activities = [
   "Standards development for innovation, research, and entrepreneurship education",
   "Certification frameworks for schools, educators, and students",
@@ -137,7 +138,7 @@ const WhatWeDoSection = () => {
                     href="/about"
                     style={{ textDecoration: "none", width: "100%" }}
                   >
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         width: "100%",
@@ -160,14 +161,14 @@ const WhatWeDoSection = () => {
                       }}
                     >
                       Explore Our Work
-                    </Button>
+                    </BeamButton>
                   </Link>
 
                   <Link
                     href="/programs"
                     style={{ textDecoration: "none", width: "100%" }}
                   >
-                    <Button
+                    <BeamButton
                       variant="outlined"
                       endIcon={
                         <ArrowForwardIcon
@@ -201,7 +202,7 @@ const WhatWeDoSection = () => {
                       }}
                     >
                       View Programs
-                    </Button>
+                    </BeamButton>
                   </Link>
                 </Stack>
               </Box>
@@ -280,7 +281,7 @@ const WhatWeDoSection = () => {
                     href="/about"
                     style={{ textDecoration: "none", width: "100%" }}
                   >
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         width: "100%",
@@ -304,14 +305,14 @@ const WhatWeDoSection = () => {
                       fullWidth
                     >
                       Explore Our Work
-                    </Button>
+                    </BeamButton>
                   </Link>
 
                   <Link
                     href="/programs"
                     style={{ textDecoration: "none", width: "100%" }}
                   >
-                    <Button
+                    <BeamButton
                       variant="outlined"
                       endIcon={
                         <ArrowForwardIcon
@@ -346,7 +347,7 @@ const WhatWeDoSection = () => {
                       fullWidth
                     >
                       View Programs
-                    </Button>
+                    </BeamButton>
                   </Link>
                 </Stack>
               </Box>

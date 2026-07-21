@@ -3,13 +3,11 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -18,6 +16,7 @@ import Image from "next/image";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import educatorDevImg from "@/public/images/what-we-do/mentor_research.jpeg";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const trainingAreas = [
   "Innovation methodologies & design thinking",
@@ -223,7 +222,7 @@ const EducatorDevelopment = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -247,14 +246,14 @@ const EducatorDevelopment = () => {
                     }}
                   >
                     Become a Certified Mentor
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link
                   href="/membership#educator"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -280,11 +279,11 @@ const EducatorDevelopment = () => {
                     }}
                   >
                     Explore Membership
-                  </Button>
+                  </BeamButton>
                 </Link> */}
 
                 {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
                     sx={{
@@ -314,7 +313,7 @@ const EducatorDevelopment = () => {
                     }}
                   >
                     Request Training
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

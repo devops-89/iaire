@@ -3,14 +3,12 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
-  Button,
   Grid,
   Typography,
   Card,
   Container,
   Divider,
-  CircularProgress,
-} from "@mui/material";
+  CircularProgress} from "@mui/material";
 import { useSignup } from "@/store/useSignup";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
@@ -21,6 +19,7 @@ import useSnackbar from "@/store/useSnackbar";
 import { useModal } from "@/store/useModal";
 import VerifyOtp from "@/components/modals/common/VerifyOtp";
 import { InstitutionInfo } from "@/utils/type";
+import BeamButton from "@/components/widgets/BeamButton";
 const InstitutionReview = () => {
   const router = useRouter();
   const { institutionData } = useSignup();
@@ -255,7 +254,7 @@ const InstitutionReview = () => {
           </Box>
 
           <Box sx={{ mt: 6, display: "flex", gap: 3 }}>
-            <Button
+            <BeamButton
               fullWidth
               variant="outlined"
               startIcon={<ArrowBack />}
@@ -273,8 +272,8 @@ const InstitutionReview = () => {
               }}
             >
               Back to Edit
-            </Button>
-            <Button
+            </BeamButton>
+            <BeamButton
               fullWidth
               variant="contained"
               endIcon={<Payment />}
@@ -297,7 +296,7 @@ const InstitutionReview = () => {
               ) : (
                 "Verify & Confirm"
               )}
-            </Button>
+            </BeamButton>
           </Box>
         </Card>
       </Container>

@@ -3,13 +3,11 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -17,6 +15,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import Image from "next/image";
 import heroImg from "@/public/images/get-involved/chapter_launch_scene.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const supportAreas = [
   "Teacher training",
@@ -155,7 +154,7 @@ const ForChapters = () => {
                   href="/signup/role-selection"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -179,11 +178,11 @@ const ForChapters = () => {
                     }}
                   >
                     Start a Chapter
-                  </Button>
+                  </BeamButton>
                 </Link> */}
 
                 {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -209,11 +208,11 @@ const ForChapters = () => {
                     }}
                   >
                     Partner With IAIRE
-                  </Button>
+                  </BeamButton>
                 </Link> */}
 
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     endIcon={
                       <ArrowForwardIcon
                         className="arrow-icon"
@@ -243,7 +242,7 @@ const ForChapters = () => {
                     }}
                   >
                     Contact Us
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Stack>
             </Stack>

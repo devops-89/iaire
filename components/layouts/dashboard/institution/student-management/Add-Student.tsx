@@ -3,7 +3,6 @@ import Breadcrumb from "@/components/widgets/Breadcrumb";
 import {
   Autocomplete,
   Box,
-  Button,
   Card,
   CircularProgress,
   Grid,
@@ -11,8 +10,7 @@ import {
   InputAdornment,
   Stack,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import React, { useState } from "react";
 import InstitutionDashboardLayout from "../Index";
 import { GENDER, MEMBER_TYPE } from "@/utils/constant";
@@ -28,6 +26,7 @@ import { montserrat, roboto } from "@/utils/fonts";
 import { useAddStudent } from "@/hooks/school/useStudent";
 import { INSTITUTION_ADD_STUDENT_REQUEST } from "@/utils/type";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const AddStudentComponent = () => {
   const { createLoading, createStudent } = useAddStudent();
@@ -528,7 +527,7 @@ const AddStudentComponent = () => {
               />
             </Grid> */}
             <Grid size={12}>
-              <Button
+              <BeamButton
                 sx={{
                   width: 300,
                   backgroundColor: COLORS.PRIMARY_NAVY,
@@ -553,7 +552,7 @@ const AddStudentComponent = () => {
                 ) : (
                   "Submit"
                 )}
-              </Button>
+              </BeamButton>
             </Grid>
           </Grid>
         </form>

@@ -3,13 +3,14 @@
 import { HEADER_CONTENT } from "@/utils/constant";
 import { COLORS } from "@/utils/enum";
 import { newBlack_medium } from "@/utils/fonts";
-import { Box, Button, Container, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import logo from "@/images/logo/iaire_logo.png";
 import NavItem from "@/components/widgets/NavItem";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const Header = () => {
   const pathname = usePathname();
@@ -67,7 +68,7 @@ const Header = () => {
             {/* Action Buttons */}
             <Stack direction="row" alignItems={"center"} spacing={2}>
               <Link href="/login" style={{ textDecoration: "none" }}>
-                <Button
+                <BeamButton
                   sx={{
                     fontSize: 14,
                     fontWeight: 600,
@@ -86,14 +87,14 @@ const Header = () => {
                   }}
                 >
                   Member Login
-                </Button>
+                </BeamButton>
               </Link>
 
               <Link
                 href="/signup/role-selection"
                 style={{ textDecoration: "none" }}
               >
-                <Button
+                <BeamButton
                   variant="outlined"
                   sx={{
                     fontSize: 14,
@@ -115,7 +116,7 @@ const Header = () => {
                   }}
                 >
                   Join IAIRE
-                </Button>
+                </BeamButton>
               </Link>
             </Stack>
           </Stack>

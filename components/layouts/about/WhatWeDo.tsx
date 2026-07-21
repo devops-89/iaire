@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Card, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Card, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 // Custom vector SVG icons representing the 9 support categories
 const FrameworkIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -288,7 +289,7 @@ const WhatWeDo = () => {
 
               <Grid size={{ xs: 12, md: 4 }} sx={{ display: "flex", justifyContent: { xs: "flex-start", md: "flex-end" } }}>
                 <Link href="/programs" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       fontFamily: inter.style.fontFamily,
@@ -309,7 +310,7 @@ const WhatWeDo = () => {
                     }}
                   >
                     Explore IAIRE Programs
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Grid>
             </Grid>

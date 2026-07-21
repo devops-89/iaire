@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const OrangeCheck = () => (
   <Box
@@ -196,7 +197,7 @@ const IndiaSection = () => {
 
               <Box sx={{ pt: 1.5 }}>
                 <Link href="/chapters/india">
-                  <Button
+                  <BeamButton
                     sx={{
                       fontFamily: inter.style.fontFamily,
                       fontSize: "14px",
@@ -216,7 +217,7 @@ const IndiaSection = () => {
                     }}
                   >
                     Visit IAIRE India Chapter
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>

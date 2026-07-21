@@ -2,7 +2,6 @@
 import {
   Avatar,
   Box,
-  Button,
   Card,
   CardContent,
   Chip,
@@ -14,8 +13,7 @@ import {
   ListItemAvatar,
   ListItemText,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { roboto, montserrat, inter } from "@/utils/fonts";
@@ -36,6 +34,7 @@ import {
 } from "@mui/icons-material";
 import ProfileCard from "./components/Profile-Card";
 import { EDUCATOR_DETAILS_RESPONSE } from "@/utils/type";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const EducatorDetails = () => {
   const params = useParams();
@@ -73,7 +72,7 @@ const EducatorDetails = () => {
         <Grid size={{ xs: 12, md: 8 }}>
           <Stack spacing={4}>
             <Box>
-              <Button
+              <BeamButton
                 startIcon={<ArrowBack />}
                 onClick={() => router.back()}
                 sx={{
@@ -85,7 +84,7 @@ const EducatorDetails = () => {
                 }}
               >
                 Back to Educator Management
-              </Button>
+              </BeamButton>
 
               <Stack
                 direction="row"

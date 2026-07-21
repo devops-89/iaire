@@ -6,7 +6,6 @@ import {
   Typography,
   Card,
   Grid,
-  Button,
   Tabs,
   Tab,
   Stack,
@@ -18,8 +17,7 @@ import {
   TableCell,
   TableBody,
   CircularProgress,
-  Alert,
-} from "@mui/material";
+  Alert} from "@mui/material";
 import {
   CreditCard,
   CheckCircle,
@@ -40,6 +38,7 @@ import { useGetAllResearch } from "@/hooks/school/useResearch";
 import moment from "moment";
 import { useModal } from "@/store/useModal";
 import Plans from "@/components/modals/common/Plans";
+import BeamButton from "@/components/widgets/BeamButton";
 
 // Design Styling Helpers
 const glassCardStyle = {
@@ -427,7 +426,7 @@ const MembershipManagement = () => {
                         <Chip label="UNPAID" color="warning" sx={{ fontWeight: 800 }} />
                       </Stack>
 
-                      <Button
+                      <BeamButton
                         fullWidth
                         variant="contained"
                         sx={{
@@ -448,7 +447,7 @@ const MembershipManagement = () => {
                         onClick={() => showModal(<Plans role={USER_ROLES.STUDENT} />)}
                       >
                         Pay Dues & Activate Membership
-                    </Button>
+                    </BeamButton>
                     </Box>
                   </Stack>
                 </Card>
@@ -474,7 +473,7 @@ const MembershipManagement = () => {
                     >
                       Download your official IAIRE Membership Certificate to showcase your academic standing and credentials.
                     </Typography>
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         background: goldGradient,
@@ -493,7 +492,7 @@ const MembershipManagement = () => {
                       onClick={handleDownloadCertificate}
                     >
                       Download Membership Certificate
-                    </Button>
+                    </BeamButton>
                   </Stack>
                 </Card>
               )}

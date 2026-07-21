@@ -2,20 +2,19 @@ import React from "react";
 import {
   Avatar,
   Box,
-  Button,
   Card,
   CardContent,
   Chip,
   Divider,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { Lightbulb } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { montserrat } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import { TEAM_DETAILS_RESPONSE } from "@/utils/type";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface TeamInnovationsCardProps {
   teamDetails: TEAM_DETAILS_RESPONSE;
@@ -130,7 +129,7 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
                     </Grid>
 
                     <Grid size={{ xs: 12, sm: 3 }} sx={{ textAlign: { xs: "left", sm: "right" } }}>
-                      <Button
+                      <BeamButton
                         variant="outlined"
                         size="small"
                         onClick={() =>
@@ -150,7 +149,7 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
                         }}
                       >
                         View Details
-                      </Button>
+                      </BeamButton>
                     </Grid>
                   </Grid>
                 </Box>

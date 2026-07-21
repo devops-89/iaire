@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import resources from "@/images/about/resources.jpeg";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 const OrangeCheck = () => (
   <Box
     sx={{
@@ -80,9 +81,11 @@ const AboutResourcesSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
           {/* Left Column: Heading, Available Resources Grid & Copy */}
-          <Grid size={{ xs: 12, md: 6 }}
+          <Grid
+            size={{ xs: 12, md: 6 }}
             data-aos="fade-right"
-            data-aos-duration="800">
+            data-aos-duration="800"
+          >
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
                 <Box
@@ -206,37 +209,40 @@ const AboutResourcesSection = () => {
               </Typography>
 
               <Box sx={{ pt: 1.5 }}>
-                <Link href="/resources"></Link>
-                <Button
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#FFFFFF",
-                    backgroundColor: "#1B365D",
-                    borderRadius: "30px",
-                    p: "12px 28px",
-                    boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#122744",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
-                    },
-                  }}
-                >
-                  Visit the Resource Library
-                </Button>
+                <Link href="/resources">
+                  <BeamButton
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#1B365D",
+                      borderRadius: "30px",
+                      p: "12px 28px",
+                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        backgroundColor: "#122744",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                      },
+                    }}
+                  >
+                    Visit the Resource Library
+                  </BeamButton>
+                </Link>
               </Box>
             </Stack>
           </Grid>
 
           {/* Right Column: Resource Library Coded Illustration */}
-          <Grid size={{ xs: 12, md: 6 }}
+          <Grid
+            size={{ xs: 12, md: 6 }}
             data-aos="fade-left"
             data-aos-duration="800"
-            data-aos-delay="150">
+            data-aos-delay="150"
+          >
             <Box
               sx={{
                 position: "relative",

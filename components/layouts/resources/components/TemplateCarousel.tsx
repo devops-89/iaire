@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
-import { Box, Card, Stack, Typography, Button, IconButton } from "@mui/material";
+import { Box, Card, Stack, Typography, IconButton } from "@mui/material";
 import { AccessTime, CheckCircleOutline, Download, ArrowBack, ArrowForward } from "@mui/icons-material";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
 import { ResourceTemplate } from "./ResourceData";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface Props {
   items: ResourceTemplate[];
@@ -233,7 +234,7 @@ const TemplateCarousel: React.FC<Props> = ({ items, bgColor }) => {
 
             <Box sx={{ px: 3, pb: 2.5, mt: "auto" }}>
               <Link href="/login">
-                <Button
+                <BeamButton
                   variant="contained"
                   fullWidth
                   size="small"
@@ -254,7 +255,7 @@ const TemplateCarousel: React.FC<Props> = ({ items, bgColor }) => {
                   }}
                 >
                   Download Template
-                </Button>
+                </BeamButton>
               </Link>
             </Box>
           </Card>

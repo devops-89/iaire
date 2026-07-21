@@ -16,7 +16,6 @@ import {
   Autocomplete,
   Avatar,
   Box,
-  Button,
   Card,
   Container,
   FormHelperText,
@@ -25,8 +24,7 @@ import {
   InputAdornment,
   MenuItem,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { useFormik } from "formik";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import { useRouter } from "next/navigation";
@@ -36,6 +34,7 @@ import { useBoardByCountry } from "@/hooks/common/useGetBoardByCountry";
 import SignupStepper from "../SignupStepper";
 import { useInstitutionByBoard } from "@/hooks/common/getInstitutionByBoard";
 import { useMentorSignup } from "@/hooks/mentor/useMentorSignup";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const EducatorSignup = () => {
   const router = useRouter();
@@ -223,7 +222,7 @@ const EducatorSignup = () => {
                     >
                       <CloudUpload sx={{ width: 60, height: 60 }} />
                     </Avatar>
-                    <Button
+                    <BeamButton
                       variant="text"
                       color="primary"
                       component="label"
@@ -244,7 +243,7 @@ const EducatorSignup = () => {
                           }
                         }}
                       />
-                    </Button>
+                    </BeamButton>
                     <FormHelperText
                       sx={{
                         fontSize: 12,
@@ -590,7 +589,7 @@ const EducatorSignup = () => {
                 </Grid>
 
                 <Grid size={{ xs: 12 }} sx={{ mt: 2 }}>
-                  <Button
+                  <BeamButton
                     type="submit"
                     variant="contained"
                     sx={{
@@ -610,7 +609,7 @@ const EducatorSignup = () => {
                     }}
                   >
                     Review Profile
-                  </Button>
+                  </BeamButton>
                 </Grid>
               </Grid>
             </form>

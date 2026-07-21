@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
 import heroImg from "@/public/images/membership/membership.jpg";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const MemberHero = () => {
   return (
@@ -69,9 +70,11 @@ const MemberHero = () => {
       >
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
           {/* Left Column: Title, Copy, and CTA Buttons */}
-          <Grid size={{ xs: 12, md: 6.5 }}
+          <Grid
+            size={{ xs: 12, md: 6.5 }}
             data-aos="fade-right"
-            data-aos-duration="800">
+            data-aos-duration="800"
+          >
             <Stack spacing={4} sx={{ width: "100%" }}>
               {/* Badge */}
               <Box
@@ -163,67 +166,27 @@ const MemberHero = () => {
                 alignItems="center"
               >
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#0B1528",
-                      backgroundColor: COLORS.WHITE,
-                      borderRadius: "100px",
-                      px: 4.5,
-                      py: 1.4,
-                      boxShadow: "0 8px 25px rgba(255, 255, 255, 0.1)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#F1F5F9",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 12px 30px rgba(255, 255, 255, 0.2)",
-                      },
-                    }}
-                  >
+                  <BeamButton variant="contained" sx={{ whiteSpace: "nowrap" }}>
                     Become a Member
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
                         className="arrow-icon"
-                        sx={{ transition: "transform 0.25s ease" }}
+                        sx={{
+                          transition: "transform 0.25s ease",
+                          color: COLORS.WHITE,
+                        }}
                       />
                     }
-                    sx={{
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: COLORS.WHITE,
-                      borderColor: "rgba(255, 255, 255, 0.3)",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 4,
-                      py: 1.4,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: COLORS.WHITE,
-                        backgroundColor: "rgba(255, 255, 255, 0.08)",
-                        transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
-                      },
-                    }}
+                    sx={{ whiteSpace: "nowrap", color: COLORS.WHITE }}
                   >
                     Contact Membership Team
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Stack>
             </Stack>

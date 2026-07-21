@@ -1,9 +1,10 @@
 import React from "react";
-import { Box, Button, Card, CardContent, Divider, Stack, Typography } from "@mui/material";
+import { Box, Card, CardContent, Divider, Stack, Typography } from "@mui/material";
 import { InsertDriveFile, Download } from "@mui/icons-material";
 import { roboto, montserrat } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import { INNOVATION_RESPONSE_DATA_PROPS } from "@/utils/type";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface DocumentsCardProps {
   innovationDetails: INNOVATION_RESPONSE_DATA_PROPS;
@@ -71,7 +72,7 @@ const DocumentsCard = ({ innovationDetails }: DocumentsCardProps) => {
                 </Typography>
               </Box>
             </Stack>
-            <Button
+            <BeamButton
               startIcon={<Download />}
               variant="contained"
               href={
@@ -89,7 +90,7 @@ const DocumentsCard = ({ innovationDetails }: DocumentsCardProps) => {
               }}
             >
               Download
-            </Button>
+            </BeamButton>
           </Box>
         </Box>
       </CardContent>

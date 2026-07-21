@@ -2,7 +2,6 @@ import React from "react";
 import {
   Avatar,
   Box,
-  Button,
   Card,
   CardContent,
   CircularProgress,
@@ -13,13 +12,13 @@ import {
   ListItemAvatar,
   ListItemText,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { Lightbulb } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { montserrat } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import { TEAM_DETAILS_RESPONSE } from "@/utils/type";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface TeamInfoCardProps {
   teamLoading: boolean;
@@ -219,7 +218,7 @@ const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInf
                       </Stack>
 
                       {!isCurrent && (
-                        <Button
+                        <BeamButton
                           size="small"
                           onClick={() =>
                             router.push(
@@ -234,7 +233,7 @@ const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInf
                           }}
                         >
                           View
-                        </Button>
+                        </BeamButton>
                       )}
                     </ListItem>
                   );

@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
 import heroImg from "@/public/images/get-involved/mentor_training_scene.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const ForEducators = () => {
   return (
@@ -229,7 +230,7 @@ const ForEducators = () => {
                   href="/signup/role-selection"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -253,11 +254,11 @@ const ForEducators = () => {
                     }}
                   >
                     Apply for Mentor Certification
-                  </Button>
+                  </BeamButton>
                 </Link> */}
 
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
@@ -280,14 +281,14 @@ const ForEducators = () => {
                     }}
                   >
                     Join as an Educator Member
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link
                   href="/membership#educator"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -322,7 +323,7 @@ const ForEducators = () => {
                     }}
                   >
                     View Teacher Benefits
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

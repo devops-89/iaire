@@ -3,19 +3,18 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEventsOutlined";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const areas = [
   "Certified Institutional Member",
@@ -157,7 +156,7 @@ const StandardsCertification = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link href="/membership" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -181,7 +180,7 @@ const StandardsCertification = () => {
                     }}
                   >
                     View Membership Tiers
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Stack>
             </Stack>

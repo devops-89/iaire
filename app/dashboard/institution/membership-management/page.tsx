@@ -6,7 +6,6 @@ import {
   Typography,
   Card,
   Grid,
-  Button,
   Tabs,
   Tab,
   Stack,
@@ -19,8 +18,7 @@ import {
   TableBody,
   CircularProgress,
   Alert,
-  Divider,
-} from "@mui/material";
+  Divider} from "@mui/material";
 import {
   CreditCard,
   CheckCircle,
@@ -41,6 +39,7 @@ import { useGetAllUser } from "@/hooks/common/useGetAllUser";
 import moment from "moment";
 import { useModal } from "@/store/useModal";
 import Plans from "@/components/modals/common/Plans";
+import BeamButton from "@/components/widgets/BeamButton";
 
 // Premium Glassmorphic Design Helpers
 const glassCardStyle = {
@@ -385,7 +384,7 @@ const InstitutionMembershipManagement = () => {
                   </Typography>
 
                   <Box sx={{ mt: 1 }}>
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         background: goldGradient,
@@ -404,7 +403,7 @@ const InstitutionMembershipManagement = () => {
                       onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
                     >
                       Pay Dues & Activate Institution
-                    </Button>
+                    </BeamButton>
                   </Box>
                 </Stack>
               </Card>
@@ -420,7 +419,7 @@ const InstitutionMembershipManagement = () => {
                   <Typography variant="body2" sx={{ color: "text.secondary", fontFamily: montserrat.style.fontFamily }}>
                     Download your official IAIRE Accreditation Certificate to display in your institution and academic publications.
                   </Typography>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       background: goldGradient,
@@ -438,7 +437,7 @@ const InstitutionMembershipManagement = () => {
                     onClick={handleDownloadCertificate}
                   >
                     Download Accreditation Certificate
-                  </Button>
+                  </BeamButton>
                 </Stack>
               </Card>
             )}

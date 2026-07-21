@@ -6,15 +6,14 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   Autocomplete,
   Avatar,
-  Button,
   Grid,
   IconButton,
   InputAdornment,
-  TextField,
-} from "@mui/material";
+  TextField} from "@mui/material";
 import { FormikProps } from "formik";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface PERSONAL_INFORMATION_PROPS {
   formik: FormikProps<UPDATE_PROFILE_FORM_PROPS>;
@@ -87,7 +86,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           hidden
           onChange={handleImageChange}
         />
-        <Button
+        <BeamButton
           onClick={() => fileInputRef.current?.click()}
           sx={{
             textTransform: "none",
@@ -97,7 +96,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           }}
         >
           Upload Profile Image
-        </Button>
+        </BeamButton>
       </Grid>
       <Grid size={6}>
         <TextField

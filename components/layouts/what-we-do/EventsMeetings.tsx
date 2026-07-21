@@ -3,19 +3,18 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import EventAvailableIcon from "@mui/icons-material/EventAvailableOutlined";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const platformGoals = [
   "Share innovation and research outcomes",
@@ -175,7 +174,7 @@ const EventsMeetings = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link href="/programs" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -199,11 +198,11 @@ const EventsMeetings = () => {
                     }}
                   >
                     View Events
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -229,11 +228,11 @@ const EventsMeetings = () => {
                     }}
                   >
                     Submit Member News
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -268,7 +267,7 @@ const EventsMeetings = () => {
                     }}
                   >
                     Host a Session
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

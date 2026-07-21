@@ -3,13 +3,11 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -17,22 +15,26 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
 import StarBorderIcon from "@mui/icons-material/StarBorderOutlined";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const pathways = [
   {
     title: "Student Scholar Designation",
     desc: "Recognizing high school and college students demonstrating innovation novelty, patent filings, or research publication.",
-    icon: <SchoolIcon sx={{ fontSize: 20 }} />,
+    icon: <SchoolIcon sx={{ fontSize: 24 }} />,
+    color: "#3B82F6",
   },
   {
     title: "Associate Fellow Pathway",
     desc: "Awarded to certified mentors and professionals with demonstrated mentoring outcomes, research guidance, and curriculum leadership.",
-    icon: <StarBorderIcon sx={{ fontSize: 20 }} />,
+    icon: <StarBorderIcon sx={{ fontSize: 24 }} />,
+    color: "#8B5CF6",
   },
   {
     title: "Fellow of the Academy (FIAIRE)",
     desc: "The highest professional distinction, representing sustained innovation influence, peer-review governance, and advisory board leadership.",
-    icon: <WorkspacePremiumIcon sx={{ fontSize: 20 }} />,
+    icon: <WorkspacePremiumIcon sx={{ fontSize: 24 }} />,
+    color: "#F59E0B",
   },
 ];
 
@@ -47,27 +49,28 @@ const AwardsFellowships = () => {
         minHeight: { xs: "auto", md: "auto", xl: "auto" },
         display: "flex",
         alignItems: "center",
-        pt: { xs: "100px", md: "85px" },
-        pb: { xs: "60px", md: "35px" },
-        backgroundColor: "#F8F9FC",
+        pt: { xs: "100px", md: "110px" },
+        pb: { xs: "80px", md: "90px" },
+        background: `linear-gradient(135deg, ${COLORS.NAVY_GRADIENT_START} 0%, ${COLORS.NAVY_GRADIENT_END} 100%)`,
         position: "relative",
         overflow: "hidden",
         boxSizing: "border-box",
-        borderBottom: "1px solid rgba(0, 0, 0, 0.05)",
+        borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+        borderBottom: "1px solid rgba(255, 255, 255, 0.05)",
       }}
     >
       {/* Background decoration glows */}
       <Box
         sx={{
           position: "absolute",
-          top: "-10%",
-          right: "-5%",
-          width: "45vw",
-          height: "45vw",
+          top: "-20%",
+          right: "-10%",
+          width: "50vw",
+          height: "50vw",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
-          filter: "blur(120px)",
+            "radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(255, 255, 255, 0) 60%)",
+          filter: "blur(140px)",
           zIndex: 0,
           pointerEvents: "none",
         }}
@@ -75,16 +78,28 @@ const AwardsFellowships = () => {
       <Box
         sx={{
           position: "absolute",
-          bottom: "-10%",
+          bottom: "-20%",
           left: "-10%",
-          width: "40vw",
-          height: "40vw",
+          width: "45vw",
+          height: "45vw",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(27, 54, 93, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
-          filter: "blur(100px)",
+            "radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, rgba(255, 255, 255, 0) 60%)",
+          filter: "blur(140px)",
           zIndex: 0,
           pointerEvents: "none",
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          top: "40%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "100vw",
+          height: "1px",
+          background: "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%)",
+          zIndex: 0,
         }}
       />
 
@@ -98,14 +113,14 @@ const AwardsFellowships = () => {
           alignItems: "center",
         }}
       >
-        <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
+        <Grid container spacing={{ xs: 8, md: 8 }} alignItems="center">
           {/* Left Column: Title, Details & CTA Buttons */}
           <Grid
-            size={{ xs: 12, md: 6.8 }}
+            size={{ xs: 12, md: 6 }}
             data-aos="fade-right"
-            data-aos-duration="800"
+            data-aos-duration="1000"
           >
-            <Stack spacing={3} sx={{ width: "100%" }}>
+            <Stack spacing={4} sx={{ width: "100%" }}>
               {/* Badge */}
               <Box
                 sx={{
@@ -116,14 +131,16 @@ const AwardsFellowships = () => {
                 <Box
                   sx={{
                     width: "auto",
-                    backgroundColor: "rgba(27, 54, 93, 0.06)",
-                    color: "#1B365D",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
+                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    backdropFilter: "blur(10px)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)",
+                    color: COLORS.WHITE,
+                    px: 2.5,
+                    py: 0.75,
+                    borderRadius: "100px",
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    fontFamily: inter.style.fontFamily,
                     letterSpacing: "0.15em",
                     textTransform: "uppercase",
                   }}
@@ -133,33 +150,40 @@ const AwardsFellowships = () => {
               </Box>
 
               {/* Title & Description */}
-              <Stack spacing={1}>
+              <Stack spacing={2.5}>
                 <Typography
                   component="h2"
                   sx={{
                     fontFamily: inter.style.fontFamily,
-                    fontSize: { xs: "28px", sm: "34px", md: "38px" },
+                    fontSize: { xs: "32px", sm: "40px", md: "46px" },
                     fontWeight: 900,
                     lineHeight: 1.15,
                     letterSpacing: "-0.03em",
-                    color: "#0B1727",
+                    color: COLORS.WHITE,
                   }}
                 >
-                  Recognition for Achievement, <br />
-                  <span style={{ color: "#1B365D" }}>
-                    Leadership & Contribution
-                  </span>
+                  Honoring Global <br />
+                  <Box
+                    component="span"
+                    sx={{
+                      background: `linear-gradient(90deg, ${COLORS.WHITE} 0%, rgba(255,255,255,0.6) 100%)`,
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    Excellence
+                  </Box>
                 </Typography>
 
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
-                    fontSize: "13.5px",
-                    lineHeight: 1.55,
-                    color: "#4B5563",
+                    fontSize: "15px",
+                    lineHeight: 1.6,
+                    color: "rgba(255, 255, 255, 0.7)",
                   }}
                 >
-                  <strong>IAIRE</strong> recognizes schools, educators, and
+                  <strong style={{ color: COLORS.WHITE }}>IAIRE</strong> recognizes schools, educators, and
                   students who demonstrate sustained achievement and
                   contribution within innovation, research, and entrepreneurship
                   education.
@@ -168,17 +192,15 @@ const AwardsFellowships = () => {
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
-                    fontSize: "13.5px",
-                    lineHeight: 1.55,
-                    color: "#4B5563",
+                    fontSize: "15px",
+                    lineHeight: 1.6,
+                    color: "rgba(255, 255, 255, 0.7)",
                   }}
                 >
                   Advancement within the IAIRE framework is based upon
-                  demonstrated achievement rather than participation alone.
-                  Higher distinctions such as Associate Fellow and Fellow are
+                  demonstrated achievement. Higher distinctions such as Associate Fellow and Fellow are
                   awarded only upon satisfying defined criteria relating to
-                  innovation, research, intellectual property creation,
-                  publications, mentorship, leadership, entrepreneurship, and
+                  intellectual property creation, publications, leadership, and
                   sustained contribution to the field.
                 </Typography>
               </Stack>
@@ -186,73 +208,12 @@ const AwardsFellowships = () => {
               {/* Action Buttons Row */}
               <Stack
                 direction={{ xs: "column", sm: "row" }}
-                spacing={1.75}
-                sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
+                spacing={2}
+                sx={{ pt: 1, width: "100%" }}
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
-                {/* <Link href="/fellows" style={{ textDecoration: "none" }}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13.5px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: COLORS.WHITE,
-                      backgroundColor: "#1B365D",
-                      borderRadius: "100px",
-                      px: 3.25,
-                      py: 1.15,
-                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#122744",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
-                      },
-                    }}
-                  >
-                    View Fellowship Criteria
-                  </Button>
-                </Link>
-
-                <Link
-                  href="/signup/role-selection"
-                  style={{ textDecoration: "none" }}
-                >
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13.5px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#1B365D",
-                      borderColor: "#1B365D",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3.25,
-                      py: 1.15,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#122744",
-                        color: "#122744",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
-                        transform: "translateY(-2px)",
-                      },
-                    }}
-                  >
-                    Nominate a Fellow
-                  </Button>
-                </Link> */}
-
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     endIcon={
                       <ArrowForwardIcon
                         className="arrow-icon"
@@ -260,145 +221,158 @@ const AwardsFellowships = () => {
                       />
                     }
                     variant="contained"
+                    beamColorTo={COLORS.WHITE}
                     sx={{
                       width: "100%",
                       whiteSpace: "nowrap",
                       fontFamily: inter.style.fontFamily,
-                      fontSize: "13.5px",
+                      fontSize: "14px",
                       fontWeight: 700,
                       textTransform: "none",
-                      color: COLORS.WHITE,
-                      backgroundColor: "#1B365D",
+                      color: COLORS.NAVY_GRADIENT_START,
+                      backgroundColor: COLORS.WHITE,
                       borderRadius: "100px",
-                      px: 3.25,
-                      py: 1.15,
-                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                      px: 4,
+                      py: 1.5,
+                      boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
                       transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       "&:hover": {
-                        backgroundColor: "#122744",
+                        backgroundColor: "rgba(255, 255, 255, 0.9)",
                         transform: "translateY(-2px)",
-                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                        boxShadow: "0 10px 25px rgba(255, 255, 255, 0.15)",
                       },
                     }}
                   >
                     Explore Recognition
-                  </Button>
+                  </BeamButton>
+                </Link>
+                <Link href="/membership" style={{ textDecoration: "none" }}>
+                  <BeamButton
+                    variant="outlined"
+                    sx={{
+                      width: "100%",
+                      whiteSpace: "nowrap",
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      textTransform: "none",
+                      color: COLORS.WHITE,
+                      borderColor: "rgba(255, 255, 255, 0.2)",
+                      backgroundColor: "transparent",
+                      borderRadius: "100px",
+                      px: 4,
+                      py: 1.5,
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      "&:hover": {
+                        backgroundColor: "rgba(255, 255, 255, 0.05)",
+                        borderColor: "rgba(255, 255, 255, 0.4)",
+                        transform: "translateY(-2px)",
+                      },
+                    }}
+                  >
+                    View Pathways
+                  </BeamButton>
                 </Link>
               </Stack>
             </Stack>
           </Grid>
 
-          {/* Right Column: Premium Distinctions Card Stack */}
-          <Grid size={{ xs: 12, md: 5.2 }} sx={{ pl: { md: 2 } }}>
-            <Card
-              elevation={0}
-              sx={{
-                p: 3.5,
-                borderRadius: "24px",
-                border: "1px solid rgba(27, 54, 93, 0.08)",
-                background:
-                  "linear-gradient(135deg, rgba(27, 54, 93, 0.01) 0%, rgba(255, 255, 255, 0.95) 100%)",
-                boxShadow: "0 15px 35px rgba(27, 54, 93, 0.03)",
-                borderLeft: "6px solid #1B365D",
-              }}
-            >
-              <Stack spacing={3}>
-                {/* Panel Header */}
-                <Stack direction="row" spacing={1.75} alignItems="center">
-                  <Box
+          {/* Right Column: Premium Distinctions Cards */}
+          <Grid size={{ xs: 12, md: 6 }} sx={{ position: "relative" }}>
+            <Stack spacing={2.5}>
+              {pathways.map((path, idx) => {
+                const isHovered = hoveredIdx === idx;
+                return (
+                  <Card
+                    key={idx}
+                    elevation={0}
+                    onMouseEnter={() => setHoveredIdx(idx)}
+                    onMouseLeave={() => setHoveredIdx(null)}
+                    data-aos="fade-up"
+                    data-aos-delay={idx * 150}
                     sx={{
-                      width: 38,
-                      height: 38,
-                      borderRadius: "10px",
-                      backgroundColor: "rgba(27, 54, 93, 0.06)",
-                      color: "#1B365D",
+                      p: 3,
+                      borderRadius: "20px",
+                      backgroundColor: isHovered ? "rgba(255, 255, 255, 0.08)" : "rgba(255, 255, 255, 0.03)",
+                      backdropFilter: "blur(20px)",
+                      border: "1px solid",
+                      borderColor: isHovered ? path.color : "rgba(255, 255, 255, 0.05)",
+                      boxShadow: isHovered ? `0 10px 40px ${path.color}20` : "0 4px 20px rgba(0, 0, 0, 0.1)",
+                      transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                      transform: isHovered ? "translateY(-4px)" : "translateY(0)",
+                      cursor: "default",
                       display: "flex",
+                      flexDirection: "row",
+                      gap: 2.5,
                       alignItems: "center",
-                      justifyContent: "center",
+                      overflow: "visible",
+                      position: "relative",
                     }}
                   >
-                    <WorkspacePremiumIcon sx={{ fontSize: 19 }} />
-                  </Box>
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "16.5px",
-                      fontWeight: 800,
-                      color: "#0B1727",
-                    }}
-                  >
-                    Fellowship Distinctions
-                  </Typography>
-                </Stack>
+                    {/* Glowing Accent Line */}
+                    <Box 
+                      sx={{
+                        position: "absolute",
+                        left: 0,
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        height: isHovered ? "60%" : "0%",
+                        width: "4px",
+                        backgroundColor: path.color,
+                        borderRadius: "0 4px 4px 0",
+                        transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                        opacity: isHovered ? 1 : 0,
+                        boxShadow: `0 0 10px ${path.color}`,
+                      }}
+                    />
 
-                {/* Distinctions Stack */}
-                <Stack spacing={2.5}>
-                  {pathways.map((path, idx) => {
-                    const isHovered = hoveredIdx === idx;
-                    return (
-                      <Stack
-                        key={idx}
-                        direction="row"
-                        spacing={2}
-                        alignItems="flex-start"
-                        onMouseEnter={() => setHoveredIdx(idx)}
-                        onMouseLeave={() => setHoveredIdx(null)}
+                    <Box
+                      sx={{
+                        width: 56,
+                        height: 56,
+                        borderRadius: "16px",
+                        backgroundColor: isHovered ? `${path.color}15` : "rgba(255, 255, 255, 0.05)",
+                        color: isHovered ? path.color : "rgba(255, 255, 255, 0.6)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        transition: "all 0.4s ease",
+                        border: "1px solid",
+                        borderColor: isHovered ? `${path.color}30` : "rgba(255, 255, 255, 0.1)",
+                      }}
+                    >
+                      {path.icon}
+                    </Box>
+
+                    <Stack spacing={0.75}>
+                      <Typography
                         sx={{
-                          cursor: "default",
-                          transform: isHovered
-                            ? "translateX(4px)"
-                            : "translateX(0)",
-                          transition: "transform 0.2s ease",
+                          fontFamily: inter.style.fontFamily,
+                          fontSize: "16px",
+                          fontWeight: 700,
+                          color: COLORS.WHITE,
+                          transition: "color 0.3s ease",
                         }}
                       >
-                        <Box
-                          sx={{
-                            width: 34,
-                            height: 34,
-                            borderRadius: "8px",
-                            backgroundColor: isHovered
-                              ? "rgba(59, 130, 246, 0.1)"
-                              : "rgba(27, 54, 93, 0.04)",
-                            color: isHovered ? "#3B82F6" : "#1B365D",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            flexShrink: 0,
-                            transition: "all 0.2s ease",
-                          }}
-                        >
-                          {path.icon}
-                        </Box>
-
-                        <Stack spacing={0.25}>
-                          <Typography
-                            sx={{
-                              fontFamily: inter.style.fontFamily,
-                              fontSize: "13px",
-                              fontWeight: 700,
-                              color: isHovered ? "#0B1727" : "#1F2937",
-                              transition: "color 0.2s ease",
-                            }}
-                          >
-                            {path.title}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              fontFamily: inter.style.fontFamily,
-                              fontSize: "11.5px",
-                              lineHeight: 1.4,
-                              color: "#6B7280",
-                            }}
-                          >
-                            {path.desc}
-                          </Typography>
-                        </Stack>
-                      </Stack>
-                    );
-                  })}
-                </Stack>
-              </Stack>
-            </Card>
+                        {path.title}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontFamily: inter.style.fontFamily,
+                          fontSize: "13.5px",
+                          lineHeight: 1.5,
+                          color: "rgba(255, 255, 255, 0.6)",
+                          transition: "color 0.3s ease",
+                        }}
+                      >
+                        {path.desc}
+                      </Typography>
+                    </Stack>
+                  </Card>
+                );
+              })}
+            </Stack>
           </Grid>
         </Grid>
       </Container>

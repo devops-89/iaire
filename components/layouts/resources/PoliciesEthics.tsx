@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import Image from "next/image";
 import heroImg from "@/public/images/resources/securePoilicies.jpg";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const principles = [
   "Parental consent & informed participation",
@@ -295,7 +296,7 @@ const PoliciesEthics = () => {
                   href="/signup/role-selection"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -319,11 +320,11 @@ const PoliciesEthics = () => {
                     }}
                   >
                     View Policy Framework
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -349,11 +350,11 @@ const PoliciesEthics = () => {
                     }}
                   >
                     Contact Compliance Team
-                  </Button>
+                  </BeamButton>
                 </Link> */}
 
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     endIcon={
                       <ArrowForwardIcon
@@ -383,7 +384,7 @@ const PoliciesEthics = () => {
                     }}
                   >
                     Access Templates
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Stack>
             </Stack>

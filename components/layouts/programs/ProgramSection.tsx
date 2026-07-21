@@ -2,8 +2,9 @@
 
 import { inter } from "@/utils/fonts";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const programData = [
     {
@@ -167,7 +168,7 @@ return (
         </Box>
         ))}
 
-        <Button
+        <BeamButton
         sx={{
             mt: 2,
             width: { xs: "auto", md: "143px" },
@@ -189,7 +190,7 @@ return (
             }}
         >
         Learn More <ArrowForwardIcon className="arrow" sx={{ px:1,fontSize: 18,transition:"transform 0.3s ease" }} />
-        </Button>
+        </BeamButton>
     </Box>
     </Box>
 );

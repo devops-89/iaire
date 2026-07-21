@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 const milestones = [
   {
     title: "DiscoverSTEM Advisory Panel",
@@ -127,7 +128,7 @@ const StorySection = () => {
                     href="/about"
                     style={{ textDecoration: "none", width: "100%" }}
                   >
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         width: "100%",
@@ -150,14 +151,14 @@ const StorySection = () => {
                       }}
                     >
                       Learn More About IAIRE
-                    </Button>
+                    </BeamButton>
                   </Link>
 
                   {/* <Link
                   href="/about#leadership"
                   style={{ textDecoration: "none", width: "100%" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -190,7 +191,7 @@ const StorySection = () => {
                     }}
                   >
                     Meet the Board
-                  </Button>
+                  </BeamButton>
                 </Link> */}
                 </Stack>
               </Box>
@@ -314,7 +315,7 @@ const StorySection = () => {
                     href="/about"
                     style={{ textDecoration: "none", width: "100%" }}
                   >
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         width: "100%",
@@ -337,7 +338,7 @@ const StorySection = () => {
                       }}
                     >
                       Learn More About IAIRE
-                    </Button>
+                    </BeamButton>
                   </Link>
                 </Stack>
               </Box>

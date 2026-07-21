@@ -1,5 +1,5 @@
 import { COLORS } from "@/utils/enum";
-import { Box, Button, Card, Container, Grid, Typography } from "@mui/material";
+import { Box, Card, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import SignupStepper from "./SignupStepper";
 import PersonalInformation from "./student/Personal-Information";
@@ -11,6 +11,7 @@ import { STUDENT_SELF_REGISTRATION_RESPONSE_DATA_PROPS } from "@/utils/type";
 import GuardianInformation from "./student/Guardian-information";
 import { aloeveraDisplay_medium } from "@/utils/fonts";
 import { useStudentSignup } from "@/hooks/student/useStudentSignup";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const SignupLayout = () => {
   const { signupStudent, loading } = useStudentSignup();
@@ -101,7 +102,7 @@ const SignupLayout = () => {
               <PersonalInformation formik={formik} />
               <AcademicInformation formik={formik} />
               <GuardianInformation formik={formik} />
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   fontSize: 14,
@@ -116,7 +117,7 @@ const SignupLayout = () => {
                 disabled={loading}
               >
                 {loading ? "Submitting..." : "Submit"}
-              </Button>
+              </BeamButton>
             </form>
           </Card>
         </Container>

@@ -3,17 +3,16 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Container,
   Grid,
   Stack,
   Typography,
-  Card,
-} from "@mui/material";
+  Card} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const pathwaysData = [
   {
@@ -259,7 +258,7 @@ const CertificationPathways = () => {
           alignItems="center"
         >
           <Link href="/login" style={{ textDecoration: "none" }}>
-            <Button
+            <BeamButton
               variant="contained"
               sx={{
                 whiteSpace: "nowrap",
@@ -282,14 +281,14 @@ const CertificationPathways = () => {
               }}
             >
               Download Pathway Guide
-            </Button>
+            </BeamButton>
           </Link>
 
           {/* <Link
             href="/signup/role-selection"
             style={{ textDecoration: "none" }}
           >
-            <Button
+            <BeamButton
               variant="outlined"
               sx={{
                 whiteSpace: "nowrap",
@@ -314,11 +313,11 @@ const CertificationPathways = () => {
               }}
             >
               Apply for Recognition
-            </Button>
+            </BeamButton>
           </Link> */}
 
           {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-            <Button
+            <BeamButton
               variant="outlined"
               endIcon={
                 <ArrowForwardIcon
@@ -352,7 +351,7 @@ const CertificationPathways = () => {
               }}
             >
               Contact Certification Team
-            </Button>
+            </BeamButton>
           </Link> */}
         </Stack>
       </Container>

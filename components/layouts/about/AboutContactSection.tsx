@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Typography, Stack, InputBase, MenuItem, Select } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack, InputBase, MenuItem, Select } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const contactOptions = [
   {
@@ -418,7 +419,7 @@ const AboutContactSection = () => {
 
                 {/* Submit Action */}
                 <Box>
-                  <Button
+                  <BeamButton
                     type="submit"
                     sx={{
                       width: "100%",
@@ -440,7 +441,7 @@ const AboutContactSection = () => {
                     }}
                   >
                     Send Message
-                  </Button>
+                  </BeamButton>
                 </Box>
 
               </Stack>

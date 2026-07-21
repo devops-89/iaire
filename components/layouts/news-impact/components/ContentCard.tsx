@@ -7,8 +7,9 @@ import {
   GavelOutlined,
   MenuBookOutlined,
 } from "@mui/icons-material";
-import { Box, Button, Card, Chip, Stack, Typography, Divider, IconButton } from "@mui/material";
+import { Box, Card, Chip, Stack, Typography, Divider, IconButton } from "@mui/material";
 import React from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const categoryColors: Record<string, string> = {
   // Articles
@@ -343,7 +344,7 @@ const ContentCard = ({
               </IconButton>
             </>
           ) : (
-            <Button
+            <BeamButton
               variant="text"
               size="small"
               className="read-more-btn"
@@ -365,7 +366,7 @@ const ContentCard = ({
               }}
             >
               Read Full Article
-            </Button>
+            </BeamButton>
           )}
         </Box>
       </Card>

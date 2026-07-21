@@ -39,12 +39,12 @@ const MissionVision = () => {
     <Box
       id="mission"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto" },
+        minHeight: { xs: "auto", md: "auto" },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        py: { xs: 8, md: 0 },
+        py: { xs: 8, md: 15 },
         backgroundColor: "#F8F9FC",
         position: "relative",
         overflow: "hidden",

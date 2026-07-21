@@ -3,15 +3,13 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
-  Button,
   Grid,
   Typography,
   Card,
   Container,
   Divider,
   CircularProgress,
-  Avatar,
-} from "@mui/material";
+  Avatar} from "@mui/material";
 import { useSignup } from "@/store/useSignup";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
@@ -20,6 +18,7 @@ import { ArrowBack, CheckCircleOutline } from "@mui/icons-material";
 import useSnackbar from "@/store/useSnackbar";
 import { useStudentSignup } from "@/hooks/student/useStudentSignup";
 import { COUNTRIES } from "@/utils/constant";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const StudentReview = () => {
   const router = useRouter();
@@ -254,7 +253,7 @@ const StudentReview = () => {
           </Box>
 
           <Box sx={{ mt: 6, display: "flex", gap: 3 }}>
-            <Button
+            <BeamButton
               fullWidth
               variant="outlined"
               startIcon={<ArrowBack />}
@@ -272,8 +271,8 @@ const StudentReview = () => {
               }}
             >
               Back to Edit
-            </Button>
-            <Button
+            </BeamButton>
+            <BeamButton
               fullWidth
               variant="contained"
               endIcon={<CheckCircleOutline />}
@@ -296,7 +295,7 @@ const StudentReview = () => {
               ) : (
                 "Verify & Confirm"
               )}
-            </Button>
+            </BeamButton>
           </Box>
         </Card>
       </Container>

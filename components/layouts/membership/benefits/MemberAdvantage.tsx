@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import { inter, newBlack_medium } from "@/utils/fonts";
 import Link from "next/link";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const MemberAdvantage = () => {
   return (
@@ -122,7 +123,7 @@ const MemberAdvantage = () => {
           {/* Final CTA Action Button */}
           <Box sx={{ pt: 2 }}>
             <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-              <Button
+              <BeamButton
                 sx={{
                   fontSize: 15,
                   fontWeight: 700,
@@ -143,7 +144,7 @@ const MemberAdvantage = () => {
                 }}
               >
                 Become a Member Today
-              </Button>
+              </BeamButton>
             </Link>
           </Box>
 

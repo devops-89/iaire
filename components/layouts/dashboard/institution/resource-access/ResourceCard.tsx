@@ -2,7 +2,8 @@
 
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto, inter } from "@/utils/fonts";
-import { Box, Button, Card, Chip, Stack, Typography } from "@mui/material";
+import { Box, Card, Chip, Stack, Typography } from "@mui/material";
+import BeamButton from "@/components/widgets/BeamButton";
 import {
   ArticleOutlined,
   Lock,
@@ -284,7 +285,7 @@ const ResourceCard = ({
       {/* Card Footer Button Container */}
       <Box sx={{ p: 3, pt: 0 }}>
         {/* {isMember ? (
-          <Button
+          <BeamButton
             variant="contained"
             fullWidth
             endIcon={<OpenInNewOutlined />}
@@ -307,9 +308,9 @@ const ResourceCard = ({
             }}
           >
             Access Resource
-          </Button>
+          </BeamButton>
         ) : (
-          <Button
+          <BeamButton
             variant="contained"
             fullWidth
             startIcon={<Lock />}
@@ -332,9 +333,9 @@ const ResourceCard = ({
             }}
           >
             Unlock to Access
-          </Button>
+          </BeamButton>
         )} */}
-        <Button
+        <BeamButton
           variant="contained"
           fullWidth
           endIcon={<OpenInNewOutlined />}
@@ -357,7 +358,7 @@ const ResourceCard = ({
           }}
         >
           Access Resource
-        </Button>
+        </BeamButton>
       </Box>
     </Card>
   );

@@ -2,7 +2,6 @@
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import {
   Box,
-  Button,
   Card,
   FormControl,
   IconButton,
@@ -16,8 +15,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Tabs,
-} from "@mui/material";
+  Tabs} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import EducatorDashboardLayout from "@/components/layouts/dashboard/educator/Index";
 import { montserrat, roboto } from "@/utils/fonts";
@@ -44,6 +42,7 @@ import RejectReason from "@/components/modals/school/RejectReason";
 import TeacherSelfNomination from "@/components/modals/mentor/SelfNomination";
 import { useSignup } from "@/store/useSignup";
 import Plans from "@/components/modals/common/Plans";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const TrainingList = () => {
   const { showModal } = useModal();
@@ -119,7 +118,7 @@ const TrainingList = () => {
               ]}
             />
             {!isMember ? (
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.UNLOCKED_BUTTON_GREEN,
                   color: COLORS.PRIMARY_NAVY,
@@ -133,9 +132,9 @@ const TrainingList = () => {
                 onClick={showPlans}
               >
                 Unlock Now
-              </Button>
+              </BeamButton>
             ) : (
-              <Button
+              <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
                   color: "#fff",
@@ -151,7 +150,7 @@ const TrainingList = () => {
                 onClick={handleModalOpen}
               >
                 Nominate Self For Training
-              </Button>
+              </BeamButton>
             )}
           </Stack>
           <Tabs

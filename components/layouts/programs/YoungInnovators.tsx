@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import Image from "next/image";
 import heroImg from "@/public/images/programs/young_innovators.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const benefits = [
   "Learn the innovation process through innovation camps",
@@ -298,7 +299,7 @@ const YoungInnovators = () => {
                   target="_blank"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -322,14 +323,14 @@ const YoungInnovators = () => {
                     }}
                   >
                     Participate in TYI
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link
                   href="/signup/role-selection"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -355,14 +356,14 @@ const YoungInnovators = () => {
                     }}
                   >
                     Prepare Your School Team
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link
                   href="/membership#student"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -397,7 +398,7 @@ const YoungInnovators = () => {
                     }}
                   >
                     Become a Student Member
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

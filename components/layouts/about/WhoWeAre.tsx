@@ -1,19 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Stack,
-  Typography,
-  Card,
-} from "@mui/material";
+import { Box, Container, Grid, Stack, Typography, Card } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import BeamButton from "@/components/widgets/BeamButton";
 const responsibilities = [
   "Reviewing and recommending certification standards and competency frameworks",
   "Reviewing fellowship criteria and progression requirements",
@@ -31,8 +24,8 @@ const WhoWeAre = () => {
     <Box
       id="leadership"
       sx={{
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto" },
+        minHeight: { xs: "auto", md: "auto" },
         // display: "flex",
         // alignItems: "center",
         pt: { xs: "100px", md: "85px" },
@@ -190,7 +183,7 @@ const WhoWeAre = () => {
                   alignItems={{ xs: "stretch", sm: "center" }}
                 >
                   <Link href="/about/board" style={{ textDecoration: "none" }}>
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         width: "100%",
@@ -199,12 +192,12 @@ const WhoWeAre = () => {
                         fontSize: "13px",
                         fontWeight: 700,
                         textTransform: "none",
-                        color: "#0B0C10",
-                        backgroundColor: COLORS.WHITE,
+                        color: COLORS.WHITE,
+                        backgroundColor: COLORS.PRIMARY_BLUE,
                         borderRadius: "100px",
                         px: 3.5,
                         py: 1.1,
-                        boxShadow: "0 4px 14px rgba(255, 255, 255, 0.15)",
+                        // boxShadow: "0 4px 14px rgba(255, 255, 255, 0.15)",
                         transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                         "&:hover": {
                           backgroundColor: "#E2E8F0",
@@ -214,11 +207,11 @@ const WhoWeAre = () => {
                       }}
                     >
                       Meet the Board
-                    </Button>
+                    </BeamButton>
                   </Link>
 
                   <Link href="/resources" style={{ textDecoration: "none" }}>
-                    <Button
+                    <BeamButton
                       variant="outlined"
                       sx={{
                         width: "100%",
@@ -244,7 +237,7 @@ const WhoWeAre = () => {
                       }}
                     >
                       View Standards
-                    </Button>
+                    </BeamButton>
                   </Link>
                 </Stack>
               </Box>
@@ -362,7 +355,7 @@ const WhoWeAre = () => {
                     href="/about/board"
                     style={{ textDecoration: "none", width: "100%" }}
                   >
-                    <Button
+                    <BeamButton
                       variant="contained"
                       sx={{
                         width: "100%",
@@ -387,14 +380,14 @@ const WhoWeAre = () => {
                       fullWidth
                     >
                       Meet the Board
-                    </Button>
+                    </BeamButton>
                   </Link>
 
                   <Link
                     href="/resources"
                     style={{ textDecoration: "none", width: "100%" }}
                   >
-                    <Button
+                    <BeamButton
                       variant="outlined"
                       sx={{
                         width: "100%",
@@ -421,7 +414,7 @@ const WhoWeAre = () => {
                       fullWidth
                     >
                       View Standards
-                    </Button>
+                    </BeamButton>
                   </Link>
                 </Stack>
               </Box>

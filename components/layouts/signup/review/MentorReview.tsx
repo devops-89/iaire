@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
-  Button,
   Grid,
   Typography,
   Card,
@@ -11,8 +10,7 @@ import {
   Divider,
   CircularProgress,
   Avatar,
-  Chip,
-} from "@mui/material";
+  Chip} from "@mui/material";
 import { useSignup } from "@/store/useSignup";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
@@ -23,6 +21,7 @@ import { useModal } from "@/store/useModal";
 import VerifyOtp from "@/components/modals/common/VerifyOtp";
 import { useMentorSignup } from "@/hooks/mentor/useMentorSignup";
 import { COUNTRIES } from "@/utils/constant";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const MentorReview = () => {
   const router = useRouter();
@@ -252,7 +251,7 @@ const MentorReview = () => {
           </Box>
 
           <Box sx={{ mt: 6, display: "flex", gap: 3 }}>
-            <Button
+            <BeamButton
               fullWidth
               variant="outlined"
               startIcon={<ArrowBack />}
@@ -270,8 +269,8 @@ const MentorReview = () => {
               }}
             >
               Back to Edit
-            </Button>
-            <Button
+            </BeamButton>
+            <BeamButton
               fullWidth
               variant="contained"
               endIcon={<CheckCircleOutline />}
@@ -294,7 +293,7 @@ const MentorReview = () => {
               ) : (
                 "Verify & Confirm"
               )}
-            </Button>
+            </BeamButton>
           </Box>
         </Card>
       </Container>

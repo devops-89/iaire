@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUserOutlined";
 import SectionBadge from "@/components/widgets/SectionBadge";
 import professionalSocietyImg from "@/images/homepage/global_frameworks.jpeg";
+import BeamButton from "@/components/widgets/BeamButton";
 const ProfessionalSocietySection = () => {
   const [hovered, setHovered] = useState(false);
 
@@ -202,7 +203,7 @@ const ProfessionalSocietySection = () => {
                 sx={{ pt: 1 }}
               >
                 <Link href="/about" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -211,7 +212,7 @@ const ProfessionalSocietySection = () => {
                       fontWeight: 700,
                       textTransform: "none",
                       color: COLORS.WHITE,
-                      backgroundColor: "#111827",
+                      backgroundColor: COLORS.PRIMARY_BLUE,
                       borderRadius: "100px",
                       px: 3.5,
                       py: 1.35,
@@ -225,11 +226,11 @@ const ProfessionalSocietySection = () => {
                     }}
                   >
                     Read Our Mission
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link href="/programs" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -244,7 +245,7 @@ const ProfessionalSocietySection = () => {
                       fontWeight: 700,
                       textTransform: "none",
                       color: "#1B365D",
-                      borderColor: "#1B365D",
+                      borderColor: COLORS.BEAM_COLOR,
                       borderWidth: "1.5px",
                       borderRadius: "100px",
                       px: 3.5,
@@ -263,7 +264,7 @@ const ProfessionalSocietySection = () => {
                     }}
                   >
                     View Standards & Certification
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Stack>
             </Stack>

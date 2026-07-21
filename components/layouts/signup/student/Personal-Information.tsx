@@ -5,18 +5,17 @@ import {
   Autocomplete,
   Avatar,
   Box,
-  Button,
   Grid,
   IconButton,
   InputAdornment,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { FormikProps } from "formik";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import React, { useRef, useState } from "react";
 import { GENDER } from "@/utils/constant";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface PERSONAL_INFORMATION_PROPS {
   formik: FormikProps<STUDENT_SELF_REGISTRATION_RESPONSE_DATA_PROPS>;
@@ -77,7 +76,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             style={{ display: "none" }}
             onChange={handleImageChange}
           />
-          <Button
+          <BeamButton
             onClick={() => fileInputRef.current?.click()}
             sx={{
               fontFamily: aloeveraDisplay_medium.style.fontFamily,
@@ -87,7 +86,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             }}
           >
             Upload Image
-          </Button>
+          </BeamButton>
         </Grid>
         <Grid size={6}>
           <TextField

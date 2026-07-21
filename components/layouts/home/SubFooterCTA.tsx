@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Typography, Stack } from "@mui/material";
+import { Box, Container, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 const SubFooterCTA = () => {
   return (
     <Box
@@ -99,7 +100,7 @@ const SubFooterCTA = () => {
               href="/signup/role-selection"
               style={{ textDecoration: "none" }}
             >
-              <Button
+              <BeamButton
                 variant="contained"
                 sx={{
                   width: { xs: "100%", sm: "auto" },
@@ -123,14 +124,14 @@ const SubFooterCTA = () => {
                 }}
               >
                 Join IAIRE
-              </Button>
+              </BeamButton>
             </Link>
 
             <Link
               href="/signup/role-selection"
               style={{ textDecoration: "none" }}
             >
-              <Button
+              <BeamButton
                 variant="outlined"
                 sx={{
                   width: { xs: "100%", sm: "auto" },
@@ -155,11 +156,11 @@ const SubFooterCTA = () => {
                 }}
               >
                 Partner With IAIRE
-              </Button>
+              </BeamButton>
             </Link> */}
 
             <Link href="/contact" style={{ textDecoration: "none" }}>
-              <Button
+              <BeamButton
                 variant="outlined"
                 endIcon={
                   <ArrowForwardIcon
@@ -194,7 +195,7 @@ const SubFooterCTA = () => {
                 }}
               >
                 Contact Us
-              </Button>
+              </BeamButton>
             </Link>
           </Stack>
 

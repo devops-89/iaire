@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { Button, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import BeamButton from "@/components/widgets/BeamButton";
 
 export const ActionButtons = () => (
   <Stack
@@ -15,7 +16,7 @@ export const ActionButtons = () => (
     alignItems="center"
   >
     <Link href="/login" style={{ textDecoration: "none" }}>
-      <Button
+      <BeamButton
         variant="contained"
         sx={{
           whiteSpace: "nowrap",
@@ -38,11 +39,11 @@ export const ActionButtons = () => (
         }}
       >
         Become an Institutional Member
-      </Button>
+      </BeamButton>
     </Link>
 
     {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-      <Button
+      <BeamButton
         variant="outlined"
         endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
         sx={{
@@ -71,7 +72,7 @@ export const ActionButtons = () => (
         }}
       >
         Request Membership Details
-      </Button>
+      </BeamButton>
     </Link> */}
   </Stack>
 );

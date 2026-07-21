@@ -1,11 +1,9 @@
 "use client";
 import {
   Box,
-  Button,
   Typography,
   IconButton,
-  CircularProgress,
-} from "@mui/material";
+  CircularProgress} from "@mui/material";
 import React, { useState } from "react";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { COLORS } from "@/utils/enum";
@@ -14,6 +12,7 @@ import { Close } from "@mui/icons-material";
 import { useModal } from "@/store/useModal";
 import { useRouter } from "next/navigation";
 import { useVerifyOtp } from "@/hooks/common/useVerifyOtp";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const VerifyOtp = ({ email }: { email: string }) => {
   const [otp, setOtp] = useState("");
@@ -96,7 +95,7 @@ const VerifyOtp = ({ email }: { email: string }) => {
         />
       </Box>
 
-      <Button
+      <BeamButton
         fullWidth
         variant="contained"
         disabled={otp.length !== 6}
@@ -117,7 +116,7 @@ const VerifyOtp = ({ email }: { email: string }) => {
         }}
       >
         {loading ? <CircularProgress color="inherit" size={20} /> : "Verify"}
-      </Button>
+      </BeamButton>
 
       <Box sx={{ mt: 3, textAlign: "center" }}>
         <Typography

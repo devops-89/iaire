@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter, newBlack_medium } from "@/utils/fonts";
 import Link from "next/link";
 
@@ -12,6 +12,7 @@ import ScienceOutlinedIcon from "@mui/icons-material/ScienceOutlined";
 import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
 import EmojiPeopleOutlinedIcon from "@mui/icons-material/EmojiPeopleOutlined";
 import LayersOutlinedIcon from "@mui/icons-material/LayersOutlined";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const nepPillars = [
   {
@@ -136,7 +137,7 @@ const WhyIndiaNeedsInnovation = () => {
 
               <Box sx={{ pt: 1 }}>
                 <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     sx={{
                       fontSize: 15,
                       fontWeight: 700,
@@ -157,7 +158,7 @@ const WhyIndiaNeedsInnovation = () => {
                     }}
                   >
                     Learn About the IAIRE India Vision
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
 

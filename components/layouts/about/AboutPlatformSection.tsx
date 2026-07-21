@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const OrangeCheck = () => (
   <Box
@@ -209,7 +210,7 @@ const AboutPlatformSection = () => {
 
               <Box sx={{ pt: 1.5, display: { lg: "block", xs: "none" } }}>
                 <Link href="/login">
-                  <Button
+                  <BeamButton
                     sx={{
                       fontFamily: inter.style.fontFamily,
                       fontSize: "14px",
@@ -229,7 +230,7 @@ const AboutPlatformSection = () => {
                     }}
                   >
                     Access the IAIRE Platform
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>
@@ -277,7 +278,7 @@ const AboutPlatformSection = () => {
         </Grid>
         <Box sx={{ pt: 1.5, display: { lg: "none", xs: "block" } }}>
           <Link href="/login">
-            <Button
+            <BeamButton
               sx={{
                 fontFamily: inter.style.fontFamily,
                 fontSize: "14px",
@@ -297,7 +298,7 @@ const AboutPlatformSection = () => {
               }}
             >
               Access the IAIRE Platform
-            </Button>
+            </BeamButton>
           </Link>
         </Box>
       </Container>

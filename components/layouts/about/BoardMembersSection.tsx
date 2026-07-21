@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { boardMembers } from "@/utils/boardMembers";
 import BoardMemberCard from "./BoardMemberCard";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const BoardMembersSection = () => {
   const featuredMembers = boardMembers.slice(0, 4);
@@ -16,7 +17,7 @@ const BoardMembersSection = () => {
     <Box
       id="board-members"
       sx={{
-        py: { xs: 10, md: 14 },
+        py: { xs: 10, md: 5 },
         backgroundColor: "#F8F9FC",
         position: "relative",
         overflow: "hidden",
@@ -117,7 +118,7 @@ const BoardMembersSection = () => {
 
           <Stack alignItems="center" sx={{ pt: 1 }}>
             <Link href="/about/board" style={{ textDecoration: "none" }}>
-              <Button
+              <BeamButton
                 variant="contained"
                 endIcon={
                   <ArrowForwardIcon
@@ -148,7 +149,7 @@ const BoardMembersSection = () => {
                 }}
               >
                 Meet All Board Members
-              </Button>
+              </BeamButton>
             </Link>
           </Stack>
         </Stack>

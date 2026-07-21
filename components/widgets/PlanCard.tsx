@@ -4,7 +4,6 @@ import { PLAN_RESPONSE_PROPS } from "@/utils/type";
 import { Circle } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   CircularProgress,
   Grid,
@@ -13,9 +12,9 @@ import {
   ListItemAvatar,
   ListItemText,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import React from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface PLAN_PROPS {
   name: string;
@@ -65,7 +64,7 @@ const PlanCard = ({
             </Stack>
             <Stack sx={{ mt: 2 }} spacing={2}>
               {createPayment && (
-                <Button
+                <BeamButton
                   sx={{
                     fontFamily: roboto.style.fontFamily,
                     backgroundColor: COLORS.PRIMARY_NAVY,
@@ -82,10 +81,10 @@ const PlanCard = ({
                   ) : (
                     "Make Payment"
                   )}
-                </Button>
+                </BeamButton>
               )}
               {canSkip && (
-                <Button
+                <BeamButton
                   sx={{
                     border: "1px solid" + COLORS.PRIMARY_NAVY,
                     borderRadius: "20px",
@@ -96,7 +95,7 @@ const PlanCard = ({
                   onClick={() => skipPayment?.()}
                 >
                   Skip Now & Pay Later
-                </Button>
+                </BeamButton>
               )}
             </Stack>
           </Grid>

@@ -1,8 +1,9 @@
 import { CATEGORY_TYPES, GENDER } from "@/utils/constant";
 import { COLORS, GENDER_TYPE } from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
-import { Autocomplete, Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { Autocomplete, Box, Stack, TextField, Typography } from "@mui/material";
 import React from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const Recommend = ({ studentData }: { studentData: any }) => {
   const gender = studentData.gender;
@@ -35,7 +36,7 @@ const Recommend = ({ studentData }: { studentData: any }) => {
             label="Message"
           />
 
-          <Button sx={{ backgroundColor: COLORS.PRIMARY_NAVY, color: COLORS.WHITE, width: 200, py: 1 }}>Send Nomination</Button>
+          <BeamButton sx={{ backgroundColor: COLORS.PRIMARY_NAVY, color: COLORS.WHITE, width: 200, py: 1 }}>Send Nomination</BeamButton>
 
         </Stack>
       </form>

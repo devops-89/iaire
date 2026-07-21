@@ -5,16 +5,15 @@ import { COLORS } from "@/utils/enum";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
-  Button,
   Card,
   Chip,
   Container,
   Grid,
   Link,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import Image from "next/image";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const events = [
   {
@@ -184,7 +183,7 @@ const EventsSection = () => {
                     {event.description}
                   </Typography>
 
-                  <Button
+                  <BeamButton
                     variant="contained"
                     fullWidth
                     sx={{
@@ -218,7 +217,7 @@ const EventsSection = () => {
                         transition: "transform 0.3s ease",
                       }}
                     />
-                  </Button>
+                  </BeamButton>
                 </Card>
               </ScrollReveal>
             </Grid>

@@ -3,17 +3,16 @@
 import React from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 // Custom vector SVG icons for the two pillars
 const TeacherPillarIcon = () => (
   <svg
@@ -166,7 +165,7 @@ const InitiativeSection = () => {
 
               <Box sx={{ pt: 1.5, display: { lg: "block", xs: "none" } }}>
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       fontFamily: inter.style.fontFamily,
@@ -188,7 +187,7 @@ const InitiativeSection = () => {
                     }}
                   >
                     Bring the IAIRE Initiative to Your Institution
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>
@@ -350,7 +349,7 @@ const InitiativeSection = () => {
                 }}
               >
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       fontFamily: inter.style.fontFamily,
@@ -372,7 +371,7 @@ const InitiativeSection = () => {
                     }}
                   >
                     Bring the IAIRE Initiative to Your Institution
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
 

@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Menu, MenuItem, Typography } from "@mui/material";
+import { Box, Menu, MenuItem, Typography } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Link from "next/link";
 import { COLORS } from "@/utils/enum";
 import { newBlack_medium } from "@/utils/fonts";
 
 import { NavigationItem } from "@/utils/type";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface NavItemProps {
   val: NavigationItem;
@@ -31,7 +32,7 @@ const NavItem = ({ val, pathname }: NavItemProps) => {
   if (hasSub) {
     return (
       <Box>
-        <Button
+        <BeamButton
           onClick={handleClick}
           endIcon={
             <KeyboardArrowDownIcon
@@ -59,7 +60,7 @@ const NavItem = ({ val, pathname }: NavItemProps) => {
           }}
         >
           {val.label}
-        </Button>
+        </BeamButton>
         <Menu
           anchorEl={anchorEl}
           open={open}

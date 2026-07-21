@@ -3,14 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
-  Button,
   Grid,
   Typography,
   Card,
   Container,
   Autocomplete,
-  TextField,
-} from "@mui/material";
+  TextField} from "@mui/material";
 import { useFormik } from "formik";
 import { institutionSignupValidationSchema } from "@/utils/validationSchema";
 import { COLORS, USER_ROLES } from "@/utils/enum";
@@ -46,6 +44,7 @@ import { CalendarIcon } from "@mui/x-date-pickers";
 import { useGetCountries } from "@/hooks/common/useGetCountry";
 import { useBoardByCountry } from "@/hooks/common/useGetBoardByCountry";
 import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const Institution = () => {
   const router = useRouter();
@@ -502,7 +501,7 @@ const Institution = () => {
               </Grid>
               {/* Footer / Submit */}
               <Grid size={12} sx={{ mt: 3 }}>
-                <Button
+                <BeamButton
                   fullWidth
                   type="submit"
                   variant="contained"
@@ -524,7 +523,7 @@ const Institution = () => {
                   }}
                 >
                   Register Institution
-                </Button>
+                </BeamButton>
               </Grid>
             </Grid>
           </form>
@@ -544,7 +543,7 @@ const Institution = () => {
               href={"/login"}
               style={{ textTransform: "none", textDecoration: "none" }}
             >
-              <Button
+              <BeamButton
                 sx={{
                   color: COLORS.PRIMARY_NAVY,
                   fontWeight: 700,
@@ -560,7 +559,7 @@ const Institution = () => {
                 }}
               >
                 Log in instead
-              </Button>
+              </BeamButton>
             </Link>
           </Typography>
         </Card>

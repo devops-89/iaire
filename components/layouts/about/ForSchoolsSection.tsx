@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Typography, Stack } from "@mui/material";
+import { Box, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 const BlueCheck = () => (
   <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -199,7 +200,7 @@ const ForSchoolsSection = () => {
 
               <Box sx={{ pt: 1.5 }}>
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       fontFamily: inter.style.fontFamily,
@@ -221,7 +222,7 @@ const ForSchoolsSection = () => {
                     }}
                   >
                     Enroll Your School
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>

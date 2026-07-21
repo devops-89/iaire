@@ -3,17 +3,16 @@
 import React from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
   Typography,
-  Stack,
-} from "@mui/material";
+  Stack} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const CheckBadge = () => (
   <Box
@@ -180,7 +179,7 @@ const AboutCompetitionSection = () => {
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       fontFamily: inter.style.fontFamily,
@@ -202,7 +201,7 @@ const AboutCompetitionSection = () => {
                     }}
                   >
                     Enter the Competition
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Box>
             </Stack>
@@ -328,7 +327,7 @@ const AboutCompetitionSection = () => {
             rel="noopener noreferrer"
             style={{ textDecoration: "none" }}
           >
-            <Button
+            <BeamButton
               variant="contained"
               sx={{
                 fontFamily: inter.style.fontFamily,
@@ -351,7 +350,7 @@ const AboutCompetitionSection = () => {
               }}
             >
               Enter the Competition
-            </Button>
+            </BeamButton>
           </Link>
         </Box>
       </Container>

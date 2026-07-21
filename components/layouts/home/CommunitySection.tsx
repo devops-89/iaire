@@ -4,8 +4,9 @@ import ScrollReveal from "@/components/widgets/ScrollReveal";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
+import BeamButton from "@/components/widgets/BeamButton";
 const CommunitySection = () => {
   return (
     <Box
@@ -93,7 +94,7 @@ const CommunitySection = () => {
             motivation and ability to nurture them.
           </Typography>
 
-          <Button
+          <BeamButton
             variant="contained"
             size="large"
             sx={{
@@ -115,7 +116,7 @@ const CommunitySection = () => {
             }}
           >
             Learn About Membership <ArrowForwardIcon className="arrow" sx={{px:1,fontSize: 18,transition: "transform 0.3s ease",}}/>
-          </Button>
+          </BeamButton>
         </Stack>
       </Container>
     </Box>

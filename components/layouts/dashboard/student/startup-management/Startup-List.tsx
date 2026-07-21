@@ -12,7 +12,6 @@ import {
 } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Chip,
   IconButton,
   ListItemIcon,
@@ -27,10 +26,10 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Divider,
-} from "@mui/material";
+  Divider} from "@mui/material";
 import Link from "next/link";
 import React, { useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const startups = [
   {
@@ -96,7 +95,7 @@ const StartupList = () => {
           href="/dashboard/student/startup-management/add-startup"
           style={{ textDecoration: "none" }}
         >
-          <Button
+          <BeamButton
             variant="contained"
             startIcon={<RocketLaunch />}
             sx={{
@@ -112,7 +111,7 @@ const StartupList = () => {
             }}
           >
             New Startup
-          </Button>
+          </BeamButton>
         </Link>
       </Stack>
 

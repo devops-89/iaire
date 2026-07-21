@@ -9,13 +9,12 @@ import { BATCH_DETAILS_PROPS, TEACHER_REPONSE_PROPS } from "@/utils/type";
 import {
   Autocomplete,
   Box,
-  Button,
   CircularProgress,
   Stack,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { useEffect, useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const AssignTeacher = ({ batch }: { batch: BATCH_DETAILS_PROPS }) => {
   const [selectedTeachers, setSelectedTeachers] = useState<
@@ -113,7 +112,7 @@ const AssignTeacher = ({ batch }: { batch: BATCH_DETAILS_PROPS }) => {
           )}
         />
 
-        <Button
+        <BeamButton
           sx={{
             border: "1px solid" + COLORS.PRIMARY_NAVY,
             backgroundColor: COLORS.PRIMARY_NAVY,
@@ -134,7 +133,7 @@ const AssignTeacher = ({ batch }: { batch: BATCH_DETAILS_PROPS }) => {
           onClick={handleSubmit}
         >
           {assignLoading ? "Assigning..." : "Assign"}
-        </Button>
+        </BeamButton>
       </Stack>
     </Box>
   );

@@ -6,16 +6,15 @@ import { CloudUpload, Delete, InsertDriveFile } from "@mui/icons-material";
 import {
   Autocomplete,
   Box,
-  Button,
   CircularProgress,
   Grid,
   IconButton,
   Stack,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { FormikProps } from "formik";
 import { useEffect, useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 interface INNOVATIONFORMPROPS {
   formik: FormikProps<INNOVATION_FORM_PROPS>;
@@ -329,7 +328,7 @@ const InnovationForm = ({
           </Grid>
           <Grid size={12}>
             <Stack direction={"row"} alignItems={"center"} spacing={3}>
-              <Button
+              <BeamButton
                 type="submit"
                 variant="contained"
                 disabled={submitLoading || teamLoading}
@@ -346,8 +345,8 @@ const InnovationForm = ({
                 ) : (
                   "Add Innovation"
                 )}
-              </Button>
-              <Button
+              </BeamButton>
+              <BeamButton
                 type="button"
                 onClick={() => {
                   formik.setFieldValue("isDraft", true);
@@ -374,7 +373,7 @@ const InnovationForm = ({
                 ) : (
                   "Save as Draft"
                 )}
-              </Button>
+              </BeamButton>
             </Stack>
           </Grid>
         </Grid>

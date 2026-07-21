@@ -22,19 +22,19 @@ const trainingModules = [
 
 const certificationStages = [
   {
-    title: "1. Train",
+    title: "Train",
     desc: "Acquire core innovation concepts, frameworks, and tools through our structured educator syllabus.",
   },
   {
-    title: "2. Experience",
+    title: "Experience",
     desc: "Apply structured methodologies inside the classroom to guide students through real-world problem-solving.",
   },
   {
-    title: "3. Certify",
+    title: "Certify",
     desc: "Submit portfolios of evidence for peer and board review to earn the official official Mentor credentials.",
   },
   {
-    title: "4. Lead",
+    title: "Lead",
     desc: "Drive regional or school-wide innovation labs and mentor new cohorts within the IAIRE ecosystem.",
   },
 ];
@@ -65,7 +65,8 @@ const EducatorCertification = () => {
           width: "50vw",
           height: "50vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(120px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -79,7 +80,8 @@ const EducatorCertification = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.2) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.2) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -97,9 +99,19 @@ const EducatorCertification = () => {
           justifyContent: "center",
         }}
       >
-        <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center" sx={{ mb: 5 }}>
+        <Grid
+          container
+          spacing={{ xs: 6, md: 8 }}
+          alignItems="center"
+          sx={{ mb: 5 }}
+        >
           {/* Left Column: Title, description, and module tags list */}
-          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 7 }}>
+          <Grid
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150"
+            size={{ xs: 12, md: 7 }}
+          >
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex" }}>
                 <SectionBadge
@@ -125,12 +137,17 @@ const EducatorCertification = () => {
                   }}
                 >
                   IAIRE Innovation <br />
-                  <span style={{ color: "#93C5FD", textShadow: "0 0 35px rgba(147, 197, 253, 0.2)" }}>
+                  <span
+                    style={{
+                      color: "#93C5FD",
+                      textShadow: "0 0 35px rgba(147, 197, 253, 0.2)",
+                    }}
+                  >
                     Educator Certification
                   </span>
                 </Typography>
-                
-                <Typography
+
+                {/* <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
                     fontSize: "13px",
@@ -141,7 +158,7 @@ const EducatorCertification = () => {
                   }}
                 >
                   Train. Experience. Certify. Lead.
-                </Typography>
+                </Typography> */}
 
                 <Typography
                   sx={{
@@ -151,7 +168,9 @@ const EducatorCertification = () => {
                     color: "rgba(255, 255, 255, 0.8)",
                   }}
                 >
-                  The IAIRE Innovation Educator Certification Programme prepares teachers to become Innovation Mentors capable of guiding students through the complete innovation lifecycle.
+                  The IAIRE Innovation Educator Certification Programme prepares
+                  teachers to become Innovation Mentors capable of guiding
+                  students through the complete innovation lifecycle.
                 </Typography>
               </Stack>
 
@@ -204,14 +223,19 @@ const EducatorCertification = () => {
           </Grid>
 
           {/* Right Column: Milestone Journey Tracker Card */}
-          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 5 }}>
+          <Grid
+            data-aos="fade-right"
+            data-aos-duration="800"
+            size={{ xs: 12, md: 5 }}
+          >
             <Card
               elevation={0}
               sx={{
                 p: { xs: 3.5, md: 4 },
                 borderRadius: "24px",
                 border: "1px solid rgba(255, 255, 255, 0.08)",
-                background: "linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)",
                 backdropFilter: "blur(16px)",
                 boxShadow: "0 30px 60px rgba(0, 0, 0, 0.35)",
               }}
@@ -239,7 +263,8 @@ const EducatorCertification = () => {
                     top: 20,
                     bottom: 20,
                     width: 2,
-                    background: "linear-gradient(to bottom, #3B82F6 0%, rgba(147, 197, 253, 0.1) 100%)",
+                    background:
+                      "linear-gradient(to bottom, #3B82F6 0%, rgba(147, 197, 253, 0.1) 100%)",
                   }}
                 />
 

@@ -5,18 +5,17 @@ import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Box,
-  Button,
   Container,
   IconButton,
   Menu,
   MenuItem,
   Stack,
   Toolbar,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const navLinks = [
   { title: "Home", href: "/" },
@@ -102,7 +101,7 @@ const Navbar = () => {
           >
             {navLinks.map((link, i) => (
               <Link href={link.href} key={i}>
-                <Button
+                <BeamButton
                   onClick={handleCloseNavMenu}
                   sx={{
                     color:
@@ -133,7 +132,7 @@ const Navbar = () => {
                   }}
                 >
                   {link.title}
-                </Button>
+                </BeamButton>
               </Link>
             ))}
           </Box>
@@ -146,7 +145,7 @@ const Navbar = () => {
             sx={{ display: { xs: "none", lg: "flex" }, alignItems: "center" }}
           >
             <Link href="/login">
-              <Button
+              <BeamButton
                 variant="outlined"
                 sx={{
                   borderColor: "rgba(255, 255, 255, 0.3)",
@@ -165,9 +164,9 @@ const Navbar = () => {
                 }}
               >
                 Member Login
-              </Button>
+              </BeamButton>
             </Link>
-            <Button
+            <BeamButton
               variant="contained"
               sx={{
                 bgcolor: "#D4AF37",
@@ -187,7 +186,7 @@ const Navbar = () => {
               }}
             >
               Join IAIRE
-            </Button>
+            </BeamButton>
           </Stack>
 
           <Box sx={{ display: { xs: "flex", md: "none" } }}>

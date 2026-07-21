@@ -8,16 +8,15 @@ import { raiseSupportTicketValidationSchema } from "@/utils/validationSchema";
 import { montserrat } from "@/utils/fonts";
 import { useFormik } from "formik";
 import { CATEGORY_OPTIONS, PRIORITY_OPTIONS } from "@/utils/constant";
+import BeamButton from "@/components/widgets/BeamButton";
 import {
   Autocomplete,
   Box,
-  Button,
   CircularProgress,
   Grid,
   Stack,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 
 interface RaiseSupportTicketModalProps {
   onTicketRaised: () => void;
@@ -150,7 +149,7 @@ const RaiseSupportTicketModal = ({ onTicketRaised }: RaiseSupportTicketModalProp
 
           <Grid size={12}>
             <Stack direction="row" spacing={2} justifyContent="flex-end" sx={{ mt: 2 }}>
-              <Button
+              <BeamButton
                 onClick={hideModal}
                 disabled={loading}
                 sx={{
@@ -160,8 +159,8 @@ const RaiseSupportTicketModal = ({ onTicketRaised }: RaiseSupportTicketModalProp
                 }}
               >
                 Cancel
-              </Button>
-              <Button
+              </BeamButton>
+              <BeamButton
                 type="submit"
                 variant="contained"
                 disabled={loading}
@@ -178,7 +177,7 @@ const RaiseSupportTicketModal = ({ onTicketRaised }: RaiseSupportTicketModalProp
                 }}
               >
                 {loading ? <CircularProgress size={24} color="inherit" /> : "Submit Ticket"}
-              </Button>
+              </BeamButton>
             </Stack>
           </Grid>
         </Grid>

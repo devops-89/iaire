@@ -1,7 +1,6 @@
 "use client";
 import {
   Box,
-  Button,
   Card,
   CardContent,
   Chip,
@@ -13,8 +12,7 @@ import {
   ListItemAvatar,
   ListItemText,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { roboto, montserrat, inter } from "@/utils/fonts";
@@ -38,6 +36,7 @@ import {
 } from "@mui/icons-material";
 import ProfileCard from "./components/Profile-Card";
 import { STUDENT_RESPONSE_PROPS } from "@/utils/type";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const StudentDetails = () => {
   const params = useParams();
@@ -78,7 +77,7 @@ const StudentDetails = () => {
         <Grid size={{ xs: 12, md: 8 }}>
           <Stack spacing={4}>
             <Box>
-              <Button
+              <BeamButton
                 startIcon={<ArrowBack />}
                 onClick={() => router.back()}
                 sx={{
@@ -90,7 +89,7 @@ const StudentDetails = () => {
                 }}
               >
                 Back to Student Management
-              </Button>
+              </BeamButton>
 
               <Stack
                 direction="row"

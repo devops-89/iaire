@@ -8,7 +8,6 @@ import { loginValidationSchema } from "@/utils/validationSchema";
 import { Email, Visibility, VisibilityOff, Lock } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   Checkbox,
   CircularProgress,
@@ -20,10 +19,10 @@ import {
   Link,
   Stack,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { useFormik } from "formik";
 import React, { useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const LoginLayout = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -231,7 +230,7 @@ const LoginLayout = () => {
                 </Link>
               </Stack>
 
-              <Button
+              <BeamButton
                 variant="contained"
                 fullWidth
                 size="large"
@@ -258,7 +257,7 @@ const LoginLayout = () => {
                 ) : (
                   "Sign In"
                 )}
-              </Button>
+              </BeamButton>
 
               <Typography
                 textAlign="center"

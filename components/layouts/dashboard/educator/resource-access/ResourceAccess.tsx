@@ -18,7 +18,6 @@ import {
 } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   Chip,
   Grid,
@@ -28,10 +27,10 @@ import {
   Tab,
   Tabs,
   TextField,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import React, { useState } from "react";
 import { Atom } from "react-loading-indicators";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const RESOURCE_TABS = [
   { label: "All Resources", value: "all" },
@@ -566,7 +565,7 @@ const ResourceAccess = ({
                         {/* Card Footer Button Container */}
                         <Box sx={{ p: 3, pt: 0 }}>
                           {isMember ? (
-                            <Button
+                            <BeamButton
                               variant="contained"
                               fullWidth
                               endIcon={<OpenInNewOutlined />}
@@ -592,9 +591,9 @@ const ResourceAccess = ({
                               }}
                             >
                               Access Resource
-                            </Button>
+                            </BeamButton>
                           ) : (
-                            <Button
+                            <BeamButton
                               variant="contained"
                               fullWidth
                               startIcon={<Lock />}
@@ -620,7 +619,7 @@ const ResourceAccess = ({
                               }}
                             >
                               Unlock to Access
-                            </Button>
+                            </BeamButton>
                           )}
                         </Box>
                       </Card>

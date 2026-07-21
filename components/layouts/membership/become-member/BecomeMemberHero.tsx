@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter, newBlack_medium } from "@/utils/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import heroImg from "@/public/images/membership/become_member_hero.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const BecomeMemberHero = () => {
   return (
@@ -129,7 +130,7 @@ const BecomeMemberHero = () => {
               {/* CTA Action Buttons */}
               <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ pt: 1 }}>
                 <Link href="/signup/role-selection" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     sx={{
                       fontSize: 15,
                       fontWeight: 700,
@@ -150,7 +151,7 @@ const BecomeMemberHero = () => {
                     }}
                   >
                     Join IAIRE Today
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Stack>
 

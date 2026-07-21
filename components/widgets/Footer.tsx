@@ -1,5 +1,7 @@
 "use client";
 
+import BorderBeam from "@/components/animations/BorderBeam";
+
 import React, { useState } from "react";
 import {
   Box,
@@ -9,9 +11,7 @@ import {
   Link,
   Stack,
   Typography,
-  InputBase,
-  Button,
-} from "@mui/material";
+  InputBase} from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -22,6 +22,7 @@ import Image from "next/image";
 import logo from "@/images/logo/iaire_logo_white.png";
 import NextLink from "next/link";
 import { HEADER_CONTENT } from "@/utils/constant";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const FooterLink = ({
   href,
@@ -175,9 +176,11 @@ const Footer = () => {
                       },
                     }}
                   />
-                  <Button
+                  <BeamButton
                     type="submit"
                     sx={{
+                      position: "relative",
+                      overflow: "hidden",
                       backgroundColor: "#1B365D",
                       color: "#FFFFFF",
                       fontFamily: inter.style.fontFamily,
@@ -194,8 +197,9 @@ const Footer = () => {
                       },
                     }}
                   >
+                    <BorderBeam duration={5} colorFrom="transparent" colorTo="#3B82F6" />
                     Subscribe
-                  </Button>
+                  </BeamButton>
                 </Box>
               </Grid>
             </Grid>

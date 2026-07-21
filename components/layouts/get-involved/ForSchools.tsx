@@ -3,13 +3,11 @@
 import React, { useState } from "react";
 import {
   Box,
-  Button,
   Card,
   Container,
   Grid,
   Stack,
-  Typography,
-} from "@mui/material";
+  Typography} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -17,6 +15,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import Image from "next/image";
 import heroImg from "@/public/images/get-involved/school_innovation_hub.png";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const participationWays = [
   "Institutional membership",
@@ -153,7 +152,7 @@ const ForSchools = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -177,14 +176,14 @@ const ForSchools = () => {
                     }}
                   >
                     Become an Institutional Member
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 {/* <Link
                   href="/signup/role-selection"
                   style={{ textDecoration: "none" }}
                 >
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     sx={{
                       width: "100%",
@@ -210,11 +209,11 @@ const ForSchools = () => {
                     }}
                   >
                     Start an Innovation Hub
-                  </Button>
+                  </BeamButton>
                 </Link>
 
                 <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="outlined"
                     endIcon={
                       <ArrowForwardIcon
@@ -249,7 +248,7 @@ const ForSchools = () => {
                     }}
                   >
                     Request a Consultation
-                  </Button>
+                  </BeamButton>
                 </Link> */}
               </Stack>
             </Stack>

@@ -2,8 +2,9 @@
 
 import { inter } from "@/utils/fonts";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const whyData = [
     {
@@ -153,7 +154,7 @@ return (
                 that will transform your IRE journey.
             </Typography>
 
-            <Button
+            <BeamButton
                 sx={{
                     background: "#D4A574",
                     borderRadius: "8px",
@@ -176,7 +177,7 @@ return (
                 }}
             >
                 Apply for Membership <ArrowForwardIcon className="arrow" sx={{ fontSize: 18,transition:"transform 0.3s ease" }} />
-            </Button>
+            </BeamButton>
             </Box>
         </Box>
 

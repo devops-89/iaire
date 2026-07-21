@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import SectionBadge from "@/components/widgets/SectionBadge";
 import Image from "next/image";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import studentPathwaysImg from "@/public/images/what-we-do/student-pathways.jpeg";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const benefits = [
   "Development of creativity, critical thinking, and problem-solving skills",
@@ -204,7 +205,7 @@ const StudentPathways = () => {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Link href="/login" style={{ textDecoration: "none" }}>
-                  <Button
+                  <BeamButton
                     variant="contained"
                     sx={{
                       width: "100%",
@@ -228,7 +229,7 @@ const StudentPathways = () => {
                     }}
                   >
                     Become a Student Member
-                  </Button>
+                  </BeamButton>
                 </Link>
               </Stack>
             </Stack>

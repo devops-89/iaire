@@ -1,10 +1,11 @@
 "use client";
 
+import BorderBeam from "@/components/animations/BorderBeam";
+
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import {
   Box,
-  Button,
   Container,
   Grid,
   Stack,
@@ -21,6 +22,7 @@ import PublicIcon from "@mui/icons-material/Public";
 import TextReveal from "@/components/animations/TextReveal";
 import TextType from "@/components/widgets/animation/TextType";
 import BlurText from "@/components/widgets/animation/BlurText";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const HeroSection3 = () => {
   const theme = useTheme();
@@ -35,16 +37,16 @@ const HeroSection3 = () => {
     <Box
       sx={{
         position: "relative",
-        height: { xs: "auto", md: "100vh" },
-        minHeight: { xs: "auto", md: "650px" },
-        maxHeight: { xs: "auto", md: "100vh" },
+        height: { xs: "auto", md: "auto" },
+        minHeight: { xs: "auto", md: "auto" },
+        maxHeight: { xs: "auto", md: "auto" },
         display: "flex",
         alignItems: "center",
         backgroundColor: "#FFFFFF",
         overflow: "hidden",
         zIndex: 1,
-        pt: { xs: "100px", md: "85px" },
-        pb: { xs: "40px", md: "0px" },
+        pt: { xs: "100px", md: 20 },
+        pb: { xs: "40px", md: 10 },
         boxSizing: "border-box",
       }}
     >
@@ -224,57 +226,21 @@ const HeroSection3 = () => {
               alignItems={{ xs: "stretch", sm: "center" }}
             >
               <Link href="/login" style={{ textDecoration: "none" }}>
-                <Button
+                <BeamButton
                   variant="contained"
-                  sx={{
-                    width: "100%",
-                    fontSize: "14px",
-                    fontFamily: inter.style.fontFamily,
-                    textTransform: "none",
-                    fontWeight: 700,
-                    color: COLORS.WHITE,
-                    backgroundColor: "#1B365D",
-                    borderRadius: "100px",
-                    px: 3,
-                    py: 1.25,
-                    boxShadow: "0 8px 20px rgba(248, 93, 0, 0.2)",
-                    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                    "&:hover": {
-                      backgroundColor: "#122744",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 10px 25px rgba(248, 93, 0, 0.3)",
-                    },
-                  }}
+                  sx={{ width: "100%", whiteSpace: "nowrap" }}
                 >
                   Become a Member
-                </Button>
+                </BeamButton>
               </Link>
 
               <Link href="/programs" style={{ textDecoration: "none" }}>
-                <Button
+                <BeamButton
                   variant="outlined"
-                  sx={{
-                    width: "100%",
-                    fontSize: "14px",
-                    fontFamily: inter.style.fontFamily,
-                    textTransform: "none",
-                    fontWeight: 700,
-                    color: "#1F2937",
-                    backgroundColor: "transparent",
-                    border: "1.5px solid #D1D5DB",
-                    borderRadius: "100px",
-                    px: 3,
-                    py: 1.25,
-                    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                    "&:hover": {
-                      borderColor: "#1F2937",
-                      backgroundColor: "rgba(0, 0, 0, 0.02)",
-                      transform: "translateY(-2px)",
-                    },
-                  }}
+                  sx={{ width: "100%", whiteSpace: "nowrap" }}
                 >
                   Explore What We Do
-                </Button>
+                </BeamButton>
               </Link>
 
               {/* <Link
@@ -285,7 +251,7 @@ const HeroSection3 = () => {
                   justifyContent: "center",
                 }}
               >
-                <Button
+                <BeamButton
                   variant="text"
                   endIcon={
                     <ArrowForwardIcon
@@ -312,7 +278,7 @@ const HeroSection3 = () => {
                   }}
                 >
                   Learn About IAIRE
-                </Button>
+                </BeamButton>
               </Link> */}
             </Stack>
           </Grid>

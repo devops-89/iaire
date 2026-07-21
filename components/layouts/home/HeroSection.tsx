@@ -5,8 +5,9 @@ import TextBlur from "@/components/widgets/TextBlur";
 // import bgImage from "@/images/homepage/hero_bg.png";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import { useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const HeroSection = () => {
   const [hovered, setHovered] = useState<"primary" | "secondary" | null>(null);
@@ -104,7 +105,7 @@ const HeroSection = () => {
             spacing={2}
             sx={{ pt: { xs: 1, md: 2 }, width: { xs: "100%", sm: "auto" } }}
           >
-            <Button
+            <BeamButton
               onMouseEnter={() => setHovered("primary")}
               variant="contained"
               size="large"
@@ -127,8 +128,8 @@ const HeroSection = () => {
               }}
             >
               Become a Member
-            </Button>
-            <Button
+            </BeamButton>
+            <BeamButton
               onMouseEnter={() => setHovered("secondary")}
               variant="outlined"
               size="large"
@@ -149,7 +150,7 @@ const HeroSection = () => {
               }}
             >
               Explore Programs
-            </Button>
+            </BeamButton>
           </Stack>
         </Stack>
       </Container>
