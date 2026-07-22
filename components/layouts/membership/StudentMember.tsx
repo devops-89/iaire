@@ -8,6 +8,9 @@ import SectionBadge from "@/components/widgets/SectionBadge";
 // Import Modular Components
 import { BenefitCard } from "./components/BenefitCard";
 import { StudentActionButtons } from "./components/StudentActionButtons";
+import Link from "next/link";
+import BeamButton from "@/components/widgets/BeamButton";
+import { COLORS } from "@/utils/enum";
 
 const studentBenefits = [
   "IAIRE Student Membership and Certification",
@@ -41,7 +44,8 @@ const StudentMember = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 75%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -51,10 +55,7 @@ const StudentMember = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         {/* Top Header Section */}
         <Box sx={{ mb: { xs: 6, md: 8 } }}>
-          <Stack spacing={3.5}
-          data-aos="fade-up"
-          data-aos-duration="800"
-          >
+          <Stack spacing={3.5} data-aos="fade-up" data-aos-duration="800">
             <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
               <SectionBadge
                 label="Student Membership"
@@ -81,7 +82,7 @@ const StudentMember = () => {
                 IAIRE Student <br />
                 <span style={{ color: "#1B365D" }}>Membership & Pathways</span>
               </Typography>
-              
+
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
@@ -91,7 +92,13 @@ const StudentMember = () => {
                   maxWidth: "800px",
                 }}
               >
-                Student Membership is the entry-level designation conferred upon students admitted to the Academy. Student Members are eligible to participate in Academy-approved programs, competitions, mentorship initiatives, training modules, and research or innovation activities and receive access to Academy resources designed to develop competencies in innovation, research, entrepreneurship, leadership, and problem-solving.
+                Student Membership is the entry-level designation conferred upon
+                students admitted to the Academy. Student Members are eligible
+                to participate in Academy-approved programs, competitions,
+                mentorship initiatives, training modules, and research or
+                innovation activities and receive access to Academy resources
+                designed to develop competencies in innovation, research,
+                entrepreneurship, leadership, and problem-solving.
               </Typography>
             </Stack>
           </Stack>
@@ -115,7 +122,11 @@ const StudentMember = () => {
 
           <Grid container spacing={2}>
             {studentBenefits.map((benefit, idx) => (
-              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx} sx={{ display: "flex" }}>
+              <Grid
+                size={{ xs: 12, sm: 6, md: 4 }}
+                key={idx}
+                sx={{ display: "flex" }}
+              >
                 <BenefitCard
                   benefit={benefit}
                   isHovered={hoveredIdx === idx}
@@ -127,8 +138,33 @@ const StudentMember = () => {
           </Grid>
         </Box>
 
-        {/* Action Buttons Row */}
-        <StudentActionButtons />
+        <Link href="/login" style={{ textDecoration: "none" }}>
+          <BeamButton
+            variant="contained"
+            sx={{
+              whiteSpace: "nowrap",
+              fontFamily: inter.style.fontFamily,
+              fontSize: "13px",
+              fontWeight: 700,
+              textTransform: "none",
+              color: COLORS.WHITE,
+              backgroundColor: "#1B365D",
+              borderRadius: "100px",
+              px: 3.5,
+              py: 1.2,
+              boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+              transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+              "&:hover": {
+                backgroundColor: "#122744",
+                transform: "translateY(-2px)",
+                boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+              },
+              width: { xs: "100%", lg: "auto" },
+            }}
+          >
+            Join as an Educator
+          </BeamButton>
+        </Link>
       </Container>
     </Box>
   );

@@ -1,13 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Box,
-  Card,
-  Container,
-  Grid,
-  Stack,
-  Typography} from "@mui/material";
+import { Box, Card, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -344,39 +338,6 @@ const InitiativeSection = () => {
 
               <Box
                 sx={{
-                  pt: 1.5,
-                  display: { lg: "none", xs: "block", textAlign: "center" },
-                }}
-              >
-                <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <BeamButton
-                    variant="contained"
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#FFFFFF",
-                      backgroundColor: "#1B365D",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.4,
-                      boxShadow: "0 8px 25px rgba(27, 54, 93, 0.2)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#122744",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 12px 30px rgba(27, 54, 93, 0.32)",
-                      },
-                    }}
-                  >
-                    Bring the IAIRE Initiative to Your Institution
-                  </BeamButton>
-                </Link>
-              </Box>
-
-              <Box
-                sx={{
                   width: "100%",
                   borderRadius: "20px",
                   background:
@@ -447,6 +408,38 @@ const InitiativeSection = () => {
                     to solve real-world problems.
                   </Typography>
                 </Stack>
+              </Box>
+              <Box
+                sx={{
+                  pt: 1.5,
+                  display: { lg: "none", xs: "block", textAlign: "center" },
+                }}
+              >
+                <Link href="/contact" style={{ textDecoration: "none" }}>
+                  <BeamButton
+                    variant="contained"
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      textTransform: "none",
+                      color: "#FFFFFF",
+                      backgroundColor: "#1B365D",
+                      borderRadius: "100px",
+                      px: 3.5,
+                      py: 1.4,
+                      boxShadow: "0 8px 25px rgba(27, 54, 93, 0.2)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      "&:hover": {
+                        backgroundColor: "#122744",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 12px 30px rgba(27, 54, 93, 0.32)",
+                      },
+                    }}
+                  >
+                    Bring the IAIRE Initiative to Your Institution
+                  </BeamButton>
+                </Link>
               </Box>
             </Stack>
           </Grid>

@@ -15,7 +15,7 @@ export const StudentActionButtons = () => (
     sx={{ width: "100%", justifyContent: "flex-start", gap: 1.5 }}
     alignItems="center"
   >
-    <Link href="/login" style={{ textDecoration: "none" }}>
+    {/* <Link href="/login" style={{ textDecoration: "none" }}>
       <BeamButton
         variant="contained"
         sx={{
@@ -40,7 +40,7 @@ export const StudentActionButtons = () => (
       >
         Become a Student Member
       </BeamButton>
-    </Link>
+    </Link> */}
 
     {/* <Link href="/login" style={{ textDecoration: "none" }}>
       <BeamButton

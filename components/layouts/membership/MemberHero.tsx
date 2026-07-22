@@ -27,47 +27,8 @@ const MemberHero = () => {
       }}
     >
       {/* Decorative gradient glow elements */}
-      <Box
-        sx={{
-          position: "absolute",
-          top: "-10%",
-          right: "-10%",
-          width: "50vw",
-          height: "50vw",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(255, 255, 255, 0) 70%)",
-          filter: "blur(120px)",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
-      <Box
-        sx={{
-          position: "absolute",
-          bottom: "-10%",
-          left: "-10%",
-          width: "40vw",
-          height: "40vw",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(27, 54, 93, 0.2) 0%, rgba(255, 255, 255, 0) 70%)",
-          filter: "blur(100px)",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      />
 
-      <Container
-        maxWidth="lg"
-        sx={{
-          position: "relative",
-          zIndex: 1,
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <Container maxWidth="lg">
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
           {/* Left Column: Title, Copy, and CTA Buttons */}
           <Grid
@@ -159,36 +120,13 @@ const MemberHero = () => {
               </Stack>
 
               {/* CTA Buttons Row */}
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={2.25}
-                sx={{ pt: 1, width: "100%" }}
-                alignItems="center"
-              >
+              <Box sx={{ display: { lg: "block", xs: "none" } }}>
                 <Link href="/login" style={{ textDecoration: "none" }}>
                   <BeamButton variant="contained" sx={{ whiteSpace: "nowrap" }}>
                     Become a Member
                   </BeamButton>
                 </Link>
-
-                <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <BeamButton
-                    variant="outlined"
-                    endIcon={
-                      <ArrowForwardIcon
-                        className="arrow-icon"
-                        sx={{
-                          transition: "transform 0.25s ease",
-                          color: COLORS.WHITE,
-                        }}
-                      />
-                    }
-                    sx={{ whiteSpace: "nowrap", color: COLORS.WHITE }}
-                  >
-                    Contact Membership Team
-                  </BeamButton>
-                </Link>
-              </Stack>
+              </Box>
             </Stack>
           </Grid>
 
@@ -196,9 +134,9 @@ const MemberHero = () => {
           <Grid
             size={{ xs: 12, md: 5.5 }}
             sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
+              // display: "flex",
+              // justifyContent: "center",
+              // alignItems: "center",
               pl: { md: 4 },
             }}
           >
@@ -386,6 +324,16 @@ const MemberHero = () => {
                   Standards & Credentials
                 </Typography>
               </Box>
+            </Box>
+            <Box sx={{ display: { lg: "none", xs: "block" } }}>
+              <Link href="/login" style={{ textDecoration: "none" }}>
+                <BeamButton
+                  variant="contained"
+                  sx={{ whiteSpace: "nowrap", width: "100%", mt: 2 }}
+                >
+                  Become a Member
+                </BeamButton>
+              </Link>
             </Box>
           </Grid>
         </Grid>

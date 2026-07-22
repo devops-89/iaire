@@ -85,6 +85,7 @@ const AboutResourcesSection = () => {
             size={{ xs: 12, md: 6 }}
             data-aos="fade-right"
             data-aos-duration="800"
+            order={{ xs: 2 }}
           >
             <Stack spacing={3.5}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>

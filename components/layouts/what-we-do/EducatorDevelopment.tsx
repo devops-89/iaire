@@ -1,13 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Box,
-  Card,
-  Container,
-  Grid,
-  Stack,
-  Typography} from "@mui/material";
+import { Box, Card, Container, Grid, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -215,41 +209,42 @@ const EducatorDevelopment = () => {
               </Card>
 
               {/* Action Buttons Row */}
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={1.75}
-                sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
-                alignItems={{ xs: "stretch", sm: "center" }}
-              >
-                <Link href="/login" style={{ textDecoration: "none" }}>
-                  <BeamButton
-                    variant="contained"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: COLORS.WHITE,
-                      backgroundColor: "#1B365D",
-                      borderRadius: "100px",
-                      px: 3.25,
-                      py: 1.15,
-                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#122744",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
-                      },
-                    }}
-                  >
-                    Become a Certified Mentor
-                  </BeamButton>
-                </Link>
+              <Box sx={{ display: { lg: "block", xs: "none" } }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={1.75}
+                  sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
+                  alignItems={{ xs: "stretch", sm: "center" }}
+                >
+                  <Link href="/login" style={{ textDecoration: "none" }}>
+                    <BeamButton
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        whiteSpace: "nowrap",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "13px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: COLORS.WHITE,
+                        backgroundColor: "#1B365D",
+                        borderRadius: "100px",
+                        px: 3.25,
+                        py: 1.15,
+                        boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#122744",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                        },
+                      }}
+                    >
+                      Become a Certified Mentor
+                    </BeamButton>
+                  </Link>
 
-                {/* <Link
+                  {/* <Link
                   href="/membership#educator"
                   style={{ textDecoration: "none" }}
                 >
@@ -282,7 +277,7 @@ const EducatorDevelopment = () => {
                   </BeamButton>
                 </Link> */}
 
-                {/* <Link href="/contact" style={{ textDecoration: "none" }}>
+                  {/* <Link href="/contact" style={{ textDecoration: "none" }}>
                   <BeamButton
                     variant="outlined"
                     endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
@@ -315,7 +310,8 @@ const EducatorDevelopment = () => {
                     Request Training
                   </BeamButton>
                 </Link> */}
-              </Stack>
+                </Stack>
+              </Box>
             </Stack>
           </Grid>
 
@@ -361,6 +357,42 @@ const EducatorDevelopment = () => {
             </Box>
           </Grid>
         </Grid>
+        <Box sx={{ display: { lg: "none", xs: "block" }, mt: 2 }}>
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={1.75}
+            sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
+            alignItems={{ xs: "stretch", sm: "center" }}
+          >
+            <Link href="/login" style={{ textDecoration: "none" }}>
+              <BeamButton
+                variant="contained"
+                sx={{
+                  width: "100%",
+                  whiteSpace: "nowrap",
+                  fontFamily: inter.style.fontFamily,
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  textTransform: "none",
+                  color: COLORS.WHITE,
+                  backgroundColor: "#1B365D",
+                  borderRadius: "100px",
+                  px: 3.25,
+                  py: 1.15,
+                  boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  "&:hover": {
+                    backgroundColor: "#122744",
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                  },
+                }}
+              >
+                Become a Certified Mentor
+              </BeamButton>
+            </Link>
+          </Stack>
+        </Box>
       </Container>
     </Box>
   );

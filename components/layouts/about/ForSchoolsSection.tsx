@@ -8,11 +8,33 @@ import Image from "next/image";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
 import BeamButton from "@/components/widgets/BeamButton";
+import school from "@/images/homepage/school_innovation.png";
 const BlueCheck = () => (
-  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      mt: 0.25,
+    }}
+  >
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill="rgba(59, 130, 246, 0.08)" stroke="#1B365D" strokeWidth="2" />
-      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#1B365D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        fill="rgba(59, 130, 246, 0.08)"
+        stroke="#1B365D"
+        strokeWidth="2"
+      />
+      <path
+        d="M8.5 12.5l2.5 2.5 4.5-5"
+        stroke="#1B365D"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   </Box>
 );
@@ -48,7 +70,8 @@ const ForSchoolsSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -57,9 +80,13 @@ const ForSchoolsSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Custom Coded School Illustration */}
-          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 6 }} sx={{ order: { xs: 2, md: 1 } }}>
+          <Grid
+            data-aos="fade-right"
+            data-aos-duration="800"
+            size={{ xs: 12, md: 6 }}
+            sx={{ order: { xs: 2, md: 1 } }}
+          >
             <Box
               sx={{
                 position: "relative",
@@ -78,7 +105,7 @@ const ForSchoolsSection = () => {
               }}
             >
               <Image
-                src="/images/homepage/school_innovation.png"
+                src={school}
                 alt="For Schools Innovation Hub"
                 width={1024}
                 height={1024}
@@ -91,10 +118,43 @@ const ForSchoolsSection = () => {
                 }}
               />
             </Box>
+            <Box sx={{ pt: 1.5, display: { lg: "none", xs: "block" } }}>
+              <Link href="/contact" style={{ textDecoration: "none" }}>
+                <BeamButton
+                  variant="contained"
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    textTransform: "none",
+                    color: "#FFFFFF",
+                    backgroundColor: "#1B365D",
+                    borderRadius: "100px",
+                    px: 4.5,
+                    py: 1.4,
+                    boxShadow: "0 8px 25px rgba(27, 54, 93, 0.2)",
+                    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "&:hover": {
+                      backgroundColor: "#122744",
+                      transform: "translateY(-2px)",
+                      boxShadow: "0 12px 30px rgba(27, 54, 93, 0.32)",
+                    },
+                    width: "100%",
+                  }}
+                >
+                  Enroll Your School
+                </BeamButton>
+              </Link>
+            </Box>
           </Grid>
 
-          {/* Right Column: Heading, Benefits & Content */}
-          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 6 }} sx={{ order: { xs: 1, md: 2 } }}>
+          <Grid
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150"
+            size={{ xs: 12, md: 6 }}
+            sx={{ order: { xs: 1, md: 2 } }}
+          >
             <Stack spacing={3.5}>
               <SectionBadge
                 label="For Institutions"
@@ -129,7 +189,9 @@ const ForSchoolsSection = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  IAIRE helps schools build sustainable innovation ecosystems that empower teachers and students to think, research, create, and solve.
+                  IAIRE helps schools build sustainable innovation ecosystems
+                  that empower teachers and students to think, research, create,
+                  and solve.
                 </Typography>
                 <Typography
                   sx={{
@@ -139,7 +201,10 @@ const ForSchoolsSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  By joining IAIRE, schools gain access to structured programs, educator certification, student learning resources, implementation frameworks, mentoring support, innovation competitions, and recognition opportunities.
+                  By joining IAIRE, schools gain access to structured programs,
+                  educator certification, student learning resources,
+                  implementation frameworks, mentoring support, innovation
+                  competitions, and recognition opportunities.
                 </Typography>
               </Stack>
 
@@ -161,7 +226,11 @@ const ForSchoolsSection = () => {
                 <Grid container spacing={1.5}>
                   {schoolBenefits.map((benefit, index) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                      <Stack direction="row" spacing={1.5} alignItems="flex-start">
+                      <Stack
+                        direction="row"
+                        spacing={1.5}
+                        alignItems="flex-start"
+                      >
                         <BlueCheck />
                         <Typography
                           sx={{
@@ -192,13 +261,18 @@ const ForSchoolsSection = () => {
                   pl: 2.5,
                 }}
               >
-                <Box component="span" sx={{ fontWeight: 700, display: "block", mb: 0.5 }}>
+                <Box
+                  component="span"
+                  sx={{ fontWeight: 700, display: "block", mb: 0.5 }}
+                >
                   Why Schools Join IAIRE
                 </Box>
-                Schools join IAIRE to move from activity-based innovation to culture-based innovation. IAIRE helps schools make innovation visible, structured, measurable, and sustainable.
+                Schools join IAIRE to move from activity-based innovation to
+                culture-based innovation. IAIRE helps schools make innovation
+                visible, structured, measurable, and sustainable.
               </Typography>
 
-              <Box sx={{ pt: 1.5 }}>
+              <Box sx={{ pt: 1.5, display: { lg: "block", xs: "none" } }}>
                 <Link href="/contact" style={{ textDecoration: "none" }}>
                   <BeamButton
                     variant="contained"
@@ -227,7 +301,6 @@ const ForSchoolsSection = () => {
               </Box>
             </Stack>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

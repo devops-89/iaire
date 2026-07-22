@@ -11,7 +11,8 @@ import {
   Link,
   Stack,
   Typography,
-  InputBase} from "@mui/material";
+  InputBase,
+} from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -197,7 +198,11 @@ const Footer = () => {
                       },
                     }}
                   >
-                    <BorderBeam duration={5} colorFrom="transparent" colorTo="#3B82F6" />
+                    <BorderBeam
+                      duration={5}
+                      colorFrom="transparent"
+                      colorTo="#3B82F6"
+                    />
                     Subscribe
                   </BeamButton>
                 </Box>
@@ -326,7 +331,7 @@ const Footer = () => {
             ))}
 
             {/* Custom Connect Column */}
-            <Grid size={{ xs: 12, sm: 4, md: 3 }}>
+            <Grid size={{ xs: 6, sm: 4, md: 3 }}>
               <Stack spacing={3.5}>
                 <Typography
                   sx={{

@@ -72,45 +72,9 @@ const ForBoardMembers = () => {
       >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
           {/* Image Column on Left (for desktop, second on mobile) */}
-          <Grid
-            size={{ xs: 12, md: 5.2 }}
-            order={{ xs: 2, md: 1 }}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              pr: { md: 2 },
-            }}
-          >
-            <Box
-              sx={{
-                position: "relative",
-                width: "100%",
-                height: { xs: "320px", sm: "380px", md: "400px" },
-                maxWidth: "400px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                animation: "floatAnimation 6s ease-in-out infinite",
-                "@keyframes floatAnimation": {
-                  "0%, 100%": { transform: "translateY(0px)" },
-                  "50%": { transform: "translateY(-8px)" },
-                },
-              }}
-            >
+          <Grid size={{ xs: 12, md: 5.2 }} order={{ xs: 2, md: 1 }}>
+            <Box>
               {/* Outer soft glowing outline frame */}
-              <Box
-                sx={{
-                  position: "absolute",
-                  inset: -4,
-                  borderRadius: "28px",
-                  background:
-                    "linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(27, 54, 93, 0.05) 100%)",
-                  filter: "blur(12px)",
-                  opacity: 0.6,
-                  zIndex: 1,
-                }}
-              />
 
               <Box
                 sx={{
@@ -132,6 +96,38 @@ const ForBoardMembers = () => {
                   style={{ objectFit: "cover" }}
                   priority
                 />
+              </Box>
+              <Box sx={{ display: { lg: "none", xs: "block" }, mt: 2 }}>
+                <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none" }}
+                >
+                  <BeamButton
+                    variant="contained"
+                    sx={{
+                      width: "100%",
+                      whiteSpace: "nowrap",
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "13px",
+                      fontWeight: 700,
+                      textTransform: "none",
+                      color: COLORS.WHITE,
+                      backgroundColor: "#1B365D",
+                      borderRadius: "100px",
+                      px: 3,
+                      py: 1.1,
+                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                      "&:hover": {
+                        backgroundColor: "#122744",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                      },
+                    }}
+                  >
+                    Serve as an Expert Mentor
+                  </BeamButton>
+                </Link>
               </Box>
             </Box>
           </Grid>
@@ -219,12 +215,7 @@ const ForBoardMembers = () => {
               </Stack>
 
               {/* Action Buttons Row */}
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={1.75}
-                sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
-                alignItems={{ xs: "stretch", sm: "center" }}
-              >
+              <Box sx={{ display: { lg: "block", xs: "none" } }}>
                 <Link
                   href="/signup/role-selection"
                   style={{ textDecoration: "none" }}
@@ -232,7 +223,7 @@ const ForBoardMembers = () => {
                   <BeamButton
                     variant="contained"
                     sx={{
-                      width: "100%",
+                      width: "50%",
                       whiteSpace: "nowrap",
                       fontFamily: inter.style.fontFamily,
                       fontSize: "13px",
@@ -255,76 +246,7 @@ const ForBoardMembers = () => {
                     Serve as an Expert Mentor
                   </BeamButton>
                 </Link>
-
-                {/* <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <BeamButton
-                    variant="outlined"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#1B365D",
-                      borderColor: "#1B365D",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3,
-                      py: 1.1,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#122744",
-                        color: "#122744",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
-                        transform: "translateY(-2px)",
-                      },
-                    }}
-                  >
-                    Join a Committee
-                  </BeamButton>
-                </Link>
-
-                <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <BeamButton
-                    variant="outlined"
-                    endIcon={
-                      <ArrowForwardIcon
-                        className="arrow-icon"
-                        sx={{ transition: "transform 0.25s ease" }}
-                      />
-                    }
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#4B5563",
-                      borderColor: "rgba(0, 0, 0, 0.15)",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3,
-                      py: 1.1,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#1B365D",
-                        color: "#1B365D",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
-                        transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
-                      },
-                    }}
-                  >
-                    Contact IAIRE Leadership
-                  </BeamButton>
-                </Link> */}
-              </Stack>
+              </Box>
             </Stack>
           </Grid>
         </Grid>

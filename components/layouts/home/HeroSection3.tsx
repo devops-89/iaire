@@ -1,28 +1,22 @@
 "use client";
 
-import BorderBeam from "@/components/animations/BorderBeam";
-
-import { COLORS } from "@/utils/enum";
+import BlurText from "@/components/widgets/animation/BlurText";
+import BeamButton from "@/components/widgets/BeamButton";
 import { inter } from "@/utils/fonts";
+import CardMembershipIcon from "@mui/icons-material/CardMembershipOutlined";
+import PublicIcon from "@mui/icons-material/Public";
 import {
   Box,
   Container,
   Grid,
   Stack,
   Typography,
-  useTheme,
   useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import React, { useState, useEffect } from "react";
-import ThreeEarth from "./ThreeGlobe";
 import Link from "next/link";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import CardMembershipIcon from "@mui/icons-material/CardMembershipOutlined";
-import PublicIcon from "@mui/icons-material/Public";
-import TextReveal from "@/components/animations/TextReveal";
-import TextType from "@/components/widgets/animation/TextType";
-import BlurText from "@/components/widgets/animation/BlurText";
-import BeamButton from "@/components/widgets/BeamButton";
+import { useEffect, useState } from "react";
+import ThreeEarth from "./ThreeGlobe";
 
 const HeroSection3 = () => {
   const theme = useTheme();
@@ -114,7 +108,7 @@ const HeroSection3 = () => {
         }}
       >
         <Grid container spacing={{ xs: 4, md: 4 }} alignItems="center">
-          <Grid size={{ xs: 12, md: 7 }} sx={{ pr: { md: 2 } }}>
+          <Grid size={{ xs: 12, md: 7 }} sx={{ pr: { md: 2 }, order: { xs: 2, md: 1 } }}>
             <Box
               data-aos="fade-up"
               data-aos-duration="700"
@@ -294,6 +288,7 @@ const HeroSection3 = () => {
               alignItems: "center",
               justifyContent: "center",
               position: "relative",
+              order: { xs: 1, md: 2 },
             }}
           >
             {/* Glassmorphic Glow Container behind Globe */}

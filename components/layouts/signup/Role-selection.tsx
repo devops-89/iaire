@@ -15,10 +15,12 @@ import {
   Typography,
   Stack,
   useTheme,
-  useMediaQuery} from "@mui/material";
+  useMediaQuery,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import BeamButton from "@/components/widgets/BeamButton";
+import useSnackbar from "@/store/useSnackbar";
 
 const ROLES = [
   {
@@ -48,6 +50,16 @@ const RoleSelectionLayout = () => {
   const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
+  const { setSnackbar } = useSnackbar();
+
+  const handleClick = () => {
+    if (!selectedRole) {
+      setSnackbar("Please select a role", "error");
+      return;
+    }
+    router.push(`/signup?role=${selectedRole}`);
+    localStorage.setItem("role", JSON.stringify(selectedRole));
+  };
   return (
     <Box
       sx={{
@@ -137,16 +149,18 @@ const RoleSelectionLayout = () => {
                       : "rgba(255, 255, 255, 0.05)",
                   backdropFilter: "blur(10px)",
                   borderRadius: "20px",
-                  border: `2px solid ${selectedRole === role.id ? COLORS.ACCENT_TAN : "transparent"
-                    }`,
+                  border: `2px solid ${
+                    selectedRole === role.id ? COLORS.ACCENT_TAN : "transparent"
+                  }`,
                   transition: "all 0.3s ease",
                   "&:hover": {
                     transform: "translateY(-10px)",
                     backgroundColor: "rgba(255, 255, 255, 0.08)",
-                    border: `2px solid ${selectedRole === role.id
-                      ? COLORS.ACCENT_TAN
-                      : "rgba(209, 160, 84, 0.3)"
-                      }`,
+                    border: `2px solid ${
+                      selectedRole === role.id
+                        ? COLORS.ACCENT_TAN
+                        : "rgba(209, 160, 84, 0.3)"
+                    }`,
                     boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.3)",
                   },
                 }}
@@ -201,11 +215,8 @@ const RoleSelectionLayout = () => {
         <Box sx={{ mt: 10, textAlign: "center" }}>
           <BeamButton
             variant="contained"
-            disabled={!selectedRole}
-            onClick={() => {
-              router.push(`/signup?role=${selectedRole}`);
-              localStorage.setItem("role", JSON.stringify(selectedRole));
-            }}
+            // disabled={!selectedRole}
+            onClick={handleClick}
             endIcon={<ArrowForward />}
             sx={{
               bgcolor: COLORS.PRIMARY_NAVY,
@@ -221,8 +232,9 @@ const RoleSelectionLayout = () => {
               "&:hover": {
                 bgcolor: COLORS.PRIMARY_BLUE,
               },
+              // "&"
 
-              mt: 2
+              mt: 2,
             }}
           >
             Continue as {selectedRole ? selectedRole : "Selection"}

@@ -131,7 +131,6 @@ const InnovationResearchEducation = () => {
                 </Typography>
               </Stack>
 
-              {/* Copy Paragraphs */}
               <Stack
                 spacing={1.75}
                 sx={{ color: "#4B5563", maxWidth: "560px" }}
@@ -160,43 +159,42 @@ const InnovationResearchEducation = () => {
                   domains:
                 </Typography>
               </Stack>
+              <Box sx={{ display: { lg: "block", xs: "none" } }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={1.75}
+                  sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
+                  alignItems={{ xs: "stretch", sm: "center" }}
+                >
+                  <Link href="/programs" style={{ textDecoration: "none" }}>
+                    <BeamButton
+                      variant="contained"
+                      sx={{
+                        width: "100%",
+                        whiteSpace: "nowrap",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "13.5px",
+                        fontWeight: 700,
+                        textTransform: "none",
+                        color: COLORS.WHITE,
+                        backgroundColor: "#1B365D",
+                        borderRadius: "100px",
+                        px: 3.5,
+                        py: 1.15,
+                        boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        "&:hover": {
+                          backgroundColor: "#122744",
+                          transform: "translateY(-2px)",
+                          boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                        },
+                      }}
+                    >
+                      Explore Student Pathways
+                    </BeamButton>
+                  </Link>
 
-              {/* Action Buttons Row */}
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={1.75}
-                sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
-                alignItems={{ xs: "stretch", sm: "center" }}
-              >
-                <Link href="/programs" style={{ textDecoration: "none" }}>
-                  <BeamButton
-                    variant="contained"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13.5px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: COLORS.WHITE,
-                      backgroundColor: "#1B365D",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.15,
-                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#122744",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
-                      },
-                    }}
-                  >
-                    Explore Student Pathways
-                  </BeamButton>
-                </Link>
-
-                {/* <Link href="/programs" style={{ textDecoration: "none" }}>
+                  {/* <Link href="/programs" style={{ textDecoration: "none" }}>
                   <BeamButton
                     variant="outlined"
                     sx={{
@@ -267,7 +265,8 @@ const InnovationResearchEducation = () => {
                     Start a School Hub
                   </BeamButton>
                 </Link> */}
-              </Stack>
+                </Stack>
+              </Box>
             </Stack>
           </Grid>
 
@@ -346,6 +345,45 @@ const InnovationResearchEducation = () => {
               })}
             </Grid>
           </Grid>
+          <Box sx={{ display: { lg: "none", xs: "block" }, width: "100%" }}>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={1.75}
+              sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
+              alignItems={{ xs: "stretch", sm: "center" }}
+            >
+              <Link
+                href="/programs"
+                style={{ textDecoration: "none", width: "100%" }}
+              >
+                <BeamButton
+                  variant="contained"
+                  sx={{
+                    width: "100%",
+                    whiteSpace: "nowrap",
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "13.5px",
+                    fontWeight: 700,
+                    textTransform: "none",
+                    color: COLORS.WHITE,
+                    backgroundColor: "#1B365D",
+                    borderRadius: "100px",
+                    px: 3.5,
+                    py: 1.15,
+                    boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "&:hover": {
+                      backgroundColor: "#122744",
+                      transform: "translateY(-2px)",
+                      boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                    },
+                  }}
+                >
+                  Explore Student Pathways
+                </BeamButton>
+              </Link>
+            </Stack>
+          </Box>
         </Grid>
       </Container>
     </Box>

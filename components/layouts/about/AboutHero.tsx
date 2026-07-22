@@ -69,7 +69,6 @@ const AboutHero = () => {
         }}
       />
 
-      {/* Cyber Grid Pattern */}
       <Box
         sx={{
           position: "absolute",
@@ -149,40 +148,42 @@ const AboutHero = () => {
                 into measurable intellectual and scientific achievements.
               </Typography>
 
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={2}
-                sx={{ pt: 0.5, width: "100%" }}
-                alignItems={{ xs: "stretch", sm: "center" }}
-              >
-                <Link href="/membership" style={{ textDecoration: "none" }}>
-                  <BeamButton
-                    variant="contained"
-                    sx={{ width: "100%", whiteSpace: "nowrap" }}
-                  >
-                    Explore Membership
-                  </BeamButton>
-                </Link>
+              <Box sx={{ display: { lg: "block", xs: "none" } }}>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={2}
+                  sx={{ pt: 0.5, width: "100%" }}
+                  alignItems={{ xs: "stretch", sm: "center" }}
+                >
+                  <Link href="/membership" style={{ textDecoration: "none" }}>
+                    <BeamButton
+                      variant="contained"
+                      sx={{ width: "100%", whiteSpace: "nowrap" }}
+                    >
+                      Explore Membership
+                    </BeamButton>
+                  </Link>
 
-                <Link href="/contact" style={{ textDecoration: "none" }}>
-                  <BeamButton
-                    variant="outlined"
-                    endIcon={
-                      <ArrowForwardIcon
-                        className="arrow-icon"
-                        sx={{ transition: "transform 0.25s ease" }}
-                      />
-                    }
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      color: COLORS.WHITE,
-                    }}
-                  >
-                    Contact IAIRE
-                  </BeamButton>
-                </Link>
-              </Stack>
+                  <Link href="/contact" style={{ textDecoration: "none" }}>
+                    <BeamButton
+                      variant="outlined"
+                      endIcon={
+                        <ArrowForwardIcon
+                          className="arrow-icon"
+                          sx={{ transition: "transform 0.25s ease" }}
+                        />
+                      }
+                      sx={{
+                        width: "100%",
+                        whiteSpace: "nowrap",
+                        color: COLORS.WHITE,
+                      }}
+                    >
+                      Contact IAIRE
+                    </BeamButton>
+                  </Link>
+                </Stack>
+              </Box>
 
               {/* Grid Stats Row - Fits perfectly in single viewport */}
               {/* <Grid
@@ -261,6 +262,42 @@ const AboutHero = () => {
             <OrbitingSystem />
           </Grid>
         </Grid>
+        <Box sx={{ display: { lg: "none", xs: "block" } }}>
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            sx={{ pt: 0.5, width: "100%" }}
+            alignItems={{ xs: "stretch", sm: "center" }}
+          >
+            <Link href="/membership" style={{ textDecoration: "none" }}>
+              <BeamButton
+                variant="contained"
+                sx={{ width: "100%", whiteSpace: "nowrap" }}
+              >
+                Explore Membership
+              </BeamButton>
+            </Link>
+
+            <Link href="/contact" style={{ textDecoration: "none" }}>
+              <BeamButton
+                variant="outlined"
+                endIcon={
+                  <ArrowForwardIcon
+                    className="arrow-icon"
+                    sx={{ transition: "transform 0.25s ease" }}
+                  />
+                }
+                sx={{
+                  width: "100%",
+                  whiteSpace: "nowrap",
+                  color: COLORS.WHITE,
+                }}
+              >
+                Contact IAIRE
+              </BeamButton>
+            </Link>
+          </Stack>
+        </Box>
       </Container>
     </Box>
   );

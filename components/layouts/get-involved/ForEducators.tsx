@@ -72,16 +72,7 @@ const ForEducators = () => {
       >
         <Grid container spacing={{ xs: 6, md: 6 }} alignItems="center">
           {/* Image Column on Left (for desktop, second on mobile) */}
-          <Grid
-            size={{ xs: 12, md: 5.2 }}
-            order={{ xs: 2, md: 1 }}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              pr: { md: 2 },
-            }}
-          >
+          <Grid size={{ xs: 12, md: 5.2 }} order={{ xs: 2, md: 1 }}>
             <Box
               sx={{
                 position: "relative",
@@ -133,6 +124,34 @@ const ForEducators = () => {
                   priority
                 />
               </Box>
+            </Box>
+            <Box sx={{ display: { lg: "none", xs: "block" }, mt: 2 }}>
+              <Link href="/login" style={{ textDecoration: "none" }}>
+                <BeamButton
+                  sx={{
+                    width: "100%",
+                    whiteSpace: "nowrap",
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    textTransform: "none",
+                    color: COLORS.WHITE,
+                    backgroundColor: "#1B365D",
+                    borderRadius: "100px",
+                    px: 3,
+                    py: 1.1,
+                    boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
+                    transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                    "&:hover": {
+                      backgroundColor: "#122744",
+                      transform: "translateY(-2px)",
+                      boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
+                    },
+                  }}
+                >
+                  Join as an Educator Member
+                </BeamButton>
+              </Link>
             </Box>
           </Grid>
 
@@ -220,47 +239,11 @@ const ForEducators = () => {
               </Stack>
 
               {/* Action Buttons Row */}
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={1.75}
-                sx={{ pt: 0.5, width: "100%", flexWrap: "wrap", gap: 1.5 }}
-                alignItems={{ xs: "stretch", sm: "center" }}
-              >
-                {/* <Link
-                  href="/signup/role-selection"
-                  style={{ textDecoration: "none" }}
-                >
-                  <BeamButton
-                    variant="contained"
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: COLORS.WHITE,
-                      backgroundColor: "#1B365D",
-                      borderRadius: "100px",
-                      px: 3,
-                      py: 1.1,
-                      boxShadow: "0 4px 14px rgba(27, 54, 93, 0.15)",
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        backgroundColor: "#122744",
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 6px 20px rgba(27, 54, 93, 0.25)",
-                      },
-                    }}
-                  >
-                    Apply for Mentor Certification
-                  </BeamButton>
-                </Link> */}
-
+              <Box sx={{ display: { lg: "block", xs: "none" } }}>
                 <Link href="/login" style={{ textDecoration: "none" }}>
                   <BeamButton
                     sx={{
-                      width: "100%",
+                      width: "50%",
                       whiteSpace: "nowrap",
                       fontFamily: inter.style.fontFamily,
                       fontSize: "13px",
@@ -283,49 +266,7 @@ const ForEducators = () => {
                     Join as an Educator Member
                   </BeamButton>
                 </Link>
-
-                {/* <Link
-                  href="/membership#educator"
-                  style={{ textDecoration: "none" }}
-                >
-                  <BeamButton
-                    variant="outlined"
-                    endIcon={
-                      <ArrowForwardIcon
-                        className="arrow-icon"
-                        sx={{ transition: "transform 0.25s ease" }}
-                      />
-                    }
-                    sx={{
-                      width: "100%",
-                      whiteSpace: "nowrap",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "13px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#4B5563",
-                      borderColor: "rgba(0, 0, 0, 0.15)",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3,
-                      py: 1.1,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#1B365D",
-                        color: "#1B365D",
-                        backgroundColor: "rgba(27, 54, 93, 0.04)",
-                        transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
-                      },
-                    }}
-                  >
-                    View Teacher Benefits
-                  </BeamButton>
-                </Link> */}
-              </Stack>
+              </Box>
             </Stack>
           </Grid>
         </Grid>

@@ -7,25 +7,7 @@ import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import SectionBadge from "@/components/widgets/SectionBadge";
 import BeamButton from "@/components/widgets/BeamButton";
-const phase1Steps = [
-  { step: "01", label: "Introduction to Innovation" },
-  { step: "02", label: "Innovation Mindset" },
-  { step: "03", label: "Lifecycle of Innovation" },
-  { step: "04", label: "Problem Identification" },
-];
-
-const phase2Steps = [
-  { step: "05", label: "Problem Statement Writing" },
-  { step: "06", label: "Creative Thinking Methods" },
-  { step: "07", label: "Root-Cause Analysis" },
-  { step: "08", label: "Design Thinking" },
-];
-
-const phase3Steps = [
-  { step: "09", label: "Research Exploration" },
-  { step: "10", label: "Intellectual Property Awareness" },
-  { step: "11", label: "Innovation Presentation" },
-];
+import { STUDENT_PROGRAM_PHASES } from "@/utils/constant";
 
 const studentOutcomes = [
   "Creativity",
@@ -162,7 +144,7 @@ const AccordionHeader = ({
 );
 
 const StudentProgSection = () => {
-  const [activePhase, setActivePhase] = useState<1 | 2 | 3>(1);
+  const [activePhase, setActivePhase] = useState<number>(1);
 
   return (
     <Box
@@ -193,18 +175,22 @@ const StudentProgSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 8, md: 6 }} alignItems="flex-start">
           {/* Left Column: Program Detail, Outcomes & CTA */}
-          <Grid data-aos="fade-right" data-aos-duration="800" size={{ xs: 12, md: 5 }}>
+          <Grid
+            data-aos="fade-right"
+            data-aos-duration="800"
+            size={{ xs: 12, md: 5 }}
+          >
             <Stack spacing={4.5}>
               {/* Header texts */}
               <Stack spacing={2.5}>
-              <SectionBadge
-                label="For Students"
-                align="left"
-                textColor="#1B365D"
-                glowColor="#1B365D"
-                borderColor="rgba(27, 54, 93, 0.25)"
-                backgroundColor="rgba(27, 54, 93, 0.08)"
-              />
+                <SectionBadge
+                  label="For Students"
+                  align="left"
+                  textColor="#1B365D"
+                  glowColor="#1B365D"
+                  borderColor="rgba(27, 54, 93, 0.25)"
+                  backgroundColor="rgba(27, 54, 93, 0.08)"
+                />
 
                 <Typography
                   variant="h2"
@@ -246,7 +232,6 @@ const StudentProgSection = () => {
                 </Typography>
               </Stack>
 
-              {/* Quote Block */}
               <Box sx={{ pl: 2.25, borderLeft: "2px solid #1B365D" }}>
                 <Typography
                   sx={{
@@ -298,8 +283,7 @@ const StudentProgSection = () => {
                 </Box>
               </Stack>
 
-              {/* CTA button */}
-              <Box>
+              <Box sx={{ display: { lg: "block", xs: "none" } }}>
                 <Link href="/login" style={{ textDecoration: "none" }}>
                   <BeamButton
                     variant="contained"
@@ -329,8 +313,13 @@ const StudentProgSection = () => {
             </Stack>
           </Grid>
 
-          {/* Right Column: Interactive Accordion Roadmap */}
-          <Grid data-aos="fade-left" data-aos-duration="800" data-aos-delay="150" size={{ xs: 12, md: 7 }} sx={{ pl: { md: 4 } }}>
+          <Grid
+            data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-delay="150"
+            size={{ xs: 12, md: 7 }}
+            sx={{ pl: { md: 4 } }}
+          >
             <Stack spacing={3}>
               <Typography
                 sx={{
@@ -348,200 +337,104 @@ const StudentProgSection = () => {
                 THE DEVELOPMENTAL ROADMAP
               </Typography>
 
-              {/* Phase 1 Accordion */}
-              <Box
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: activePhase === 1 ? "#FFFFFF" : "#F9F9FB",
-                  border:
-                    activePhase === 1
-                      ? "1.5px solid rgba(248, 93, 0, 0.35)"
-                      : "1px solid #E5E5E9",
-                  borderLeft:
-                    activePhase === 1
-                      ? "5px solid #1B365D"
-                      : "5px solid #E5E5E9",
-                  overflow: "hidden",
-                  boxShadow:
-                    activePhase === 1
-                      ? "0 10px 30px rgba(248, 93, 0, 0.04)"
-                      : "none",
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <AccordionHeader
-                  phase="PHASE 01"
-                  title="Foundation & Discovery"
-                  subtitle="Mindset & Problem Identification"
-                  isActive={activePhase === 1}
-                  onClick={() => setActivePhase(1)}
-                />
-
+              {STUDENT_PROGRAM_PHASES.map((item) => (
                 <Box
+                  key={item.id}
                   sx={{
-                    maxHeight: activePhase === 1 ? "300px" : "0px",
-                    transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                    borderRadius: "20px",
+                    backgroundColor:
+                      activePhase === item.id ? "#FFFFFF" : "#F9F9FB",
+                    border:
+                      activePhase === item.id
+                        ? "1.5px solid rgba(248, 93, 0, 0.35)"
+                        : "1px solid #E5E5E9",
+                    borderLeft:
+                      activePhase === item.id
+                        ? "5px solid #1B365D"
+                        : "5px solid #E5E5E9",
                     overflow: "hidden",
+                    boxShadow:
+                      activePhase === item.id
+                        ? "0 10px 30px rgba(248, 93, 0, 0.04)"
+                        : "none",
+                    transition: "all 0.3s ease",
                   }}
                 >
-                  <Box sx={{ p: 4, pt: 0, borderTop: "1px solid #E5E5E9" }}>
-                    <Grid container spacing={2.5} sx={{ pt: 3 }}>
-                      {phase1Steps.map((step, idx) => (
-                        <Grid size={{ xs: 12, sm: 6 }} key={idx}>
-                          <Stack
-                            direction="row"
-                            spacing={1.5}
-                            alignItems="flex-start"
-                          >
-                            <CheckIcon />
-                            <Typography
-                              sx={{
-                                fontFamily: inter.style.fontFamily,
-                                fontSize: "14px",
-                                fontWeight: 650,
-                                color: "#3D3D48",
-                              }}
+                  <AccordionHeader
+                    phase={item.phase}
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    isActive={activePhase === item.id}
+                    onClick={() => setActivePhase(item.id)}
+                  />
+
+                  <Box
+                    sx={{
+                      maxHeight: activePhase === item.id ? "300px" : "0px",
+                      transition:
+                        "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Box sx={{ p: 4, pt: 0, borderTop: "1px solid #E5E5E9" }}>
+                      <Grid container spacing={2.5} sx={{ pt: 3 }}>
+                        {item.steps.map((step, idx) => (
+                          <Grid size={{ xs: 12, sm: 6 }} key={idx}>
+                            <Stack
+                              direction="row"
+                              spacing={1.5}
+                              alignItems="flex-start"
                             >
-                              {step.label}
-                            </Typography>
-                          </Stack>
-                        </Grid>
-                      ))}
-                    </Grid>
+                              <CheckIcon />
+                              <Typography
+                                sx={{
+                                  fontFamily: inter.style.fontFamily,
+                                  fontSize: "14px",
+                                  fontWeight: 650,
+                                  color: "#3D3D48",
+                                }}
+                              >
+                                {step.label}
+                              </Typography>
+                            </Stack>
+                          </Grid>
+                        ))}
+                      </Grid>
+                    </Box>
                   </Box>
                 </Box>
-              </Box>
-
-              {/* Phase 2 Accordion */}
-              <Box
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: activePhase === 2 ? "#FFFFFF" : "#F9F9FB",
-                  border:
-                    activePhase === 2
-                      ? "1.5px solid rgba(248, 93, 0, 0.35)"
-                      : "1px solid #E5E5E9",
-                  borderLeft:
-                    activePhase === 2
-                      ? "5px solid #1B365D"
-                      : "5px solid #E5E5E9",
-                  overflow: "hidden",
-                  boxShadow:
-                    activePhase === 2
-                      ? "0 10px 30px rgba(248, 93, 0, 0.04)"
-                      : "none",
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <AccordionHeader
-                  phase="PHASE 02"
-                  title="Analysis & Design"
-                  subtitle="Problem Engineering & Design Thinking"
-                  isActive={activePhase === 2}
-                  onClick={() => setActivePhase(2)}
-                />
-
-                <Box
-                  sx={{
-                    maxHeight: activePhase === 2 ? "300px" : "0px",
-                    transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Box sx={{ p: 4, pt: 0, borderTop: "1px solid #E5E5E9" }}>
-                    <Grid container spacing={2.5} sx={{ pt: 3 }}>
-                      {phase2Steps.map((step, idx) => (
-                        <Grid size={{ xs: 12, sm: 6 }} key={idx}>
-                          <Stack
-                            direction="row"
-                            spacing={1.5}
-                            alignItems="flex-start"
-                          >
-                            <CheckIcon />
-                            <Typography
-                              sx={{
-                                fontFamily: inter.style.fontFamily,
-                                fontSize: "14px",
-                                fontWeight: 650,
-                                color: "#3D3D48",
-                              }}
-                            >
-                              {step.label}
-                            </Typography>
-                          </Stack>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Box>
-                </Box>
-              </Box>
-
-              {/* Phase 3 Accordion */}
-              <Box
-                sx={{
-                  borderRadius: "20px",
-                  backgroundColor: activePhase === 3 ? "#FFFFFF" : "#F9F9FB",
-                  border:
-                    activePhase === 3
-                      ? "1.5px solid rgba(248, 93, 0, 0.35)"
-                      : "1px solid #E5E5E9",
-                  borderLeft:
-                    activePhase === 3
-                      ? "5px solid #1B365D"
-                      : "5px solid #E5E5E9",
-                  overflow: "hidden",
-                  boxShadow:
-                    activePhase === 3
-                      ? "0 10px 30px rgba(248, 93, 0, 0.04)"
-                      : "none",
-                  transition: "all 0.3s ease",
-                }}
-              >
-                <AccordionHeader
-                  phase="PHASE 03"
-                  title="Research & IP Launch"
-                  subtitle="Academic Papers & Patent Protection"
-                  isActive={activePhase === 3}
-                  onClick={() => setActivePhase(3)}
-                />
-
-                <Box
-                  sx={{
-                    maxHeight: activePhase === 3 ? "300px" : "0px",
-                    transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Box sx={{ p: 4, pt: 0, borderTop: "1px solid #E5E5E9" }}>
-                    <Grid container spacing={2.5} sx={{ pt: 3 }}>
-                      {phase3Steps.map((step, idx) => (
-                        <Grid size={{ xs: 12, sm: 6 }} key={idx}>
-                          <Stack
-                            direction="row"
-                            spacing={1.5}
-                            alignItems="flex-start"
-                          >
-                            <CheckIcon />
-                            <Typography
-                              sx={{
-                                fontFamily: inter.style.fontFamily,
-                                fontSize: "14px",
-                                fontWeight: 650,
-                                color: "#3D3D48",
-                              }}
-                            >
-                              {step.label}
-                            </Typography>
-                          </Stack>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Box>
-                </Box>
-              </Box>
+              ))}
             </Stack>
           </Grid>
         </Grid>
+        <Box sx={{ display: { lg: "none", xs: "block" }, mt: { xs: 2 } }}>
+          <Link href="/login" style={{ textDecoration: "none" }}>
+            <BeamButton
+              variant="contained"
+              sx={{
+                fontFamily: inter.style.fontFamily,
+                fontSize: "13.5px",
+                fontWeight: 700,
+                textTransform: "none",
+                color: "#FFFFFF",
+                backgroundColor: "#1B365D",
+                borderRadius: "100px",
+                px: 4.5,
+                py: 1.4,
+                boxShadow: "0 8px 25px rgba(27, 54, 93, 0.2)",
+                transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                "&:hover": {
+                  backgroundColor: "#122744",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 12px 30px rgba(27, 54, 93, 0.32)",
+                },
+                width: "100%",
+              }}
+            >
+              Start Your Innovation Journey
+            </BeamButton>
+          </Link>
+        </Box>
       </Container>
     </Box>
   );

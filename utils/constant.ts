@@ -2247,3 +2247,47 @@ export const articles: ArticleItem[] = [
       "The Delhi chapter hosted over 35 schools, showcasing prototypes ranging from biodegradable packaging to decentralized solar microgrids.",
   },
 ];
+
+export const phase1Steps = [
+  { step: "01", label: "Introduction to Innovation" },
+  { step: "02", label: "Innovation Mindset" },
+  { step: "03", label: "Lifecycle of Innovation" },
+  { step: "04", label: "Problem Identification" },
+];
+
+export const phase2Steps = [
+  { step: "05", label: "Problem Statement Writing" },
+  { step: "06", label: "Creative Thinking Methods" },
+  { step: "07", label: "Root-Cause Analysis" },
+  { step: "08", label: "Design Thinking" },
+];
+
+export const phase3Steps = [
+  { step: "09", label: "Research Exploration" },
+  { step: "10", label: "Intellectual Property Awareness" },
+  { step: "11", label: "Innovation Presentation" },
+];
+
+export const STUDENT_PROGRAM_PHASES = [
+  {
+    id: 1,
+    phase: "PHASE 01",
+    title: "Foundation & Discovery",
+    subtitle: "Mindset & Problem Identification",
+    steps: phase1Steps,
+  },
+  {
+    id: 2,
+    phase: "PHASE 02",
+    title: "Analysis & Design",
+    subtitle: "Problem Engineering & Design Thinking",
+    steps: phase2Steps,
+  },
+  {
+    id: 3,
+    phase: "PHASE 03",
+    title: "Research & IP Launch",
+    subtitle: "Academic Papers & Patent Protection",
+    steps: phase3Steps,
+  },
+];

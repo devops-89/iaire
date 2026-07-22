@@ -10,10 +10,31 @@ import Image from "next/image";
 import BeamButton from "@/components/widgets/BeamButton";
 
 const BlueCheck = () => (
-  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, mt: 0.25 }}>
+  <Box
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+      mt: 0.25,
+    }}
+  >
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill="rgba(59, 130, 246, 0.08)" stroke="#1B365D" strokeWidth="2" />
-      <path d="M8.5 12.5l2.5 2.5 4.5-5" stroke="#1B365D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        fill="rgba(59, 130, 246, 0.08)"
+        stroke="#1B365D"
+        strokeWidth="2"
+      />
+      <path
+        d="M8.5 12.5l2.5 2.5 4.5-5"
+        stroke="#1B365D"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   </Box>
 );
@@ -48,7 +69,8 @@ const AboutHubsSection = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(90px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -57,11 +79,12 @@ const AboutHubsSection = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-          
           {/* Left Column: Custom Coded School Illustration */}
-          <Grid size={{ xs: 12, md: 6 }}
+          <Grid
+            size={{ xs: 12, md: 6 }}
             data-aos="fade-right"
-            data-aos-duration="800">
+            data-aos-duration="800"
+          >
             <Box
               sx={{
                 position: "relative",
@@ -96,10 +119,12 @@ const AboutHubsSection = () => {
           </Grid>
 
           {/* Right Column: Heading, Benefits & Content */}
-          <Grid size={{ xs: 12, md: 6 }}
+          <Grid
+            size={{ xs: 12, md: 6 }}
             data-aos="fade-left"
             data-aos-duration="800"
-            data-aos-delay="150">
+            data-aos-delay="150"
+          >
             <Stack spacing={3.5}>
               <SectionBadge
                 label="School Ecosystem"
@@ -134,7 +159,9 @@ const AboutHubsSection = () => {
                     lineHeight: 1.5,
                   }}
                 >
-                  An IAIRE Innovation Hub is a structured school-based ecosystem where students and teachers work together on innovation, research, and entrepreneurship.
+                  An IAIRE Innovation Hub is a structured school-based ecosystem
+                  where students and teachers work together on innovation,
+                  research, and entrepreneurship.
                 </Typography>
                 <Typography
                   sx={{
@@ -144,7 +171,9 @@ const AboutHubsSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  It is led by certified teachers and supported by IAIRE’s curriculum, resources, mentoring frameworks, documentation templates, and digital platform.
+                  It is led by certified teachers and supported by IAIRE’s
+                  curriculum, resources, mentoring frameworks, documentation
+                  templates, and digital platform.
                 </Typography>
               </Stack>
 
@@ -166,7 +195,11 @@ const AboutHubsSection = () => {
                 <Grid container spacing={1.5}>
                   {hubActivities.map((act, index) => (
                     <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                      <Stack direction="row" spacing={1.5} alignItems="flex-start">
+                      <Stack
+                        direction="row"
+                        spacing={1.5}
+                        alignItems="flex-start"
+                      >
                         <BlueCheck />
                         <Typography
                           sx={{
@@ -197,10 +230,15 @@ const AboutHubsSection = () => {
                   pl: 2.5,
                 }}
               >
-                <Box component="span" sx={{ fontWeight: 700, display: "block", mb: 0.5 }}>
+                <Box
+                  component="span"
+                  sx={{ fontWeight: 700, display: "block", mb: 0.5 }}
+                >
                   Why Schools Need Innovation Hubs
                 </Box>
-                Innovation becomes sustainable when it has a home inside the school. An IAIRE Innovation Hub gives that home structure, purpose, and continuity.
+                Innovation becomes sustainable when it has a home inside the
+                school. An IAIRE Innovation Hub gives that home structure,
+                purpose, and continuity.
               </Typography>
 
               <Box sx={{ pt: 1.5 }}>
@@ -232,7 +270,6 @@ const AboutHubsSection = () => {
               </Box>
             </Stack>
           </Grid>
-
         </Grid>
       </Container>
     </Box>
