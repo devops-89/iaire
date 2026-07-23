@@ -1,3 +1,6 @@
+const fs = require('fs');
+
+const content = `
 "use client";
 
 import React from "react";
@@ -168,3 +171,7 @@ const SubFooterCTA = () => {
 };
 
 export default SubFooterCTA;
+`;
+
+fs.writeFileSync('components/layouts/home/SubFooterCTA.tsx', content.trim());
+console.log('SubFooterCTA written successfully!');

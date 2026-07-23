@@ -13,7 +13,6 @@ import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import Link from "next/link";
 import Image from "next/image";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import heroImg from "@/public/images/get-involved/get_involved_hero.png";
 import BeamButton from "@/components/widgets/BeamButton";
 import SectionBadge from "@/components/widgets/SectionBadge";
@@ -39,7 +38,6 @@ const GetInvolvedHero = () => {
     >
       <Container maxWidth="lg">
         <Grid container spacing={{ xs: 6, md: 5 }} alignItems="center">
-          {/* Left Column: Heading Copy */}
           <Grid
             size={{ xs: 12, md: 6.5 }}
             data-aos="fade-right"
@@ -49,7 +47,6 @@ const GetInvolvedHero = () => {
               spacing={3.25}
               sx={{ textAlign: { xs: "center", md: "left" } }}
             >
-              {/* Badge */}
               <Box
                 sx={{
                   display: "flex",
@@ -63,7 +60,6 @@ const GetInvolvedHero = () => {
                 />
               </Box>
 
-              {/* Title & Subtitle */}
               <Stack spacing={1}>
                 <Typography
                   variant="h1"
@@ -83,7 +79,6 @@ const GetInvolvedHero = () => {
                 </Typography>
               </Stack>
 
-              {/* Core Description Copy */}
               <Typography
                 sx={{
                   fontFamily: inter.style.fontFamily,
@@ -100,7 +95,6 @@ const GetInvolvedHero = () => {
                 globally.
               </Typography>
 
-              {/* Action Buttons Row */}
               <Box sx={{ display: { lg: "block", xs: "none" } }}>
                 <Link href="/login" style={{ textDecoration: "none" }}>
                   <BeamButton
