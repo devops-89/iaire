@@ -6,6 +6,7 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 // Custom premium vector SVG icons representing each skill
 const ProblemIcon = () => (
@@ -237,23 +238,7 @@ const EducatorSection = () => {
           {/* Right Column: Heading & Content */}
           <Grid size={{ xs: 12, md: 5 }} order={{ xs: 1, md: 2 }}>
             <Stack spacing={3.5}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
-                />
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "0.15em",
-                    color: "#1B365D",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  THE EDUCATOR
-                </Typography>
-              </Box>
+              <SectionBadge label="THE EDUCATOR" align="left" />
 
               <Typography
                 variant="h2"

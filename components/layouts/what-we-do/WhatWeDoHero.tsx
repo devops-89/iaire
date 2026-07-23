@@ -17,6 +17,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import TextReveal from "@/components/animations/TextReveal";
 import BlurText from "@/components/widgets/animation/BlurText";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const pillars = [
   {
@@ -114,23 +115,7 @@ const WhatWeDoHero = () => {
               data-aos-duration="800"
             >
               {/* Badge */}
-              <Box
-                sx={{
-                  backgroundColor: "rgba(59, 130, 246, 0.15)",
-                  color: "#3B82F6",
-                  px: 2,
-                  py: 0.5,
-                  borderRadius: "20px",
-                  fontSize: "10.5px",
-                  fontWeight: 700,
-                  fontFamily: "monospace",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  border: "1px solid rgba(59, 130, 246, 0.3)",
-                }}
-              >
-                What We Do
-              </Box>
+              <SectionBadge label="What We Do" align="center" />
 
               <BlurText
                 variant="h1"

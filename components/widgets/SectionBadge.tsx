@@ -1,8 +1,13 @@
 "use client";
 
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, keyframes } from "@mui/material";
 import { inter } from "@/utils/fonts";
+
+const pulseDot = keyframes`
+  0%, 100% { opacity: 0.5; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+`;
 
 interface SectionBadgeProps {
   label: string;
@@ -48,11 +53,7 @@ const SectionBadge = ({
             borderRadius: "50%",
             backgroundColor: glowColor,
             boxShadow: `0 0 8px ${glowColor}`,
-            animation: "pulseDot 2s infinite ease-in-out",
-            "@keyframes pulseDot": {
-              "0%, 100%": { opacity: 0.5, transform: "scale(0.8)" },
-              "50%": { opacity: 1, transform: "scale(1.2)" },
-            },
+            animation: `${pulseDot} 2s infinite ease-in-out`,
           }}
         />
         <Typography

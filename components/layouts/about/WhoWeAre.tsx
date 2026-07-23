@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import { Box, Container, Grid, Stack, Typography, Card } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
+import { PlayCircleOutline, Public, School, Group } from "@mui/icons-material";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 const responsibilities = [
   "Reviewing and recommending certification standards and competency frameworks",
   "Reviewing fellowship criteria and progression requirements",
@@ -86,24 +88,7 @@ const WhoWeAre = () => {
           >
             <Stack spacing={3.5} sx={{ width: "100%" }}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box
-                  sx={{
-                    width: "auto",
-                    backgroundColor: "rgba(255, 255, 255, 0.08)",
-                    border: "1px solid rgba(255, 255, 255, 0.15)",
-                    color: "#93C5FD",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Governance & Scientific Board
-                </Box>
+                <SectionBadge label="Governance & Scientific Board" align="left" />
               </Box>
 
               {/* Title & Narrative */}

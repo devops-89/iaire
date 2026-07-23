@@ -7,6 +7,7 @@ import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import Link from "next/link";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const OrangeCheck = () => (
   <Box
@@ -112,23 +113,7 @@ const CompetitionSection = () => {
           {/* Right Column: Heading & Content */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Stack spacing={3.5}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
-                />
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "0.15em",
-                    color: "#1B365D",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  GLOBAL PLATFORM
-                </Typography>
-              </Box>
+              <SectionBadge label="GLOBAL PLATFORM" align="left" />
 
               <Typography
                 variant="h2"

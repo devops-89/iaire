@@ -4,7 +4,12 @@ import React, { useRef, Suspense, useEffect, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, Stage, Center, Html, useProgress } from "@react-three/drei";
 import * as THREE from "three";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 
 // Suppress WebGL-related console errors in sandboxed or headless environments
 if (typeof window !== "undefined") {
@@ -85,6 +90,7 @@ class ErrorBoundary extends React.Component<
 }
 
 const EarthModel = () => {
+  const phone = useMediaQuery("(max-width:600px)");
   const { scene } = useGLTF(
     "https://kodvmpilnjduyzxw.public.blob.vercel-storage.com/IAIRE/earth_-_16k_high_resolution-compressed-compressed.glb",
   );
@@ -121,7 +127,8 @@ const EarthModel = () => {
 
       const maxDim = Math.max(size.x, size.y, size.z);
       // Target a baseline size of 6.5 units
-      setBaseScale(3.5 / maxDim);
+
+      phone ? setBaseScale(4 / maxDim) : setBaseScale(3.5 / maxDim);
     }
   }, [scene]);
 

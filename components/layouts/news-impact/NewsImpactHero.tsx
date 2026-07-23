@@ -5,6 +5,7 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import { COLORS } from "@/utils/enum";
 import { inter } from "@/utils/fonts";
 import BlurText from "@/components/widgets/animation/BlurText";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const NewsImpactHero = () => {
   return (
@@ -66,23 +67,7 @@ const NewsImpactHero = () => {
               data-aos-duration="800"
             >
               {/* Badge */}
-              <Box
-                sx={{
-                  backgroundColor: "rgba(147, 197, 253, 0.15)",
-                  color: "#93C5FD",
-                  px: 2.25,
-                  py: 0.75,
-                  borderRadius: "100px",
-                  fontSize: "10.5px",
-                  fontWeight: 700,
-                  fontFamily: "monospace",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  border: "1px solid rgba(147, 197, 253, 0.3)",
-                }}
-              >
-                News & Impact
-              </Box>
+              <SectionBadge label="News & Impact" align="center" />
 
               <BlurText
                 variant="h1"

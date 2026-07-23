@@ -14,8 +14,10 @@ import {
   IconButton,
   Divider,
 } from "@mui/material";
-import { SearchOutlined, OpenInNewOutlined, MenuBookOutlined, GavelOutlined } from "@mui/icons-material";
+import { SearchOutlined, OpenInNewOutlined, MenuBookOutlined, GavelOutlined, CheckCircleOutline, ChevronRight } from "@mui/icons-material";
 import { inter } from "@/utils/fonts";
+import SectionBadge from "@/components/widgets/SectionBadge";
+import BeamButton from "@/components/widgets/BeamButton";
 import ContentCard from "./components/ContentCard";
 
 interface DocumentItem {
@@ -141,40 +143,7 @@ const PatentsPublications = () => {
         {/* Section Header */}
         <Stack spacing={2.5} sx={{ mb: { xs: 6, md: 8 } }} data-aos="fade-up" data-aos-duration="700">
           <Box sx={{ display: "flex" }}>
-            <Box
-              sx={{
-                display: "inline-flex",
-                backgroundColor: "rgba(59, 130, 246, 0.08)",
-                border: "1px solid rgba(59, 130, 246, 0.15)",
-                borderRadius: "100px",
-                px: 2.25,
-                py: 0.75,
-                alignItems: "center",
-                gap: 1.25,
-              }}
-            >
-              <Box
-                sx={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: "50%",
-                  backgroundColor: "#3B82F6",
-                  boxShadow: "0 0 8px #3B82F6",
-                }}
-              />
-              <Typography
-                sx={{
-                  fontFamily: inter.style.fontFamily,
-                  fontSize: "10.5px",
-                  fontWeight: 800,
-                  color: "#1D4ED8",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                }}
-              >
-                IP Registrations & Publications
-              </Typography>
-            </Box>
+            <SectionBadge label="IP Registrations & Publications" align="left" />
           </Box>
 
           <Grid container spacing={4} alignItems="center">

@@ -315,16 +315,11 @@ const Footer = () => {
                   </Typography>
 
                   <Stack spacing={2.5}>
-                    {category.subModules!.slice(0, 5).map((sub, subIdx) => (
+                    {category.subModules!.map((sub, subIdx) => (
                       <FooterLink key={subIdx} href={sub.url || "#"}>
                         {sub.label}
                       </FooterLink>
                     ))}
-                    {category.subModules!.length > 5 && (
-                      <FooterLink href={category.url || "#"}>
-                        View All &rarr;
-                      </FooterLink>
-                    )}
                   </Stack>
                 </Stack>
               </Grid>

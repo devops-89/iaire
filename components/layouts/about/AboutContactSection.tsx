@@ -5,6 +5,7 @@ import { Box, Container, Grid, Typography, Stack, InputBase, MenuItem, Select } 
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const contactOptions = [
   {
@@ -147,21 +148,7 @@ const AboutContactSection = () => {
             <Stack spacing={4}>
               
               <Stack spacing={2.5}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "12px",
-                      fontWeight: 700,
-                      letterSpacing: "0.15em",
-                      color: "#1B365D",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    CONNECT WITH US
-                  </Typography>
-                </Box>
+                <SectionBadge label="CONNECT WITH US" align="left" />
 
                 <Typography
                   variant="h2"

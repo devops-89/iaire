@@ -8,6 +8,7 @@ import Image from "next/image";
 import resources from "@/images/about/resources.jpeg";
 import Link from "next/link";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 const OrangeCheck = () => (
   <Box
     sx={{
@@ -88,23 +89,7 @@ const AboutResourcesSection = () => {
             order={{ xs: 2 }}
           >
             <Stack spacing={3.5}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
-                />
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "0.15em",
-                    color: "#1B365D",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  LIBRARY ACCESS
-                </Typography>
-              </Box>
+              <SectionBadge label="LIBRARY ACCESS" align="left" />
 
               <Typography
                 variant="h2"

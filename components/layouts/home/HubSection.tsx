@@ -6,6 +6,7 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 // Custom vector SVG icons for Bento cells
 const PatentIcon = () => (
@@ -411,23 +412,7 @@ const HubSection = () => {
           {/* Right Column: Heading & Content */}
           <Grid size={{ xs: 12, md: 4.5 }} sx={{ order: { xs: 1, md: 2 } }}>
             <Stack spacing={3.5}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <Box
-                  sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }}
-                />
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    letterSpacing: "0.15em",
-                    color: "#1B365D",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  THE COMMAND CENTER
-                </Typography>
-              </Box>
+              <SectionBadge label="THE COMMAND CENTER" align="left" />
 
               <Typography
                 variant="h2"

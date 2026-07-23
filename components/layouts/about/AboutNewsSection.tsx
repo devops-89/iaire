@@ -6,6 +6,7 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Image from "next/image";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const newsCategories = [
   "IAIRE announcements",
@@ -83,27 +84,7 @@ const AboutNewsSection = () => {
           >
           {/* Section Header */}
           <Stack spacing={2} sx={{ textAlign: "center", maxWidth: "800px" }}>
-            <Stack
-              direction="row"
-              spacing={1.5}
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
-              <Typography
-                sx={{
-                  fontFamily: inter.style.fontFamily,
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  color: "#1B365D",
-                  textTransform: "uppercase",
-                }}
-              >
-                COMMUNITY UPDATES
-              </Typography>
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
-            </Stack>
+            <SectionBadge label="COMMUNITY UPDATES" align="center" />
 
             <Typography
               variant="h2"

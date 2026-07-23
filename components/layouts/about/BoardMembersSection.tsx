@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { boardMembers } from "@/utils/boardMembers";
 import BoardMemberCard from "./BoardMemberCard";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const BoardMembersSection = () => {
   const featuredMembers = boardMembers.slice(0, 4);
@@ -43,39 +44,7 @@ const BoardMembersSection = () => {
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Stack spacing={6} data-aos="fade-up" data-aos-duration="800">
           <Stack spacing={2} sx={{ textAlign: "left", maxWidth: "760px" }}>
-            <Stack
-              direction="row"
-              spacing={1.5}
-              alignItems="center"
-              justifyContent="flex-start"
-            >
-              <Box
-                sx={{
-                  width: 16,
-                  height: 2,
-                  backgroundColor: COLORS.PRIMARY_NAVY,
-                }}
-              />
-              <Typography
-                sx={{
-                  fontFamily: inter.style.fontFamily,
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  color: COLORS.PRIMARY_NAVY,
-                  textTransform: "uppercase",
-                }}
-              >
-                Leadership
-              </Typography>
-              <Box
-                sx={{
-                  width: 16,
-                  height: 2,
-                  backgroundColor: COLORS.PRIMARY_NAVY,
-                }}
-              />
-            </Stack>
+            <SectionBadge label="Leadership" align="left" />
 
             <Typography
               variant="h2"

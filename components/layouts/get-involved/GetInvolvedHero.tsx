@@ -16,6 +16,7 @@ import Image from "next/image";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import heroImg from "@/public/images/get-involved/get_involved_hero.png";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const GetInvolvedHero = () => {
   const phone = useMediaQuery("(max-width:600px)");
@@ -55,23 +56,7 @@ const GetInvolvedHero = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <Box
-                  sx={{
-                    backgroundColor: "rgba(59, 130, 246, 0.15)",
-                    color: "#3B82F6",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "10.5px",
-                    fontWeight: 700,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    border: "1px solid rgba(59, 130, 246, 0.3)",
-                  }}
-                >
-                  Get Involved
-                </Box>
+                <SectionBadge label="Get Involved" align="center" />
               </Box>
 
               {/* Title & Subtitle */}

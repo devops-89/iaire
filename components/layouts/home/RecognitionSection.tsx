@@ -8,6 +8,8 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import PsychologyIcon from "@mui/icons-material/PsychologyOutlined";
+import { COLORS } from "@/utils/enum";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 interface RecognitionCardProps {
   title: string;
@@ -62,43 +64,59 @@ const RecognitionCard = ({ title, icon, pathways }: RecognitionCardProps) => {
 
       {/* Timeline / List */}
       <Box sx={{ position: "relative", ml: 1.5 }}>
-        {/* Vertical Dashed Line */}
+        {/* Vertical Glowing Line */}
         <Box
           sx={{
             position: "absolute",
-            left: 7.5,
-            top: 10,
-            bottom: 24,
-            width: "1px",
-            borderLeft: "1.5px dashed rgba(255, 255, 255, 0.12)",
+            left: 15,
+            top: 0,
+            bottom: 16,
+            width: "2px",
+            backgroundColor: "#3B82F6",
+            boxShadow: "0 0 8px rgba(59, 130, 246, 0.6)",
             zIndex: 0,
           }}
         />
 
-        <Stack spacing={4.5}>
+        <Stack spacing={4}>
           {pathways.map((tier, tierIdx) => (
             <Box
               key={tierIdx}
               sx={{
                 display: "flex",
-                alignItems: "flex-start",
+                alignItems: "center",
                 position: "relative",
                 zIndex: 1,
               }}
             >
-              {/* Circle */}
+              {/* Numbered Circle */}
               <Box
                 sx={{
-                  width: 16,
-                  height: 16,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 32,
+                  height: 32,
                   borderRadius: "50%",
-                  border: "1.5px solid rgba(255, 255, 255, 0.2)",
-                  backgroundColor: "#0F1116", // match background approx
-                  mt: 0.15,
-                  mr: 3,
+                  border: "2.5px solid" + COLORS.BEAM_COLOR,
+                  backgroundColor: "#0F1116",
+                  boxShadow:
+                    "0 0 12px rgba(59, 130, 246, 0.5), inset 0 0 8px rgba(59, 130, 246, 0.2)",
+                  mr: 2.5,
                   flexShrink: 0,
                 }}
-              />
+              >
+                <Typography
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontSize: "14px",
+                    fontWeight: 700,
+                    color: "#E2E8F0",
+                  }}
+                >
+                  {tierIdx + 1}
+                </Typography>
+              </Box>
               {/* Text */}
               <Typography
                 sx={{
@@ -172,24 +190,7 @@ const RecognitionSection = () => {
             alignItems="center"
             sx={{ textAlign: "center", maxWidth: "800px" }}
           >
-            {/* Pill Badge */}
-            <Box
-              sx={{
-                backgroundColor: "rgba(30, 58, 138, 0.3)",
-                border: "1px solid rgba(59, 130, 246, 0.3)",
-                color: "#93C5FD",
-                px: 2,
-                py: 0.5,
-                borderRadius: "20px",
-                fontSize: "10.5px",
-                fontWeight: 800,
-                fontFamily: "monospace",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-              }}
-            >
-              IAIRE Fellowships & Standards
-            </Box>
+            <SectionBadge label="IAIRE Fellowships & Standards" align="center" />
 
             <Typography
               component="h2"

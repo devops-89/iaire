@@ -6,6 +6,7 @@ import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 // Custom vector SVG icons representing the 9 support categories
 const FrameworkIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -120,22 +121,7 @@ const WhatWeDo = () => {
           
           {/* Header */}
           <Stack spacing={2.5} alignItems="center" textAlign="center">
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
-              <Typography
-                sx={{
-                  fontFamily: inter.style.fontFamily,
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  color: "#1B365D",
-                  textTransform: "uppercase",
-                }}
-              >
-                WHAT IAIRE DOES
-              </Typography>
-              <Box sx={{ width: 16, height: 2, backgroundColor: "#1B365D" }} />
-            </Box>
+            <SectionBadge label="WHAT IAIRE DOES" align="center" />
 
             <Typography
               variant="h2"
