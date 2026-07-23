@@ -2,7 +2,7 @@
 
 import React, { useRef, Suspense, useEffect, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF, Stage } from "@react-three/drei";
+import { useGLTF, Stage, Center, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { Box } from "@mui/material";
 
@@ -50,7 +50,9 @@ class ErrorBoundary extends React.Component<
 }
 
 const EarthModel = () => {
-  const { scene } = useGLTF("/images/homepage/earth_ultra_pbr.glb");
+  const { scene } = useGLTF(
+    "https://kodvmpilnjduyzxw.public.blob.vercel-storage.com/IAIRE/earth_-_16k_high_resolution.glb",
+  );
   const earthRef = useRef<THREE.Group>(null);
   const { gl } = useThree();
   const isDragging = useRef(false);
@@ -83,8 +85,8 @@ const EarthModel = () => {
       }
 
       const maxDim = Math.max(size.x, size.y, size.z);
-      // Target a baseline size of 4.0 units
-      setBaseScale(3.0 / maxDim);
+      // Target a baseline size of 6.5 units
+      setBaseScale(3.5 / maxDim);
     }
   }, [scene]);
 
@@ -167,11 +169,11 @@ const EarthModel = () => {
   if (baseScale === null) return null;
 
   return (
-    <primitive
-      object={scene}
-      ref={earthRef}
-      scale={[baseScale, baseScale, baseScale]}
-    />
+    <group ref={earthRef} scale={[baseScale, baseScale, baseScale]}>
+      <Center>
+        <primitive object={scene} />
+      </Center>
+    </group>
   );
 };
 
@@ -198,7 +200,9 @@ const ThreeEarth = ({
           camera={{ position: [0, 0, cameraZ], fov: 45 }}
           gl={{ antialias: false, powerPreference: "default" }}
         >
-          <Suspense fallback={null}>
+          <ambientLight intensity={1.5} />
+          <directionalLight position={[5, 3, 5]} intensity={2.5} />
+          <Suspense fallback={<Html center style={{ color: "white", fontFamily: "sans-serif" }}>Loading High-Res Earth...</Html>}>
             <Stage
               environment="city"
               intensity={1.5}
@@ -216,7 +220,9 @@ const ThreeEarth = ({
 
 // Only preload if in a browser context to avoid SSR errors
 if (typeof window !== "undefined") {
-  useGLTF.preload("/images/homepage/earth_ultra_pbr.glb");
+  useGLTF.preload(
+    "https://kodvmpilnjduyzxw.public.blob.vercel-storage.com/IAIRE/earth_-_16k_high_resolution.glb",
+  );
 }
 
 export default ThreeEarth;

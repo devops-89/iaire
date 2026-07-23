@@ -17,6 +17,7 @@ import {
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThreeEarth from "./ThreeGlobe";
+import { COLORS } from "@/utils/enum";
 
 const HeroSection3 = () => {
   const theme = useTheme();
@@ -31,12 +32,12 @@ const HeroSection3 = () => {
     <Box
       sx={{
         position: "relative",
-        height: { xs: "auto", md: "auto" },
+        height: { xs: "auto", md: "100vh" },
         minHeight: { xs: "auto", md: "auto" },
         maxHeight: { xs: "auto", md: "auto" },
         display: "flex",
         alignItems: "center",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#0B0F19",
         overflow: "hidden",
         zIndex: 1,
         pt: { xs: "100px", md: 20 },
@@ -52,16 +53,29 @@ const HeroSection3 = () => {
           right: 0,
           bottom: 0,
           backgroundImage: `
-            linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px)
+            radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+            radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+            radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px),
+            radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 3px)
           `,
-          backgroundSize: "60px 60px",
+          backgroundSize: "550px 550px, 350px 350px, 250px 250px, 150px 150px",
+          backgroundPosition: "0 0, 40px 60px, 130px 270px, 70px 100px",
           maskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+            "radial-gradient(ellipse at center, black 60%, transparent 100%)",
           WebkitMaskImage:
-            "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+            "radial-gradient(ellipse at center, black 60%, transparent 100%)",
           zIndex: 0,
           pointerEvents: "none",
+          animation: "moveStars 150s linear infinite",
+          "@keyframes moveStars": {
+            "0%": {
+              backgroundPosition: "0 0, 40px 60px, 130px 270px, 70px 100px",
+            },
+            "100%": {
+              backgroundPosition:
+                "550px 550px, 390px 410px, 380px 520px, 220px 250px",
+            },
+          },
         }}
       />
 
@@ -109,7 +123,7 @@ const HeroSection3 = () => {
       >
         <Grid container spacing={{ xs: 4, md: 4 }} alignItems="center">
           <Grid
-            size={{ xs: 12, md: 7 }}
+            size={{ xs: 12, md: 6 }}
             sx={{ pr: { md: 2 }, order: { xs: 2, md: 1 } }}
           >
             <Box
@@ -133,8 +147,8 @@ const HeroSection3 = () => {
                   width: 6,
                   height: 6,
                   borderRadius: "50%",
-                  backgroundColor: "#1B365D",
-                  boxShadow: "0 0 8px #1B365D",
+                  backgroundColor: "#FFFFFF",
+                  boxShadow: "0 0 8px #FFFFFF",
                   animation: "pulse 2s infinite",
                   "@keyframes pulse": {
                     "0%": { transform: "scale(0.9)", opacity: 0.6 },
@@ -148,7 +162,7 @@ const HeroSection3 = () => {
                   fontSize: "11px",
                   fontWeight: 700,
                   fontFamily: inter.style.fontFamily,
-                  color: "#1B365D",
+                  color: "#FFFFFF",
                   letterSpacing: "0.05em",
                   textTransform: "uppercase",
                 }}
@@ -164,12 +178,12 @@ const HeroSection3 = () => {
               animateBy="words"
               direction="bottom"
               sx={{
-                fontSize: "clamp(28px, 4vw, 44px)",
+                fontSize: "clamp(28px, 4vw, 35px)",
                 fontFamily: inter.style.fontFamily,
                 fontWeight: 850,
                 lineHeight: 1.15,
                 letterSpacing: "-0.03em",
-                color: "#111827",
+                color: "#F9FAFB",
                 marginBottom: "20px",
               }}
             />
@@ -182,7 +196,7 @@ const HeroSection3 = () => {
                 fontSize: { xs: "13.5px", md: "14.5px" },
                 fontFamily: inter.style.fontFamily,
                 fontWeight: 400,
-                color: "#374151",
+                color: "#D1D5DB",
                 lineHeight: 1.6,
                 mb: 1.75,
               }}
@@ -202,7 +216,7 @@ const HeroSection3 = () => {
                 fontSize: { xs: "13.5px", md: "14px" },
                 fontFamily: inter.style.fontFamily,
                 fontWeight: 400,
-                color: "#4B5563",
+                color: "#D1D5DB",
                 lineHeight: 1.6,
                 mb: 3.5,
               }}
@@ -234,55 +248,21 @@ const HeroSection3 = () => {
               <Link href="/programs" style={{ textDecoration: "none" }}>
                 <BeamButton
                   variant="outlined"
-                  sx={{ width: "100%", whiteSpace: "nowrap" }}
+                  sx={{
+                    width: "100%",
+                    whiteSpace: "nowrap",
+                    color: COLORS.WHITE,
+                  }}
                 >
                   Explore What We Do
                 </BeamButton>
               </Link>
-
-              {/* <Link
-                href="/about"
-                style={{
-                  textDecoration: "none",
-                  display: "inline-flex",
-                  justifyContent: "center",
-                }}
-              >
-                <BeamButton
-                  variant="text"
-                  endIcon={
-                    <ArrowForwardIcon
-                      className="arrow-icon"
-                      sx={{ transition: "transform 0.25s ease" }}
-                    />
-                  }
-                  sx={{
-                    fontSize: "14px",
-                    fontFamily: inter.style.fontFamily,
-                    textTransform: "none",
-                    fontWeight: 700,
-                    color: "#1B365D",
-                    py: 1,
-                    px: 1.75,
-                    borderRadius: "100px",
-                    transition: "all 0.25s ease",
-                    "&:hover": {
-                      backgroundColor: "rgba(248, 93, 0, 0.04)",
-                      "& .arrow-icon": {
-                        transform: "translateX(4px)",
-                      },
-                    },
-                  }}
-                >
-                  Learn About IAIRE
-                </BeamButton>
-              </Link> */}
             </Stack>
           </Grid>
 
           {/* Right Column: Globe & Visual accents */}
           <Grid
-            size={{ xs: 12, md: 5 }}
+            size={{ xs: 12, md: 6 }}
             data-aos="fade-left"
             data-aos-duration="900"
             data-aos-delay="200"
@@ -319,7 +299,7 @@ const HeroSection3 = () => {
                 zIndex: 2,
               }}
             >
-              <ThreeEarth height="100%" cameraZ={5.2} />
+              <ThreeEarth height="100%" cameraZ={3.5} />
             </Box>
 
             {/* Floating Glassmorphism Accents */}
@@ -328,10 +308,10 @@ const HeroSection3 = () => {
                 position: "absolute",
                 top: "15%",
                 right: { xs: "4%", md: "-2%" },
-                backgroundColor: "rgba(255, 255, 255, 0.8)",
+                backgroundColor: "rgba(15, 23, 42, 0.6)",
                 backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255, 255, 255, 0.6)",
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.06)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
                 borderRadius: "16px",
                 p: 1.75,
                 display: "flex",
@@ -350,11 +330,11 @@ const HeroSection3 = () => {
                   width: 32,
                   height: 32,
                   borderRadius: "8px",
-                  backgroundColor: "rgba(248, 93, 0, 0.08)",
+                  backgroundColor: "rgba(248, 93, 0, 0.15)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#1B365D",
+                  color: "#FFFFFF",
                 }}
               >
                 <CardMembershipIcon sx={{ fontSize: 18 }} />
@@ -375,7 +355,7 @@ const HeroSection3 = () => {
                   sx={{
                     fontSize: "12px",
                     fontWeight: 700,
-                    color: "#1D1D1F",
+                    color: "#FFFFFF",
                     fontFamily: inter.style.fontFamily,
                   }}
                 >
@@ -389,10 +369,10 @@ const HeroSection3 = () => {
                 position: "absolute",
                 bottom: "12%",
                 left: { xs: "2%", md: "-4%" },
-                backgroundColor: "rgba(255, 255, 255, 0.8)",
+                backgroundColor: "rgba(15, 23, 42, 0.6)",
                 backdropFilter: "blur(12px)",
-                border: "1px solid rgba(255, 255, 255, 0.6)",
-                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.06)",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)",
                 borderRadius: "16px",
                 p: 1.75,
                 display: "flex",
@@ -412,11 +392,11 @@ const HeroSection3 = () => {
                   width: 32,
                   height: 32,
                   borderRadius: "8px",
-                  backgroundColor: "rgba(0, 108, 71, 0.08)",
+                  backgroundColor: "rgba(74, 222, 128, 0.15)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#006C47",
+                  color: "#4ADE80",
                 }}
               >
                 <PublicIcon sx={{ fontSize: 18 }} />
@@ -437,7 +417,7 @@ const HeroSection3 = () => {
                   sx={{
                     fontSize: "12px",
                     fontWeight: 700,
-                    color: "#1D1D1F",
+                    color: "#FFFFFF",
                     fontFamily: inter.style.fontFamily,
                   }}
                 >
