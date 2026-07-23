@@ -56,7 +56,11 @@ const GetInvolvedHero = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <SectionBadge label="Get Involved" align="center" />
+                <SectionBadge
+                  label="Get Involved"
+                  align="center"
+                  theme="dark"
+                />
               </Box>
 
               {/* Title & Subtitle */}
@@ -116,7 +120,6 @@ const GetInvolvedHero = () => {
                       boxShadow: "0 8px 25px rgba(255, 255, 255, 0.15)",
                       transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                       "&:hover": {
-                        backgroundColor: "#F3F4F6",
                         transform: "translateY(-2px)",
                         boxShadow: "0 12px 30px rgba(255, 255, 255, 0.25)",
                       },

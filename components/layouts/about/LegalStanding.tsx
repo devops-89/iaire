@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const pillars = [
   "Credibility of peer standards",
@@ -95,24 +96,7 @@ const LegalStanding = () => {
         >
           <Stack spacing={2.5} alignItems="center">
             {/* Badge */}
-            <Box sx={{ display: "flex" }}>
-              <Box
-                sx={{
-                  backgroundColor: "rgba(27, 54, 93, 0.06)",
-                  color: "#1B365D",
-                  px: 2,
-                  py: 0.5,
-                  borderRadius: "20px",
-                  fontSize: "11px",
-                  fontWeight: 800,
-                  fontFamily: "monospace",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                }}
-              >
-                Legal & Academic Standing
-              </Box>
-            </Box>
+            <SectionBadge label="Legal & Academic Standing" align="center" />
 
             {/* Title & Description */}
             <Stack spacing={1.5} alignItems="center">

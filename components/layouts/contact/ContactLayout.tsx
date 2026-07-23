@@ -8,6 +8,7 @@ import Link from "next/link";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const rolesList = [
   "Educator",
@@ -162,24 +163,7 @@ const ContactLayout = () => {
             <Stack spacing={4}>
               
               {/* Badge */}
-              <Box sx={{ display: "flex" }}>
-                <Box
-                  sx={{
-                    backgroundColor: "rgba(27, 54, 93, 0.06)",
-                    color: "#1B365D",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Get In Touch
-                </Box>
-              </Box>
+              <SectionBadge label="Get In Touch" align="center" />
 
               {/* Title & Copy */}
               <Stack spacing={2}>

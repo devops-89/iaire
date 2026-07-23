@@ -10,6 +10,7 @@ import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
 import SchoolIcon from "@mui/icons-material/SchoolOutlined";
 import StarBorderIcon from "@mui/icons-material/StarBorderOutlined";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const pathways = [
   {
@@ -123,7 +124,7 @@ const AwardsFellowships = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <Box
+                {/* <Box
                   sx={{
                     width: "auto",
                     backgroundColor: "rgba(255, 255, 255, 0.08)",
@@ -141,7 +142,13 @@ const AwardsFellowships = () => {
                   }}
                 >
                   Recognition & Fellowships
-                </Box>
+                </Box> */}
+                <SectionBadge
+                  label="Recognition & Fellowships"
+                  textColor={COLORS.WHITE}
+                  glowColor={COLORS.WHITE}
+                  borderColor={COLORS.WHITE}
+                />
               </Box>
 
               {/* Title & Description */}

@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import SecurityIcon from "@mui/icons-material/SecurityOutlined";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const guidanceAreas = [
   "Patentability assessment & novelty evaluation",
@@ -82,23 +83,7 @@ const IpResearchSupport = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <Box
-                  sx={{
-                    width: "auto",
-                    backgroundColor: "rgba(27, 54, 93, 0.06)",
-                    color: "#1B365D",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  IP & Research Support
-                </Box>
+                <SectionBadge label="IP & Research Support" align="center" />
               </Box>
 
               {/* Title & Description */}

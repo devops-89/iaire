@@ -10,6 +10,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import Image from "next/image";
 import heroImg from "@/public/images/programs/school_innovation_hubs.png";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const features = [
   "Run structured innovation sessions",
@@ -83,23 +84,7 @@ const SchoolInnovationHubs = () => {
                   justifyContent: { xs: "flex-start", md: "flex-start" },
                 }}
               >
-                <Box
-                  sx={{
-                    width: "auto",
-                    backgroundColor: "rgba(27, 54, 93, 0.06)",
-                    color: "#1B365D",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Institutional Ecosystem
-                </Box>
+                <SectionBadge label="Institutional Ecosystem" align="center" />
               </Box>
 
               {/* Title & Description */}

@@ -115,7 +115,7 @@ const WhatWeDoHero = () => {
               data-aos-duration="800"
             >
               {/* Badge */}
-              <SectionBadge label="What We Do" align="center" />
+              <SectionBadge label="What We Do" align="center"  theme="dark" />
 
               <BlurText
                 variant="h1"

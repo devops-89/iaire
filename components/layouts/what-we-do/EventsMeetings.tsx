@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import EventAvailableIcon from "@mui/icons-material/EventAvailableOutlined";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const platformGoals = [
   "Share innovation and research outcomes",
@@ -81,23 +82,7 @@ const EventsMeetings = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <Box
-                  sx={{
-                    width: "auto",
-                    backgroundColor: "rgba(27, 54, 93, 0.06)",
-                    color: "#1B365D",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Knowledge Exchange
-                </Box>
+                <SectionBadge label="Knowledge Exchange" align="center" />
               </Box>
 
               {/* Title & Description */}

@@ -28,7 +28,7 @@ const BoardMembersGrid = () => {
                 textTransform: "uppercase",
               }}
             >
-              {boardMembers.length} Board Members
+              Board Members
             </Typography>
             <Typography
               sx={{

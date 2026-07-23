@@ -88,7 +88,7 @@ const WhoWeAre = () => {
           >
             <Stack spacing={3.5} sx={{ width: "100%" }}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <SectionBadge label="Governance & Scientific Board" align="left" />
+                <SectionBadge label="Governance & Scientific Board" align="left"  theme="dark" />
               </Box>
 
               {/* Title & Narrative */}

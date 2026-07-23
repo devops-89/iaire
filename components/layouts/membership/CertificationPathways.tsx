@@ -13,6 +13,7 @@ import { COLORS } from "@/utils/enum";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const pathwaysData = [
   {
@@ -99,25 +100,7 @@ const CertificationPathways = () => {
           data-aos-duration="800"
           >
             {/* Badge */}
-            <Box sx={{ display: "flex" }}>
-              <Box
-                sx={{
-                  width: "auto",
-                  backgroundColor: "rgba(27, 54, 93, 0.06)",
-                  color: "#1B365D",
-                  px: 2,
-                  py: 0.5,
-                  borderRadius: "20px",
-                  fontSize: "11px",
-                  fontWeight: 800,
-                  fontFamily: "monospace",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                }}
-              >
-                IAIRE Credentials
-              </Box>
-            </Box>
+            <SectionBadge label="IAIRE Credentials" align="center" />
 
             {/* Title & Description */}
             <Stack spacing={1.5}>

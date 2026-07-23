@@ -10,6 +10,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import Image from "next/image";
 import heroImg from "@/public/images/get-involved/student_innovation_scene.png";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const participationWays = [
   "Student membership",
@@ -84,23 +85,7 @@ const ForStudents = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <Box
-                  sx={{
-                    width: "auto",
-                    backgroundColor: "rgba(27, 54, 93, 0.06)",
-                    color: "#1B365D",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  For Students & Young Innovators
-                </Box>
+                <SectionBadge label="For Students & Young Innovators" align="center" />
               </Box>
 
               {/* Title & Description */}

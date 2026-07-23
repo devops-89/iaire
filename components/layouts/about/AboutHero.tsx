@@ -97,7 +97,7 @@ const AboutHero = () => {
                 label="Academic & Professional Society"
                 // align={lg:"left",xs:"center"}
                 align={phone ? "center" : "left"}
-              />
+               theme="dark" />
 
               <Stack spacing={1}>
                 <TextReveal

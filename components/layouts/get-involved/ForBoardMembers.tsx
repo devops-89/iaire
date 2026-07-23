@@ -9,6 +9,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Image from "next/image";
 import heroImg from "@/public/images/get-involved/board_meeting_scene.png";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const ForBoardMembers = () => {
   return (
@@ -146,23 +147,7 @@ const ForBoardMembers = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <Box
-                  sx={{
-                    width: "auto",
-                    backgroundColor: "rgba(27, 54, 93, 0.06)",
-                    color: "#1B365D",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: "20px",
-                    fontSize: "11px",
-                    fontWeight: 800,
-                    fontFamily: "monospace",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  For Scientific Board & Expert Mentors
-                </Box>
+                <SectionBadge label="For Scientific Board & Expert Mentors" align="center" />
               </Box>
 
               {/* Title & Description */}

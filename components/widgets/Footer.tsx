@@ -301,18 +301,28 @@ const Footer = () => {
             ).map((category, idx) => (
               <Grid size={{ xs: 6, sm: 4, md: 3 }} key={idx}>
                 <Stack spacing={3.5}>
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "12px",
-                      fontWeight: 800,
-                      color: "#FFFFFF",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                    }}
+                  <Link
+                    component={NextLink}
+                    href={category.url || "#"}
+                    underline="none"
                   >
-                    {category.label}
-                  </Typography>
+                    <Typography
+                      sx={{
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "12px",
+                        fontWeight: 800,
+                        color: "#FFFFFF",
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        transition: "color 0.2s ease",
+                        "&:hover": {
+                          color: "#3B82F6",
+                        },
+                      }}
+                    >
+                      {category.label}
+                    </Typography>
+                  </Link>
 
                   <Stack spacing={2.5}>
                     {category.subModules!.map((sub, subIdx) => (
@@ -328,18 +338,28 @@ const Footer = () => {
             {/* Custom Connect Column */}
             <Grid size={{ xs: 6, sm: 4, md: 3 }}>
               <Stack spacing={3.5}>
-                <Typography
-                  sx={{
-                    fontFamily: inter.style.fontFamily,
-                    fontSize: "12px",
-                    fontWeight: 800,
-                    color: "#FFFFFF",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                  }}
+                <Link
+                  component={NextLink}
+                  href="/contact"
+                  underline="none"
                 >
-                  Connect & Access
-                </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "12px",
+                      fontWeight: 800,
+                      color: "#FFFFFF",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      transition: "color 0.2s ease",
+                      "&:hover": {
+                        color: "#3B82F6",
+                      },
+                    }}
+                  >
+                    Connect & Access
+                  </Typography>
+                </Link>
 
                 <Stack spacing={2.5}>
                   <FooterLink
@@ -379,7 +399,8 @@ const Footer = () => {
 
             <Stack direction="row" spacing={3} alignItems="center">
               <Link
-                href="#"
+                component={NextLink}
+                href="/privacy"
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: "13px",
@@ -392,7 +413,8 @@ const Footer = () => {
                 Privacy Policy
               </Link>
               <Link
-                href="#"
+                component={NextLink}
+                href="/terms"
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: "13px",
@@ -405,7 +427,8 @@ const Footer = () => {
                 Terms of Service
               </Link>
               <Link
-                href="#"
+                component={NextLink}
+                href="/cookies"
                 sx={{
                   fontFamily: inter.style.fontFamily,
                   fontSize: "13px",

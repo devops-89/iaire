@@ -67,7 +67,7 @@ const NewsImpactHero = () => {
               data-aos-duration="800"
             >
               {/* Badge */}
-              <SectionBadge label="News & Impact" align="center" />
+              <SectionBadge label="News & Impact" align="center"  theme="dark" />
 
               <BlurText
                 variant="h1"

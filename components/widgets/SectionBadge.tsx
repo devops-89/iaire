@@ -12,6 +12,7 @@ const pulseDot = keyframes`
 interface SectionBadgeProps {
   label: string;
   align?: "left" | "center" | "right";
+  theme?: "light" | "dark";
   glowColor?: string;
   textColor?: string;
   borderColor?: string;
@@ -21,11 +22,18 @@ interface SectionBadgeProps {
 const SectionBadge = ({
   label,
   align = "left",
-  glowColor = "#3B82F6",
-  textColor = "#93C5FD",
-  borderColor = "rgba(59, 130, 246, 0.25)",
-  backgroundColor = "rgba(59, 130, 246, 0.1)",
+  theme = "light",
+  glowColor,
+  textColor,
+  borderColor,
+  backgroundColor,
 }: SectionBadgeProps) => {
+  const isDark = theme === "dark";
+  
+  const finalGlowColor = glowColor || (isDark ? "#3B82F6" : "#1B365D");
+  const finalTextColor = textColor || (isDark ? "#93C5FD" : "#1B365D");
+  const finalBorderColor = borderColor || (isDark ? "rgba(59, 130, 246, 0.25)" : "rgba(27, 54, 93, 0.25)");
+  const finalBackgroundColor = backgroundColor || (isDark ? "rgba(59, 130, 246, 0.1)" : "rgba(27, 54, 93, 0.08)");
   const getJustifyContent = () => {
     if (align === "center") return "center";
     if (align === "right") return "flex-end";
@@ -33,14 +41,14 @@ const SectionBadge = ({
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: getJustifyContent(), width: "100%" }}>
+    <Box sx={{ display: "flex", justifyContent: getJustifyContent(), width: "fit-content" }}>
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
           gap: 1.25,
-          backgroundColor: backgroundColor,
-          border: `1px solid ${borderColor}`,
+          backgroundColor: finalBackgroundColor,
+          border: `1px solid ${finalBorderColor}`,
           borderRadius: "100px",
           px: 2.25,
           py: 0.75,
@@ -51,8 +59,8 @@ const SectionBadge = ({
             width: 6,
             height: 6,
             borderRadius: "50%",
-            backgroundColor: glowColor,
-            boxShadow: `0 0 8px ${glowColor}`,
+            backgroundColor: finalGlowColor,
+            boxShadow: `0 0 8px ${finalGlowColor}`,
             animation: `${pulseDot} 2s infinite ease-in-out`,
           }}
         />
@@ -60,9 +68,9 @@ const SectionBadge = ({
           sx={{
             fontFamily: inter.style.fontFamily,
             fontSize: "10.5px",
-            fontWeight: 700,
-            color: textColor,
-            letterSpacing: "0.1em",
+            fontWeight: 800,
+            color: finalTextColor,
+            letterSpacing: "0.12em",
             textTransform: "uppercase",
           }}
         >

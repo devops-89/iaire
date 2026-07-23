@@ -8,7 +8,13 @@ import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CheckCircleIcon from "@mui/icons-material/CheckCircleOutline";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEventsOutlined";
+import {
+  WorkspacePremiumOutlined,
+  VerifiedUserOutlined,
+  EmojiObjectsOutlined,
+} from "@mui/icons-material";
 import BeamButton from "@/components/widgets/BeamButton";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const areas = [
   "Certified Institutional Member",
@@ -78,21 +84,10 @@ const StandardsCertification = () => {
               {/* Heading Section */}
               <Stack spacing={0.75}>
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Box
-                    sx={{ width: 20, height: 2, backgroundColor: "#1B365D" }}
+                  <SectionBadge
+                    label="Standards & Certification"
+                    align="left"
                   />
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "11.5px",
-                      fontWeight: 800,
-                      color: "#1B365D",
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Standards & Certification
-                  </Typography>
                 </Box>
 
                 <Typography
