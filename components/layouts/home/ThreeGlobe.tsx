@@ -2,9 +2,9 @@
 
 import React, { useRef, Suspense, useEffect, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF, Stage, Center, Html } from "@react-three/drei";
+import { useGLTF, Stage, Center, Html, useProgress } from "@react-three/drei";
 import * as THREE from "three";
-import { Box } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
 // Suppress WebGL-related console errors in sandboxed or headless environments
 if (typeof window !== "undefined") {
@@ -23,6 +23,37 @@ if (typeof window !== "undefined") {
     originalError(...args);
   };
 }
+
+const Loader = () => {
+  const { progress } = useProgress();
+  return (
+    <Html center>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 1.5,
+          color: "rgba(255, 255, 255, 0.8)",
+          fontFamily: "var(--font-inter), sans-serif",
+        }}
+      >
+        <CircularProgress size={32} thickness={5} sx={{ color: "rgba(255, 255, 255, 0.8)" }} />
+        <Typography
+          sx={{
+            fontSize: "13px",
+            fontWeight: 600,
+            letterSpacing: "0.05em",
+            whiteSpace: "nowrap",
+            textTransform: "uppercase",
+          }}
+        >
+          Loading Earth {progress.toFixed(0)}%
+        </Typography>
+      </Box>
+    </Html>
+  );
+};
 
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -202,7 +233,7 @@ const ThreeEarth = ({
         >
           <ambientLight intensity={1.5} />
           <directionalLight position={[5, 3, 5]} intensity={2.5} />
-          <Suspense fallback={<Html center style={{ color: "white", fontFamily: "sans-serif" }}>Loading High-Res Earth...</Html>}>
+          <Suspense fallback={<Loader />}>
             <Stage
               environment="city"
               intensity={1.5}
