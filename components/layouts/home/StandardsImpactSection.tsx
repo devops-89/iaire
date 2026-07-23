@@ -9,7 +9,7 @@ import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionBadge from "@/components/widgets/SectionBadge";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremiumOutlined";
-import standardsImpactImg from "@/images/homepage/academic_standard.jpeg";
+import standardsImpactImg from "@/images/homepage/academic_standara.jpeg";
 import BeamButton from "@/components/widgets/BeamButton";
 
 const StandardsImpactSection = () => {

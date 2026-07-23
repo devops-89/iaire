@@ -136,63 +136,18 @@ const StorySection = () => {
                         fontSize: "14px",
                         fontWeight: 700,
                         textTransform: "none",
-                        color: "#0D0D11",
-                        backgroundColor: "#FFFFFF",
+                        color: COLORS.WHITE,
+                        backgroundColor: COLORS.PRIMARY_BLUE,
                         borderRadius: "100px",
                         px: 3.5,
                         py: 1.4,
                         boxShadow: "0 4px 20px rgba(255, 255, 255, 0.15)",
                         transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                        "&:hover": {
-                          backgroundColor: "#F3F4F6",
-                          transform: "translateY(-2px)",
-                          boxShadow: "0 6px 24px rgba(255, 255, 255, 0.25)",
-                        },
                       }}
                     >
                       Learn More About IAIRE
                     </BeamButton>
                   </Link>
-
-                  {/* <Link
-                  href="/about#leadership"
-                  style={{ textDecoration: "none", width: "100%" }}
-                >
-                  <BeamButton
-                    variant="outlined"
-                    endIcon={
-                      <ArrowForwardIcon
-                        className="arrow-icon"
-                        sx={{ transition: "transform 0.25s ease" }}
-                      />
-                    }
-                    sx={{
-                      width: "100%",
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "14px",
-                      fontWeight: 700,
-                      textTransform: "none",
-                      color: "#FFFFFF",
-                      borderColor: "rgba(255, 255, 255, 0.25)",
-                      borderWidth: "1.5px",
-                      borderRadius: "100px",
-                      px: 3.5,
-                      py: 1.4,
-                      transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                      "&:hover": {
-                        borderWidth: "1.5px",
-                        borderColor: "#FFFFFF",
-                        backgroundColor: "rgba(255, 255, 255, 0.05)",
-                        transform: "translateY(-2px)",
-                        "& .arrow-icon": {
-                          transform: "translateX(4px)",
-                        },
-                      },
-                    }}
-                  >
-                    Meet the Board
-                  </BeamButton>
-                </Link> */}
                 </Stack>
               </Box>
             </Stack>

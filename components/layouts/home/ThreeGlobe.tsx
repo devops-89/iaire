@@ -38,7 +38,11 @@ const Loader = () => {
           fontFamily: "var(--font-inter), sans-serif",
         }}
       >
-        <CircularProgress size={32} thickness={5} sx={{ color: "rgba(255, 255, 255, 0.8)" }} />
+        <CircularProgress
+          size={32}
+          thickness={5}
+          sx={{ color: "rgba(255, 255, 255, 0.8)" }}
+        />
         <Typography
           sx={{
             fontSize: "13px",
@@ -82,7 +86,7 @@ class ErrorBoundary extends React.Component<
 
 const EarthModel = () => {
   const { scene } = useGLTF(
-    "https://kodvmpilnjduyzxw.public.blob.vercel-storage.com/IAIRE/earth_-_16k_high_resolution.glb",
+    "https://kodvmpilnjduyzxw.public.blob.vercel-storage.com/IAIRE/earth_-_16k_high_resolution-compressed-compressed.glb",
   );
   const earthRef = useRef<THREE.Group>(null);
   const { gl } = useThree();
