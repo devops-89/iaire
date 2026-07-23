@@ -89,8 +89,8 @@ const BeamButton: React.FC<BeamButtonProps> = ({
         "&:hover": {
           backgroundColor: defaultHoverBg,
           transform: defaultHoverTransform,
-          borderColor: variant === "outlined" ? COLORS.WHITE : undefined,
-          color: variant === "outlined" ? COLORS.WHITE : undefined,
+          // borderColor: variant === "outlined" ? COLORS.WHITE : undefined,
+          // color: variant === "outlined" ? COLORS.WHITE : undefined,
           "& .arrow-icon": {
             transform: "translateX(4px)",
           },

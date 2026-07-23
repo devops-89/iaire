@@ -108,7 +108,10 @@ const HeroSection3 = () => {
         }}
       >
         <Grid container spacing={{ xs: 4, md: 4 }} alignItems="center">
-          <Grid size={{ xs: 12, md: 7 }} sx={{ pr: { md: 2 }, order: { xs: 2, md: 1 } }}>
+          <Grid
+            size={{ xs: 12, md: 7 }}
+            sx={{ pr: { md: 2 }, order: { xs: 2, md: 1 } }}
+          >
             <Box
               data-aos="fade-up"
               data-aos-duration="700"
