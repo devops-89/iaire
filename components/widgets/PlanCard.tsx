@@ -12,7 +12,8 @@ import {
   ListItemAvatar,
   ListItemText,
   Stack,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import React from "react";
 import BeamButton from "@/components/widgets/BeamButton";
 
@@ -83,7 +84,7 @@ const PlanCard = ({
                   )}
                 </BeamButton>
               )}
-              {canSkip && (
+              {/* {canSkip && (
                 <BeamButton
                   sx={{
                     border: "1px solid" + COLORS.PRIMARY_NAVY,
@@ -96,7 +97,7 @@ const PlanCard = ({
                 >
                   Skip Now & Pay Later
                 </BeamButton>
-              )}
+              )} */}
             </Stack>
           </Grid>
           <Grid size={6}>
@@ -129,7 +130,22 @@ const PlanCard = ({
                                 : item.key ===
                                     PLAN_LIMIT_TYPE.MAX_RESEARCH_SUBMISSIONS
                                   ? `You can Add upto ${item.value} Research Submissions`
-                                  : ""
+                                  : item.key ===
+                                      PLAN_LIMIT_TYPE.STUDENT_MEMBERSHIP_CERTIFICATION
+                                    ? `Student Membership Certification`
+                                    : item.key ===
+                                        PLAN_LIMIT_TYPE.IDEAS_INNOVATION_CASE_STUDIES_ACCESS
+                                      ? `Access to Ideas & Innovation Case Studies`
+                                      : item.key ===
+                                          PLAN_LIMIT_TYPE["INNOVATION_&_RESEARCH_COMPETITIONS"]
+                                        ? `Access to Innovation & Research Competitions`
+                                        : item.key ===
+                                            PLAN_LIMIT_TYPE["SCHOLAR_DESIGNATIONS_&_FELLOWSHIPS"]
+                                          ? `Access to Scholar Designations & Fellowships`
+                                          : item.key ===
+                                              PLAN_LIMIT_TYPE.STARTUP_PITCH_COMPETITIONS
+                                            ? `Access to Startup Pitch Competitions`
+                                            : ""
                     }
                   />
                 </ListItem>

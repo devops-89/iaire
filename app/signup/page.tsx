@@ -39,10 +39,10 @@ const Signup = () => {
           onClick={() => router.back()}
           sx={{ border: "1px solid " + COLORS.BEAM_COLOR }}
         >
-          <Close />
+          <Close sx={{ color: COLORS.WHITE }} />
         </IconButton>
       </Box>
-      {/* <SignupContent /> */}
+      <SignupContent />
     </Suspense>
   );
 };

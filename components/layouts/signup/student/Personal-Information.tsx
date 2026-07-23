@@ -9,7 +9,8 @@ import {
   IconButton,
   InputAdornment,
   TextField,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { FormikProps } from "formik";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
@@ -76,17 +77,18 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             style={{ display: "none" }}
             onChange={handleImageChange}
           />
-          <BeamButton
+          <Typography
             onClick={() => fileInputRef.current?.click()}
             sx={{
               fontFamily: aloeveraDisplay_medium.style.fontFamily,
               textTransform: "capitalize",
               mt: 2,
               color: COLORS.PRIMARY_NAVY,
+              cursor: "pointer",
             }}
           >
             Upload Image
-          </BeamButton>
+          </Typography>
         </Grid>
         <Grid size={6}>
           <TextField

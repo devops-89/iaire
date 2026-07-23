@@ -12,7 +12,7 @@ export const useGetPlans = ({ role }: { role: string }) => {
       setPlanLoading(true);
       try {
         const res = await planControllers.getAllPlans(role);
-        setPlanData(res.data.data || []);
+        setPlanData(res.data || []);
       } catch (err) {
         console.log("error in fetching plans", err);
       } finally {

@@ -19,4 +19,22 @@ export const AuthControllers = {
       throw error;
     }
   },
+  forgetPassword: async (identifier: string) => {
+    try {
+      const result = await authApi.post("/forgot-password", {
+        identifier: identifier,
+      });
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  resetPassword: async (data: any) => {
+    try {
+      const result = await authApi.patch("/reset-password", data);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };

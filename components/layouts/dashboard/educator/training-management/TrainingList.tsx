@@ -117,23 +117,6 @@ const TrainingList = () => {
                 },
               ]}
             />
-            {!isMember ? (
-              <BeamButton
-                sx={{
-                  backgroundColor: COLORS.UNLOCKED_BUTTON_GREEN,
-                  color: COLORS.PRIMARY_NAVY,
-                  fontFamily: montserrat.style.fontFamily,
-                  fontWeight: 600,
-                  fontSize: "14px",
-                  borderRadius: "8px",
-                  p: 1.5,
-                }}
-                endIcon={<Lock />}
-                onClick={showPlans}
-              >
-                Unlock Now
-              </BeamButton>
-            ) : (
               <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
@@ -151,7 +134,6 @@ const TrainingList = () => {
               >
                 Nominate Self For Training
               </BeamButton>
-            )}
           </Stack>
           <Tabs
             sx={{ mt: 2 }}

@@ -63,9 +63,8 @@ const ResearchList = () => {
             >
               Research Submissions
             </Typography>
-            {isMember ? (
               <Link
-                href="/dashboard/educator/research-management/add-research"
+                href={"/dashboard/educator/research-management/add-research"}
                 style={{ textDecoration: "none" }}
               >
                 <BeamButton
@@ -73,10 +72,10 @@ const ResearchList = () => {
                     backgroundColor: COLORS.PRIMARY_NAVY,
                     color: COLORS.WHITE,
                     fontFamily: aloeveraDisplay_medium.style.fontFamily,
-                    fontWeight: 600,
-                    fontSize: 16,
+                    fontWeight: 400,
+                    fontSize: 14,
                     borderRadius: "10px",
-                    padding: "10px 20px",
+                    padding: "8px 24px",
                     textTransform: "none",
                     "&:hover": {
                       backgroundColor: COLORS.PRIMARY_NAVY,
@@ -88,24 +87,6 @@ const ResearchList = () => {
                   Add Research
                 </BeamButton>
               </Link>
-            ) : (
-              <BeamButton
-                sx={{
-                  backgroundColor: "#7e7e7e",
-                  color: COLORS.WHITE,
-                  fontFamily: aloeveraDisplay_medium.style.fontFamily,
-                  fontWeight: 600,
-                  fontSize: 16,
-                  borderRadius: "10px",
-                  padding: "10px 20px",
-                  textTransform: "none",
-                }}
-                endIcon={<Lock />}
-                onClick={() => showModal(<Plans role={USER_ROLES.TEACHER} />)}
-              >
-                Unlock Feature
-              </BeamButton>
-            )}
           </Stack>
 
           <TableContainer>

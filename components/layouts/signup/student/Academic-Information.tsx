@@ -19,6 +19,8 @@ interface ACADEMIC_PROPS {
 const AcademicInformation = ({ formik }: ACADEMIC_PROPS) => {
   const { countryData, countryLoading } = useGetCountries();
 
+  console.log("country", countryData);
+
   const [country, setCountry] = useState<COUNTRYDATAPROPS | null>(null);
   const { boardData, boardLoading } = useBoardByCountry(country);
 

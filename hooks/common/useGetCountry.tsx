@@ -12,6 +12,7 @@ export const useGetCountries = () => {
       setCountryLoading(true);
       try {
         const res = await countryControllers.getCountries();
+        console.log("res", res);
         setCountryData(res.data);
       } catch (error) {
         console.log("error in country listing", error);

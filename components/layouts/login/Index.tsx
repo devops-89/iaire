@@ -31,6 +31,8 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import BeamButton from "@/components/widgets/BeamButton";
 import { useRouter } from "next/navigation";
+import { ForgotPasswordModal } from "@/components/modals/common/ForgotPasswordModal";
+import useSnackbar from "@/store/useSnackbar";
 
 const LoginLayout = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,6 +41,13 @@ const LoginLayout = () => {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const { login, loading } = useLogin();
+  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
+  const { setSnackbar } = useSnackbar();
+
+  const handleForgotPassword = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsForgotPasswordOpen(true);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -98,7 +107,7 @@ const LoginLayout = () => {
             }}
           >
             <IconButton
-              onClick={() => router.back()}
+              onClick={() => router.push("/")}
               sx={{ border: "1px solid " + COLORS.BEAM_COLOR }}
             >
               <Close />
@@ -244,6 +253,7 @@ const LoginLayout = () => {
                 <Link
                   href="#"
                   underline="hover"
+                  onClick={handleForgotPassword}
                   sx={{
                     fontSize: 14,
                     color: COLORS.PRIMARY_NAVY,
@@ -308,6 +318,11 @@ const LoginLayout = () => {
           </form>
         </Card>
       </Container>
+      <ForgotPasswordModal
+        open={isForgotPasswordOpen}
+        onClose={() => setIsForgotPasswordOpen(false)}
+        email={formik.values.email}
+      />
     </Box>
   );
 };

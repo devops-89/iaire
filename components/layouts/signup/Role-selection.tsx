@@ -6,6 +6,7 @@ import {
   SupervisorAccount,
   EmojiPeople,
   ArrowForward,
+  Close,
 } from "@mui/icons-material";
 import {
   Box,
@@ -16,6 +17,7 @@ import {
   Stack,
   useTheme,
   useMediaQuery,
+  IconButton,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -86,6 +88,14 @@ const RoleSelectionLayout = () => {
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+        <Box sx={{ textAlign: "right" }}>
+          <IconButton
+            onClick={() => router.back()}
+            sx={{ border: "1px solid " + COLORS.BEAM_COLOR }}
+          >
+            <Close sx={{ color: COLORS.WHITE }} />
+          </IconButton>
+        </Box>
         <Box sx={{ textAlign: "center", mb: 6 }}>
           <Box
             sx={{

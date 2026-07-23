@@ -64,35 +64,13 @@ const InnovationList = () => {
               >
                 Innovation Management
               </Typography>
-              {isMember ? (
-                <Link
-                  href="/dashboard/educator/innovation-management/add-innovation"
-                  style={{ textDecoration: "none" }}
-                >
-                  <BeamButton
-                    sx={{
-                      backgroundColor: COLORS.PRIMARY_NAVY,
-                      color: COLORS.WHITE,
-                      fontFamily: aloeveraDisplay_medium.style.fontFamily,
-                      fontWeight: 400,
-                      fontSize: 14,
-                      borderRadius: "10px",
-                      padding: "8px 24px",
-                      textTransform: "none",
-                      "&:hover": {
-                        backgroundColor: COLORS.PRIMARY_NAVY,
-                        opacity: 0.9,
-                      },
-                    }}
-                    endIcon={<Add />}
-                  >
-                    Add Innovation
-                  </BeamButton>
-                </Link>
-              ) : (
+              <Link
+                href="/dashboard/educator/innovation-management/add-innovation"
+                style={{ textDecoration: "none" }}
+              >
                 <BeamButton
                   sx={{
-                    backgroundColor: "#7e7e7e",
+                    backgroundColor: COLORS.PRIMARY_NAVY,
                     color: COLORS.WHITE,
                     fontFamily: aloeveraDisplay_medium.style.fontFamily,
                     fontWeight: 400,
@@ -100,13 +78,16 @@ const InnovationList = () => {
                     borderRadius: "10px",
                     padding: "8px 24px",
                     textTransform: "none",
+                    "&:hover": {
+                      backgroundColor: COLORS.PRIMARY_NAVY,
+                      opacity: 0.9,
+                    },
                   }}
-                  endIcon={<Lock />}
-                  onClick={() => showModal(<Plans role={USER_ROLES.TEACHER} />)}
+                  endIcon={<Add />}
                 >
-                  Unlock Feature
+                  Add Innovation
                 </BeamButton>
-              )}
+              </Link>
             </Stack>
 
             <TableContainer>

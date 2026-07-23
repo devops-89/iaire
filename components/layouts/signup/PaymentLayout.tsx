@@ -33,7 +33,7 @@ const PaymentLayout = () => {
   }
 
   const { planData, planLoading } = useGetPlans({ role: finalRole || "" });
-  // console.log("plan Data", planData);
+  console.log("plan Data", planData);
 
   // console.l;
 
