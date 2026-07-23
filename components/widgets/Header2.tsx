@@ -190,10 +190,7 @@ const Header2 = () => {
             <Box
               sx={{ display: "flex", justifyContent: "flex-end", zIndex: 1 }}
             >
-              <Link
-                href="/signup/role-selection"
-                style={{ textDecoration: "none" }}
-              >
+              <Link href="/login" style={{ textDecoration: "none" }}>
                 <BeamButton
                   variant="outlined"
                   sx={{

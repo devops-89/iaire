@@ -5,7 +5,13 @@ import { montserrat, roboto } from "@/utils/fonts";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { LOGIN_REQUEST } from "@/utils/type";
 import { loginValidationSchema } from "@/utils/validationSchema";
-import { Email, Visibility, VisibilityOff, Lock } from "@mui/icons-material";
+import {
+  Email,
+  Visibility,
+  VisibilityOff,
+  Lock,
+  Close,
+} from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -19,13 +25,17 @@ import {
   Link,
   Stack,
   TextField,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import BeamButton from "@/components/widgets/BeamButton";
+import { useRouter } from "next/navigation";
 
 const LoginLayout = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const router = useRouter();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const { login, loading } = useLogin();
@@ -79,6 +89,21 @@ const LoginLayout = () => {
             boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.4)",
           }}
         >
+          <Box
+            sx={{
+              textAlign: "flex-end",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
+          >
+            <IconButton
+              onClick={() => router.back()}
+              sx={{ border: "1px solid " + COLORS.BEAM_COLOR }}
+            >
+              <Close />
+            </IconButton>
+          </Box>
           <Box sx={{ textAlign: "center", mb: 4 }}>
             <Box
               sx={{

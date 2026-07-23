@@ -8,7 +8,8 @@ import {
   Card,
   Container,
   Autocomplete,
-  TextField} from "@mui/material";
+  TextField,
+} from "@mui/material";
 import { useFormik } from "formik";
 import { institutionSignupValidationSchema } from "@/utils/validationSchema";
 import { COLORS, USER_ROLES } from "@/utils/enum";
@@ -543,7 +544,7 @@ const Institution = () => {
               href={"/login"}
               style={{ textTransform: "none", textDecoration: "none" }}
             >
-              <BeamButton
+              <Typography
                 sx={{
                   color: COLORS.PRIMARY_NAVY,
                   fontWeight: 700,
@@ -557,9 +558,10 @@ const Institution = () => {
                     textDecoration: "underline",
                   },
                 }}
+                component={"span"}
               >
                 Log in instead
-              </BeamButton>
+              </Typography>
             </Link>
           </Typography>
         </Card>
