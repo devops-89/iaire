@@ -85,8 +85,14 @@ const AboutNewsSection = () => {
           data-aos-duration="800"
         >
           {/* Section Header */}
-          <Stack spacing={2} sx={{ textAlign: "center", maxWidth: "800px" }}>
-            <SectionBadge label="COMMUNITY UPDATES" align="center" />
+          <Stack
+            spacing={2}
+            alignItems="center"
+            sx={{ textAlign: "center", maxWidth: "800px" }}
+          >
+            <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+              <SectionBadge label="COMMUNITY UPDATES" align="center" />
+            </Box>
 
             <Typography
               variant="h2"

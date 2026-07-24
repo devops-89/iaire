@@ -1,7 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box, Container, Grid, Typography, Stack, InputBase, MenuItem, Select } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  Stack,
+  InputBase,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -134,7 +143,8 @@ const ContactLayout = () => {
           width: "45vw",
           height: "45vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(110px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -148,7 +158,8 @@ const ContactLayout = () => {
           width: "40vw",
           height: "40vw",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 70%)",
+          background:
+            "radial-gradient(circle, rgba(27, 54, 93, 0.02) 0%, rgba(255, 255, 255, 0) 70%)",
           filter: "blur(100px)",
           zIndex: 0,
           pointerEvents: "none",
@@ -157,13 +168,14 @@ const ContactLayout = () => {
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
         <Grid container spacing={{ xs: 6, md: 8 }} alignItems="flex-start">
-          
           {/* Left Column: Heading, Info block & Action CTAs */}
           <Grid size={{ xs: 12, md: 5 }}>
             <Stack spacing={4}>
-              
               {/* Badge */}
-              <SectionBadge label="Get In Touch" align="center" />
+              <SectionBadge
+                label="Get In Touch"
+                align={{ xs: "center", lg: "flex-start" }}
+              />
 
               {/* Title & Copy */}
               <Stack spacing={2}>
@@ -180,7 +192,7 @@ const ContactLayout = () => {
                 >
                   Contact <span style={{ color: "#1B365D" }}>IAIRE</span>
                 </Typography>
-                
+
                 <Typography
                   sx={{
                     fontFamily: inter.style.fontFamily,
@@ -189,7 +201,9 @@ const ContactLayout = () => {
                     color: "#4B5563",
                   }}
                 >
-                  For membership, institutional partnerships, educator certification, student programmes, scientific board engagement, or chapter development, please contact IAIRE.
+                  For membership, institutional partnerships, educator
+                  certification, student programmes, scientific board
+                  engagement, or chapter development, please contact IAIRE.
                 </Typography>
               </Stack>
 
@@ -217,21 +231,47 @@ const ContactLayout = () => {
                 </Typography>
 
                 <Stack spacing={1.5}>
-                  <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "13px", color: "#4B5563" }}>
+                  <Typography
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "13px",
+                      color: "#4B5563",
+                    }}
+                  >
                     <strong>General Email:</strong> info@iaire.org
                   </Typography>
-                  <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "13px", color: "#4B5563" }}>
-                    <strong>Hours:</strong> Monday – Friday, 9:00 AM – 5:00 PM EST
+                  <Typography
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "13px",
+                      color: "#4B5563",
+                    }}
+                  >
+                    <strong>Hours:</strong> Monday – Friday, 9:00 AM – 5:00 PM
+                    EST
                   </Typography>
-                  <Typography sx={{ fontFamily: inter.style.fontFamily, fontSize: "13px", color: "#4B5563" }}>
+                  <Typography
+                    sx={{
+                      fontFamily: inter.style.fontFamily,
+                      fontSize: "13px",
+                      color: "#4B5563",
+                    }}
+                  >
                     <strong>Response SLA:</strong> Within 24-48 business hours
                   </Typography>
                 </Stack>
               </Stack>
 
               {/* Auxiliary CTAs */}
-              <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ width: "100%" }}>
-                <Link href="/signup/role-selection" style={{ textDecoration: "none", flex: 1 }}>
+              <Stack
+                direction={{ xs: "column", sm: "row" }}
+                spacing={2}
+                sx={{ width: "100%" }}
+              >
+                <Link
+                  href="/signup/role-selection"
+                  style={{ textDecoration: "none", flex: 1 }}
+                >
                   <BeamButton
                     variant="contained"
                     sx={{
@@ -258,7 +298,10 @@ const ContactLayout = () => {
                   </BeamButton>
                 </Link>
 
-                <Link href="/contact" style={{ textDecoration: "none", flex: 1 }}>
+                <Link
+                  href="/contact"
+                  style={{ textDecoration: "none", flex: 1 }}
+                >
                   <BeamButton
                     variant="outlined"
                     sx={{
@@ -287,7 +330,6 @@ const ContactLayout = () => {
                   </BeamButton>
                 </Link>
               </Stack>
-
             </Stack>
           </Grid>
 
@@ -307,7 +349,11 @@ const ContactLayout = () => {
               }}
             >
               {submitted ? (
-                <Stack spacing={2} alignItems="center" sx={{ py: 6, textAlign: "center" }}>
+                <Stack
+                  spacing={2}
+                  alignItems="center"
+                  sx={{ py: 6, textAlign: "center" }}
+                >
                   <CheckCircleIcon sx={{ color: "#1B365D", fontSize: 60 }} />
                   <Typography
                     sx={{
@@ -327,7 +373,9 @@ const ContactLayout = () => {
                       maxWidth: "380px",
                     }}
                   >
-                    Thank you for connecting with IAIRE. Our compliance and partnership team will review your details and reach out within 24-48 business hours.
+                    Thank you for connecting with IAIRE. Our compliance and
+                    partnership team will review your details and reach out
+                    within 24-48 business hours.
                   </Typography>
                 </Stack>
               ) : (
@@ -353,7 +401,9 @@ const ContactLayout = () => {
                         label="Name"
                         placeholder="John Doe"
                         value={formData.name}
-                        onChange={(v) => setFormData((prev) => ({ ...prev, name: v }))}
+                        onChange={(v) =>
+                          setFormData((prev) => ({ ...prev, name: v }))
+                        }
                       />
                     </Grid>
                     <Grid size={{ xs: 12, sm: 6 }}>
@@ -361,7 +411,9 @@ const ContactLayout = () => {
                         label="Organization / School"
                         placeholder="Excelsior Academy"
                         value={formData.org}
-                        onChange={(v) => setFormData((prev) => ({ ...prev, org: v }))}
+                        onChange={(v) =>
+                          setFormData((prev) => ({ ...prev, org: v }))
+                        }
                       />
                     </Grid>
 
@@ -381,7 +433,12 @@ const ContactLayout = () => {
                         </Typography>
                         <Select
                           value={formData.role}
-                          onChange={(e) => setFormData((prev) => ({ ...prev, role: e.target.value as string }))}
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              role: e.target.value as string,
+                            }))
+                          }
                           sx={{
                             fontFamily: inter.style.fontFamily,
                             fontSize: "13.5px",
@@ -399,7 +456,14 @@ const ContactLayout = () => {
                           }}
                         >
                           {rolesList.map((role) => (
-                            <MenuItem key={role} value={role} sx={{ fontFamily: inter.style.fontFamily, fontSize: "13px" }}>
+                            <MenuItem
+                              key={role}
+                              value={role}
+                              sx={{
+                                fontFamily: inter.style.fontFamily,
+                                fontSize: "13px",
+                              }}
+                            >
                               {role}
                             </MenuItem>
                           ))}
@@ -413,7 +477,9 @@ const ContactLayout = () => {
                         placeholder="john.doe@example.com"
                         type="email"
                         value={formData.email}
-                        onChange={(v) => setFormData((prev) => ({ ...prev, email: v }))}
+                        onChange={(v) =>
+                          setFormData((prev) => ({ ...prev, email: v }))
+                        }
                       />
                     </Grid>
 
@@ -423,7 +489,9 @@ const ContactLayout = () => {
                         placeholder="+1 (555) 000-0000"
                         type="tel"
                         value={formData.phone}
-                        onChange={(v) => setFormData((prev) => ({ ...prev, phone: v }))}
+                        onChange={(v) =>
+                          setFormData((prev) => ({ ...prev, phone: v }))
+                        }
                       />
                     </Grid>
 
@@ -432,7 +500,9 @@ const ContactLayout = () => {
                         label="Country / Region"
                         placeholder="United States"
                         value={formData.country}
-                        onChange={(v) => setFormData((prev) => ({ ...prev, country: v }))}
+                        onChange={(v) =>
+                          setFormData((prev) => ({ ...prev, country: v }))
+                        }
                       />
                     </Grid>
 
@@ -448,11 +518,17 @@ const ContactLayout = () => {
                             letterSpacing: "0.05em",
                           }}
                         >
-                          Area of Interest <span style={{ color: "#E11D48" }}>*</span>
+                          Area of Interest{" "}
+                          <span style={{ color: "#E11D48" }}>*</span>
                         </Typography>
                         <Select
                           value={formData.interest}
-                          onChange={(e) => setFormData((prev) => ({ ...prev, interest: e.target.value as string }))}
+                          onChange={(e) =>
+                            setFormData((prev) => ({
+                              ...prev,
+                              interest: e.target.value as string,
+                            }))
+                          }
                           sx={{
                             fontFamily: inter.style.fontFamily,
                             fontSize: "13.5px",
@@ -470,7 +546,14 @@ const ContactLayout = () => {
                           }}
                         >
                           {areasOfInterest.map((interest) => (
-                            <MenuItem key={interest} value={interest} sx={{ fontFamily: inter.style.fontFamily, fontSize: "13px" }}>
+                            <MenuItem
+                              key={interest}
+                              value={interest}
+                              sx={{
+                                fontFamily: inter.style.fontFamily,
+                                fontSize: "13px",
+                              }}
+                            >
                               {interest}
                             </MenuItem>
                           ))}
@@ -512,7 +595,12 @@ const ContactLayout = () => {
                             rows={4}
                             required
                             value={formData.message}
-                            onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
+                            onChange={(e) =>
+                              setFormData((prev) => ({
+                                ...prev,
+                                message: e.target.value,
+                              }))
+                            }
                             fullWidth
                             sx={{
                               fontFamily: inter.style.fontFamily,
@@ -533,7 +621,12 @@ const ContactLayout = () => {
                     <BeamButton
                       type="submit"
                       variant="contained"
-                      endIcon={<ArrowForwardIcon className="arrow-icon" sx={{ transition: "transform 0.25s ease" }} />}
+                      endIcon={
+                        <ArrowForwardIcon
+                          className="arrow-icon"
+                          sx={{ transition: "transform 0.25s ease" }}
+                        />
+                      }
                       sx={{
                         width: "100%",
                         fontFamily: inter.style.fontFamily,
@@ -562,7 +655,6 @@ const ContactLayout = () => {
               )}
             </Box>
           </Grid>
-
         </Grid>
       </Container>
     </Box>

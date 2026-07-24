@@ -85,7 +85,10 @@ const ForChapters = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <SectionBadge label="Partners & Chapters" align="center" />
+                <SectionBadge
+                  label="Partners & Chapters"
+                  align={{ xs: "center", md: "flex-start" }}
+                />
               </Box>
 
               {/* Title & Description */}

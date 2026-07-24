@@ -2129,7 +2129,7 @@ export const HEADER_CONTENT: NavigationItem[] = [
     subModules: [
       {
         label: "Contact Us",
-        url: "/contact-us",
+        url: "/contact",
       },
       {
         label: "Member Login",
@@ -2280,7 +2280,7 @@ export const FOOTER_CONTENT: NavigationItem[] = [
     subModules: [
       {
         label: "Contact Us",
-        url: "/contact-us",
+        url: "/contact",
       },
       {
         label: "Member Login",

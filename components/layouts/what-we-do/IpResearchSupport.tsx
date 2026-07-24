@@ -81,9 +81,13 @@ const IpResearchSupport = () => {
                 sx={{
                   display: "flex",
                   justifyContent: { xs: "center", md: "flex-start" },
+                  width: "100%",
                 }}
               >
-                <SectionBadge label="IP & Research Support" align="center" />
+                <SectionBadge
+                  label="IP & Research Support"
+                  align={{ xs: "center", md: "flex-start" }}
+                />
               </Box>
 
               {/* Title & Description */}

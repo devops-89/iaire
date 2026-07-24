@@ -151,7 +151,10 @@ const ResearchMentorCertification = () => {
                   justifyContent: { xs: "flex-start", md: "flex-start" },
                 }}
               >
-                <SectionBadge label="Research Credentials" align="center" />
+                <SectionBadge
+                  label="Research Credentials"
+                  align={{ xs: "center", md: "flex-start" }}
+                />
               </Box>
 
               {/* Title & Description */}

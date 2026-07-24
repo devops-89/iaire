@@ -2,29 +2,27 @@
 
 import BorderBeam from "@/components/animations/BorderBeam";
 
-import React, { useState } from "react";
+import BeamButton from "@/components/widgets/BeamButton";
+import logo from "@/images/logo/iaire_logo_white.png";
+import { FOOTER_CONTENT } from "@/utils/constant";
+import { COLORS } from "@/utils/enum";
+import { inter } from "@/utils/fonts";
+import { Instagram, X, YouTube } from "@mui/icons-material";
 import {
   Box,
   Container,
   Divider,
   Grid,
+  IconButton,
+  InputBase,
   Link,
   Stack,
   Typography,
-  InputBase,
 } from "@mui/material";
-import { COLORS } from "@/utils/enum";
-import { inter } from "@/utils/fonts";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import Image from "next/image";
-import logo from "@/images/logo/iaire_logo_white.png";
 import NextLink from "next/link";
-import { FOOTER_CONTENT, HEADER_CONTENT } from "@/utils/constant";
-import BeamButton from "@/components/widgets/BeamButton";
-import { ArrowForward } from "@mui/icons-material";
+import React, { useState } from "react";
+import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 
 const FooterLink = ({
   href,
@@ -70,6 +68,28 @@ const Footer = () => {
     setEmail("");
     // Handle newsletter submission here
   };
+  const socialLinks = [
+    {
+      icon: FaFacebookF,
+      href: "",
+    },
+    {
+      icon: Instagram,
+      href: "",
+    },
+    {
+      icon: FaLinkedinIn,
+      href: "",
+    },
+    {
+      icon: YouTube,
+      href: "",
+    },
+    {
+      icon: X,
+      href: "",
+    },
+  ];
 
   return (
     <Box
@@ -251,45 +271,21 @@ const Footer = () => {
 
             {/* Social Links Stack */}
             <Stack direction="row" spacing={3}>
-              <Link
-                href="#"
-                sx={{
-                  color: "rgba(255, 255, 255, 0.4)",
-                  "&:hover": {
-                    color: "#3B82F6",
-                    transform: "translateY(-2px)",
-                  },
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <LinkedInIcon sx={{ fontSize: 24 }} />
-              </Link>
-              <Link
-                href="#"
-                sx={{
-                  color: "rgba(255, 255, 255, 0.4)",
-                  "&:hover": {
-                    color: "#3B82F6",
-                    transform: "translateY(-2px)",
-                  },
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <TwitterIcon sx={{ fontSize: 24 }} />
-              </Link>
-              <Link
-                href="#"
-                sx={{
-                  color: "rgba(255, 255, 255, 0.4)",
-                  "&:hover": {
-                    color: "#3B82F6",
-                    transform: "translateY(-2px)",
-                  },
-                  transition: "all 0.2s ease",
-                }}
-              >
-                <InstagramIcon sx={{ fontSize: 24 }} />
-              </Link>
+              {socialLinks.map((val, i) => (
+                <IconButton
+                  sx={{
+                    color: COLORS.WHITE,
+                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    "& svg": {
+                      width: 20,
+                      height: 20,
+                    },
+                  }}
+                  key={i}
+                >
+                  <val.icon />
+                </IconButton>
+              ))}
             </Stack>
           </Box>
 
@@ -362,7 +358,13 @@ const Footer = () => {
             ))}
           </Grid>
 
-          <Divider sx={{ borderColor: COLORS.WHITE, my: 0 }} />
+          <Divider
+            sx={{
+              borderColor: COLORS.WHITE,
+              my: 0,
+              border: "0.25px solid" + COLORS.WHITE,
+            }}
+          />
 
           <Stack
             direction={{ xs: "column", sm: "row" }}

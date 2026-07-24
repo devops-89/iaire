@@ -55,7 +55,7 @@ const GetInvolvedHero = () => {
               >
                 <SectionBadge
                   label="Get Involved"
-                  align="center"
+                  align={{ xs: "center", md: "flex-start" }}
                   theme="dark"
                 />
               </Box>

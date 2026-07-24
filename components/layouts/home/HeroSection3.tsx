@@ -292,14 +292,14 @@ const HeroSection3 = () => {
               sx={{
                 position: "relative",
                 width: "100%",
-                height: { xs: "280px", sm: "360px", md: "440px", lg: "480px" },
+                height: { xs: "340px", sm: "440px", md: "560px", lg: "620px" },
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 zIndex: 2,
               }}
             >
-              <ThreeEarth height="100%" cameraZ={3.5} />
+              <ThreeEarth height="100%" cameraZ={4.0} />
             </Box>
 
             {/* Floating Glassmorphism Accents */}

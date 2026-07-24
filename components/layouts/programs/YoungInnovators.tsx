@@ -150,7 +150,10 @@ const YoungInnovators = () => {
                   justifyContent: { xs: "flex-start", md: "flex-start" },
                 }}
               >
-                <SectionBadge label="National Showcase" align="center" />
+                <SectionBadge
+                  label="National Showcase"
+                  align={{ xs: "center", md: "flex-start" }}
+                />
               </Box>
 
               {/* Title & Description */}

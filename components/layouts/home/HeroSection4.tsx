@@ -123,7 +123,7 @@ const HeroSection4 = () => {
           opacity: 0.85,
         }}
       >
-        <ThreeEarth height="100%" cameraZ={3.5} />
+        <ThreeEarth height="100%" cameraZ={4.0} />
       </Box>
 
       {/* Subtle Central Contrast Overlay for Readability */}

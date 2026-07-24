@@ -84,7 +84,10 @@ const ForSchools = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <SectionBadge label="For Schools & Institutions" align="center" />
+                <SectionBadge
+                  label="For Schools & Institutions"
+                  align={{ xs: "center", md: "flex-start" }}
+                />
               </Box>
 
               {/* Title & Description */}

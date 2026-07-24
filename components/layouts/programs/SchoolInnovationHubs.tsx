@@ -84,7 +84,10 @@ const SchoolInnovationHubs = () => {
                   justifyContent: { xs: "flex-start", md: "flex-start" },
                 }}
               >
-                <SectionBadge label="Institutional Ecosystem" align="center" />
+                <SectionBadge
+                  label="Institutional Ecosystem"
+                  align={{ xs: "flex-start", md: "flex-start" }}
+                />
               </Box>
 
               {/* Title & Description */}

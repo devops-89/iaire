@@ -133,21 +133,22 @@ const ForBoardMembers = () => {
             </Box>
           </Grid>
 
-          {/* Text/CTA Column on Right (for desktop, first on mobile) */}
           <Grid
             size={{ xs: 12, md: 6.8 }}
             order={{ xs: 1, md: 2 }}
             sx={{ pl: { md: 4 } }}
           >
             <Stack spacing={3.25} sx={{ width: "100%" }}>
-              {/* Badge */}
               <Box
                 sx={{
                   display: "flex",
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <SectionBadge label="For Scientific Board & Expert Mentors" align="center" />
+                <SectionBadge
+                  label="For Scientific Board & Expert Mentors"
+                  align={{ xs: "center", md: "flex-start" }}
+                />
               </Box>
 
               {/* Title & Description */}

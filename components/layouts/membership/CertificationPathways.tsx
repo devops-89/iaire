@@ -1,13 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Box,
-  Container,
-  Grid,
-  Stack,
-  Typography,
-  Card} from "@mui/material";
+import { Box, Container, Grid, Stack, Typography, Card } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -93,14 +87,13 @@ const CertificationPathways = () => {
           justifyContent: "center",
         }}
       >
-        {/* Top Section: Title Header (Full Width) */}
         <Box sx={{ mb: { xs: 4, md: 4.5 }, width: "100%" }}>
-          <Stack spacing={2.5}
-          data-aos="fade-up"
-          data-aos-duration="800"
-          >
+          <Stack spacing={2.5} data-aos="fade-up" data-aos-duration="800">
             {/* Badge */}
-            <SectionBadge label="IAIRE Credentials" align="center" />
+            <SectionBadge
+              label="IAIRE Credentials"
+              align={{ xs: "center", md: "flex-start" }}
+            />
 
             {/* Title & Description */}
             <Stack spacing={1.5}>

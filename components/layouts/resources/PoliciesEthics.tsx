@@ -150,7 +150,10 @@ const PoliciesEthics = () => {
                   justifyContent: { xs: "center", md: "flex-start" },
                 }}
               >
-                <SectionBadge label="Institutional Compliance" align="center" />
+                <SectionBadge
+                  label="Institutional Compliance"
+                  align={{ xs: "center", md: "flex-start" }}
+                />
               </Box>
 
               {/* Title & Description */}

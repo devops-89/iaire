@@ -11,12 +11,13 @@ const pulseDot = keyframes`
 
 interface SectionBadgeProps {
   label: string;
-  align?: "left" | "center" | "right";
+  align?: "left" | "center" | "right" | Record<string, string>;
   theme?: "light" | "dark";
   glowColor?: string;
   textColor?: string;
   borderColor?: string;
   backgroundColor?: string;
+  sx?: any;
 }
 
 const SectionBadge = ({
@@ -27,6 +28,7 @@ const SectionBadge = ({
   textColor,
   borderColor,
   backgroundColor,
+  sx,
 }: SectionBadgeProps) => {
   const isDark = theme === "dark";
 
@@ -38,7 +40,9 @@ const SectionBadge = ({
   const finalBackgroundColor =
     backgroundColor ||
     (isDark ? "rgba(59, 130, 246, 0.1)" : "rgba(27, 54, 93, 0.08)");
+
   const getJustifyContent = () => {
+    if (typeof align === "object") return align;
     if (align === "center") return "center";
     if (align === "right") return "flex-end";
     return "flex-start";
@@ -49,12 +53,13 @@ const SectionBadge = ({
       sx={{
         display: "flex",
         justifyContent: getJustifyContent(),
-        width: "fit-content",
+        width: "100%",
+        ...sx,
       }}
     >
       <Box
         sx={{
-          display: "flex",
+          display: "inline-flex",
           alignItems: "center",
           gap: 1.25,
           backgroundColor: finalBackgroundColor,

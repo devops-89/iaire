@@ -4,10 +4,16 @@ import React from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { inter } from "@/utils/fonts";
 
-import { sections, ResourceTemplate, StepItem, CaseStudy } from "./components/ResourceData";
+import {
+  sections,
+  ResourceTemplate,
+  StepItem,
+  CaseStudy,
+} from "./components/ResourceData";
 import TemplateCarousel from "./components/TemplateCarousel";
 import IpTimeline from "./components/IpTimeline";
 import CaseStudiesCarousel from "./components/CaseStudiesCarousel";
+import SectionBadge from "@/components/widgets/SectionBadge";
 
 const ResourcesHub = () => {
   return (
@@ -49,7 +55,7 @@ const ResourcesHub = () => {
             >
               {/* Monospace badge */}
               <Box sx={{ display: "flex" }}>
-                <Box
+                {/* <Box
                   sx={{
                     backgroundColor: "rgba(27, 54, 93, 0.06)",
                     color: "#1B365D",
@@ -64,7 +70,11 @@ const ResourcesHub = () => {
                   }}
                 >
                   {section.badge}
-                </Box>
+                </Box> */}
+                <SectionBadge
+                  label={section.badge}
+                  align={{ xs: "flex-start", md: "flex-start" }}
+                />
               </Box>
 
               {/* Title */}
@@ -98,7 +108,10 @@ const ResourcesHub = () => {
 
             {/* ── TEMPLATE CAROUSEL ── */}
             {section.type === "templates" && (
-              <TemplateCarousel items={section.items as ResourceTemplate[]} bgColor={section.bgColor} />
+              <TemplateCarousel
+                items={section.items as ResourceTemplate[]}
+                bgColor={section.bgColor}
+              />
             )}
 
             {/* ── IP TIMELINE ── */}

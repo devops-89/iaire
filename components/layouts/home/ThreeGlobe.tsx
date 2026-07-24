@@ -126,7 +126,8 @@ const EarthModel = () => {
       }
 
       const maxDim = Math.max(size.x, size.y, size.z);
-      phone ? setBaseScale(2.8 / maxDim) : setBaseScale(4 / maxDim);
+      // Large baseline scale calibrated to fill ~90% of canvas height without exceeding camera frustum
+      phone ? setBaseScale(2.4 / maxDim) : setBaseScale(2.95 / maxDim);
     }
   }, [scene]);
 
@@ -187,10 +188,10 @@ const EarthModel = () => {
 
       // 2. Smooth dynamic scroll-scale animation via LERP
       if (baseScale !== null) {
-        // Expands up to 1.75x as user scrolls down
+        // Expands up to 1.12x on scroll, reaching ~96% viewport height while keeping top and bottom poles fully rounded
         const scrollMultiplier = Math.min(
-          1.75,
-          Math.max(1.0, 1.0 + (scrollYRef.current / 500) * 0.75),
+          1.12,
+          Math.max(1.0, 1.0 + (scrollYRef.current / 700) * 0.12),
         );
         const targetScale = baseScale * scrollMultiplier;
 
@@ -219,7 +220,7 @@ const EarthModel = () => {
 
 const ThreeEarth = ({
   height = "100%",
-  cameraZ = 3.8,
+  cameraZ = 4.0,
 }: {
   height?: any;
   cameraZ?: number;
