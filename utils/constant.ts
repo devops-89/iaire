@@ -2124,8 +2124,177 @@ export const HEADER_CONTENT: NavigationItem[] = [
     ],
   },
   {
-    label: "Contact",
-    url: "/contact",
+    label: "Quick Links",
+    url: "#",
+    subModules: [
+      {
+        label: "Contact Us",
+        url: "/contact-us",
+      },
+      {
+        label: "Member Login",
+        url: "/login",
+      },
+      {
+        label: "Support",
+        url: "/support",
+      },
+      {
+        label: "Join IAIRE",
+        url: "/signup/role-selection",
+      },
+    ],
+  },
+];
+export const FOOTER_CONTENT: NavigationItem[] = [
+  {
+    label: "Home",
+    url: "/",
+  },
+  {
+    label: "Who We Are",
+    url: "/about",
+    subModules: [
+      { label: "About IAIRE", url: "/about#about" },
+      { label: "Mission, Vision & Values", url: "/about#mission" },
+      { label: "Governance & Scientific Board", url: "/about#leadership" },
+      { label: "Board Members", url: "/about/board" },
+      { label: "Standards & Quality Assurance", url: "/about#what-we-do" },
+      // { label: "Legal & Academic Standing", url: "/about#legal" },
+    ],
+  },
+  {
+    label: "What We Do",
+    url: "/what-we-do",
+    subModules: [
+      { label: "Standards & Certification", url: "/what-we-do#standards" },
+      {
+        label: "Innovation & Research Education",
+        url: "/what-we-do#education",
+      },
+      { label: "Educator Development", url: "/what-we-do#educator" },
+      { label: "Student Pathways", url: "/what-we-do#student-pathways" },
+      {
+        label: "School Innovation Ecosystems",
+        url: "/programs#innovation-hubs",
+      },
+      // {
+      //   label: "Intellectual Property & Research Support",
+      //   url: "/what-we-do#ip-support",
+      // },
+      // {
+      //   label: "Awards, Fellowships & Recognition",
+      //   url: "/what-we-do#fellowships",
+      // },
+      // {
+      //   label: "Events, Meetings & Knowledge Exchange",
+      //   url: "/what-we-do#events",
+      // },
+    ],
+  },
+  {
+    label: "Get Involved",
+    url: "/get-involved",
+    subModules: [
+      { label: "Schools & Institutions", url: "/get-involved#schools" },
+      { label: "Educators & Mentors", url: "/get-involved#educators" },
+      { label: "Students & Young Innovators", url: "/get-involved#students" },
+      {
+        label: "Scientific Board & Expert Mentors",
+        url: "/get-involved#board-members",
+      },
+      { label: "Partners & Chapters", url: "/get-involved#chapters" },
+      // { label: "Volunteer & Serve", url: "/get-involved#chapters" },
+    ],
+  },
+  {
+    label: "Membership",
+    url: "/membership",
+    subModules: [
+      { label: "Institutional Membership", url: "/membership#institutional" },
+      { label: "Educator Membership", url: "/membership#educator" },
+      { label: "Student Membership", url: "/membership#student" },
+      {
+        label: "Certification & Fellowship Pathways",
+        url: "/membership#pathways",
+      },
+      { label: "Member Benefits", url: "/membership#institutional" },
+      // { label: "Join IAIRE", url: "/signup/role-selection" },
+    ],
+  },
+  {
+    label: "Programs",
+    url: "/programs",
+    subModules: [
+      {
+        label: "IAIRE Innovation Educator Certification",
+        url: "/programs#educator-certification",
+      },
+      {
+        label: "IAIRE Research Mentor Certification",
+        url: "/programs#research-certification",
+      },
+      {
+        label: "IAIRE School Innovation Hubs",
+        url: "/programs#innovation-hubs",
+      },
+      {
+        label: "India’s Top Young Innovators",
+        url: "/programs#top-young-innovators",
+      },
+      // {
+      //   label: "IAIRE Student Innovation & Research Pathway",
+      //   url: "/programs#top-young-innovators",
+      // },
+      // {
+      //   label: "IAIRE Critical Thinking-Integrated Teaching Support",
+      //   url: "/programs#educator-certification",
+      // },
+    ],
+  },
+  {
+    label: "Resources",
+    url: "/resources",
+    subModules: [
+      { label: "Standards & Rubrics", url: "/resources#standards-rubrics" },
+      { label: "Innovation Templates", url: "/resources" },
+      { label: "Research Templates", url: "/resources" },
+      { label: "IP & Publication Guidance", url: "/resources" },
+      // { label: "Case Studies", url: "/resources" },
+      // { label: "Policies & Ethics", url: "/resources#policies-ethics" },
+    ],
+  },
+  {
+    label: "News & Impact",
+    url: "/news-impact",
+    subModules: [
+      { label: "Outcomes", url: "/news-impact#outcomes" },
+      { label: "Patents & Publications", url: "/news-impact#patents" },
+      { label: "Awards & Recognition", url: "/news-impact#awards" },
+      { label: "Member News", url: "/news-impact#member-news" },
+    ],
+  },
+  {
+    label: "Quick Links",
+    url: "#",
+    subModules: [
+      {
+        label: "Contact Us",
+        url: "/contact-us",
+      },
+      {
+        label: "Member Login",
+        url: "/login",
+      },
+      {
+        label: "Support",
+        url: "/support",
+      },
+      {
+        label: "Join IAIRE",
+        url: "/signup/role-selection",
+      },
+    ],
   },
 ];
 

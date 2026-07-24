@@ -126,9 +126,7 @@ const EarthModel = () => {
       }
 
       const maxDim = Math.max(size.x, size.y, size.z);
-      // Target a baseline size of 6.5 units
-
-      phone ? setBaseScale(4 / maxDim) : setBaseScale(3.5 / maxDim);
+      phone ? setBaseScale(2.8 / maxDim) : setBaseScale(4 / maxDim);
     }
   }, [scene]);
 
@@ -187,12 +185,12 @@ const EarthModel = () => {
         earthRef.current.rotation.y += delta * 0.15;
       }
 
-      // 2. Smooth scroll-scale animation via LERP
+      // 2. Smooth dynamic scroll-scale animation via LERP
       if (baseScale !== null) {
-        // Capped between 1.0x (normal) and 1.65x (scaled up)
+        // Expands up to 1.75x as user scrolls down
         const scrollMultiplier = Math.min(
-          1.65,
-          Math.max(1.0, 1.0 + (scrollYRef.current / 700) * 0.65),
+          1.75,
+          Math.max(1.0, 1.0 + (scrollYRef.current / 500) * 0.75),
         );
         const targetScale = baseScale * scrollMultiplier;
 
@@ -220,8 +218,8 @@ const EarthModel = () => {
 };
 
 const ThreeEarth = ({
-  height = "500px",
-  cameraZ = 4.2,
+  height = "100%",
+  cameraZ = 3.8,
 }: {
   height?: any;
   cameraZ?: number;
@@ -233,14 +231,18 @@ const ThreeEarth = ({
         height: height,
         position: "relative",
         zIndex: 1,
-        overflow: "hidden",
       }}
     >
       <ErrorBoundary>
         <Canvas
           shadows={false}
           camera={{ position: [0, 0, cameraZ], fov: 45 }}
-          gl={{ antialias: false, powerPreference: "default" }}
+          gl={{
+            antialias: true,
+            alpha: true,
+            powerPreference: "high-performance",
+          }}
+          style={{ background: "transparent", width: "100%", height: "100%" }}
         >
           <ambientLight intensity={1.5} />
           <directionalLight position={[5, 3, 5]} intensity={2.5} />

@@ -7,6 +7,7 @@ import StandardsImpactSection from "./StandardsImpactSection";
 import StorySection from "./StorySection";
 import SubFooterCTA from "./SubFooterCTA";
 import WhatWeDoSection from "./WhatWeDoSection";
+import HeroSection4 from "./HeroSection4";
 
 const HomeLayout = () => {
   return (

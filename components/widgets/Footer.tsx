@@ -22,8 +22,9 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import Image from "next/image";
 import logo from "@/images/logo/iaire_logo_white.png";
 import NextLink from "next/link";
-import { HEADER_CONTENT } from "@/utils/constant";
+import { FOOTER_CONTENT, HEADER_CONTENT } from "@/utils/constant";
 import BeamButton from "@/components/widgets/BeamButton";
+import { ArrowForward } from "@mui/icons-material";
 
 const FooterLink = ({
   href,
@@ -294,9 +295,8 @@ const Footer = () => {
 
           <Divider sx={{ borderColor: COLORS.WHITE, mb: 6 }} />
 
-          {/* Links Grid: Full Width spread */}
           <Grid container spacing={{ xs: 4, sm: 4, md: 5 }}>
-            {HEADER_CONTENT.filter(
+            {FOOTER_CONTENT.filter(
               (cat) => cat.subModules && cat.subModules.length > 0,
             ).map((category, idx) => (
               <Grid size={{ xs: 6, sm: 4, md: 3 }} key={idx}>
@@ -316,7 +316,7 @@ const Footer = () => {
                         textTransform: "uppercase",
                         transition: "color 0.2s ease",
                         "&:hover": {
-                          color: "#3B82F6",
+                          color: COLORS.BEAM_COLOR,
                         },
                       }}
                     >
@@ -331,46 +331,37 @@ const Footer = () => {
                       </FooterLink>
                     ))}
                   </Stack>
+                  {category.label !== "Quick Links" ? (
+                    <Link
+                      component={NextLink}
+                      href={category.url || "#"}
+                      underline="none"
+                    >
+                      <Typography
+                        sx={{
+                          fontFamily: inter.style.fontFamily,
+                          fontSize: "11px",
+                          fontWeight: 800,
+                          color: "rgba(255, 255, 255, 0.24)",
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          transition: "color 0.2s ease",
+                          "&:hover": {
+                            color: "#3B82F6",
+                          },
+                        }}
+                      >
+                        View All
+                      </Typography>
+                    </Link>
+                  ) : (
+                    ""
+                  )}
                 </Stack>
               </Grid>
             ))}
-
-            {/* Custom Connect Column */}
-            <Grid size={{ xs: 6, sm: 4, md: 3 }}>
-              <Stack spacing={3.5}>
-                <Link component={NextLink} href="/contact" underline="none">
-                  <Typography
-                    sx={{
-                      fontFamily: inter.style.fontFamily,
-                      fontSize: "12px",
-                      fontWeight: 800,
-                      color: "#FFFFFF",
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      transition: "color 0.2s ease",
-                      "&:hover": {
-                        color: "#3B82F6",
-                      },
-                    }}
-                  >
-                    Connect & Access
-                  </Typography>
-                </Link>
-
-                <Stack spacing={2.5}>
-                  <FooterLink
-                    href="mailto:info@iaire.org"
-                    icon={<MailOutlineIcon sx={{ fontSize: 16 }} />}
-                  >
-                    info@iaire.org
-                  </FooterLink>
-                  <FooterLink href="/login">Member Login</FooterLink>
-                </Stack>
-              </Stack>
-            </Grid>
           </Grid>
 
-          {/* Divider */}
           <Divider sx={{ borderColor: COLORS.WHITE, my: 0 }} />
 
           <Stack
