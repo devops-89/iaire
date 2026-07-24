@@ -84,7 +84,13 @@ const StorySection = () => {
             <Stack spacing={4}>
               {/* Overtitle Header */}
               <Stack spacing={2}>
-                <SectionBadge label="The Genesis of IAIRE" align="left" />
+                <SectionBadge
+                  label="The Genesis of IAIRE"
+                  align="left"
+                  borderColor={COLORS.WHITE}
+                  textColor={COLORS.WHITE}
+                  glowColor={COLORS.WHITE}
+                />
 
                 {/* Headline */}
                 <Typography

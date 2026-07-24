@@ -78,10 +78,12 @@ const AboutNewsSection = () => {
       />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Stack spacing={6} alignItems="center"
+        <Stack
+          spacing={6}
+          alignItems="center"
           data-aos="fade-up"
           data-aos-duration="800"
-          >
+        >
           {/* Section Header */}
           <Stack spacing={2} sx={{ textAlign: "center", maxWidth: "800px" }}>
             <SectionBadge label="COMMUNITY UPDATES" align="center" />

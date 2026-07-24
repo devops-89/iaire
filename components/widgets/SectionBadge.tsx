@@ -29,11 +29,15 @@ const SectionBadge = ({
   backgroundColor,
 }: SectionBadgeProps) => {
   const isDark = theme === "dark";
-  
+
   const finalGlowColor = glowColor || (isDark ? "#3B82F6" : "#1B365D");
   const finalTextColor = textColor || (isDark ? "#93C5FD" : "#1B365D");
-  const finalBorderColor = borderColor || (isDark ? "rgba(59, 130, 246, 0.25)" : "rgba(27, 54, 93, 0.25)");
-  const finalBackgroundColor = backgroundColor || (isDark ? "rgba(59, 130, 246, 0.1)" : "rgba(27, 54, 93, 0.08)");
+  const finalBorderColor =
+    borderColor ||
+    (isDark ? "rgba(59, 130, 246, 0.25)" : "rgba(27, 54, 93, 0.25)");
+  const finalBackgroundColor =
+    backgroundColor ||
+    (isDark ? "rgba(59, 130, 246, 0.1)" : "rgba(27, 54, 93, 0.08)");
   const getJustifyContent = () => {
     if (align === "center") return "center";
     if (align === "right") return "flex-end";
@@ -41,7 +45,13 @@ const SectionBadge = ({
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: getJustifyContent(), width: "fit-content" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: getJustifyContent(),
+        width: "fit-content",
+      }}
+    >
       <Box
         sx={{
           display: "flex",

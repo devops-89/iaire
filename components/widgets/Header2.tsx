@@ -108,10 +108,10 @@ const Header2 = () => {
         >
           <Box
             sx={{
-              display: "grid",
-              gridTemplateColumns: "1fr auto 1fr",
+              display: "flex",
               alignItems: "center",
               width: "100%",
+              justifyContent: "space-between",
             }}
           >
             {/* Left Side: Animated Hamburger Trigger */}
@@ -174,6 +174,7 @@ const Header2 = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                zIndex: 0,
               }}
             >
               <Link href="/" style={{ display: "flex", alignItems: "center" }}>
@@ -227,8 +228,6 @@ const Header2 = () => {
         </Box>
       </Container>
 
-      {/* Floating Rounded Navigation Drawer Overlay */}
-      {/* Mega Menu Dropdown Overlay */}
       <Drawer
         anchor="top"
         open={menuOpen}
@@ -401,10 +400,8 @@ const Header2 = () => {
               );
             })}
 
-            {/* Column 8: Quick Access */}
             <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
               <Stack spacing={2.5}>
-                {/* Column Header */}
                 <Stack
                   direction="row"
                   spacing={1.5}
@@ -445,29 +442,6 @@ const Header2 = () => {
 
                 {/* Column Links List */}
                 <Stack spacing={1.5} alignItems="flex-start" sx={{ pt: 0.5 }}>
-                  <Link
-                    href="/"
-                    onClick={() => setMenuOpen(false)}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <Typography
-                      sx={{
-                        fontFamily: inter.style.fontFamily,
-                        fontSize: "13.5px",
-                        fontWeight: 700,
-                        color:
-                          pathname === "/" ? "#1B365D" : "rgba(0, 0, 0, 0.6)",
-                        transition: "all 0.2s ease",
-                        "&:hover": {
-                          color: "#1B365D",
-                          transform: "translateX(4px)",
-                        },
-                      }}
-                    >
-                      Home Page
-                    </Typography>
-                  </Link>
-
                   <Link
                     href="/contact"
                     onClick={() => setMenuOpen(false)}
@@ -516,34 +490,6 @@ const Header2 = () => {
                     >
                       Member Login
                     </Typography>
-                  </Link>
-
-                  <Link
-                    href="/signup/role-selection"
-                    onClick={() => setMenuOpen(false)}
-                    style={{ textDecoration: "none", marginTop: "8px" }}
-                  >
-                    <BeamButton
-                      variant="contained"
-                      sx={{
-                        fontFamily: inter.style.fontFamily,
-                        fontSize: "12px",
-                        fontWeight: 700,
-                        textTransform: "none",
-                        color: "#FFFFFF",
-                        backgroundColor: "#1B365D",
-                        borderRadius: "100px",
-                        px: 2.5,
-                        py: 0.8,
-                        boxShadow: "none",
-                        "&:hover": {
-                          backgroundColor: "#122744",
-                          boxShadow: "none",
-                        },
-                      }}
-                    >
-                      Join IAIRE
-                    </BeamButton>
                   </Link>
                 </Stack>
               </Stack>

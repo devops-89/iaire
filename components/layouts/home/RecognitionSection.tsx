@@ -190,7 +190,13 @@ const RecognitionSection = () => {
             alignItems="center"
             sx={{ textAlign: "center", maxWidth: "800px" }}
           >
-            <SectionBadge label="IAIRE Fellowships & Standards" align="center" />
+            <SectionBadge
+              label="IAIRE Fellowships & Standards"
+              align="center"
+              borderColor={COLORS.WHITE}
+              textColor={COLORS.WHITE}
+              glowColor={COLORS.WHITE}
+            />
 
             <Typography
               component="h2"

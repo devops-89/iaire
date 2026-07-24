@@ -292,7 +292,7 @@ const Footer = () => {
             </Stack>
           </Box>
 
-          <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.04)", mb: 6 }} />
+          <Divider sx={{ borderColor: COLORS.WHITE, mb: 6 }} />
 
           {/* Links Grid: Full Width spread */}
           <Grid container spacing={{ xs: 4, sm: 4, md: 5 }}>
@@ -338,11 +338,7 @@ const Footer = () => {
             {/* Custom Connect Column */}
             <Grid size={{ xs: 6, sm: 4, md: 3 }}>
               <Stack spacing={3.5}>
-                <Link
-                  component={NextLink}
-                  href="/contact"
-                  underline="none"
-                >
+                <Link component={NextLink} href="/contact" underline="none">
                   <Typography
                     sx={{
                       fontFamily: inter.style.fontFamily,
@@ -369,18 +365,14 @@ const Footer = () => {
                     info@iaire.org
                   </FooterLink>
                   <FooterLink href="/login">Member Login</FooterLink>
-                  <FooterLink href="/signup/role-selection">
-                    Join IAIRE
-                  </FooterLink>
                 </Stack>
               </Stack>
             </Grid>
           </Grid>
 
           {/* Divider */}
-          <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.06)", my: 0 }} />
+          <Divider sx={{ borderColor: COLORS.WHITE, my: 0 }} />
 
-          {/* Bottom Row: Copyright & Legal Policies */}
           <Stack
             direction={{ xs: "column", sm: "row" }}
             justifyContent="space-between"

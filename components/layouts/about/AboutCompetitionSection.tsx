@@ -1,13 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Box,
-  Card,
-  Container,
-  Grid,
-  Typography,
-  Stack} from "@mui/material";
+import { Box, Card, Container, Grid, Typography, Stack } from "@mui/material";
 import { inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import Link from "next/link";
@@ -254,6 +248,7 @@ const AboutCompetitionSection = () => {
                           transform: "translateY(-3px)",
                           boxShadow: "0 8px 20px rgba(59, 130, 246, 0.04)",
                         },
+                        alignItems: "center",
                       }}
                     >
                       <CheckBadge />

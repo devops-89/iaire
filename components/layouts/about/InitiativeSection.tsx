@@ -365,7 +365,12 @@ const InitiativeSection = () => {
                 />
 
                 <Stack spacing={2} sx={{ position: "relative", zIndex: 1 }}>
-                  <Stack direction="row" spacing={1.5} alignItems="center">
+                  <Stack
+                    direction="row"
+                    spacing={1.5}
+                    alignItems="center"
+                    sx={{ justifyContent: { lg: "left", xs: "center" } }}
+                  >
                     <Box
                       sx={{
                         width: 32,
@@ -388,6 +393,7 @@ const InitiativeSection = () => {
                         letterSpacing: "0.15em",
                         color: "#3B82F6",
                         textTransform: "uppercase",
+                        textAlign: { lg: "left", xs: "center" },
                       }}
                     >
                       THE GOAL
@@ -400,6 +406,8 @@ const InitiativeSection = () => {
                       color: "#E2E2E9",
                       lineHeight: 1.6,
                       fontWeight: 500,
+                      textAlign: { lg: "left", xs: "center" },
+                      px: { lg: 0, xs: 2 },
                     }}
                   >
                     The goal of the IAIRE Initiative is to make innovation and

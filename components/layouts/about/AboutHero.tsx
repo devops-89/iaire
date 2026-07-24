@@ -92,12 +92,13 @@ const AboutHero = () => {
             data-aos-duration="900"
             size={{ xs: 12, md: 6.7 }}
           >
-            <Stack spacing={3} sx={{ textAlign: { xs: "center", md: "left" } }}>
+            <Stack spacing={3}>
               <SectionBadge
                 label="Academic & Professional Society"
                 // align={lg:"left",xs:"center"}
-                align={phone ? "center" : "left"}
-               theme="dark" />
+                align={phone ? "center" : "center"}
+                theme="dark"
+              />
 
               <Stack spacing={1}>
                 <TextReveal
@@ -184,73 +185,9 @@ const AboutHero = () => {
                   </Link>
                 </Stack>
               </Box>
-
-              {/* Grid Stats Row - Fits perfectly in single viewport */}
-              {/* <Grid
-                container
-                spacing={2}
-                sx={{
-                  width: "100%",
-                  maxWidth: "580px",
-                  pt: 2,
-                  borderTop: "1px solid rgba(255, 255, 255, 0.08)",
-                }}
-              >
-                {[
-                  { value: "150+", label: "School Hubs" },
-                  { value: "45k+", label: "Young Innovators" },
-                  { value: "85+", label: "Patents Filed" },
-                ].map((stat, index) => (
-                  <Grid size={{ xs: 4 }} key={index} sx={{ display: "flex" }}>
-                    <Box
-                      sx={{
-                        flex: 1,
-                        py: 1.25,
-                        px: 1,
-                        borderRadius: "12px",
-                        backgroundColor: "rgba(255, 255, 255, 0.02)",
-                        border: "1px solid rgba(255, 255, 255, 0.06)",
-                        textAlign: "center",
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          transform: "translateY(-2px)",
-                          backgroundColor: "rgba(59, 130, 246, 0.03)",
-                          borderColor: "rgba(59, 130, 246, 0.25)",
-                          boxShadow: "0 8px 24px rgba(59, 130, 246, 0.08)",
-                        },
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontFamily: inter.style.fontFamily,
-                          fontSize: "22px",
-                          fontWeight: 900,
-                          color: "#FFFFFF",
-                        }}
-                      >
-                        {stat.value}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          fontFamily: inter.style.fontFamily,
-                          fontSize: "9px",
-                          fontWeight: 700,
-                          color: "#64748B",
-                          textTransform: "uppercase",
-                          letterSpacing: "0.06em",
-                          mt: 0.25,
-                        }}
-                      >
-                        {stat.label}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid> */}
             </Stack>
           </Grid>
 
-          {/* Right Column: High-Tech Compact Orbiting solar system */}
           <Grid
             size={{ xs: 12, md: 5.3 }}
             sx={{
