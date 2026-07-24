@@ -11,7 +11,6 @@ import { Instagram, X, YouTube } from "@mui/icons-material";
 import {
   Box,
   Container,
-  Divider,
   Grid,
   IconButton,
   InputBase,
@@ -289,7 +288,17 @@ const Footer = () => {
             </Stack>
           </Box>
 
-          <Divider sx={{ borderColor: COLORS.WHITE, mb: 6 }} />
+          <Box
+            sx={{
+              width: "100%",
+              height: "1px",
+              mb: 6,
+              background:
+                "linear-gradient(90deg, #3B82F6 0%, #06B6D4 40%, rgba(59, 130, 246, 0.2) 75%, transparent 100%)",
+              boxShadow:
+                "0 0 8px rgba(59, 130, 246, 0.4), 0 0 15px rgba(6, 182, 212, 0.2)",
+            }}
+          />
 
           <Grid container spacing={{ xs: 4, sm: 4, md: 5 }}>
             {FOOTER_CONTENT.filter(
@@ -358,11 +367,15 @@ const Footer = () => {
             ))}
           </Grid>
 
-          <Divider
+          <Box
             sx={{
-              borderColor: COLORS.WHITE,
+              width: "100%",
+              height: "1px",
               my: 0,
-              border: "0.25px solid" + COLORS.WHITE,
+              background:
+                "linear-gradient(90deg, #3B82F6 0%, #06B6D4 40%, rgba(59, 130, 246, 0.2) 75%, transparent 100%)",
+              boxShadow:
+                "0 0 8px rgba(59, 130, 246, 0.4), 0 0 15px rgba(6, 182, 212, 0.2)",
             }}
           />
 

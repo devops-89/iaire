@@ -18,6 +18,7 @@ import {
   TEAM_LIST_HEADER,
   NavigationItem,
   ArticleItem,
+  FaqItem,
 } from "./type";
 import {
   Groups,
@@ -2283,12 +2284,12 @@ export const FOOTER_CONTENT: NavigationItem[] = [
         url: "/contact",
       },
       {
-        label: "Member Login",
-        url: "/login",
+        label: "FAQs",
+        url: "/faqs",
       },
       {
-        label: "Support",
-        url: "/support",
+        label: "Member Login",
+        url: "/login",
       },
       {
         label: "Join IAIRE",
@@ -2458,5 +2459,157 @@ export const STUDENT_PROGRAM_PHASES = [
     title: "Research & IP Launch",
     subtitle: "Academic Papers & Patent Protection",
     steps: phase3Steps,
+  },
+];
+
+export const FAQ_CATEGORIES = [
+  "All Questions",
+  "General & About IAIRE",
+  "Membership & Benefits",
+  "Educator Certification",
+  "Student Innovation & Pathways",
+  "School Innovation Hubs",
+  "IP & Research Support",
+];
+
+export const FAQ_ITEMS: FaqItem[] = [
+  // General & About IAIRE
+  {
+    id: "gen-1",
+    category: "General & About IAIRE",
+    question: "What is IAIRE?",
+    answer:
+      "IAIRE (International Academy of Innovation, Research and Entrepreneurship) is an independent U.S.-based nonprofit academic and professional society. We are dedicated to advancing innovation, research, and entrepreneurship education globally through standards development, educator certifications, fellowship recognition, school innovation hubs, and quality-assurance frameworks.",
+    bullets: [
+      "Establish international academic and research benchmarks.",
+      "Recognize outstanding young innovators, researchers, and educators.",
+      "Empower K-12 schools and higher-ed institutions with innovation ecosystems.",
+    ],
+  },
+  {
+    id: "gen-2",
+    category: "General & About IAIRE",
+    question: "Is IAIRE an international society?",
+    answer:
+      "Yes. Headquartered in the United States, IAIRE collaborates with schools, universities, research bodies, scientific board members, and regional chapters across North America, Asia, Europe, and global emerging tech hubs. We maintain dedicated regional initiatives, including the India Chapter.",
+  },
+  {
+    id: "gen-3",
+    category: "General & About IAIRE",
+    question: "How does IAIRE support educational institutions?",
+    answer:
+      "IAIRE partners with schools to transition traditional learning environments into future-ready innovation ecosystems. We provide institutional accreditation benchmarks, help set up School Innovation Hubs, train educators as Certified Innovation Mentors, and guide students through research and patent pathways.",
+  },
+
+  // Membership & Benefits
+  {
+    id: "mem-1",
+    category: "Membership & Benefits",
+    question: "Who can join IAIRE?",
+    answer:
+      "Membership is open to institutions (schools, colleges, academies), educators, research mentors, scientists, inventors, industry experts, high school students, and undergraduate researchers interested in advancing innovation, scientific inquiry, and entrepreneurship.",
+  },
+  {
+    id: "mem-2",
+    category: "Membership & Benefits",
+    question: "What are the primary benefits of Institutional Membership?",
+    answer:
+      "Institutional members receive global recognition as an IAIRE Accredited Innovation Ecosystem, access to research rubrics and curriculum frameworks, priority enrollment for educator certification programs, eligibility for School Innovation Hub designation, and student entry into prestigious national and international showcases.",
+    bullets: [
+      "IAIRE Institutional Accreditation Certificate & Plaque.",
+      "Access to IAIRE IP & Patent filing guidance templates.",
+      "Representation on the Global Academic & Innovation Council.",
+      "Discounted certification for school faculty.",
+    ],
+  },
+  {
+    id: "mem-3",
+    category: "Membership & Benefits",
+    question: "How do I apply for Senior Member or Fellow status?",
+    answer:
+      "Fellowship and Senior Member recognitions are conferred upon educators, researchers, and inventors who have demonstrated exceptional leadership, publication milestones, student mentorship achievements, or institutional impact. Nominations can be submitted directly through our Membership portal.",
+  },
+
+  // Educator Certification
+  {
+    id: "edu-1",
+    category: "Educator Certification",
+    question: "What is the IAIRE Certified Innovation Educator program?",
+    answer:
+      "The Certified Innovation Educator credential is a professional development pathway designed to equip teachers with practical tools for fostering critical thinking, project-based learning, research methodology, design thinking, and intellectual property awareness in the classroom.",
+  },
+  {
+    id: "edu-2",
+    category: "Educator Certification",
+    question: "How is the Research Mentor Certification structured?",
+    answer:
+      "The Research Mentor Certification equips senior educators, STEM coordinators, and university mentors to guide students through rigorous academic writing, literature reviews, hypothesis testing, data analysis, ethical compliance, and journal publication processes.",
+  },
+  {
+    id: "edu-3",
+    category: "Educator Certification",
+    question: "Are IAIRE Educator Certifications internationally recognized?",
+    answer:
+      "Yes. IAIRE credentials are backed by our international scientific board and academic standards council, providing educators with portable, verifiable digital badges and certificates recognized by member institutions worldwide.",
+  },
+
+  // Student Innovation & Pathways
+  {
+    id: "stu-1",
+    category: "Student Innovation & Pathways",
+    question: "What is the Top Young Innovators Program?",
+    answer:
+      "The Top Young Innovators Program is a national and global search that identifies, mentors, and honors exceptional young minds (ages 10–22) who create original technological prototypes, scientific research papers, social innovations, or patentable inventions.",
+  },
+  {
+    id: "stu-2",
+    category: "Student Innovation & Pathways",
+    question: "Can individual students apply for IAIRE recognition?",
+    answer:
+      "Yes. Students can submit individual or team research papers, prototype documentation, or invention disclosures to the IAIRE Student Pathway for evaluation by our expert scientific review panel.",
+    bullets: [
+      "Young Innovator / Junior Fellow Recognition.",
+      "Mentorship from university professors and industry leaders.",
+      "Publication opportunities in student research proceedings.",
+    ],
+  },
+  {
+    id: "stu-3",
+    category: "Student Innovation & Pathways",
+    question: "How does IAIRE assist with student portfolio development?",
+    answer:
+      "IAIRE provides verified transcripts of student research milestones, recorded patent disclosures, competition awards, and mentor commendations—creating a compelling academic portfolio for top university admissions.",
+  },
+
+  // School Innovation Hubs
+  {
+    id: "hub-1",
+    category: "School Innovation Hubs",
+    question: "What is an IAIRE School Innovation Hub?",
+    answer:
+      "An IAIRE School Innovation Hub is a designated center of excellence within a school that integrates makerspaces, robotics labs, research stations, and entrepreneurship incubators into a unified, outcome-driven learning facility.",
+  },
+  {
+    id: "hub-2",
+    category: "School Innovation Hubs",
+    question: "What support does IAIRE provide to establish a Hub?",
+    answer:
+      "IAIRE provides complete architectural layout guidance, equipment recommendations, safety and ethics protocols, curriculum blueprints, faculty training, and annual auditing to ensure high-quality innovation outcomes.",
+  },
+
+  // IP & Research Support
+  {
+    id: "ip-1",
+    category: "IP & Research Support",
+    question: "How does IAIRE help students and educators with patents?",
+    answer:
+      "IAIRE provides structured intellectual property (IP) guidance templates, prior-art search protocols, novelty assessment rubrics, and access to pro-bono or discounted legal patent counsel to assist young inventors in filing provisional and complete patent applications.",
+  },
+  {
+    id: "ip-2",
+    category: "IP & Research Support",
+    question: "Who owns the IP developed in an IAIRE program?",
+    answer:
+      "The student inventors and participating institutions retain 100% ownership of all intellectual property, inventions, and research findings created. IAIRE acts solely as a standard-setting, mentoring, and support body.",
   },
 ];
