@@ -12,7 +12,7 @@ export const useBatches = (category: string) => {
       batchControllers
         .getAllBatches(category)
         .then((res) => {
-          setBatchData(res.data.data);
+          setBatchData(res.data);
           setBatchLoading(false);
         })
         .catch((err) => {

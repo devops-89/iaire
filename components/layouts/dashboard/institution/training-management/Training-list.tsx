@@ -40,7 +40,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Tabs} from "@mui/material";
+  Tabs,
+} from "@mui/material";
 import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -161,11 +162,11 @@ const InstitutionTrainingList = () => {
                 fontFamily: montserrat.style.fontFamily,
                 fontWeight: 600,
                 fontSize: "14px",
-                borderRadius: "8px",
-                "&:hover": {
-                  backgroundColor: COLORS.ACCENT_TAN,
-                  color: COLORS.PRIMARY_NAVY,
-                },
+                borderRadius: "20px",
+                // "&:hover": {
+                //   backgroundColor: COLORS.ACCENT_TAN,
+                //   color: COLORS.PRIMARY_NAVY,
+                // },
                 p: 1.5,
               }}
               onClick={assignTeachers}

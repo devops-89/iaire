@@ -11,7 +11,8 @@ import {
   Stack,
   Typography,
   Link,
-  IconButton} from "@mui/material";
+  IconButton,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect, useCallback } from "react";
 import { MuiOtpInput } from "mui-one-time-password-input";
@@ -42,7 +43,6 @@ const VerifyLayout = () => {
 
   const handleVerify = () => {
     if (otp.length === 6) {
-      console.log("Verifying OTP:", otp);
       router.push("/signup/payment");
     }
   };
@@ -51,7 +51,6 @@ const VerifyLayout = () => {
     if (canResend) {
       setTimer(30);
       setCanResend(false);
-      console.log("Resending OTP...");
     }
   }, [canResend]);
 

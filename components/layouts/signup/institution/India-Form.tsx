@@ -8,18 +8,20 @@ import {
   Badge,
   InputAdornment,
   Autocomplete,
-  createFilterOptions,
 } from "@mui/material";
 import React from "react";
-import { CloudUpload, Delete, Badge as BadgeIcon, PictureAsPdf, InsertDriveFile } from "@mui/icons-material";
+import {
+  CloudUpload,
+  Delete,
+  Badge as BadgeIcon,
+  PictureAsPdf,
+  InsertDriveFile,
+} from "@mui/icons-material";
 import { COLORS } from "@/utils/enum";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { BOARDDATAPROPS } from "@/utils/type";
 
-type BoardOptionType =
-  | BOARDDATAPROPS
-  | { inputValue?: string; name: string; code: string; id: number };
-const filter = createFilterOptions<BoardOptionType>();
+type BoardOptionType = BOARDDATAPROPS;
 
 interface IndiaFormProps {
   formik: any;
@@ -43,7 +45,7 @@ const IndiaForm = ({
         typeof File !== "undefined" && file instanceof File
           ? file.type.startsWith("image/")
           : typeof file === "string" &&
-          /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(file);
+            /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(file);
 
       if (isImage) {
         if (file instanceof File) {
@@ -75,58 +77,10 @@ const IndiaForm = ({
             return option.name === value.name;
           }}
           onChange={(event, newValue) => {
-            if (typeof newValue === "string") {
-              formik.setFieldValue("affiliationType", {
-                name: newValue,
-                code: "",
-                id: 0,
-              });
-            } else if (
-              newValue &&
-              "inputValue" in newValue &&
-              newValue.inputValue
-            ) {
-              formik.setFieldValue("affiliationType", {
-                name: newValue.inputValue,
-                code: "",
-                id: 0,
-              });
-            } else {
-              formik.setFieldValue("affiliationType", newValue || null);
-            }
+            formik.setFieldValue("affiliationType", newValue || null);
           }}
-          filterOptions={(options, params) => {
-            const filtered = filter(options, params);
-            const { inputValue } = params;
-            const isExisting = options.some(
-              (option) => inputValue === option.name,
-            );
-            if (inputValue !== "" && !isExisting) {
-              filtered.push({
-                inputValue,
-                name: `${inputValue}`,
-                id: 0,
-                code: "",
-                countryId: 0,
-                country: { countryId: 0, name: "", code: "" },
-              });
-            }
-            return filtered;
-          }}
-          selectOnFocus
-          clearOnBlur
-          handleHomeEndKeys
-          freeSolo
           options={boardData as BoardOptionType[]}
-          getOptionLabel={(option) => {
-            if (typeof option === "string") {
-              return option;
-            }
-            if ("inputValue" in option && option.inputValue) {
-              return option.inputValue;
-            }
-            return option.name;
-          }}
+          getOptionLabel={(option) => option.name}
           loading={boardLoading}
           renderOption={(props, option) => {
             const { key, ...optionProps } = props as any;
@@ -209,8 +163,8 @@ const IndiaForm = ({
             },
             ...(formik.errors.affiliationCertificate &&
               formik.touched.affiliationCertificate && {
-              borderColor: "#d32f2f",
-            }),
+                borderColor: "#d32f2f",
+              }),
           }}
         >
           {!formik.values.affiliationCertificate ? (
@@ -290,8 +244,8 @@ const IndiaForm = ({
                   }}
                 >
                   {typeof File !== "undefined" &&
-                    formik.values.affiliationCertificate instanceof File &&
-                    formik.values.affiliationCertificate.type ===
+                  formik.values.affiliationCertificate instanceof File &&
+                  formik.values.affiliationCertificate.type ===
                     "application/pdf" ? (
                     <PictureAsPdf sx={{ fontSize: 38, color: "#d32f2f" }} />
                   ) : (
@@ -315,12 +269,15 @@ const IndiaForm = ({
                       }}
                     >
                       {typeof File !== "undefined" &&
-                        formik.values.affiliationCertificate instanceof File
+                      formik.values.affiliationCertificate instanceof File
                         ? (formik.values.affiliationCertificate as File).name
-                        : typeof formik.values.affiliationCertificate === "string"
+                        : typeof formik.values.affiliationCertificate ===
+                            "string"
                           ? formik.values.affiliationCertificate.substring(
-                            formik.values.affiliationCertificate.lastIndexOf("/") + 1,
-                          )
+                              formik.values.affiliationCertificate.lastIndexOf(
+                                "/",
+                              ) + 1,
+                            )
                           : "Uploaded Certificate"}
                     </Typography>
                   </Badge>

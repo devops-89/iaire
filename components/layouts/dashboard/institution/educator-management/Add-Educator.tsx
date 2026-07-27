@@ -8,7 +8,8 @@ import {
   Typography,
   InputAdornment,
   Autocomplete,
-  CircularProgress} from "@mui/material";
+  CircularProgress,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import { addEducatorValidationSchema } from "@/utils/validationSchema";
@@ -362,47 +363,6 @@ const AddEducatorcomponent = () => {
               />
             </Grid>
 
-            {/* <Grid size={{ xs: 12, md: 6 }}>
-              <TextField
-                fullWidth
-                name="experienceYear"
-                label="Experience (in Years)"
-                placeholder="e.g. 5"
-                value={formik.values.experienceYear}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.experienceYear &&
-                  Boolean(formik.errors.experienceYear)
-                }
-                helperText={
-                  formik.touched.experienceYear && formik.errors.experienceYear
-                }
-                sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
-                type="number"
-              />
-            </Grid> */}
-            {/* <Grid size={{ xs: 12, md: 6 }}>
-              <TextField
-                fullWidth
-                name="experienceMonth"
-                label="Experience (in months)"
-                placeholder="e.g. 5"
-                value={formik.values.experienceMonth}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.experienceMonth &&
-                  Boolean(formik.errors.experienceMonth)
-                }
-                helperText={
-                  formik.touched.experienceMonth &&
-                  formik.errors.experienceMonth
-                }
-                sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
-                type="number"
-              />
-            </Grid> */}
             <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth
@@ -429,7 +389,7 @@ const AddEducatorcomponent = () => {
               </Grid>
             )}
 
-            {!planLoading &&
+            {/* {!planLoading &&
               planData.map((val, i) => (
                 <Grid size={12} key={i}>
                   <PlanCard
@@ -441,7 +401,7 @@ const AddEducatorcomponent = () => {
                     id={val.id}
                   />
                 </Grid>
-              ))}
+              ))} */}
 
             <Grid size={{ xs: 12 }} sx={{ mt: 3, display: "flex", gap: 2 }}>
               <BeamButton
@@ -453,7 +413,7 @@ const AddEducatorcomponent = () => {
                   color: COLORS.WHITE,
                   px: 4,
                   py: 1.5,
-                  borderRadius: "8px",
+                  borderRadius: "20px",
                   fontWeight: 600,
                   textTransform: "none",
                   "&:hover": {
@@ -466,11 +426,11 @@ const AddEducatorcomponent = () => {
               <BeamButton
                 onClick={() => formik.resetForm()}
                 sx={{
-                  color: "rgba(0,0,0,0.5)",
                   fontWeight: 600,
                   fontFamily: montserrat.style.fontFamily,
-                  "&:hover": { bgcolor: "rgba(0,0,0,0.05)" },
+                  // "&:hover": { bgcolor: "rgba(0,0,0,0.05)" },
                 }}
+                variant="outlined"
               >
                 Reset
               </BeamButton>

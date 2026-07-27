@@ -8,7 +8,8 @@ import {
   Card,
   Container,
   Divider,
-  CircularProgress} from "@mui/material";
+  CircularProgress,
+} from "@mui/material";
 import { useSignup } from "@/store/useSignup";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
@@ -292,7 +293,9 @@ const InstitutionReview = () => {
               }}
             >
               {loading ? (
-                <CircularProgress sx={{ color: COLORS.BLACK, fontSize: 10 }} />
+                <CircularProgress
+                  sx={{ color: COLORS.WHITE, width: 10, height: 10 }}
+                />
               ) : (
                 "Verify & Confirm"
               )}

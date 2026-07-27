@@ -12,7 +12,8 @@ import {
   CircularProgress,
   Stack,
   TextField,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import BeamButton from "@/components/widgets/BeamButton";
 
@@ -24,6 +25,8 @@ const AssignTeacher = ({ batch }: { batch: BATCH_DETAILS_PROPS }) => {
   const { userData, loading, fetchUserData } = useGetAllUser();
   const { assignLoading, assignTeachersToBatch } = useAssignTeachersToBatch();
 
+  console.log("user ", userData);
+
   useEffect(() => {
     fetchUserData({
       page: 1,
@@ -32,12 +35,6 @@ const AssignTeacher = ({ batch }: { batch: BATCH_DETAILS_PROPS }) => {
       approvalStatus: APPROVAL_STATUS.APPROVED,
     });
   }, []);
-
-  const teacherOptions =
-    userData?.data?.filter(
-      (teacher: TEACHER_REPONSE_PROPS) =>
-        teacher.approvalStatus === APPROVAL_STATUS.APPROVED,
-    ) || [];
 
   const handleSubmit = async () => {
     if (!selectedTeachers.length) return;
@@ -72,7 +69,7 @@ const AssignTeacher = ({ batch }: { batch: BATCH_DETAILS_PROPS }) => {
 
         <Autocomplete
           multiple
-          options={teacherOptions}
+          options={userData}
           loading={loading}
           value={selectedTeachers}
           getOptionLabel={(option: TEACHER_REPONSE_PROPS) =>

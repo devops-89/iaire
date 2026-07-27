@@ -1,9 +1,5 @@
 "use client";
-import {
-  Box,
-  Typography,
-  IconButton,
-  CircularProgress} from "@mui/material";
+import { Box, Typography, IconButton, CircularProgress } from "@mui/material";
 import React, { useState } from "react";
 import { MuiOtpInput } from "mui-one-time-password-input";
 import { COLORS } from "@/utils/enum";
@@ -115,7 +111,7 @@ const VerifyOtp = ({ email }: { email: string }) => {
           },
         }}
       >
-        {loading ? <CircularProgress color="inherit" size={20} /> : "Verify"}
+        {loading ? <CircularProgress color="inherit" size={10} /> : "Verify"}
       </BeamButton>
 
       <Box sx={{ mt: 3, textAlign: "center" }}>
