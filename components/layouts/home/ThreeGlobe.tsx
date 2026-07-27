@@ -77,9 +77,7 @@ class ErrorBoundary extends React.Component<
     return { hasError: true };
   }
 
-  componentDidCatch(error: any, errorInfo: any) {
-    // Suppress logging of WebGL renderer errors to console
-  }
+  componentDidCatch(error: any, errorInfo: any) {}
 
   render() {
     if (this.state.hasError) {
@@ -102,10 +100,8 @@ const EarthModel = () => {
   const [baseScale, setBaseScale] = useState<number | null>(null);
   const scrollYRef = useRef(0);
 
-  // Normalize base scale on load (mesh-only bounding box to ignore helpers/empty nodes)
   useEffect(() => {
     if (scene) {
-      // Reset scale before measuring to fix caching issues when remounting
       scene.scale.set(1, 1, 1);
       scene.updateMatrixWorld(true);
 
@@ -126,12 +122,10 @@ const EarthModel = () => {
       }
 
       const maxDim = Math.max(size.x, size.y, size.z);
-      // Large baseline scale calibrated to fill ~90% of canvas height without exceeding camera frustum
-      phone ? setBaseScale(2.4 / maxDim) : setBaseScale(2.95 / maxDim);
+      phone ? setBaseScale(4 / maxDim) : setBaseScale(2.95 / maxDim);
     }
   }, [scene]);
 
-  // Track page scroll position using a ref to prevent unnecessary React re-renders
   useEffect(() => {
     const handleScroll = () => {
       scrollYRef.current = window.scrollY;
@@ -140,7 +134,6 @@ const EarthModel = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Drag rotation handlers
   useEffect(() => {
     const domElement = gl.domElement;
 
@@ -154,7 +147,6 @@ const EarthModel = () => {
       const deltaX = e.clientX - previousMousePosition.current.x;
       const deltaY = e.clientY - previousMousePosition.current.y;
 
-      // Rotate horizontally (around Y axis) and vertically (around X axis)
       earthRef.current.rotation.y += deltaX * 0.005;
       earthRef.current.rotation.x = Math.max(
         -Math.PI / 4,
