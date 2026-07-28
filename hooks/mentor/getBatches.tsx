@@ -32,7 +32,7 @@ export const useAssignTeachersToBatch = () => {
 
   const assignTeachersToBatch = async (data: {
     batchId: number;
-    teacherIds: number[];
+    participantIds: number[];
   }) => {
     setAssignLoading(true);
     try {

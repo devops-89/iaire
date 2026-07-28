@@ -1,11 +1,5 @@
 "use client";
-import {
-  Autocomplete,
-  Box,
-  Card,
-  Grid,
-  Stack,
-  TextField} from "@mui/material";
+import { Autocomplete, Box, Card, Grid, Stack, TextField } from "@mui/material";
 import React, { useEffect } from "react";
 import InstitutionDashboardLayout from "../Index";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
@@ -21,6 +15,7 @@ import AddTeams from "@/components/modals/school/CreateTeam";
 import { useGetTeam } from "@/hooks/school/useTeam";
 import Plans from "@/components/modals/common/Plans";
 import BeamButton from "@/components/widgets/BeamButton";
+import { useRouter } from "next/navigation";
 
 const TeamList = () => {
   const { showModal } = useModal();
@@ -99,19 +94,21 @@ const TeamList = () => {
                 Unlock Feature
               </BeamButton>
             )} */}
-            <BeamButton
-              sx={{
-                backgroundColor: COLORS.PRIMARY_NAVY,
-                color: COLORS.WHITE,
-                fontFamily: aloeveraDisplay_medium.style.fontFamily,
-                borderRadius: "10px",
-                padding: "10px 20px",
-              }}
-              endIcon={<Add />}
-              onClick={handleAddTeam}
-            >
-              Add Team
-            </BeamButton>
+            {institutionData?.role === USER_ROLES.INSTITUTION && (
+              <BeamButton
+                sx={{
+                  backgroundColor: COLORS.PRIMARY_NAVY,
+                  color: COLORS.WHITE,
+                  fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                  borderRadius: "10px",
+                  padding: "10px 20px",
+                }}
+                endIcon={<Add />}
+                onClick={handleAddTeam}
+              >
+                Add Team
+              </BeamButton>
+            )}
           </Stack>
 
           <Grid container sx={{ mt: 2 }} spacing={3}>
@@ -130,6 +127,7 @@ const TeamList = () => {
           <TeamListTable
             tableHeader={TEAM_LIST_HEADER_DATA}
             tableData={teamData || []}
+            loading={loading}
           />
         </Card>
       </InstitutionDashboardLayout>

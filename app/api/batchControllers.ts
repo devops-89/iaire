@@ -13,7 +13,7 @@ export const batchControllers = {
   },
   assignTeachers: async (data: {
     batchId: number;
-    teacherIds: number[];
+    participantIds: number[];
   }) => {
     try {
       const result = await batchSecuredApi.post("/assign-teachers", data);

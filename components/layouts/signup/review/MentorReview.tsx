@@ -10,7 +10,8 @@ import {
   Divider,
   CircularProgress,
   Avatar,
-  Chip} from "@mui/material";
+  Chip,
+} from "@mui/material";
 import { useSignup } from "@/store/useSignup";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
@@ -256,17 +257,6 @@ const MentorReview = () => {
               variant="outlined"
               startIcon={<ArrowBack />}
               onClick={() => router.back()}
-              sx={{
-                py: 2,
-                borderRadius: "14px",
-                fontWeight: 700,
-                borderColor: COLORS.PRIMARY_NAVY,
-                color: COLORS.PRIMARY_NAVY,
-                "&:hover": {
-                  borderColor: COLORS.ACCENT_TAN,
-                  bgcolor: "rgba(209, 160, 84, 0.05)",
-                },
-              }}
             >
               Back to Edit
             </BeamButton>
@@ -276,17 +266,6 @@ const MentorReview = () => {
               endIcon={<CheckCircleOutline />}
               disabled={loading}
               onClick={handleCheckout}
-              sx={{
-                bgcolor: COLORS.ACCENT_TAN,
-                color: COLORS.BLACK,
-                py: 2,
-                borderRadius: "14px",
-                fontWeight: 800,
-                fontSize: "1rem",
-                "&:hover": {
-                  bgcolor: "#B88A44",
-                },
-              }}
             >
               {loading ? (
                 <CircularProgress sx={{ color: COLORS.BLACK }} />

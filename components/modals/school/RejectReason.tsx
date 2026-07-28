@@ -1,15 +1,49 @@
-import { COLORS } from "@/utils/enum";
+"use client";
+import { COLORS, APPROVAL_STATUS } from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, CircularProgress, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import BeamButton from "@/components/widgets/BeamButton";
+import { useUpdateTeacherStatus } from "@/hooks/common/useGetAllUser";
+import { useModal } from "@/store/useModal";
+import useSnackbar from "@/store/useSnackbar";
 
-const RejectReason = () => {
+interface RejectReasonProps {
+  teacherId: string | number;
+  onSuccess?: () => void;
+}
+
+const RejectReason = ({ teacherId, onSuccess }: RejectReasonProps) => {
   const [rejectReason, setRejectReason] = useState("");
   const [error, setError] = useState("");
-  const submitHandler = () => {
-    setError("Please Enter Reject Reason");
+
+  const { updateStatus, loading } = useUpdateTeacherStatus();
+  const { hideModal } = useModal();
+  const { setSnackbar } = useSnackbar();
+
+  const submitHandler = async () => {
+    if (!rejectReason.trim()) {
+      setError("Please Enter Reason for Rejection");
+      return;
+    }
+
+    try {
+      await updateStatus(
+        teacherId,
+        APPROVAL_STATUS.REJECTED,
+        rejectReason.trim(),
+      );
+      setSnackbar("Educator rejected successfully", "success");
+      hideModal();
+      onSuccess?.();
+    } catch (err: any) {
+      setSnackbar(
+        err?.response?.data?.message || "Failed to reject educator",
+        "error",
+      );
+    }
   };
+
   return (
     <Box>
       <Box sx={{ mb: 3 }}>
@@ -32,8 +66,7 @@ const RejectReason = () => {
             mb: 3,
           }}
         >
-          Please provide a brief explanation for rejecting this training
-          nomination.
+          Please provide a brief explanation for rejecting this educator.
         </Typography>
         <TextField
           label="Enter reason here..."
@@ -67,14 +100,18 @@ const RejectReason = () => {
           fontWeight: 600,
           px: 4,
           py: 1,
-          borderRadius: "8px",
           "&:hover": {
             backgroundColor: "#1c2b3d",
           },
         }}
         onClick={submitHandler}
+        disabled={loading}
       >
-        Submit Rejection
+        {loading ? (
+          <CircularProgress size={18} color="inherit" />
+        ) : (
+          "Submit Rejection"
+        )}
       </BeamButton>
     </Box>
   );

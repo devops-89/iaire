@@ -48,10 +48,15 @@ export const userControllers = {
     }
   },
 
-  updateUserStatus: async (id: string | number, status: APPROVAL_STATUS) => {
+  updateUserStatus: async (
+    id: string | number,
+    status: APPROVAL_STATUS,
+    rejectReason?: string,
+  ) => {
     try {
       const result = await userSecuredApi.patch(`/${id}/school-admin-approve`, {
         status,
+        ...(rejectReason ? { rejectReason } : {}),
       });
       return result.data;
     } catch (error) {

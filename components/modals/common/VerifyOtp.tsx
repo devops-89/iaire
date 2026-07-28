@@ -92,26 +92,27 @@ const VerifyOtp = ({ email }: { email: string }) => {
       </Box>
 
       <BeamButton
-        fullWidth
+        // fullWidth
         variant="contained"
         disabled={otp.length !== 6}
         onClick={handleVerify}
-        sx={{
-          bgcolor: COLORS.PRIMARY_NAVY,
-          color: COLORS.WHITE,
-          fontWeight: 600,
-          py: 1.5,
-          borderRadius: 2,
-          fontFamily: montserrat.style.fontFamily,
-          "&:hover": {
-            bgcolor: "rgba(28, 66, 130, 0.9)",
-          },
-          "&.Mui-disabled": {
-            bgcolor: "rgba(0, 0, 0, 0.12)",
-          },
-        }}
+        sx={{ width: "100%", mx: "auto" }}
+        // sx={{
+        //   bgcolor: COLORS.PRIMARY_NAVY,
+        //   color: COLORS.WHITE,
+        //   fontWeight: 600,
+        //   py: 1.5,
+        //   borderRadius: 2,
+        //   fontFamily: montserrat.style.fontFamily,
+        //   "&:hover": {
+        //     bgcolor: "rgba(28, 66, 130, 0.9)",
+        //   },
+        //   "&.Mui-disabled": {
+        //     bgcolor: "rgba(0, 0, 0, 0.12)",
+        //   },
+        // }}
       >
-        {loading ? <CircularProgress color="inherit" size={10} /> : "Verify"}
+        {loading ? <CircularProgress color="inherit" size={20} /> : "Verify"}
       </BeamButton>
 
       <Box sx={{ mt: 3, textAlign: "center" }}>

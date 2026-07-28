@@ -35,13 +35,20 @@ export const useGetAllUser = () => {
 export const useUpdateTeacherStatus = () => {
   const [loading, setLoading] = useState(false);
 
-  const updateStatus = async (id: string | number, status: APPROVAL_STATUS) => {
+  const updateStatus = async (
+    id: string | number,
+    status: APPROVAL_STATUS,
+    rejectionReason?: string,
+  ) => {
     setLoading(true);
     try {
-      const res = await userControllers.updateUserStatus(id, status);
+      const res = await userControllers.updateUserStatus(
+        id,
+        status,
+        rejectionReason,
+      );
       return res;
     } catch (err) {
-      console.log("err", err);
       throw err;
     } finally {
       setLoading(false);

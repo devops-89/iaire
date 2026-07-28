@@ -33,60 +33,82 @@ import {
   MoneyOff,
   BusinessCenter,
   Group,
+  Dashboard,
+  People,
+  ModelTraining,
+  Person,
+  Diversity3,
+  EmojiObjects,
+  Article,
+  Work,
+  AccountTree,
+  Help,
 } from "@mui/icons-material";
 
 export const STUDENT_SIDEBAR_DATA = [
   {
+    icon: Dashboard,
     label: "Dashboard",
     url: "/dashboard/student",
   },
   {
+    icon: EmojiObjects,
     label: "Innovation Management",
     url: "/dashboard/student/innovation-management",
   },
   {
+    icon: Article,
     label: "Research Management",
     url: "/dashboard/student/research-management",
   },
   {
+    icon: AccountTree,
     label: "Resource Access",
     url: "/dashboard/student/resource-access",
   },
-  {
-    label: "Membership Management",
-    url: "/dashboard/student/membership-management",
-  },
+  // {
+  //   label: "Membership Management",
+  //   url: "/dashboard/student/membership-management",
+  // },
 ];
 export const EDUCATOR_SIDEBAR_DATA = [
   {
+    icon: Dashboard,
     label: "Dashboard",
     url: "/dashboard/educator",
   },
-  // {
-  //   label: "Profile Management",
-  //   url: "/dashboard/educator/profile-management",
-  // },
   {
+    icon: Diversity3,
+    label: "Team Management",
+    url: "/dashboard/educator/team-management",
+  },
+  {
+    icon: ModelTraining,
     label: "Training Management",
     url: "/dashboard/educator/training-management",
   },
   {
+    icon: EmojiObjects,
     label: "Innovation Submission",
     url: "/dashboard/educator/innovation-management",
   },
   {
+    icon: Article,
     label: "Research Submission",
     url: "/dashboard/educator/research-management",
   },
   {
+    icon: Help,
     label: "Request Support",
     url: "/dashboard/educator/support-ticket",
   },
+  // {
+
+  //   label: "Request Honorarium",
+  //   url: "/dashboard/educator/request-honorarium",
+  // },
   {
-    label: "Request Honorarium",
-    url: "/dashboard/educator/request-honorarium",
-  },
-  {
+    icon: AccountTree,
     label: "Resource Access",
     url: "/dashboard/educator/resource-access",
   },
@@ -94,6 +116,7 @@ export const EDUCATOR_SIDEBAR_DATA = [
 
 export const INSTITUTION_SIDEBAR_DATA = [
   {
+    icon: Dashboard,
     label: "Dashboard",
     url: "/dashboard/institution",
   },
@@ -102,35 +125,43 @@ export const INSTITUTION_SIDEBAR_DATA = [
   //   url: "/dashboard/institution/membership-management",
   // },
   {
+    icon: People,
     label: "Educator Management",
     url: "/dashboard/institution/educator-management",
   },
   {
+    icon: ModelTraining,
     label: "Training Management",
     url: "/dashboard/institution/training-management",
   },
   {
+    icon: Person,
     label: "Student Management",
     url: "/dashboard/institution/student-management",
   },
   {
+    icon: Diversity3,
     label: "Team Management",
     url: "/dashboard/institution/team-management",
   },
   {
+    icon: EmojiObjects,
     label: "Innovation Submission",
     url: "/dashboard/institution/innovation-submission",
   },
   {
+    icon: Article,
     label: "Research Submission",
     url: "/dashboard/institution/research-submission",
   },
 
   {
+    icon: Work,
     label: "Startup Submission Management",
     url: "/dashboard/institution/startup-management",
   },
   {
+    icon: AccountTree,
     label: "Resource Access",
     url: "/dashboard/institution/resource-access",
   },
@@ -158,7 +189,7 @@ export const TEACHER_HEADER = [
   "Full Name",
 
   "Phone",
-  "Subject",
+  // "Subject",
   // "Gender",
   "Status",
   "Membership Id",
@@ -2465,151 +2496,282 @@ export const STUDENT_PROGRAM_PHASES = [
 export const FAQ_CATEGORIES = [
   "All Questions",
   "General & About IAIRE",
-  "Membership & Benefits",
-  "Educator Certification",
-  "Student Innovation & Pathways",
-  "School Innovation Hubs",
-  "IP & Research Support",
+  "Certifications & Fellowships",
+  "Programme Structure & Curriculum",
+  "Intellectual Property & Ownership",
+  "Costs & Payments",
+  "Sustainability & Continuity",
+  "Student Protection & Data Governance",
+  "Recognition & Track Record",
+  "Pilot Programme",
 ];
 
 export const FAQ_ITEMS: FaqItem[] = [
-  // General & About IAIRE
   {
     id: "gen-1",
     category: "General & About IAIRE",
     question: "What is IAIRE?",
     answer:
-      "IAIRE (International Academy of Innovation, Research and Entrepreneurship) is an independent U.S.-based nonprofit academic and professional society. We are dedicated to advancing innovation, research, and entrepreneurship education globally through standards development, educator certifications, fellowship recognition, school innovation hubs, and quality-assurance frameworks.",
-    bullets: [
-      "Establish international academic and research benchmarks.",
-      "Recognize outstanding young innovators, researchers, and educators.",
-      "Empower K-12 schools and higher-ed institutions with innovation ecosystems.",
-    ],
+      "IAIRE (International Academy of Innovation, Research and Entrepreneurship) is an independent U.S. nonprofit academic and professional society, incorporated in Texas and organized under Section 501(c)(3) of the U.S. Internal Revenue Code. It develops standards, certifications, and fellowship pathways for innovation, research, and entrepreneurship education — following a model similar to established professional societies such as IEEE, AAAS, NAI, and AIAA.",
   },
   {
     id: "gen-2",
     category: "General & About IAIRE",
-    question: "Is IAIRE an international society?",
+    question: "Is IAIRE a government body or accreditation authority?",
     answer:
-      "Yes. Headquartered in the United States, IAIRE collaborates with schools, universities, research bodies, scientific board members, and regional chapters across North America, Asia, Europe, and global emerging tech hubs. We maintain dedicated regional initiatives, including the India Chapter.",
+      "No. IAIRE is not a government agency, statutory regulator, licensing authority, degree-granting institution, or school-board accreditation body. Its certifications and fellowships are voluntary academic and professional recognitions, awarded on the basis of defined standards, peer review, and demonstrated achievement — the same way professional societies worldwide confer memberships and fellowships.",
   },
   {
     id: "gen-3",
     category: "General & About IAIRE",
-    question: "How does IAIRE support educational institutions?",
+    question:
+      "What gives IAIRE the authority to certify schools, teachers, and students?",
     answer:
-      "IAIRE partners with schools to transition traditional learning environments into future-ready innovation ecosystems. We provide institutional accreditation benchmarks, help set up School Innovation Hubs, train educators as Certified Innovation Mentors, and guide students through research and patent pathways.",
+      "Its authority comes from the credibility of its standards, the rigor of its evaluation process, and the expertise of its governing body — not from government delegation. These standards are backed by measurable outcomes: the underlying ecosystem has supported close to 1,000 student U.S. patent applicants and more than 450 school-age U.S. patent holders, along with numerous research publications and competition wins.",
+  },
+  {
+    id: "gen-4",
+    category: "General & About IAIRE",
+    question: "Who oversees IAIRE's academic standards?",
+    answer:
+      "The IAIRE Scientific & Innovation Board, composed of accomplished scientists, researchers, and industry leaders from institutions such as NASA, the WHO/International Agency for Research on Cancer, and Brookhaven National Laboratory, among others. The Board reviews and approves certification standards, competency frameworks, and fellowship criteria on an ongoing basis.",
+  },
+  {
+    id: "gen-5",
+    category: "General & About IAIRE",
+    question: "How did IAIRE come about?",
+    answer:
+      "It evolved from an internal Scientific and Advisory Panel originally established within the DiscoverSTEM ecosystem to guide curriculum development, mentoring standards, and research quality assurance. As these frameworks matured, they were expanded into IAIRE — an independent academy serving the broader educational community, not just DiscoverSTEM programs.",
   },
 
-  // Membership & Benefits
+  // ── Certifications & Fellowships ───────────────────────────────────────────
   {
-    id: "mem-1",
-    category: "Membership & Benefits",
-    question: "Who can join IAIRE?",
+    id: "cert-1",
+    category: "Certifications & Fellowships",
+    question: "What do IAIRE certifications and fellowships represent?",
     answer:
-      "Membership is open to institutions (schools, colleges, academies), educators, research mentors, scientists, inventors, industry experts, high school students, and undergraduate researchers interested in advancing innovation, scientific inquiry, and entrepreneurship.",
+      "They recognize demonstrated competence and achievement — not mere participation. Schools, teachers, and students progress through defined tiers (e.g., Member → Certified → Associate Fellow → Fellow) based on objective criteria such as patents filed, research published, and mentorship contributions.",
   },
   {
-    id: "mem-2",
-    category: "Membership & Benefits",
-    question: "What are the primary benefits of Institutional Membership?",
+    id: "cert-2",
+    category: "Certifications & Fellowships",
+    question: "How does a teacher become certified?",
     answer:
-      "Institutional members receive global recognition as an IAIRE Accredited Innovation Ecosystem, access to research rubrics and curriculum frameworks, priority enrollment for educator certification programs, eligibility for School Innovation Hub designation, and student entry into prestigious national and international showcases.",
-    bullets: [
-      "IAIRE Institutional Accreditation Certificate & Plaque.",
-      "Access to IAIRE IP & Patent filing guidance templates.",
-      "Representation on the Global Academic & Innovation Council.",
-      "Discounted certification for school faculty.",
-    ],
+      "A teacher completes the Innovation/Research Mentor training program and demonstrates the ability to apply the same innovation or research process students will follow — including problem identification, methodology, and documentation — before being certified as a Certified Innovation/Research Mentor.",
   },
   {
-    id: "mem-3",
-    category: "Membership & Benefits",
-    question: "How do I apply for Senior Member or Fellow status?",
+    id: "cert-3",
+    category: "Certifications & Fellowships",
+    question: "Can students and institutions also earn recognition?",
     answer:
-      "Fellowship and Senior Member recognitions are conferred upon educators, researchers, and inventors who have demonstrated exceptional leadership, publication milestones, student mentorship achievements, or institutional impact. Nominations can be submitted directly through our Membership portal.",
+      "Yes. Both students and schools can progress through parallel certification and fellowship tiers based on measurable achievements such as patents, publications, and sustained mentorship contribution. Full tier criteria are published and maintained by the Standards and Certification Committee.",
   },
 
-  // Educator Certification
+  // ── Programme Structure & Curriculum ──────────────────────────────────────
   {
-    id: "edu-1",
-    category: "Educator Certification",
-    question: "What is the IAIRE Certified Innovation Educator program?",
+    id: "prog-1",
+    category: "Programme Structure & Curriculum",
+    question: "What does the curriculum include?",
     answer:
-      "The Certified Innovation Educator credential is a professional development pathway designed to equip teachers with practical tools for fostering critical thinking, project-based learning, research methodology, design thinking, and intellectual property awareness in the classroom.",
+      "The programme includes an Innovation Lab (problem identification, design thinking, patent research, structured templates) and a Research Lab covering domains such as Aerospace, AI/ML, FinTech, Genomics & Biotechnology, and Neurotechnology — along with research methodology, publication standards, and manuscript templates.",
   },
   {
-    id: "edu-2",
-    category: "Educator Certification",
-    question: "How is the Research Mentor Certification structured?",
+    id: "prog-2",
+    category: "Programme Structure & Curriculum",
+    question: "How are students assessed?",
     answer:
-      "The Research Mentor Certification equips senior educators, STEM coordinators, and university mentors to guide students through rigorous academic writing, literature reviews, hypothesis testing, data analysis, ethical compliance, and journal publication processes.",
+      "Rather than traditional exams, students are assessed on tangible outputs — patentable innovations, publishable research, and the quality of their problem identification, methodology, and presentation — using detailed 60-parameter rubrics covering innovation, research, and entrepreneurship competencies.",
   },
   {
-    id: "edu-3",
-    category: "Educator Certification",
-    question: "Are IAIRE Educator Certifications internationally recognized?",
+    id: "prog-3",
+    category: "Programme Structure & Curriculum",
+    question: "How long does the programme take to implement?",
     answer:
-      "Yes. IAIRE credentials are backed by our international scientific board and academic standards council, providing educators with portable, verifiable digital badges and certificates recognized by member institutions worldwide.",
-  },
-
-  // Student Innovation & Pathways
-  {
-    id: "stu-1",
-    category: "Student Innovation & Pathways",
-    question: "What is the Top Young Innovators Program?",
-    answer:
-      "The Top Young Innovators Program is a national and global search that identifies, mentors, and honors exceptional young minds (ages 10–22) who create original technological prototypes, scientific research papers, social innovations, or patentable inventions.",
+      "The full ecosystem is designed as a 5-year capacity-building initiative (Phase I), followed by an ongoing sustainability phase (Phase II). Teacher training itself can begin immediately, with the five-year period reflecting the programme's gradual maturation across a school network.",
   },
   {
-    id: "stu-2",
-    category: "Student Innovation & Pathways",
-    question: "Can individual students apply for IAIRE recognition?",
+    id: "prog-4",
+    category: "Programme Structure & Curriculum",
+    question: "Is the programme subject-specific?",
     answer:
-      "Yes. Students can submit individual or team research papers, prototype documentation, or invention disclosures to the IAIRE Student Pathway for evaluation by our expert scientific review panel.",
-    bullets: [
-      "Young Innovator / Junior Fellow Recognition.",
-      "Mentorship from university professors and industry leaders.",
-      "Publication opportunities in student research proceedings.",
-    ],
-  },
-  {
-    id: "stu-3",
-    category: "Student Innovation & Pathways",
-    question: "How does IAIRE assist with student portfolio development?",
-    answer:
-      "IAIRE provides verified transcripts of student research milestones, recorded patent disclosures, competition awards, and mentor commendations—creating a compelling academic portfolio for top university admissions.",
+      "No. Innovation and research skills are cross-disciplinary. Once trained, a certified educator can mentor projects across sciences, mathematics, humanities, commerce, and other disciplines — an approach validated through DiscoverSTEM, where students as young as 10 have developed patented innovations across diverse fields.",
   },
 
-  // School Innovation Hubs
-  {
-    id: "hub-1",
-    category: "School Innovation Hubs",
-    question: "What is an IAIRE School Innovation Hub?",
-    answer:
-      "An IAIRE School Innovation Hub is a designated center of excellence within a school that integrates makerspaces, robotics labs, research stations, and entrepreneurship incubators into a unified, outcome-driven learning facility.",
-  },
-  {
-    id: "hub-2",
-    category: "School Innovation Hubs",
-    question: "What support does IAIRE provide to establish a Hub?",
-    answer:
-      "IAIRE provides complete architectural layout guidance, equipment recommendations, safety and ethics protocols, curriculum blueprints, faculty training, and annual auditing to ensure high-quality innovation outcomes.",
-  },
-
-  // IP & Research Support
+  // ── Intellectual Property & Ownership ─────────────────────────────────────
   {
     id: "ip-1",
-    category: "IP & Research Support",
-    question: "How does IAIRE help students and educators with patents?",
+    category: "Intellectual Property & Ownership",
+    question:
+      "Who owns the patents, research, and other IP created through the programme?",
     answer:
-      "IAIRE provides structured intellectual property (IP) guidance templates, prior-art search protocols, novelty assessment rubrics, and access to pro-bono or discounted legal patent counsel to assist young inventors in filing provisional and complete patent applications.",
+      "Students, teachers, and their institutions do. IAIRE and DiscoverSTEM do not retain, claim, or seek any ownership, licensing, or revenue-sharing rights over innovations, publications, or other intellectual property developed through the programme.",
   },
   {
     id: "ip-2",
-    category: "IP & Research Support",
-    question: "Who owns the IP developed in an IAIRE program?",
+    category: "Intellectual Property & Ownership",
+    question: "What if an IAIRE mentor contributes to an invention?",
     answer:
-      "The student inventors and participating institutions retain 100% ownership of all intellectual property, inventions, and research findings created. IAIRE acts solely as a standard-setting, mentoring, and support body.",
+      "If a mentor's contribution legally qualifies for inventorship, they are named accordingly under applicable law — but they assign all ownership, title, and commercial rights to the school or institution, consistent with the programme's IP framework.",
+  },
+  {
+    id: "ip-3",
+    category: "Intellectual Property & Ownership",
+    question:
+      "Do students and teachers keep their recognition if they leave or graduate?",
+    answer:
+      "Yes. Inventorship and authorship recognition is governed by intellectual property and publication law, not programme membership. It remains valid regardless of graduation, transfer, or discontinued IAIRE membership.",
+  },
+
+  // ── Costs & Payments ──────────────────────────────────────────────────────
+  {
+    id: "cost-1",
+    category: "Costs & Payments",
+    question: "Can fees be paid in Indian Rupees?",
+    answer:
+      "Yes, subject to an agreed USD-INR exchange framework, since a significant portion of underlying costs (international expert engagement, IP support, patent filing) are USD-denominated.",
+  },
+  {
+    id: "cost-2",
+    category: "Costs & Payments",
+    question: "What does membership cost?",
+    answer:
+      "Institutional Membership (School): USD 2,000/year — includes certification, 1 teacher trained/certified per year, 1 patent filing or publication, curriculum & template licenses, and ongoing mentoring. Teacher Membership: USD 100/year — includes certification, mentoring access, case study library, and fellowship eligibility. Student Membership: USD 10.43/year — includes certification, competition eligibility, and case study access.",
+  },
+  {
+    id: "cost-3",
+    category: "Costs & Payments",
+    question: "What does patent filing cost?",
+    answer:
+      "Patent drafting, filing (India + USPTO), and prosecution is available at USD 10,000 per innovation/publication — or equivalent value through enrollment of 500 IAIRE student members. This covers professional drafting, filing fees, and prosecution through to a USPTO decision. Additional government fees apply after grant (~USD 1,000) and for future patent maintenance.",
+  },
+  {
+    id: "cost-4",
+    category: "Costs & Payments",
+    question: "Is filing patents in both India and the U.S. mandatory?",
+    answer:
+      "No. Patent filing is entirely optional, and jurisdiction is a decision made by the school or IP owner. Dual filing is generally recommended for stronger global credibility and commercial flexibility, but is not required.",
+  },
+
+  // ── Sustainability & Continuity ───────────────────────────────────────────
+  {
+    id: "sus-1",
+    category: "Sustainability & Continuity",
+    question: "What happens if a certified teacher leaves the school?",
+    answer:
+      "The school may nominate a replacement teacher for priority training and certification. If needed, IAIRE provides interim mentoring support so ongoing student projects aren't disrupted.",
+  },
+  {
+    id: "sus-2",
+    category: "Sustainability & Continuity",
+    question: "What happens if a school withdraws from the programme?",
+    answer:
+      "Access to ongoing membership benefits and support ends, but certifications already earned, and any patents, publications, or recognitions achieved during participation, remain permanently valid and are not revoked.",
+  },
+  {
+    id: "sus-3",
+    category: "Sustainability & Continuity",
+    question: "How does the programme scale sustainably across many schools?",
+    answer:
+      "Through a multi-tier mentorship model: IAIRE's Scientific Board and expert mentors support certified school-based teachers, who in turn train student assistant mentors, who support student innovation teams — building institutional capacity that reduces long-term dependence on any single individual.",
+  },
+  {
+    id: "sus-4",
+    category: "Sustainability & Continuity",
+    question:
+      "How does the programme support schools with different resources, infrastructure, or experience levels?",
+    answer:
+      "The ecosystem is designed to be scalable and adaptable across diverse settings, drawing on experience mentoring students across 15+ U.S. states and 25+ countries. Support includes structured teacher training, ready-to-use curriculum and templates, ongoing access to mentors, and a fully online delivery model — so schools can participate regardless of location or existing infrastructure, and expand their involvement gradually over time.",
+  },
+  {
+    id: "sus-5",
+    category: "Sustainability & Continuity",
+    question:
+      "How is equitable access ensured for schools from different socio-economic or geographical contexts?",
+    answer:
+      "Because delivery is online and the curriculum is standardized and template-driven, participation is not dependent on a school's existing resources or location. Schools can start with a single certified teacher and one student team, then progressively scale up as internal capacity grows — keeping the entry point accessible regardless of a school's starting position.",
+  },
+  {
+    id: "sus-6",
+    category: "Sustainability & Continuity",
+    question:
+      "Can projects from existing CISCE competitions receive support beyond the competition stage?",
+    answer:
+      "Yes. If a project emerging from a CISCE-level competition shows potential for patenting or publication, IAIRE and DiscoverSTEM can provide continued mentorship — including patentability assessment, patent filing and prosecution, and research publication support — subject to the applicable professional and government fees.",
+  },
+
+  // ── Student Protection & Data Governance ──────────────────────────────────
+  {
+    id: "data-1",
+    category: "Student Protection & Data Governance",
+    question: "How is student data protected?",
+    answer:
+      "Only the minimum information necessary for administration, certification, or publication is collected. Data is never sold or shared with unauthorized third parties, and access is restricted to authorized personnel on a need-to-know basis.",
+  },
+  {
+    id: "data-2",
+    category: "Student Protection & Data Governance",
+    question: "What safeguarding and ethics measures are in place?",
+    answer:
+      "Parental consent is required where applicable, activities are supervised by authorized school personnel, and students are trained in research integrity and ethics. Hazardous, high-risk, or human-experimentation activities are not permitted. Participating schools retain primary responsibility for on-site student safeguarding.",
+  },
+
+  // ── Recognition & Track Record ────────────────────────────────────────────
+  {
+    id: "rec-1",
+    category: "Recognition & Track Record",
+    question: "What outcomes has the underlying programme achieved?",
+    answer:
+      "Close to 1,000 student U.S. patent applicants, 450+ school-age U.S. patent holders, numerous peer-reviewed publications, and — between May 2025 and May 2026 alone — approximately one new middle/high-school U.S. patent holder every four days.",
+  },
+  {
+    id: "rec-2",
+    category: "Recognition & Track Record",
+    question: "Has the programme received formal recognition?",
+    answer:
+      'Yes. In 2021, DiscoverSTEM\'s founders received the George Washington Honor Medal, and in March 2025 the Texas House of Representatives passed House Resolution 403, designating March 18 as "DiscoverSTEM Innovation Day" at the Texas State Capitol.',
+  },
+  {
+    id: "rec-3",
+    category: "Recognition & Track Record",
+    question: "How is programme effectiveness measured?",
+    answer:
+      "Beyond participation, effectiveness is tracked through measurable indicators such as patents filed and granted, research papers published, competition awards, student-led startups, teacher certification and mentorship reach, student progression through leadership tiers, institutional advancement, and higher-education/career outcomes for participating students.",
+  },
+  {
+    id: "rec-4",
+    category: "Recognition & Track Record",
+    question: "Has this programme been implemented at this scale before?",
+    answer:
+      "The underlying DiscoverSTEM model has historically operated as a highly selective, closely mentored programme rather than a large-scale school-network rollout. A CISCE-wide implementation would represent one of the first large-scale deployments of this ecosystem across a school network, built on the standards, mentorship, and outcomes developed through years of the DiscoverSTEM programme.",
+  },
+
+  // ── Pilot Programme ───────────────────────────────────────────────────────
+  {
+    id: "pilot-1",
+    category: "Pilot Programme",
+    question: "What does the pilot phase involve?",
+    answer:
+      "The pilot phase trains and certifies approximately 38\u201340 teachers as Certified Innovation Mentors, organized into small collaborative teams. Participating teachers go through the full innovation journey themselves — from problem identification to patent filing — before mentoring students.",
+  },
+  {
+    id: "pilot-2",
+    category: "Pilot Programme",
+    question: "How long does the pilot take?",
+    answer:
+      "Approximately 16\u201320 weeks from commencement, covering school and teacher onboarding, training, innovation development, patentability assessment, patent filing, and certification.",
+  },
+  {
+    id: "pilot-3",
+    category: "Pilot Programme",
+    question: "What is the minimum participation expected from each school?",
+    answer:
+      "At minimum, one teacher nominated for training and certification, and one student team of approximately 10\u201315 students (up to 18). Schools can expand participation in later years as more teachers are trained.",
+  },
+  {
+    id: "pilot-4",
+    category: "Pilot Programme",
+    question: "How can a school join the programme?",
+    answer:
+      "Schools begin by registering for IAIRE Institutional Membership and nominating a teacher for training and certification under either the Innovation or Research pathway. From there, the certified teacher can establish a student innovation or research team and begin the structured programme.",
   },
 ];

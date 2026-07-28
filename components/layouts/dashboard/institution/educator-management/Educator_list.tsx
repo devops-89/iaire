@@ -44,12 +44,14 @@ import {
   TableRow,
   Tabs,
   TextField,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
 import Plans from "@/components/modals/common/Plans";
 import BeamButton from "@/components/widgets/BeamButton";
+import RejectReason from "@/components/modals/school/RejectReason";
 
 const statusOptions = ["Member", "Not a Member"];
 
@@ -196,7 +198,6 @@ const EducatorList = () => {
                 fontFamily: roboto.style.fontFamily,
                 fontWeight: 700,
                 fontSize: 16,
-                borderRadius: "10px",
                 padding: "10px 20px",
               }}
               endIcon={<Add />}
@@ -313,26 +314,39 @@ const EducatorList = () => {
                         </Link>
                       </TableCell>
                       <TableCell>{teacher?.phone}</TableCell>
-                      <TableCell>
-                        {teacher?.primarySubjects?.join(",") || "N/A"}
-                      </TableCell>
+
                       <TableCell>
                         {teacher?.approvalStatus ===
                         APPROVAL_STATUS.APPROVED ? (
                           <Chip
                             label={teacher?.approvalStatus}
-                            color="success"
+                            sx={{
+                              backgroundColor: "#00800030",
+                              color: "#008000",
+                              fontWeight: 600,
+                              minWidth: 120,
+                            }}
                           />
                         ) : (
                           <FormControl
                             size="small"
                             fullWidth
-                            sx={{ minWidth: 120 }}
+                            sx={{ minWidth: 120, borderRadius: "20px" }}
                           >
                             <Select
                               value={teacher?.approvalStatus}
                               onChange={(e) =>
-                                handleStatusChange(teacher.id, e.target.value)
+                                e.target.value === APPROVAL_STATUS.REJECTED
+                                  ? showModal(
+                                      <RejectReason
+                                        teacherId={teacher.id}
+                                        onSuccess={() => fetchUserData(data)}
+                                      />,
+                                    )
+                                  : handleStatusChange(
+                                      teacher.id,
+                                      e.target.value,
+                                    )
                               }
                               sx={{
                                 fontSize: "13px",
@@ -348,6 +362,7 @@ const EducatorList = () => {
                                         : "#d32f2f",
                                   fontWeight: 600,
                                 },
+                                borderRadius: "20px",
                               }}
                             >
                               {Object.values(APPROVAL_STATUS).map((status) => (
@@ -365,7 +380,7 @@ const EducatorList = () => {
                       </TableCell>
                       <TableCell>
                         {/* {teacher?.memberships[0]?.membershipCode || "--"} */}
-                        {teacher?.memberships?.membershipCode || "--"}
+                        {teacher?.membershipCode || "--"}
                       </TableCell>
 
                       <TableCell>

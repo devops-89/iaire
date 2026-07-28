@@ -25,8 +25,6 @@ const AssignTeacher = ({ batch }: { batch: BATCH_DETAILS_PROPS }) => {
   const { userData, loading, fetchUserData } = useGetAllUser();
   const { assignLoading, assignTeachersToBatch } = useAssignTeachersToBatch();
 
-  console.log("user ", userData);
-
   useEffect(() => {
     fetchUserData({
       page: 1,
@@ -41,7 +39,7 @@ const AssignTeacher = ({ batch }: { batch: BATCH_DETAILS_PROPS }) => {
 
     await assignTeachersToBatch({
       batchId: batch.id,
-      teacherIds: selectedTeachers.map((teacher) => teacher.id),
+      participantIds: selectedTeachers.map((teacher) => teacher.id),
     });
   };
 

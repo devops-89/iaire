@@ -219,7 +219,7 @@ export interface TEACHER_REPONSE_PROPS {
   phone: string;
   primarySubjects: string[];
   approvalStatus: string;
-
+  membershipCode: string;
   userId: string;
   memberships: {
     membershipCode: number | string;

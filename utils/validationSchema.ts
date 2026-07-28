@@ -248,8 +248,8 @@ export const educatorSignupValidationSchema = Yup.object({
     then: (schema) => schema.required("ISD Code is required"),
     otherwise: (schema) => schema.optional(),
   }),
-  primarySubjects: Yup.array().min(1, "At least one subject is required"),
-  experience: Yup.string().required("Experience is required"),
+  // primarySubjects: Yup.array().min(1, "At least one subject is required"),
+  // experience: Yup.string().required("Experience is required"),
   gender: Yup.string().required("Gender is required"),
   // category: Yup.string().required("Category is required"),
 });

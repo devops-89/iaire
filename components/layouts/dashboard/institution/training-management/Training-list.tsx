@@ -23,6 +23,7 @@ import {
   aloeveraDisplay_medium,
   montserrat,
   newBlack_medium,
+  roboto,
 } from "@/utils/fonts";
 import { TRAINING_NOMINATION_RESPONSE } from "@/utils/type";
 import { Lock, MoreVert } from "@mui/icons-material";
@@ -290,7 +291,7 @@ const InstitutionTrainingList = () => {
                             <TableCell
                               sx={{
                                 fontSize: 13,
-                                fontFamily: newBlack_medium.style.fontFamily,
+                                fontFamily: roboto.style.fontFamily,
                               }}
                             >
                               <Select
@@ -314,7 +315,14 @@ const InstitutionTrainingList = () => {
                                     SCHOOL_TRAINING_NOMINATION_STATUS.find(
                                       (s) => s.value === selected,
                                     );
-                                  return statusObj ? statusObj.label : selected;
+                                  return statusObj
+                                    ? statusObj.label
+                                    : ((selected as string)
+                                        ?.replace(/_/g, " ")
+                                        ?.toLowerCase()
+                                        ?.replace(/\b\w/g, (l) =>
+                                          l.toUpperCase(),
+                                        ) ?? selected);
                                 }}
                                 onChange={(e) => handleStatusChange(e, val.id)}
                               >

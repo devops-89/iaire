@@ -34,13 +34,17 @@ import { COLORS } from "@/utils/enum";
 import { useModal } from "@/store/useModal";
 import EditTeams from "@/components/modals/school/EditTeam";
 
+interface TABLE_INTERFACE {
+  tableHeader: TEAM_LIST_HEADER[];
+  tableData: TEAM_DETAILS_RESPONSE[];
+  loading: boolean;
+}
+
 const TeamListTable = ({
   tableHeader,
   tableData,
-}: {
-  tableHeader: TEAM_LIST_HEADER[];
-  tableData: TEAM_DETAILS_RESPONSE[];
-}) => {
+  loading,
+}: TABLE_INTERFACE) => {
   const router = useRouter();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [selectedTeam, setSelectedTeam] =

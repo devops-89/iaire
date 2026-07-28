@@ -17,6 +17,7 @@ import {
   Avatar,
   Box,
   Card,
+  CircularProgress,
   Container,
   FormHelperText,
   Grid,
@@ -24,7 +25,8 @@ import {
   InputAdornment,
   MenuItem,
   TextField,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import { useFormik } from "formik";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import { useRouter } from "next/navigation";
@@ -45,6 +47,8 @@ const EducatorSignup = () => {
   const { countryData } = useGetCountries();
 
   const { signupTeacher, loading } = useMentorSignup();
+
+  const [reviewLoading, setReviewLoading] = useState(false);
 
   const formik = useFormik<EducatorInfo>({
     initialValues: {
@@ -69,9 +73,11 @@ const EducatorSignup = () => {
     enableReinitialize: true,
     validationSchema: educatorSignupValidationSchema,
     onSubmit: (values) => {
+      setReviewLoading(true);
       setEducatorData(values as any);
 
       router.push("/signup/review");
+      setReviewLoading(false);
     },
   });
 
@@ -258,114 +264,6 @@ const EducatorSignup = () => {
                     </FormHelperText>
                   </Box>
                 </Grid>
-                <Grid size={{ xs: 12, lg: 4 }}>
-                  <Autocomplete
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Select Country"
-                        error={
-                          formik.touched.country &&
-                          Boolean(formik.errors.country)
-                        }
-                        helperText={
-                          formik.touched.country &&
-                          (formik.errors.country as string)
-                        }
-                      />
-                    )}
-                    options={countryData}
-                    getOptionLabel={(option) => option.name}
-                    onChange={countryChangeHandler}
-                    value={country}
-                  />
-                </Grid>
-                <Grid size={{ xs: 12, lg: 4 }}>
-                  {country?.code === "IN" ? (
-                    <Autocomplete
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label="Select Board"
-                          error={
-                            formik.touched.board && Boolean(formik.errors.board)
-                          }
-                          helperText={
-                            formik.touched.board &&
-                            (formik.errors.board as string)
-                          }
-                        />
-                      )}
-                      options={boardData}
-                      getOptionLabel={(option) => option.name}
-                      onChange={boardChangeHandler}
-                      value={formik.values.board}
-                    />
-                  ) : country?.code === "US" ? (
-                    <Autocomplete
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label="Select ISD Code"
-                          error={
-                            formik.touched.isdCode &&
-                            Boolean(formik.errors.isdCode)
-                          }
-                          helperText={
-                            formik.touched.isdCode &&
-                            (formik.errors.isdCode as string)
-                          }
-                        />
-                      )}
-                      options={boardData}
-                      getOptionLabel={(option: any) => option}
-                      onChange={isdChangeHandler}
-                      value={formik.values.isdCode || null}
-                    />
-                  ) : (
-                    <Autocomplete
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          label="Select Board"
-                          error={
-                            formik.touched.board && Boolean(formik.errors.board)
-                          }
-                          helperText={
-                            formik.touched.board &&
-                            (formik.errors.board as string)
-                          }
-                        />
-                      )}
-                      options={boardData}
-                      getOptionLabel={(option) => option.name}
-                      onChange={boardChangeHandler}
-                      value={formik.values.board}
-                    />
-                  )}
-                </Grid>
-
-                <Grid size={{ xs: 12, lg: 4 }}>
-                  <Autocomplete
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Select Institution"
-                        error={
-                          formik.touched.school && Boolean(formik.errors.school)
-                        }
-                        helperText={
-                          formik.touched.school &&
-                          (formik.errors.school as string)
-                        }
-                      />
-                    )}
-                    options={institutionData}
-                    getOptionLabel={(option) => option.name}
-                    onChange={institutionChangeHandler}
-                    value={school}
-                  />
-                </Grid>
 
                 <Grid size={{ xs: 12, lg: 6 }}>
                   <TextField
@@ -540,7 +438,7 @@ const EducatorSignup = () => {
                     value={formik.values.gender}
                   />
                 </Grid>
-                <Grid size={{ xs: 12, lg: 6 }}>
+                {/* <Grid size={{ xs: 12, lg: 6 }}>
                   <TextField
                     label="Experience"
                     type="number"
@@ -586,29 +484,124 @@ const EducatorSignup = () => {
                       />
                     )}
                   />
+                </Grid> */}
+
+                <Grid size={{ xs: 12, lg: 6 }}>
+                  <Autocomplete
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Select Country"
+                        error={
+                          formik.touched.country &&
+                          Boolean(formik.errors.country)
+                        }
+                        helperText={
+                          formik.touched.country &&
+                          (formik.errors.country as string)
+                        }
+                      />
+                    )}
+                    options={countryData}
+                    getOptionLabel={(option) => option.name}
+                    onChange={countryChangeHandler}
+                    value={country}
+                  />
+                </Grid>
+                <Grid size={{ xs: 12, lg: 6 }}>
+                  {country?.code === "IN" ? (
+                    <Autocomplete
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label="Select Board"
+                          error={
+                            formik.touched.board && Boolean(formik.errors.board)
+                          }
+                          helperText={
+                            formik.touched.board &&
+                            (formik.errors.board as string)
+                          }
+                        />
+                      )}
+                      options={boardData}
+                      getOptionLabel={(option) => option.name}
+                      onChange={boardChangeHandler}
+                      value={formik.values.board}
+                    />
+                  ) : country?.code === "US" ? (
+                    <Autocomplete
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label="Select ISD Code"
+                          error={
+                            formik.touched.isdCode &&
+                            Boolean(formik.errors.isdCode)
+                          }
+                          helperText={
+                            formik.touched.isdCode &&
+                            (formik.errors.isdCode as string)
+                          }
+                        />
+                      )}
+                      options={boardData}
+                      getOptionLabel={(option: any) => option}
+                      onChange={isdChangeHandler}
+                      value={formik.values.isdCode || null}
+                    />
+                  ) : (
+                    <Autocomplete
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          label="Select Board"
+                          error={
+                            formik.touched.board && Boolean(formik.errors.board)
+                          }
+                          helperText={
+                            formik.touched.board &&
+                            (formik.errors.board as string)
+                          }
+                        />
+                      )}
+                      options={boardData}
+                      getOptionLabel={(option) => option.name}
+                      onChange={boardChangeHandler}
+                      value={formik.values.board}
+                    />
+                  )}
+                </Grid>
+
+                <Grid size={{ xs: 12, lg: 6 }}>
+                  <Autocomplete
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Select Institution"
+                        error={
+                          formik.touched.school && Boolean(formik.errors.school)
+                        }
+                        helperText={
+                          formik.touched.school &&
+                          (formik.errors.school as string)
+                        }
+                      />
+                    )}
+                    options={institutionData}
+                    getOptionLabel={(option) => option.name}
+                    onChange={institutionChangeHandler}
+                    value={school}
+                  />
                 </Grid>
 
                 <Grid size={{ xs: 12 }} sx={{ mt: 2 }}>
-                  <BeamButton
-                    type="submit"
-                    variant="contained"
-                    sx={{
-                      bgcolor: COLORS.ACCENT_TAN,
-                      color: COLORS.BLACK,
-                      py: 1.5,
-                      fontWeight: 600,
-                      fontSize: 16,
-                      fontFamily: montserrat.style.fontFamily,
-                      textTransform: "none",
-                      boxShadow: "0px 8px 20px rgba(209, 160, 84, 0.3)",
-                      "&:hover": {
-                        bgcolor: "#B88A40",
-                        boxShadow: "0px 10px 25px rgba(209, 160, 84, 0.4)",
-                      },
-                      width: 200,
-                    }}
-                  >
-                    Review Profile
+                  <BeamButton type="submit" variant="contained">
+                    {reviewLoading ? (
+                      <CircularProgress color="inherit" size={20} />
+                    ) : (
+                      "Review Profile"
+                    )}
                   </BeamButton>
                 </Grid>
               </Grid>

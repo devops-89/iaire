@@ -2,342 +2,488 @@
 import { useSignup } from "@/store/useSignup";
 import { COLORS } from "@/utils/enum";
 import { roboto, montserrat } from "@/utils/fonts";
-import { School, WorkspacePremium, AutoGraph } from "@mui/icons-material";
 import {
-  Box,
-  Grid,
-  Step,
-  StepLabel,
-  Stepper,
-  Typography,
-  StepConnector,
-  stepConnectorClasses,
-  styled,
-} from "@mui/material";
-import React from "react";
+  WorkspacePremium,
+  CheckCircle,
+  RadioButtonUnchecked,
+  EmojiEvents,
+} from "@mui/icons-material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
+import React, { useEffect } from "react";
+import { useGetAllInnovation } from "@/hooks/school/useInnovation";
+import { useGetAllResearch } from "@/hooks/school/useResearch";
 
-const DottedConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.root}`]: {
-    marginLeft: 12,
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    borderColor: "rgba(0,0,0,0.15)",
-    borderLeftStyle: "dotted",
-    borderLeftWidth: 3,
-    minHeight: 35,
-  },
-}));
+const TIERS = [
+  "Educator Member",
+  "Certified Innovation or Research Mentor",
+  "Associate Fellow of Innovation or Research Education",
+  "Fellow of Innovation or Research Education",
+];
 
-const LevelStepIcon = (props: { active?: boolean; icon: React.ReactNode }) => {
-  const { icon, active } = props;
+function computeTier(
+  isMember: boolean,
+  numInnovations: number,
+  numResearch: number,
+) {
+  const cert = isMember && numInnovations >= 1;
+  const assoc = cert && numInnovations >= 3 && numResearch >= 2;
+  const fellow = assoc && numInnovations > 5 && numResearch > 4;
 
-  if (Number(icon) === 3) {
-    return (
-      <WorkspacePremium
-        sx={{
-          color: COLORS.PRIMARY_NAVY,
-          fontSize: 32,
-          ml: "-2px",
-          filter: `drop-shadow(0 0 8px ${COLORS.PRIMARY_NAVY}44)`,
-        }}
-      />
-    );
+  if (fellow) {
+    return {
+      activeStep: 3,
+      currentTier: TIERS[3],
+      nextTier: "Max Tier Achieved",
+      progressPercent: 100,
+      checklist: [
+        { text: "5+ innovation projects", met: true },
+        { text: "4+ research publications", met: true },
+      ],
+    };
   }
+  if (assoc) {
+    const met1 = numInnovations > 5 ? 1 : 0;
+    const met2 = numResearch > 4 ? 1 : 0;
+    return {
+      activeStep: 2,
+      currentTier: TIERS[2],
+      nextTier: TIERS[3],
+      progressPercent: Math.round(((met1 + met2) / 2) * 100),
+      checklist: [
+        { text: "More than 5 innovation projects", met: numInnovations > 5 },
+        { text: "More than 4 research publications", met: numResearch > 4 },
+      ],
+    };
+  }
+  if (cert) {
+    const met1 = numInnovations >= 3 ? 1 : 0;
+    const met2 = numResearch >= 2 ? 1 : 0;
+    return {
+      activeStep: 1,
+      currentTier: TIERS[1],
+      nextTier: TIERS[2],
+      progressPercent: Math.round(((met1 + met2) / 2) * 100),
+      checklist: [
+        { text: "3+ innovation projects", met: numInnovations >= 3 },
+        { text: "2+ research publications", met: numResearch >= 2 },
+      ],
+    };
+  }
+  const met1 = isMember ? 1 : 0;
+  const met2 = numInnovations >= 1 ? 1 : 0;
+  return {
+    activeStep: 0,
+    currentTier: TIERS[0],
+    nextTier: TIERS[1],
+    progressPercent: Math.round(((met1 + met2) / 2) * 100),
+    checklist: [
+      { text: "Active IAIRE membership", met: isMember },
+      { text: "1+ innovation or research project", met: numInnovations >= 1 },
+    ],
+  };
+}
 
-  return (
-    <Box
-      sx={{
-        width: 14,
-        height: 14,
-        borderRadius: "50%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        border: `1.5px solid ${active ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.1)"}`,
-        backgroundColor: "rgba(255,255,255,0.8)",
-        ml: "8px",
-        position: "relative",
-        "&::after": {
-          content: '""',
-          position: "absolute",
-          width: 22,
-          height: 22,
-          borderRadius: "50%",
-          border: `1px solid ${active ? COLORS.PRIMARY_NAVY + "22" : "rgba(0,0,0,0.05)"}`,
-        },
-      }}
-    >
-      <Box
-        sx={{
-          width: 6,
-          height: 6,
-          borderRadius: "50%",
-          backgroundColor:
-            Number(icon) < 3 ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.2)",
-        }}
-      />
-    </Box>
-  );
-};
+// ─── Component ────────────────────────────────────────────────────────────────
 
 const EducatorWelcomeBanner = () => {
   const { educatorData } = useSignup();
+  const { innovationData, fetchInnovationList } = useGetAllInnovation();
+  const { researchData, fetchResearchData } = useGetAllResearch();
 
-  // console.log("educatorData", educatorData);
+  useEffect(() => {
+    fetchInnovationList();
+    fetchResearchData();
+  }, []);
 
-  const stepperData = [
-    { label: "Fellow of Innovation or Research Education" },
-    { label: "Associate Fellow of Innovation or Research Education" },
-    { label: "Certified Innovation or Research Mentor" },
-    { label: "Educator Member" },
-  ];
+  const numInnovations = innovationData?.length ?? 0;
+  const numResearch = researchData?.length ?? 0;
+  const isMember =
+    (educatorData?.payments?.length ?? 0) > 0 &&
+    (educatorData?.payments?.some(
+      (v: any) => v.membership?.status?.toUpperCase() === "ACTIVE",
+    ) ??
+      false);
 
-  const membershipCode = educatorData?.membershipCode;
+  const { activeStep, currentTier, nextTier, progressPercent, checklist } =
+    computeTier(isMember, numInnovations, numResearch);
+
+  const fullName = educatorData
+    ? `${educatorData.firstName} ${educatorData.lastName}`
+    : "Educator";
+  const initials = educatorData
+    ? `${educatorData.firstName?.[0] ?? ""}${educatorData.lastName?.[0] ?? ""}`
+    : "E";
 
   return (
-    <Box sx={{ mb: 4 }}>
-      <Grid container spacing={4} alignItems="stretch">
-        <Grid size={{ xs: 12, md: 7 }}>
-          <Box
+    <Box sx={{ mb: 3 }}>
+      {/* ── Top compact banner ─────────────────────────────────────────────── */}
+      <Box
+        sx={{
+          background: `linear-gradient(135deg, ${COLORS.PRIMARY_NAVY} 0%, #132B4A 100%)`,
+          borderRadius: "20px",
+          px: { xs: 2.5, md: 4 },
+          py: { xs: 2.5, md: 3 },
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          alignItems: { xs: "flex-start", sm: "center" },
+          gap: { xs: 2, sm: 3 },
+          boxShadow: "0 8px 24px rgba(11,23,39,0.2)",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* BG watermark */}
+        <WorkspacePremium
+          sx={{
+            position: "absolute",
+            right: -20,
+            bottom: -20,
+            fontSize: 160,
+            color: "rgba(255,255,255,0.03)",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Avatar */}
+        <Box
+          sx={{
+            width: 52,
+            height: 52,
+            borderRadius: "14px",
+            background: "rgba(255,255,255,0.12)",
+            border: "1px solid rgba(255,255,255,0.15)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+          }}
+        >
+          <Typography
             sx={{
-              background: `linear-gradient(135deg, ${COLORS.PRIMARY_NAVY} 0%, ${COLORS.NAVY_GRADIENT_END || "#1a2a3a"} 100%)`,
-              height: "100%",
-              minHeight: { xs: "220px", md: "200px" },
-              borderRadius: "28px",
-              px: { xs: 2, md: 4 },
-              position: "relative",
-              overflow: "hidden",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              boxShadow: "0 12px 24px rgba(11, 23, 39, 0.2)",
+              fontFamily: roboto.style.fontFamily,
+              fontWeight: 800,
+              fontSize: 20,
+              color: COLORS.WHITE,
+              letterSpacing: "-0.5px",
             }}
           >
-            <Box sx={{ position: "relative", zIndex: 2 }}>
-              <Typography
-                sx={{
-                  fontWeight: 800,
-                  color: COLORS.WHITE,
-                  fontFamily: roboto.style.fontFamily,
-                  fontSize: { xs: 24, md: 30 },
-                  letterSpacing: "-0.5px",
-                }}
-              >
-                Welcome back,
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: 600,
-                  color: COLORS.ACCENT_TAN || "#D1A054",
-                  mt: 0.5,
-                  fontFamily: montserrat.style.fontFamily,
-                  fontSize: { xs: 22, md: 28 },
-                }}
-              >
-                {educatorData
-                  ? `${educatorData.firstName} ${educatorData.lastName}`
-                  : "Educator"}
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: 600,
-                  color: COLORS.ACCENT_TAN || "#D1A054",
-                  mt: 0.5,
-                  fontFamily: montserrat.style.fontFamily,
-                  fontSize: { xs: 20, md: 15 },
-                }}
-              >
-                Membership ID : {membershipCode}
-              </Typography>
+            {initials}
+          </Typography>
+        </Box>
 
-              <Box
-                sx={{ mt: 3, display: "flex", flexDirection: "column", gap: 1 }}
+        {/* Name + school */}
+        <Box sx={{ flex: 1, minWidth: 0 }}>
+          <Typography
+            sx={{
+              fontFamily: roboto.style.fontFamily,
+              fontWeight: 800,
+              fontSize: { xs: 18, md: 22 },
+              color: COLORS.WHITE,
+              letterSpacing: "-0.3px",
+              lineHeight: 1.2,
+            }}
+          >
+            {fullName}
+          </Typography>
+          <Stack
+            direction="row"
+            alignItems="center"
+            spacing={1.5}
+            flexWrap="wrap"
+            sx={{ mt: 0.5 }}
+          >
+            {educatorData?.membershipCode && (
+              <Typography
+                sx={{
+                  fontFamily: montserrat.style.fontFamily,
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: COLORS.ACCENT_TAN || "#D1A054",
+                  letterSpacing: "0.5px",
+                }}
               >
+                #{educatorData.membershipCode}
+              </Typography>
+            )}
+            {educatorData?.school?.name && (
+              <>
+                <Box
+                  sx={{
+                    width: 3,
+                    height: 3,
+                    borderRadius: "50%",
+                    bgcolor: "rgba(255,255,255,0.3)",
+                  }}
+                />
                 <Typography
                   sx={{
-                    color: "rgba(255,255,255,0.7)",
                     fontFamily: montserrat.style.fontFamily,
-                    fontSize: 14,
+                    fontSize: 12,
+                    color: "rgba(255,255,255,0.6)",
                     fontWeight: 500,
                   }}
                 >
-                  {educatorData?.school?.name || ""}
+                  {educatorData.school.name}
                 </Typography>
-                <Box
-                  sx={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 1,
-                    bgcolor: "rgba(255,255,255,0.1)",
-                    backdropFilter: "blur(4px)",
-                    px: 2,
-                    py: 0.8,
-                    borderRadius: "12px",
-                    width: "fit-content",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                  }}
+              </>
+            )}
+          </Stack>
+        </Box>
+
+        {/* Tier badge */}
+        <Box
+          sx={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 1,
+            bgcolor: "rgba(255,255,255,0.1)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            px: 2,
+            py: 0.9,
+            borderRadius: "12px",
+            flexShrink: 0,
+          }}
+        >
+          <WorkspacePremium
+            sx={{ fontSize: 16, color: COLORS.ACCENT_TAN || "#D1A054" }}
+          />
+          <Typography
+            sx={{
+              fontFamily: montserrat.style.fontFamily,
+              fontSize: 11,
+              fontWeight: 700,
+              color: COLORS.WHITE,
+              textTransform: "uppercase",
+              letterSpacing: "0.8px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {currentTier}
+          </Typography>
+        </Box>
+      </Box>
+
+      {/* ── Bottom tier progress row ────────────────────────────────────────── */}
+      <Box
+        sx={{
+          mt: 2,
+          borderRadius: "20px",
+          border: "1px solid rgba(27,54,93,0.08)",
+          bgcolor: "#FFFFFF",
+          px: { xs: 2.5, md: 4 },
+          py: 2.5,
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: { xs: "flex-start", md: "center" },
+          gap: { xs: 2.5, md: 0 },
+        }}
+      >
+        {/* Tier steps - horizontal pills */}
+        <Stack
+          direction="row"
+          alignItems="center"
+          spacing={0}
+          sx={{ flex: 1, minWidth: 0, overflow: "hidden" }}
+        >
+          {TIERS.map((tier, i) => {
+            const isActive = i === activeStep;
+            const isDone = i < activeStep;
+            return (
+              <React.Fragment key={i}>
+                <Stack
+                  alignItems="center"
+                  spacing={0.5}
+                  sx={{ minWidth: 0, flex: 1 }}
                 >
-                  <WorkspacePremium
-                    sx={{ color: COLORS.ACCENT_TAN || "#D1A054", fontSize: 18 }}
-                  />
-                  <Typography
+                  <Box
                     sx={{
-                      fontWeight: 600,
-                      color: COLORS.WHITE,
-                      fontFamily: montserrat.style.fontFamily,
-                      fontSize: 12,
-                      textTransform: "uppercase",
-                      letterSpacing: "1px",
+                      width: 28,
+                      height: 28,
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      bgcolor: isActive
+                        ? COLORS.PRIMARY_NAVY
+                        : isDone
+                          ? "#10B981"
+                          : "rgba(0,0,0,0.06)",
+                      border: `2px solid ${
+                        isActive
+                          ? COLORS.PRIMARY_NAVY
+                          : isDone
+                            ? "#10B981"
+                            : "rgba(0,0,0,0.1)"
+                      }`,
+                      transition: "all 0.2s",
+                      flexShrink: 0,
                     }}
                   >
-                    Educator Member
+                    {isDone ? (
+                      <CheckCircle sx={{ fontSize: 14, color: "#fff" }} />
+                    ) : i === TIERS.length - 1 ? (
+                      <EmojiEvents
+                        sx={{
+                          fontSize: 14,
+                          color: isActive ? "#fff" : "rgba(0,0,0,0.25)",
+                        }}
+                      />
+                    ) : (
+                      <Box
+                        sx={{
+                          width: 8,
+                          height: 8,
+                          borderRadius: "50%",
+                          bgcolor: isActive ? "#fff" : "rgba(0,0,0,0.2)",
+                        }}
+                      />
+                    )}
+                  </Box>
+                  <Typography
+                    sx={{
+                      fontFamily: montserrat.style.fontFamily,
+                      fontSize: "10px",
+                      fontWeight: isActive ? 700 : 500,
+                      color: isActive
+                        ? COLORS.PRIMARY_NAVY
+                        : isDone
+                          ? "#10B981"
+                          : "rgba(0,0,0,0.35)",
+                      textAlign: "center",
+                      lineHeight: 1.25,
+                      px: 0.5,
+                      display: { xs: "none", sm: "block" },
+                    }}
+                  >
+                    {tier}
                   </Typography>
-                </Box>
-              </Box>
-            </Box>
+                </Stack>
+                {i < TIERS.length - 1 && (
+                  <Box
+                    sx={{
+                      flex: 1,
+                      height: 2,
+                      bgcolor: i < activeStep ? "#10B981" : "rgba(0,0,0,0.08)",
+                      borderRadius: "1px",
+                      mb: { xs: 0, sm: "22px" },
+                      mx: 0.5,
+                      minWidth: 12,
+                      transition: "background 0.3s",
+                    }}
+                  />
+                )}
+              </React.Fragment>
+            );
+          })}
+        </Stack>
 
-            <School
+        {/* Vertical divider */}
+        <Divider
+          orientation="vertical"
+          flexItem
+          sx={{
+            mx: 4,
+            display: { xs: "none", md: "block" },
+            borderColor: "rgba(0,0,0,0.07)",
+          }}
+        />
+
+        {/* Progress + checklist */}
+        <Box sx={{ width: { xs: "100%", md: 260 }, flexShrink: 0 }}>
+          {/* Progress bar */}
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{ mb: 1 }}
+          >
+            <Typography
               sx={{
-                fontSize: 220,
-                color: "rgba(255,255,255,0.03)",
-                position: "absolute",
-                right: -30,
-                bottom: -50,
-                transform: "rotate(-15deg)",
-                zIndex: 1,
+                fontFamily: montserrat.style.fontFamily,
+                fontSize: 10,
+                fontWeight: 700,
+                color: "rgba(0,0,0,0.4)",
+                textTransform: "uppercase",
+                letterSpacing: "0.5px",
+              }}
+            >
+              {activeStep < TIERS.length - 1
+                ? `→ ${nextTier}`
+                : "Max tier achieved"}
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: roboto.style.fontFamily,
+                fontSize: 13,
+                fontWeight: 900,
+                color: COLORS.PRIMARY_NAVY,
+              }}
+            >
+              {progressPercent}%
+            </Typography>
+          </Stack>
+          <Box
+            sx={{
+              height: 6,
+              bgcolor: "rgba(0,0,0,0.05)",
+              borderRadius: "3px",
+              overflow: "hidden",
+              mb: 1.5,
+            }}
+          >
+            <Box
+              sx={{
+                height: "100%",
+                width: `${progressPercent}%`,
+                background: `linear-gradient(90deg, ${COLORS.PRIMARY_NAVY} 0%, ${COLORS.ACCENT_TAN || "#D1A054"} 100%)`,
+                borderRadius: "3px",
+                transition: "width 0.5s ease-in-out",
               }}
             />
           </Box>
-        </Grid>
 
-        <Grid size={{ xs: 12, md: 5 }}>
-          <Box
-            sx={{
-              p: 4,
-              height: "100%",
-              borderRadius: "28px",
-              background: "rgba(255, 255, 255, 0.7)",
-              backdropFilter: "blur(12px)",
-              border: "1px solid rgba(255, 255, 255, 0.8)",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.04)",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box>
-              <Typography
-                sx={{
-                  fontFamily: roboto.style.fontFamily,
-                  fontSize: 18,
-                  fontWeight: 700,
-                  color: COLORS.PRIMARY_NAVY,
-                  mb: 3,
-                }}
-              >
-                Membership Advancement
-              </Typography>
-              <Stepper
-                orientation="vertical"
-                connector={<DottedConnector />}
-                activeStep={3}
-                sx={{
-                  "& .MuiStep-root": { pb: 0 },
-                }}
-              >
-                {stepperData.map((val, i) => (
-                  <Step key={i}>
-                    <StepLabel
-                      slots={{
-                        stepIcon: LevelStepIcon,
-                      }}
+          {/* Compact checklist */}
+          {activeStep < TIERS.length - 1 && (
+            <Stack spacing={0.75}>
+              {checklist.map((item, idx) => (
+                <Stack
+                  key={idx}
+                  direction="row"
+                  alignItems="center"
+                  spacing={0.75}
+                >
+                  {item.met ? (
+                    <CheckCircle
+                      sx={{ fontSize: 13, color: "#10B981", flexShrink: 0 }}
+                    />
+                  ) : (
+                    <RadioButtonUnchecked
                       sx={{
-                        "& .MuiStepLabel-label": { ml: 2 },
+                        fontSize: 13,
+                        color: "rgba(0,0,0,0.2)",
+                        flexShrink: 0,
                       }}
-                    >
-                      <Typography
-                        sx={{
-                          fontFamily: montserrat.style.fontFamily,
-                          fontWeight: i === 3 ? 700 : 500,
-                          color:
-                            i === 3 ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.5)",
-                          fontSize: i === 3 ? "15px" : "13px",
-                        }}
-                      >
-                        {val.label}
-                      </Typography>
-                    </StepLabel>
-                  </Step>
-                ))}
-              </Stepper>
-            </Box>
-
-            <Box sx={{ mt: 4 }}>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  mb: 1,
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: montserrat.style.fontFamily,
-                    fontSize: "12px",
-                    fontWeight: 700,
-                    color: COLORS.PRIMARY_NAVY,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Progress to Certified Innovation or Research Mentor
-                </Typography>
-                <Typography
-                  sx={{
-                    fontFamily: roboto.style.fontFamily,
-                    fontSize: "14px",
-                    fontWeight: 800,
-                    color: COLORS.PRIMARY_NAVY,
-                  }}
-                >
-                  50%
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  height: 8,
-                  width: "100%",
-                  bgcolor: "rgba(0,0,0,0.05)",
-                  borderRadius: "4px",
-                  overflow: "hidden",
-                }}
-              >
-                <Box
-                  sx={{
-                    height: "100%",
-                    width: "65%",
-                    background: `linear-gradient(90deg, ${COLORS.PRIMARY_NAVY} 0%, ${COLORS.ACCENT_TAN || "#D1A054"} 100%)`,
-                    borderRadius: "4px",
-                  }}
-                />
-              </Box>
-              <Typography
-                sx={{
-                  fontFamily: montserrat.style.fontFamily,
-                  fontSize: "11px",
-                  color: "rgba(0,0,0,0.5)",
-                  mt: 1.5,
-                  fontWeight: 500,
-                  lineHeight: 1.4,
-                }}
-              >
-                Submit 2 more research papers or achieve a training score of 9.5
-                to reach the next tier.
-              </Typography>
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
+                    />
+                  )}
+                  <Typography
+                    sx={{
+                      fontFamily: montserrat.style.fontFamily,
+                      fontSize: 11,
+                      color: item.met
+                        ? COLORS.PRIMARY_NAVY
+                        : "rgba(0,0,0,0.45)",
+                      fontWeight: item.met ? 600 : 500,
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {item.text}
+                  </Typography>
+                </Stack>
+              ))}
+            </Stack>
+          )}
+        </Box>
+      </Box>
     </Box>
   );
 };

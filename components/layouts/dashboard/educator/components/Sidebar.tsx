@@ -7,6 +7,7 @@ import {
   Collapse,
   Divider,
   List,
+  ListItemAvatar,
   ListItemButton,
   ListItemText,
   Typography,
@@ -98,6 +99,9 @@ const EducatorSidebar = () => {
                     }
                   }}
                 >
+                  <ListItemAvatar sx={{ minWidth: 30 }}>
+                    <val.icon size={20} />
+                  </ListItemAvatar>
                   <ListItemText
                     primary={val.label}
                     slotProps={{

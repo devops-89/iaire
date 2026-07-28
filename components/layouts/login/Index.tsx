@@ -33,7 +33,8 @@ import BeamButton from "@/components/widgets/BeamButton";
 import { useRouter } from "next/navigation";
 import { ForgotPasswordModal } from "@/components/modals/common/ForgotPasswordModal";
 import useSnackbar from "@/store/useSnackbar";
-
+import logo from "@/images/logo/iaire_logo.png";
+import Image from "next/image";
 const LoginLayout = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -114,7 +115,7 @@ const LoginLayout = () => {
             </IconButton>
           </Box>
           <Box sx={{ textAlign: "center", mb: 4 }}>
-            <Box
+            {/* <Box
               sx={{
                 width: 50,
                 height: 50,
@@ -131,8 +132,9 @@ const LoginLayout = () => {
               }}
             >
               I
-            </Box>
-            <Typography
+            </Box> */}
+            <Image src={logo} alt="" width={200} />
+            {/* <Typography
               sx={{
                 color: COLORS.BLACK,
                 fontFamily: roboto.style.fontFamily,
@@ -143,7 +145,7 @@ const LoginLayout = () => {
               }}
             >
               Welcome to IAIRE
-            </Typography>
+            </Typography> */}
             <Typography
               sx={{
                 fontFamily: montserrat.style.fontFamily,

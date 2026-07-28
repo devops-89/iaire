@@ -7,6 +7,7 @@ import {
   Collapse,
   Divider,
   List,
+  ListItemAvatar,
   ListItemButton,
   ListItemText,
   Typography,
@@ -15,7 +16,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { getUserDetails } from "@/hooks/common/getUserDetails";
-import logo from "@/images/logo/logo.png";
+import logo from "@/images/logo/iaire_logo.png";
 import Image from "next/image";
 const InstitutionSidebar = () => {
   const pathname = usePathname();
@@ -30,7 +31,6 @@ const InstitutionSidebar = () => {
   };
 
   const { data, loading } = getUserDetails();
-  console.log("data", data);
 
   return (
     <Box>
@@ -86,12 +86,15 @@ const InstitutionSidebar = () => {
                     }
                   }}
                 >
+                  <ListItemAvatar sx={{ minWidth: 30 }}>
+                    <val.icon size={20} />
+                  </ListItemAvatar>
                   <ListItemText
                     primary={val.label}
                     slotProps={{
                       primary: {
                         sx: {
-                          fontFamily: montserrat.style.fontFamily,
+                          fontFamily: roboto.style.fontFamily,
                           fontSize: "14px",
                           fontWeight: isActive ? 600 : 400,
                         },

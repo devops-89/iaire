@@ -61,8 +61,8 @@ const InstitutionHeader = () => {
         position: "fixed",
         top: 0,
         right: 0,
-        left: "250px", // Align with sidebar width
-        height: "80px",
+        left: "250px",
+        height: "65px",
         backgroundColor: isScrolled
           ? "rgba(255, 255, 255, 0.72)"
           : COLORS.WHITE,
