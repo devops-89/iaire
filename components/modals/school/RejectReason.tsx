@@ -9,7 +9,7 @@ import { useModal } from "@/store/useModal";
 import useSnackbar from "@/store/useSnackbar";
 
 interface RejectReasonProps {
-  teacherId: string | number;
+  teacherId?: string | number;
   onSuccess?: () => void;
 }
 
@@ -24,6 +24,11 @@ const RejectReason = ({ teacherId, onSuccess }: RejectReasonProps) => {
   const submitHandler = async () => {
     if (!rejectReason.trim()) {
       setError("Please Enter Reason for Rejection");
+      return;
+    }
+
+    if (!teacherId) {
+      setSnackbar("No teacher selected", "error");
       return;
     }
 
