@@ -12,6 +12,7 @@ import {
 import { COLORS, USER_ROLES } from "@/utils/enum";
 import { Check } from "@mui/icons-material";
 import { useSignup } from "@/store/useSignup";
+import { montserrat } from "@/utils/fonts";
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -21,17 +22,17 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   },
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: COLORS.ACCENT_TAN,
+      borderColor: "#38BDF8",
     },
   },
   [`&.${stepConnectorClasses.completed}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: COLORS.ACCENT_TAN,
+      borderColor: "#38BDF8",
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
-    borderColor: "rgba(0, 0, 0, 0.1)",
-    borderTopWidth: 3,
+    borderColor: "rgba(255, 255, 255, 0.15)",
+    borderTopWidth: 2,
     borderRadius: 1,
   },
 }));
@@ -39,23 +40,24 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
 const QontoStepIconRoot = styled("div")<{
   ownerState: { active?: boolean; completed?: boolean };
 }>(({ theme, ownerState }) => ({
-  color: "rgba(0, 0, 0, 0.1)",
+  color: "rgba(255, 255, 255, 0.25)",
   display: "flex",
   height: 22,
   alignItems: "center",
   ...(ownerState.active && {
-    color: COLORS.ACCENT_TAN,
+    color: "#38BDF8",
   }),
   "& .QontoStepIcon-completedIcon": {
-    color: COLORS.ACCENT_TAN,
+    color: "#38BDF8",
     zIndex: 1,
-    fontSize: 22,
+    fontSize: 20,
   },
   "& .QontoStepIcon-circle": {
     width: 10,
     height: 10,
     borderRadius: "50%",
     backgroundColor: "currentColor",
+    boxShadow: ownerState.active ? "0 0 10px rgba(56, 189, 248, 0.5)" : "none",
   },
 }));
 
@@ -114,16 +116,17 @@ const SignupStepper = ({
               StepIconComponent={QontoStepIcon}
               sx={{
                 "& .MuiStepLabel-label": {
-                  fontFamily: "var(--font-montserrat)",
-                  fontWeight: 600,
+                  fontFamily: montserrat.style.fontFamily,
+                  fontWeight: 500,
                   fontSize: "0.85rem",
-                  color: "rgba(0,0,0,0.4)",
+                  color: "rgba(255, 255, 255, 0.45)",
                   "&.Mui-active": {
-                    color: COLORS.PRIMARY_NAVY,
+                    color: COLORS.WHITE,
                     fontWeight: 700,
                   },
                   "&.Mui-completed": {
-                    color: COLORS.ACCENT_TAN,
+                    color: "#38BDF8",
+                    fontWeight: 600,
                   },
                 },
               }}

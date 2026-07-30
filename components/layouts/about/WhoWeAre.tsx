@@ -88,7 +88,11 @@ const WhoWeAre = () => {
           >
             <Stack spacing={3.5} sx={{ width: "100%" }}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                <SectionBadge label="Governance & Scientific Board" align="left"  theme="dark" />
+                <SectionBadge
+                  label="Governance & Scientific Board"
+                  align="left"
+                  theme="dark"
+                />
               </Box>
 
               {/* Title & Narrative */}
@@ -184,11 +188,6 @@ const WhoWeAre = () => {
                         py: 1.1,
                         // boxShadow: "0 4px 14px rgba(255, 255, 255, 0.15)",
                         transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
-                        "&:hover": {
-                          backgroundColor: "#E2E8F0",
-                          transform: "translateY(-2px)",
-                          boxShadow: "0 6px 20px rgba(255, 255, 255, 0.25)",
-                        },
                       }}
                     >
                       Meet the Board

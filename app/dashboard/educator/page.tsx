@@ -1,7 +1,7 @@
 "use client";
 import EducatorDashboardLayout from "@/components/layouts/dashboard/educator/Index";
 import EducatorWelcomeBanner from "@/components/widgets/Dashboard/EducatorWelcomeBanner";
-import { Backdrop, Box, Typography } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import React from "react";
 import StatsBox from "@/components/layouts/dashboard/institution/components/dashboard/StatsBox";
 import {
@@ -14,108 +14,54 @@ import {
   People,
   BusinessCenter,
   MonetizationOn,
-  GroupAdd,
   VerifiedUser,
   PendingActions,
 } from "@mui/icons-material";
 import { useSignup } from "@/store/useSignup";
-import { COLORS } from "@/utils/enum";
+import { useEducatorDashboardStats } from "@/hooks/mentor/useEducatorDashboardStats";
+
+const ICON_MAP: Record<string, any> = {
+  "Trained on Innovation": Lightbulb,
+  "Students who Launched Startups": RocketLaunch,
+  "Working as Assistant Mentors": Hail,
+  "Trained on Research": Lightbulb,
+  "Total Members": People,
+  "Active Members": VerifiedUser,
+  "Not a Member": PendingActions,
+  "Patents Pending": Lightbulb,
+  "Patents Granted": WorkspacePremium,
+  "Research Submitted": FileCopyOutlined,
+  "Research Published": MenuBook,
+  "Startups Launched": BusinessCenter,
+  "Startups Funded": MonetizationOn,
+};
+
+const SECTIONS_CONFIG = [
+  { key: "studentsAndMentorship", title: "Students & Mentorship" },
+  { key: "membershipStatus", title: "Membership Status (Students)" },
+  { key: "patents", title: "Patents" },
+  { key: "researchPapers", title: "Research Papers" },
+  { key: "startups", title: "Startups" },
+];
 
 const EducatorDashboard = () => {
-  const EDUCATOR_STAT_SECTIONS = [
-    {
-      title: "Students & Mentorship",
-      data: [
-        {
-          title: "Trained on Innovation",
-          count: "150",
-          icon: Lightbulb,
-        },
-        {
-          title: "Students who Launched Startups",
-          count: "25",
-          icon: RocketLaunch,
-        },
-        {
-          title: "Working as Assistant Mentors",
-          count: "50",
-          icon: Hail,
-        },
-        {
-          title: "Trained on Research",
-          count: "120",
-          icon: Lightbulb,
-        },
-      ],
-    },
-    {
-      title: "Membership Status (Students)",
-      data: [
-        {
-          title: "Total Members",
-          count: "150",
-          icon: People,
-        },
-        {
-          title: "Active Members",
-          count: "120",
-          icon: VerifiedUser,
-        },
-        {
-          title: "Not a Member",
-          count: "20",
-          icon: PendingActions,
-        },
-      ],
-    },
-    {
-      title: "Patents",
-      data: [
-        {
-          title: "Patents Pending",
-          count: "20",
-          icon: Lightbulb,
-        },
-        {
-          title: "Patents Granted",
-          count: "40",
-          icon: WorkspacePremium,
-        },
-      ],
-    },
-    {
-      title: "Research Papers",
-      data: [
-        {
-          title: "Research Submitted",
-          count: "20",
-          icon: FileCopyOutlined,
-        },
-        {
-          title: "Research Published",
-          count: "15",
-          icon: MenuBook,
-        },
-      ],
-    },
-    {
-      title: "Startups",
-      data: [
-        {
-          title: "Startups Launched",
-          count: "10",
-          icon: BusinessCenter,
-        },
-        {
-          title: "Startups Funded",
-          count: "5",
-          icon: MonetizationOn,
-        },
-      ],
-    },
-  ];
-
   const { educatorData } = useSignup();
+  const { statsData, loading } = useEducatorDashboardStats();
+
+  const EDUCATOR_STAT_SECTIONS = SECTIONS_CONFIG.map((sec) => {
+    const items = statsData?.[sec.key] || [];
+    return {
+      title: sec.title,
+      data: items.map((item: { title: string; count: number | string }) => ({
+        title: item.title,
+        count:
+          item.count !== undefined && item.count !== null
+            ? String(item.count)
+            : "0",
+        icon: ICON_MAP[item.title] || Lightbulb,
+      })),
+    };
+  });
 
   return (
     <EducatorDashboardLayout>
@@ -123,9 +69,15 @@ const EducatorDashboard = () => {
         <EducatorWelcomeBanner />
 
         <Box sx={{ mt: 6 }}>
-          {EDUCATOR_STAT_SECTIONS.map((section, i) => (
-            <StatsBox title={section.title} data={section.data} key={i} />
-          ))}
+          {loading ? (
+            <Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
+              <CircularProgress color="primary" />
+            </Box>
+          ) : (
+            EDUCATOR_STAT_SECTIONS.map((section, i) => (
+              <StatsBox title={section.title} data={section.data} key={i} />
+            ))
+          )}
         </Box>
       </Box>
     </EducatorDashboardLayout>

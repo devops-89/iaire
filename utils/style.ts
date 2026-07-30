@@ -1,20 +1,13 @@
 import { COLORS } from "./enum";
 
 export const TEXTFIELD_STYLE_VALIDATION = {
-  // "& .MuiInputLabel-root": { color: "rgba(0, 0, 0, 0.6)" },
-  // "& .MuiInputLabel-root.Mui-focused": { color: COLORS.PRIMARY_NAVY },
-  // "& .MuiOutlinedInput-root": {
-  //   color: COLORS.PRIMARY_NAVY,
-  //   borderRadius: "10px",
-  //   "& fieldset": { borderColor: "rgba(0, 0, 0, 0.1)" },
-  //   "&:hover fieldset": { borderColor: COLORS.PRIMARY_NAVY },
-  //   "&.Mui-focused fieldset": {
-  //     borderColor: COLORS.PRIMARY_NAVY,
-  //   },
-  // },
-  // "& .Mui-error ": {
-  //   "& fieldset": { borderColor: "#ff0000" },
-  // },
+  "& input[type=number]": {
+    MozAppearance: "textfield",
+  },
+  "& input[type=number]::-webkit-outer-spin-button, & input[type=number]::-webkit-inner-spin-button": {
+    WebkitAppearance: "none",
+    margin: 0,
+  },
 };
 export const DATE_PICKER_STYLE_VALIDATION = {
   "& .MuiPickersOutlinedInput-root": {

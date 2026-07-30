@@ -9,6 +9,7 @@ import {
   honorariumSecuredApi,
   innovationSecuredApi,
   needAssistance,
+  platformSecuredApi,
   trainingSecuredApi,
   userPublicApi,
 } from "./config";
@@ -114,6 +115,14 @@ export const teacherController = {
   getHonorariumsDetails: async (id: string) => {
     try {
       let result = await honorariumSecuredApi.get(`/${id}`);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getDashboardStats: async () => {
+    try {
+      let result = await platformSecuredApi.get("/dashboard/teacher");
       return result.data;
     } catch (error) {
       throw error;

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Box,
@@ -9,6 +9,8 @@ import {
   Container,
   Autocomplete,
   TextField,
+  Chip,
+  InputAdornment,
 } from "@mui/material";
 import { useFormik } from "formik";
 import { institutionSignupValidationSchema } from "@/utils/validationSchema";
@@ -25,34 +27,101 @@ import {
   Email,
   Language,
   LocationOn,
+  ArrowBack,
+  Public,
+  School,
+  Groups,
+  LocationCity,
+  Map,
+  MarkunreadMailbox,
+  AccountCircle,
+  AlternateEmail,
+  HomeWork,
 } from "@mui/icons-material";
 import {
   matchIsValidTel,
   MuiTelInput,
-  MuiTelInputCountry,
   MuiTelInputInfo,
-  MuiTelInputProps,
 } from "mui-tel-input";
-import { montserrat, newBlack_medium, roboto } from "@/utils/fonts";
+import { montserrat, roboto, aloeveraDisplay_medium } from "@/utils/fonts";
 import { useSignup } from "@/store/useSignup";
-import { COUNTRIES, US_STATES } from "@/utils/constant";
+import { US_STATES } from "@/utils/constant";
 import IndiaForm from "./India-Form";
 import UsForm from "./us-form";
 import SignupStepper from "../SignupStepper";
-import { FormTextField, PasswordTextField } from "./FormComponents";
-import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
+import { DARK_INPUT_STYLE, FormTextField, PasswordTextField } from "./FormComponents";
 import { CalendarIcon } from "@mui/x-date-pickers";
 import { useGetCountries } from "@/hooks/common/useGetCountry";
 import { useBoardByCountry } from "@/hooks/common/useGetBoardByCountry";
 import Link from "next/link";
 import BeamButton from "@/components/widgets/BeamButton";
+import Image from "next/image";
+import logoWhite from "@/images/logo/iaire_logo_white.png";
+
+const SectionHeader = ({ step, title }: { step: string; title: string }) => (
+  <Grid size={12} sx={{ mt: 3, mb: 1 }}>
+    <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+      <Chip
+        label={step}
+        size="small"
+        sx={{
+          bgcolor: "rgba(56, 189, 248, 0.12)",
+          color: "#38BDF8",
+          border: "1px solid rgba(56, 189, 248, 0.3)",
+          fontFamily: montserrat.style.fontFamily,
+          fontWeight: 700,
+          fontSize: 10,
+          letterSpacing: 1,
+        }}
+      />
+      <Typography
+        sx={{
+          color: COLORS.WHITE,
+          fontFamily: roboto.style.fontFamily,
+          fontWeight: 700,
+          fontSize: "0.9rem",
+          letterSpacing: 1.2,
+          textTransform: "uppercase",
+        }}
+      >
+        {title}
+      </Typography>
+      <Box
+        sx={{
+          flex: 1,
+          height: "1px",
+          background:
+            "linear-gradient(90deg, rgba(56, 189, 248, 0.3) 0%, rgba(255, 255, 255, 0.05) 100%)",
+        }}
+      />
+    </Box>
+  </Grid>
+);
+
+const FieldLabel = ({ children, required }: { children: React.ReactNode; required?: boolean }) => (
+  <Typography
+    sx={{
+      color: "rgba(255, 255, 255, 0.85)",
+      fontFamily: montserrat.style.fontFamily,
+      fontWeight: 600,
+      fontSize: "0.83rem",
+      mb: 0.8,
+      display: "flex",
+      alignItems: "center",
+      gap: 0.5,
+    }}
+  >
+    {children}
+    {required && <span style={{ color: "#F87171" }}>*</span>}
+  </Typography>
+);
 
 const Institution = () => {
   const router = useRouter();
   const { setInstitutionData, institutionData } = useSignup();
 
   const [country, setCountry] = useState<COUNTRYDATAPROPS | null>(
-    institutionData?.country || null,
+    institutionData?.country || null
   );
 
   const formik = useFormik({
@@ -85,7 +154,7 @@ const Institution = () => {
     validationSchema: institutionSignupValidationSchema,
     onSubmit: (values) => {
       const filteredValues = Object.fromEntries(
-        Object.entries(values).filter(([_, v]) => v !== ""),
+        Object.entries(values).filter(([_, v]) => v !== "")
       );
 
       setInstitutionData({
@@ -99,7 +168,6 @@ const Institution = () => {
         noOfStudents: Number(filteredValues.noOfStudents) || 0,
       } as InstitutionInfo & USER_DETAILS_RESPONSE);
       router.push("/signup/review");
-      // console.log("values", values);
     },
   });
 
@@ -111,7 +179,7 @@ const Institution = () => {
 
   const countryChangeHandler = (
     e: React.SyntheticEvent,
-    newValue: COUNTRYDATAPROPS | null,
+    newValue: COUNTRYDATAPROPS | null
   ) => {
     setCountry(newValue);
     if (newValue) {
@@ -121,12 +189,12 @@ const Institution = () => {
 
   const [phone, setPhone] = useState(institutionData?.phone || "");
 
-  const handlePhoneChange = (value: string, countryData: MuiTelInputInfo) => {
+  const handlePhoneChange = (value: string, countryDataInfo: MuiTelInputInfo) => {
     setPhone(value);
     const isValid = matchIsValidTel(value);
     if (isValid) {
       formik.setFieldError("phone", "");
-      formik.setFieldValue("phone", countryData?.nationalNumber);
+      formik.setFieldValue("phone", countryDataInfo?.nationalNumber);
     } else {
       formik.setFieldError("phone", "Please Enter a Valid Phone Number");
     }
@@ -158,7 +226,7 @@ const Institution = () => {
   };
 
   const [contactPersonPhone, setContactPersonPhone] = useState(
-    institutionData?.contactPersonPhone || "",
+    institutionData?.contactPersonPhone || ""
   );
 
   const handleContactPersonPhone = (value: string) => {
@@ -170,7 +238,7 @@ const Institution = () => {
     } else {
       formik.setFieldError(
         "contactPersonPhone",
-        "Please Enter a Valid Phone Number",
+        "Please Enter a Valid Phone Number"
       );
     }
   };
@@ -178,47 +246,149 @@ const Institution = () => {
   return (
     <Box
       sx={{
-        background: `linear-gradient(135deg, ${COLORS.NAVY_GRADIENT_START} 0%, ${COLORS.NAVY_GRADIENT_END} 100%)`,
+        background:
+          "radial-gradient(ellipse at 50% -20%, #1E293B 0%, #0B1727 60%, #060D17 100%)",
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
-        overflow: "hidden",
-        py: 8,
+        overflowX: "hidden",
+        py: { xs: 4, md: 7 },
+        px: 2,
         "&::before": {
           content: '""',
           position: "absolute",
-          top: "-10%",
-          left: "-10%",
-          width: "40%",
-          height: "40%",
+          top: "-15%",
+          left: "25%",
+          width: "50%",
+          height: "50%",
           background:
-            "radial-gradient(circle, rgba(209, 160, 84, 0.05) 0%, rgba(209, 160, 84, 0) 70%)",
-          filter: "blur(60px)",
+            "radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, rgba(0, 0, 0, 0) 70%)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        },
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          bottom: "-15%",
+          right: "15%",
+          width: "50%",
+          height: "50%",
+          background:
+            "radial-gradient(circle, rgba(209, 160, 84, 0.06) 0%, rgba(0, 0, 0, 0) 70%)",
+          filter: "blur(90px)",
+          pointerEvents: "none",
           zIndex: 0,
         },
       }}
     >
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Card
+      <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
+        {/* Navigation & Step Top Bar */}
+        <Box
           sx={{
-            py: 5,
-            px: { xs: 3, md: 5 },
-            backgroundColor: COLORS.WHITE,
-            borderRadius: "24px",
-            boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.4)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            mb: 3,
           }}
         >
-          <Box sx={{ textAlign: "center", mb: 5 }}>
+          <Box
+            onClick={() => router.push("/signup/role-selection")}
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 1,
+              bgcolor: "rgba(255, 255, 255, 0.04)",
+              border: "1px solid rgba(255, 255, 255, 0.12)",
+              backdropFilter: "blur(10px)",
+              borderRadius: "50px",
+              px: 2,
+              py: 0.8,
+              color: "rgba(255, 255, 255, 0.75)",
+              fontFamily: montserrat.style.fontFamily,
+              fontSize: 13,
+              fontWeight: 600,
+              cursor: "pointer",
+              transition: "all 0.25s ease",
+              "&:hover": {
+                bgcolor: "rgba(255, 255, 255, 0.1)",
+                borderColor: "#38BDF8",
+                color: "#38BDF8",
+                transform: "translateX(-4px)",
+              },
+            }}
+          >
+            <ArrowBack sx={{ fontSize: 16 }} /> Back to Role Selection
+          </Box>
+
+          <Chip
+            label="STEP 1 OF 2"
+            size="small"
+            sx={{
+              bgcolor: "rgba(56, 189, 248, 0.12)",
+              color: "#38BDF8",
+              border: "1px solid rgba(56, 189, 248, 0.3)",
+              fontFamily: montserrat.style.fontFamily,
+              fontWeight: 700,
+              fontSize: 11,
+              letterSpacing: 1,
+              px: 1,
+            }}
+          />
+        </Box>
+
+        {/* Minimalist Glass Container */}
+        <Card
+          sx={{
+            py: { xs: 4, md: 6 },
+            px: { xs: 3, md: 6 },
+            backgroundColor: "rgba(11, 23, 39, 0.65)",
+            backdropFilter: "blur(24px)",
+            borderRadius: "28px",
+            border: "1px solid rgba(255, 255, 255, 0.08)",
+            position: "relative",
+            overflow: "hidden",
+            boxShadow:
+              "0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(56, 189, 248, 0.06)",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "3px",
+              background:
+                "linear-gradient(90deg, #38BDF8 0%, #D1A054 50%, #10B981 100%)",
+            },
+          }}
+        >
+          {/* Header Branding */}
+          <Box sx={{ textAlign: "center", mb: 4 }}>
+            <Box sx={{ mb: 2 }}>
+              <Image
+                src={logoWhite}
+                alt="IAIRE Logo"
+                height={40}
+                width={140}
+                style={{ objectFit: "contain" }}
+              />
+            </Box>
+
             <Typography
+              variant="h1"
               sx={{
-                color: COLORS.BLACK,
+                color: COLORS.WHITE,
                 fontFamily: roboto.style.fontFamily,
                 fontWeight: 800,
-                fontSize: { xs: 28, md: 34 },
+                fontSize: { xs: 26, md: 34 },
                 textTransform: "uppercase",
-                letterSpacing: 1,
+                letterSpacing: 1.2,
+                mb: 1,
+                background: "linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
             >
               Institution Registration
@@ -226,22 +396,25 @@ const Institution = () => {
             <Typography
               sx={{
                 fontFamily: montserrat.style.fontFamily,
-                fontSize: 16,
-                color: "rgba(0, 0, 0, 0.5)",
-                mt: 1,
-                maxWidth: "600px",
+                fontSize: 15,
+                color: "rgba(255, 255, 255, 0.7)",
+                maxWidth: "580px",
                 mx: "auto",
+                lineHeight: 1.5,
               }}
             >
-              Empower your institution with cutting-edge tools for innovation
-              and researcher management.
+              Empower your institution with cutting-edge tools for innovation and
+              researcher management.
             </Typography>
           </Box>
+
           <SignupStepper activeStep={0} />
 
           <form onSubmit={formik.handleSubmit}>
-            <Grid container spacing={3}>
-              {/* Identity Section */}
+            <Grid container spacing={2.5}>
+              {/* Section 1: Institution Details */}
+              <SectionHeader step="01" title="Institution Details" />
+
               <Grid size={{ xs: 12, md: 6 }}>
                 <FormTextField
                   name="institutionName"
@@ -254,101 +427,143 @@ const Institution = () => {
               <Grid size={{ xs: 12, md: 6 }}>
                 <FormTextField
                   name="principalName"
-                  label="Principal's Name/ Director's Name"
-                  placeholder="Full name of the principal/Director"
+                  label="Principal's / Director's Name"
+                  placeholder="Full name of Principal/Director"
                   formik={formik}
                   icon={<Person />}
                 />
               </Grid>
 
               <Grid size={{ xs: 12, md: country?.code === "US" ? 6 : 12 }}>
-                <Autocomplete
-                  options={countryData}
-                  autoHighlight
-                  getOptionLabel={(option) => option.name}
-                  value={country}
-                  onChange={(e, newValue) => countryChangeHandler(e, newValue)}
-                  renderOption={(props, option) => {
-                    const { key, ...optionProps } = props;
-                    return (
-                      <Box
-                        key={key}
-                        component="li"
-                        sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                        {...optionProps}
-                      >
-                        <img
-                          loading="lazy"
-                          width="20"
-                          src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
-                          alt=""
-                        />
-                        {option.name}
-                      </Box>
-                    );
-                  }}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Choose a country"
-                      error={
-                        formik.touched.country && Boolean(formik.errors.country)
-                      }
-                      helperText={
-                        formik.touched.country &&
-                        (formik.errors.country as string)
-                      }
-                      sx={{
-                        ...TEXTFIELD_STYLE_VALIDATION,
-                        mb: formik.values.country ? 0 : 2,
-                      }}
-                    />
-                  )}
-                />
+                <Box sx={{ width: "100%" }}>
+                  <FieldLabel>Choose a Country</FieldLabel>
+                  <Autocomplete
+                    options={countryData}
+                    autoHighlight
+                    getOptionLabel={(option) => option.name}
+                    value={country}
+                    onChange={(e, newValue) => countryChangeHandler(e, newValue)}
+                    renderOption={(props, option) => {
+                      const { key, ...optionProps } = props;
+                      return (
+                        <Box
+                          key={key}
+                          component="li"
+                          sx={{
+                            color: "#FFFFFF",
+                            bgcolor: "#0B1727",
+                            "&:hover": { bgcolor: "rgba(56, 189, 248, 0.15)" },
+                            "& > img": { mr: 2, flexShrink: 0 },
+                          }}
+                          {...optionProps}
+                        >
+                          <img
+                            loading="lazy"
+                            width="20"
+                            src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                            alt=""
+                          />
+                          {option.name}
+                        </Box>
+                      );
+                    }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        placeholder="Select Country"
+                        error={
+                          formik.touched.country && Boolean(formik.errors.country)
+                        }
+                        helperText={
+                          formik.touched.country &&
+                          (formik.errors.country as string)
+                        }
+                        slotProps={{
+                          input: {
+                            ...params.InputProps,
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <Public sx={{ color: "#60A5FA", fontSize: 20 }} />
+                              </InputAdornment>
+                            ),
+                          },
+                        }}
+                        sx={{
+                          ...DARK_INPUT_STYLE,
+                          "& .MuiSvgIcon-root": { color: "#60A5FA" },
+                        }}
+                      />
+                    )}
+                  />
+                </Box>
               </Grid>
+
               <Grid size={6}>
                 <FormTextField
                   label="Total Number Of Teachers"
                   name="noOfTeachers"
-                  value={formik.values.noOfTeachers}
+                  placeholder="e.g. 50"
                   formik={formik}
+                  icon={<School />}
                 />
               </Grid>
               <Grid size={6}>
                 <FormTextField
                   label="Total Number Of Students"
                   name="noOfStudents"
-                  value={formik.values.noOfStudents}
+                  placeholder="e.g. 1200"
                   formik={formik}
+                  icon={<Groups />}
                 />
               </Grid>
+
               {country?.code === "US" && (
                 <Grid size={{ xs: 12, md: 6 }}>
-                  <Autocomplete
-                    options={US_STATES}
-                    value={formik.values.state || null}
-                    onChange={(_, newValue) =>
-                      formik.setFieldValue("state", newValue)
-                    }
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="State"
-                        error={
-                          formik.touched.state && Boolean(formik.errors.state)
-                        }
-                        helperText={
-                          formik.touched.state &&
-                          (formik.errors.state as string)
-                        }
-                        sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
-                      />
-                    )}
-                  />
+                  <Box sx={{ width: "100%" }}>
+                    <FieldLabel>State</FieldLabel>
+                    <Autocomplete
+                      options={US_STATES}
+                      value={formik.values.state || null}
+                      onChange={(_, newValue) =>
+                        formik.setFieldValue("state", newValue)
+                      }
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          placeholder="Select State"
+                          error={
+                            formik.touched.state && Boolean(formik.errors.state)
+                          }
+                          helperText={
+                            formik.touched.state &&
+                            (formik.errors.state as string)
+                          }
+                          slotProps={{
+                            input: {
+                              ...params.InputProps,
+                              startAdornment: (
+                                <InputAdornment position="start">
+                                  <Map sx={{ color: "#60A5FA", fontSize: 20 }} />
+                                </InputAdornment>
+                              ),
+                            },
+                          }}
+                          sx={{
+                            ...DARK_INPUT_STYLE,
+                            "& .MuiSvgIcon-root": { color: "#60A5FA" },
+                          }}
+                        />
+                      )}
+                    />
+                  </Box>
                 </Grid>
               )}
+
               {renderCountrySpecificFields()}
-              {/* Contact Information */}
+
+              {/* Section 2: Contact & Location */}
+              <SectionHeader step="02" title="Contact & Location" />
+
               <Grid size={{ xs: 12, md: 4 }}>
                 <FormTextField
                   name="email"
@@ -369,25 +584,31 @@ const Institution = () => {
                 />
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
-                <MuiTelInput
-                  fullWidth
-                  name="phone"
-                  label="Phone Number"
-                  value={phone}
-                  onChange={handlePhoneChange}
-                  onBlur={formik.handleBlur}
-                  error={
-                    formik.touched.phone &&
-                    !matchIsValidTel(phone) &&
-                    Boolean(formik.errors.phone)
-                  }
-                  helperText={
-                    formik.touched.phone && (formik.errors.phone as string)
-                  }
-                  defaultCountry={(country?.code as any) || "US"}
-                  sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
-                />
+                <Box sx={{ width: "100%" }}>
+                  <FieldLabel>Phone Number</FieldLabel>
+                  <MuiTelInput
+                    fullWidth
+                    name="phone"
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    onBlur={formik.handleBlur}
+                    error={
+                      formik.touched.phone &&
+                      !matchIsValidTel(phone) &&
+                      Boolean(formik.errors.phone)
+                    }
+                    helperText={
+                      formik.touched.phone && (formik.errors.phone as string)
+                    }
+                    defaultCountry={(country?.code as any) || "US"}
+                    sx={{
+                      ...DARK_INPUT_STYLE,
+                      "& .MuiIconButton-root": { color: "#60A5FA" },
+                    }}
+                  />
+                </Box>
               </Grid>
+
               <Grid size={{ xs: 12, md: 12 }}>
                 <FormTextField
                   name="website"
@@ -397,6 +618,7 @@ const Institution = () => {
                   icon={<Language />}
                 />
               </Grid>
+
               {/* Address Section */}
               <Grid size={12}>
                 <FormTextField
@@ -413,6 +635,7 @@ const Institution = () => {
                   label="Address Line 2"
                   placeholder="Apartment, suite, unit, building, floor, etc."
                   formik={formik}
+                  icon={<HomeWork />}
                 />
               </Grid>
               <Grid container spacing={2} size={12}>
@@ -422,14 +645,22 @@ const Institution = () => {
                     md: formik.values.country?.code === "US" ? 6 : 4,
                   }}
                 >
-                  <FormTextField name="city" label="City" formik={formik} />
+                  <FormTextField
+                    name="city"
+                    label="City"
+                    placeholder="City name"
+                    formik={formik}
+                    icon={<LocationCity />}
+                  />
                 </Grid>
                 {formik.values.country?.code !== "US" && (
                   <Grid size={{ xs: 12, md: 4 }}>
                     <FormTextField
                       name="state"
-                      label="State/Province"
+                      label="State / Province"
+                      placeholder="State or province"
                       formik={formik}
+                      icon={<Map />}
                     />
                   </Grid>
                 )}
@@ -446,15 +677,21 @@ const Institution = () => {
                         ? "Zip Code"
                         : "Postal Code"
                     }
+                    placeholder="Postal code"
                     formik={formik}
+                    icon={<MarkunreadMailbox />}
                   />
                 </Grid>
               </Grid>
-              {/* Security Section */}
+
+              {/* Section 3: Security & Representative */}
+              <SectionHeader step="03" title="Security & Representative" />
+
               <Grid size={{ xs: 12, md: 6 }}>
                 <PasswordTextField
                   name="password"
                   label="Password"
+                  placeholder="Enter password"
                   formik={formik}
                 />
               </Grid>
@@ -462,45 +699,57 @@ const Institution = () => {
                 <PasswordTextField
                   name="confirmPassword"
                   label="Confirm Password"
+                  placeholder="Confirm password"
                   formik={formik}
                 />
               </Grid>
+
               <Grid size={{ xs: 12, md: 4 }}>
                 <FormTextField
                   name="contactPersonName"
                   label="Contact Person Name"
+                  placeholder="Representative name"
                   formik={formik}
+                  icon={<AccountCircle />}
                 />
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
                 <FormTextField
                   name="contactPersonEmail"
                   label="Contact Person Email"
+                  placeholder="Representative email"
                   formik={formik}
+                  icon={<AlternateEmail />}
                 />
               </Grid>
               <Grid size={{ xs: 12, md: 4 }}>
-                <MuiTelInput
-                  fullWidth
-                  name="contactPersonPhone"
-                  label="Contact Person Phone"
-                  value={contactPersonPhone}
-                  onChange={handleContactPersonPhone}
-                  onBlur={formik.handleBlur}
-                  error={
-                    formik.touched.contactPersonPhone &&
-                    !matchIsValidTel(formik.values.contactPersonPhone) &&
-                    Boolean(formik.errors.contactPersonPhone)
-                  }
-                  helperText={
-                    formik.touched.contactPersonPhone &&
-                    (formik.errors.contactPersonPhone as string)
-                  }
-                  defaultCountry={(country?.code as any) || "US"}
-                  sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
-                />
+                <Box sx={{ width: "100%" }}>
+                  <FieldLabel>Contact Person Phone</FieldLabel>
+                  <MuiTelInput
+                    fullWidth
+                    name="contactPersonPhone"
+                    value={contactPersonPhone}
+                    onChange={handleContactPersonPhone}
+                    onBlur={formik.handleBlur}
+                    error={
+                      formik.touched.contactPersonPhone &&
+                      !matchIsValidTel(formik.values.contactPersonPhone) &&
+                      Boolean(formik.errors.contactPersonPhone)
+                    }
+                    helperText={
+                      formik.touched.contactPersonPhone &&
+                      (formik.errors.contactPersonPhone as string)
+                    }
+                    defaultCountry={(country?.code as any) || "US"}
+                    sx={{
+                      ...DARK_INPUT_STYLE,
+                      "& .MuiIconButton-root": { color: "#60A5FA" },
+                    }}
+                  />
+                </Box>
               </Grid>
-              {/* Footer / Submit */}
+
+              {/* Submit Button */}
               <Grid size={12} sx={{ mt: 3 }}>
                 <BeamButton
                   fullWidth
@@ -510,15 +759,18 @@ const Institution = () => {
                   sx={{
                     bgcolor: COLORS.PRIMARY_NAVY,
                     color: COLORS.WHITE,
-                    py: 1.5,
+                    py: 1.8,
                     borderRadius: "14px",
                     fontWeight: 800,
                     fontSize: "1rem",
                     textTransform: "uppercase",
                     letterSpacing: 1.5,
-                    fontFamily: newBlack_medium.style.fontFamily,
+                    fontFamily: aloeveraDisplay_medium.style.fontFamily,
+                    border: `1px solid ${COLORS.BEAM_COLOR}`,
+                    boxShadow: "0 10px 30px rgba(59, 130, 246, 0.35)",
                     "&:hover": {
                       bgcolor: COLORS.PRIMARY_BLUE,
+                      boxShadow: "0 15px 35px rgba(59, 130, 246, 0.5)",
                     },
                     transition: "all 0.3s ease",
                   }}
@@ -532,10 +784,10 @@ const Institution = () => {
           <Typography
             textAlign="center"
             sx={{
-              fontSize: 15,
+              fontSize: 14,
               mt: 4,
               fontFamily: montserrat.style.fontFamily,
-              color: "rgba(0, 0, 0, 0.6)",
+              color: "rgba(255, 255, 255, 0.6)",
               fontWeight: 500,
             }}
           >
@@ -546,10 +798,10 @@ const Institution = () => {
             >
               <Typography
                 sx={{
-                  color: COLORS.PRIMARY_NAVY,
+                  color: "#60A5FA",
                   fontWeight: 700,
                   textTransform: "none",
-                  fontSize: 15,
+                  fontSize: 14,
                   p: 0,
                   minWidth: "auto",
                   ml: 0.5,
