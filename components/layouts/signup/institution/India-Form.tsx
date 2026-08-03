@@ -4,8 +4,6 @@ import {
   TextField,
   Typography,
   IconButton,
-  Stack,
-  Badge,
   InputAdornment,
   Autocomplete,
 } from "@mui/material";
@@ -18,8 +16,9 @@ import {
   InsertDriveFile,
 } from "@mui/icons-material";
 import { COLORS } from "@/utils/enum";
-import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { BOARDDATAPROPS } from "@/utils/type";
+import { LIGHT_INPUT_STYLE, FormTextField } from "./FormComponents";
+import { montserrat } from "@/utils/fonts";
 
 type BoardOptionType = BOARDDATAPROPS;
 
@@ -29,6 +28,24 @@ interface IndiaFormProps {
   boardData: BOARDDATAPROPS[];
   boardLoading: boolean;
 }
+
+const FieldLabel = ({ children, required }: { children: React.ReactNode; required?: boolean }) => (
+  <Typography
+    sx={{
+      color: "#334155",
+      fontFamily: montserrat.style.fontFamily,
+      fontWeight: 600,
+      fontSize: "0.83rem",
+      mb: 0.8,
+      display: "flex",
+      alignItems: "center",
+      gap: 0.5,
+    }}
+  >
+    {children}
+    {required && <span style={{ color: "#EF4444" }}>*</span>}
+  </Typography>
+);
 
 const IndiaForm = ({
   formik,
@@ -68,102 +85,86 @@ const IndiaForm = ({
   return (
     <>
       <Grid size={{ lg: 6, xs: 12 }}>
-        <Autocomplete
-          value={formik.values.affiliationType || null}
-          isOptionEqualToValue={(option, value) => {
-            if (value.id && option.id) {
-              return option.id === value.id;
-            }
-            return option.name === value.name;
-          }}
-          onChange={(event, newValue) => {
-            formik.setFieldValue("affiliationType", newValue || null);
-          }}
-          options={boardData as BoardOptionType[]}
-          getOptionLabel={(option) => option.name}
-          loading={boardLoading}
-          renderOption={(props, option) => {
-            const { key, ...optionProps } = props as any;
-            return (
-              <li key={key || option.name} {...optionProps}>
-                {option.name}
-              </li>
-            );
-          }}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Select Education Board"
-              error={
-                formik.touched.affiliationType &&
-                Boolean(formik.errors.affiliationType)
+        <Box sx={{ width: "100%" }}>
+          <FieldLabel>Education Board</FieldLabel>
+          <Autocomplete
+            value={formik.values.affiliationType || null}
+            isOptionEqualToValue={(option, value) => {
+              if (value.id && option.id) {
+                return option.id === value.id;
               }
-              helperText={
-                formik.touched.affiliationType && formik.errors.affiliationType
-              }
-              slotProps={{
-                input: {
-                  ...params.InputProps,
-                  startAdornment: (
-                    <>
-                      <InputAdornment position="start" sx={{ ml: 1 }}>
-                        <BadgeIcon />
-                      </InputAdornment>
-                      {params.InputProps.startAdornment}
-                    </>
-                  ),
-                },
-              }}
-              sx={TEXTFIELD_STYLE_VALIDATION}
-            />
-          )}
-        />
+              return option.name === value.name;
+            }}
+            onChange={(event, newValue) => {
+              formik.setFieldValue("affiliationType", newValue || null);
+            }}
+            options={boardData as BoardOptionType[]}
+            getOptionLabel={(option) => option.name}
+            loading={boardLoading}
+            renderOption={(props, option) => {
+              const { key, ...optionProps } = props as any;
+              return (
+                <li key={key || option.name} {...optionProps}>
+                  {option.name}
+                </li>
+              );
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                placeholder="Select Education Board"
+                error={
+                  formik.touched.affiliationType &&
+                  Boolean(formik.errors.affiliationType)
+                }
+                helperText={
+                  formik.touched.affiliationType && (formik.errors.affiliationType as string)
+                }
+                slotProps={{
+                  input: {
+                    ...params.InputProps,
+                    startAdornment: (
+                      <>
+                        <InputAdornment position="start" sx={{ ml: 0.5 }}>
+                          <BadgeIcon sx={{ color: "#2563EB", fontSize: 20 }} />
+                        </InputAdornment>
+                        {params.InputProps.startAdornment}
+                      </>
+                    ),
+                  },
+                }}
+                sx={LIGHT_INPUT_STYLE}
+              />
+            )}
+          />
+        </Box>
       </Grid>
       <Grid size={{ lg: 6, xs: 12 }}>
-        <TextField
-          fullWidth
+        <FormTextField
           name="affiliationNumber"
-          label="Enter License/ Affiliation Number"
+          label="License / Affiliation Number"
           placeholder="License or Registration ID"
-          value={formik.values.affiliationNumber}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={
-            formik.touched.affiliationNumber &&
-            Boolean(formik.errors.affiliationNumber)
-          }
-          helperText={
-            formik.touched.affiliationNumber && formik.errors.affiliationNumber
-          }
-          slotProps={{
-            input: {
-              startAdornment: (
-                <InputAdornment position="start">
-                  <BadgeIcon />
-                </InputAdornment>
-              ),
-            },
-          }}
-          sx={TEXTFIELD_STYLE_VALIDATION}
+          formik={formik}
+          icon={<BadgeIcon />}
         />
       </Grid>
 
       <Grid size={12}>
         <Box
           sx={{
-            p: 4,
-            border: "2px dashed rgba(11, 23, 39, 0.1)",
-            borderRadius: "20px",
+            p: 3,
+            border: "2px dashed rgba(37, 99, 235, 0.3)",
+            borderRadius: "16px",
             textAlign: "center",
-            bgcolor: "rgba(11, 23, 39, 0.02)",
+            bgcolor: "rgba(59, 130, 246, 0.03)",
             transition: "all 0.3s ease",
             "&:hover": {
-              bgcolor: "rgba(209, 160, 84, 0.05)",
-              borderColor: COLORS.ACCENT_TAN,
+              bgcolor: "rgba(59, 130, 246, 0.08)",
+              borderColor: "#2563EB",
             },
             ...(formik.errors.affiliationCertificate &&
               formik.touched.affiliationCertificate && {
-                borderColor: "#d32f2f",
+                borderColor: "#EF4444",
               }),
           }}
         >
@@ -180,136 +181,98 @@ const IndiaForm = ({
                 <IconButton
                   component="span"
                   sx={{
-                    color: COLORS.PRIMARY_NAVY,
+                    color: "#2563EB",
+                    bgcolor: "rgba(59, 130, 246, 0.1)",
+                    p: 2,
                     mb: 1,
-                    bgcolor: "rgba(11, 23, 39, 0.05)",
+                    "&:hover": {
+                      bgcolor: "rgba(59, 130, 246, 0.2)",
+                    },
                   }}
                 >
-                  <CloudUpload sx={{ fontSize: 44 }} />
+                  <CloudUpload sx={{ fontSize: 32 }} />
                 </IconButton>
                 <Typography
+                  variant="subtitle1"
                   sx={{
-                    fontWeight: 700,
-                    color: COLORS.PRIMARY_NAVY,
-                    mt: 1,
+                    fontFamily: montserrat.style.fontFamily,
+                    fontWeight: 600,
+                    color: "#0F172A",
+                    cursor: "pointer",
                   }}
                 >
-                  Upload License / Affiliation certificate
+                  Upload Affiliation Certificate
                 </Typography>
-                <Typography sx={{ fontSize: "13px", color: "gray", mt: 0.5 }}>
-                  Drag and drop or click to browse (PDF, JPG, PNG)
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "#64748B",
+                    fontFamily: montserrat.style.fontFamily,
+                  }}
+                >
+                  Supports PDF, JPG, PNG (Max 5MB)
                 </Typography>
               </label>
             </>
           ) : (
-            <Stack
-              direction="column"
-              spacing={2}
-              alignItems="center"
-              justifyContent="center"
-              sx={{ py: 1 }}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                bgcolor: "#FFFFFF",
+                p: 2,
+                borderRadius: "12px",
+                border: "1px solid #E2E8F0",
+              }}
             >
-              {previewUrl ? (
-                <Box
-                  component="img"
-                  src={previewUrl}
-                  alt="Certificate Preview"
-                  sx={{
-                    maxWidth: "100%",
-                    maxHeight: "140px",
-                    objectFit: "contain",
-                    borderRadius: "12px",
-                    border: "1px solid rgba(11, 23, 39, 0.1)",
-                    boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.08)",
-                    bgcolor: COLORS.WHITE,
-                    p: 0.5,
-                    transition: "transform 0.3s ease",
-                    "&:hover": {
-                      transform: "scale(1.03)",
-                    },
-                  }}
-                />
-              ) : (
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "70px",
-                    height: "70px",
-                    borderRadius: "12px",
-                    bgcolor: "rgba(11, 23, 39, 0.05)",
-                    color: COLORS.PRIMARY_NAVY,
-                    boxShadow: "inset 0px 2px 4px rgba(0, 0, 0, 0.05)",
-                  }}
-                >
-                  {typeof File !== "undefined" &&
-                  formik.values.affiliationCertificate instanceof File &&
-                  formik.values.affiliationCertificate.type ===
-                    "application/pdf" ? (
-                    <PictureAsPdf sx={{ fontSize: 38, color: "#d32f2f" }} />
-                  ) : (
-                    <InsertDriveFile sx={{ fontSize: 38 }} />
-                  )}
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                {previewUrl ? (
+                  <Box
+                    component="img"
+                    src={previewUrl}
+                    alt="Preview"
+                    sx={{
+                      width: 48,
+                      height: 48,
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                    }}
+                  />
+                ) : (
+                  <PictureAsPdf sx={{ fontSize: 40, color: "#EF4444" }} />
+                )}
+                <Box sx={{ textAlign: "left" }}>
+                  <Typography
+                    variant="subtitle2"
+                    sx={{
+                      fontFamily: montserrat.style.fontFamily,
+                      fontWeight: 600,
+                      color: "#0F172A",
+                    }}
+                  >
+                    {formik.values.affiliationCertificate?.name ||
+                      "Affiliation Certificate"}
+                  </Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{ color: "#64748B" }}
+                  >
+                    File uploaded successfully
+                  </Typography>
                 </Box>
-              )}
-              <Stack
-                direction="row"
-                spacing={2}
-                alignItems="center"
-                justifyContent="center"
+              </Box>
+
+              <IconButton
+                onClick={() =>
+                  formik.setFieldValue("affiliationCertificate", null)
+                }
+                sx={{ color: "#EF4444" }}
               >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                  <Badge color="success" variant="dot">
-                    <Typography
-                      sx={{
-                        fontWeight: 700,
-                        color: COLORS.PRIMARY_NAVY,
-                        fontSize: "14px",
-                      }}
-                    >
-                      {typeof File !== "undefined" &&
-                      formik.values.affiliationCertificate instanceof File
-                        ? (formik.values.affiliationCertificate as File).name
-                        : typeof formik.values.affiliationCertificate ===
-                            "string"
-                          ? formik.values.affiliationCertificate.substring(
-                              formik.values.affiliationCertificate.lastIndexOf(
-                                "/",
-                              ) + 1,
-                            )
-                          : "Uploaded Certificate"}
-                    </Typography>
-                  </Badge>
-                </Box>
-                <IconButton
-                  size="small"
-                  sx={{
-                    color: "#d32f2f",
-                    bgcolor: "rgba(211, 47, 47, 0.05)",
-                    "&:hover": {
-                      bgcolor: "rgba(211, 47, 47, 0.15)",
-                    },
-                  }}
-                  onClick={() =>
-                    formik.setFieldValue("affiliationCertificate", null)
-                  }
-                >
-                  <Delete />
-                </IconButton>
-              </Stack>
-            </Stack>
+                <Delete />
+              </IconButton>
+            </Box>
           )}
-          {formik.touched.affiliationCertificate &&
-            formik.errors.affiliationCertificate && (
-              <Typography
-                variant="caption"
-                color="error"
-                sx={{ mt: 1, display: "block", fontWeight: 600 }}
-              >
-                {formik.errors.affiliationCertificate as string}
-              </Typography>
-            )}
         </Box>
       </Grid>
     </>

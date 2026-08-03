@@ -57,6 +57,9 @@ export interface InstitutionInfo {
     code: string;
   };
   isd?: string;
+  totalTeacherCount?: string;
+  totalStudentCount?: string;
+  isTermsAccepted?: boolean;
   registrationYear: string;
   noOfTeachers: number;
   noOfStudents: number;

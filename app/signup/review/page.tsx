@@ -34,22 +34,26 @@ const ReviewPage = () => {
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      let storedRole = localStorage.getItem("role");
-      if (
-        storedRole &&
-        storedRole.startsWith('"') &&
-        storedRole.endsWith('"')
-      ) {
-        storedRole = JSON.parse(storedRole);
+      let activeRole: string | null = null;
+      if (institutionData) activeRole = USER_ROLES.INSTITUTION;
+      else if (educatorData) activeRole = educatorData.role ?? USER_ROLES.EDUCATOR;
+      else if (data) activeRole = data.role ?? USER_ROLES.STUDENT;
+
+      if (!activeRole) {
+        let storedRole = localStorage.getItem("role");
+        if (
+          storedRole &&
+          storedRole.startsWith('"') &&
+          storedRole.endsWith('"')
+        ) {
+          storedRole = JSON.parse(storedRole);
+        }
+        activeRole = storedRole;
+      } else {
+        localStorage.setItem("role", activeRole);
       }
 
-      if (!storedRole) {
-        if (educatorData) storedRole = educatorData.role ?? null;
-        else if (institutionData) storedRole = USER_ROLES.INSTITUTION;
-        else if (data) storedRole = data.role ?? null;
-      }
-
-      setRole(storedRole);
+      setRole(activeRole);
     }
   }, [educatorData, institutionData, data]);
 

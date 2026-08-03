@@ -11,34 +11,41 @@ import {
 import { Visibility, VisibilityOff, Lock } from "@mui/icons-material";
 import { montserrat } from "@/utils/fonts";
 
-export const DARK_INPUT_STYLE = {
+export const LIGHT_INPUT_STYLE = {
   "& .MuiOutlinedInput-root": {
-    color: "#FFFFFF",
-    backgroundColor: "rgba(255, 255, 255, 0.04)",
+    color: "#0F172A",
+    backgroundColor: "#FFFFFF",
     borderRadius: "12px",
     fontFamily: montserrat.style.fontFamily,
     fontSize: "0.92rem",
     height: "48px",
     transition: "all 0.2s ease-in-out",
     "& fieldset": {
-      borderColor: "rgba(255, 255, 255, 0.12)",
-      borderWidth: "1px",
+      borderColor: "rgba(148, 163, 184, 0.4)",
+      borderWidth: "1.5px",
+    },
+    "&:hover": {
+      backgroundColor: "#FFFFFF",
     },
     "&:hover fieldset": {
-      borderColor: "rgba(96, 165, 250, 0.5)",
-      backgroundColor: "rgba(255, 255, 255, 0.06)",
+      borderColor: "#2563EB",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#60A5FA",
+      borderColor: "#2563EB",
       borderWidth: "1.5px",
-      boxShadow: "0 0 0 3px rgba(96, 165, 250, 0.2)",
+      boxShadow: "0 0 0 3px rgba(37, 99, 235, 0.15)",
     },
     "&.Mui-error fieldset": {
-      borderColor: "#F87171",
+      borderColor: "#EF4444",
     },
     "& input::placeholder": {
-      color: "rgba(255, 255, 255, 0.4)",
-      opacity: 1,
+      color: "#94A3B8 !important",
+      opacity: "1 !important",
+      WebkitTextFillColor: "#94A3B8",
+    },
+    "& input::-webkit-input-placeholder": {
+      color: "#94A3B8 !important",
+      opacity: "1 !important",
     },
     "& input[type=number]": {
       MozAppearance: "textfield",
@@ -49,7 +56,7 @@ export const DARK_INPUT_STYLE = {
     },
   },
   "& .MuiInputAdornment-root": {
-    color: "#60A5FA",
+    color: "#2563EB",
     marginRight: "10px",
     "& .MuiSvgIcon-root": {
       fontSize: 20,
@@ -57,9 +64,19 @@ export const DARK_INPUT_STYLE = {
   },
   "& .MuiFormHelperText-root": {
     fontFamily: montserrat.style.fontFamily,
-    fontSize: "0.75rem",
-    marginTop: "4px",
-    color: "#F87171",
+    fontSize: "0.72rem",
+    marginTop: "2px",
+    color: "#EF4444",
+  },
+};
+
+export const DARK_INPUT_STYLE = LIGHT_INPUT_STYLE;
+export const COMPACT_DARK_INPUT_STYLE = {
+  ...LIGHT_INPUT_STYLE,
+  "& .MuiOutlinedInput-root": {
+    ...LIGHT_INPUT_STYLE["& .MuiOutlinedInput-root"],
+    height: "42px",
+    fontSize: "0.85rem",
   },
 };
 
@@ -84,7 +101,7 @@ export const FormTextField: React.FC<FormTextFieldProps> = ({
       {label && (
         <Typography
           sx={{
-            color: "rgba(255, 255, 255, 0.85)",
+            color: "#334155",
             fontFamily: montserrat.style.fontFamily,
             fontWeight: 600,
             fontSize: "0.83rem",
@@ -95,7 +112,7 @@ export const FormTextField: React.FC<FormTextFieldProps> = ({
           }}
         >
           {label}
-          {required && <span style={{ color: "#F87171" }}>*</span>}
+          {required && <span style={{ color: "#EF4444" }}>*</span>}
         </Typography>
       )}
       <TextField
@@ -115,7 +132,7 @@ export const FormTextField: React.FC<FormTextFieldProps> = ({
             ...props.slotProps?.input,
           },
         }}
-        sx={{ ...DARK_INPUT_STYLE, ...props.sx }}
+        sx={{ ...LIGHT_INPUT_STYLE, ...props.sx }}
         {...props}
       />
     </Box>
@@ -137,7 +154,7 @@ export const PasswordTextField: React.FC<FormTextFieldProps> = ({
       {label && (
         <Typography
           sx={{
-            color: "rgba(255, 255, 255, 0.85)",
+            color: "#334155",
             fontFamily: montserrat.style.fontFamily,
             fontWeight: 600,
             fontSize: "0.83rem",
@@ -148,7 +165,7 @@ export const PasswordTextField: React.FC<FormTextFieldProps> = ({
           }}
         >
           {label}
-          {required && <span style={{ color: "#F87171" }}>*</span>}
+          {required && <span style={{ color: "#EF4444" }}>*</span>}
         </Typography>
       )}
       <TextField
@@ -165,7 +182,7 @@ export const PasswordTextField: React.FC<FormTextFieldProps> = ({
           input: {
             startAdornment: (
               <InputAdornment position="start">
-                <Lock sx={{ color: "#60A5FA", fontSize: 20 }} />
+                <Lock sx={{ color: "#2563EB", fontSize: 20 }} />
               </InputAdornment>
             ),
             endAdornment: (
@@ -173,7 +190,7 @@ export const PasswordTextField: React.FC<FormTextFieldProps> = ({
                 <IconButton
                   onClick={() => setShowPassword(!showPassword)}
                   edge="end"
-                  sx={{ color: "rgba(255, 255, 255, 0.5)", p: 0.5 }}
+                  sx={{ color: "#94A3B8", p: 0.5 }}
                 >
                   {showPassword ? (
                     <VisibilityOff sx={{ fontSize: 20 }} />
@@ -183,9 +200,10 @@ export const PasswordTextField: React.FC<FormTextFieldProps> = ({
                 </IconButton>
               </InputAdornment>
             ),
+            ...props.slotProps?.input,
           },
         }}
-        sx={{ ...DARK_INPUT_STYLE, ...props.sx }}
+        sx={{ ...LIGHT_INPUT_STYLE, ...props.sx }}
         {...props}
       />
     </Box>

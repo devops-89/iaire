@@ -7,9 +7,10 @@ import {
   Typography,
   Card,
   Container,
-  Divider,
   CircularProgress,
-  Avatar} from "@mui/material";
+  Avatar,
+  Chip,
+} from "@mui/material";
 import { useSignup } from "@/store/useSignup";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
@@ -19,6 +20,89 @@ import useSnackbar from "@/store/useSnackbar";
 import { useStudentSignup } from "@/hooks/student/useStudentSignup";
 import { COUNTRIES } from "@/utils/constant";
 import BeamButton from "@/components/widgets/BeamButton";
+import Image from "next/image";
+import logo from "@/images/logo/iaire_logo.png";
+
+const SectionHeader = ({ title }: { title: string }) => (
+  <Box sx={{ mt: 0.8, mb: 1 }}>
+    <Typography
+      sx={{
+        color: "#2563EB",
+        fontFamily: montserrat.style.fontFamily,
+        fontWeight: 700,
+        fontSize: "0.75rem",
+        letterSpacing: 1,
+        textTransform: "uppercase",
+        display: "flex",
+        alignItems: "center",
+        gap: 1,
+        "&::after": {
+          content: '""',
+          flex: 1,
+          height: "1px",
+          backgroundColor: "#E2E8F0",
+        },
+      }}
+    >
+      {title}
+    </Typography>
+  </Box>
+);
+
+const DetailBox = ({
+  label,
+  value,
+}: {
+  label: string;
+  value: React.ReactNode;
+}) => {
+  if (!value || value === "N/A" || value === "") return null;
+  return (
+    <Grid size={{ xs: 12, sm: 6 }}>
+      <Box
+        sx={{
+          bgcolor: "#F8FAFC",
+          border: "1px solid #E2E8F0",
+          borderRadius: "12px",
+          p: 1.2,
+          height: "100%",
+          boxSizing: "border-box",
+          transition: "all 0.2s ease",
+          "&:hover": {
+            borderColor: "#2563EB",
+            bgcolor: "#F0F9FF",
+          },
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "0.68rem",
+            fontWeight: 600,
+            color: "#64748B",
+            textTransform: "uppercase",
+            fontFamily: montserrat.style.fontFamily,
+            letterSpacing: 0.6,
+            mb: 0.3,
+          }}
+        >
+          {label}
+        </Typography>
+        <Box
+          sx={{
+            fontSize: "0.85rem",
+            fontWeight: 700,
+            color: "#0F172A",
+            fontFamily: montserrat.style.fontFamily,
+            wordBreak: "break-word",
+            lineHeight: 1.2,
+          }}
+        >
+          {value}
+        </Box>
+      </Box>
+    </Grid>
+  );
+};
 
 const StudentReview = () => {
   const router = useRouter();
@@ -79,225 +163,393 @@ const StudentReview = () => {
     }
   };
 
-  const DataRow = ({
-    label,
-    value,
-  }: {
-    label: string;
-    value: React.ReactNode;
-  }) => (
-    <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{ mb: 2 }}>
-      <Typography
-        sx={{
-          fontSize: "0.8rem",
-          fontWeight: 600,
-          color: "rgba(0,0,0,0.5)",
-          textTransform: "uppercase",
-          fontFamily: montserrat.style.fontFamily,
-        }}
-      >
-        {label}
-      </Typography>
-      <Box
-        sx={{
-          fontSize: "1rem",
-          fontWeight: 700,
-          color: COLORS.PRIMARY_NAVY,
-          fontFamily: montserrat.style.fontFamily,
-          wordBreak: "break-word",
-          mt: 0.5,
-        }}
-      >
-        {value || "N/A"}
-      </Box>
-    </Grid>
-  );
+  const getProfileImageSrc = () => {
+    const val = studentData?.profileImage as any;
+    if (!val) return undefined;
+    if (typeof val === "string") return val;
+    if (typeof Blob !== "undefined" && (val instanceof Blob || val instanceof File)) {
+      return URL.createObjectURL(val);
+    }
+    return undefined;
+  };
 
   return (
     <Box
       sx={{
-        background: `linear-gradient(135deg, ${COLORS.NAVY_GRADIENT_START} 0%, ${COLORS.NAVY_GRADIENT_END} 100%)`,
-        minHeight: "100vh",
+        background:
+          "linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%)",
+        height: "100vh",
+        width: "100vw",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        py: 8,
+        flexDirection: "column",
+        justifyContent: "space-between",
+        position: "relative",
+        overflow: "hidden",
+        boxSizing: "border-box",
+        py: { xs: 1.5, md: 2 },
+        px: { xs: 2, md: 3 },
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: "-15%",
+          left: "25%",
+          width: "50%",
+          height: "50%",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0, 0, 0, 0) 70%)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        },
       }}
     >
-      <Container maxWidth="lg">
-        <Card
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          boxSizing: "border-box",
+          px: { xs: 0, md: 2 },
+        }}
+      >
+        {/* Navigation Top Bar */}
+        <Box
           sx={{
-            py: 5,
-            px: { xs: 3, md: 5 },
-            backgroundColor: COLORS.WHITE,
-            borderRadius: "24px",
-            boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.4)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            mb: 1.5,
+            flexShrink: 0,
           }}
         >
-          <Box sx={{ textAlign: "center", mb: 4 }}>
-            <Typography
-              sx={{
-                color: COLORS.BLACK,
-                fontFamily: roboto.style.fontFamily,
-                fontWeight: 800,
-                fontSize: { xs: 28, md: 34 },
-                textTransform: "uppercase",
-                letterSpacing: 1,
-              }}
-            >
-              Review Information
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: montserrat.style.fontFamily,
-                fontSize: 16,
-                color: "rgba(0, 0, 0, 0.5)",
-                mt: 1,
-              }}
-            >
-              Please verify your student details before proceeding.
-            </Typography>
+          <Box
+            onClick={() => router.back()}
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 1,
+              bgcolor: "#FFFFFF",
+              border: "1px solid rgba(15, 23, 42, 0.12)",
+              boxShadow: "0 2px 8px rgba(15, 23, 42, 0.06)",
+              borderRadius: "50px",
+              px: 2,
+              py: 0.6,
+              color: "#475569",
+              fontFamily: montserrat.style.fontFamily,
+              fontSize: 12,
+              fontWeight: 600,
+              cursor: "pointer",
+              transition: "all 0.25s ease",
+              "&:hover": {
+                bgcolor: "#F1F5F9",
+                borderColor: COLORS.PRIMARY_BLUE,
+                color: "#1D4ED8",
+                transform: "translateX(-4px)",
+              },
+            }}
+          >
+            <ArrowBack sx={{ fontSize: 15 }} /> Back to Edit
           </Box>
 
-          <SignupStepper activeStep={1} />
+          <Chip
+            label="STEP 2 OF 2 • REVIEW"
+            size="small"
+            sx={{
+              bgcolor: "rgba(59, 130, 246, 0.08)",
+              color: "#1D4ED8",
+              border: "1px solid rgba(59, 130, 246, 0.2)",
+              fontFamily: montserrat.style.fontFamily,
+              fontWeight: 700,
+              fontSize: 10,
+              letterSpacing: 1,
+              px: 1,
+            }}
+          />
+        </Box>
 
-          <Box sx={{ mt: 4 }}>
-            {studentData.profileImage && (
-              <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
+        {/* 2-Column Split Grid */}
+        <Grid
+          container
+          spacing={2.5}
+          alignItems="stretch"
+          sx={{ flex: 1, minHeight: 0, height: "calc(100vh - 85px)" }}
+        >
+          {/* Left Column: Avatar & Summary Profile Card */}
+          <Grid size={{ xs: 12, md: 4 }} sx={{ height: "100%" }}>
+            <Card
+              sx={{
+                height: "100%",
+                py: 3,
+                px: 2.5,
+                backgroundColor: "#FFFFFF",
+                borderRadius: "24px",
+                border: "1px solid rgba(226, 232, 240, 0.9)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
+                textAlign: "center",
+                boxShadow: "0 15px 35px -10px rgba(15, 23, 42, 0.08)",
+                position: "relative",
+                overflow: "hidden",
+                boxSizing: "border-box",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: "3px",
+                  background: "linear-gradient(90deg, #2563EB 0%, #D97706 100%)",
+                },
+              }}
+            >
+              <Box sx={{ width: "100%", textAlign: "center" }}>
+                <Box sx={{ mb: 1.5 }}>
+                  <Image
+                    src={logo}
+                    alt="IAIRE Logo"
+                    height={28}
+                    width={105}
+                    style={{ objectFit: "contain" }}
+                  />
+                </Box>
+
                 <Avatar
-                  src={
-                    (studentData.profileImage as any) instanceof File || (studentData.profileImage as any) instanceof Blob
-                      ? URL.createObjectURL(studentData.profileImage as any)
-                      : typeof studentData.profileImage === "string"
-                        ? studentData.profileImage
-                        : undefined
-                  }
-                  sx={{ width: 120, height: 120, boxShadow: 3 }}
+                  src={getProfileImageSrc()}
+                  sx={{
+                    width: 90,
+                    height: 90,
+                    mx: "auto",
+                    mb: 1.5,
+                    border: "3px solid #2563EB",
+                    boxShadow: "0 8px 24px rgba(37, 99, 235, 0.2)",
+                  }}
+                />
+
+                <Typography
+                  sx={{
+                    color: "#0F172A",
+                    fontFamily: roboto.style.fontFamily,
+                    fontWeight: 800,
+                    fontSize: 20,
+                    mb: 0.3,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {`${studentData.firstName || ""} ${studentData.lastName || ""}`.trim()}
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontFamily: montserrat.style.fontFamily,
+                    fontSize: 12,
+                    color: "#64748B",
+                    mb: 1.5,
+                    wordBreak: "break-all",
+                  }}
+                >
+                  {studentData.email}
+                </Typography>
+
+                <Chip
+                  label="STUDENT ACCOUNT"
+                  size="small"
+                  sx={{
+                    bgcolor: "rgba(5, 150, 105, 0.1)",
+                    color: "#059669",
+                    border: "1px solid rgba(5, 150, 105, 0.3)",
+                    fontFamily: montserrat.style.fontFamily,
+                    fontWeight: 700,
+                    fontSize: 9,
+                    letterSpacing: 0.8,
+                    px: 1,
+                  }}
                 />
               </Box>
-            )}
 
-            <Typography
-              variant="h6"
+              <Box sx={{ width: "100%", mt: 2 }}>
+                <SignupStepper activeStep={1} />
+                <BeamButton
+                  fullWidth
+                  variant="outlined"
+                  startIcon={<ArrowBack />}
+                  onClick={() => router.back()}
+                  sx={{
+                    mt: 2,
+                    height: "42px",
+                    bgcolor: "#F8FAFC",
+                    borderColor: "#CBD5E1",
+                    color: "#475569",
+                    borderRadius: "12px",
+                    fontWeight: 700,
+                    fontSize: "0.85rem",
+                    textTransform: "none",
+                    fontFamily: montserrat.style.fontFamily,
+                    "&:hover": {
+                      borderColor: "#2563EB",
+                      bgcolor: "#F0F9FF",
+                      color: "#2563EB",
+                    },
+                  }}
+                >
+                  Back to Edit
+                </BeamButton>
+              </Box>
+            </Card>
+          </Grid>
+
+          {/* Right Column: Detailed Breakdown Card */}
+          <Grid size={{ xs: 12, md: 8 }} sx={{ height: "100%" }}>
+            <Card
               sx={{
-                fontWeight: 800,
-                mb: 3,
-                color: COLORS.PRIMARY_NAVY,
-                fontFamily: roboto.style.fontFamily,
-              }}
-            >
-              Personal Details
-            </Typography>
-            <Grid container spacing={1}>
-              <DataRow
-                label="Full Name"
-                value={`${studentData.firstName} ${studentData.lastName}`}
-              />
-              <DataRow label="Email" value={studentData.email} />
-              <DataRow label="Gender" value={studentData.gender} />
-              <DataRow label="Grade" value={studentData.grade} />
-              <DataRow label="Country" value={studentData.country?.name} />
-              {studentData.state && (
-                <DataRow label="State" value={studentData.state} />
-              )}
-            </Grid>
-
-            <Divider sx={{ my: 4 }} />
-
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 800,
-                mb: 3,
-                color: COLORS.PRIMARY_NAVY,
-                fontFamily: roboto.style.fontFamily,
-              }}
-            >
-              School Details
-            </Typography>
-            <Grid container spacing={1}>
-              {studentData.board && (
-                <DataRow label="Board" value={studentData.board.name} />
-              )}
-              {studentData.school && (
-                <DataRow label="Institution" value={studentData.school.name} />
-              )}
-              {studentData.isdCode && (
-                <DataRow label="ISD Code" value={studentData.isdCode} />
-              )}
-            </Grid>
-
-            <Divider sx={{ my: 4 }} />
-
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 800,
-                mb: 3,
-                color: COLORS.PRIMARY_NAVY,
-                fontFamily: roboto.style.fontFamily,
-              }}
-            >
-              Parent Details
-            </Typography>
-            <Grid container spacing={1}>
-              <DataRow label="Father's Name" value={studentData.fatherName} />
-              <DataRow label="Father's Email" value={studentData.fatherEmail} />
-              <DataRow label="Father's Phone" value={studentData.fatherPhone} />
-              <DataRow label="Father's Profession" value={studentData.fatherProfession} />
-              <DataRow label="Mother's Name" value={studentData.motherName} />
-              <DataRow label="Mother's Email" value={studentData.motherEmail} />
-              <DataRow label="Mother's Phone" value={studentData.motherPhone} />
-              <DataRow label="Mother's Profession" value={studentData.motherProfession} />
-            </Grid>
-          </Box>
-
-          <Box sx={{ mt: 6, display: "flex", gap: 3 }}>
-            <BeamButton
-              fullWidth
-              variant="outlined"
-              startIcon={<ArrowBack />}
-              onClick={() => router.back()}
-              sx={{
-                py: 2,
-                borderRadius: "14px",
-                fontWeight: 700,
-                borderColor: COLORS.PRIMARY_NAVY,
-                color: COLORS.PRIMARY_NAVY,
-                "&:hover": {
-                  borderColor: COLORS.ACCENT_TAN,
-                  bgcolor: "rgba(209, 160, 84, 0.05)",
+                height: "100%",
+                py: { xs: 2.5, md: 3 },
+                px: { xs: 2.5, md: 4 },
+                backgroundColor: "#FFFFFF",
+                borderRadius: "24px",
+                border: "1px solid rgba(226, 232, 240, 0.9)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                boxShadow: "0 15px 35px -10px rgba(15, 23, 42, 0.08)",
+                position: "relative",
+                overflow: "hidden",
+                boxSizing: "border-box",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: "3px",
+                  background: "linear-gradient(90deg, #D97706 0%, #059669 100%)",
                 },
               }}
             >
-              Back to Edit
-            </BeamButton>
-            <BeamButton
-              fullWidth
-              variant="contained"
-              endIcon={<CheckCircleOutline />}
-              disabled={loading}
-              onClick={handleCheckout}
-              sx={{
-                bgcolor: COLORS.ACCENT_TAN,
-                color: COLORS.BLACK,
-                py: 2,
-                borderRadius: "14px",
-                fontWeight: 800,
-                fontSize: "1rem",
-                "&:hover": {
-                  bgcolor: "#B88A44",
-                },
-              }}
-            >
-              {loading ? (
-                <CircularProgress size={20} sx={{ color: COLORS.BLACK }} />
-              ) : (
-                "Verify & Confirm"
-              )}
-            </BeamButton>
-          </Box>
-        </Card>
+              <Box sx={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
+                <Box sx={{ mb: 1.5, flexShrink: 0 }}>
+                  <Typography
+                    variant="h2"
+                    sx={{
+                      color: "#0F172A",
+                      fontFamily: roboto.style.fontFamily,
+                      fontWeight: 800,
+                      fontSize: { xs: 20, md: 24 },
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                      mb: 0.3,
+                    }}
+                  >
+                    Review Information
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: montserrat.style.fontFamily,
+                      fontSize: 12,
+                      color: "#64748B",
+                    }}
+                  >
+                    Please verify your student details before completing registration.
+                  </Typography>
+                </Box>
+
+                {/* Internal Scrollable Detail Grid */}
+                <Box
+                  sx={{
+                    flex: 1,
+                    overflowY: "auto",
+                    pr: 0.5,
+                    scrollbarWidth: "thin",
+                    "&::-webkit-scrollbar": { width: 4 },
+                    "&::-webkit-scrollbar-thumb": { bgcolor: "#CBD5E1", borderRadius: 2 },
+                  }}
+                >
+                  <Grid container spacing={1.5}>
+                    <Grid size={12}>
+                      <SectionHeader title="Personal Details" />
+                    </Grid>
+                    <DetailBox
+                      label="Full Name"
+                      value={`${studentData.firstName || ""} ${studentData.lastName || ""}`.trim()}
+                    />
+                    <DetailBox label="Email Address" value={studentData.email} />
+                    <DetailBox label="Gender" value={studentData.gender} />
+                    <DetailBox label="Grade" value={studentData.grade} />
+                    <DetailBox label="Country" value={studentData.country?.name} />
+                    {studentData.state && (
+                      <DetailBox label="State" value={studentData.state} />
+                    )}
+
+                    <Grid size={12}>
+                      <SectionHeader title="School Details" />
+                    </Grid>
+                    {studentData.board && (
+                      <DetailBox label="Board" value={studentData.board.name} />
+                    )}
+                    {studentData.school && (
+                      <DetailBox label="Institution" value={studentData.school.name} />
+                    )}
+                    {studentData.isdCode && (
+                      <DetailBox label="ISD Code" value={studentData.isdCode} />
+                    )}
+
+                    <Grid size={12}>
+                      <SectionHeader title="Parent / Guardian Details" />
+                    </Grid>
+                    <DetailBox label="Father's Name" value={studentData.fatherName} />
+                    <DetailBox label="Father's Email" value={studentData.fatherEmail} />
+                    <DetailBox label="Father's Phone" value={studentData.fatherPhone} />
+                    <DetailBox label="Father's Profession" value={studentData.fatherProfession} />
+                    <DetailBox label="Mother's Name" value={studentData.motherName} />
+                    <DetailBox label="Mother's Email" value={studentData.motherEmail} />
+                    <DetailBox label="Mother's Phone" value={studentData.motherPhone} />
+                    <DetailBox label="Mother's Profession" value={studentData.motherProfession} />
+                  </Grid>
+                </Box>
+              </Box>
+
+              {/* Submit Action Button pinned at bottom */}
+              <Box sx={{ mt: 2, flexShrink: 0 }}>
+                <BeamButton
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  endIcon={!loading && <CheckCircleOutline />}
+                  disabled={loading}
+                  onClick={handleCheckout}
+                  sx={{
+                    height: "46px",
+                    background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+                    color: "#FFFFFF",
+                    borderRadius: "14px",
+                    fontWeight: 700,
+                    fontSize: "0.92rem",
+                    textTransform: "none",
+                    fontFamily: montserrat.style.fontFamily,
+                    boxShadow: "0 8px 20px -4px rgba(37, 99, 235, 0.4)",
+                    "&:hover": {
+                      background: "linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)",
+                      boxShadow: "0 12px 25px -4px rgba(37, 99, 235, 0.5)",
+                      transform: "translateY(-1px)",
+                    },
+                    transition: "all 0.25s ease",
+                  }}
+                >
+                  {loading ? (
+                    <CircularProgress color="inherit" size={20} />
+                  ) : (
+                    "Verify & Confirm Registration"
+                  )}
+                </BeamButton>
+              </Box>
+            </Card>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

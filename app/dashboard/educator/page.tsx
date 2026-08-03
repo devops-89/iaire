@@ -1,6 +1,7 @@
 "use client";
 import EducatorDashboardLayout from "@/components/layouts/dashboard/educator/Index";
 import EducatorWelcomeBanner from "@/components/widgets/Dashboard/EducatorWelcomeBanner";
+import ApprovalPendingBanner from "@/components/widgets/Dashboard/ApprovalPendingBanner";
 import { Box, CircularProgress } from "@mui/material";
 import React from "react";
 import StatsBox from "@/components/layouts/dashboard/institution/components/dashboard/StatsBox";
@@ -38,10 +39,10 @@ const ICON_MAP: Record<string, any> = {
 
 const SECTIONS_CONFIG = [
   { key: "studentsAndMentorship", title: "Students & Mentorship" },
-  { key: "membershipStatus", title: "Membership Status (Students)" },
+  // { key: "membershipStatus", title: "Membership Status (Students)" },
   { key: "patents", title: "Patents" },
   { key: "researchPapers", title: "Research Papers" },
-  { key: "startups", title: "Startups" },
+  // { key: "startups", title: "Startups" },
 ];
 
 const EducatorDashboard = () => {
@@ -66,6 +67,7 @@ const EducatorDashboard = () => {
   return (
     <EducatorDashboardLayout>
       <Box sx={{ p: { xs: 2, md: 3 }, maxWidth: "1600px", mx: "auto" }}>
+        <ApprovalPendingBanner />
         <EducatorWelcomeBanner />
 
         <Box sx={{ mt: 6 }}>

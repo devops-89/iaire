@@ -22,16 +22,16 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   },
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: "#38BDF8",
+      borderColor: "#2563EB",
     },
   },
   [`&.${stepConnectorClasses.completed}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: "#38BDF8",
+      borderColor: "#2563EB",
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
-    borderColor: "rgba(255, 255, 255, 0.15)",
+    borderColor: "rgba(148, 163, 184, 0.4)",
     borderTopWidth: 2,
     borderRadius: 1,
   },
@@ -40,15 +40,15 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
 const QontoStepIconRoot = styled("div")<{
   ownerState: { active?: boolean; completed?: boolean };
 }>(({ theme, ownerState }) => ({
-  color: "rgba(255, 255, 255, 0.25)",
+  color: "#94A3B8",
   display: "flex",
   height: 22,
   alignItems: "center",
   ...(ownerState.active && {
-    color: "#38BDF8",
+    color: "#2563EB",
   }),
   "& .QontoStepIcon-completedIcon": {
-    color: "#38BDF8",
+    color: "#2563EB",
     zIndex: 1,
     fontSize: 20,
   },
@@ -57,7 +57,7 @@ const QontoStepIconRoot = styled("div")<{
     height: 10,
     borderRadius: "50%",
     backgroundColor: "currentColor",
-    boxShadow: ownerState.active ? "0 0 10px rgba(56, 189, 248, 0.5)" : "none",
+    boxShadow: ownerState.active ? "0 0 10px rgba(37, 99, 235, 0.4)" : "none",
   },
 }));
 
@@ -104,7 +104,7 @@ const SignupStepper = ({
   const steps = getSteps();
 
   return (
-    <Box sx={{ width: "100%", mb: 5 }}>
+    <Box sx={{ width: "100%", mb: 3 }}>
       <Stepper
         alternativeLabel
         activeStep={activeStep}
@@ -119,13 +119,13 @@ const SignupStepper = ({
                   fontFamily: montserrat.style.fontFamily,
                   fontWeight: 500,
                   fontSize: "0.85rem",
-                  color: "rgba(255, 255, 255, 0.45)",
+                  color: "#64748B",
                   "&.Mui-active": {
-                    color: COLORS.WHITE,
+                    color: "#0F172A",
                     fontWeight: 700,
                   },
                   "&.Mui-completed": {
-                    color: "#38BDF8",
+                    color: "#2563EB",
                     fontWeight: 600,
                   },
                 },

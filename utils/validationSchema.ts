@@ -130,9 +130,9 @@ export const institutionSignupValidationSchema = Yup.object({
     .oneOf([Yup.ref("password")], "Passwords must match")
     .required("Confirm password is required"),
 
-  noOfTeachers: Yup.number().required("No of teachers is required"),
-  noOfStudents: Yup.number().required("No of students is required"),
-  registrationYear: Yup.string().required("Registration year is required"),
+  noOfTeachers: Yup.number().optional(),
+  noOfStudents: Yup.number().optional(),
+  registrationYear: Yup.string().optional(),
 });
 
 export const addEducatorValidationSchema = Yup.object({

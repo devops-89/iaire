@@ -13,6 +13,7 @@ const EducatorDashboardLayout = ({
 }: {
   children: React.ReactNode;
 }) => {
+  getUserDetails();
   const { educatorData } = useSignup();
 
   // const isMember =

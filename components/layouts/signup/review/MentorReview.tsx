@@ -7,7 +7,6 @@ import {
   Typography,
   Card,
   Container,
-  Divider,
   CircularProgress,
   Avatar,
   Chip,
@@ -18,17 +17,96 @@ import { montserrat, roboto } from "@/utils/fonts";
 import SignupStepper from "@/components/layouts/signup/SignupStepper";
 import { ArrowBack, CheckCircleOutline } from "@mui/icons-material";
 import useSnackbar from "@/store/useSnackbar";
-import { useModal } from "@/store/useModal";
-import VerifyOtp from "@/components/modals/common/VerifyOtp";
 import { useMentorSignup } from "@/hooks/mentor/useMentorSignup";
-import { COUNTRIES } from "@/utils/constant";
 import BeamButton from "@/components/widgets/BeamButton";
+import Image from "next/image";
+import logo from "@/images/logo/iaire_logo.png";
+
+const SectionHeader = ({ title }: { title: string }) => (
+  <Box sx={{ mt: 0.8, mb: 1 }}>
+    <Typography
+      sx={{
+        color: "#2563EB",
+        fontFamily: montserrat.style.fontFamily,
+        fontWeight: 700,
+        fontSize: "0.75rem",
+        letterSpacing: 1,
+        textTransform: "uppercase",
+        display: "flex",
+        alignItems: "center",
+        gap: 1,
+        "&::after": {
+          content: '""',
+          flex: 1,
+          height: "1px",
+          backgroundColor: "#E2E8F0",
+        },
+      }}
+    >
+      {title}
+    </Typography>
+  </Box>
+);
+
+const DetailBox = ({
+  label,
+  value,
+}: {
+  label: string;
+  value: React.ReactNode;
+}) => {
+  if (!value || value === "N/A" || value === "") return null;
+  return (
+    <Grid size={{ xs: 12, sm: 6 }}>
+      <Box
+        sx={{
+          bgcolor: "#F8FAFC",
+          border: "1px solid #E2E8F0",
+          borderRadius: "12px",
+          p: 1.2,
+          height: "100%",
+          boxSizing: "border-box",
+          transition: "all 0.2s ease",
+          "&:hover": {
+            borderColor: "#2563EB",
+            bgcolor: "#F0F9FF",
+          },
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: "0.68rem",
+            fontWeight: 600,
+            color: "#64748B",
+            textTransform: "uppercase",
+            fontFamily: montserrat.style.fontFamily,
+            letterSpacing: 0.6,
+            mb: 0.3,
+          }}
+        >
+          {label}
+        </Typography>
+        <Box
+          sx={{
+            fontSize: "0.85rem",
+            fontWeight: 700,
+            color: "#0F172A",
+            fontFamily: montserrat.style.fontFamily,
+            wordBreak: "break-word",
+            lineHeight: 1.2,
+          }}
+        >
+          {value}
+        </Box>
+      </Box>
+    </Grid>
+  );
+};
 
 const MentorReview = () => {
   const router = useRouter();
   const { educatorData: rawEducatorData } = useSignup();
   const educatorData = rawEducatorData as any;
-  const { showModal } = useModal();
   const { setSnackbar } = useSnackbar();
   const { signupTeacher, loading } = useMentorSignup();
 
@@ -43,238 +121,456 @@ const MentorReview = () => {
   }
 
   const handleCheckout = async () => {
-    const code = COUNTRIES.find((c) => c.code === educatorData?.country?.code);
-
     try {
-      const rawData = {
-        email: educatorData?.email,
-        countryCode: code?.phone,
-        phone: educatorData?.phone,
-        firstName: educatorData?.firstName,
-        lastName: educatorData?.lastName,
-        password: educatorData?.password,
-        boardId: educatorData?.board?.id,
-        schoolId: educatorData?.school?.id,
-        profileImage: educatorData?.profileImage,
-        countryId: educatorData?.country?.id,
-        primarySubjects: educatorData?.primarySubjects,
-        gender: educatorData?.gender,
-        experienceinYears: String(educatorData?.experience),
-        ...(educatorData?.country?.code === "US" && {
-          isdCode: educatorData?.isdCode,
-        }),
+      const payload: any = {
+        firstName: educatorData.firstName,
+        lastName: educatorData.lastName,
+        email: educatorData.email,
+        phone: educatorData.phone,
+        password: educatorData.password,
+        gender: educatorData.gender,
+        countryId: educatorData.country?.id,
+        state: educatorData.state,
+        city: educatorData.city,
+        address: educatorData.address,
+        zipCode: educatorData.postalCode,
+        isdCode: educatorData.isdCode,
+        profileImage: educatorData.profileImage,
+        experienceYear: educatorData.experienceYear || educatorData.experienceYears,
+        qualification: educatorData.qualification,
+        organization: educatorData.organization,
+        bio: educatorData.bio,
+        boardId: educatorData.board?.id || educatorData.boardId,
+        schoolId: educatorData.school?.id || educatorData.schoolId,
       };
 
-      const data = Object.fromEntries(
-        Object.entries(rawData).filter(
-          ([_, v]) => v !== null && v !== undefined && v !== "",
+      const cleanedPayload = Object.fromEntries(
+        Object.entries(payload).filter(
+          ([key, v]) =>
+            key !== "confirmPassword" &&
+            key !== "role" &&
+            v !== null &&
+            v !== undefined &&
+            v !== "",
         ),
       );
 
-      await signupTeacher(data as any);
+      await signupTeacher(cleanedPayload as any);
     } catch (error) {
-      setSnackbar("Something went wrong", "error");
-      console.log(error);
+      setSnackbar("Something went wrong during educator registration", "error");
     }
   };
 
-  const DataRow = ({
-    label,
-    value,
-  }: {
-    label: string;
-    value: React.ReactNode;
-  }) => (
-    <Grid size={{ xs: 12, sm: 6, md: 4 }} sx={{ mb: 2 }}>
-      <Typography
-        sx={{
-          fontSize: "0.8rem",
-          fontWeight: 600,
-          color: "rgba(0,0,0,0.5)",
-          textTransform: "uppercase",
-          fontFamily: montserrat.style.fontFamily,
-        }}
-      >
-        {label}
-      </Typography>
-      <Box
-        sx={{
-          fontSize: "1rem",
-          fontWeight: 700,
-          color: COLORS.PRIMARY_NAVY,
-          fontFamily: montserrat.style.fontFamily,
-          wordBreak: "break-word",
-          mt: 0.5,
-        }}
-      >
-        {value || "N/A"}
-      </Box>
-    </Grid>
-  );
+  const getProfileImageSrc = () => {
+    const val = educatorData?.profileImage as any;
+    if (!val) return undefined;
+    if (typeof val === "string") return val;
+    if (typeof Blob !== "undefined" && (val instanceof Blob || val instanceof File)) {
+      return URL.createObjectURL(val);
+    }
+    return undefined;
+  };
+
+  const boardName =
+    typeof educatorData.board === "string"
+      ? educatorData.board
+      : educatorData.board?.name;
+
+  const schoolName =
+    typeof educatorData.school === "string"
+      ? educatorData.school
+      : educatorData.school?.name;
+
+  const hasSchoolDetails =
+    Boolean(boardName) || Boolean(schoolName) || Boolean(educatorData.isdCode);
+
+  const hasAcademicInfo =
+    Boolean(educatorData.qualification) ||
+    Boolean(educatorData.experienceYear || educatorData.experienceYears) ||
+    Boolean(educatorData.organization) ||
+    Boolean(educatorData.bio);
 
   return (
     <Box
       sx={{
-        background: `linear-gradient(135deg, ${COLORS.NAVY_GRADIENT_START} 0%, ${COLORS.NAVY_GRADIENT_END} 100%)`,
-        minHeight: "100vh",
+        background:
+          "linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%)",
+        height: "100vh",
+        width: "100vw",
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        py: 8,
+        flexDirection: "column",
+        justifyContent: "space-between",
+        position: "relative",
+        overflow: "hidden",
+        boxSizing: "border-box",
+        py: { xs: 1.5, md: 2 },
+        px: { xs: 2, md: 3 },
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: "-15%",
+          left: "25%",
+          width: "50%",
+          height: "50%",
+          background:
+            "radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(0, 0, 0, 0) 70%)",
+          filter: "blur(80px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        },
       }}
     >
-      <Container maxWidth="lg">
-        <Card
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          boxSizing: "border-box",
+          px: { xs: 0, md: 2 },
+        }}
+      >
+        {/* Navigation Top Bar */}
+        <Box
           sx={{
-            py: 5,
-            px: { xs: 3, md: 5 },
-            backgroundColor: COLORS.WHITE,
-            borderRadius: "24px",
-            boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.4)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            mb: 1.5,
+            flexShrink: 0,
           }}
         >
-          <Box sx={{ textAlign: "center", mb: 4 }}>
-            <Typography
-              sx={{
-                color: COLORS.BLACK,
-                fontFamily: roboto.style.fontFamily,
-                fontWeight: 800,
-                fontSize: { xs: 28, md: 34 },
-                textTransform: "uppercase",
-                letterSpacing: 1,
-              }}
-            >
-              Review Information
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: montserrat.style.fontFamily,
-                fontSize: 16,
-                color: "rgba(0, 0, 0, 0.5)",
-                mt: 1,
-              }}
-            >
-              Please verify your mentor details before proceeding.
-            </Typography>
+          <Box
+            onClick={() => router.back()}
+            sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 1,
+              bgcolor: "#FFFFFF",
+              border: "1px solid rgba(15, 23, 42, 0.12)",
+              boxShadow: "0 2px 8px rgba(15, 23, 42, 0.06)",
+              borderRadius: "50px",
+              px: 2,
+              py: 0.6,
+              color: "#475569",
+              fontFamily: montserrat.style.fontFamily,
+              fontSize: 12,
+              fontWeight: 600,
+              cursor: "pointer",
+              transition: "all 0.25s ease",
+              "&:hover": {
+                bgcolor: "#F1F5F9",
+                borderColor: COLORS.PRIMARY_BLUE,
+                color: "#1D4ED8",
+                transform: "translateX(-4px)",
+              },
+            }}
+          >
+            <ArrowBack sx={{ fontSize: 15 }} /> Back to Edit
           </Box>
 
-          <SignupStepper activeStep={1} />
+          <Chip
+            label="STEP 2 OF 2 • REVIEW"
+            size="small"
+            sx={{
+              bgcolor: "rgba(59, 130, 246, 0.08)",
+              color: "#1D4ED8",
+              border: "1px solid rgba(59, 130, 246, 0.2)",
+              fontFamily: montserrat.style.fontFamily,
+              fontWeight: 700,
+              fontSize: 10,
+              letterSpacing: 1,
+              px: 1,
+            }}
+          />
+        </Box>
 
-          <Box sx={{ mt: 4 }}>
-            {typeof File !== "undefined" &&
-              educatorData.profileImage &&
-              educatorData.profileImage instanceof File && (
-                <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
-                  <Avatar
-                    src={URL.createObjectURL(educatorData.profileImage as File)}
-                    sx={{ width: 120, height: 120, boxShadow: 3 }}
+        {/* 2-Column Split Grid */}
+        <Grid
+          container
+          spacing={2.5}
+          alignItems="stretch"
+          sx={{ flex: 1, minHeight: 0, height: "calc(100vh - 85px)" }}
+        >
+          {/* Left Column: Avatar & Summary Profile Card */}
+          <Grid size={{ xs: 12, md: 4 }} sx={{ height: "100%" }}>
+            <Card
+              sx={{
+                height: "100%",
+                py: 3,
+                px: 2.5,
+                backgroundColor: "#FFFFFF",
+                borderRadius: "24px",
+                border: "1px solid rgba(226, 232, 240, 0.9)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "space-between",
+                textAlign: "center",
+                boxShadow: "0 15px 35px -10px rgba(15, 23, 42, 0.08)",
+                position: "relative",
+                overflow: "hidden",
+                boxSizing: "border-box",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: "3px",
+                  background: "linear-gradient(90deg, #2563EB 0%, #D97706 100%)",
+                },
+              }}
+            >
+              <Box sx={{ width: "100%", textAlign: "center" }}>
+                <Box sx={{ mb: 1.5 }}>
+                  <Image
+                    src={logo}
+                    alt="IAIRE Logo"
+                    height={28}
+                    width={105}
+                    style={{ objectFit: "contain" }}
                   />
                 </Box>
-              )}
 
-            <Typography
-              variant="h6"
+                <Avatar
+                  src={getProfileImageSrc()}
+                  sx={{
+                    width: 90,
+                    height: 90,
+                    mx: "auto",
+                    mb: 1.5,
+                    border: "3px solid #2563EB",
+                    boxShadow: "0 8px 24px rgba(37, 99, 235, 0.2)",
+                  }}
+                />
+
+                <Typography
+                  sx={{
+                    color: "#0F172A",
+                    fontFamily: roboto.style.fontFamily,
+                    fontWeight: 800,
+                    fontSize: 20,
+                    mb: 0.3,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  {`${educatorData.firstName || ""} ${educatorData.lastName || ""}`.trim()}
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontFamily: montserrat.style.fontFamily,
+                    fontSize: 12,
+                    color: "#64748B",
+                    mb: 1.5,
+                    wordBreak: "break-all",
+                  }}
+                >
+                  {educatorData.email}
+                </Typography>
+
+                <Chip
+                  label="EDUCATOR / MENTOR"
+                  size="small"
+                  sx={{
+                    bgcolor: "rgba(37, 99, 235, 0.1)",
+                    color: "#2563EB",
+                    border: "1px solid rgba(37, 99, 235, 0.3)",
+                    fontFamily: montserrat.style.fontFamily,
+                    fontWeight: 700,
+                    fontSize: 9,
+                    letterSpacing: 0.8,
+                    px: 1,
+                  }}
+                />
+              </Box>
+
+              <Box sx={{ width: "100%", mt: 2 }}>
+                <SignupStepper activeStep={1} />
+                <BeamButton
+                  fullWidth
+                  variant="outlined"
+                  startIcon={<ArrowBack />}
+                  onClick={() => router.back()}
+                  sx={{
+                    mt: 2,
+                    height: "42px",
+                    bgcolor: "#F8FAFC",
+                    borderColor: "#CBD5E1",
+                    color: "#475569",
+                    borderRadius: "12px",
+                    fontWeight: 700,
+                    fontSize: "0.85rem",
+                    textTransform: "none",
+                    fontFamily: montserrat.style.fontFamily,
+                    "&:hover": {
+                      borderColor: "#2563EB",
+                      bgcolor: "#F0F9FF",
+                      color: "#2563EB",
+                    },
+                  }}
+                >
+                  Back to Edit
+                </BeamButton>
+              </Box>
+            </Card>
+          </Grid>
+
+          {/* Right Column: Detailed Breakdown Card */}
+          <Grid size={{ xs: 12, md: 8 }} sx={{ height: "100%" }}>
+            <Card
               sx={{
-                fontWeight: 800,
-                mb: 3,
-                color: COLORS.PRIMARY_NAVY,
-                fontFamily: roboto.style.fontFamily,
+                height: "100%",
+                py: { xs: 2.5, md: 3 },
+                px: { xs: 2.5, md: 4 },
+                backgroundColor: "#FFFFFF",
+                borderRadius: "24px",
+                border: "1px solid rgba(226, 232, 240, 0.9)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                boxShadow: "0 15px 35px -10px rgba(15, 23, 42, 0.08)",
+                position: "relative",
+                overflow: "hidden",
+                boxSizing: "border-box",
+                "&::before": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: "3px",
+                  background: "linear-gradient(90deg, #D97706 0%, #059669 100%)",
+                },
               }}
             >
-              Personal Details
-            </Typography>
-            <Grid container spacing={1}>
-              <DataRow
-                label="Full Name"
-                value={`${educatorData.firstName} ${educatorData.lastName}`}
-              />
-              <DataRow label="Email" value={educatorData.email} />
-              <DataRow label="Phone" value={educatorData.phone} />
-              <DataRow label="Gender" value={educatorData.gender} />
-              <DataRow
-                label="Experience"
-                value={`${educatorData.experience} Years`}
-              />
-              <DataRow label="Country" value={educatorData.country?.name} />
-              {educatorData.state && (
-                <DataRow label="State" value={educatorData.state} />
-              )}
-            </Grid>
+              <Box sx={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
+                <Box sx={{ mb: 1.5, flexShrink: 0 }}>
+                  <Typography
+                    variant="h2"
+                    sx={{
+                      color: "#0F172A",
+                      fontFamily: roboto.style.fontFamily,
+                      fontWeight: 800,
+                      fontSize: { xs: 20, md: 24 },
+                      textTransform: "uppercase",
+                      letterSpacing: 1,
+                      mb: 0.3,
+                    }}
+                  >
+                    Review Information
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontFamily: montserrat.style.fontFamily,
+                      fontSize: 12,
+                      color: "#64748B",
+                    }}
+                  >
+                    Please verify your educator details before completing registration.
+                  </Typography>
+                </Box>
 
-            <Divider sx={{ my: 4 }} />
+                {/* Scrollable details */}
+                <Box
+                  sx={{
+                    flex: 1,
+                    overflowY: "auto",
+                    pr: 0.5,
+                    scrollbarWidth: "thin",
+                    "&::-webkit-scrollbar": { width: 4 },
+                    "&::-webkit-scrollbar-thumb": { bgcolor: "#CBD5E1", borderRadius: 2 },
+                  }}
+                >
+                  <Grid container spacing={1.5}>
+                    <Grid size={12}>
+                      <SectionHeader title="Personal Details" />
+                    </Grid>
+                    <DetailBox
+                      label="Full Name"
+                      value={`${educatorData.firstName || ""} ${educatorData.lastName || ""}`.trim()}
+                    />
+                    <DetailBox label="Email Address" value={educatorData.email} />
+                    <DetailBox label="Phone Number" value={educatorData.phone} />
+                    <DetailBox label="Gender" value={educatorData.gender} />
+                    <DetailBox label="Country" value={educatorData.country?.name} />
+                    <DetailBox label="State / Province" value={educatorData.state} />
+                    <DetailBox label="City" value={educatorData.city} />
 
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: 800,
-                mb: 3,
-                color: COLORS.PRIMARY_NAVY,
-                fontFamily: roboto.style.fontFamily,
-              }}
-            >
-              Professional Details
-            </Typography>
-            <Grid container spacing={1}>
-              {educatorData.board && (
-                <DataRow label="Board" value={educatorData.board.name} />
-              )}
-              {educatorData.school && (
-                <DataRow label="Institution" value={educatorData.school.name} />
-              )}
-              <DataRow
-                label="Primary Subjects"
-                value={
-                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-                    {educatorData.primarySubjects?.length
-                      ? educatorData.primarySubjects.map(
-                          (sub: string, index: number) => (
-                            <Chip
-                              key={index}
-                              label={sub}
-                              size="small"
-                              sx={{
-                                backgroundColor: "rgba(209, 160, 84, 0.15)",
-                                color: COLORS.PRIMARY_NAVY,
-                                fontWeight: 600,
-                                borderRadius: "8px",
-                              }}
-                            />
-                          ),
-                        )
-                      : "N/A"}
-                  </Box>
-                }
-              />
-              {educatorData.isdCode && (
-                <DataRow label="ISD Code" value={educatorData.isdCode} />
-              )}
-            </Grid>
-          </Box>
+                    {hasSchoolDetails && (
+                      <>
+                        <Grid size={12}>
+                          <SectionHeader title="School & Education Details" />
+                        </Grid>
+                        <DetailBox label="Education Board" value={boardName} />
+                        <DetailBox label="Institution / School" value={schoolName} />
+                        <DetailBox label="ISD Code" value={educatorData.isdCode} />
+                      </>
+                    )}
 
-          <Box sx={{ mt: 6, display: "flex", gap: 3 }}>
-            <BeamButton
-              fullWidth
-              variant="outlined"
-              startIcon={<ArrowBack />}
-              onClick={() => router.back()}
-            >
-              Back to Edit
-            </BeamButton>
-            <BeamButton
-              fullWidth
-              variant="contained"
-              endIcon={<CheckCircleOutline />}
-              disabled={loading}
-              onClick={handleCheckout}
-            >
-              {loading ? (
-                <CircularProgress sx={{ color: COLORS.BLACK }} />
-              ) : (
-                "Verify & Confirm"
-              )}
-            </BeamButton>
-          </Box>
-        </Card>
+                    {hasAcademicInfo && (
+                      <>
+                        <Grid size={12}>
+                          <SectionHeader title="Academic & Professional" />
+                        </Grid>
+                        <DetailBox label="Qualification" value={educatorData.qualification} />
+                        <DetailBox
+                          label="Years of Experience"
+                          value={
+                            (educatorData.experienceYear || educatorData.experienceYears)
+                              ? `${educatorData.experienceYear || educatorData.experienceYears} Years`
+                              : null
+                          }
+                        />
+                        <DetailBox label="Current Organization" value={educatorData.organization} />
+                        <DetailBox label="Bio Summary" value={educatorData.bio} />
+                      </>
+                    )}
+                  </Grid>
+                </Box>
+              </Box>
+
+              {/* Submit Action Button pinned at bottom */}
+              <Box sx={{ mt: 2, flexShrink: 0 }}>
+                <BeamButton
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  endIcon={!loading && <CheckCircleOutline />}
+                  disabled={loading}
+                  onClick={handleCheckout}
+                  sx={{
+                    height: "46px",
+                    background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+                    color: "#FFFFFF",
+                    borderRadius: "14px",
+                    fontWeight: 700,
+                    fontSize: "0.92rem",
+                    textTransform: "none",
+                    fontFamily: montserrat.style.fontFamily,
+                    boxShadow: "0 8px 20px -4px rgba(37, 99, 235, 0.4)",
+                    "&:hover": {
+                      background: "linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)",
+                      boxShadow: "0 12px 25px -4px rgba(37, 99, 235, 0.5)",
+                      transform: "translateY(-1px)",
+                    },
+                    transition: "all 0.25s ease",
+                  }}
+                >
+                  {loading ? (
+                    <CircularProgress color="inherit" size={20} />
+                  ) : (
+                    "Verify & Confirm Registration"
+                  )}
+                </BeamButton>
+              </Box>
+            </Card>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

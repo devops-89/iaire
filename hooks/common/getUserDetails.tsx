@@ -8,30 +8,55 @@ export const getUserDetails = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<any>(null);
   const { setEducatorData, setInstitutionData, setUserData } = useSignup();
+
   useEffect(() => {
-    const role = localStorage.getItem("role");
+    let rawRole = localStorage.getItem("role") || "";
+    try {
+      if (rawRole.startsWith('"')) {
+        rawRole = JSON.parse(rawRole);
+      }
+    } catch (e) {}
+
     const fetchUserDetails = async () => {
       setLoading(true);
-      await userControllers
-        .getUserDetails()
-        .then((res) => {
-          if (role === USER_ROLES.EDUCATOR) {
-            setEducatorData(res.data);
-          }
-          if (role === USER_ROLES.INSTITUTION) {
-            setInstitutionData(res.data);
-          }
-          if (role === USER_ROLES.STUDENT) {
-            setUserData(res.data);
-          }
-        })
-        .catch((err) => {
-          console.log("err", err);
-        });
+      try {
+        const res = await userControllers.getUserDetails();
+        const userObj = res?.data?.data || res?.data || res;
+        setData(userObj);
+
+        const roleUpper = (userObj?.role || rawRole || "").toString().toUpperCase();
+
+        if (
+          roleUpper === USER_ROLES.EDUCATOR ||
+          roleUpper === "MENTOR" ||
+          roleUpper === "TEACHER" ||
+          roleUpper === "EDUCATOR"
+        ) {
+          setEducatorData(userObj);
+        } else if (
+          roleUpper === USER_ROLES.INSTITUTION ||
+          roleUpper === "INSTITUTION" ||
+          roleUpper === "SCHOOL"
+        ) {
+          setInstitutionData(userObj);
+        } else if (
+          roleUpper === USER_ROLES.STUDENT ||
+          roleUpper === "STUDENT"
+        ) {
+          setUserData(userObj);
+        } else {
+          setEducatorData(userObj);
+        }
+      } catch (err) {
+        console.log("err fetching user details:", err);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchUserDetails();
   }, []);
+
   return { loading, data };
 };
 

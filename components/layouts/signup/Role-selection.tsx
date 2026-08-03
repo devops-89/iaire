@@ -1,14 +1,7 @@
 "use client";
 import { COLORS, USER_ROLES } from "@/utils/enum";
 import { aloeveraDisplay_medium, montserrat, roboto } from "@/utils/fonts";
-import {
-  School,
-  SupervisorAccount,
-  EmojiPeople,
-  ArrowForward,
-  Close,
-  Check,
-} from "@mui/icons-material";
+import { ArrowForward, Close, Check } from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -25,7 +18,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import BeamButton from "@/components/widgets/BeamButton";
 import useSnackbar from "@/store/useSnackbar";
-import logoWhite from "@/images/logo/iaire_logo_white.png";
+import logo from "@/images/logo/iaire_logo.png";
 
 const ROLES = [
   {
@@ -34,33 +27,33 @@ const ROLES = [
     labelName: "Institution",
     description:
       "Manage your institution, staff, and researcher educators seamlessly.",
-    icon: <School sx={{ fontSize: 28 }} />,
-    accentColor: "#D1A054",
-    glowColor: "rgba(209, 160, 84, 0.25)",
+    image: "/images/signup/institution_official.png",
+    accentColor: "#D97706",
+    glowColor: "rgba(217, 119, 6, 0.2)",
     bgGradient:
-      "linear-gradient(135deg, rgba(209, 160, 84, 0.14) 0%, rgba(11, 23, 39, 0.85) 100%)",
+      "linear-gradient(135deg, rgba(254, 243, 199, 0.7) 0%, #FFFFFF 100%)",
   },
   {
     id: USER_ROLES.EDUCATOR,
     title: "Mentors",
     labelName: "Mentor",
     description: "Create classes, track progress, and inspire your students.",
-    icon: <SupervisorAccount sx={{ fontSize: 28 }} />,
-    accentColor: "#38BDF8",
-    glowColor: "rgba(56, 189, 248, 0.25)",
+    image: "/images/signup/mentor.png",
+    accentColor: "#0284C7",
+    glowColor: "rgba(2, 132, 199, 0.2)",
     bgGradient:
-      "linear-gradient(135deg, rgba(56, 189, 248, 0.14) 0%, rgba(11, 23, 39, 0.85) 100%)",
+      "linear-gradient(135deg, rgba(224, 242, 254, 0.7) 0%, #FFFFFF 100%)",
   },
   {
     id: USER_ROLES.STUDENT,
     title: "Students",
     labelName: "Student",
     description: "Learn, grow, and connect with your learning community.",
-    icon: <EmojiPeople sx={{ fontSize: 28 }} />,
-    accentColor: "#10B981",
-    glowColor: "rgba(16, 185, 129, 0.25)",
+    image: "/images/signup/student.png",
+    accentColor: "#059669",
+    glowColor: "rgba(5, 150, 105, 0.2)",
     bgGradient:
-      "linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(11, 23, 39, 0.85) 100%)",
+      "linear-gradient(135deg, rgba(209, 250, 229, 0.7) 0%, #FFFFFF 100%)",
   },
 ];
 
@@ -90,11 +83,11 @@ const RoleSelectionLayout = () => {
     <Box
       sx={{
         background:
-          "radial-gradient(ellipse at 50% -20%, #1E293B 0%, #0B1727 60%, #060D17 100%)",
-        height: "100vh",
+          "linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%)",
+        minHeight: "100vh",
         width: "100vw",
         position: "relative",
-        overflow: "hidden",
+        overflowX: "hidden",
         boxSizing: "border-box",
         "&::before": {
           content: '""',
@@ -117,7 +110,7 @@ const RoleSelectionLayout = () => {
           width: "50%",
           height: "50%",
           background:
-            "radial-gradient(circle, rgba(209, 160, 84, 0.06) 0%, rgba(0, 0, 0, 0) 70%)",
+            "radial-gradient(circle, rgba(217, 119, 6, 0.06) 0%, rgba(0, 0, 0, 0) 70%)",
           filter: "blur(90px)",
           pointerEvents: "none",
           zIndex: 0,
@@ -129,7 +122,7 @@ const RoleSelectionLayout = () => {
         sx={{
           position: "relative",
           zIndex: 1,
-          height: "100vh",
+          minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -144,28 +137,30 @@ const RoleSelectionLayout = () => {
           <IconButton
             onClick={() => router.back()}
             sx={{
-              border: "1px solid rgba(255, 255, 255, 0.15)",
-              bgcolor: "rgba(255, 255, 255, 0.04)",
-              backdropFilter: "blur(10px)",
+              border: "1px solid rgba(15, 23, 42, 0.12)",
+              bgcolor: "#FFFFFF",
+              boxShadow: "0 2px 8px rgba(15, 23, 42, 0.06)",
               p: 0.8,
               "&:hover": {
-                bgcolor: "rgba(255, 255, 255, 0.12)",
-                borderColor: COLORS.BEAM_COLOR,
+                bgcolor: "#F1F5F9",
+                borderColor: COLORS.PRIMARY_BLUE,
                 transform: "rotate(90deg)",
               },
               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
-            <Close sx={{ color: COLORS.WHITE, fontSize: 18 }} />
+            <Close sx={{ color: "#0F172A", fontSize: 18 }} />
           </IconButton>
         </Box>
 
+        {/* 2. Header Branding & Headline */}
         <Box
           sx={{
             textAlign: "center",
             flexShrink: 0,
             maxWidth: "600px",
             mx: "auto",
+            mb: { xs: 1.5, md: 2 },
           }}
         >
           <Box
@@ -177,7 +172,7 @@ const RoleSelectionLayout = () => {
             }}
           >
             <Image
-              src={logoWhite}
+              src={logo}
               alt="IAIRE Logo"
               height={34}
               width={125}
@@ -190,9 +185,9 @@ const RoleSelectionLayout = () => {
               label="STEP 2 OF 2 • ROLE SELECTION"
               size="small"
               sx={{
-                bgcolor: "rgba(59, 130, 246, 0.12)",
-                color: "#60A5FA",
-                border: "1px solid rgba(59, 130, 246, 0.3)",
+                bgcolor: "rgba(59, 130, 246, 0.08)",
+                color: "#1D4ED8",
+                border: "1px solid rgba(59, 130, 246, 0.2)",
                 fontFamily: montserrat.style.fontFamily,
                 fontWeight: 700,
                 fontSize: 10,
@@ -207,15 +202,12 @@ const RoleSelectionLayout = () => {
           <Typography
             variant="h1"
             sx={{
-              color: COLORS.WHITE,
+              color: "#0F172A",
               fontFamily: roboto.style.fontFamily,
               fontWeight: 800,
               fontSize: isMobile ? 24 : 32,
               letterSpacing: 1.1,
               mb: 0.5,
-              background: "linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
             }}
           >
             WHO ARE YOU?
@@ -224,7 +216,7 @@ const RoleSelectionLayout = () => {
             sx={{
               fontFamily: montserrat.style.fontFamily,
               fontSize: isMobile ? 12 : 14,
-              color: "rgba(255, 255, 255, 0.7)",
+              color: "#475569",
               lineHeight: 1.35,
             }}
           >
@@ -234,8 +226,8 @@ const RoleSelectionLayout = () => {
         </Box>
 
         {/* 3. Role Cards Grid Box */}
-        <Box sx={{ width: "100%", flexShrink: 0 }}>
-          <Grid container spacing={{ xs: 2, md: 3 }} justifyContent="center">
+        <Box sx={{ width: "100%", flexShrink: 0, my: "auto" }}>
+          <Grid container spacing={{ xs: 2.5, md: 3 }} justifyContent="center">
             {ROLES.map((role) => {
               const isSelected = selectedRole === role.id;
               return (
@@ -246,31 +238,23 @@ const RoleSelectionLayout = () => {
                       height: "100%",
                       cursor: "pointer",
                       position: "relative",
-                      p: { xs: 2, md: 2.8 },
+                      p: { xs: 2, md: 2.5 },
                       textAlign: "center",
-                      backgroundColor: isSelected
-                        ? "rgba(18, 35, 60, 0.9)"
-                        : "rgba(255, 255, 255, 0.03)",
+                      backgroundColor: isSelected ? "#FFFFFF" : "#FFFFFF",
                       backgroundImage: isSelected ? role.bgGradient : "none",
-                      backdropFilter: "blur(16px)",
-                      borderRadius: "18px",
-                      border: "2px solid",
+                      borderRadius: "24px",
+                      border: "2.5px solid",
                       borderColor: isSelected
                         ? role.accentColor
-                        : "rgba(255, 255, 255, 0.08)",
+                        : "rgba(226, 232, 240, 0.9)",
                       boxShadow: isSelected
-                        ? `0 14px 30px rgba(0, 0, 0, 0.4), 0 0 20px ${role.glowColor}`
-                        : "0 6px 20px rgba(0, 0, 0, 0.2)",
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                        ? `0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 0 25px ${role.glowColor}`
+                        : "0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 4px 6px -2px rgba(15, 23, 42, 0.02)",
+                      transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
                       "&:hover": {
-                        transform: "translateY(-4px)",
-                        backgroundColor: isSelected
-                          ? "rgba(22, 42, 70, 0.95)"
-                          : "rgba(255, 255, 255, 0.06)",
-                        borderColor: isSelected
-                          ? role.accentColor
-                          : "rgba(255, 255, 255, 0.25)",
-                        boxShadow: `0 18px 35px rgba(0, 0, 0, 0.4), 0 0 20px ${role.glowColor}`,
+                        transform: "translateY(-6px)",
+                        borderColor: role.accentColor,
+                        boxShadow: `0 24px 48px -12px rgba(15, 23, 42, 0.15), 0 0 25px ${role.glowColor}`,
                       },
                     }}
                   >
@@ -279,54 +263,56 @@ const RoleSelectionLayout = () => {
                       <Box
                         sx={{
                           position: "absolute",
-                          top: 12,
-                          right: 12,
+                          top: 16,
+                          right: 16,
                           bgcolor: role.accentColor,
-                          color: "#0B1727",
+                          color: "#FFFFFF",
                           borderRadius: "50%",
-                          width: 22,
-                          height: 22,
+                          width: 26,
+                          height: 26,
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          boxShadow: `0 0 8px ${role.glowColor}`,
+                          boxShadow: `0 4px 12px ${role.glowColor}`,
+                          zIndex: 3,
                         }}
                       >
-                        <Check sx={{ fontSize: 14, fontWeight: 900 }} />
+                        <Check sx={{ fontSize: 16, fontWeight: 900 }} />
                       </Box>
                     )}
 
-                    {/* Icon Box */}
+                    {/* 3D Illustration Avatar Frame */}
                     <Box
                       sx={{
-                        width: 52,
-                        height: 52,
-                        bgcolor: isSelected
-                          ? role.accentColor
-                          : "rgba(255, 255, 255, 0.08)",
-                        borderRadius: "14px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: isSelected ? "#0B1727" : COLORS.WHITE,
-                        mx: "auto",
-                        mb: 1.8,
-                        transition: "all 0.3s ease",
+                        width: "100%",
+                        height: { xs: 160, sm: 180, md: 190 },
+                        position: "relative",
+                        borderRadius: "18px",
+                        overflow: "hidden",
+                        mb: 2,
                         boxShadow: isSelected
-                          ? `0 6px 16px ${role.glowColor}`
-                          : "none",
+                          ? `0 10px 25px ${role.glowColor}`
+                          : "0 4px 14px rgba(15, 23, 42, 0.08)",
+                        border: "1px solid rgba(226, 232, 240, 0.8)",
+                        transition: "all 0.3s ease",
                       }}
                     >
-                      {role.icon}
+                      <Image
+                        src={role.image}
+                        alt={role.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        style={{ objectFit: "cover" }}
+                      />
                     </Box>
 
                     {/* Role Title */}
                     <Typography
                       sx={{
-                        color: COLORS.WHITE,
+                        color: "#0F172A",
                         fontFamily: roboto.style.fontFamily,
                         fontWeight: 700,
-                        fontSize: 19,
+                        fontSize: 21,
                         mb: 0.6,
                       }}
                     >
@@ -337,9 +323,9 @@ const RoleSelectionLayout = () => {
                     <Typography
                       sx={{
                         fontFamily: montserrat.style.fontFamily,
-                        color: "rgba(255, 255, 255, 0.65)",
+                        color: "#64748B",
                         fontSize: 13,
-                        lineHeight: 1.4,
+                        lineHeight: 1.45,
                       }}
                     >
                       {role.description}
@@ -360,7 +346,7 @@ const RoleSelectionLayout = () => {
             alignItems: "center",
             gap: 1,
             flexShrink: 0,
-            pb: { xs: 1, md: 2 },
+            py: { xs: 1, md: 2 },
           }}
         >
           <BeamButton
@@ -368,29 +354,29 @@ const RoleSelectionLayout = () => {
             onClick={handleClick}
             endIcon={<ArrowForward />}
             sx={{
-              bgcolor: selectedRole ? COLORS.PRIMARY_NAVY : "#111E30",
-              color: selectedRole ? COLORS.WHITE : "rgba(255, 255, 255, 0.6)",
-              px: { xs: 4, md: 5 },
-              py: 1.2,
+              bgcolor: selectedRole ? COLORS.PRIMARY_NAVY : "#E2E8F0",
+              color: selectedRole ? "#FFFFFF" : "#94A3B8",
+              px: { xs: 4, md: 6 },
+              py: 1.4,
               borderRadius: "50px",
-              fontSize: "0.95rem",
+              fontSize: "1rem",
               fontWeight: 700,
               textTransform: "none",
               fontFamily: aloeveraDisplay_medium.style.fontFamily,
               transition: "all 0.3s ease",
               border: selectedRole
                 ? `1px solid ${COLORS.BEAM_COLOR}`
-                : "1px solid rgba(255, 255, 255, 0.15)",
+                : "1px solid #CBD5E1",
               boxShadow: selectedRole
-                ? "0 10px 30px rgba(59, 130, 246, 0.35)"
-                : "0 4px 15px rgba(0, 0, 0, 0.3)",
+                ? "0 10px 30px rgba(15, 23, 42, 0.25)"
+                : "none",
               zIndex: 2,
               "&:hover": {
-                bgcolor: selectedRole ? COLORS.PRIMARY_BLUE : "#182A42",
+                bgcolor: selectedRole ? COLORS.PRIMARY_BLUE : "#CBD5E1",
                 transform: selectedRole ? "translateY(-2px)" : "none",
                 boxShadow: selectedRole
-                  ? "0 15px 35px rgba(59, 130, 246, 0.5)"
-                  : "0 6px 20px rgba(0, 0, 0, 0.4)",
+                  ? "0 15px 35px rgba(59, 130, 246, 0.35)"
+                  : "none",
               },
             }}
           >
@@ -400,8 +386,8 @@ const RoleSelectionLayout = () => {
           <Typography
             sx={{
               fontFamily: montserrat.style.fontFamily,
-              fontSize: 11,
-              color: "rgba(255, 255, 255, 0.45)",
+              fontSize: 12,
+              color: "#94A3B8",
             }}
           >
             Step 2 of 2: Let us know your primary role at IAIRE
