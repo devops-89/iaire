@@ -11,6 +11,30 @@ import {
 import { Visibility, VisibilityOff, Lock } from "@mui/icons-material";
 import { montserrat } from "@/utils/fonts";
 
+export const FieldLabel = ({
+  children,
+  required,
+}: {
+  children: React.ReactNode;
+  required?: boolean;
+}) => (
+  <Typography
+    sx={{
+      color: "#334155",
+      fontFamily: montserrat.style.fontFamily,
+      fontWeight: 600,
+      fontSize: "0.83rem",
+      mb: 0.8,
+      display: "flex",
+      alignItems: "center",
+      gap: 0.5,
+    }}
+  >
+    {children}
+    {required && <span style={{ color: "#EF4444" }}>*</span>}
+  </Typography>
+);
+
 export const LIGHT_INPUT_STYLE = {
   "& .MuiOutlinedInput-root": {
     color: "#0F172A",

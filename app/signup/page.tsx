@@ -37,9 +37,14 @@ const Signup = () => {
       <Box sx={{ position: "absolute", top: 20, right: 20, zIndex: 9999 }}>
         <IconButton
           onClick={() => router.back()}
-          sx={{ border: "1px solid " + COLORS.BEAM_COLOR }}
+          sx={{
+            bgcolor: COLORS.WHITE,
+            border: "2px solid #F3F4F6",
+            "&:hover": { bgcolor: "#F9FAFB" },
+            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.05)",
+          }}
         >
-          <Close sx={{ color: COLORS.WHITE }} />
+          <Close sx={{ color: COLORS.PRIMARY_NAVY }} />
         </IconButton>
       </Box>
       <SignupContent />

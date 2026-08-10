@@ -13,7 +13,7 @@ const InstitutionDashboards = () => {
   const { dashboardData, loading } = useSchoolDashboard();
 
   const { institutionData } = useSignup();
-  console.log("data", dashboardData);
+  console.log("institutionData", institutionData);
 
   return (
     <Stack spacing={4} sx={{ width: "100%", pb: 4 }}>
@@ -26,10 +26,13 @@ const InstitutionDashboards = () => {
               fontWeight: 700,
             }}
           >
-            {institutionData?.school?.name}
+            {institutionData?.school?.name || institutionData?.institutionName}
           </Typography>
           <Chip
-            label={institutionData?.membershipTier?.replace(/_/g, " ")}
+            label={(
+              institutionData?.school?.membershipTier ||
+              institutionData?.membershipTier
+            )?.replace(/_/g, " ")}
             sx={{
               background: COLORS.ACCENT_TAN,
               color: COLORS.PRIMARY_BLUE,
@@ -46,7 +49,8 @@ const InstitutionDashboards = () => {
             color: "#2B3447",
           }}
         >
-          {institutionData?.membershipCode}
+          {institutionData?.school?.membershipCode ||
+            institutionData?.membershipCode}
         </Typography>
         <Typography
           sx={{
@@ -56,7 +60,9 @@ const InstitutionDashboards = () => {
           }}
         >
           Member Since :{" "}
-          {moment(institutionData?.createdAt).format("DD MMM YYYY")}
+          {moment(
+            institutionData?.school?.createdAt || institutionData?.createdAt,
+          ).format("DD MMM YYYY")}
         </Typography>
       </Box>
 
@@ -67,7 +73,10 @@ const InstitutionDashboards = () => {
         >
           <Tierprogress
             data={INSTITUTION_MEMBERSHIP_LEVEL}
-            membershipTier={institutionData?.membershipTier}
+            membershipTier={
+              institutionData?.school?.membershipTier ||
+              institutionData?.membershipTier
+            }
             tierProgressDetails={institutionData?.tierProgressDetails}
             role={institutionData?.role}
           />

@@ -94,7 +94,7 @@ const TeamList = () => {
                 Unlock Feature
               </BeamButton>
             )} */}
-            {institutionData?.role === USER_ROLES.INSTITUTION && (
+            {institutionData?.role === USER_ROLES.SCHOOL_ADMIN && (
               <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,

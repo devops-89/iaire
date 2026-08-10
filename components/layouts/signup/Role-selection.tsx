@@ -85,9 +85,10 @@ const RoleSelectionLayout = () => {
         background:
           "linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%)",
         minHeight: "100vh",
-        width: "100vw",
+        width: "100%",
         position: "relative",
         overflowX: "hidden",
+        overflowY: "auto",
         boxSizing: "border-box",
         "&::before": {
           content: '""',
@@ -125,17 +126,17 @@ const RoleSelectionLayout = () => {
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
+          justifyContent: "center",
           alignItems: "center",
-          py: { xs: 2, md: 3 },
-          px: { xs: 2, md: 4 },
+          gap: { xs: 4, md: 6 },
+          py: { xs: 4, md: 6 },
           boxSizing: "border-box",
         }}
       >
         {/* 1. Top Close Control Bar */}
         <Box sx={{ width: "100%", textAlign: "right", flexShrink: 0 }}>
           <IconButton
-            onClick={() => router.back()}
+            onClick={() => router.push("/login")}
             sx={{
               border: "1px solid rgba(15, 23, 42, 0.12)",
               bgcolor: "#FFFFFF",
@@ -226,7 +227,7 @@ const RoleSelectionLayout = () => {
         </Box>
 
         {/* 3. Role Cards Grid Box */}
-        <Box sx={{ width: "100%", flexShrink: 0, my: "auto" }}>
+        <Box sx={{ width: "100%", flexShrink: 0 }}>
           <Grid container spacing={{ xs: 2.5, md: 3 }} justifyContent="center">
             {ROLES.map((role) => {
               const isSelected = selectedRole === role.id;
@@ -346,7 +347,8 @@ const RoleSelectionLayout = () => {
             alignItems: "center",
             gap: 1,
             flexShrink: 0,
-            py: { xs: 1, md: 2 },
+            mt: { xs: 4, md: 2 },
+            py: { xs: 2, md: 2 },
           }}
         >
           <BeamButton

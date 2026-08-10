@@ -32,7 +32,7 @@ import {
 import { roboto, montserrat } from "@/utils/fonts";
 import { COLORS, USER_ROLES, USER_STATUS } from "@/utils/enum";
 import { useSignup } from "@/store/useSignup";
-import { getUserDetails } from "@/hooks/common/getUserDetails";
+import { useGetUserDetails } from "@/hooks/common/getUserDetails";
 import { useGetAllInnovation } from "@/hooks/school/useInnovation";
 import { useGetAllResearch } from "@/hooks/school/useResearch";
 import moment from "moment";
@@ -63,7 +63,7 @@ const MembershipManagement = () => {
   const [tabValue, setTabValue] = useState(0);
   const { showModal } = useModal();
   const { data: studentData } = useSignup();
-  const { loading: userLoading } = getUserDetails();
+  const { loading: userLoading } = useGetUserDetails();
 
   const { innovationData, fetchInnovationList } = useGetAllInnovation();
   const { researchData, fetchResearchData } = useGetAllResearch();

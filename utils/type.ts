@@ -739,6 +739,8 @@ export interface USER_DETAILS_RESPONSE {
     updatedAt?: string;
     deletedAt?: string | null;
     schoolLogoDownloadUrl?: string | null;
+    membershipCode?: string;
+    membershipTier?: string;
   };
   boardId?: number;
   board?: {
@@ -808,6 +810,8 @@ export interface USER_DETAILS_RESPONSE {
     profileImageDownloadUrl?: string | null;
   }[];
   // Institution signup fields (used when institutionData holds form data)
+  membershipCode?: string;
+  membershipTier: string;
   institutionName?: string;
   principalName?: string;
   website?: string;
@@ -834,8 +838,6 @@ export interface USER_DETAILS_RESPONSE {
   publications?: number;
   hasSelectionBoardApproval?: boolean;
   registrationNumber?: string;
-  membershipCode?: string;
-  membershipTier: string;
 }
 
 export interface UPDATE_PROFILE_FORM_PROPS {

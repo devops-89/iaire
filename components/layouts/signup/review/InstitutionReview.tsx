@@ -272,7 +272,8 @@ const InstitutionReview = () => {
                   left: 0,
                   right: 0,
                   height: "3px",
-                  background: "linear-gradient(90deg, #2563EB 0%, #D97706 100%)",
+                  background:
+                    "linear-gradient(90deg, #2563EB 0%, #D97706 100%)",
                 },
               }}
             >
@@ -348,7 +349,10 @@ const InstitutionReview = () => {
               </Box>
 
               <Box sx={{ width: "100%", mt: 2 }}>
-                <SignupStepper activeStep={1} />
+                <SignupStepper
+                  activeStep={1}
+                  steps={["Account Details", "Verification"]}
+                />
                 <BeamButton
                   fullWidth
                   variant="outlined"
@@ -402,11 +406,19 @@ const InstitutionReview = () => {
                   left: 0,
                   right: 0,
                   height: "3px",
-                  background: "linear-gradient(90deg, #D97706 0%, #059669 100%)",
+                  background:
+                    "linear-gradient(90deg, #D97706 0%, #059669 100%)",
                 },
               }}
             >
-              <Box sx={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: 1,
+                  minHeight: 0,
+                }}
+              >
                 <Box sx={{ mb: 1.5, flexShrink: 0 }}>
                   <Typography
                     variant="h2"
@@ -429,7 +441,8 @@ const InstitutionReview = () => {
                       color: "#64748B",
                     }}
                   >
-                    Please verify your institution details before completing registration.
+                    Please verify your institution details before completing
+                    registration.
                   </Typography>
                 </Box>
 
@@ -441,7 +454,10 @@ const InstitutionReview = () => {
                     pr: 0.5,
                     scrollbarWidth: "thin",
                     "&::-webkit-scrollbar": { width: 4 },
-                    "&::-webkit-scrollbar-thumb": { bgcolor: "#CBD5E1", borderRadius: 2 },
+                    "&::-webkit-scrollbar-thumb": {
+                      bgcolor: "#CBD5E1",
+                      borderRadius: 2,
+                    },
                   }}
                 >
                   <Grid container spacing={1.5}>
@@ -457,10 +473,22 @@ const InstitutionReview = () => {
                       label="Principal Name"
                       value={institutionData.principalName}
                     />
-                    <DetailBox label="Email Address" value={institutionData.email} />
-                    <DetailBox label="Phone Number" value={institutionData.phone} />
-                    <DetailBox label="Website" value={institutionData.website} />
-                    <DetailBox label="Country" value={institutionData.country?.name} />
+                    <DetailBox
+                      label="Email Address"
+                      value={institutionData.email}
+                    />
+                    <DetailBox
+                      label="Phone Number"
+                      value={institutionData.phone}
+                    />
+                    <DetailBox
+                      label="Website"
+                      value={institutionData.website}
+                    />
+                    <DetailBox
+                      label="Country"
+                      value={institutionData.country?.name}
+                    />
 
                     <Grid size={12}>
                       <SectionHeader title="Address Information" />
@@ -476,14 +504,20 @@ const InstitutionReview = () => {
                     />
                     <DetailBox label="City" value={institutionData.city} />
                     <DetailBox label="State" value={institutionData.state} />
-                    <DetailBox label="Postal Code" value={institutionData.postalCode} />
+                    <DetailBox
+                      label="Postal Code"
+                      value={institutionData.postalCode}
+                    />
 
                     {institutionData.isd && (
                       <>
                         <Grid size={12}>
                           <SectionHeader title="Regional Details" />
                         </Grid>
-                        <DetailBox label="ISD Code" value={institutionData.isd} />
+                        <DetailBox
+                          label="ISD Code"
+                          value={institutionData.isd}
+                        />
                       </>
                     )}
 
@@ -522,7 +556,8 @@ const InstitutionReview = () => {
                   onClick={handleCheckout}
                   sx={{
                     height: "46px",
-                    background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+                    background:
+                      "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
                     color: "#FFFFFF",
                     borderRadius: "14px",
                     fontWeight: 700,
@@ -531,7 +566,8 @@ const InstitutionReview = () => {
                     fontFamily: montserrat.style.fontFamily,
                     boxShadow: "0 8px 20px -4px rgba(37, 99, 235, 0.4)",
                     "&:hover": {
-                      background: "linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)",
+                      background:
+                        "linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)",
                       boxShadow: "0 12px 25px -4px rgba(37, 99, 235, 0.5)",
                       transform: "translateY(-1px)",
                     },

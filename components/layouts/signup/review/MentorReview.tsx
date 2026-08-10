@@ -390,7 +390,7 @@ const MentorReview = () => {
               </Box>
 
               <Box sx={{ width: "100%", mt: 2 }}>
-                <SignupStepper activeStep={1} />
+                <SignupStepper activeStep={1} steps={["Account Details", "Verification"]} />
                 <BeamButton
                   fullWidth
                   variant="outlined"

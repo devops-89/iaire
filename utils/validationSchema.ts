@@ -211,9 +211,20 @@ export const addEducatorResearchValidationSchema = Yup.object({
 export const addStartupValidationSchema = Yup.object({
   startupName: Yup.string().required("Startup name is required"),
   sector: Yup.string().required("Sector is required"),
-  description: Yup.string().required("Description is required"),
-  founderName: Yup.string().required("Founder name is required"),
-  status: Yup.string().required("Status is required"),
+  businessIdea: Yup.string().required("Business idea is required"),
+  problemStatement: Yup.string().required("Problem statement is required"),
+  teamId: Yup.string().required("Team is required"),
+  businessPlan: Yup.string().required("Business plan is required"),
+  cashFlow: Yup.string().required("Cash flow is required"),
+  template: Yup.mixed()
+    .nullable()
+    .test("fileSize", "The file is too large", (value: any) => {
+      if (!value) return true;
+      const size = value.size / 1024 / 1024;
+      return size <= 5;
+    })
+    .required("Template is required"),
+  videoUrl: Yup.string().url("Must be a valid URL").required("Video URL is required"),
 });
 
 export const educatorSignupValidationSchema = Yup.object({

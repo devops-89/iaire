@@ -374,7 +374,7 @@ const EducatorSignup = () => {
             </Typography>
           </Box>
 
-          <SignupStepper activeStep={activeStep === 2 ? 1 : 0} />
+          <SignupStepper activeStep={activeStep === 2 ? 1 : 0} steps={["Account Details", "Verification"]} />
 
           <form onSubmit={formik.handleSubmit}>
             {/* STEP 1: Personal Information & Avatar */}

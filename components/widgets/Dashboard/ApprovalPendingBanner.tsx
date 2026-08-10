@@ -5,11 +5,11 @@ import { HourglassTop, InfoOutlined } from "@mui/icons-material";
 import { montserrat, roboto } from "@/utils/fonts";
 import { useSignup } from "@/store/useSignup";
 import { APPROVAL_STATUS, USER_STATUS } from "@/utils/enum";
-import { getUserDetails } from "@/hooks/common/getUserDetails";
+import { useGetUserDetails } from "@/hooks/common/getUserDetails";
 
 export const ApprovalPendingBanner = () => {
   const { educatorData, data: signupData } = useSignup();
-  const { data: fetchedData } = getUserDetails();
+  const { data: fetchedData } = useGetUserDetails();
 
   const activeUser = fetchedData || educatorData || signupData;
 

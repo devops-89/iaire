@@ -24,7 +24,9 @@ export const getUserDetails = () => {
         const userObj = res?.data?.data || res?.data || res;
         setData(userObj);
 
-        const roleUpper = (userObj?.role || rawRole || "").toString().toUpperCase();
+        const roleUpper = (userObj?.role || rawRole || "")
+          .toString()
+          .toUpperCase();
 
         if (
           roleUpper === USER_ROLES.EDUCATOR ||
@@ -36,9 +38,11 @@ export const getUserDetails = () => {
         } else if (
           roleUpper === USER_ROLES.INSTITUTION ||
           roleUpper === "INSTITUTION" ||
-          roleUpper === "SCHOOL"
+          roleUpper === "SCHOOL" ||
+          roleUpper === USER_ROLES.SCHOOL_ADMIN
         ) {
           setInstitutionData(userObj);
+          console.log("new user object", userObj);
         } else if (
           roleUpper === USER_ROLES.STUDENT ||
           roleUpper === "STUDENT"

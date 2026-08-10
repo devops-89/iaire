@@ -3,10 +3,11 @@ import {
   Box,
   Card,
   Grid,
-  MenuItem,
   TextField,
   Typography,
-  InputAdornment} from "@mui/material";
+  InputAdornment,
+  Button,
+} from "@mui/material";
 import React from "react";
 import { useFormik } from "formik";
 import { addStartupValidationSchema } from "@/utils/validationSchema";
@@ -16,7 +17,12 @@ import {
   RocketLaunch,
   Category,
   Description,
-  Person,
+  Lightbulb,
+  ReportProblem,
+  Groups,
+  AttachMoney,
+  Dashboard,
+  VideoLibrary,
 } from "@mui/icons-material";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import BeamButton from "@/components/widgets/BeamButton";
@@ -26,15 +32,19 @@ const AddStartup = () => {
     initialValues: {
       startupName: "",
       sector: "",
-      description: "",
-      founderName: "",
-      status: "Incubated",
+      businessIdea: "",
+      problemStatement: "",
+      teamId: "",
+      businessPlan: "",
+      cashFlow: "",
+      template: null as File | null,
+      videoUrl: "",
     },
     validationSchema: addStartupValidationSchema,
     onSubmit: (values) => {
       console.log("Startup Data:", values);
       // In a real app, this would be an API call
-      alert("Startup successfully added and registered for track status.");
+      alert("Startup successfully added.");
       formik.resetForm();
     },
   });
@@ -137,24 +147,19 @@ const AddStartup = () => {
             <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth
-                name="founderName"
-                label="Founder Name"
-                placeholder="e.g. John Doe"
-                value={formik.values.founderName}
+                name="teamId"
+                label="Team ID"
+                placeholder="e.g. TEAM-1234"
+                value={formik.values.teamId}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={
-                  formik.touched.founderName &&
-                  Boolean(formik.errors.founderName)
-                }
-                helperText={
-                  formik.touched.founderName && formik.errors.founderName
-                }
+                error={formik.touched.teamId && Boolean(formik.errors.teamId)}
+                helperText={formik.touched.teamId && formik.errors.teamId}
                 slotProps={{
                   input: {
                     startAdornment: (
                       <InputAdornment position="start">
-                        <Person sx={{ color: "rgba(0,0,0,0.4)" }} />
+                        <Groups sx={{ color: "rgba(0,0,0,0.4)" }} />
                       </InputAdornment>
                     ),
                   },
@@ -166,22 +171,237 @@ const AddStartup = () => {
             <Grid size={{ xs: 12, md: 6 }}>
               <TextField
                 fullWidth
-                select
-                name="status"
-                label="Incubation Status"
-                value={formik.values.status}
+                name="videoUrl"
+                label="Video URL"
+                placeholder="e.g. https://youtube.com/..."
+                value={formik.values.videoUrl}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={formik.touched.status && Boolean(formik.errors.status)}
-                helperText={formik.touched.status && formik.errors.status}
+                error={
+                  formik.touched.videoUrl && Boolean(formik.errors.videoUrl)
+                }
+                helperText={formik.touched.videoUrl && formik.errors.videoUrl}
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <VideoLibrary sx={{ color: "rgba(0,0,0,0.4)" }} />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
                 sx={TEXTFIELD_STYLE_VALIDATION}
+              />
+            </Grid>
+
+            <Grid size={{ xs: 12, md: 6 }}>
+              <TextField
+                fullWidth
+                name="cashFlow"
+                label="Cash Flow"
+                placeholder="e.g. Projected revenue details..."
+                value={formik.values.cashFlow}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.cashFlow && Boolean(formik.errors.cashFlow)
+                }
+                helperText={formik.touched.cashFlow && formik.errors.cashFlow}
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <AttachMoney sx={{ color: "rgba(0,0,0,0.4)" }} />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+                sx={TEXTFIELD_STYLE_VALIDATION}
+              />
+            </Grid>
+
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Box
+                sx={{
+                  border: `1px solid ${
+                    formik.touched.template && formik.errors.template
+                      ? "#d32f2f"
+                      : "rgba(0, 0, 0, 0.23)"
+                  }`,
+                  borderRadius: "14px",
+                  p: 1.5,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  position: "relative",
+                  bgcolor: "transparent",
+                  "&:hover": {
+                    borderColor:
+                      formik.touched.template && formik.errors.template
+                        ? "#d32f2f"
+                        : "rgba(0, 0, 0, 0.87)",
+                  },
+                }}
               >
-                {["Incubated", "Active", "Phase 1"].map((status) => (
-                  <MenuItem key={status} value={status}>
-                    {status}
-                  </MenuItem>
-                ))}
-              </TextField>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1.5,
+                    overflow: "hidden",
+                  }}
+                >
+                  <Dashboard sx={{ color: "rgba(0,0,0,0.4)" }} />
+                  <Typography
+                    noWrap
+                    sx={{
+                      color: formik.values.template
+                        ? "black"
+                        : "rgba(0,0,0,0.4)",
+                      fontSize: 16,
+                      fontFamily: roboto.style.fontFamily,
+                    }}
+                  >
+                    {formik.values.template
+                      ? (formik.values.template as File).name
+                      : "Upload Template"}
+                  </Typography>
+                </Box>
+                <Button
+                  component="label"
+                  variant="contained"
+                  sx={{
+                    bgcolor: "rgba(0, 0, 0, 0.04)",
+                    color: "black",
+                    boxShadow: "none",
+                    textTransform: "none",
+                    fontWeight: 600,
+                    minWidth: "120px",
+                    borderRadius: "8px",
+                    "&:hover": {
+                      bgcolor: "rgba(0, 0, 0, 0.08)",
+                      boxShadow: "none",
+                    },
+                  }}
+                >
+                  Choose File
+                  <input
+                    type="file"
+                    hidden
+                    onChange={(event: any) => {
+                      if (
+                        event.currentTarget.files &&
+                        event.currentTarget.files[0]
+                      ) {
+                        formik.setFieldValue(
+                          "template",
+                          event.currentTarget.files[0],
+                        );
+                      }
+                    }}
+                  />
+                </Button>
+                {/* Floating label simulation */}
+                <Typography
+                  sx={{
+                    position: "absolute",
+                    top: -9,
+                    left: 10,
+                    bgcolor: "white",
+                    px: 0.5,
+                    fontSize: 12,
+                    fontFamily: roboto.style.fontFamily,
+                    color:
+                      formik.touched.template && formik.errors.template
+                        ? "#d32f2f"
+                        : "rgba(0, 0, 0, 0.6)",
+                  }}
+                >
+                  Template
+                </Typography>
+              </Box>
+              {formik.touched.template && formik.errors.template && (
+                <Typography
+                  sx={{
+                    color: "#d32f2f",
+                    fontSize: 12,
+                    mt: 0.5,
+                    ml: 1.5,
+                    fontFamily: roboto.style.fontFamily,
+                  }}
+                >
+                  {formik.errors.template as string}
+                </Typography>
+              )}
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+              <TextField
+                fullWidth
+                multiline
+                rows={3}
+                name="businessIdea"
+                label="Business Idea"
+                placeholder="Briefly describe the business idea..."
+                value={formik.values.businessIdea}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.businessIdea &&
+                  Boolean(formik.errors.businessIdea)
+                }
+                helperText={
+                  formik.touched.businessIdea && formik.errors.businessIdea
+                }
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment
+                        position="start"
+                        sx={{ alignSelf: "flex-start", mt: 1.5 }}
+                      >
+                        <Lightbulb sx={{ color: "rgba(0,0,0,0.4)" }} />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+                sx={TEXTFIELD_STYLE_VALIDATION}
+              />
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+              <TextField
+                fullWidth
+                multiline
+                rows={3}
+                name="problemStatement"
+                label="Problem Statement"
+                placeholder="Describe the problem you are solving..."
+                value={formik.values.problemStatement}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.problemStatement &&
+                  Boolean(formik.errors.problemStatement)
+                }
+                helperText={
+                  formik.touched.problemStatement &&
+                  formik.errors.problemStatement
+                }
+                slotProps={{
+                  input: {
+                    startAdornment: (
+                      <InputAdornment
+                        position="start"
+                        sx={{ alignSelf: "flex-start", mt: 1.5 }}
+                      >
+                        <ReportProblem sx={{ color: "rgba(0,0,0,0.4)" }} />
+                      </InputAdornment>
+                    ),
+                  },
+                }}
+                sx={TEXTFIELD_STYLE_VALIDATION}
+              />
             </Grid>
 
             <Grid size={{ xs: 12 }}>
@@ -189,18 +409,18 @@ const AddStartup = () => {
                 fullWidth
                 multiline
                 rows={4}
-                name="description"
-                label="Startup Description/Idea"
-                placeholder="Briefly describe the startup's mission and goals..."
-                value={formik.values.description}
+                name="businessPlan"
+                label="Business Plan"
+                placeholder="Provide a detailed business plan..."
+                value={formik.values.businessPlan}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={
-                  formik.touched.description &&
-                  Boolean(formik.errors.description)
+                  formik.touched.businessPlan &&
+                  Boolean(formik.errors.businessPlan)
                 }
                 helperText={
-                  formik.touched.description && formik.errors.description
+                  formik.touched.businessPlan && formik.errors.businessPlan
                 }
                 slotProps={{
                   input: {
@@ -219,35 +439,10 @@ const AddStartup = () => {
             </Grid>
 
             <Grid size={{ xs: 12 }} sx={{ mt: 3, display: "flex", gap: 2 }}>
-              <BeamButton
-                type="submit"
-                variant="contained"
-                sx={{
-                  bgcolor: COLORS.RED,
-                  color: COLORS.WHITE,
-                  py: 1.5,
-                  px: 4,
-                  borderRadius: "10px",
-                  fontWeight: 700,
-                  fontFamily: montserrat.style.fontFamily,
-                  boxShadow: "0px 4px 10px rgba(209, 160, 84, 0.3)",
-                  "&:hover": {
-                    bgcolor: "#B88A44",
-                    boxShadow: "0px 6px 15px rgba(209, 160, 84, 0.4)",
-                  },
-                }}
-              >
+              <BeamButton type="submit" variant="contained">
                 Submit Startup
               </BeamButton>
-              <BeamButton
-                onClick={() => formik.resetForm()}
-                sx={{
-                  color: "rgba(0,0,0,0.5)",
-                  fontWeight: 600,
-                  fontFamily: montserrat.style.fontFamily,
-                  "&:hover": { bgcolor: "rgba(0,0,0,0.05)" },
-                }}
-              >
+              <BeamButton onClick={() => formik.resetForm()} variant="outlined">
                 Reset
               </BeamButton>
             </Grid>

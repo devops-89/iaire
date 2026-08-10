@@ -14,10 +14,11 @@ import {
 } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getUserDetails } from "@/hooks/common/getUserDetails";
 import logo from "@/images/logo/iaire_logo.png";
 import Image from "next/image";
+import { useSignup } from "@/store/useSignup";
 const InstitutionSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
@@ -30,7 +31,13 @@ const InstitutionSidebar = () => {
     }));
   };
 
+  const { setInstitutionData } = useSignup();
+
   const { data, loading } = getUserDetails();
+
+  // if (data) {
+  //   setInstitutionData(data);
+  // }
 
   return (
     <Box>
