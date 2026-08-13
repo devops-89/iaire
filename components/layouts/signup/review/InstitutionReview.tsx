@@ -146,13 +146,14 @@ const InstitutionReview = () => {
       sx={{
         background:
           "linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%)",
-        height: "100vh",
+        height: { xs: "auto", md: "100vh" },
+        minHeight: "100vh",
         width: "100vw",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         position: "relative",
-        overflow: "hidden",
+        overflow: { xs: "auto", md: "hidden" },
         boxSizing: "border-box",
         py: { xs: 1.5, md: 2 },
         px: { xs: 2, md: 3 },
@@ -244,10 +245,10 @@ const InstitutionReview = () => {
           container
           spacing={2.5}
           alignItems="stretch"
-          sx={{ flex: 1, minHeight: 0, height: "calc(100vh - 85px)" }}
+          sx={{ flex: 1, minHeight: 0, height: { xs: "auto", md: "calc(100vh - 85px)" } }}
         >
           {/* Left Column: Institution Summary Card */}
-          <Grid size={{ xs: 12, md: 4 }} sx={{ height: "100%" }}>
+          <Grid size={{ xs: 12, md: 4 }} sx={{ height: { xs: "auto", md: "100%" } }}>
             <Card
               sx={{
                 height: "100%",
@@ -383,7 +384,7 @@ const InstitutionReview = () => {
           </Grid>
 
           {/* Right Column: Detailed Breakdown Card */}
-          <Grid size={{ xs: 12, md: 8 }} sx={{ height: "100%" }}>
+          <Grid size={{ xs: 12, md: 8 }} sx={{ height: { xs: "auto", md: "100%" } }}>
             <Card
               sx={{
                 height: "100%",

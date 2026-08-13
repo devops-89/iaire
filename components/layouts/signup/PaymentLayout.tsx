@@ -84,7 +84,7 @@ const PaymentLayout = () => {
         <SignupStepper activeStep={2} />
 
         <Grid container spacing={4}>
-          <Grid size={8} margin="auto">
+          <Grid size={{ xs: 12, md: 8 }} margin="auto">
             {planData?.map((val, i) => (
               <PlanCard
                 name={val.name}

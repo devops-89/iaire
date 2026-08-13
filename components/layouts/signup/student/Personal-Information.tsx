@@ -90,7 +90,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             Upload Image
           </Typography>
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="First Name*"
             fullWidth
@@ -102,7 +102,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             }
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="Last Name*"
             fullWidth
@@ -114,7 +114,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             }
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="Email*"
             fullWidth
@@ -124,7 +124,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             helperText={formik.touched.email && (formik.errors.email as string)}
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <MuiTelInput
             defaultCountry="IN"
             fullWidth
@@ -141,7 +141,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             }
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             type={showPassword ? "text" : "password"}
             label="Password*"
@@ -166,7 +166,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             id="password"
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             type={showConfirmPassword ? "text" : "password"}
             label="Confirm Password*"
@@ -198,7 +198,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
             id="confirmPassword"
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Autocomplete
             options={GENDER}
             getOptionLabel={(option: any) => option}

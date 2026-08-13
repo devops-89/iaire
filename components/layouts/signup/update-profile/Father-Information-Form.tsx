@@ -33,7 +33,7 @@ const FatherInformation = ({ formik }: FATHER_INFORMATION_PROPS) => {
   };
   return (
     <Grid container spacing={3}>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Father's Name"
           fullWidth
@@ -43,7 +43,7 @@ const FatherInformation = ({ formik }: FATHER_INFORMATION_PROPS) => {
           helperText={formik.touched.fatherName && formik.errors.fatherName}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Father's Email"
           fullWidth
@@ -56,7 +56,7 @@ const FatherInformation = ({ formik }: FATHER_INFORMATION_PROPS) => {
           helperText={formik.touched.fatherEmail && formik.errors.fatherEmail}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <MuiTelInput
           label="Father's Phone"
           fullWidth
@@ -68,7 +68,7 @@ const FatherInformation = ({ formik }: FATHER_INFORMATION_PROPS) => {
           value={phone}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Father's Profession"
           fullWidth

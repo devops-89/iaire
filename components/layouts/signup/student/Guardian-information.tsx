@@ -63,7 +63,7 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
         Father's Information
       </Typography>
       <Grid container spacing={4} sx={{ mb: 4 }}>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="Father's Name"
             fullWidth
@@ -80,7 +80,7 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
             }
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="Father's Email"
             fullWidth
@@ -98,7 +98,7 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
             }
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <MuiTelInput
             defaultCountry="US"
             label="Father's Phone Number"
@@ -114,7 +114,7 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
             }
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="Father's Profession"
             fullWidth
@@ -145,7 +145,7 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
         Mother's Information
       </Typography>
       <Grid container spacing={4}>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="Mother's Name"
             fullWidth
@@ -162,7 +162,7 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
             }
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="Mother's Email"
             fullWidth
@@ -180,7 +180,7 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
             }
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <MuiTelInput
             defaultCountry="US"
             label="Mother's Phone Number"
@@ -196,7 +196,7 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
             }
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="Mother's Profession"
             fullWidth

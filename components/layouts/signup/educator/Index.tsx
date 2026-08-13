@@ -216,16 +216,16 @@ const EducatorSignup = () => {
       sx={{
         background:
           "linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #F1F5F9 100%)",
-        height: "100vh",
+        minHeight: "100vh",
         width: "100vw",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
-        overflow: "hidden",
+        overflowX: "hidden",
         boxSizing: "border-box",
         px: 2,
-        py: 2,
+        py: { xs: 4, md: 6 },
         "&::before": {
           content: '""',
           position: "absolute",
@@ -246,11 +246,9 @@ const EducatorSignup = () => {
         sx={{
           position: "relative",
           zIndex: 1,
-          height: "100vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          py: { xs: 2, md: 3 },
           boxSizing: "border-box",
         }}
       >
@@ -589,7 +587,7 @@ const EducatorSignup = () => {
                 </Grid>
 
                 <Grid size={12} sx={{ mt: 2 }}>
-                  <Box sx={{ display: "flex", gap: 2 }}>
+                  <Box sx={{ display: "flex", flexDirection: { xs: "column-reverse", sm: "row" }, gap: 2 }}>
                     <BeamButton
                       variant="outlined"
                       onClick={handlePrevStep}
@@ -824,7 +822,7 @@ const EducatorSignup = () => {
                 </Grid>
 
                 <Grid size={12} sx={{ mt: 2 }}>
-                  <Box sx={{ display: "flex", gap: 2 }}>
+                  <Box sx={{ display: "flex", flexDirection: { xs: "column-reverse", sm: "row" }, gap: 2 }}>
                     <BeamButton
                       variant="outlined"
                       onClick={handlePrevStep}

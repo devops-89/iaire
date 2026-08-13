@@ -232,14 +232,14 @@ const RoleSelectionLayout = () => {
             {ROLES.map((role) => {
               const isSelected = selectedRole === role.id;
               return (
-                <Grid size={{ lg: 4, md: 4, xs: 12 }} key={role.id}>
+                <Grid size={{ xs: 12, md: 4, lg: 4 }} key={role.id}>
                   <Card
                     onClick={() => setSelectedRole(role.id)}
                     sx={{
                       height: "100%",
                       cursor: "pointer",
                       position: "relative",
-                      p: { xs: 2, md: 2.5 },
+                      p: { xs: 1, md: 2.5 },
                       textAlign: "center",
                       backgroundColor: isSelected ? "#FFFFFF" : "#FFFFFF",
                       backgroundImage: isSelected ? role.bgGradient : "none",

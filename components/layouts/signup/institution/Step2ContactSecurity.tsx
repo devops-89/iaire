@@ -91,7 +91,7 @@ const Step2ContactSecurity: React.FC<Step2ContactSecurityProps> = ({
       </Grid>
 
       <Grid size={12} sx={{ mt: 2 }}>
-        <Box sx={{ display: "flex", gap: 2 }}>
+        <Box sx={{ display: "flex", flexDirection: { xs: "column-reverse", sm: "row" }, gap: 2 }}>
           <BeamButton
             variant="outlined"
             onClick={handlePrevStep}

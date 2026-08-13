@@ -98,7 +98,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           Upload Profile Image
         </BeamButton>
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="First Name"
           fullWidth
@@ -109,7 +109,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           value={formik.values.firstName}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Last Name"
           fullWidth
@@ -120,7 +120,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           value={formik.values.lastName}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Email"
           fullWidth
@@ -131,7 +131,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           value={formik.values.email}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <MuiTelInput
           label="Phone Number"
           fullWidth
@@ -141,7 +141,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           helperText={formik.touched.phone && (formik.errors.phone as string)}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Grade"
           fullWidth
@@ -151,7 +151,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           helperText={formik.touched.grade && formik.errors.grade}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Autocomplete
           renderInput={(params) => (
             <TextField
@@ -169,7 +169,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           }
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Password"
           fullWidth
@@ -190,7 +190,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
           }}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Confirm Password"
           fullWidth

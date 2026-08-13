@@ -83,7 +83,7 @@ const AcademicInformation = ({ formik }: ACADEMIC_PROPS) => {
       </Typography>
 
       <Grid container spacing={4}>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Autocomplete
             renderInput={(params) => (
               <TextField
@@ -106,7 +106,7 @@ const AcademicInformation = ({ formik }: ACADEMIC_PROPS) => {
             onChange={countryChangeHandler}
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Autocomplete
             renderInput={(params) => (
               <TextField
@@ -130,7 +130,7 @@ const AcademicInformation = ({ formik }: ACADEMIC_PROPS) => {
             value={board}
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Autocomplete
             renderInput={(params) => (
               <TextField
@@ -154,7 +154,7 @@ const AcademicInformation = ({ formik }: ACADEMIC_PROPS) => {
             value={school}
           />
         </Grid>
-        <Grid size={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <TextField
             label="Grade"
             fullWidth

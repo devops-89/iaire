@@ -34,7 +34,7 @@ const MotherInformation = ({ formik }: MOTHER_INFORMATION_PROPS) => {
 
   return (
     <Grid container spacing={2}>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Mother's Name"
           fullWidth
@@ -45,7 +45,7 @@ const MotherInformation = ({ formik }: MOTHER_INFORMATION_PROPS) => {
           helperText={formik.touched.motherName && formik.errors.motherName}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Mother's Email"
           fullWidth
@@ -58,7 +58,7 @@ const MotherInformation = ({ formik }: MOTHER_INFORMATION_PROPS) => {
           helperText={formik.touched.motherEmail && formik.errors.motherEmail}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <MuiTelInput
           label="Mother's Phone"
           fullWidth
@@ -70,7 +70,7 @@ const MotherInformation = ({ formik }: MOTHER_INFORMATION_PROPS) => {
           value={phone}
         />
       </Grid>
-      <Grid size={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <TextField
           label="Mother's Profession"
           fullWidth
