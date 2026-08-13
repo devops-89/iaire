@@ -7,9 +7,10 @@ import { COLORS } from "@/utils/enum";
 
 interface LegalLayoutProps {
   title: string;
+  children: React.ReactNode;
 }
 
-const LegalLayout = ({ title }: LegalLayoutProps) => {
+const LegalLayout = ({ title, children }: LegalLayoutProps) => {
   return (
     <Box sx={{ pt: { xs: "120px", md: "160px" }, pb: { xs: 8, md: 12 }, minHeight: "100vh" }}>
       <Container maxWidth="md">
@@ -27,18 +28,8 @@ const LegalLayout = ({ title }: LegalLayoutProps) => {
             {title}
           </Typography>
           
-          <Box sx={{ p: 4, borderRadius: "24px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0" }}>
-            <Typography
-              sx={{
-                fontFamily: inter.style.fontFamily,
-                fontSize: "15px",
-                lineHeight: 1.8,
-                color: "#4B5563",
-              }}
-            >
-              This is a placeholder for the {title} content. 
-              The actual legal documentation should be inserted here.
-            </Typography>
+          <Box sx={{ p: { xs: 2, md: 4 }, borderRadius: "24px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0" }}>
+            {children}
           </Box>
         </Stack>
       </Container>
