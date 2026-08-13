@@ -64,6 +64,8 @@ export const getUserDetails = () => {
   return { loading, data };
 };
 
+export const useGetUserDetails = getUserDetails;
+
 export const useGetUserDetailsPublic = (userId: string | null) => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(false);
