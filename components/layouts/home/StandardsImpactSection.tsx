@@ -139,8 +139,10 @@ const StandardsImpactSection = () => {
                     color: "#111827",
                   }}
                 >
-                  Standards. Certification. <br />
-                  <span style={{ color: "#1B365D" }}>Recognition. Impact.</span>
+                  Standards, Certification, <br />
+                  <span style={{ color: "#1B365D" }}>
+                    Recognition & Impact.
+                  </span>
                 </Typography>
               </Stack>
 
