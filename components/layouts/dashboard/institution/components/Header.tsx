@@ -1,6 +1,6 @@
 "use client";
 import { COLORS } from "@/utils/enum";
-import { Person, Logout, Settings, PersonOutline } from "@mui/icons-material";
+import { Person, Logout, Settings, PersonOutline, Menu } from "@mui/icons-material";
 import {
   Avatar,
   Box,
@@ -9,14 +9,17 @@ import {
   Divider,
   MenuItem,
   ListItemIcon,
+  IconButton,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { montserrat, roboto } from "@/utils/fonts";
 import { useSignup } from "@/store/useSignup";
+import useSidebar from "@/store/useSidebar";
 
 const InstitutionHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { toggleSidebar } = useSidebar();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,23 +48,17 @@ const InstitutionHeader = () => {
   const open = Boolean(anchorEl);
 
   const { institutionData } = useSignup();
-  // const isMember =
-  //   institutionData?.payments?.some(
-  //     (val: any) => val.membership?.status === "ACTIVE",
-  //   ) || false;
-
-  // console.log("institutionData", institutionData);
 
   return (
     <Box
       sx={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-end",
+        justifyContent: { xs: "space-between", md: "flex-end" },
         position: "fixed",
         top: 0,
         right: 0,
-        left: "250px",
+        left: { xs: 0, md: "250px" },
         height: "65px",
         backgroundColor: isScrolled
           ? "rgba(255, 255, 255, 0.72)"
@@ -74,9 +71,14 @@ const InstitutionHeader = () => {
         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         zIndex: 1100,
         px: 4,
-        // py:
       }}
     >
+      <IconButton
+        onClick={toggleSidebar}
+        sx={{ display: { xs: "block", md: "none" }, color: COLORS.PRIMARY_NAVY }}
+      >
+        <Menu />
+      </IconButton>
       <Avatar
         onClick={handleOpen}
         sx={{

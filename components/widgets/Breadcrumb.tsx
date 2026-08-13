@@ -17,7 +17,7 @@ const Breadcrumb = ({ title, data }: BREADCRUMBPROPS) => {
     <Box>
       <Typography
         sx={{
-          fontSize: 30,
+          fontSize: { xs: 24, md: 30 },
           fontFamily: newBlack_semiBold.style.fontFamily,
           fontWeight: 500,
         }}

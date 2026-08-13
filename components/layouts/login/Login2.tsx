@@ -65,10 +65,11 @@ const Login2 = () => {
     <Box>
       <Box
         sx={{
-          height: "100vh",
+          minHeight: "100vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          p: { xs: 2, sm: 4, md: 0 },
           background: `linear-gradient(${COLORS.NAVY_GRADIENT_START} 30%, ${COLORS.PRIMARY_NAVY} 70%)`,
         }}
       >
@@ -76,10 +77,11 @@ const Login2 = () => {
           <Card
             sx={{
               boxShadow: "rgba(99, 99, 99, 0.3) 0px 2px 8px 0px",
-              p: 2,
+              p: { xs: 1, sm: 2 },
               borderRadius: "20px",
-              height: "60vh",
-              width: "1000px",
+              minHeight: { xs: "auto", md: "60vh" },
+              width: { xs: "100%", md: "1000px" },
+              maxWidth: "100%",
               mx: "auto",
             }}
           >
@@ -87,8 +89,10 @@ const Login2 = () => {
               <Grid size={{ xs: 12, md: 6 }}>
                 <Box
                   sx={{
-                    px: 6,
-                    height: "60vh",
+                    px: { xs: 2, sm: 4, md: 6 },
+                    py: { xs: 4, md: 0 },
+                    height: { xs: "auto", md: "100%" },
+                    minHeight: { md: "60vh" },
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
@@ -204,13 +208,15 @@ const Login2 = () => {
                 <Box
                   sx={{
                     backgroundColor: COLORS.PRIMARY_BLUE,
-                    height: "60vh",
+                    height: { xs: "auto", md: "100%" },
+                    minHeight: { xs: "40vh", md: "60vh" },
                     borderRadius: "20px",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
-                    px: 4,
+                    px: { xs: 2, sm: 4 },
+                    py: { xs: 6, md: 0 },
                     textAlign: "center",
                     color: "#FFFFFF",
                     position: "relative",

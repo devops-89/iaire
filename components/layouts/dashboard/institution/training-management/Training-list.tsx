@@ -102,9 +102,10 @@ const InstitutionTrainingList = () => {
       <Box>
         <Card sx={{ p: 2 }}>
           <Stack
-            direction={"row"}
-            alignItems={"center"}
+            direction={{ xs: "column", sm: "row" }}
+            alignItems={{ xs: "flex-start", sm: "center" }}
             justifyContent={"space-between"}
+            spacing={{ xs: 2, sm: 0 }}
           >
             <Breadcrumb
               title="Training Management"
@@ -120,42 +121,6 @@ const InstitutionTrainingList = () => {
               ]}
             />
 
-            {/* {isMember ? (
-              <BeamButton
-                sx={{
-                  backgroundColor: COLORS.PRIMARY_NAVY,
-                  color: "#fff",
-                  fontFamily: montserrat.style.fontFamily,
-                  fontWeight: 600,
-                  fontSize: "14px",
-                  borderRadius: "8px",
-                  "&:hover": {
-                    backgroundColor: COLORS.ACCENT_TAN,
-                    color: COLORS.PRIMARY_NAVY,
-                  },
-                  p: 1.5,
-                }}
-                onClick={assignTeachers}
-              >
-                Assign Teachers
-              </BeamButton>
-            ) : (
-              <BeamButton
-                sx={{
-                  backgroundColor: "#7e7e7e",
-                  color: "#fff",
-                  fontFamily: montserrat.style.fontFamily,
-                  fontWeight: 600,
-                  fontSize: "14px",
-                  borderRadius: "8px",
-                  p: 1.5,
-                }}
-                endIcon={<Lock />}
-                onClick={() => showModal(<Plans role={USER_ROLES.SCHOOL} />)}
-              >
-                Unlock Feature
-              </BeamButton>
-            )} */}
             <BeamButton
               sx={{
                 backgroundColor: COLORS.PRIMARY_NAVY,
@@ -164,11 +129,9 @@ const InstitutionTrainingList = () => {
                 fontWeight: 600,
                 fontSize: "14px",
                 borderRadius: "20px",
-                // "&:hover": {
-                //   backgroundColor: COLORS.ACCENT_TAN,
-                //   color: COLORS.PRIMARY_NAVY,
-                // },
                 p: 1.5,
+                whiteSpace: "nowrap",
+                width: { xs: "100%", sm: "auto" },
               }}
               onClick={assignTeachers}
             >

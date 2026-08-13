@@ -1,6 +1,6 @@
 "use client";
 import { COLORS } from "@/utils/enum";
-import { Person, PersonOutline, Logout } from "@mui/icons-material";
+import { Person, PersonOutline, Logout, Menu as MenuIcon } from "@mui/icons-material";
 import {
   Avatar,
   Box,
@@ -9,10 +9,12 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
+  IconButton,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSignup } from "@/store/useSignup";
+import useSidebar from "@/store/useSidebar";
 
 const StudentHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,6 +22,7 @@ const StudentHeader = () => {
   const open = Boolean(anchorEl);
   const router = useRouter();
   const { data: studentData } = useSignup();
+  const { toggleSidebar } = useSidebar();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,11 +50,11 @@ const StudentHeader = () => {
       sx={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-end",
+        justifyContent: { xs: "space-between", md: "flex-end" },
         position: "fixed",
         top: 0,
         right: 0,
-        left: "250px", // Align with sidebar width
+        left: { xs: 0, md: "250px" }, // Align with sidebar width
         height: "70px",
         backgroundColor: isScrolled
           ? "rgba(255, 255, 255, 0.72)"
@@ -66,6 +69,12 @@ const StudentHeader = () => {
         px: 4,
       }}
     >
+      <IconButton
+        onClick={toggleSidebar}
+        sx={{ display: { xs: "block", md: "none" }, color: COLORS.PRIMARY_NAVY }}
+      >
+        <MenuIcon />
+      </IconButton>
       <Avatar
         onClick={handleClick}
         src={studentData?.profileImageDownloadUrl || studentData?.profileImage || ""}

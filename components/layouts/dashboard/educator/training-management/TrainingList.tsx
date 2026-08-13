@@ -100,9 +100,10 @@ const TrainingList = () => {
       <Box>
         <Card sx={{ p: 2 }}>
           <Stack
-            direction={"row"}
-            alignItems={"center"}
+            direction={{ xs: "column", sm: "row" }}
+            alignItems={{ xs: "flex-start", sm: "center" }}
             justifyContent={"space-between"}
+            spacing={{ xs: 2, sm: 0 }}
           >
             <Breadcrumb
               title="Training Management"
@@ -129,6 +130,8 @@ const TrainingList = () => {
                     backgroundColor: "#e08e26",
                   },
                   p: 1.5,
+                  whiteSpace: "nowrap",
+                  width: { xs: "100%", sm: "auto" },
                 }}
                 onClick={handleModalOpen}
               >

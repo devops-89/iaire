@@ -1,6 +1,6 @@
 "use client";
 import { COLORS } from "@/utils/enum";
-import { Person, PersonOutline, Logout } from "@mui/icons-material";
+import { Person, PersonOutline, Logout, Menu as MenuIcon } from "@mui/icons-material";
 import {
   Avatar,
   Box,
@@ -9,15 +9,18 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
+  IconButton,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import useSidebar from "@/store/useSidebar";
 
 const EducatorHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const router = useRouter();
+  const { toggleSidebar } = useSidebar();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,11 +48,11 @@ const EducatorHeader = () => {
       sx={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "flex-end",
+        justifyContent: { xs: "space-between", md: "flex-end" },
         position: "fixed",
         top: 0,
         right: 0,
-        left: "250px",
+        left: { xs: 0, md: "250px" },
         height: "70px",
         backgroundColor: isScrolled
           ? "rgba(255, 255, 255, 0.72)"
@@ -64,6 +67,12 @@ const EducatorHeader = () => {
         px: 4,
       }}
     >
+      <IconButton
+        onClick={toggleSidebar}
+        sx={{ display: { xs: "block", md: "none" }, color: COLORS.PRIMARY_NAVY }}
+      >
+        <MenuIcon />
+      </IconButton>
       <Avatar
         onClick={handleClick}
         sx={{
