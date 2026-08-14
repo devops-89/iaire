@@ -13,7 +13,7 @@ const InstitutionDashboards = () => {
   const { dashboardData, loading } = useSchoolDashboard();
 
   const { institutionData } = useSignup();
-  console.log("institutionData", institutionData);
+  // console.log("institutionData", institutionData);
 
   return (
     <Stack spacing={4} sx={{ width: "100%", pb: 4 }}>
@@ -49,8 +49,7 @@ const InstitutionDashboards = () => {
             color: "#2B3447",
           }}
         >
-          {institutionData?.school?.membershipCode ||
-            institutionData?.membershipCode}
+          Membership Id : {institutionData?.userId}
         </Typography>
         <Typography
           sx={{

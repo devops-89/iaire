@@ -13,7 +13,8 @@ import {
   ListItemAvatar,
   ListItemText,
   Stack,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { roboto, montserrat, inter } from "@/utils/fonts";
@@ -35,11 +36,14 @@ import {
 import ProfileCard from "./components/Profile-Card";
 import { EDUCATOR_DETAILS_RESPONSE } from "@/utils/type";
 import BeamButton from "@/components/widgets/BeamButton";
+import { useModal } from "@/store/useModal";
+import IssueNocModal from "@/components/modals/school/IssueNocModal";
 
 const EducatorDetails = () => {
   const params = useParams();
   const router = useRouter();
   const id = params?.slug as string;
+  const { showModal } = useModal();
 
   const { data, loading } = useGetUserDetailsById(id);
   const educator = data as any;
@@ -75,13 +79,6 @@ const EducatorDetails = () => {
               <BeamButton
                 startIcon={<ArrowBack />}
                 onClick={() => router.back()}
-                sx={{
-                  textTransform: "none",
-                  color: "#000",
-                  fontFamily: montserrat.style.fontFamily,
-                  fontWeight: 600,
-                  mb: 2,
-                }}
               >
                 Back to Educator Management
               </BeamButton>
@@ -98,6 +95,9 @@ const EducatorDetails = () => {
                 >
                   Educator Details
                 </Typography>
+                <BeamButton onClick={() => showModal(<IssueNocModal educatorId={id} />)}>
+                  Issue NOC
+                </BeamButton>
               </Stack>
             </Box>
 

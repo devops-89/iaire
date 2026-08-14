@@ -9,7 +9,8 @@ import {
   Grid,
   IconButton,
   InputAdornment,
-  TextField} from "@mui/material";
+  TextField,
+} from "@mui/material";
 import { FormikProps } from "formik";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
@@ -29,6 +30,12 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
   }, [formik.values.phone, formik.values.countryCode]);
 
   const [preview, setPreview] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof formik.values.profileImage === "string") {
+      setPreview(formik.values.profileImage);
+    }
+  }, [formik.values.profileImage]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,11 +96,12 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
         <BeamButton
           onClick={() => fileInputRef.current?.click()}
           sx={{
-            textTransform: "none",
-            fontFamily: newBlack_medium.style.fontFamily,
-            color: COLORS.PRIMARY_NAVY,
+            // textTransform: "none",
+            // fontFamily: newBlack_medium.style.fontFamily,
+            // color: COLORS.PRIMARY_NAVY,
             mt: 1,
           }}
+          variant="outlined"
         >
           Upload Profile Image
         </BeamButton>
@@ -124,6 +132,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
         <TextField
           label="Email"
           fullWidth
+          disabled
           id="email"
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
@@ -153,6 +162,7 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
       </Grid>
       <Grid size={{ xs: 12, md: 6 }}>
         <Autocomplete
+          value={formik.values.gender || null}
           renderInput={(params) => (
             <TextField
               {...params}

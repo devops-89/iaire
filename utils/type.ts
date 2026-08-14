@@ -848,7 +848,7 @@ export interface UPDATE_PROFILE_FORM_PROPS {
   password: string;
   confirmPassword?: string;
   email: string;
-  profileImage: File | null;
+  profileImage: File | string | null;
   grade: string;
   fatherName: string;
   fatherEmail: string;

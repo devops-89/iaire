@@ -187,12 +187,12 @@ export const MEMBER_TYPE = [
 export const TEACHER_HEADER = [
   "Id",
   "Full Name",
-
+  "Email",
   "Phone",
   // "Subject",
   // "Gender",
   "Status",
-  "Membership Id",
+  // "Membership Id",
   "Actions",
 ];
 
@@ -904,6 +904,17 @@ export const TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW = [
   "Interview Date",
   "Status",
   "Actions",
+];
+
+export const INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW = [
+  "Id",
+  "Teacher Name",
+  "Teacher Email",
+  "Category",
+  "Training Mode",
+  "Start Date",
+  "End Date",
+  "Status",
 ];
 
 export const SCHOOL_TRAINING_NOMINATION_STATUS = [
@@ -2774,4 +2785,13 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer:
       "Schools begin by registering for IAIRE Institutional Membership and nominating a teacher for training and certification under either the Innovation or Research pathway. From there, the certified teacher can establish a student innovation or research team and begin the structured programme.",
   },
+];
+
+export const REPORT_CATEGORY = [
+  "Misconduct",
+  "Policy Violation",
+  "Professional Conduct",
+  "Attendance/Compliance",
+  "Academic Conduct",
+  "Other",
 ];

@@ -47,15 +47,19 @@ import {
   Typography,
 } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
 import Plans from "@/components/modals/common/Plans";
 import BeamButton from "@/components/widgets/BeamButton";
 import RejectReason from "@/components/modals/school/RejectReason";
+import IssueNocModal from "@/components/modals/school/IssueNocModal";
+import ReportEducatorModal from "@/components/modals/school/ReportEducatorModal";
 
 const statusOptions = ["Member", "Not a Member"];
 
 const EducatorList = () => {
+  const router = useRouter();
   const { showModal } = useModal();
   const { setSnackbar } = useSnackbar();
 
@@ -105,22 +109,17 @@ const EducatorList = () => {
 
   const { userData, loading, fetchUserData } = useGetAllUser();
 
-  console.log("user datat", userData);
-
   const listItems = [
     {
       label: "Issue NOC",
+      onclick: () =>
+        showModal(<IssueNocModal educatorId={selectedTeacher?.id} />),
     },
-    // {
-    //   label: "Nominate For Training",
-    //   onclick: handleShowTeacherNominationModal,
-    // },
-    {
-      label: "View Profile",
-      // onclick: () => showModal(<ViewTeacherProfile teacherId={selectedTeacher?.id ?? null} />),
-    },
+
     {
       label: "Report",
+      onclick: () =>
+        showModal(<ReportEducatorModal educatorId={selectedTeacher?.id} />),
     },
   ];
 
@@ -292,30 +291,42 @@ const EducatorList = () => {
               <TableBody>
                 {userData?.length ? (
                   userData?.map((teacher: TEACHER_REPONSE_PROPS) => (
-                    <TableRow key={teacher.id}>
+                    <TableRow
+                      key={teacher.id}
+                      hover
+                      sx={{ cursor: "pointer" }}
+                      onClick={() =>
+                        router.push(
+                          `/dashboard/institution/educator-management/${teacher.id}/view-educator`,
+                        )
+                      }
+                    >
                       <TableCell>{teacher.userId}</TableCell>
                       <TableCell>
-                        <Link
-                          href={`/dashboard/institution/educator-management/${teacher.id}/view-educator`}
-                          style={{ color: "inherit" }}
+                        <Typography
+                          sx={{
+                            color: COLORS.BLACK,
+                            fontWeight: 500,
+                            fontSize: 15,
+                          }}
                         >
-                          <Typography
-                            sx={{
-                              color: COLORS.BLACK,
-                              fontWeight: 500,
-                              fontSize: 15,
-                            }}
-                          >
-                            {teacher?.firstName + " " + teacher?.lastName}
-                          </Typography>
-                          <Typography sx={{ fontSize: 12 }}>
-                            {teacher.email}
-                          </Typography>
-                        </Link>
+                          {teacher?.firstName + " " + teacher?.lastName}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Typography
+                          sx={{
+                            color: COLORS.BLACK,
+                            fontWeight: 500,
+                            fontSize: 15,
+                          }}
+                        >
+                          {teacher?.email}
+                        </Typography>
                       </TableCell>
                       <TableCell>{teacher?.phone}</TableCell>
 
-                      <TableCell>
+                      <TableCell onClick={(e) => e.stopPropagation()}>
                         {teacher?.approvalStatus ===
                         APPROVAL_STATUS.APPROVED ? (
                           <Chip
@@ -378,13 +389,17 @@ const EducatorList = () => {
                           </FormControl>
                         )}
                       </TableCell>
-                      <TableCell>
-                        {/* {teacher?.memberships[0]?.membershipCode || "--"} */}
+                      {/* <TableCell>
                         {teacher?.membershipCode || "--"}
-                      </TableCell>
+                      </TableCell> */}
 
-                      <TableCell>
-                        <IconButton onClick={(e) => handleClick(e, teacher)}>
+                      <TableCell onClick={(e) => e.stopPropagation()}>
+                        <IconButton
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleClick(e, teacher);
+                          }}
+                        >
                           <MoreVert />
                         </IconButton>
                       </TableCell>
@@ -430,7 +445,13 @@ const EducatorList = () => {
         >
           <List>
             {listItems.map((val, i) => (
-              <ListItemButton key={i}>
+              <ListItemButton
+                key={i}
+                onClick={() => {
+                  if (val.onclick) val.onclick();
+                  setAnchorEl(null);
+                }}
+              >
                 <ListItemText primary={val.label} />
               </ListItemButton>
             ))}

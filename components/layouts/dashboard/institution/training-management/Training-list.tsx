@@ -9,8 +9,7 @@ import { useSignup } from "@/store/useSignup";
 import {
   SCHOOL_TRAINING_LIST_TABS,
   SCHOOL_TRAINING_NOMINATION_STATUS,
-  TRAINING_NOMINATION_TABLE_HEADER,
-  TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW,
+  INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW,
 } from "@/utils/constant";
 import {
   COLORS,
@@ -26,7 +25,7 @@ import {
   roboto,
 } from "@/utils/fonts";
 import { TRAINING_NOMINATION_RESPONSE } from "@/utils/type";
-import { Lock, MoreVert } from "@mui/icons-material";
+import { Lock } from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -154,7 +153,7 @@ const InstitutionTrainingList = () => {
               <Table>
                 <TableHead>
                   <TableRow>
-                    {TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW.map(
+                    {INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW.map(
                       (item, idx) => (
                         <TableCell
                           key={idx}
@@ -173,7 +172,7 @@ const InstitutionTrainingList = () => {
                   {loading ? (
                     <TableRow>
                       <TableCell
-                        colSpan={TRAINING_NOMINATION_TABLE_HEADER.length}
+                        colSpan={INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW.length}
                         align="center"
                       >
                         <Atom color={COLORS.PRIMARY_NAVY} size={"small"} />
@@ -189,6 +188,22 @@ const InstitutionTrainingList = () => {
                           }}
                         >
                           {val?.id}
+                        </TableCell>
+                        <TableCell
+                          sx={{
+                            fontSize: 13,
+                            fontFamily: newBlack_medium.style.fontFamily,
+                          }}
+                        >
+                          {val?.teacher?.fullName || "N/A"}
+                        </TableCell>
+                        <TableCell
+                          sx={{
+                            fontSize: 13,
+                            fontFamily: newBlack_medium.style.fontFamily,
+                          }}
+                        >
+                          {val?.teacher?.email || "N/A"}
                         </TableCell>
                         <TableCell
                           sx={{
@@ -226,18 +241,6 @@ const InstitutionTrainingList = () => {
                           )}
                         </TableCell>
 
-                        <TableCell
-                          sx={{
-                            fontSize: 13,
-                            fontFamily: newBlack_medium.style.fontFamily,
-                          }}
-                        >
-                          {val.interviewScheduledAt
-                            ? moment(val.interviewScheduledAt)?.format(
-                                "YYYY,MMM DD , hh:mm A",
-                              )
-                            : "--"}
-                        </TableCell>
 
                         {role === USER_ROLES.INSTITUTION ? (
                           val.status ===
@@ -333,17 +336,12 @@ const InstitutionTrainingList = () => {
                               "N/A"}
                           </TableCell>
                         )}
-                        <TableCell>
-                          <IconButton>
-                            <MoreVert />
-                          </IconButton>
-                        </TableCell>
                       </TableRow>
                     ))
                   ) : (
                     <TableRow>
                       <TableCell
-                        colSpan={TRAINING_NOMINATION_TABLE_HEADER.length}
+                        colSpan={INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW.length}
                         align="center"
                       >
                         No nominations found

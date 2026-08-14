@@ -41,8 +41,7 @@ const Login2 = () => {
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
   const { setSnackbar } = useSnackbar();
 
-  const handleForgotPassword = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
+  const handleForgotPassword = () => {
     setIsForgotPasswordOpen(true);
   };
 
@@ -197,6 +196,7 @@ const Login2 = () => {
                         color: "rgba(0, 0, 0, 0.6)",
                         cursor: "pointer",
                       }}
+                      onClick={handleForgotPassword}
                     >
                       Forgot Password?
                     </Typography>

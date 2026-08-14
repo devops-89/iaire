@@ -32,7 +32,7 @@ const UpdateProfileLayout = () => {
       password: "",
       confirmPassword: "",
       email: data?.email || "",
-      profileImage: null,
+      profileImage: data?.profileImage || null,
       grade: data?.grade || "",
       fatherName: data?.fatherName || "",
       fatherEmail: data?.fatherEmail || "",

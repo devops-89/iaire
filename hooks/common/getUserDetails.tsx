@@ -76,7 +76,7 @@ export const useGetUserDetailsPublic = (userId: string | null) => {
       await userControllers
         .getUserDetailsPublic({ userId: userId })
         .then((res) => {
-          setData(res.data.data);
+          setData(res?.data?.data || res?.data || res?.user || res);
           setLoading(false);
         })
         .catch((err) => {
