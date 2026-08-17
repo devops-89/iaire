@@ -154,7 +154,7 @@ const AddEducatorcomponent = () => {
 
         <form onSubmit={formik.handleSubmit}>
           <Grid container spacing={3} sx={{ mt: 4 }}>
-            <Grid
+            {/* <Grid
               size={{
                 xs: 12,
                 md:
@@ -184,7 +184,7 @@ const AddEducatorcomponent = () => {
                   formik.setFieldValue("memberType", value);
                 }}
               />
-            </Grid>
+            </Grid> */}
             {formik.values.memberType === MEMBER_TYPES.EXISTING_MEMBER && (
               <Grid size={{ xs: 12, md: 6 }}>
                 <TextField

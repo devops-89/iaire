@@ -136,7 +136,7 @@ export const institutionSignupValidationSchema = Yup.object({
 });
 
 export const addEducatorValidationSchema = Yup.object({
-  memberType: Yup.string().required("Please Select Member Type"),
+  // memberType: Yup.string().required("Please Select Member Type"),
   firstName: Yup.string().required("First name is required"),
   lastName: Yup.string().required("Last name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -224,7 +224,9 @@ export const addStartupValidationSchema = Yup.object({
       return size <= 5;
     })
     .required("Template is required"),
-  videoUrl: Yup.string().url("Must be a valid URL").required("Video URL is required"),
+  videoUrl: Yup.string()
+    .url("Must be a valid URL")
+    .required("Video URL is required"),
 });
 
 export const educatorSignupValidationSchema = Yup.object({

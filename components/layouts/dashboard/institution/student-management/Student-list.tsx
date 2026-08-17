@@ -1,5 +1,6 @@
 "use client";
 import Recommend from "@/components/modals/student/Recommend";
+import BeamButton from "@/components/widgets/BeamButton";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import {
   useGetAllUser,
@@ -12,13 +13,11 @@ import { STUDENT_HEADER_DATA } from "@/utils/constant";
 import { APPROVAL_STATUS, COLORS, PLAN_STATUS, USER_ROLES } from "@/utils/enum";
 import {
   aloeveraDisplay_medium,
-  newBlack_light,
   newBlack_medium,
   newBlack_semiBold,
-  roboto,
 } from "@/utils/fonts";
 import { STUDENT_RESPONSE_PROPS } from "@/utils/type";
-import { Add, Lock, MoreVert } from "@mui/icons-material";
+import { Add, MoreVert } from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -38,13 +37,12 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
-import Plans from "@/components/modals/common/Plans";
-import BeamButton from "@/components/widgets/BeamButton";
 
 const StudentList = () => {
   const { institutionData } = useSignup();

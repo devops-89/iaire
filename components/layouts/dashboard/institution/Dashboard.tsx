@@ -13,7 +13,6 @@ const InstitutionDashboards = () => {
   const { dashboardData, loading } = useSchoolDashboard();
 
   const { institutionData } = useSignup();
-  // console.log("institutionData", institutionData);
 
   return (
     <Stack spacing={4} sx={{ width: "100%", pb: 4 }}>
@@ -24,6 +23,7 @@ const InstitutionDashboards = () => {
               fontSize: 30,
               fontFamily: roboto.style.fontFamily,
               fontWeight: 700,
+              textTransform: "capitalize",
             }}
           >
             {institutionData?.school?.name || institutionData?.institutionName}
