@@ -1,15 +1,15 @@
 "use client";
-import Plans from "@/components/modals/common/Plans";
 import RejectReason from "@/components/modals/school/RejectReason";
+import BeamButton from "@/components/widgets/BeamButton";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { useTrainingList } from "@/hooks/mentor/useNominateTeacher";
 import { useApprovedNominateTeacher } from "@/hooks/school/useTeacherAdd";
 import { useModal } from "@/store/useModal";
 import { useSignup } from "@/store/useSignup";
 import {
+  INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW,
   SCHOOL_TRAINING_LIST_TABS,
   SCHOOL_TRAINING_NOMINATION_STATUS,
-  INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW,
 } from "@/utils/constant";
 import {
   COLORS,
@@ -25,11 +25,9 @@ import {
   roboto,
 } from "@/utils/fonts";
 import { TRAINING_NOMINATION_RESPONSE } from "@/utils/type";
-import { Lock } from "@mui/icons-material";
 import {
   Box,
   Card,
-  IconButton,
   MenuItem,
   Select,
   Stack,
@@ -47,7 +45,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
 import InstitutionDashboardLayout from "../Index";
-import BeamButton from "@/components/widgets/BeamButton";
 
 const InstitutionTrainingList = () => {
   const { showModal } = useModal();
@@ -172,7 +169,9 @@ const InstitutionTrainingList = () => {
                   {loading ? (
                     <TableRow>
                       <TableCell
-                        colSpan={INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW.length}
+                        colSpan={
+                          INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW.length
+                        }
                         align="center"
                       >
                         <Atom color={COLORS.PRIMARY_NAVY} size={"small"} />
@@ -240,7 +239,6 @@ const InstitutionTrainingList = () => {
                             "YYYY,MMM DD",
                           )}
                         </TableCell>
-
 
                         {role === USER_ROLES.INSTITUTION ? (
                           val.status ===
@@ -341,7 +339,9 @@ const InstitutionTrainingList = () => {
                   ) : (
                     <TableRow>
                       <TableCell
-                        colSpan={INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW.length}
+                        colSpan={
+                          INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW.length
+                        }
                         align="center"
                       >
                         No nominations found

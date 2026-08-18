@@ -6,7 +6,8 @@ import {
   Grid,
   TextField,
   CircularProgress,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
@@ -40,6 +41,7 @@ const AddTeams = () => {
       type: "",
       mentorId: "",
       studentIds: [],
+      assistantMentorId: "",
     },
     validationSchema: addTeamValidationSchema,
     onSubmit: async (values) => {
@@ -194,6 +196,35 @@ const AddTeams = () => {
                 <TextField
                   {...params}
                   label="Select Students"
+                  error={
+                    formik.touched.studentIds &&
+                    Boolean(formik.errors.studentIds)
+                  }
+                  helperText={
+                    formik.touched.studentIds &&
+                    (formik.errors.studentIds as string)
+                  }
+                  sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
+                />
+              )}
+            />
+          </Grid>
+          <Grid size={12}>
+            <Autocomplete
+              onOpen={handleOpenStudent}
+              options={userData || []}
+              getOptionLabel={(option: STUDENT_RESPONSE_PROPS) =>
+                `${option.fullName || option.firstName + " " + option.lastName} (${option.email})`
+              }
+              isOptionEqualToValue={(option, value) => option.id === value.id}
+              loading={loading}
+              onChange={(_, newValue) =>
+                formik.setFieldValue("assistantMentorId", newValue?.id)
+              }
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Select Assistant Mentor"
                   error={
                     formik.touched.studentIds &&
                     Boolean(formik.errors.studentIds)

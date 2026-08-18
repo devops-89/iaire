@@ -95,7 +95,9 @@ const EducatorDetails = () => {
                 >
                   Educator Details
                 </Typography>
-                <BeamButton onClick={() => showModal(<IssueNocModal educatorId={id} />)}>
+                <BeamButton
+                  onClick={() => showModal(<IssueNocModal educatorId={id} />)}
+                >
                   Issue NOC
                 </BeamButton>
               </Stack>

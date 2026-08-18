@@ -48,13 +48,14 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
 import Plans from "@/components/modals/common/Plans";
 import BeamButton from "@/components/widgets/BeamButton";
 import RejectReason from "@/components/modals/school/RejectReason";
 import IssueNocModal from "@/components/modals/school/IssueNocModal";
 import ReportEducatorModal from "@/components/modals/school/ReportEducatorModal";
+import { useDebounceCallback } from "@/hooks/common/useDeboounce";
 
 const statusOptions = ["Member", "Not a Member"];
 
@@ -108,6 +109,7 @@ const EducatorList = () => {
   };
 
   const { userData, loading, fetchUserData } = useGetAllUser();
+  const [search, setSearch] = useState("");
 
   const listItems = [
     {
@@ -122,6 +124,15 @@ const EducatorList = () => {
         showModal(<ReportEducatorModal educatorId={selectedTeacher?.id} />),
     },
   ];
+
+  const debouncedFetchUsers = useDebounceCallback((value: string) => {
+    fetchUserData({ ...data, search: value });
+  }, 500);
+
+  const searchHandler = (e: any) => {
+    setSearch(e.target.value);
+    debouncedFetchUsers(e.target.value);
+  };
 
   const { institutionData } = useSignup();
   // const isMember =
@@ -254,9 +265,12 @@ const EducatorList = () => {
           </Grid>
           <Grid size={9}>
             <TextField
-              label="Search"
+              // label="Search"
               fullWidth
               sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
+              onChange={searchHandler}
+              value={search}
+              placeholder="Search by name, email or mobile number..."
             />
           </Grid>
         </Grid>

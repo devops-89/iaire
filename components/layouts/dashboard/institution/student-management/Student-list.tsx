@@ -314,9 +314,9 @@ const StudentList = () => {
                           </FormControl>
                         )}
                       </TableCell>
-                      <TableCell>
+                      {/* <TableCell>
                         {val.memberships?.[0]?.membershipCode || "--"}
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell>
                         <IconButton onClick={(e) => handlePopover(e, val)}>
                           <MoreVert />

@@ -175,7 +175,7 @@ export const STUDENT_HEADER_DATA = [
   "Grade",
   "Gender",
   "Status",
-  "Membership Id",
+  // "Membership Id",
   "Actions",
 ];
 

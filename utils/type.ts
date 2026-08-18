@@ -212,6 +212,7 @@ export interface ALL_USER_REQUEST_PROPS {
   limit?: number;
   role?: string;
   approvalStatus?: string | null;
+  search?: string;
 }
 
 export interface TEACHER_REPONSE_PROPS {

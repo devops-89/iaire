@@ -12,6 +12,7 @@ export const useGetAllUser = () => {
     limit,
     role,
     approvalStatus,
+    search,
   }: ALL_USER_REQUEST_PROPS) => {
     try {
       setLoading(true);
@@ -20,6 +21,7 @@ export const useGetAllUser = () => {
         limit,
         role,
         approvalStatus,
+        search,
       });
       setUserData(result?.data);
     } catch (error) {

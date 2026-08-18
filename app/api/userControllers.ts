@@ -32,10 +32,11 @@ export const userControllers = {
     limit,
     role,
     approvalStatus,
+    search,
   }: ALL_USER_REQUEST_PROPS) => {
     try {
       const params = Object.fromEntries(
-        Object.entries({ page, limit, role, approvalStatus }).filter(
+        Object.entries({ page, limit, role, approvalStatus, search }).filter(
           ([_, v]) => v !== null && v !== undefined && v !== "",
         ),
       );
