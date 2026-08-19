@@ -136,7 +136,8 @@ const MentorReview = () => {
         zipCode: educatorData.postalCode,
         isdCode: educatorData.isdCode,
         profileImage: educatorData.profileImage,
-        experienceYear: educatorData.experienceYear || educatorData.experienceYears,
+        experienceYear:
+          educatorData.experienceYear || educatorData.experienceYears,
         qualification: educatorData.qualification,
         organization: educatorData.organization,
         bio: educatorData.bio,
@@ -165,7 +166,10 @@ const MentorReview = () => {
     const val = educatorData?.profileImage as any;
     if (!val) return undefined;
     if (typeof val === "string") return val;
-    if (typeof Blob !== "undefined" && (val instanceof Blob || val instanceof File)) {
+    if (
+      typeof Blob !== "undefined" &&
+      (val instanceof Blob || val instanceof File)
+    ) {
       return URL.createObjectURL(val);
     }
     return undefined;
@@ -294,10 +298,17 @@ const MentorReview = () => {
           container
           spacing={2.5}
           alignItems="stretch"
-          sx={{ flex: 1, minHeight: 0, height: { xs: "auto", md: "calc(100vh - 85px)" } }}
+          sx={{
+            flex: 1,
+            minHeight: 0,
+            height: { xs: "auto", md: "calc(100vh - 85px)" },
+          }}
         >
           {/* Left Column: Avatar & Summary Profile Card */}
-          <Grid size={{ xs: 12, md: 4 }} sx={{ height: { xs: "auto", md: "100%" } }}>
+          <Grid
+            size={{ xs: 12, md: 4 }}
+            sx={{ height: { xs: "auto", md: "100%" } }}
+          >
             <Card
               sx={{
                 height: "100%",
@@ -322,7 +333,8 @@ const MentorReview = () => {
                   left: 0,
                   right: 0,
                   height: "3px",
-                  background: "linear-gradient(90deg, #2563EB 0%, #D97706 100%)",
+                  background:
+                    "linear-gradient(90deg, #2563EB 0%, #D97706 100%)",
                 },
               }}
             >
@@ -391,7 +403,10 @@ const MentorReview = () => {
               </Box>
 
               <Box sx={{ width: "100%", mt: 2 }}>
-                <SignupStepper activeStep={1} steps={["Account Details", "Verification"]} />
+                <SignupStepper
+                  activeStep={1}
+                  steps={["Account Details", "Verification"]}
+                />
                 <BeamButton
                   fullWidth
                   variant="outlined"
@@ -422,7 +437,10 @@ const MentorReview = () => {
           </Grid>
 
           {/* Right Column: Detailed Breakdown Card */}
-          <Grid size={{ xs: 12, md: 8 }} sx={{ height: { xs: "auto", md: "100%" } }}>
+          <Grid
+            size={{ xs: 12, md: 8 }}
+            sx={{ height: { xs: "auto", md: "100%" } }}
+          >
             <Card
               sx={{
                 height: "100%",
@@ -445,11 +463,19 @@ const MentorReview = () => {
                   left: 0,
                   right: 0,
                   height: "3px",
-                  background: "linear-gradient(90deg, #D97706 0%, #059669 100%)",
+                  background:
+                    "linear-gradient(90deg, #D97706 0%, #059669 100%)",
                 },
               }}
             >
-              <Box sx={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flex: 1,
+                  minHeight: 0,
+                }}
+              >
                 <Box sx={{ mb: 1.5, flexShrink: 0 }}>
                   <Typography
                     variant="h2"
@@ -472,7 +498,8 @@ const MentorReview = () => {
                       color: "#64748B",
                     }}
                   >
-                    Please verify your educator details before completing registration.
+                    Please verify your educator details before completing
+                    registration.
                   </Typography>
                 </Box>
 
@@ -484,7 +511,10 @@ const MentorReview = () => {
                     pr: 0.5,
                     scrollbarWidth: "thin",
                     "&::-webkit-scrollbar": { width: 4 },
-                    "&::-webkit-scrollbar-thumb": { bgcolor: "#CBD5E1", borderRadius: 2 },
+                    "&::-webkit-scrollbar-thumb": {
+                      bgcolor: "#CBD5E1",
+                      borderRadius: 2,
+                    },
                   }}
                 >
                   <Grid container spacing={1.5}>
@@ -495,11 +525,23 @@ const MentorReview = () => {
                       label="Full Name"
                       value={`${educatorData.firstName || ""} ${educatorData.lastName || ""}`.trim()}
                     />
-                    <DetailBox label="Email Address" value={educatorData.email} />
-                    <DetailBox label="Phone Number" value={educatorData.phone} />
+                    <DetailBox
+                      label="Email Address"
+                      value={educatorData.email}
+                    />
+                    <DetailBox
+                      label="Phone Number"
+                      value={educatorData.phone}
+                    />
                     <DetailBox label="Gender" value={educatorData.gender} />
-                    <DetailBox label="Country" value={educatorData.country?.name} />
-                    <DetailBox label="State / Province" value={educatorData.state} />
+                    <DetailBox
+                      label="Country"
+                      value={educatorData.country?.name}
+                    />
+                    <DetailBox
+                      label="State / Province"
+                      value={educatorData.state}
+                    />
                     <DetailBox label="City" value={educatorData.city} />
 
                     {hasSchoolDetails && (
@@ -508,8 +550,14 @@ const MentorReview = () => {
                           <SectionHeader title="School & Education Details" />
                         </Grid>
                         <DetailBox label="Education Board" value={boardName} />
-                        <DetailBox label="Institution / School" value={schoolName} />
-                        <DetailBox label="ISD Code" value={educatorData.isdCode} />
+                        <DetailBox
+                          label="Institution / School"
+                          value={schoolName}
+                        />
+                        <DetailBox
+                          label="ISD Code"
+                          value={educatorData.isdCode}
+                        />
                       </>
                     )}
 
@@ -518,17 +566,27 @@ const MentorReview = () => {
                         <Grid size={12}>
                           <SectionHeader title="Academic & Professional" />
                         </Grid>
-                        <DetailBox label="Qualification" value={educatorData.qualification} />
+                        <DetailBox
+                          label="Qualification"
+                          value={educatorData.qualification}
+                        />
                         <DetailBox
                           label="Years of Experience"
                           value={
-                            (educatorData.experienceYear || educatorData.experienceYears)
+                            educatorData.experienceYear ||
+                            educatorData.experienceYears
                               ? `${educatorData.experienceYear || educatorData.experienceYears} Years`
                               : null
                           }
                         />
-                        <DetailBox label="Current Organization" value={educatorData.organization} />
-                        <DetailBox label="Bio Summary" value={educatorData.bio} />
+                        <DetailBox
+                          label="Current Organization"
+                          value={educatorData.organization}
+                        />
+                        <DetailBox
+                          label="Bio Summary"
+                          value={educatorData.bio}
+                        />
                       </>
                     )}
                   </Grid>
@@ -546,7 +604,8 @@ const MentorReview = () => {
                   onClick={handleCheckout}
                   sx={{
                     height: "46px",
-                    background: "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
+                    background:
+                      "linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)",
                     color: "#FFFFFF",
                     borderRadius: "14px",
                     fontWeight: 700,
@@ -555,7 +614,8 @@ const MentorReview = () => {
                     fontFamily: montserrat.style.fontFamily,
                     boxShadow: "0 8px 20px -4px rgba(37, 99, 235, 0.4)",
                     "&:hover": {
-                      background: "linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)",
+                      background:
+                        "linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)",
                       boxShadow: "0 12px 25px -4px rgba(37, 99, 235, 0.5)",
                       transform: "translateY(-1px)",
                     },

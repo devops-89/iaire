@@ -19,7 +19,7 @@ import { useRouter } from "next/navigation";
 
 const TeamList = () => {
   const { showModal } = useModal();
-  const { institutionData } = useSignup();
+  const { institutionData, educatorData } = useSignup();
   const isMember =
     (institutionData?.payments || []).length > 0 &&
     (institutionData?.payments || []).some(
@@ -94,7 +94,8 @@ const TeamList = () => {
                 Unlock Feature
               </BeamButton>
             )} */}
-            {institutionData?.role === USER_ROLES.SCHOOL_ADMIN && (
+            {(institutionData?.role === USER_ROLES.SCHOOL_ADMIN ||
+              educatorData?.role === USER_ROLES.SCHOOL_ADMIN) && (
               <BeamButton
                 sx={{
                   backgroundColor: COLORS.PRIMARY_NAVY,
