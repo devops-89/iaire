@@ -1,4 +1,8 @@
-import { ALL_USER_REQUEST_PROPS, InstitutionInfo } from "@/utils/type";
+import {
+  ALL_USER_REQUEST_PROPS,
+  InstitutionInfo,
+  recommendHeadBoyOrGirl,
+} from "@/utils/type";
 import { basePublicApi, userPublicApi, userSecuredApi } from "./config";
 import { APPROVAL_STATUS } from "@/utils/enum";
 
@@ -33,12 +37,18 @@ export const userControllers = {
     role,
     approvalStatus,
     search,
+    isComplete,
   }: ALL_USER_REQUEST_PROPS) => {
     try {
       const params = Object.fromEntries(
-        Object.entries({ page, limit, role, approvalStatus, search }).filter(
-          ([_, v]) => v !== null && v !== undefined && v !== "",
-        ),
+        Object.entries({
+          page,
+          limit,
+          role,
+          approvalStatus,
+          search,
+          isComplete,
+        }).filter(([_, v]) => v !== null && v !== undefined && v !== ""),
       );
       const result = await userSecuredApi.get("/all", {
         params,
@@ -87,6 +97,15 @@ export const userControllers = {
       return result.data;
     } catch (error) {
       throw error;
+    }
+  },
+  recommendHeadBoyOrGirl: async (data: recommendHeadBoyOrGirl) => {
+    const { id, ...payload } = data;
+    try {
+      const result = await userSecuredApi.post(`nominate-head/${id}`, payload);
+      return result.data;
+    } catch (err) {
+      throw err;
     }
   },
 };

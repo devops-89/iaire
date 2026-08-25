@@ -50,6 +50,7 @@ export const useCreateInnovation = () => {
 
   const createInnovation = async (data: INNOVATION_FORM_PROPS) => {
     setLoading(true);
+    const router = useRouter();
     const payload: SCHOOL_ADD_INNOVATION_REQUEST_PROPS = {
       title: data.title,
       problemDescription: data.problemDescription,
@@ -61,6 +62,7 @@ export const useCreateInnovation = () => {
       .addInnovationBySchool(payload)
       .then((res) => {
         console.log("res", res);
+        router.back();
       })
       .catch((err) => {
         console.log("error in creating innovation", err);
@@ -107,7 +109,7 @@ export const useGetInnovationDetails = (id: number) => {
     schoolControllers
       .getInnovationDetails(id)
       .then((res) => {
-        setInnovationDetails(res.data.data);
+        setInnovationDetails(res?.data?.data || res?.data || res);
         setLoading(false);
       })
       .catch((err) => {

@@ -152,15 +152,7 @@ const InnovationList = () => {
                         {val.team?.teamCode ? `(${val.team.teamCode})` : ""}
                       </TableCell>
                       <TableCell>
-                        <Chip
-                          label={val.status}
-                          sx={{
-                            backgroundColor:
-                              val.status === USER_STATUS.PENDING.toUpperCase()
-                                ? COLORS.ACCENT_TAN
-                                : "red",
-                          }}
-                        />
+                        <Chip label={val.status?.replace(/_/g, " ")} />
                       </TableCell>
                     </TableRow>
                   ))}

@@ -5,7 +5,8 @@ import {
   Divider,
   Grid,
   Stack,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { montserrat } from "@/utils/fonts";
@@ -66,6 +67,7 @@ const InnovationDetails = () => {
                   fontWeight: 600,
                   mb: 2,
                 }}
+                variant="outlined"
               >
                 Back
               </BeamButton>

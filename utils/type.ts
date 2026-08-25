@@ -213,6 +213,7 @@ export interface ALL_USER_REQUEST_PROPS {
   role?: string;
   approvalStatus?: string | null;
   search?: string;
+  isComplete?: boolean;
 }
 
 export interface TEACHER_REPONSE_PROPS {
@@ -1407,4 +1408,10 @@ export interface REPORT_MENTOR_PROPS {
   incidentDate: string;
   incidentDescription: string;
   isConfirmed: boolean;
+}
+
+export interface recommendHeadBoyOrGirl {
+  message: string;
+  id: string;
+  category: string;
 }

@@ -56,6 +56,7 @@ const AddTeams = () => {
       limit: 100,
       role: USER_ROLES.TEACHER,
       approvalStatus: "APPROVED",
+      isComplete: true,
     });
   };
 

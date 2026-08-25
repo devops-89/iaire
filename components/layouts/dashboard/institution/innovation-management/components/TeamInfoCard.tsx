@@ -212,7 +212,7 @@ const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInf
                               color: "text.secondary",
                             }}
                           >
-                            Status: {item.status}
+                            Status: {item.status?.replace(/_/g, " ")}
                           </Typography>
                         </Box>
                       </Stack>
