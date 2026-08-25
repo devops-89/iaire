@@ -87,13 +87,13 @@ const InstitutionDashboards = () => {
           <LeadershipCard />
         </Grid>
       </Grid>
-      <StatsBox data={dashboardData?.patent} title="Patents" />
+      <StatsBox data={dashboardData?.patents} title="Patents" />
       <StatsBox
-        data={dashboardData?.researchSubmission}
+        data={dashboardData?.researchPublications}
         title="Research Publications"
       />
       <StatsBox data={dashboardData?.students} title="Students" />
-      <StatsBox data={dashboardData?.educators} title="Educators" />
+      <StatsBox data={dashboardData?.mentors} title="Mentors" />
       <StatsBox data={dashboardData?.startups} title="Startups" />
     </Stack>
   );

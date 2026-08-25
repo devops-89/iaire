@@ -1,4 +1,4 @@
-import { Inter, Montserrat, Roboto_Slab } from "next/font/google";
+import { Inter, Montserrat, Poppins, Roboto_Slab } from "next/font/google";
 import localFont from "next/font/local";
 export const roboto = Roboto_Slab({
   weight: "variable",
@@ -15,16 +15,25 @@ export const inter = Inter({
   weight: "variable",
 });
 
-export const aloeveraDisplay_medium = localFont({
-  src: "../public/fonts/aloevera/AloeveraDisplay-Medium.ttf",
-  variable: "--font-aloevera",
+// export const aloeveraDisplay_medium = localFont({
+//   src: "../public/fonts/aloevera/AloeveraDisplay-Medium.ttf",
+//   variable: "--font-aloevera",
+//   weight: "500",
+// });
+export const aloeveraDisplay_medium = Poppins({
   weight: "500",
+  subsets: ["latin"],
 });
 
-export const newBlack_medium = localFont({
-  src: "../public/fonts/newBlack/NewBlackTypeface-Medium.ttf",
+// export const newBlack_medium = localFont({
+//   src: "../public/fonts/newBlack/NewBlackTypeface-Medium.ttf",
+//   weight: "500",
+//   variable: "--font-newBlack",
+// });
+
+export const newBlack_medium = Poppins({
   weight: "500",
-  variable: "--font-newBlack",
+  subsets: ["latin"],
 });
 
 export const newBlack_light = localFont({
@@ -33,9 +42,8 @@ export const newBlack_light = localFont({
   variable: "--font-newBlack",
 });
 
-
 export const newBlack_semiBold = localFont({
   src: "../public/fonts/newBlack/NewBlackTypeface-SemiBold.ttf",
   weight: "600",
   variable: "--font-newBlack",
-})
+});

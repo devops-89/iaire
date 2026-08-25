@@ -1,5 +1,5 @@
 import { UPDATE_PROFILE_FORM_PROPS } from "@/utils/type";
-import { userPublicApi } from "./config";
+import { platformSecuredApi, userPublicApi } from "./config";
 
 export const studentControllers = {
   updateSelfProfileBeforeSignup: async (
@@ -64,6 +64,14 @@ export const studentControllers = {
         },
       );
       return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getStudentDashboard: async () => {
+    try {
+      const result = await platformSecuredApi.get("/dashboard/student");
+      return result.data;
     } catch (error) {
       throw error;
     }

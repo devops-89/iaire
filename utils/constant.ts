@@ -126,7 +126,7 @@ export const INSTITUTION_SIDEBAR_DATA = [
   // },
   {
     icon: People,
-    label: "Educator Management",
+    label: "Mentor Management",
     url: "/dashboard/institution/educator-management",
   },
   {
@@ -2412,6 +2412,9 @@ export const TEAM_LIST_HEADER_DATA: TEAM_LIST_HEADER[] = [
     label: "Team Name",
   },
   {
+    label: "Category",
+  },
+  {
     label: "Mentor Name",
   },
   {
@@ -2788,10 +2791,28 @@ export const FAQ_ITEMS: FaqItem[] = [
 ];
 
 export const REPORT_CATEGORY = [
-  "Misconduct",
-  "Policy Violation",
-  "Professional Conduct",
-  "Attendance/Compliance",
-  "Academic Conduct",
-  "Other",
+  {
+    label: "Misconduct",
+    value: "MISCONDUCT",
+  },
+  {
+    label: "Policy Violation",
+    value: "POLICY_VIOLATION",
+  },
+  {
+    label: "Professional Conduct",
+    value: "PROFESSIONAL_CONDUCT",
+  },
+  {
+    label: "Attendance/Compliance",
+    value: "ATTENDANCE_COMPLIANCE",
+  },
+  {
+    label: "Academic Conduct",
+    value: "ACADEMIC_CONDUCT",
+  },
+  {
+    label: "Other",
+    value: "OTHER",
+  },
 ];

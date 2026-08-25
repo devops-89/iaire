@@ -15,6 +15,8 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import useSidebar from "@/store/useSidebar";
+import Image from "next/image";
+import logo from "@/images/logo/iaire_logo.png";
 
 const StudentSidebar = () => {
   const pathname = usePathname();
@@ -33,23 +35,19 @@ const StudentSidebar = () => {
       sx={{
         width: 250,
         height: "100%",
-        backgroundColor: COLORS.PRIMARY_NAVY,
+        backgroundColor: COLORS.WHITE,
         overflowY: "auto",
       }}
     >
-      <Box>
-        <Typography
-          sx={{
-            fontSize: 30,
-            color: COLORS.ACCENT_TAN,
-            textAlign: "center",
-            fontFamily: roboto.style.fontFamily,
-            pt: 2,
-            pb: 2,
-          }}
-        >
-          IAIRE
-        </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <Image src={logo} alt="" width={200} height={70} />
       </Box>
       <Divider sx={{ borderColor: COLORS.ACCENT_TAN }} />
       <List>
@@ -73,7 +71,7 @@ const StudentSidebar = () => {
                   sx: {
                     fontFamily: montserrat.style.fontFamily,
                     color:
-                      pathname === val.url ? COLORS.PRIMARY_NAVY : COLORS.WHITE,
+                      pathname === val.url ? COLORS.PRIMARY_NAVY : COLORS.BLACK,
                   },
                 },
               }}
@@ -85,10 +83,7 @@ const StudentSidebar = () => {
   );
 
   return (
-    <Box
-      component="nav"
-      sx={{ width: { md: 250 }, flexShrink: { md: 0 } }}
-    >
+    <Box component="nav" sx={{ width: { md: 250 }, flexShrink: { md: 0 } }}>
       <Drawer
         variant="temporary"
         open={isOpen}

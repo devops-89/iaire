@@ -25,6 +25,7 @@ import {
 } from "@/utils/style";
 import { useModal } from "@/store/useModal";
 import { REPORT_CATEGORY } from "@/utils/constant";
+import { useReportTeacher } from "@/hooks/school/useReportTeacher";
 
 interface ReportEducatorModalProps {
   educatorId?: string | number | null;
@@ -39,6 +40,7 @@ const ReportEducatorValidationSchema = Yup.object().shape({
 
 const ReportEducatorModal = ({ educatorId }: ReportEducatorModalProps) => {
   const { hideModal } = useModal();
+  const { loading, reportTeacher } = useReportTeacher();
 
   const [incidentDate, setIncidentDate] = React.useState<Moment | null>(null);
 
@@ -51,9 +53,15 @@ const ReportEducatorModal = ({ educatorId }: ReportEducatorModalProps) => {
     },
     validationSchema: ReportEducatorValidationSchema,
     onSubmit: async (values) => {
-      // Mock API integration
-      console.log("Submitting Report for Educator ID:", educatorId, values);
-      hideModal();
+      if (educatorId) {
+        reportTeacher({
+          userId: String(educatorId),
+          reportCategory: values.category,
+          incidentDate: values.incidentDate,
+          incidentDescription: values.description,
+          isConfirmed: values.declaration,
+        });
+      }
     },
   });
 
@@ -68,10 +76,20 @@ const ReportEducatorModal = ({ educatorId }: ReportEducatorModalProps) => {
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={3}>
           <Grid size={{ xs: 12, sm: 6 }}>
-            <FormControl fullWidth error={formik.touched.category && Boolean(formik.errors.category)}>
-              <InputLabel id="category-label" sx={{
-                // Adjust label styling to fit nicely inside or avoid overlapping
-              }}>Report Category</InputLabel>
+            <FormControl
+              fullWidth
+              error={formik.touched.category && Boolean(formik.errors.category)}
+            >
+              <InputLabel
+                id="category-label"
+                sx={
+                  {
+                    // Adjust label styling to fit nicely inside or avoid overlapping
+                  }
+                }
+              >
+                Report Category
+              </InputLabel>
               <Select
                 labelId="category-label"
                 id="category"
@@ -83,8 +101,8 @@ const ReportEducatorModal = ({ educatorId }: ReportEducatorModalProps) => {
                 sx={TEXTFIELD_STYLE_VALIDATION}
               >
                 {REPORT_CATEGORY.map((category) => (
-                  <MenuItem key={category} value={category}>
-                    {category}
+                  <MenuItem key={category.value} value={category.value}>
+                    {category.label}
                   </MenuItem>
                 ))}
               </Select>
@@ -102,7 +120,7 @@ const ReportEducatorModal = ({ educatorId }: ReportEducatorModalProps) => {
                   setIncidentDate(value);
                   formik.setFieldValue(
                     "incidentDate",
-                    moment(value).format("YYYY-MM-DD")
+                    moment(value).format("YYYY-MM-DD"),
                   );
                 }}
                 slotProps={{
@@ -132,14 +150,20 @@ const ReportEducatorModal = ({ educatorId }: ReportEducatorModalProps) => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               sx={TEXTFIELD_STYLE_VALIDATION}
-              helperText={formik.touched.description && formik.errors.description}
+              helperText={
+                formik.touched.description && formik.errors.description
+              }
               error={
                 formik.touched.description && Boolean(formik.errors.description)
               }
             />
           </Grid>
           <Grid size={12}>
-            <FormControl error={formik.touched.declaration && Boolean(formik.errors.declaration)}>
+            <FormControl
+              error={
+                formik.touched.declaration && Boolean(formik.errors.declaration)
+              }
+            >
               <FormControlLabel
                 control={
                   <Checkbox
@@ -152,8 +176,16 @@ const ReportEducatorModal = ({ educatorId }: ReportEducatorModalProps) => {
                   />
                 }
                 label={
-                  <Typography variant="body2" color="textSecondary" sx={{ fontWeight: 500, fontSize: 13 }}>
-                    I confirm that the information provided in this report is accurate to the best of my knowledge and that this report is submitted in good faith. I understand that IAIRE may review the information provided and take appropriate action in accordance with its policies.
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    sx={{ fontWeight: 500, fontSize: 13 }}
+                  >
+                    I confirm that the information provided in this report is
+                    accurate to the best of my knowledge and that this report is
+                    submitted in good faith. I understand that IAIRE may review
+                    the information provided and take appropriate action in
+                    accordance with its policies.
                   </Typography>
                 }
                 sx={{ alignItems: "flex-start" }}
@@ -164,11 +196,15 @@ const ReportEducatorModal = ({ educatorId }: ReportEducatorModalProps) => {
             </FormControl>
           </Grid>
         </Grid>
-        <Box sx={{ mt: 4, display: "flex", justifyContent: "flex-end", gap: 2 }}>
+        <Box
+          sx={{ mt: 4, display: "flex", justifyContent: "flex-end", gap: 2 }}
+        >
           <BeamButton color="inherit" onClick={hideModal}>
             Cancel
           </BeamButton>
-          <BeamButton type="submit">Submit</BeamButton>
+          <BeamButton type="submit" disabled={loading}>
+            {loading ? "Submitting..." : "Submit"}
+          </BeamButton>
         </Box>
       </form>
     </Box>

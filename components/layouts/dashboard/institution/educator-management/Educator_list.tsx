@@ -154,14 +154,14 @@ const EducatorList = () => {
           justifyContent={"space-between"}
         >
           <Breadcrumb
-            title="Educator Management"
+            title="Mentor Management"
             data={[
               {
                 title: "Dashboard",
                 href: "/dashboard/institution",
               },
               {
-                title: "Educator Management",
+                title: "Mentor Management",
                 href: "/dashboard/institution/educator-management",
               },
             ]}

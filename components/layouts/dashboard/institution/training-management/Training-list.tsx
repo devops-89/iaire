@@ -86,7 +86,7 @@ const InstitutionTrainingList = () => {
     const roles = localStorage.getItem("role");
     setRole(roles || "");
 
-    if (status && status !== "ALL") {
+    if (status !== "ALL") {
       getTeacherTrainingList(status);
     } else {
       getTeacherTrainingList();
@@ -131,7 +131,7 @@ const InstitutionTrainingList = () => {
               }}
               onClick={assignTeachers}
             >
-              Assign Teachers
+              Nominate Teachers
             </BeamButton>
           </Stack>
           <Tabs
@@ -242,7 +242,8 @@ const InstitutionTrainingList = () => {
 
                         {role === USER_ROLES.INSTITUTION ? (
                           val.status ===
-                          TRAINING_NOMINATION_STATUS.INTERVIEW_SCHEDULED ? (
+                            TRAINING_NOMINATION_STATUS.INTERVIEW_SCHEDULED ||
+                          TRAINING_NOMINATION_STATUS.TRAINING_COMPLETED ? (
                             <TableCell
                               sx={{
                                 fontSize: 13,

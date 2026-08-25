@@ -12,8 +12,8 @@ export const useUpdateProfileStudent = () => {
     await studentControllers
       .updateSelfProfileBeforeSignup(data, id)
       .then((res) => {
-        const tokens = res?.tokens;
-        const user = res?.user;
+        const tokens = res?.data?.tokens;
+        const user = res?.data?.user;
 
         if (tokens) {
           localStorage.setItem("token", tokens.accessToken);
@@ -23,6 +23,7 @@ export const useUpdateProfileStudent = () => {
           localStorage.setItem("role", user.role);
         }
 
+        router.push("/dashboard/student");
         setLoading(false);
       })
       .catch((err) => {

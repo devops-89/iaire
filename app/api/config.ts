@@ -35,6 +35,8 @@ const needAssistance = createSecuredApi(serverConstants.assistance);
 const honorariumSecuredApi = createSecuredApi(serverConstants.honorarium);
 const platformSecuredApi = createSecuredApi(serverConstants.platform);
 const startupSecuredApi = createSecuredApi(serverConstants.startup);
+const nocSecuredApi = createSecuredApi(serverConstants.noc);
+const complaints = createSecuredApi(serverConstants.complaints);
 
 export {
   userPublicApi,
@@ -54,4 +56,6 @@ export {
   honorariumSecuredApi,
   platformSecuredApi,
   startupSecuredApi,
+  nocSecuredApi,
+  complaints,
 };

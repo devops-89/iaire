@@ -15,7 +15,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Tabs} from "@mui/material";
+  Tabs,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import EducatorDashboardLayout from "@/components/layouts/dashboard/educator/Index";
 import { montserrat, roboto } from "@/utils/fonts";
@@ -118,25 +119,25 @@ const TrainingList = () => {
                 },
               ]}
             />
-              <BeamButton
-                sx={{
-                  backgroundColor: COLORS.PRIMARY_NAVY,
-                  color: "#fff",
-                  fontFamily: montserrat.style.fontFamily,
-                  fontWeight: 600,
-                  fontSize: "14px",
-                  borderRadius: "8px",
-                  "&:hover": {
-                    backgroundColor: "#e08e26",
-                  },
-                  p: 1.5,
-                  whiteSpace: "nowrap",
-                  width: { xs: "100%", sm: "auto" },
-                }}
-                onClick={handleModalOpen}
-              >
-                Nominate Self For Training
-              </BeamButton>
+            <BeamButton
+              sx={{
+                backgroundColor: COLORS.PRIMARY_NAVY,
+                color: "#fff",
+                fontFamily: montserrat.style.fontFamily,
+                fontWeight: 600,
+                fontSize: "14px",
+                borderRadius: "8px",
+                "&:hover": {
+                  backgroundColor: "#e08e26",
+                },
+                p: 1.5,
+                whiteSpace: "nowrap",
+                width: { xs: "100%", sm: "auto" },
+              }}
+              onClick={handleModalOpen}
+            >
+              Nominate Self For Training
+            </BeamButton>
           </Stack>
           <Tabs
             sx={{ mt: 2 }}

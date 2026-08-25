@@ -2,12 +2,16 @@ import {
   CREATE_TEAM_REQUEST,
   INSTITUTION_ADD_EDUCATOR_REQUEST,
   INSTITUTION_ADD_STUDENT_REQUEST,
+  NOC_PROPS_DATA,
   NOMINATE_TEACHER_FOR_TRAINING_REQUEST,
+  REPORT_MENTOR_PROPS,
   RESEARCH_FORM_PROPS,
   SCHOOL_ADD_INNOVATION_REQUEST_PROPS,
 } from "@/utils/type";
 import {
+  complaints,
   innovationSecuredApi,
+  nocSecuredApi,
   platformSecuredApi,
   researchSecuredApi,
   teamSecuredApi,
@@ -172,6 +176,22 @@ export const schoolControllers = {
       let result = await userSecuredApi.get(
         "/school-admin/board-schools-stats",
       );
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  issueNoc: async (data: NOC_PROPS_DATA) => {
+    try {
+      let result = await nocSecuredApi.post("/school-admin", data);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  reportTeacher: async (data: REPORT_MENTOR_PROPS) => {
+    try {
+      let result = await complaints.post("/create", data);
       return result.data;
     } catch (error) {
       throw error;

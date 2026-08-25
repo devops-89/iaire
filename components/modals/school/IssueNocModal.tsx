@@ -7,8 +7,12 @@ import moment, { Moment } from "moment";
 import * as Yup from "yup";
 import BeamButton from "@/components/widgets/BeamButton";
 import { COLORS } from "@/utils/enum";
-import { TEXTFIELD_STYLE_VALIDATION, DATE_PICKER_STYLE_VALIDATION } from "@/utils/style";
+import {
+  TEXTFIELD_STYLE_VALIDATION,
+  DATE_PICKER_STYLE_VALIDATION,
+} from "@/utils/style";
 import { useModal } from "@/store/useModal";
+import { useIssueNoc } from "@/hooks/school/useIssueNoc";
 
 interface IssueNocModalProps {
   educatorId?: string | number | null;
@@ -24,9 +28,12 @@ const IssueNocValidationSchema = Yup.object().shape({
 
 const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
   const { hideModal } = useModal();
-  
+  const { loading, issueNoc } = useIssueNoc();
+
   const [dateOfJoining, setDateOfJoining] = React.useState<Moment | null>(null);
-  const [lastWorkingDate, setLastWorkingDate] = React.useState<Moment | null>(null);
+  const [lastWorkingDate, setLastWorkingDate] = React.useState<Moment | null>(
+    null,
+  );
   const [nocIssueDate, setNocIssueDate] = React.useState<Moment | null>(null);
 
   const formik = useFormik({
@@ -39,15 +46,24 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
     },
     validationSchema: IssueNocValidationSchema,
     onSubmit: async (values) => {
-      // Mock API integration
-      console.log("Submitting NOC for Educator ID:", educatorId, values);
-      hideModal();
+      if (educatorId) {
+        issueNoc({
+          userId: Number(educatorId),
+          dateOfJoining: values.dateOfJoining,
+          lastWorkingDate: values.lastWorkingDate,
+          nocIssueDate: values.nocIssueDate,
+          reason: values.reason,
+        });
+      }
     },
   });
 
   return (
     <Box sx={{ p: 2 }}>
-      <Typography variant="h6" sx={{ mb: 3, fontWeight: 700, color: COLORS.PRIMARY_BLUE }}>
+      <Typography
+        variant="h6"
+        sx={{ mb: 3, fontWeight: 700, color: COLORS.PRIMARY_BLUE }}
+      >
         Issue NOC
       </Typography>
       <form onSubmit={formik.handleSubmit}>
@@ -59,7 +75,10 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
                 value={dateOfJoining}
                 onChange={(value) => {
                   setDateOfJoining(value);
-                  formik.setFieldValue("dateOfJoining", moment(value).format("YYYY-MM-DD"));
+                  formik.setFieldValue(
+                    "dateOfJoining",
+                    moment(value).format("YYYY-MM-DD"),
+                  );
                 }}
                 slotProps={{
                   textField: {
@@ -67,10 +86,15 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
                       ...DATE_PICKER_STYLE_VALIDATION,
                       width: "100%",
                     },
-                    helperText: formik.touched.dateOfJoining && formik.errors.dateOfJoining,
-                    error: formik.touched.dateOfJoining && Boolean(formik.errors.dateOfJoining),
+                    helperText:
+                      formik.touched.dateOfJoining &&
+                      formik.errors.dateOfJoining,
+                    error:
+                      formik.touched.dateOfJoining &&
+                      Boolean(formik.errors.dateOfJoining),
                   },
                 }}
+                disableFuture
               />
             </LocalizationProvider>
           </Grid>
@@ -81,7 +105,10 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
                 value={lastWorkingDate}
                 onChange={(value) => {
                   setLastWorkingDate(value);
-                  formik.setFieldValue("lastWorkingDate", moment(value).format("YYYY-MM-DD"));
+                  formik.setFieldValue(
+                    "lastWorkingDate",
+                    moment(value).format("YYYY-MM-DD"),
+                  );
                 }}
                 slotProps={{
                   textField: {
@@ -89,10 +116,15 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
                       ...DATE_PICKER_STYLE_VALIDATION,
                       width: "100%",
                     },
-                    helperText: formik.touched.lastWorkingDate && formik.errors.lastWorkingDate,
-                    error: formik.touched.lastWorkingDate && Boolean(formik.errors.lastWorkingDate),
+                    helperText:
+                      formik.touched.lastWorkingDate &&
+                      formik.errors.lastWorkingDate,
+                    error:
+                      formik.touched.lastWorkingDate &&
+                      Boolean(formik.errors.lastWorkingDate),
                   },
                 }}
+                disableFuture
               />
             </LocalizationProvider>
           </Grid>
@@ -103,7 +135,10 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
                 value={nocIssueDate}
                 onChange={(value) => {
                   setNocIssueDate(value);
-                  formik.setFieldValue("nocIssueDate", moment(value).format("YYYY-MM-DD"));
+                  formik.setFieldValue(
+                    "nocIssueDate",
+                    moment(value).format("YYYY-MM-DD"),
+                  );
                 }}
                 slotProps={{
                   textField: {
@@ -111,10 +146,14 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
                       ...DATE_PICKER_STYLE_VALIDATION,
                       width: "100%",
                     },
-                    helperText: formik.touched.nocIssueDate && formik.errors.nocIssueDate,
-                    error: formik.touched.nocIssueDate && Boolean(formik.errors.nocIssueDate),
+                    helperText:
+                      formik.touched.nocIssueDate && formik.errors.nocIssueDate,
+                    error:
+                      formik.touched.nocIssueDate &&
+                      Boolean(formik.errors.nocIssueDate),
                   },
                 }}
+                disableFuture
               />
             </LocalizationProvider>
           </Grid>
@@ -143,11 +182,19 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
             />
           </Grid>
         </Grid>
-        <Box sx={{ mt: 4, display: "flex", justifyContent: "flex-end", gap: 2 }}>
+        <Box
+          sx={{ mt: 4, display: "flex", justifyContent: "flex-end", gap: 2 }}
+        >
           <BeamButton color="inherit" onClick={hideModal}>
             Cancel
           </BeamButton>
-          <BeamButton type="submit">Submit</BeamButton>
+          <BeamButton
+            type="submit"
+            disabled={loading}
+            sx={{ color: COLORS.WHITE }}
+          >
+            {loading ? "Submitting..." : "Submit"}
+          </BeamButton>
         </Box>
       </form>
     </Box>

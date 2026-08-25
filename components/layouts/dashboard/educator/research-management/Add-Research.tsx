@@ -53,7 +53,11 @@ const AddResearch = () => {
               },
             ]}
           />
-          <AddResearchForm isLoading={loading} formik={formik} hideTeam={true} />
+          <AddResearchForm
+            isLoading={loading}
+            formik={formik}
+            hideTeam={true}
+          />
         </Card>
       </Box>
     </EducatorDashboardLayout>

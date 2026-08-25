@@ -4,7 +4,7 @@ export const batchControllers = {
   getAllBatches: async (category?: string) => {
     try {
       const result = await batchSecuredApi.get("/all", {
-        params: { search: category },
+        params: category ? { category } : {},
       });
       return result?.data;
     } catch (error) {

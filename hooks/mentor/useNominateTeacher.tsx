@@ -11,7 +11,7 @@ export const useTrainingList = () => {
   const getTeacherTrainingList = async (status?: string) => {
     setLoading(true);
     await teacherController
-      .getTeacherSelfNominatedList(status)
+      .getTeacherSelfNominatedList(status === "ALL" ? "" : status)
       .then((res) => {
         // console.log("res", res);
         setData(res.data.data);

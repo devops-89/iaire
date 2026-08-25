@@ -31,12 +31,14 @@ import {
   Stack,
   Tabs,
   Tab,
-  Divider} from "@mui/material";
+  Divider,
+} from "@mui/material";
 import { useGetAllInnovation } from "@/hooks/school/useInnovation";
 import { useGetAllResearch } from "@/hooks/school/useResearch";
 import Link from "next/link";
 import moment from "moment";
 import BeamButton from "@/components/widgets/BeamButton";
+import { useDashboardStats } from "@/hooks/student/useDashboardStats";
 
 // Styling constants for rich aesthetics
 const goldGradient = "linear-gradient(135deg, #DFBA73 0%, #C5A059 100%)";
@@ -60,8 +62,16 @@ const Dashboard = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   // Fetch real-time count of research papers and innovations
-  const { innovationData, fetchInnovationList, loading: innovationLoading } = useGetAllInnovation();
-  const { researchData, fetchResearchData, loading: researchLoading } = useGetAllResearch();
+  const {
+    innovationData,
+    fetchInnovationList,
+    loading: innovationLoading,
+  } = useGetAllInnovation();
+  const {
+    researchData,
+    fetchResearchData,
+    loading: researchLoading,
+  } = useGetAllResearch();
 
   useEffect(() => {
     fetchInnovationList();
@@ -80,7 +90,6 @@ const Dashboard = () => {
   const numInnovations = innovationData?.length || 0;
   const numResearch = researchData?.length || 0;
 
-  // Dynamic Gamification of Student Status / Progression
   let currentTier = "Student Member";
   let nextTier = "Student Innovation Scholar";
   let requirementsCount = 0;
@@ -112,11 +121,21 @@ const Dashboard = () => {
 
   requirementsCount = checklist.length;
   requirementsMet = checklist.filter((c) => c.met).length;
-  const progressPercent = Math.round((requirementsMet / requirementsCount) * 100);
+  const progressPercent = Math.round(
+    (requirementsMet / requirementsCount) * 100,
+  );
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setActiveTab(newValue);
   };
+
+  const { getStudentDashboardCount, stats } = useDashboardStats();
+
+  useEffect(() => {
+    getStudentDashboardCount();
+  }, []);
+
+  console.log("asdfghj", stats);
 
   return (
     <Box sx={{ p: { xs: 2, md: 3 }, maxWidth: "1600px", mx: "auto" }}>
@@ -147,7 +166,8 @@ const Dashboard = () => {
                 right: "-20px",
                 width: "280px",
                 height: "280px",
-                background: "radial-gradient(circle, rgba(223,186,115,0.08) 0%, rgba(255,255,255,0) 70%)",
+                background:
+                  "radial-gradient(circle, rgba(223,186,115,0.08) 0%, rgba(255,255,255,0) 70%)",
                 zIndex: 1,
               }}
             />
@@ -169,7 +189,9 @@ const Dashboard = () => {
                 size="small"
                 icon={<VerifiedUser sx={{ fontSize: "14px !important" }} />}
                 sx={{
-                  bgcolor: isMember ? "rgba(16, 185, 129, 0.15)" : "rgba(245, 158, 11, 0.15)",
+                  bgcolor: isMember
+                    ? "rgba(16, 185, 129, 0.15)"
+                    : "rgba(245, 158, 11, 0.15)",
                   color: isMember ? "#34D399" : "#FBBF24",
                   fontWeight: 700,
                   textTransform: "uppercase",
@@ -230,18 +252,51 @@ const Dashboard = () => {
               }}
             >
               <Box>
-                <Typography sx={{ color: "rgba(255,255,255,0.5)", fontSize: 11, textTransform: "uppercase", letterSpacing: 0.5 }}>
+                <Typography
+                  sx={{
+                    color: "rgba(255,255,255,0.5)",
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: 0.5,
+                  }}
+                >
                   Membership ID
                 </Typography>
-                <Typography sx={{ color: COLORS.WHITE, fontWeight: 700, fontSize: 15, mt: 0.5 }}>
-                  {membershipCode.length > 0 ? membershipCode[0] : "Pending Allocation"}
+                <Typography
+                  sx={{
+                    color: COLORS.WHITE,
+                    fontWeight: 700,
+                    fontSize: 15,
+                    mt: 0.5,
+                  }}
+                >
+                  {membershipCode.length > 0
+                    ? membershipCode[0]
+                    : "Pending Allocation"}
                 </Typography>
               </Box>
               <Box>
-                <Typography sx={{ color: "rgba(255,255,255,0.5)", fontSize: 11, textTransform: "uppercase", letterSpacing: 0.5 }}>
+                <Typography
+                  sx={{
+                    color: "rgba(255,255,255,0.5)",
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: 0.5,
+                  }}
+                >
                   Current Tier
                 </Typography>
-                <Typography sx={{ color: COLORS.WHITE, fontWeight: 700, fontSize: 15, mt: 0.5, display: "flex", alignItems: "center", gap: 0.5 }}>
+                <Typography
+                  sx={{
+                    color: COLORS.WHITE,
+                    fontWeight: 700,
+                    fontSize: 15,
+                    mt: 0.5,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0.5,
+                  }}
+                >
                   <WorkspacePremium sx={{ color: "#DFBA73", fontSize: 18 }} />
                   {currentTier}
                 </Typography>
@@ -278,7 +333,9 @@ const Dashboard = () => {
                 Level Progression
               </Typography>
 
-              <Box sx={{ display: "flex", alignItems: "center", gap: 3, my: 3 }}>
+              <Box
+                sx={{ display: "flex", alignItems: "center", gap: 3, my: 3 }}
+              >
                 <Box sx={{ position: "relative", display: "inline-flex" }}>
                   <CircularProgress
                     variant="determinate"
@@ -299,17 +356,38 @@ const Dashboard = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <Typography variant="caption" component="div" sx={{ fontWeight: 800, fontSize: 16, color: COLORS.PRIMARY_NAVY }}>
+                    <Typography
+                      variant="caption"
+                      component="div"
+                      sx={{
+                        fontWeight: 800,
+                        fontSize: 16,
+                        color: COLORS.PRIMARY_NAVY,
+                      }}
+                    >
                       {progressPercent}%
                     </Typography>
                   </Box>
                 </Box>
 
                 <Box>
-                  <Typography sx={{ fontSize: 12, color: "rgba(0,0,0,0.5)", fontWeight: 600 }}>
+                  <Typography
+                    sx={{
+                      fontSize: 12,
+                      color: "rgba(0,0,0,0.5)",
+                      fontWeight: 600,
+                    }}
+                  >
                     NEXT MILESTONE
                   </Typography>
-                  <Typography sx={{ fontSize: 15, fontWeight: 700, color: COLORS.PRIMARY_NAVY, mt: 0.5 }}>
+                  <Typography
+                    sx={{
+                      fontSize: 15,
+                      fontWeight: 700,
+                      color: COLORS.PRIMARY_NAVY,
+                      mt: 0.5,
+                    }}
+                  >
                     {nextTier}
                   </Typography>
                 </Box>
@@ -317,22 +395,42 @@ const Dashboard = () => {
 
               <Divider sx={{ my: 2 }} />
 
-              <Typography sx={{ fontSize: 13, fontWeight: 700, color: COLORS.PRIMARY_NAVY, mb: 1.5 }}>
+              <Typography
+                sx={{
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: COLORS.PRIMARY_NAVY,
+                  mb: 1.5,
+                }}
+              >
                 REQUIREMENTS CHECKLIST
               </Typography>
 
               <Stack spacing={1.2}>
                 {checklist.map((item, idx) => (
-                  <Box key={idx} sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}>
+                  <Box
+                    key={idx}
+                    sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}
+                  >
                     {item.met ? (
-                      <CheckCircle sx={{ color: "#10B981", fontSize: 18, mt: 0.2 }} />
+                      <CheckCircle
+                        sx={{ color: "#10B981", fontSize: 18, mt: 0.2 }}
+                      />
                     ) : (
-                      <RadioButtonUnchecked sx={{ color: "rgba(0,0,0,0.25)", fontSize: 18, mt: 0.2 }} />
+                      <RadioButtonUnchecked
+                        sx={{
+                          color: "rgba(0,0,0,0.25)",
+                          fontSize: 18,
+                          mt: 0.2,
+                        }}
+                      />
                     )}
                     <Typography
                       sx={{
                         fontSize: 12.5,
-                        color: item.met ? COLORS.PRIMARY_NAVY : "rgba(0,0,0,0.5)",
+                        color: item.met
+                          ? COLORS.PRIMARY_NAVY
+                          : "rgba(0,0,0,0.5)",
                         fontWeight: item.met ? 600 : 500,
                         textDecoration: item.met ? "none" : "none",
                       }}
@@ -345,7 +443,10 @@ const Dashboard = () => {
             </Box>
 
             <Box sx={{ mt: 3 }}>
-              <Link href="/dashboard/student/membership-management" style={{ textDecoration: "none" }}>
+              <Link
+                href="/dashboard/student/membership-management"
+                style={{ textDecoration: "none" }}
+              >
                 <BeamButton
                   fullWidth
                   variant="outlined"
@@ -362,7 +463,9 @@ const Dashboard = () => {
                       bgcolor: "rgba(11,23,39,0.03)",
                     },
                   }}
-                  endIcon={<ArrowForward sx={{ fontSize: "14px !important" }} />}
+                  endIcon={
+                    <ArrowForward sx={{ fontSize: "14px !important" }} />
+                  }
                 >
                   Manage Membership Dues
                 </BeamButton>
@@ -372,273 +475,119 @@ const Dashboard = () => {
         </Grid>
       </Grid>
 
-      {/* Quick Actions Panel */}
-      <Box sx={{ mt: 4 }}>
-        <Typography
-          sx={{
-            fontFamily: roboto.style.fontFamily,
-            fontSize: 20,
-            fontWeight: 800,
-            color: COLORS.PRIMARY_NAVY,
-            mb: 2.5,
-          }}
-        >
-          Quick Actions
-        </Typography>
+      {/* Detailed Statistics from API */}
+      {stats && (
+        <Box sx={{ mt: 20 }}>
+          <Typography
+            sx={{
+              fontFamily: roboto.style.fontFamily,
+              fontSize: 20,
+              fontWeight: 800,
+              color: COLORS.PRIMARY_NAVY,
+              mb: 2.5,
+            }}
+          >
+            Detailed Statistics
+          </Typography>
 
-        <Grid container spacing={3}>
-          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Link href="/dashboard/student/innovation-management/add-innovation" style={{ textDecoration: "none" }}>
-              <Card
-                sx={{
-                  p: 3,
-                  borderRadius: "20px",
-                  background: "linear-gradient(135deg, #ffffff 0%, #f6f8fb 100%)",
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.02)",
-                  border: "1px solid rgba(0,0,0,0.03)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
-                  "&:hover": {
-                    transform: "translateY(-4px)",
-                    boxShadow: "0 10px 25px rgba(223, 186, 115, 0.12)",
-                    border: "1px solid rgba(223, 186, 115, 0.4)",
-                  },
-                }}
-              >
-                <Box sx={{ p: 1.5, borderRadius: "12px", bgcolor: "rgba(223, 186, 115, 0.15)", color: "#C5A059", display: "flex" }}>
-                  <Lightbulb sx={{ fontSize: 24 }} />
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 700, color: COLORS.PRIMARY_NAVY, fontSize: 14 }}>
-                    New Innovation
-                  </Typography>
-                  <Typography sx={{ color: "rgba(0,0,0,0.5)", fontSize: 11, mt: 0.5 }}>
-                    Log an innovation project
-                  </Typography>
-                </Box>
-              </Card>
-            </Link>
-          </Grid>
-
-          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Link href="/dashboard/student/research-management/add-research" style={{ textDecoration: "none" }}>
-              <Card
-                sx={{
-                  p: 3,
-                  borderRadius: "20px",
-                  background: "linear-gradient(135deg, #ffffff 0%, #f6f8fb 100%)",
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.02)",
-                  border: "1px solid rgba(0,0,0,0.03)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
-                  "&:hover": {
-                    transform: "translateY(-4px)",
-                    boxShadow: "0 10px 25px rgba(223, 186, 115, 0.12)",
-                    border: "1px solid rgba(223, 186, 115, 0.4)",
-                  },
-                }}
-              >
-                <Box sx={{ p: 1.5, borderRadius: "12px", bgcolor: "rgba(11, 23, 39, 0.05)", color: COLORS.PRIMARY_NAVY, display: "flex" }}>
-                  <FileCopyOutlined sx={{ fontSize: 24 }} />
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 700, color: COLORS.PRIMARY_NAVY, fontSize: 14 }}>
-                    Submit Research
-                  </Typography>
-                  <Typography sx={{ color: "rgba(0,0,0,0.5)", fontSize: 11, mt: 0.5 }}>
-                    Upload your research papers
-                  </Typography>
-                </Box>
-              </Card>
-            </Link>
-          </Grid>
-
-          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Link href="/dashboard/student/resource-access" style={{ textDecoration: "none" }}>
-              <Card
-                sx={{
-                  p: 3,
-                  borderRadius: "20px",
-                  background: "linear-gradient(135deg, #ffffff 0%, #f6f8fb 100%)",
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.02)",
-                  border: "1px solid rgba(0,0,0,0.03)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
-                  "&:hover": {
-                    transform: "translateY(-4px)",
-                    boxShadow: "0 10px 25px rgba(223, 186, 115, 0.12)",
-                    border: "1px solid rgba(223, 186, 115, 0.4)",
-                  },
-                }}
-              >
-                <Box sx={{ p: 1.5, borderRadius: "12px", bgcolor: "rgba(16, 185, 129, 0.08)", color: "#10B981", display: "flex" }}>
-                  <AutoStories sx={{ fontSize: 24 }} />
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 700, color: COLORS.PRIMARY_NAVY, fontSize: 14 }}>
-                    Explore Resources
-                  </Typography>
-                  <Typography sx={{ color: "rgba(0,0,0,0.5)", fontSize: 11, mt: 0.5 }}>
-                    Read books, manuals & articles
-                  </Typography>
-                </Box>
-              </Card>
-            </Link>
-          </Grid>
-
-          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Link href="/dashboard/student/profile-settings" style={{ textDecoration: "none" }}>
-              <Card
-                sx={{
-                  p: 3,
-                  borderRadius: "20px",
-                  background: "linear-gradient(135deg, #ffffff 0%, #f6f8fb 100%)",
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.02)",
-                  border: "1px solid rgba(0,0,0,0.03)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
-                  "&:hover": {
-                    transform: "translateY(-4px)",
-                    boxShadow: "0 10px 25px rgba(223, 186, 115, 0.12)",
-                    border: "1px solid rgba(223, 186, 115, 0.4)",
-                  },
-                }}
-              >
-                <Box sx={{ p: 1.5, borderRadius: "12px", bgcolor: "rgba(11, 23, 39, 0.05)", color: COLORS.PRIMARY_NAVY, display: "flex" }}>
-                  <AccountCircle sx={{ fontSize: 24 }} />
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 700, color: COLORS.PRIMARY_NAVY, fontSize: 14 }}>
-                    Account Settings
-                  </Typography>
-                  <Typography sx={{ color: "rgba(0,0,0,0.5)", fontSize: 11, mt: 0.5 }}>
-                    Modify profile details
-                  </Typography>
-                </Box>
-              </Card>
-            </Link>
-          </Grid>
-        </Grid>
-      </Box>
-
-      {/* Dynamic Statistics Cards */}
-      <Box sx={{ mt: 5 }}>
-        <Typography
-          sx={{
-            fontFamily: roboto.style.fontFamily,
-            fontSize: 20,
-            fontWeight: 800,
-            color: COLORS.PRIMARY_NAVY,
-            mb: 2.5,
-          }}
-        >
-          Dynamic Analytics
-        </Typography>
-
-        <Grid container spacing={3}>
-          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Card sx={glassCardStyle}>
-              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", mb: 2 }}>
-                <Typography sx={{ color: "rgba(0,0,0,0.55)", fontSize: 13, fontWeight: 700 }}>
-                  INNOVATION PROJECTS
+          {[
+            {
+              title: "Patents",
+              data: stats.patents,
+              icon: <WorkspacePremium sx={{ fontSize: 18 }} />,
+            },
+            {
+              title: "Research Publications",
+              data: stats.researchPublications,
+              icon: <MenuBook sx={{ fontSize: 18 }} />,
+            },
+            {
+              title: "Startups",
+              data: stats.startups,
+              icon: <TrendingUp sx={{ fontSize: 18 }} />,
+            },
+          ].map((section, idx) => {
+            if (!section.data || section.data.length === 0) return null;
+            return (
+              <Box sx={{ mb: 4 }} key={idx}>
+                <Typography
+                  sx={{
+                    mb: 2,
+                    fontWeight: 700,
+                    color: "rgba(0,0,0,0.6)",
+                    fontSize: 14,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {section.title}
                 </Typography>
-                <Box sx={{ p: 1, borderRadius: "8px", bgcolor: "rgba(223, 186, 115, 0.15)", color: "#C5A059", display: "flex" }}>
-                  <Lightbulb sx={{ fontSize: 18 }} />
-                </Box>
+                <Grid container spacing={3}>
+                  {section.data.map((item: any, index: number) => (
+                    <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
+                      <Card sx={{ ...glassCardStyle, height: "100%" }}>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "flex-start",
+                            mb: 2,
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              color: "rgba(0,0,0,0.55)",
+                              fontSize: 13,
+                              fontWeight: 700,
+                              pr: 1,
+                            }}
+                          >
+                            {item.title}
+                          </Typography>
+                          <Box
+                            sx={{
+                              p: 1,
+                              borderRadius: "8px",
+                              bgcolor: "rgba(11, 23, 39, 0.05)",
+                              color: COLORS.PRIMARY_NAVY,
+                              display: "flex",
+                              flexShrink: 0,
+                            }}
+                          >
+                            {section.icon}
+                          </Box>
+                        </Box>
+                        <Typography
+                          sx={{
+                            fontSize: 32,
+                            fontWeight: 800,
+                            color: COLORS.PRIMARY_NAVY,
+                          }}
+                        >
+                          {item.count}
+                        </Typography>
+                      </Card>
+                    </Grid>
+                  ))}
+                </Grid>
               </Box>
-              <Typography sx={{ fontSize: 32, fontWeight: 800, color: COLORS.PRIMARY_NAVY }}>
-                {innovationLoading ? <CircularProgress size={20} /> : numInnovations}
-              </Typography>
-              <Typography sx={{ color: "rgba(0,0,0,0.4)", fontSize: 11, mt: 1, fontWeight: 600 }}>
-                Total projects logged
-              </Typography>
-            </Card>
-          </Grid>
-
-          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Card sx={glassCardStyle}>
-              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", mb: 2 }}>
-                <Typography sx={{ color: "rgba(0,0,0,0.55)", fontSize: 13, fontWeight: 700 }}>
-                  APPROVED PROJECTS
-                </Typography>
-                <Box sx={{ p: 1, borderRadius: "8px", bgcolor: "rgba(16, 185, 129, 0.1)", color: "#10B981", display: "flex" }}>
-                  <CheckCircle sx={{ fontSize: 18 }} />
-                </Box>
-              </Box>
-              <Typography sx={{ fontSize: 32, fontWeight: 800, color: COLORS.PRIMARY_NAVY }}>
-                {innovationLoading ? (
-                  <CircularProgress size={20} />
-                ) : (
-                  innovationData?.filter((i) => i.status?.toUpperCase() === "ACTIVE").length || 0
-                )}
-              </Typography>
-              <Typography sx={{ color: "rgba(0,0,0,0.4)", fontSize: 11, mt: 1, fontWeight: 600 }}>
-                Active / verified projects
-              </Typography>
-            </Card>
-          </Grid>
-
-          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Card sx={glassCardStyle}>
-              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", mb: 2 }}>
-                <Typography sx={{ color: "rgba(0,0,0,0.55)", fontSize: 13, fontWeight: 700 }}>
-                  RESEARCH PAPERS
-                </Typography>
-                <Box sx={{ p: 1, borderRadius: "8px", bgcolor: "rgba(11, 23, 39, 0.05)", color: COLORS.PRIMARY_NAVY, display: "flex" }}>
-                  <FileCopyOutlined sx={{ fontSize: 18 }} />
-                </Box>
-              </Box>
-              <Typography sx={{ fontSize: 32, fontWeight: 800, color: COLORS.PRIMARY_NAVY }}>
-                {researchLoading ? <CircularProgress size={20} /> : numResearch}
-              </Typography>
-              <Typography sx={{ color: "rgba(0,0,0,0.4)", fontSize: 11, mt: 1, fontWeight: 600 }}>
-                Total papers submitted
-              </Typography>
-            </Card>
-          </Grid>
-
-          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-            <Card sx={glassCardStyle}>
-              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", mb: 2 }}>
-                <Typography sx={{ color: "rgba(0,0,0,0.55)", fontSize: 13, fontWeight: 700 }}>
-                  APPROVED PAPERS
-                </Typography>
-                <Box sx={{ p: 1, borderRadius: "8px", bgcolor: "rgba(16, 185, 129, 0.1)", color: "#10B981", display: "flex" }}>
-                  <MenuBook sx={{ fontSize: 18 }} />
-                </Box>
-              </Box>
-              <Typography sx={{ fontSize: 32, fontWeight: 800, color: COLORS.PRIMARY_NAVY }}>
-                {researchLoading ? (
-                  <CircularProgress size={20} />
-                ) : (
-                  researchData?.filter((r) => r.status?.toUpperCase() === "ACTIVE").length || 0
-                )}
-              </Typography>
-              <Typography sx={{ color: "rgba(0,0,0,0.4)", fontSize: 11, mt: 1, fontWeight: 600 }}>
-                Verified academic uploads
-              </Typography>
-            </Card>
-          </Grid>
-        </Grid>
-      </Box>
+            );
+          })}
+        </Box>
+      )}
 
       {/* Submissions Pipeline & Activity Feed */}
-      <Grid container spacing={4} sx={{ mt: 5 }}>
+      {/* <Grid container spacing={4} sx={{ mt: 5 }}>
         <Grid size={12}>
           <Card sx={{ ...glassCardStyle, p: 4, height: "100%" }}>
-            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", mb: 3 }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                mb: 3,
+              }}
+            >
               <Typography
                 sx={{
                   fontFamily: roboto.style.fontFamily,
@@ -679,11 +628,12 @@ const Dashboard = () => {
               </Tabs>
             </Box>
 
-            {/* Innovations list */}
             {activeTab === 0 && (
               <Box>
                 {innovationLoading ? (
-                  <Box sx={{ py: 6, display: "flex", justifyContent: "center" }}>
+                  <Box
+                    sx={{ py: 6, display: "flex", justifyContent: "center" }}
+                  >
                     <CircularProgress sx={{ color: COLORS.PRIMARY_NAVY }} />
                   </Box>
                 ) : innovationData && innovationData.length > 0 ? (
@@ -707,14 +657,28 @@ const Dashboard = () => {
                         }}
                       >
                         <Box>
-                          <Typography sx={{ fontWeight: 700, color: COLORS.PRIMARY_NAVY, fontSize: 14.5 }}>
+                          <Typography
+                            sx={{
+                              fontWeight: 700,
+                              color: COLORS.PRIMARY_NAVY,
+                              fontSize: 14.5,
+                            }}
+                          >
                             {item.title}
                           </Typography>
-                          <Typography sx={{ color: "rgba(0,0,0,0.4)", fontSize: 11, mt: 0.5 }}>
+                          <Typography
+                            sx={{
+                              color: "rgba(0,0,0,0.4)",
+                              fontSize: 11,
+                              mt: 0.5,
+                            }}
+                          >
                             Team: {item.team?.title || "Individual"}
                           </Typography>
                         </Box>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                        <Box
+                          sx={{ display: "flex", alignItems: "center", gap: 2 }}
+                        >
                           <Chip
                             label={item.status || "Pending"}
                             size="small"
@@ -737,7 +701,9 @@ const Dashboard = () => {
                                     : "#EF4444",
                             }}
                           />
-                          <Link href={`/dashboard/student/innovation-management/innovation-details/${item.id}`}>
+                          <Link
+                            href={`/dashboard/student/innovation-management/innovation-details/${item.id}`}
+                          >
                             <BeamButton
                               size="small"
                               sx={{
@@ -757,14 +723,33 @@ const Dashboard = () => {
                   </Stack>
                 ) : (
                   <Box sx={{ py: 6, textAlign: "center" }}>
-                    <Lightbulb sx={{ fontSize: 48, color: "rgba(0,0,0,0.15)", mb: 1.5 }} />
-                    <Typography sx={{ fontSize: 14, fontWeight: 700, color: "rgba(0,0,0,0.4)" }}>
+                    <Lightbulb
+                      sx={{ fontSize: 48, color: "rgba(0,0,0,0.15)", mb: 1.5 }}
+                    />
+                    <Typography
+                      sx={{
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: "rgba(0,0,0,0.4)",
+                      }}
+                    >
                       No innovations logged yet
                     </Typography>
-                    <Typography sx={{ fontSize: 11, color: "rgba(0,0,0,0.35)", mt: 0.5, mb: 2 }}>
-                      Track your academic developments by registering your first innovation
+                    <Typography
+                      sx={{
+                        fontSize: 11,
+                        color: "rgba(0,0,0,0.35)",
+                        mt: 0.5,
+                        mb: 2,
+                      }}
+                    >
+                      Track your academic developments by registering your first
+                      innovation
                     </Typography>
-                    <Link href="/dashboard/student/innovation-management/add-innovation" style={{ textDecoration: "none" }}>
+                    <Link
+                      href="/dashboard/student/innovation-management/add-innovation"
+                      style={{ textDecoration: "none" }}
+                    >
                       <BeamButton
                         size="small"
                         variant="outlined"
@@ -784,11 +769,12 @@ const Dashboard = () => {
               </Box>
             )}
 
-            {/* Research papers list */}
             {activeTab === 1 && (
               <Box>
                 {researchLoading ? (
-                  <Box sx={{ py: 6, display: "flex", justifyContent: "center" }}>
+                  <Box
+                    sx={{ py: 6, display: "flex", justifyContent: "center" }}
+                  >
                     <CircularProgress sx={{ color: COLORS.PRIMARY_NAVY }} />
                   </Box>
                 ) : researchData && researchData.length > 0 ? (
@@ -812,14 +798,29 @@ const Dashboard = () => {
                         }}
                       >
                         <Box>
-                          <Typography sx={{ fontWeight: 700, color: COLORS.PRIMARY_NAVY, fontSize: 14.5 }}>
+                          <Typography
+                            sx={{
+                              fontWeight: 700,
+                              color: COLORS.PRIMARY_NAVY,
+                              fontSize: 14.5,
+                            }}
+                          >
                             {item.title}
                           </Typography>
-                          <Typography sx={{ color: "rgba(0,0,0,0.4)", fontSize: 11, mt: 0.5 }}>
-                            Topic: {item.topic} • {moment(item.createdAt).format("DD MMM YYYY")}
+                          <Typography
+                            sx={{
+                              color: "rgba(0,0,0,0.4)",
+                              fontSize: 11,
+                              mt: 0.5,
+                            }}
+                          >
+                            Topic: {item.topic} •{" "}
+                            {moment(item.createdAt).format("DD MMM YYYY")}
                           </Typography>
                         </Box>
-                        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                        <Box
+                          sx={{ display: "flex", alignItems: "center", gap: 2 }}
+                        >
                           <Chip
                             label={item.status || "Pending"}
                             size="small"
@@ -848,14 +849,33 @@ const Dashboard = () => {
                   </Stack>
                 ) : (
                   <Box sx={{ py: 6, textAlign: "center" }}>
-                    <FileCopyOutlined sx={{ fontSize: 48, color: "rgba(0,0,0,0.15)", mb: 1.5 }} />
-                    <Typography sx={{ fontSize: 14, fontWeight: 700, color: "rgba(0,0,0,0.4)" }}>
+                    <FileCopyOutlined
+                      sx={{ fontSize: 48, color: "rgba(0,0,0,0.15)", mb: 1.5 }}
+                    />
+                    <Typography
+                      sx={{
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: "rgba(0,0,0,0.4)",
+                      }}
+                    >
                       No research papers submitted yet
                     </Typography>
-                    <Typography sx={{ fontSize: 11, color: "rgba(0,0,0,0.35)", mt: 0.5, mb: 2 }}>
-                      Submit your research papers to get them verified and published
+                    <Typography
+                      sx={{
+                        fontSize: 11,
+                        color: "rgba(0,0,0,0.35)",
+                        mt: 0.5,
+                        mb: 2,
+                      }}
+                    >
+                      Submit your research papers to get them verified and
+                      published
                     </Typography>
-                    <Link href="/dashboard/student/research-management/add-research" style={{ textDecoration: "none" }}>
+                    <Link
+                      href="/dashboard/student/research-management/add-research"
+                      style={{ textDecoration: "none" }}
+                    >
                       <BeamButton
                         size="small"
                         variant="outlined"
@@ -876,7 +896,7 @@ const Dashboard = () => {
             )}
           </Card>
         </Grid>
-      </Grid>
+      </Grid> */}
     </Box>
   );
 };

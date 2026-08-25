@@ -1392,3 +1392,19 @@ export interface FaqItem {
   answer: string;
   bullets?: string[];
 }
+
+export interface NOC_PROPS_DATA {
+  userId: number;
+  dateOfJoining: string;
+  lastWorkingDate: string;
+  nocIssueDate: string;
+  reason: string;
+}
+
+export interface REPORT_MENTOR_PROPS {
+  userId: string;
+  reportCategory: string;
+  incidentDate: string;
+  incidentDescription: string;
+  isConfirmed: boolean;
+}
