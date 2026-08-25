@@ -46,8 +46,8 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
 
     const validTel = matchIsValidTel(newValue);
     if (validTel) {
-      formik.setFieldValue("phoneNumber", countryData.nationalNumber);
-      formik.setFieldValue("countryCode", countryData.countryCallingCode);
+      formik.setFieldValue("phoneNumber", countryData?.nationalNumber);
+      formik.setFieldValue("countryCode", countryData?.countryCallingCode);
     } else {
       formik.setFieldError("phoneNumber", "Please enter a valid phone number");
     }

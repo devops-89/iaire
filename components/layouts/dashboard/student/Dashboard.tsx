@@ -509,7 +509,7 @@ const Dashboard = () => {
           ].map((section, idx) => {
             if (!section.data || section.data.length === 0) return null;
             return (
-              <Box sx={{ mb: 4 }} key={idx}>
+              <Box sx={{ my: 10 }} key={idx}>
                 <Typography
                   sx={{
                     mb: 2,

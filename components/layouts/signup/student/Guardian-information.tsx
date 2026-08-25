@@ -13,17 +13,17 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
   const [fatherPhoneVal, setFatherPhoneVal] = useState("");
   const [motherPhoneVal, setMotherPhoneVal] = useState("");
 
-  useEffect(() => {
-    if (formik.values.fatherPhone) {
-      setFatherPhoneVal(formik.values.fatherPhone);
-    }
-  }, [formik.values.fatherPhone]);
+  // useEffect(() => {
+  //   if (formik.values.fatherPhone) {
+  //     setFatherPhoneVal(formik.values.fatherPhone);
+  //   }
+  // }, [formik.values.fatherPhone]);
 
-  useEffect(() => {
-    if (formik.values.motherPhone) {
-      setMotherPhoneVal(formik.values.motherPhone);
-    }
-  }, [formik.values.motherPhone]);
+  // useEffect(() => {
+  //   if (formik.values.motherPhone) {
+  //     setMotherPhoneVal(formik.values.motherPhone);
+  //   }
+  // }, [formik.values.motherPhone]);
 
   const handleFatherPhoneChange = (
     newValue: string,
