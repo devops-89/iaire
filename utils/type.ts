@@ -1365,8 +1365,6 @@ export interface STARTUP_REQUEST_DATA {
   videoUrl?: string;
 }
 
-export type startup_request_data = STARTUP_REQUEST_DATA;
-
 export interface MetricItem {
   number: string;
   label: string;

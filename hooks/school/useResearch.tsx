@@ -15,7 +15,7 @@ export const useCreateResearch = () => {
       .createResearch(data)
       .then((res) => {
         setLoading(false);
-        4;
+
         router.back();
       })
       .catch((err) => {
@@ -36,7 +36,7 @@ export const useGetAllResearch = () => {
     await schoolControllers
       .getAllResearch()
       .then((res) => {
-        setResearchData(res?.data);
+        setResearchData(res?.data?.data);
       })
       .catch((err) => {
         console.log("error in research response", err);
