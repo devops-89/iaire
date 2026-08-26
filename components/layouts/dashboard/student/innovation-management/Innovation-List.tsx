@@ -1,7 +1,7 @@
 "use client";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
 import { useGetAllInnovation } from "@/hooks/school/useInnovation";
-import { INNOVATION_HEADER } from "@/utils/constant";
+import { INNOVATION_HEADER, STUDENT_INNOVATION_HEADER } from "@/utils/constant";
 import { COLORS, USER_STATUS } from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
 import { Add, Delete, Edit } from "@mui/icons-material";
@@ -17,7 +17,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import BeamButton from "@/components/widgets/BeamButton";
@@ -80,7 +81,7 @@ const InnovationList = () => {
           <Table>
             <TableHead>
               <TableRow>
-                {INNOVATION_HEADER.map((item, index) => (
+                {STUDENT_INNOVATION_HEADER.map((item, index) => (
                   <TableCell
                     key={index}
                     sx={{
@@ -139,9 +140,7 @@ const InnovationList = () => {
                         </Typography>
                       </Link>
                     </TableCell>
-                    <TableCell sx={{ fontFamily: roboto.style.fontFamily }}>
-                      {item.team?.title || "-"}
-                    </TableCell>
+
                     <TableCell>
                       <Chip
                         label={item.status}

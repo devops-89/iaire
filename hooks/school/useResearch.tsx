@@ -36,7 +36,7 @@ export const useGetAllResearch = () => {
     await schoolControllers
       .getAllResearch()
       .then((res) => {
-        setResearchData(res?.data?.data);
+        setResearchData(res?.data);
       })
       .catch((err) => {
         console.log("error in research response", err);

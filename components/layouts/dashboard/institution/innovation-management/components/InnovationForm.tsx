@@ -11,7 +11,8 @@ import {
   IconButton,
   Stack,
   TextField,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import { FormikProps } from "formik";
 import { useEffect, useState } from "react";
 import BeamButton from "@/components/widgets/BeamButton";
@@ -341,7 +342,7 @@ const InnovationForm = ({
                 }}
               >
                 {submitLoading ? (
-                  <CircularProgress sx={{ color: COLORS.WHITE, fontSize: 5 }} />
+                  <CircularProgress size={24} sx={{ color: COLORS.WHITE }} />
                 ) : (
                   "Add Innovation"
                 )}
@@ -368,7 +369,8 @@ const InnovationForm = ({
               >
                 {submitLoading ? (
                   <CircularProgress
-                    sx={{ color: COLORS.PRIMARY_NAVY, height: 10, width: 10 }}
+                    size={24}
+                    sx={{ color: COLORS.PRIMARY_NAVY }}
                   />
                 ) : (
                   "Save as Draft"

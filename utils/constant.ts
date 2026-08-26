@@ -198,6 +198,8 @@ export const TEACHER_HEADER = [
 
 export const INNOVATION_HEADER = ["Id", "Title", "Team", "Status"];
 
+export const STUDENT_INNOVATION_HEADER = ["Id", "Title", "Status"];
+
 export const RESEARCH_HEADER = [
   "Id",
   "Research Title",
