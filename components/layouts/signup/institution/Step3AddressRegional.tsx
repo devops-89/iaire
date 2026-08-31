@@ -133,6 +133,7 @@ const Step3AddressRegional: React.FC<Step3AddressRegionalProps> = ({
           placeholder="Full Name"
           formik={formik}
           icon={<AccountCircle />}
+          required
         />
       </Grid>
 
@@ -143,6 +144,7 @@ const Step3AddressRegional: React.FC<Step3AddressRegionalProps> = ({
           placeholder="email@example.com"
           formik={formik}
           icon={<AlternateEmail />}
+          required
         />
       </Grid>
 
@@ -153,11 +155,18 @@ const Step3AddressRegional: React.FC<Step3AddressRegionalProps> = ({
           placeholder="Phone Number"
           formik={formik}
           icon={<LocationOn />}
+          required
         />
       </Grid>
 
       <Grid size={12} sx={{ mt: 2 }}>
-        <Box sx={{ display: "flex", flexDirection: { xs: "column-reverse", sm: "row" }, gap: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column-reverse", sm: "row" },
+            gap: 2,
+          }}
+        >
           <BeamButton
             variant="outlined"
             onClick={handlePrevStep}

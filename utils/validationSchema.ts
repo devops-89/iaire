@@ -133,6 +133,13 @@ export const institutionSignupValidationSchema = Yup.object({
   noOfTeachers: Yup.number().optional(),
   noOfStudents: Yup.number().optional(),
   registrationYear: Yup.string().optional(),
+  contactPersonName: Yup.string().required("Please Enter Contact Person Name"),
+  contactPersonEmail: Yup.string()
+    .required("Please Enter Contact Person Email")
+    .email("Invalid Email"),
+  contactPersonPhone: Yup.string().required(
+    "Please Enter Contact Person Phone",
+  ),
 });
 
 export const addEducatorValidationSchema = Yup.object({

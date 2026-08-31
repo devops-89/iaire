@@ -41,7 +41,7 @@ const InstitutionRegistration = () => {
   const [reviewLoading, setReviewLoading] = useState(false);
 
   const [phone, setPhone] = useState(
-    `${institutionData?.isd || ""} ${institutionData?.phone || ""}`.trim(),
+    `${institutionData?.country?.code === "IN" ? "+91" : ""} ${institutionData?.phone || ""}`.trim(),
   );
 
   const handlePhoneChange = (
@@ -52,10 +52,9 @@ const InstitutionRegistration = () => {
     const isValid = matchIsValidTel(value);
 
     if (isValid) {
-      formik.setFieldError("phone", "");
       formik.setFieldValue("phone", countryDataInfo?.nationalNumber);
     } else {
-      formik.setFieldError("phone", "Please Enter a Valid Phone Number");
+      formik.setFieldError("phone", "Please enter a valid phone number");
     }
   };
 
@@ -87,7 +86,6 @@ const InstitutionRegistration = () => {
       isTermsAccepted: institutionData?.isTermsAccepted || false,
       role: USER_ROLES.INSTITUTION,
     },
-    enableReinitialize: true,
     validationSchema: institutionSignupValidationSchema,
     onSubmit: (values) => {
       setReviewLoading(true);
@@ -99,6 +97,7 @@ const InstitutionRegistration = () => {
 
   const countryChangeHandler = (_: any, newValue: any) => {
     setCountry(newValue);
+    console.log("country", newValue);
     if (newValue) {
       formik.setFieldValue("country", newValue);
       formik.setFieldValue("isd", "");
@@ -133,15 +132,30 @@ const InstitutionRegistration = () => {
     const errors = await formik.validateForm();
 
     if (activeStep === 0) {
-      if (!errors.institutionName && !errors.principalName && !errors.country) {
+      const isBaseValid =
+        !errors.institutionName && !errors.principalName && !errors.country;
+      const isAffiliationValid =
+        country?.code === "IN" || country?.code === "AE"
+          ? !errors.affiliationType &&
+            !errors.affiliationNumber &&
+            !errors.affiliationCertificate
+          : true;
+
+      if (isBaseValid && isAffiliationValid) {
         setActiveStep(1);
       }
     } else if (activeStep === 1) {
+      const isPhoneValid = matchIsValidTel(phone);
+      if (!isPhoneValid) {
+        formik.setFieldError("phone", "Please enter a valid phone number");
+      }
+
       if (
         !errors.email &&
         !errors.phone &&
         !errors.password &&
-        !errors.confirmPassword
+        !errors.confirmPassword &&
+        isPhoneValid
       ) {
         setActiveStep(2);
       }
@@ -170,10 +184,19 @@ const InstitutionRegistration = () => {
       city: true,
       state: true,
       postalCode: true,
+      contactPersonName: true,
+      contactPersonEmail: true,
+      contactPersonPhone: true,
     });
     const errors = await formik.validateForm();
     console.log("Validation errors on submit:", errors);
-    if (Object.keys(errors).length === 0) {
+
+    const isPhoneValid = matchIsValidTel(phone);
+    if (!isPhoneValid) {
+      formik.setFieldError("phone", "Please enter a valid phone number");
+    }
+
+    if (Object.keys(errors).length === 0 && isPhoneValid) {
       setReviewLoading(true);
       setInstitutionData(formik.values);
       router.push("/signup/review");

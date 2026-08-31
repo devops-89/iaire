@@ -6,6 +6,7 @@ import {
   IconButton,
   InputAdornment,
   Autocomplete,
+  FormHelperText,
 } from "@mui/material";
 import React from "react";
 import {
@@ -29,7 +30,13 @@ interface IndiaFormProps {
   boardLoading: boolean;
 }
 
-const FieldLabel = ({ children, required }: { children: React.ReactNode; required?: boolean }) => (
+const FieldLabel = ({
+  children,
+  required,
+}: {
+  children: React.ReactNode;
+  required?: boolean;
+}) => (
   <Typography
     sx={{
       color: "#334155",
@@ -86,7 +93,7 @@ const IndiaForm = ({
     <>
       <Grid size={{ lg: 6, xs: 12 }}>
         <Box sx={{ width: "100%" }}>
-          <FieldLabel>Education Board</FieldLabel>
+          <FieldLabel required>Education Board</FieldLabel>
           <Autocomplete
             value={formik.values.affiliationType || null}
             isOptionEqualToValue={(option, value) => {
@@ -118,7 +125,8 @@ const IndiaForm = ({
                   Boolean(formik.errors.affiliationType)
                 }
                 helperText={
-                  formik.touched.affiliationType && (formik.errors.affiliationType as string)
+                  formik.touched.affiliationType &&
+                  (formik.errors.affiliationType as string)
                 }
                 slotProps={{
                   input: {
@@ -146,6 +154,7 @@ const IndiaForm = ({
           placeholder="License or Registration ID"
           formik={formik}
           icon={<BadgeIcon />}
+          required
         />
       </Grid>
 
@@ -201,7 +210,8 @@ const IndiaForm = ({
                     cursor: "pointer",
                   }}
                 >
-                  Upload Affiliation Certificate
+                  Upload Affiliation Certificate{" "}
+                  <span style={{ color: "#EF4444" }}>*</span>
                 </Typography>
                 <Typography
                   variant="caption"
@@ -254,10 +264,7 @@ const IndiaForm = ({
                     {formik.values.affiliationCertificate?.name ||
                       "Affiliation Certificate"}
                   </Typography>
-                  <Typography
-                    variant="caption"
-                    sx={{ color: "#64748B" }}
-                  >
+                  <Typography variant="caption" sx={{ color: "#64748B" }}>
                     File uploaded successfully
                   </Typography>
                 </Box>
@@ -274,6 +281,20 @@ const IndiaForm = ({
             </Box>
           )}
         </Box>
+        {formik.touched.affiliationCertificate &&
+          formik.errors.affiliationCertificate && (
+            <FormHelperText
+              error
+              sx={{
+                mx: 1.5,
+                mt: 0.5,
+                fontFamily: montserrat.style.fontFamily,
+                fontSize: "0.72rem",
+              }}
+            >
+              {formik.errors.affiliationCertificate as string}
+            </FormHelperText>
+          )}
       </Grid>
     </>
   );
