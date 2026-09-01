@@ -10,7 +10,8 @@ import {
   InputAdornment,
   Stack,
   TextField,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import InstitutionDashboardLayout from "../Index";
 import { GENDER, MEMBER_TYPE } from "@/utils/constant";
@@ -144,17 +145,17 @@ const AddStudentComponent = () => {
           />
         </Stack>
         <form onSubmit={formik.handleSubmit}>
+          <Typography
+            sx={{
+              fontSize: 20,
+              fontFamily: roboto.style.fontFamily,
+              fontWeight: 600,
+              color: COLORS.BLACK,
+            }}
+          >
+            Personal Information
+          </Typography>
           <Grid container spacing={2} sx={{ mt: 3 }}>
-            <Typography
-              sx={{
-                fontSize: 20,
-                fontFamily: roboto.style.fontFamily,
-                fontWeight: 600,
-                color: COLORS.BLACK,
-              }}
-            >
-              Personal Information
-            </Typography>
             <Grid
               size={{
                 xs: 12,

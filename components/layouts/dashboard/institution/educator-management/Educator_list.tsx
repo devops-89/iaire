@@ -228,7 +228,7 @@ const EducatorList = () => {
               backgroundColor: COLORS.PRIMARY_NAVY,
             },
             "& .Mui-selected": {
-              color: COLORS.PRIMARY_NAVY,
+              color: COLORS.PRIMARY_NAVY + "!important",
             },
           }}
         >
@@ -348,6 +348,26 @@ const EducatorList = () => {
                             sx={{
                               backgroundColor: "#00800030",
                               color: "#008000",
+                              fontWeight: 600,
+                              minWidth: 120,
+                            }}
+                          />
+                        ) : APPROVAL_STATUS.NOC_ISSUED ? (
+                          <Chip
+                            label={teacher?.approvalStatus}
+                            sx={{
+                              backgroundColor: "##13294740",
+                              color: "#132947",
+                              fontWeight: 600,
+                              minWidth: 120,
+                            }}
+                          />
+                        ) : APPROVAL_STATUS.REJECTED ? (
+                          <Chip
+                            label={teacher?.approvalStatus}
+                            sx={{
+                              backgroundColor: "#FF474730",
+                              color: "#FF4747",
                               fontWeight: 600,
                               minWidth: 120,
                             }}

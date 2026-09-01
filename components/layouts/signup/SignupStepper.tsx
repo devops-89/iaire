@@ -14,7 +14,9 @@ import { Check } from "@mui/icons-material";
 import { useSignup } from "@/store/useSignup";
 import { montserrat } from "@/utils/fonts";
 
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
+const QontoConnector = styled(StepConnector, {
+  shouldForwardProp: (prop) => prop !== "lightText",
+})<{ lightText?: boolean }>(({ theme, lightText }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
     top: 10,
     left: "calc(-50% + 16px)",
@@ -22,33 +24,33 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
   },
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: "#2563EB",
+      borderColor: lightText ? "#60A5FA" : "#2563EB",
     },
   },
   [`&.${stepConnectorClasses.completed}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      borderColor: "#2563EB",
+      borderColor: lightText ? "#60A5FA" : "#2563EB",
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
-    borderColor: "rgba(148, 163, 184, 0.4)",
+    borderColor: lightText ? "rgba(255, 255, 255, 0.2)" : "rgba(148, 163, 184, 0.4)",
     borderTopWidth: 2,
     borderRadius: 1,
   },
 }));
 
 const QontoStepIconRoot = styled("div")<{
-  ownerState: { active?: boolean; completed?: boolean };
+  ownerState: { active?: boolean; completed?: boolean; lightText?: boolean };
 }>(({ theme, ownerState }) => ({
-  color: "#94A3B8",
+  color: ownerState.lightText ? "rgba(255, 255, 255, 0.3)" : "#94A3B8",
   display: "flex",
   height: 22,
   alignItems: "center",
   ...(ownerState.active && {
-    color: "#2563EB",
+    color: ownerState.lightText ? "#60A5FA" : "#2563EB",
   }),
   "& .QontoStepIcon-completedIcon": {
-    color: "#2563EB",
+    color: ownerState.lightText ? "#60A5FA" : "#2563EB",
     zIndex: 1,
     fontSize: 20,
   },
@@ -57,15 +59,19 @@ const QontoStepIconRoot = styled("div")<{
     height: 10,
     borderRadius: "50%",
     backgroundColor: "currentColor",
-    boxShadow: ownerState.active ? "0 0 10px rgba(37, 99, 235, 0.4)" : "none",
+    boxShadow: ownerState.active
+      ? ownerState.lightText
+        ? "0 0 10px rgba(96, 165, 250, 0.4)"
+        : "0 0 10px rgba(37, 99, 235, 0.4)"
+      : "none",
   },
 }));
 
 function QontoStepIcon(props: any) {
-  const { active, completed, className } = props;
+  const { active, completed, className, lightText } = props;
 
   return (
-    <QontoStepIconRoot ownerState={{ active, completed }} className={className}>
+    <QontoStepIconRoot ownerState={{ active, completed, lightText }} className={className}>
       {completed ? (
         <Check className="QontoStepIcon-completedIcon" />
       ) : (
@@ -78,11 +84,13 @@ function QontoStepIcon(props: any) {
 interface SignupStepperProps {
   activeStep: number;
   steps?: string[];
+  lightText?: boolean;
 }
 
 const SignupStepper = ({
   activeStep,
   steps: customSteps,
+  lightText,
 }: SignupStepperProps) => {
   const { data } = useSignup();
 
@@ -108,24 +116,26 @@ const SignupStepper = ({
       <Stepper
         alternativeLabel
         activeStep={activeStep}
-        connector={<QontoConnector />}
+        connector={<QontoConnector lightText={lightText} />}
       >
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel
-              StepIconComponent={QontoStepIcon}
+              StepIconComponent={(props) => (
+                <QontoStepIcon {...props} lightText={lightText} />
+              )}
               sx={{
                 "& .MuiStepLabel-label": {
                   fontFamily: montserrat.style.fontFamily,
                   fontWeight: 500,
                   fontSize: "0.85rem",
-                  color: "#64748B",
+                  color: lightText ? "#94A3B8" : "#64748B",
                   "&.Mui-active": {
-                    color: "#0F172A",
+                    color: lightText ? "#FFFFFF" : "#0F172A",
                     fontWeight: 700,
                   },
                   "&.Mui-completed": {
-                    color: "#2563EB",
+                    color: lightText ? "#60A5FA" : "#2563EB",
                     fontWeight: 600,
                   },
                 },

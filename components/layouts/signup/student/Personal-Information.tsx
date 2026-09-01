@@ -42,9 +42,15 @@ const PersonalInformation = ({ formik }: PERSONAL_INFORMATION_PROPS) => {
     newValue: string,
     countryData: MuiTelInputInfo,
   ) => {
+    if (
+      countryData?.nationalNumber &&
+      countryData.nationalNumber.replace(/\D/g, "").length > 10
+    ) {
+      return;
+    }
     setPhone(newValue);
-
     const validTel = matchIsValidTel(newValue);
+
     if (validTel) {
       formik.setFieldValue("phoneNumber", countryData?.nationalNumber);
       formik.setFieldValue("countryCode", countryData?.countryCallingCode);

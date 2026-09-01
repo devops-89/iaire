@@ -189,7 +189,6 @@ const InstitutionRegistration = () => {
       contactPersonPhone: true,
     });
     const errors = await formik.validateForm();
-    console.log("Validation errors on submit:", errors);
 
     const isPhoneValid = matchIsValidTel(phone);
     if (!isPhoneValid) {

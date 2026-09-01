@@ -9,8 +9,10 @@ import {
   InputAdornment,
   Autocomplete,
   CircularProgress,
+  Button,
+  Stack,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { addEducatorValidationSchema } from "@/utils/validationSchema";
 import { COLORS, MEMBER_TYPES, USER_ROLES, USER_STATUS } from "@/utils/enum";
@@ -30,7 +32,7 @@ import {
   MEMBER_TYPE,
   PAYMENT_ROLE,
 } from "@/utils/constant";
-import { matchIsValidTel, MuiTelInput } from "mui-tel-input";
+import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
 import { useSignup } from "@/store/useSignup";
 import { useTeacherAddBySchool } from "@/hooks/school/useTeacherAdd";
 import useSnackbar from "@/store/useSnackbar";
@@ -38,12 +40,16 @@ import { useRouter } from "next/navigation";
 import { useGetPlans } from "@/hooks/common/useGetPlans";
 import PlanCard from "@/components/widgets/PlanCard";
 import BeamButton from "@/components/widgets/BeamButton";
+import { useGetAllUser } from "@/hooks/common/useGetAllUser";
+import { USER_DETAILS_PROPS, USER_DETAILS_RESPONSE } from "@/utils/type";
 
 const AddEducatorcomponent = () => {
   const router = useRouter();
   const { institutionData } = useSignup();
   const { setSnackbar } = useSnackbar();
   const { loading, addTeacher } = useTeacherAddBySchool();
+
+  const [data, setData] = useState<USER_DETAILS_RESPONSE | null>(null);
 
   const formik = useFormik({
     initialValues: {
@@ -52,14 +58,13 @@ const AddEducatorcomponent = () => {
       email: "",
       phone: "",
       subject: "",
-      experience: "",
       memberType: "",
       category: "",
       memberId: "",
       gender: "",
       experienceMonth: "",
       experienceYear: "",
-      primarySubjects: [],
+      primarySubjects: [] as string[],
       password: "",
       whoWillPay: "",
     },
@@ -105,6 +110,8 @@ const AddEducatorcomponent = () => {
         : "",
   });
 
+  console.log("data", data);
+
   const handleChangeWhoWillPay = (
     e: React.SyntheticEvent,
     newValue: { label: USER_ROLES } | null,
@@ -113,16 +120,74 @@ const AddEducatorcomponent = () => {
   };
 
   const [phone, setPhone] = useState("");
-  const handlePhoneChange = (value: string) => {
+  const handlePhoneChange = (value: string, countryInfo: MuiTelInputInfo) => {
     setPhone(value);
     const isValid = matchIsValidTel(value);
 
     if (isValid) {
-      formik.setFieldValue("phone", value);
+      formik.setFieldValue("phone", countryInfo?.nationalNumber);
     } else {
       formik.setFieldError("phone", "Invalid phone number");
     }
   };
+
+  const { userData, fetchUserData, loading: userLoading } = useGetAllUser();
+  const getExistingMemberTeacherDetails = () => {
+    if (formik.values.memberId) {
+      fetchUserData({
+        page: 1,
+        limit: 100,
+        userId: formik.values.memberId,
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (userData && Array.isArray(userData)) {
+      const filterData = userData.find(
+        (val: USER_DETAILS_RESPONSE) => val.userId === formik.values.memberId,
+      );
+      if (filterData) {
+        setData(filterData);
+      }
+    }
+  }, [userData, formik.values.memberId]);
+
+  useEffect(() => {
+    if (data) {
+      formik.setValues({
+        ...formik.values,
+        firstName: data.firstName || "",
+        lastName: data.lastName || "",
+        email: data.email || "",
+        category: data.category || "",
+        gender: (data.gender as string) || "",
+        experienceMonth: data.experienceMonths
+          ? String(data.experienceMonths)
+          : "",
+        experienceYear: data.experienceinYears
+          ? String(data.experienceinYears)
+          : data.experienceYears
+            ? String(data.experienceYears)
+            : "",
+        primarySubjects: data.primarySubjects || [],
+        whoWillPay: data.isSchoolPay ? USER_ROLES.INSTITUTION : "",
+      });
+      if (data.phone) {
+        let phoneVal = data.phone;
+        if (!phoneVal.startsWith("+")) {
+          phoneVal = `+${data.countryCode || "91"}${phoneVal}`;
+        }
+        setPhone(phoneVal);
+        const isValid = matchIsValidTel(phoneVal);
+        if (isValid) {
+          formik.setFieldValue("phone", phoneVal);
+        } else {
+          formik.setFieldError("phone", "Invalid phone number");
+        }
+      }
+    }
+  }, [data]);
 
   return (
     <Box sx={{ p: 1 }}>
@@ -154,7 +219,7 @@ const AddEducatorcomponent = () => {
 
         <form onSubmit={formik.handleSubmit}>
           <Grid container spacing={3} sx={{ mt: 4 }}>
-            {/* <Grid
+            <Grid
               size={{
                 xs: 12,
                 md:
@@ -184,23 +249,41 @@ const AddEducatorcomponent = () => {
                   formik.setFieldValue("memberType", value);
                 }}
               />
-            </Grid> */}
+            </Grid>
             {formik.values.memberType === MEMBER_TYPES.EXISTING_MEMBER && (
               <Grid size={{ xs: 12, md: 6 }}>
-                <TextField
-                  fullWidth
-                  name="memberId"
-                  label="Member ID"
-                  placeholder="e.g. 123456789"
-                  value={formik.values.memberId}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  error={
-                    formik.touched.memberId && Boolean(formik.errors.memberId)
-                  }
-                  helperText={formik.touched.memberId && formik.errors.memberId}
-                  sx={TEXTFIELD_STYLE_VALIDATION}
-                />
+                <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                  <TextField
+                    fullWidth
+                    name="memberId"
+                    label="Member ID"
+                    placeholder="e.g. 123456789"
+                    value={formik.values.memberId}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={
+                      formik.touched.memberId && Boolean(formik.errors.memberId)
+                    }
+                    helperText={
+                      formik.touched.memberId && formik.errors.memberId
+                    }
+                    sx={TEXTFIELD_STYLE_VALIDATION}
+                  />
+                  <Button
+                    sx={{
+                      fontFamily: roboto.style.fontFamily,
+                      backgroundColor: COLORS.PRIMARY_NAVY,
+                      color: COLORS.WHITE,
+                      width: "150px",
+                      height: "50px",
+                      textTransform: "none",
+                      borderRadius: "12px",
+                    }}
+                    onClick={getExistingMemberTeacherDetails}
+                  >
+                    Fetch Details
+                  </Button>
+                </Stack>
               </Grid>
             )}
             {/* <Grid size={12}>
@@ -336,6 +419,7 @@ const AddEducatorcomponent = () => {
                   />
                 )}
                 options={CATEGORY_TYPES}
+                value={formik.values.category || null}
                 getOptionLabel={(option) => option}
                 onChange={(event, value) => {
                   formik.setFieldValue("category", value);
@@ -356,6 +440,7 @@ const AddEducatorcomponent = () => {
                   />
                 )}
                 options={GENDER}
+                value={formik.values.gender || null}
                 getOptionLabel={(option) => option}
                 onChange={(event, value) => {
                   formik.setFieldValue("gender", value);

@@ -38,6 +38,7 @@ export const userControllers = {
     approvalStatus,
     search,
     isComplete,
+    userId,
   }: ALL_USER_REQUEST_PROPS) => {
     try {
       const params = Object.fromEntries(
@@ -48,6 +49,7 @@ export const userControllers = {
           approvalStatus,
           search,
           isComplete,
+          userId,
         }).filter(([_, v]) => v !== null && v !== undefined && v !== ""),
       );
       const result = await userSecuredApi.get("/all", {

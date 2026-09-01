@@ -1,7 +1,7 @@
 import { BILLING_CYCLE, COLORS, CURRENCY, PLAN_LIMIT_TYPE } from "@/utils/enum";
-import { roboto } from "@/utils/fonts";
+import { roboto, montserrat } from "@/utils/fonts";
 import { PLAN_RESPONSE_PROPS } from "@/utils/type";
-import { Circle } from "@mui/icons-material";
+import { CheckCircleOutline } from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -9,13 +9,14 @@ import {
   Grid,
   List,
   ListItem,
-  ListItemAvatar,
+  ListItemIcon,
   ListItemText,
   Stack,
   Typography,
+  Chip,
+  Button,
 } from "@mui/material";
 import React from "react";
-import BeamButton from "@/components/widgets/BeamButton";
 
 interface PLAN_PROPS {
   name: string;
@@ -43,108 +44,144 @@ const PlanCard = ({
   canSkip,
 }: PLAN_PROPS) => {
   return (
-    <Box sx={{ mt: 3, minHeight: 200 }}>
-      <Card sx={{ p: 3, borderRadius: "20px", mb: 2 }}>
-        <Grid container alignItems={"center"} spacing={5}>
-          <Grid size={6}>
-            <Typography
-              sx={{
-                fontSize: 20,
-                fontWeight: 500,
-                fontFamily: roboto.style.fontFamily,
-              }}
-            >
-              {name}
-            </Typography>
-
-            <Stack>
-              <Typography sx={{ fontSize: 30, fontWeight: 600 }}>
-                {currency === CURRENCY.INR ? "₹" : "$"} {price} /
-                {billingCycle === BILLING_CYCLE.MONTHLY ? "mo" : "yr"}
+    <Box sx={{ mt: 3, minHeight: 200, height: "100%" }}>
+      <Card
+        sx={{
+          p: 4,
+          borderRadius: "16px",
+          mb: 2,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          background: "#FFFFFF",
+          border: "1px solid #E2E8F0",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
+          position: "relative",
+          overflow: "visible",
+        }}
+      >
+        <Grid container alignItems={"stretch"} spacing={4} sx={{ height: '100%' }}>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Box>
+              <Typography
+                sx={{
+                  fontSize: 22,
+                  fontWeight: 600,
+                  color: "#1E293B",
+                  fontFamily: montserrat.style.fontFamily,
+                  mb: 1,
+                }}
+              >
+                {name}
               </Typography>
-            </Stack>
-            <Stack sx={{ mt: 2 }} spacing={2}>
-              {createPayment && (
-                <BeamButton
+
+              <Stack direction="row" alignItems="baseline" spacing={0.5}>
+                <Typography
                   sx={{
-                    fontFamily: roboto.style.fontFamily,
-                    backgroundColor: COLORS.PRIMARY_NAVY,
-                    borderRadius: "20px",
+                    fontSize: 36,
+                    fontWeight: 700,
+                    color: "#0F172A",
+                    fontFamily: montserrat.style.fontFamily,
+                  }}
+                >
+                  {currency === CURRENCY.INR ? "₹" : "$"}
+                  {price}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: 15, color: "#64748B", fontWeight: 500 }}
+                >
+                  / {billingCycle === BILLING_CYCLE.MONTHLY ? "mo" : "yr"}
+                </Typography>
+              </Stack>
+            </Box>
+
+            <Box sx={{ mt: "auto", pt: 4 }}>
+              {createPayment && (
+                <Button
+                  variant="contained"
+                  sx={{
+                    fontFamily: montserrat.style.fontFamily,
+                    background: COLORS.PRIMARY_NAVY,
+                    borderRadius: "8px",
                     width: "100%",
                     color: COLORS.WHITE,
+                    py: 1.5,
+                    fontWeight: 600,
+                    textTransform: "none",
+                    boxShadow: "none",
+                    "&:hover": {
+                      background: COLORS.PRIMARY_NAVY,
+                      opacity: 0.9,
+                      boxShadow: "none",
+                    },
                   }}
                   onClick={() => createPayment?.(id)}
                 >
                   {loading ? (
-                    <CircularProgress
-                      sx={{ color: COLORS.WHITE, fontSize: 10 }}
-                    />
+                    <CircularProgress sx={{ color: COLORS.WHITE }} size={24} />
                   ) : (
-                    "Make Payment"
+                    "Get Started"
                   )}
-                </BeamButton>
+                </Button>
               )}
-              {/* {canSkip && (
-                <BeamButton
-                  sx={{
-                    border: "1px solid" + COLORS.PRIMARY_NAVY,
-                    borderRadius: "20px",
-                    color: COLORS.PRIMARY_NAVY,
-                    width: "100%",
-                    fontFamily: roboto.style.fontFamily,
-                  }}
-                  onClick={() => skipPayment?.()}
-                >
-                  Skip Now & Pay Later
-                </BeamButton>
-              )} */}
-            </Stack>
+            </Box>
           </Grid>
-          <Grid size={6}>
-            <List>
+
+          <Grid size={{ xs: 12, md: 6 }}>
+            <List sx={{ py: 0 }}>
               {limits.map((item, index) => (
-                <ListItem key={index}>
-                  <ListItemAvatar sx={{ minWidth: 20 }}>
-                    <Circle
+                <ListItem key={index} sx={{ px: 0, py: 0.75 }}>
+                  <ListItemIcon sx={{ minWidth: 32 }}>
+                    <CheckCircleOutline
                       sx={{
-                        fontSize: 10,
+                        fontSize: 18,
                         color: COLORS.PRIMARY_NAVY,
                       }}
                     />
-                  </ListItemAvatar>
+                  </ListItemIcon>
                   <ListItemText
+                    primaryTypographyProps={{
+                      fontSize: 14,
+                      color: "#475569",
+                      fontFamily: montserrat.style.fontFamily,
+                      fontWeight: 500,
+                    }}
                     primary={
                       item.key === PLAN_LIMIT_TYPE.MAX_STUDENTS
-                        ? `You can Add upto ${item.value} Students`
+                        ? `Add up to ${item.value} Students`
                         : item.key === PLAN_LIMIT_TYPE.MAX_TEACHERS
-                          ? `You can Add upto ${item.value} Teachers`
+                          ? `Add up to ${item.value} Teachers`
                           : item.key ===
-                              PLAN_LIMIT_TYPE.APPROVE_NOMINEE_TEACHERS
-                            ? `You can Nominate upto ${item.value} Teachers`
+                            PLAN_LIMIT_TYPE.APPROVE_NOMINEE_TEACHERS
+                            ? `Nominate up to ${item.value} Teachers`
                             : item.key ===
-                                PLAN_LIMIT_TYPE.MAX_SELF_NOMINATION_TEACHER
-                              ? `You can Nominate Self upto ${item.value} times `
+                              PLAN_LIMIT_TYPE.MAX_SELF_NOMINATION_TEACHER
+                              ? `Self-nominate up to ${item.value} times`
                               : item.key ===
-                                  PLAN_LIMIT_TYPE.MAX_INNOVATION_SUBMISSIONS
-                                ? `You can Add upto ${item.value} Innovation Submissions`
+                                PLAN_LIMIT_TYPE.MAX_INNOVATION_SUBMISSIONS
+                                ? `Add up to ${item.value} Innovation Submissions`
                                 : item.key ===
-                                    PLAN_LIMIT_TYPE.MAX_RESEARCH_SUBMISSIONS
-                                  ? `You can Add upto ${item.value} Research Submissions`
+                                  PLAN_LIMIT_TYPE.MAX_RESEARCH_SUBMISSIONS
+                                  ? `Add up to ${item.value} Research Submissions`
                                   : item.key ===
-                                      PLAN_LIMIT_TYPE.STUDENT_MEMBERSHIP_CERTIFICATION
+                                    PLAN_LIMIT_TYPE.STUDENT_MEMBERSHIP_CERTIFICATION
                                     ? `Student Membership Certification`
                                     : item.key ===
-                                        PLAN_LIMIT_TYPE.IDEAS_INNOVATION_CASE_STUDIES_ACCESS
-                                      ? `Access to Ideas & Innovation Case Studies`
+                                      PLAN_LIMIT_TYPE.IDEAS_INNOVATION_CASE_STUDIES_ACCESS
+                                      ? `Ideas & Innovation Case Studies Access`
                                       : item.key ===
-                                          PLAN_LIMIT_TYPE["INNOVATION_&_RESEARCH_COMPETITIONS"]
-                                        ? `Access to Innovation & Research Competitions`
+                                        PLAN_LIMIT_TYPE[
+                                          "INNOVATION_&_RESEARCH_COMPETITIONS"
+                                        ]
+                                        ? `Innovation & Research Competitions Access`
                                         : item.key ===
-                                            PLAN_LIMIT_TYPE["SCHOLAR_DESIGNATIONS_&_FELLOWSHIPS"]
-                                          ? `Access to Scholar Designations & Fellowships`
+                                          PLAN_LIMIT_TYPE[
+                                            "SCHOLAR_DESIGNATIONS_&_FELLOWSHIPS"
+                                          ]
+                                          ? `Scholar Designations & Fellowships Access`
                                           : item.key ===
-                                              PLAN_LIMIT_TYPE.STARTUP_PITCH_COMPETITIONS
-                                            ? `Access to Startup Pitch Competitions`
+                                            PLAN_LIMIT_TYPE.STARTUP_PITCH_COMPETITIONS
+                                            ? `Startup Pitch Competitions Access`
                                             : ""
                     }
                   />

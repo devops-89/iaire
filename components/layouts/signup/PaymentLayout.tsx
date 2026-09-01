@@ -4,21 +4,30 @@ import { useMakePayment } from "@/hooks/common/useCreatePayment";
 import { useGetPlans } from "@/hooks/common/useGetPlans";
 import { useSignup } from "@/store/useSignup";
 import { COLORS, USER_ROLES } from "@/utils/enum";
-import { Box, Container, Grid } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { Box, Container, Grid, Typography } from "@mui/material";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { Suspense, useEffect, useState } from "react";
 import SignupStepper from "./SignupStepper";
+import { montserrat } from "@/utils/fonts";
 
-const PaymentLayout = () => {
+const PaymentLayoutContent = () => {
   const router = useRouter();
   const { data, institutionData, educatorData } = useSignup();
+  const searchParams = useSearchParams();
+  const urlRole = searchParams?.get("role");
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const role =
+    urlRole ||
     data?.role ||
     institutionData?.role ||
     educatorData?.role ||
-    (typeof window !== "undefined" ? localStorage.getItem("role") : null);
-
-  // console.log("role", role);
+    (mounted ? localStorage.getItem("role") : null);
 
   let finalRole = role;
 
@@ -33,9 +42,6 @@ const PaymentLayout = () => {
   }
 
   const { planData, planLoading } = useGetPlans({ role: finalRole || "" });
-  console.log("plan Data", planData);
-
-  // console.l;
 
   const { loading, makePayment } = useMakePayment();
 
@@ -61,31 +67,50 @@ const PaymentLayout = () => {
         background: `linear-gradient(135deg, ${COLORS.NAVY_GRADIENT_START} 0%, ${COLORS.NAVY_GRADIENT_END} 100%)`,
         minHeight: "100vh",
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         position: "relative",
         overflow: "hidden",
-        py: 4,
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: "-10%",
-          left: "-10%",
-          width: "40%",
-          height: "40%",
-          background:
-            "radial-gradient(circle, rgba(209, 160, 84, 0.05) 0%, rgba(209, 160, 84, 0) 70%)",
-          filter: "blur(60px)",
-          zIndex: 0,
-        },
+        py: 6,
+        px: 2,
       }}
     >
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <SignupStepper activeStep={2} />
+        <Box sx={{ mb: 6 }}>
+          <SignupStepper activeStep={2} lightText={true} />
+        </Box>
 
-        <Grid container spacing={4}>
-          <Grid size={{ xs: 12, md: 8 }} margin="auto">
-            {planData?.map((val, i) => (
+        <Box sx={{ textAlign: "center", mb: 6 }}>
+          <Typography
+            sx={{
+              fontFamily: montserrat.style.fontFamily,
+              fontWeight: 700,
+              fontSize: { xs: 28, md: 36 },
+              color: "#F8FAFC",
+              mb: 1,
+            }}
+          >
+            Choose Your Plan
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: montserrat.style.fontFamily,
+              fontWeight: 400,
+              fontSize: { xs: 14, md: 16 },
+              color: "#94A3B8",
+              maxWidth: "600px",
+              mx: "auto",
+            }}
+          >
+            Select the perfect plan to unlock all features and accelerate your
+            journey with us.
+          </Typography>
+        </Box>
+
+        <Grid container spacing={4} justifyContent="center">
+          {planData?.map((val, i) => (
+            <Grid size={{ xs: 12, md: 8, lg: 6 }} key={val.id}>
               <PlanCard
                 name={val.name}
                 currency={val.currency}
@@ -98,11 +123,21 @@ const PaymentLayout = () => {
                 loading={loading}
                 canSkip={true}
               />
-            ))}
-          </Grid>
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </Box>
+  );
+};
+
+const PaymentLayout = () => {
+  return (
+    <Suspense
+      fallback={<Box sx={{ minHeight: "100vh", bgcolor: "#0F172A" }} />}
+    >
+      <PaymentLayoutContent />
+    </Suspense>
   );
 };
 

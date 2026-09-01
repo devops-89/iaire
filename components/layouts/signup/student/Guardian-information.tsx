@@ -29,6 +29,12 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
     newValue: string,
     countryData: MuiTelInputInfo,
   ) => {
+    if (
+      countryData?.nationalNumber &&
+      countryData.nationalNumber.replace(/\D/g, "").length > 10
+    ) {
+      return;
+    }
     setFatherPhoneVal(newValue);
     const validTel = matchIsValidTel(newValue);
     if (validTel) {
@@ -42,6 +48,12 @@ const GuardianInformation = ({ formik }: GUARDIAN_INFO) => {
     newValue: string,
     countryData: MuiTelInputInfo,
   ) => {
+    if (
+      countryData?.nationalNumber &&
+      countryData.nationalNumber.replace(/\D/g, "").length > 10
+    ) {
+      return;
+    }
     setMotherPhoneVal(newValue);
     const validTel = matchIsValidTel(newValue);
     if (validTel) {

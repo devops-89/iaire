@@ -114,7 +114,7 @@ const ProfileCard = ({ data }: ProfileCardProps) => {
               fontWeight: 500,
             }}
           >
-            @{data?.username}
+            {data?.userId}
           </Typography>
 
           {/* Status Pills */}
@@ -191,7 +191,11 @@ const ProfileCard = ({ data }: ProfileCardProps) => {
                   fontWeight: 600,
                 }}
               >
-                {data?.phone ? (data.phone.startsWith("+") ? data.phone : `+${data.phone}`) : "No phone added"}
+                {data?.phone
+                  ? data.phone.startsWith("+")
+                    ? data.phone
+                    : `+${data.phone}`
+                  : "No phone added"}
               </Typography>
             </Box>
           </Stack>

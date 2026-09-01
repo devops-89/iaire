@@ -14,6 +14,7 @@ export const useGetAllUser = () => {
     approvalStatus,
     search,
     isComplete,
+    userId,
   }: ALL_USER_REQUEST_PROPS) => {
     try {
       setLoading(true);
@@ -24,6 +25,7 @@ export const useGetAllUser = () => {
         approvalStatus,
         search,
         isComplete,
+        userId,
       });
       setUserData(result?.data);
     } catch (error) {

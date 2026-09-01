@@ -4,10 +4,11 @@ export const TEXTFIELD_STYLE_VALIDATION = {
   "& input[type=number]": {
     MozAppearance: "textfield",
   },
-  "& input[type=number]::-webkit-outer-spin-button, & input[type=number]::-webkit-inner-spin-button": {
-    WebkitAppearance: "none",
-    margin: 0,
-  },
+  "& input[type=number]::-webkit-outer-spin-button, & input[type=number]::-webkit-inner-spin-button":
+    {
+      WebkitAppearance: "none",
+      margin: 0,
+    },
 };
 export const DATE_PICKER_STYLE_VALIDATION = {
   "& .MuiPickersOutlinedInput-root": {

@@ -214,6 +214,7 @@ export interface ALL_USER_REQUEST_PROPS {
   approvalStatus?: string | null;
   search?: string;
   isComplete?: boolean;
+  userId?: string;
 }
 
 export interface TEACHER_REPONSE_PROPS {
@@ -780,7 +781,6 @@ export interface USER_DETAILS_RESPONSE {
   deletedAt?: string | null;
   profileImageDownloadUrl?: string | null;
   affiliationCertificateDownloadUrl?: string | null;
-  userId?: string;
   students?: {
     id?: number;
     email?: string;
@@ -840,6 +840,7 @@ export interface USER_DETAILS_RESPONSE {
   publications?: number;
   hasSelectionBoardApproval?: boolean;
   registrationNumber?: string;
+  userId: string;
 }
 
 export interface UPDATE_PROFILE_FORM_PROPS {
