@@ -240,7 +240,7 @@ const InstitutionTrainingList = () => {
                           )}
                         </TableCell>
 
-                        {role === USER_ROLES.INSTITUTION ? (
+                        {/* {role === USER_ROLES.INSTITUTION ? (
                           val.status ===
                             TRAINING_NOMINATION_STATUS.INTERVIEW_SCHEDULED ||
                           TRAINING_NOMINATION_STATUS.TRAINING_COMPLETED ? (
@@ -309,8 +309,7 @@ const InstitutionTrainingList = () => {
                               </Select>
                             </TableCell>
                           )
-                        ) : val.status ===
-                          TRAINING_NOMINATION_STATUS.SELF_NOMINATED ? (
+                        ) : (
                           <TableCell
                             sx={{
                               fontFamily: newBlack_medium.style.fontFamily,
@@ -318,7 +317,69 @@ const InstitutionTrainingList = () => {
                               fontWeight: 500,
                             }}
                           >
-                            Pending
+                            {val?.status
+                              ?.replace(/_/g, " ")
+                              .toLowerCase()
+                              .replace(/\b\w/g, (l: any) => l.toUpperCase()) ||
+                              "N/A"}
+                          </TableCell>
+                        )} */}
+                        {val.status ===
+                        TRAINING_NOMINATION_STATUS.SELF_NOMINATED ? (
+                          <TableCell
+                            sx={{
+                              fontSize: 13,
+                              fontFamily: roboto.style.fontFamily,
+                            }}
+                          >
+                            <Select
+                              value={val.status}
+                              size="small"
+                              sx={{
+                                fontFamily: newBlack_medium.style.fontFamily,
+                                fontSize: "13px",
+                                minWidth: "160px",
+                                borderRadius: "8px",
+                              }}
+                              displayEmpty
+                              renderValue={(selected) => {
+                                if (
+                                  selected ===
+                                  TRAINING_NOMINATION_STATUS.SELF_NOMINATED
+                                ) {
+                                  return "Self Nominated";
+                                }
+                                const statusObj =
+                                  SCHOOL_TRAINING_NOMINATION_STATUS.find(
+                                    (s) => s.value === selected,
+                                  );
+                                return statusObj
+                                  ? statusObj.label
+                                  : ((selected as string)
+                                      ?.replace(/_/g, " ")
+                                      ?.toLowerCase()
+                                      ?.replace(/\b\w/g, (l) =>
+                                        l.toUpperCase(),
+                                      ) ?? selected);
+                              }}
+                              onChange={(e) => handleStatusChange(e, val.id)}
+                            >
+                              {SCHOOL_TRAINING_NOMINATION_STATUS.map(
+                                (status) => (
+                                  <MenuItem
+                                    key={status.value}
+                                    value={status.value}
+                                    sx={{
+                                      fontFamily:
+                                        newBlack_medium.style.fontFamily,
+                                      fontSize: "13px",
+                                    }}
+                                  >
+                                    {status.label}
+                                  </MenuItem>
+                                ),
+                              )}
+                            </Select>
                           </TableCell>
                         ) : (
                           <TableCell

@@ -74,7 +74,7 @@ const AddEducatorcomponent = () => {
         (item) => item?.code === institutionData?.country?.code,
       );
 
-      const rawData = {
+      let rawData: Record<string, any> = {
         firstName: values?.firstName,
         lastName: values?.lastName,
         email: values?.email,
@@ -85,10 +85,13 @@ const AddEducatorcomponent = () => {
         category: values?.category,
         memberShipCode: values?.memberId,
         gender: values?.gender,
-        password: values?.password,
-        isSchoolPay:
-          values?.whoWillPay === USER_ROLES.INSTITUTION ? true : false,
+
+        // isSchoolPay:
+        //   values?.whoWillPay === USER_ROLES.INSTITUTION ? true : false,
       };
+      if (!values?.memberId) {
+        rawData.password = values.password;
+      }
 
       const data = Object.fromEntries(
         Object.entries(rawData).filter(
@@ -109,8 +112,6 @@ const AddEducatorcomponent = () => {
         ? USER_ROLES.EDUCATOR_ADMIN
         : "",
   });
-
-  console.log("data", data);
 
   const handleChangeWhoWillPay = (
     e: React.SyntheticEvent,
@@ -447,30 +448,31 @@ const AddEducatorcomponent = () => {
                 }}
               />
             </Grid>
-
-            <Grid size={{ xs: 12, md: 6 }}>
-              <TextField
-                fullWidth
-                name="password"
-                label="Password"
-                placeholder="Enter Password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.password && Boolean(formik.errors.password)
-                }
-                helperText={formik.touched.password && formik.errors.password}
-                sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
-              />
-            </Grid>
+            {formik.values?.memberType !== MEMBER_TYPES.EXISTING_MEMBER && (
+              <Grid size={{ xs: 12, md: 6 }}>
+                <TextField
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  placeholder="Enter Password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                  }
+                  helperText={formik.touched.password && formik.errors.password}
+                  sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
+                />
+              </Grid>
+            )}
 
             {planLoading && (
               <Grid
                 size={12}
                 sx={{ display: "flex", justifyContent: "center", my: 2 }}
               >
-                <CircularProgress sx={{ color: COLORS.PRIMARY_NAVY }} />
+                <CircularProgress sx={{ color: COLORS.WHITE }} />
               </Grid>
             )}
 
