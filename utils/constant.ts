@@ -102,11 +102,16 @@ export const EDUCATOR_SIDEBAR_DATA = [
     label: "Request Support",
     url: "/dashboard/educator/support-ticket",
   },
-  // {
-
-  //   label: "Request Honorarium",
-  //   url: "/dashboard/educator/request-honorarium",
-  // },
+  {
+    icon: Article,
+    label: "NOC",
+    url: "/dashboard/educator/noc",
+  },
+  {
+    icon: Article,
+    label: "Request Honorarium",
+    url: "/dashboard/educator/request-honorarium",
+  },
   {
     icon: AccountTree,
     label: "Resource Access",
@@ -911,7 +916,7 @@ export const TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW = [
 export const INSTITUTION_TRAINING_NOMINATION_TABLE_HEADER_INTERVIEW = [
   "Id",
   "Teacher Name",
-  "Teacher Email",
+  // "Teacher Email",
   "Category",
   "Training Mode",
   "Start Date",

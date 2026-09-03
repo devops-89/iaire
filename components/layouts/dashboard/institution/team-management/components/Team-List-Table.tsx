@@ -80,7 +80,7 @@ const TeamListTable = ({
                 <TableCell
                   key={i}
                   sx={{
-                    fontSize: 16,
+                    fontSize: 15,
                     fontWeight: 600,
                     fontFamily: aloeveraDisplay_medium.style.fontFamily,
                   }}

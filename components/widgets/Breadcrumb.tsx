@@ -1,5 +1,9 @@
 "use client";
-import { aloeveraDisplay_medium, newBlack_semiBold, roboto } from "@/utils/fonts";
+import {
+  aloeveraDisplay_medium,
+  newBlack_semiBold,
+  roboto,
+} from "@/utils/fonts";
 import { Box, Breadcrumbs, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
@@ -17,7 +21,7 @@ const Breadcrumb = ({ title, data }: BREADCRUMBPROPS) => {
     <Box>
       <Typography
         sx={{
-          fontSize: { xs: 24, md: 30 },
+          fontSize: { xs: 24, md: 25 },
           fontFamily: newBlack_semiBold.style.fontFamily,
           fontWeight: 500,
         }}

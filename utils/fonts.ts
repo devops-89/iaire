@@ -1,11 +1,17 @@
-import { Inter, Montserrat, Poppins, Roboto_Slab } from "next/font/google";
+import {
+  Inter,
+  Montserrat,
+  Poppins,
+  Roboto,
+  Roboto_Slab,
+} from "next/font/google";
 import localFont from "next/font/local";
 export const roboto = Roboto_Slab({
   weight: "variable",
   subsets: ["latin"],
 });
 
-export const montserrat = Montserrat({
+export const montserrat = Roboto_Slab({
   weight: "variable",
   subsets: ["latin"],
 });
@@ -31,7 +37,7 @@ export const aloeveraDisplay_medium = Poppins({
 //   variable: "--font-newBlack",
 // });
 
-export const newBlack_medium = Poppins({
+export const newBlack_medium = Roboto_Slab({
   weight: "500",
   subsets: ["latin"],
 });

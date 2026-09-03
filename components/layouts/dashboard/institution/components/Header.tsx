@@ -42,6 +42,7 @@ const InstitutionHeader = () => {
 
   const handleLogout = () => {
     localStorage.clear();
+    useSignup.getState().clearAll();
     router.push("/login");
   };
 

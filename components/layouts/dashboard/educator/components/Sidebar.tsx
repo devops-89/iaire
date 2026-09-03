@@ -82,9 +82,7 @@ const EducatorSidebar = () => {
                   borderRadius: "8px",
                   mb: 0.5,
                   backgroundColor:
-                    pathname === val.url
-                      ? COLORS.PRIMARY_NAVY
-                      : "transparent",
+                    pathname === val.url ? COLORS.PRIMARY_NAVY : "transparent",
                   ":hover": {
                     backgroundColor:
                       pathname === val.url
@@ -109,7 +107,7 @@ const EducatorSidebar = () => {
                   slotProps={{
                     primary: {
                       sx: {
-                        fontFamily: montserrat.style.fontFamily,
+                        fontFamily: roboto.style.fontFamily,
                         fontSize: "14px",
                         fontWeight: isActive ? 600 : 400,
                       },
@@ -173,10 +171,7 @@ const EducatorSidebar = () => {
   );
 
   return (
-    <Box
-      component="nav"
-      sx={{ width: { md: 250 }, flexShrink: { md: 0 } }}
-    >
+    <Box component="nav" sx={{ width: { md: 250 }, flexShrink: { md: 0 } }}>
       <Drawer
         variant="temporary"
         open={isOpen}

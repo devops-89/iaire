@@ -26,6 +26,31 @@ export const useTrainingList = () => {
   return { loading, data, getTeacherTrainingList };
 };
 
+export const useGetTrainingDetails = (id: string | number) => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<any>(null);
+
+  const getDetails = async () => {
+    if (!id) return;
+    setLoading(true);
+    try {
+      const res = await teacherController.getTrainingTeacherDetails(id);
+      setData(res.data.data);
+    } catch (err) {
+      console.log("err", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getDetails();
+  }, [id]);
+
+  return { loading, data, refetch: getDetails };
+};
+
+
 export const useSelfNominateTeacher = (onSuccess?: () => void) => {
   const [loading, setLoading] = useState(false);
   const { hideModal } = useModal();

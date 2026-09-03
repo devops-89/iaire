@@ -9,6 +9,7 @@ import {
   honorariumSecuredApi,
   innovationSecuredApi,
   needAssistance,
+  nocSecuredApi,
   platformSecuredApi,
   trainingSecuredApi,
   userPublicApi,
@@ -62,6 +63,16 @@ export const teacherController = {
       throw error;
     }
   },
+
+  getTrainingTeacherDetails: async (id: number | string) => {
+    try {
+      let result = await trainingSecuredApi.get(`/teachers/details/${id}`);
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+
   innovationCreateByTeacher: async (data: TEACHER_SELF_INNOVATION) => {
     try {
       const formData = new FormData();
@@ -124,6 +135,22 @@ export const teacherController = {
     try {
       let result = await platformSecuredApi.get("/dashboard/teacher");
       return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getAllnocs: async () => {
+    try {
+      let result = await nocSecuredApi.get("/all");
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  },
+  downloadNoc: async (id: string) => {
+    try {
+      let result = await nocSecuredApi.get(`/${id}/download`);
+      return result;
     } catch (error) {
       throw error;
     }

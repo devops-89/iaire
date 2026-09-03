@@ -14,6 +14,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import useSidebar from "@/store/useSidebar";
+import { useSignup } from "@/store/useSignup";
 
 const EducatorHeader = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,6 +41,7 @@ const EducatorHeader = () => {
   const handleLogout = () => {
     handleClose();
     localStorage.clear();
+    useSignup.getState().clearAll();
     router.push("/login");
   };
 

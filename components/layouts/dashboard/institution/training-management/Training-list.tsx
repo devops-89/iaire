@@ -28,6 +28,7 @@ import { TRAINING_NOMINATION_RESPONSE } from "@/utils/type";
 import {
   Box,
   Card,
+  IconButton,
   MenuItem,
   Select,
   Stack,
@@ -45,6 +46,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Atom } from "react-loading-indicators";
 import InstitutionDashboardLayout from "../Index";
+import { Visibility } from "@mui/icons-material";
 
 const InstitutionTrainingList = () => {
   const { showModal } = useModal();
@@ -163,6 +165,7 @@ const InstitutionTrainingList = () => {
                         </TableCell>
                       ),
                     )}
+                    <TableCell></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -196,14 +199,7 @@ const InstitutionTrainingList = () => {
                         >
                           {val?.teacher?.fullName || "N/A"}
                         </TableCell>
-                        <TableCell
-                          sx={{
-                            fontSize: 13,
-                            fontFamily: newBlack_medium.style.fontFamily,
-                          }}
-                        >
-                          {val?.teacher?.email || "N/A"}
-                        </TableCell>
+
                         <TableCell
                           sx={{
                             fontSize: 13,
@@ -240,90 +236,6 @@ const InstitutionTrainingList = () => {
                           )}
                         </TableCell>
 
-                        {/* {role === USER_ROLES.INSTITUTION ? (
-                          val.status ===
-                            TRAINING_NOMINATION_STATUS.INTERVIEW_SCHEDULED ||
-                          TRAINING_NOMINATION_STATUS.TRAINING_COMPLETED ? (
-                            <TableCell
-                              sx={{
-                                fontSize: 13,
-                                fontFamily: newBlack_medium.style.fontFamily,
-                              }}
-                            >
-                              {val.status?.replace(/_/g, " ")?.toUpperCase()}
-                            </TableCell>
-                          ) : (
-                            <TableCell
-                              sx={{
-                                fontSize: 13,
-                                fontFamily: roboto.style.fontFamily,
-                              }}
-                            >
-                              <Select
-                                value={val.status}
-                                size="small"
-                                sx={{
-                                  fontFamily: newBlack_medium.style.fontFamily,
-                                  fontSize: "13px",
-                                  minWidth: "160px",
-                                  borderRadius: "8px",
-                                }}
-                                displayEmpty
-                                renderValue={(selected) => {
-                                  if (
-                                    selected ===
-                                    TRAINING_NOMINATION_STATUS.SELF_NOMINATED
-                                  ) {
-                                    return "Self Nominated";
-                                  }
-                                  const statusObj =
-                                    SCHOOL_TRAINING_NOMINATION_STATUS.find(
-                                      (s) => s.value === selected,
-                                    );
-                                  return statusObj
-                                    ? statusObj.label
-                                    : ((selected as string)
-                                        ?.replace(/_/g, " ")
-                                        ?.toLowerCase()
-                                        ?.replace(/\b\w/g, (l) =>
-                                          l.toUpperCase(),
-                                        ) ?? selected);
-                                }}
-                                onChange={(e) => handleStatusChange(e, val.id)}
-                              >
-                                {SCHOOL_TRAINING_NOMINATION_STATUS.map(
-                                  (status) => (
-                                    <MenuItem
-                                      key={status.value}
-                                      value={status.value}
-                                      sx={{
-                                        fontFamily:
-                                          newBlack_medium.style.fontFamily,
-                                        fontSize: "13px",
-                                      }}
-                                    >
-                                      {status.label}
-                                    </MenuItem>
-                                  ),
-                                )}
-                              </Select>
-                            </TableCell>
-                          )
-                        ) : (
-                          <TableCell
-                            sx={{
-                              fontFamily: newBlack_medium.style.fontFamily,
-                              fontSize: "13px",
-                              fontWeight: 500,
-                            }}
-                          >
-                            {val?.status
-                              ?.replace(/_/g, " ")
-                              .toLowerCase()
-                              .replace(/\b\w/g, (l: any) => l.toUpperCase()) ||
-                              "N/A"}
-                          </TableCell>
-                        )} */}
                         {val.status ===
                         TRAINING_NOMINATION_STATUS.SELF_NOMINATED ? (
                           <TableCell
@@ -396,6 +308,18 @@ const InstitutionTrainingList = () => {
                               "N/A"}
                           </TableCell>
                         )}
+
+                        <TableCell>
+                          <IconButton
+                            onClick={() =>
+                              router.push(
+                                `/dashboard/institution/training-management/${val.id}`,
+                              )
+                            }
+                          >
+                            <Visibility />
+                          </IconButton>
+                        </TableCell>
                       </TableRow>
                     ))
                   ) : (

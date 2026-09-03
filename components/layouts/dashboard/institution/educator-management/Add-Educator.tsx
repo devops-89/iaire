@@ -85,6 +85,7 @@ const AddEducatorcomponent = () => {
         category: values?.category,
         memberShipCode: values?.memberId,
         gender: values?.gender,
+        // password: values.password,
 
         // isSchoolPay:
         //   values?.whoWillPay === USER_ROLES.INSTITUTION ? true : false,

@@ -57,7 +57,12 @@ import IssueNocModal from "@/components/modals/school/IssueNocModal";
 import ReportEducatorModal from "@/components/modals/school/ReportEducatorModal";
 import { useDebounceCallback } from "@/hooks/common/useDeboounce";
 
-const statusOptions = ["Member", "Not a Member"];
+const statusOptions = [
+  {
+    label: "Trained & Certified Teacher",
+    value: true,
+  },
+];
 
 const EducatorList = () => {
   const router = useRouter();
@@ -65,7 +70,7 @@ const EducatorList = () => {
   const { setSnackbar } = useSnackbar();
 
   const [tabValue, setTabValue] = useState("ALL");
-  const [selectedStatus, setSelectedStatus] = useState<string | null>(null);
+  const [selectedStatus, setSelectedStatus] = useState<any>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedTeacher, setSelectedTeacher] =
     useState<TEACHER_REPONSE_PROPS | null>(null);
@@ -112,12 +117,15 @@ const EducatorList = () => {
   const [search, setSearch] = useState("");
 
   const listItems = [
-    {
-      label: "Issue NOC",
-      onclick: () =>
-        showModal(<IssueNocModal educatorId={selectedTeacher?.id} />),
-    },
-
+    ...(selectedTeacher?.approvalStatus !== APPROVAL_STATUS.NOC_ISSUED
+      ? [
+          {
+            label: "Issue NOC",
+            onclick: () =>
+              showModal(<IssueNocModal educatorId={selectedTeacher?.id} />),
+          },
+        ]
+      : []),
     {
       label: "Report",
       onclick: () =>
@@ -257,10 +265,12 @@ const EducatorList = () => {
                       fontWeight: 500,
                     }}
                   >
-                    {option}
+                    {option.label}
                   </Typography>
                 </Box>
               )}
+              getOptionLabel={(option) => option.label}
+              onChange={(e, value) => setSelectedStatus(value?.value || null)}
             />
           </Grid>
           <Grid size={9}>

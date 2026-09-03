@@ -3,6 +3,7 @@ import Breadcrumb from "@/components/widgets/Breadcrumb";
 import {
   Autocomplete,
   Box,
+  Button,
   Card,
   CircularProgress,
   Grid,
@@ -194,23 +195,39 @@ const AddStudentComponent = () => {
             </Grid>
             {formik.values.membershipType === MEMBER_TYPES.EXISTING_MEMBER && (
               <Grid size={6}>
-                <TextField
-                  fullWidth
-                  label="Membership ID"
-                  sx={TEXTFIELD_STYLE_VALIDATION}
-                  id="membershipId"
-                  name="membershipId"
-                  value={formik.values.membershipId}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  error={
-                    formik.touched.membershipId &&
-                    Boolean(formik.errors.membershipId)
-                  }
-                  helperText={
-                    formik.touched.membershipId && formik.errors.membershipId
-                  }
-                />
+                <Stack direction={"row"} alignItems={"center"} spacing={2}>
+                  <TextField
+                    fullWidth
+                    label="Membership ID"
+                    id="membershipId"
+                    name="membershipId"
+                    placeholder="e.g. 123456789"
+                    value={formik.values.membershipId}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    error={
+                      formik.touched.membershipId &&
+                      Boolean(formik.errors.membershipId)
+                    }
+                    helperText={
+                      formik.touched.membershipId && formik.errors.membershipId
+                    }
+                    sx={TEXTFIELD_STYLE_VALIDATION}
+                  />
+                  <Button
+                    sx={{
+                      fontFamily: roboto.style.fontFamily,
+                      backgroundColor: COLORS.PRIMARY_NAVY,
+                      color: COLORS.WHITE,
+                      width: "150px",
+                      height: "50px",
+                      textTransform: "none",
+                      borderRadius: "12px",
+                    }}
+                  >
+                    Fetch Details
+                  </Button>
+                </Stack>
               </Grid>
             )}
             <Grid size={6}>

@@ -165,15 +165,13 @@ export const addEducatorValidationSchema = Yup.object({
     otherwise: (schema) => schema.notRequired(),
   }),
   gender: Yup.string().required("Please Select Gender"),
-  // primarySubjects: Yup.array()
-  //   .min(1, "At least one primary subject is required")
-  //   .required("Primary Subjects are required"),
-  // experienceMonth: Yup.number().max(11).optional(),
-  // experienceYear: Yup.number().required("Experiecne is required"),
-  password: Yup.string().required("Password is required"),
-  // whoWillPay: Yup.string().required(
-  //   "Please Select Who Will Pay For Membership",
-  // ),
+
+  password: Yup.string().when("memberType", {
+    is: MEMBER_TYPES.NEW_MEMBER,
+    then: (schema) => schema.required("Password is required"),
+    otherwise: (schema) => schema.notRequired(),
+  }),
+  // password: Yup.string().required("Password is required"),
 });
 
 export const addInnovationValidationSchema = Yup.object({

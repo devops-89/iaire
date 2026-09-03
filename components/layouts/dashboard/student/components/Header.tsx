@@ -42,6 +42,7 @@ const StudentHeader = () => {
   const handleLogout = () => {
     handleClose();
     localStorage.clear();
+    useSignup.getState().clearAll();
     router.push("/login");
   };
 

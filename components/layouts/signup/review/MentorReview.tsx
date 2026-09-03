@@ -121,6 +121,7 @@ const MentorReview = () => {
   }
 
   const handleCheckout = async () => {
+    console.log("educatorData", educatorData);
     try {
       const payload: any = {
         firstName: educatorData.firstName,
@@ -144,6 +145,7 @@ const MentorReview = () => {
         boardId: educatorData.board?.id || educatorData.boardId,
         schoolId: educatorData.school?.id || educatorData.schoolId,
       };
+      console.log("payload", payload);
 
       const cleanedPayload = Object.fromEntries(
         Object.entries(payload).filter(
