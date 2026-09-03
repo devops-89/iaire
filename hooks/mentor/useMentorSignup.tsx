@@ -21,6 +21,10 @@ export const useMentorSignup = () => {
       })
       .catch((err) => {
         console.log("error in teacher signup", err);
+        setSnackbar(
+          err?.response?.data?.message || "Something went wrong",
+          "error"
+        );
         setLoading(false);
       })
       .finally(() => {
