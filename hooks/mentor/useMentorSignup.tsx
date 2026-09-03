@@ -23,7 +23,7 @@ export const useMentorSignup = () => {
         console.log("error in teacher signup", err);
         setSnackbar(
           err?.response?.data?.message || "Something went wrong",
-          "error"
+          "error",
         );
         setLoading(false);
       })

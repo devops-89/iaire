@@ -362,7 +362,8 @@ const EducatorList = () => {
                               minWidth: 120,
                             }}
                           />
-                        ) : APPROVAL_STATUS.NOC_ISSUED ? (
+                        ) : teacher?.approvalStatus ===
+                          APPROVAL_STATUS.NOC_ISSUED ? (
                           <Chip
                             label={teacher?.approvalStatus}
                             sx={{
@@ -372,7 +373,8 @@ const EducatorList = () => {
                               minWidth: 120,
                             }}
                           />
-                        ) : APPROVAL_STATUS.REJECTED ? (
+                        ) : teacher?.approvalStatus ===
+                          APPROVAL_STATUS.REJECTED ? (
                           <Chip
                             label={teacher?.approvalStatus}
                             sx={{
