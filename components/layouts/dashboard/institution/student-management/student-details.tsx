@@ -12,7 +12,8 @@ import {
   ListItemAvatar,
   ListItemText,
   Stack,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { roboto, montserrat, inter } from "@/utils/fonts";
@@ -82,13 +83,11 @@ const StudentDetails = () => {
                 onClick={() => router.back()}
                 sx={{
                   textTransform: "none",
-                  color: "#000",
-                  fontFamily: montserrat.style.fontFamily,
-                  fontWeight: 600,
+
                   mb: 2,
                 }}
               >
-                Back to Student Management
+                Back
               </BeamButton>
 
               <Stack
@@ -124,7 +123,11 @@ const StudentDetails = () => {
                   <Grid size={{ xs: 12, sm: 6 }}>
                     <Card
                       elevation={0}
-                      sx={{ border: "1px solid #e0e0e0", borderRadius: "12px", height: "100%" }}
+                      sx={{
+                        border: "1px solid #e0e0e0",
+                        borderRadius: "12px",
+                        height: "100%",
+                      }}
                     >
                       <CardContent>
                         <Typography
@@ -198,7 +201,11 @@ const StudentDetails = () => {
                                 <Typography
                                   sx={{ fontSize: "14px", fontWeight: 500 }}
                                 >
-                                  {student?.phone ? (student.phone.startsWith("+") ? student.phone : `+${student.phone}`) : "-"}
+                                  {student?.phone
+                                    ? student.phone.startsWith("+")
+                                      ? student.phone
+                                      : `+${student.phone}`
+                                    : "-"}
                                 </Typography>
                               }
                             />
@@ -272,7 +279,11 @@ const StudentDetails = () => {
                               }
                               secondary={
                                 <Typography
-                                  sx={{ fontSize: "14px", fontWeight: 500, textTransform: "capitalize" }}
+                                  sx={{
+                                    fontSize: "14px",
+                                    fontWeight: 500,
+                                    textTransform: "capitalize",
+                                  }}
                                 >
                                   {student?.gender?.toLowerCase() || "-"}
                                 </Typography>
@@ -317,7 +328,11 @@ const StudentDetails = () => {
                   <Grid size={{ xs: 12, sm: 6 }}>
                     <Card
                       elevation={0}
-                      sx={{ border: "1px solid #e0e0e0", borderRadius: "12px", height: "100%" }}
+                      sx={{
+                        border: "1px solid #e0e0e0",
+                        borderRadius: "12px",
+                        height: "100%",
+                      }}
                     >
                       <CardContent>
                         <Typography
@@ -466,40 +481,143 @@ const StudentDetails = () => {
                                 Father's Information
                               </Typography>
                               <List disablePadding>
-                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                <ListItem
+                                  disableGutters
+                                  sx={{
+                                    py: 1,
+                                    borderBottom: "1px solid #f0f0f0",
+                                  }}
+                                >
                                   <ListItemAvatar sx={{ minWidth: 40 }}>
-                                    <Person sx={{ color: "#757575", fontSize: 20 }} />
+                                    <Person
+                                      sx={{ color: "#757575", fontSize: 20 }}
+                                    />
                                   </ListItemAvatar>
                                   <ListItemText
-                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>NAME</Typography>}
-                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.fatherName || "-"}</Typography>}
+                                    primary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "11px",
+                                          color: "#757575",
+                                        }}
+                                      >
+                                        NAME
+                                      </Typography>
+                                    }
+                                    secondary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "13px",
+                                          fontWeight: 600,
+                                        }}
+                                      >
+                                        {student?.fatherName || "-"}
+                                      </Typography>
+                                    }
                                   />
                                 </ListItem>
-                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                <ListItem
+                                  disableGutters
+                                  sx={{
+                                    py: 1,
+                                    borderBottom: "1px solid #f0f0f0",
+                                  }}
+                                >
                                   <ListItemAvatar sx={{ minWidth: 40 }}>
-                                    <Email sx={{ color: "#757575", fontSize: 20 }} />
+                                    <Email
+                                      sx={{ color: "#757575", fontSize: 20 }}
+                                    />
                                   </ListItemAvatar>
                                   <ListItemText
-                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>EMAIL</Typography>}
-                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600, wordBreak: "break-all" }}>{student?.fatherEmail || "-"}</Typography>}
+                                    primary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "11px",
+                                          color: "#757575",
+                                        }}
+                                      >
+                                        EMAIL
+                                      </Typography>
+                                    }
+                                    secondary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "13px",
+                                          fontWeight: 600,
+                                          wordBreak: "break-all",
+                                        }}
+                                      >
+                                        {student?.fatherEmail || "-"}
+                                      </Typography>
+                                    }
                                   />
                                 </ListItem>
-                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                <ListItem
+                                  disableGutters
+                                  sx={{
+                                    py: 1,
+                                    borderBottom: "1px solid #f0f0f0",
+                                  }}
+                                >
                                   <ListItemAvatar sx={{ minWidth: 40 }}>
-                                    <Phone sx={{ color: "#757575", fontSize: 20 }} />
+                                    <Phone
+                                      sx={{ color: "#757575", fontSize: 20 }}
+                                    />
                                   </ListItemAvatar>
                                   <ListItemText
-                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>PHONE</Typography>}
-                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.fatherPhone ? (student.fatherPhone.startsWith("+") ? student.fatherPhone : `+${student.fatherPhone}`) : "-"}</Typography>}
+                                    primary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "11px",
+                                          color: "#757575",
+                                        }}
+                                      >
+                                        PHONE
+                                      </Typography>
+                                    }
+                                    secondary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "13px",
+                                          fontWeight: 600,
+                                        }}
+                                      >
+                                        {student?.fatherPhone
+                                          ? student.fatherPhone.startsWith("+")
+                                            ? student.fatherPhone
+                                            : `+${student.fatherPhone}`
+                                          : "-"}
+                                      </Typography>
+                                    }
                                   />
                                 </ListItem>
                                 <ListItem disableGutters sx={{ py: 1 }}>
                                   <ListItemAvatar sx={{ minWidth: 40 }}>
-                                    <Work sx={{ color: "#757575", fontSize: 20 }} />
+                                    <Work
+                                      sx={{ color: "#757575", fontSize: 20 }}
+                                    />
                                   </ListItemAvatar>
                                   <ListItemText
-                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>PROFESSION</Typography>}
-                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.fatherProfession || "-"}</Typography>}
+                                    primary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "11px",
+                                          color: "#757575",
+                                        }}
+                                      >
+                                        PROFESSION
+                                      </Typography>
+                                    }
+                                    secondary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "13px",
+                                          fontWeight: 600,
+                                        }}
+                                      >
+                                        {student?.fatherProfession || "-"}
+                                      </Typography>
+                                    }
                                   />
                                 </ListItem>
                               </List>
@@ -519,40 +637,143 @@ const StudentDetails = () => {
                                 Mother's Information
                               </Typography>
                               <List disablePadding>
-                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                <ListItem
+                                  disableGutters
+                                  sx={{
+                                    py: 1,
+                                    borderBottom: "1px solid #f0f0f0",
+                                  }}
+                                >
                                   <ListItemAvatar sx={{ minWidth: 40 }}>
-                                    <Person sx={{ color: "#757575", fontSize: 20 }} />
+                                    <Person
+                                      sx={{ color: "#757575", fontSize: 20 }}
+                                    />
                                   </ListItemAvatar>
                                   <ListItemText
-                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>NAME</Typography>}
-                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.motherName || "-"}</Typography>}
+                                    primary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "11px",
+                                          color: "#757575",
+                                        }}
+                                      >
+                                        NAME
+                                      </Typography>
+                                    }
+                                    secondary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "13px",
+                                          fontWeight: 600,
+                                        }}
+                                      >
+                                        {student?.motherName || "-"}
+                                      </Typography>
+                                    }
                                   />
                                 </ListItem>
-                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                <ListItem
+                                  disableGutters
+                                  sx={{
+                                    py: 1,
+                                    borderBottom: "1px solid #f0f0f0",
+                                  }}
+                                >
                                   <ListItemAvatar sx={{ minWidth: 40 }}>
-                                    <Email sx={{ color: "#757575", fontSize: 20 }} />
+                                    <Email
+                                      sx={{ color: "#757575", fontSize: 20 }}
+                                    />
                                   </ListItemAvatar>
                                   <ListItemText
-                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>EMAIL</Typography>}
-                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600, wordBreak: "break-all" }}>{student?.motherEmail || "-"}</Typography>}
+                                    primary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "11px",
+                                          color: "#757575",
+                                        }}
+                                      >
+                                        EMAIL
+                                      </Typography>
+                                    }
+                                    secondary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "13px",
+                                          fontWeight: 600,
+                                          wordBreak: "break-all",
+                                        }}
+                                      >
+                                        {student?.motherEmail || "-"}
+                                      </Typography>
+                                    }
                                   />
                                 </ListItem>
-                                <ListItem disableGutters sx={{ py: 1, borderBottom: "1px solid #f0f0f0" }}>
+                                <ListItem
+                                  disableGutters
+                                  sx={{
+                                    py: 1,
+                                    borderBottom: "1px solid #f0f0f0",
+                                  }}
+                                >
                                   <ListItemAvatar sx={{ minWidth: 40 }}>
-                                    <Phone sx={{ color: "#757575", fontSize: 20 }} />
+                                    <Phone
+                                      sx={{ color: "#757575", fontSize: 20 }}
+                                    />
                                   </ListItemAvatar>
                                   <ListItemText
-                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>PHONE</Typography>}
-                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.motherPhone ? (student.motherPhone.startsWith("+") ? student.motherPhone : `+${student.motherPhone}`) : "-"}</Typography>}
+                                    primary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "11px",
+                                          color: "#757575",
+                                        }}
+                                      >
+                                        PHONE
+                                      </Typography>
+                                    }
+                                    secondary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "13px",
+                                          fontWeight: 600,
+                                        }}
+                                      >
+                                        {student?.motherPhone
+                                          ? student.motherPhone.startsWith("+")
+                                            ? student.motherPhone
+                                            : `+${student.motherPhone}`
+                                          : "-"}
+                                      </Typography>
+                                    }
                                   />
                                 </ListItem>
                                 <ListItem disableGutters sx={{ py: 1 }}>
                                   <ListItemAvatar sx={{ minWidth: 40 }}>
-                                    <Work sx={{ color: "#757575", fontSize: 20 }} />
+                                    <Work
+                                      sx={{ color: "#757575", fontSize: 20 }}
+                                    />
                                   </ListItemAvatar>
                                   <ListItemText
-                                    primary={<Typography sx={{ fontSize: "11px", color: "#757575" }}>PROFESSION</Typography>}
-                                    secondary={<Typography sx={{ fontSize: "13px", fontWeight: 600 }}>{student?.motherProfession || "-"}</Typography>}
+                                    primary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "11px",
+                                          color: "#757575",
+                                        }}
+                                      >
+                                        PROFESSION
+                                      </Typography>
+                                    }
+                                    secondary={
+                                      <Typography
+                                        sx={{
+                                          fontSize: "13px",
+                                          fontWeight: 600,
+                                        }}
+                                      >
+                                        {student?.motherProfession || "-"}
+                                      </Typography>
+                                    }
                                   />
                                 </ListItem>
                               </List>
@@ -656,21 +877,32 @@ const StudentDetails = () => {
                                   PAYMENT STATUS
                                 </Typography>
                                 <Chip
-                                   label={payment.status}
-                                   size="small"
-                                   icon={
-                                     payment.status?.toUpperCase() === "SUCCESS" ? (
-                                       <CheckCircle style={{ color: "#2e7d32" }} />
-                                     ) : (
-                                       <Cancel style={{ color: "#c62828" }} />
-                                     )
-                                   }
-                                   sx={{
-                                     backgroundColor: payment.status?.toUpperCase() === "SUCCESS" ? "#e8f5e9" : "#ffebee",
-                                     color: payment.status?.toUpperCase() === "SUCCESS" ? "#2e7d32" : "#c62828",
-                                     fontWeight: 600,
-                                   }}
-                                 />
+                                  label={payment.status}
+                                  size="small"
+                                  icon={
+                                    payment.status?.toUpperCase() ===
+                                    "SUCCESS" ? (
+                                      <CheckCircle
+                                        style={{ color: "#2e7d32" }}
+                                      />
+                                    ) : (
+                                      <Cancel style={{ color: "#c62828" }} />
+                                    )
+                                  }
+                                  sx={{
+                                    backgroundColor:
+                                      payment.status?.toUpperCase() ===
+                                      "SUCCESS"
+                                        ? "#e8f5e9"
+                                        : "#ffebee",
+                                    color:
+                                      payment.status?.toUpperCase() ===
+                                      "SUCCESS"
+                                        ? "#2e7d32"
+                                        : "#c62828",
+                                    fontWeight: 600,
+                                  }}
+                                />
                               </Grid>
 
                               <Grid size={{ xs: 12, sm: 4 }}>

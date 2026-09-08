@@ -33,6 +33,7 @@ export enum USER_STATUS {
   INACTIVE = "Inactive",
   BANNED = "Banned",
   PENDING = "Pending",
+  NOC_ISSUED = "NOC_ISSUED",
 }
 
 export enum MEMBER_TYPES {

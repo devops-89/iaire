@@ -18,7 +18,7 @@ import {
 import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { roboto, montserrat, inter } from "@/utils/fonts";
-import { COLORS } from "@/utils/enum";
+import { APPROVAL_STATUS, COLORS } from "@/utils/enum";
 import { useGetUserDetailsById } from "@/hooks/common/getUserDetails";
 import { useParams, useRouter } from "next/navigation";
 import {
@@ -79,8 +79,9 @@ const EducatorDetails = () => {
               <BeamButton
                 startIcon={<ArrowBack />}
                 onClick={() => router.back()}
+                sx={{ mb: 2 }}
               >
-                Back to Educator Management
+                Back
               </BeamButton>
 
               <Stack
@@ -95,11 +96,15 @@ const EducatorDetails = () => {
                 >
                   Educator Details
                 </Typography>
-                <BeamButton
-                  onClick={() => showModal(<IssueNocModal educatorId={id} />)}
-                >
-                  Issue NOC
-                </BeamButton>
+                {educator?.approvalStatus === APPROVAL_STATUS.NOC_ISSUED ? (
+                  <Chip label="Noc Issued" color="info" variant="outlined" />
+                ) : (
+                  <BeamButton
+                    onClick={() => showModal(<IssueNocModal educatorId={id} />)}
+                  >
+                    Issue NOC
+                  </BeamButton>
+                )}
               </Stack>
             </Box>
 

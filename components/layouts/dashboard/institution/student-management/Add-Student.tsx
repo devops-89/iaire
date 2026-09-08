@@ -99,24 +99,26 @@ const AddStudentComponent = () => {
 
   useEffect(() => {
     if (data) {
+      let finalPhoneVal = "";
+      if (data.phone) {
+        finalPhoneVal = data.phone;
+        if (!finalPhoneVal.startsWith("+")) {
+          const cCode = (data.countryCode || "91").replace("+", "");
+          finalPhoneVal = `+${cCode}${finalPhoneVal}`;
+        }
+        setPhone(finalPhoneVal);
+      }
+
       formik.setValues({
         ...formik.values,
         firstName: data.firstName || "",
         lastName: data.lastName || "",
         email: data.email || "",
+        phoneNumber: finalPhoneVal && matchIsValidTel(finalPhoneVal) ? finalPhoneVal : formik.values.phoneNumber,
       });
-      if (data.phone) {
-        let phoneVal = data.phone;
-        if (!phoneVal.startsWith("+")) {
-          phoneVal = `+${data.countryCode || "91"}${phoneVal}`;
-        }
-        setPhone(phoneVal);
-        const isValid = matchIsValidTel(phoneVal);
-        if (isValid) {
-          formik.setFieldValue("phoneNumber", phoneVal);
-        } else {
-          formik.setFieldError("phoneNumber", "Invalid phone number");
-        }
+
+      if (finalPhoneVal && !matchIsValidTel(finalPhoneVal)) {
+        formik.setFieldError("phoneNumber", "Invalid phone number");
       }
     }
   }, [data]);

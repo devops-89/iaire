@@ -440,9 +440,6 @@ const EducatorList = () => {
                           </FormControl>
                         )}
                       </TableCell>
-                      {/* <TableCell>
-                        {teacher?.membershipCode || "--"}
-                      </TableCell> */}
 
                       <TableCell onClick={(e) => e.stopPropagation()}>
                         <IconButton
@@ -450,6 +447,12 @@ const EducatorList = () => {
                             e.stopPropagation();
                             handleClick(e, teacher);
                           }}
+                          disabled={
+                            teacher?.approvalStatus ===
+                              APPROVAL_STATUS.PENDING ||
+                            teacher?.approvalStatus ===
+                              APPROVAL_STATUS.NOC_ISSUED
+                          }
                         >
                           <MoreVert />
                         </IconButton>
