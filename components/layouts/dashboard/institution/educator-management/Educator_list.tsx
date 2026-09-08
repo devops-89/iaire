@@ -71,6 +71,7 @@ const EducatorList = () => {
 
   const [tabValue, setTabValue] = useState("ALL");
   const [selectedStatus, setSelectedStatus] = useState<any>(null);
+  const [isComplete, setIsComplete] = useState<any>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedTeacher, setSelectedTeacher] =
     useState<TEACHER_REPONSE_PROPS | null>(null);
@@ -111,6 +112,7 @@ const EducatorList = () => {
     limit: 10,
     role: USER_ROLES.TEACHER,
     approvalStatus: selectedStatus,
+    isComplete: isComplete,
   };
 
   const { userData, loading, fetchUserData } = useGetAllUser();
@@ -142,6 +144,10 @@ const EducatorList = () => {
     debouncedFetchUsers(e.target.value);
   };
 
+  const filterChangeHandler = (_: any, value: any) => {
+    setIsComplete(value?.value || null);
+  };
+
   const { institutionData } = useSignup();
   // const isMember =
   //   (institutionData?.payments || []).length > 0 &&
@@ -151,7 +157,7 @@ const EducatorList = () => {
 
   useEffect(() => {
     fetchUserData(data);
-  }, [selectedStatus]);
+  }, [selectedStatus, isComplete]);
 
   return (
     <Box>
@@ -270,12 +276,11 @@ const EducatorList = () => {
                 </Box>
               )}
               getOptionLabel={(option) => option.label}
-              onChange={(e, value) => setSelectedStatus(value?.value || null)}
+              onChange={filterChangeHandler}
             />
           </Grid>
           <Grid size={9}>
             <TextField
-              // label="Search"
               fullWidth
               sx={{ ...TEXTFIELD_STYLE_VALIDATION }}
               onChange={searchHandler}

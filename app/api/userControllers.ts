@@ -16,7 +16,7 @@ export const userControllers = {
         }
       });
 
-      const result = await userPublicApi.post(
+      const result: any = await userPublicApi.post(
         "/self-register-school-admin",
         formData,
         {

@@ -1399,6 +1399,7 @@ export interface NOC_PROPS_DATA {
   lastWorkingDate: string;
   nocIssueDate: string;
   reason: string;
+  nocFile?: any;
 }
 
 export interface REPORT_MENTOR_PROPS {

@@ -43,6 +43,7 @@ import {
   Work,
   AccountTree,
   Help,
+  CardMembership,
 } from "@mui/icons-material";
 
 export const STUDENT_SIDEBAR_DATA = [
@@ -66,10 +67,11 @@ export const STUDENT_SIDEBAR_DATA = [
     label: "Resource Access",
     url: "/dashboard/student/resource-access",
   },
-  // {
-  //   label: "Membership Management",
-  //   url: "/dashboard/student/membership-management",
-  // },
+  {
+    icon: CardMembership,
+    label: "Membership Management",
+    url: "/dashboard/student/membership-management",
+  },
 ];
 export const EDUCATOR_SIDEBAR_DATA = [
   {

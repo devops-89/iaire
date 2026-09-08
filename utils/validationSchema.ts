@@ -281,7 +281,7 @@ export const TEACHERVALIDATIONSCHEMA = Yup.object({
 
 export const studentValidationSchema = Yup.object({
   membershipType: Yup.string().required("Please Select Membership Type"),
-  memberId: Yup.string().when("membershipType", {
+  membershipId: Yup.string().when("membershipType", {
     is: MEMBER_TYPES.EXISTING_MEMBER,
     then: (schema) => schema.required("Member ID is required"),
     otherwise: (schema) => schema.notRequired(),

@@ -239,7 +239,7 @@ const StudentList = () => {
                               },
                             }}
                           >
-                            {val.fullName}
+                            {val.fullName || val.firstName + " " + val.lastName}
                           </Typography>
                           <Typography
                             sx={{

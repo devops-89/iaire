@@ -91,6 +91,10 @@ const ResourceAccess = ({
       (v: any) => v.membership?.status === USER_STATUS.ACTIVE.toUpperCase(),
     );
 
+  const isPaymentPending = userData?.payments?.some(
+    (p: any) => p.status === "PENDING" || p.membership?.status === "PAYMENT_PENDING"
+  );
+
   const displayResources =
     resources.length > 0 ? resources : FALLBACK_RESOURCES;
 
@@ -564,33 +568,58 @@ const ResourceAccess = ({
 
                         {/* Card Footer Button Container */}
                         <Box sx={{ p: 3, pt: 0 }}>
-                          <BeamButton
-                            variant="contained"
-                            fullWidth
-                            endIcon={<OpenInNewOutlined />}
-                            onClick={() => handleAccess(item.fileUrl)}
-                            sx={{
-                              background:
-                                "linear-gradient(135deg, #1B365D 0%, #8C3100 100%)",
-                              color: COLORS.WHITE,
-                              textTransform: "none",
-                              borderRadius: "12px",
-                              padding: "11px 0",
-                              fontFamily: montserrat.style.fontFamily,
-                              fontWeight: 700,
-                              fontSize: 14,
-                              transition: "all 0.25s",
-                              "&:hover": {
+                          {isPaymentPending ? (
+                            <BeamButton
+                              variant="contained"
+                              fullWidth
+                              endIcon={<Lock />}
+                              disabled
+                              sx={{
+                                background: "#7e7e7e",
+                                color: COLORS.WHITE,
+                                textTransform: "none",
+                                borderRadius: "12px",
+                                padding: "11px 0",
+                                fontFamily: montserrat.style.fontFamily,
+                                fontWeight: 700,
+                                fontSize: 14,
+                                "&.Mui-disabled": {
+                                  background: "#7e7e7e",
+                                  color: "rgba(255, 255, 255, 0.7)",
+                                },
+                              }}
+                            >
+                              Payment Pending
+                            </BeamButton>
+                          ) : (
+                            <BeamButton
+                              variant="contained"
+                              fullWidth
+                              endIcon={<OpenInNewOutlined />}
+                              onClick={() => handleAccess(item.fileUrl)}
+                              sx={{
                                 background:
-                                  "linear-gradient(135deg, #8C3100 0%, #4f1b00 100%)",
-                                boxShadow:
-                                  "0px 8px 20px rgba(248, 93, 0, 0.25)",
-                                transform: "scale(1.02)",
-                              },
-                            }}
-                          >
-                            Access Resource
-                          </BeamButton>
+                                  "linear-gradient(135deg, #1B365D 0%, #8C3100 100%)",
+                                color: COLORS.WHITE,
+                                textTransform: "none",
+                                borderRadius: "12px",
+                                padding: "11px 0",
+                                fontFamily: montserrat.style.fontFamily,
+                                fontWeight: 700,
+                                fontSize: 14,
+                                transition: "all 0.25s",
+                                "&:hover": {
+                                  background:
+                                    "linear-gradient(135deg, #8C3100 0%, #4f1b00 100%)",
+                                  boxShadow:
+                                    "0px 8px 20px rgba(248, 93, 0, 0.25)",
+                                  transform: "scale(1.02)",
+                                },
+                              }}
+                            >
+                              Access Resource
+                            </BeamButton>
+                          )}
                         </Box>
                       </Card>
                     </Grid>

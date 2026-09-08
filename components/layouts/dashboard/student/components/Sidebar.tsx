@@ -9,6 +9,7 @@ import {
   Drawer,
   List,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
   Typography,
 } from "@mui/material";
@@ -45,9 +46,10 @@ const StudentSidebar = () => {
           alignItems: "center",
           justifyContent: "center",
           width: "100%",
+          py: 1.2,
         }}
       >
-        <Image src={logo} alt="" width={200} height={70} />
+        <Image src={logo} alt="" width={150} height={50} />
       </Box>
       <Divider sx={{ borderColor: COLORS.ACCENT_TAN }} />
       <List>
@@ -64,14 +66,23 @@ const StudentSidebar = () => {
             }}
             onClick={() => handleNavigation(val.url)}
           >
+            <ListItemIcon sx={{ minWidth: 40 }}>
+              <val.icon
+                sx={{
+                  color:
+                    pathname === val.url ? COLORS.PRIMARY_NAVY : COLORS.BLACK,
+                }}
+              />
+            </ListItemIcon>
             <ListItemText
               primary={val.label}
               slotProps={{
                 primary: {
                   sx: {
-                    fontFamily: montserrat.style.fontFamily,
+                    fontFamily: roboto.style.fontFamily,
                     color:
                       pathname === val.url ? COLORS.PRIMARY_NAVY : COLORS.BLACK,
+                    fontSize: 14,
                   },
                 },
               }}

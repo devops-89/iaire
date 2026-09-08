@@ -197,7 +197,11 @@ const InstitutionTrainingList = () => {
                             fontFamily: newBlack_medium.style.fontFamily,
                           }}
                         >
-                          {val?.teacher?.fullName || "N/A"}
+                          {val?.teacher?.fullName ||
+                            val?.teacher?.firstName +
+                              " " +
+                              val?.teacher?.lastName ||
+                            "N/A"}
                         </TableCell>
 
                         <TableCell

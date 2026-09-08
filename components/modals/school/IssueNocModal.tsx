@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Grid, TextField, Typography } from "@mui/material";
+import { Box, Grid, TextField, Typography, Button } from "@mui/material";
+import { CloudUpload } from "@mui/icons-material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { useFormik } from "formik";
@@ -24,6 +25,7 @@ const IssueNocValidationSchema = Yup.object().shape({
   reason: Yup.string().required("Reason is required"),
   nocIssueDate: Yup.string().required("NOC Issue Date is required"),
   remarks: Yup.string(),
+  nocFile: Yup.mixed().required("NOC File is required"),
 });
 
 const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
@@ -43,6 +45,7 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
       reason: "Change of Institution",
       nocIssueDate: "",
       remarks: "",
+      nocFile: null,
     },
     validationSchema: IssueNocValidationSchema,
     onSubmit: async (values) => {
@@ -53,6 +56,7 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
           lastWorkingDate: values.lastWorkingDate,
           nocIssueDate: values.nocIssueDate,
           reason: values.reason,
+          nocFile: values.nocFile,
         });
       }
     },
@@ -180,6 +184,41 @@ const IssueNocModal = ({ educatorId }: IssueNocModalProps) => {
               helperText={formik.touched.remarks && formik.errors.remarks}
               error={formik.touched.remarks && Boolean(formik.errors.remarks)}
             />
+          </Grid>
+          <Grid size={12}>
+            <Button
+              component="label"
+              variant="outlined"
+              startIcon={<CloudUpload />}
+              sx={{ 
+                color: COLORS.PRIMARY_BLUE, 
+                borderColor: COLORS.PRIMARY_BLUE,
+                textTransform: 'none',
+                mt: 1
+              }}
+            >
+              Upload NOC Document
+              <input
+                type="file"
+                hidden
+                accept=".pdf,.jpg,.jpeg,.png"
+                onChange={(event) => {
+                  if (event.currentTarget.files && event.currentTarget.files.length > 0) {
+                    formik.setFieldValue("nocFile", event.currentTarget.files[0]);
+                  }
+                }}
+              />
+            </Button>
+            {formik.values.nocFile && (
+              <Typography variant="body2" sx={{ mt: 1, color: COLORS.PRIMARY_BLUE }}>
+                Selected File: {(formik.values.nocFile as any).name}
+              </Typography>
+            )}
+            {formik.touched.nocFile && Boolean(formik.errors.nocFile) && (
+              <Typography variant="caption" color="error" sx={{ display: 'block', mt: 0.5 }}>
+                {String(formik.errors.nocFile)}
+              </Typography>
+            )}
           </Grid>
         </Grid>
         <Box

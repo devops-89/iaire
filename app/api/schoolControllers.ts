@@ -183,7 +183,17 @@ export const schoolControllers = {
   },
   issueNoc: async (data: NOC_PROPS_DATA) => {
     try {
-      let result = await nocSecuredApi.post("/school-admin", data);
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          formData.append(key, value as any);
+        }
+      });
+      let result = await nocSecuredApi.post("/school-admin", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       return result.data;
     } catch (error) {
       throw error;

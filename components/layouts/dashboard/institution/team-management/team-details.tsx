@@ -5,7 +5,8 @@ import {
   Divider,
   Grid,
   Stack,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { montserrat } from "@/utils/fonts";
@@ -52,13 +53,6 @@ const TeamDetails = () => {
               <BeamButton
                 startIcon={<ArrowBack />}
                 onClick={() => router.back()}
-                sx={{
-                  textTransform: "none",
-                  color: "#000",
-                  fontFamily: montserrat.style.fontFamily,
-                  fontWeight: 600,
-                  mb: 2,
-                }}
               >
                 Back
               </BeamButton>

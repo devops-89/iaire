@@ -47,10 +47,10 @@ export const useCreateStudentInnovation = () => {
 
 export const useCreateInnovation = () => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const createInnovation = async (data: INNOVATION_FORM_PROPS) => {
     setLoading(true);
-    const router = useRouter();
     const payload: SCHOOL_ADD_INNOVATION_REQUEST_PROPS = {
       title: data.title,
       problemDescription: data.problemDescription,
@@ -58,6 +58,7 @@ export const useCreateInnovation = () => {
       teamId: data.team?.id,
       attomeyFinalTemplate: data.file,
     };
+
     schoolControllers
       .addInnovationBySchool(payload)
       .then((res) => {

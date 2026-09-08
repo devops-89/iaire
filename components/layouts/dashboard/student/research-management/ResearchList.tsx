@@ -35,6 +35,10 @@ const ResearchList = () => {
       (v: any) => v.membership?.status === USER_STATUS.ACTIVE.toUpperCase(),
     );
 
+  const isPaymentPending = studentData?.payments?.some(
+    (p: any) => p.status === "PENDING" || p.membership?.status === "PAYMENT_PENDING"
+  );
+
   const { researchData, fetchResearchData, loading } = useGetAllResearch();
 
   useEffect(() => {
@@ -69,7 +73,27 @@ const ResearchList = () => {
               },
             ]}
           />
-          {isMember ? (
+          {isPaymentPending ? (
+            <BeamButton
+              sx={{
+                backgroundColor: "#7e7e7e",
+                color: COLORS.WHITE,
+                fontFamily: roboto.style.fontFamily,
+                fontWeight: 700,
+                fontSize: 16,
+                borderRadius: "10px",
+                padding: "10px 20px",
+                textTransform: "none",
+                "&:hover": {
+                  backgroundColor: "#7e7e7e",
+                },
+              }}
+              endIcon={<Lock />}
+              disabled
+            >
+              Payment Pending
+            </BeamButton>
+          ) : isMember ? (
             <Link
               href="/dashboard/student/research-management/add-research"
               style={{ textDecoration: "none" }}

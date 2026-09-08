@@ -20,6 +20,8 @@ import OverviewCard from "@/components/layouts/dashboard/institution/innovation-
 import ProfileCard from "@/components/layouts/dashboard/institution/innovation-management/components/ProfileCard";
 import TeamInfoCard from "@/components/layouts/dashboard/institution/innovation-management/components/TeamInfoCard";
 import BeamButton from "@/components/widgets/BeamButton";
+import InnovationTimeline from "@/components/widgets/InnovationTimeline";
+import { INNOVATION_STATUS } from "@/utils/enum";
 
 const InnovationDetails = () => {
   const params = useParams();
@@ -100,6 +102,11 @@ const InnovationDetails = () => {
             ) : innovationDetails ? (
               <>
                 <Grid container spacing={4}>
+                  {/* Timeline Card */}
+                  <Grid size={{ xs: 12 }}>
+                    <InnovationTimeline status={innovationDetails.status as INNOVATION_STATUS} />
+                  </Grid>
+
                   {/* Statements Card */}
                   <Grid size={{ xs: 12 }}>
                     <OverviewCard innovationDetails={innovationDetails} />

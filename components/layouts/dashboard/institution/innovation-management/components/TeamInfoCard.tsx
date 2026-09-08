@@ -12,13 +12,15 @@ import {
   ListItemAvatar,
   ListItemText,
   Stack,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import { Lightbulb } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { montserrat } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
 import { TEAM_DETAILS_RESPONSE } from "@/utils/type";
 import BeamButton from "@/components/widgets/BeamButton";
+import Link from "next/link";
 
 interface TeamInfoCardProps {
   teamLoading: boolean;
@@ -26,7 +28,11 @@ interface TeamInfoCardProps {
   currentInnovationId: number;
 }
 
-const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInfoCardProps) => {
+const TeamInfoCard = ({
+  teamLoading,
+  teamDetails,
+  currentInnovationId,
+}: TeamInfoCardProps) => {
   const router = useRouter();
 
   const getInitials = (name: string) => {
@@ -40,7 +46,10 @@ const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInf
   };
 
   return (
-    <Card elevation={0} sx={{ border: "1px solid #e0e0e0", borderRadius: "12px" }}>
+    <Card
+      elevation={0}
+      sx={{ border: "1px solid #e0e0e0", borderRadius: "12px" }}
+    >
       <CardContent sx={{ p: 3 }}>
         <Typography
           className={montserrat.className}
@@ -87,12 +96,13 @@ const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInf
                 >
                   TEAM CODE
                 </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{ fontWeight: 600 }}
+                <Link
+                  href={`/dashboard/institution/team-management/${teamDetails.id}/view-team`}
                 >
-                  {teamDetails.teamCode}
-                </Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                    {teamDetails.teamCode}
+                  </Typography>
+                </Link>
               </Grid>
             </Grid>
 
@@ -148,8 +158,11 @@ const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInf
                       </Typography>
                     }
                     secondary={
-                      <Typography sx={{ fontSize: "11px", color: "text.secondary" }}>
-                        Grade {member.student?.grade || "-"} • {member.student?.email || "-"}
+                      <Typography
+                        sx={{ fontSize: "11px", color: "text.secondary" }}
+                      >
+                        Grade {member.student?.grade || "-"} •{" "}
+                        {member.student?.email || "-"}
                       </Typography>
                     }
                   />
@@ -169,8 +182,13 @@ const TeamInfoCard = ({ teamLoading, teamDetails, currentInnovationId }: TeamInf
             >
               Team Innovations:
             </Typography>
-            {!teamDetails.innovations || teamDetails.innovations.length === 0 ? (
-              <Typography variant="body2" color="text.secondary" sx={{ fontStyle: "italic" }}>
+            {!teamDetails.innovations ||
+            teamDetails.innovations.length === 0 ? (
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ fontStyle: "italic" }}
+              >
                 No innovations submitted by this team.
               </Typography>
             ) : (

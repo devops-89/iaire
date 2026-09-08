@@ -1,37 +1,35 @@
 "use client";
+import BeamButton from "@/components/widgets/BeamButton";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
+import { useGetAllUser } from "@/hooks/common/useGetAllUser";
+import { useAddStudent } from "@/hooks/school/useStudent";
+import { MEMBER_TYPE } from "@/utils/constant";
+import { COLORS, MEMBER_TYPES } from "@/utils/enum";
+import { montserrat, roboto } from "@/utils/fonts";
+import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
+import {
+  INSTITUTION_ADD_STUDENT_REQUEST,
+  USER_DETAILS_RESPONSE,
+} from "@/utils/type";
+import { studentValidationSchema } from "@/utils/validationSchema";
 import {
   Autocomplete,
-  Box,
-  Button,
   Card,
   CircularProgress,
   Grid,
-  IconButton,
-  InputAdornment,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import InstitutionDashboardLayout from "../Index";
-import { GENDER, MEMBER_TYPE } from "@/utils/constant";
-import { TEXTFIELD_STYLE_VALIDATION } from "@/utils/style";
 import { useFormik } from "formik";
-import { studentValidationSchema } from "@/utils/validationSchema";
-import { COLORS, MEMBER_TYPES } from "@/utils/enum";
 import { matchIsValidTel, MuiTelInput, MuiTelInputInfo } from "mui-tel-input";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
-import moment from "moment";
-import { montserrat, roboto } from "@/utils/fonts";
-import { useAddStudent } from "@/hooks/school/useStudent";
-import { INSTITUTION_ADD_STUDENT_REQUEST } from "@/utils/type";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import BeamButton from "@/components/widgets/BeamButton";
+import { useEffect, useState } from "react";
+import InstitutionDashboardLayout from "../Index";
 
 const AddStudentComponent = () => {
   const { createLoading, createStudent } = useAddStudent();
+  const { userData, fetchUserData, loading: userLoading } = useGetAllUser();
+  const [data, setData] = useState<USER_DETAILS_RESPONSE | null>(null);
 
   const formik = useFormik({
     initialValues: {
@@ -57,25 +55,15 @@ const AddStudentComponent = () => {
     },
     validationSchema: studentValidationSchema,
     onSubmit: (values) => {
-      const payload = {
+      const payload: Record<string, any> = {
         email: values?.email,
         firstName: values?.firstName,
         lastName: values?.lastName,
-        phone: values?.phoneNumber,
-        // gender: values?.gender,
-        // dob: moment(values?.dob).format("YYYY-MM-DD"),
-        // grade: values?.grade,
-        // countryCode: values?.countryCode,
-        // fatherName: values?.fatherName,
-        // fatherEmail: values?.fatherEmail,
-        // fatherPhone: values?.fatherPhoneNumber,
-        // fatherProfession: values?.fatherProfession,
-        // motherName: values?.motherName,
-        // motherPhone: values?.motherPhoneNumber,
-        // motherEmail: values?.motherEmail,
-        // motherProfession: values?.motherProfession,
-        // password: values?.password,
+        phone: values?.phoneNumber?.replace("+91", ""),
       };
+      if (values?.membershipId) {
+        payload.memberShipCode = values?.membershipId;
+      }
 
       createStudent(payload as INSTITUTION_ADD_STUDENT_REQUEST);
     },
@@ -86,6 +74,52 @@ const AddStudentComponent = () => {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const fetchDetails = () => {
+    if (formik.values.membershipId) {
+      fetchUserData({
+        page: 1,
+        limit: 100,
+        userId: formik.values.membershipId,
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (userData && Array.isArray(userData)) {
+      const filterData = userData.find(
+        (val: USER_DETAILS_RESPONSE) =>
+          val.userId === formik.values.membershipId,
+      );
+      if (filterData) {
+        setData(filterData);
+      }
+    }
+  }, [userData, formik.values.membershipId]);
+
+  useEffect(() => {
+    if (data) {
+      formik.setValues({
+        ...formik.values,
+        firstName: data.firstName || "",
+        lastName: data.lastName || "",
+        email: data.email || "",
+      });
+      if (data.phone) {
+        let phoneVal = data.phone;
+        if (!phoneVal.startsWith("+")) {
+          phoneVal = `+${data.countryCode || "91"}${phoneVal}`;
+        }
+        setPhone(phoneVal);
+        const isValid = matchIsValidTel(phoneVal);
+        if (isValid) {
+          formik.setFieldValue("phoneNumber", phoneVal);
+        } else {
+          formik.setFieldError("phoneNumber", "Invalid phone number");
+        }
+      }
+    }
+  }, [data]);
 
   const [phone, setPhone] = useState("");
 
@@ -118,6 +152,7 @@ const AddStudentComponent = () => {
       formik.setFieldError(id, "Please Enter Valid Phone Number");
     }
   };
+
   return (
     <InstitutionDashboardLayout>
       <Card sx={{ p: 2, mt: 3 }}>
@@ -214,19 +249,25 @@ const AddStudentComponent = () => {
                     }
                     sx={TEXTFIELD_STYLE_VALIDATION}
                   />
-                  <Button
+                  <BeamButton
+                    onClick={fetchDetails}
+                    disabled={userLoading}
                     sx={{
                       fontFamily: roboto.style.fontFamily,
                       backgroundColor: COLORS.PRIMARY_NAVY,
                       color: COLORS.WHITE,
-                      width: "150px",
+                      width: "200px",
                       height: "50px",
                       textTransform: "none",
                       borderRadius: "12px",
                     }}
                   >
-                    Fetch Details
-                  </Button>
+                    {userLoading ? (
+                      <CircularProgress size={24} color="inherit" />
+                    ) : (
+                      "Fetch Details"
+                    )}
+                  </BeamButton>
                 </Stack>
               </Grid>
             )}
@@ -313,237 +354,7 @@ const AddStudentComponent = () => {
                 fullWidth
               />
             </Grid>
-            {/* <Grid size={6}>
-              <Autocomplete
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    fullWidth
-                    label="Gender"
-                    sx={TEXTFIELD_STYLE_VALIDATION}
-                    id="gender"
-                    name="gender"
-                    value={formik.values.gender}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={
-                      formik.touched.gender && Boolean(formik.errors.gender)
-                    }
-                    helperText={formik.touched.gender && formik.errors.gender}
-                  />
-                )}
-                options={GENDER}
-                getOptionLabel={(option) => option}
-                onChange={(event, value) => {
-                  formik.setFieldValue("gender", value);
-                }}
-                sx={{ ...TEXTFIELD_STYLE_VALIDATION, width: "100%" }}
-                value={formik.values.gender}
-                onBlur={formik.handleBlur}
-              />
-            </Grid> */}
-            {/* <Grid size={6}>
-              <TextField
-                label="Password"
-                fullWidth
-                id="password"
-                onChange={formik.handleChange}
-                type={showPassword ? "text" : "password"}
-                slotProps={{
-                  input: {
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton onClick={handleTogglePassword}>
-                          {showPassword ? (
-                            <VisibilityOff
-                              sx={{ color: COLORS.PRIMARY_NAVY }}
-                            />
-                          ) : (
-                            <Visibility sx={{ color: COLORS.PRIMARY_NAVY }} />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  },
-                }}
-              />
-            </Grid> */}
-            {/* <Grid size={12}>
-              <Typography
-                sx={{
-                  fontSize: 20,
-                  fontFamily: roboto.style.fontFamily,
-                  fontWeight: 600,
-                  color: COLORS.BLACK,
-                }}
-              >
-                Father's Information
-              </Typography>
-            </Grid>
-            <Grid size={6}>
-              <TextField
-                id="fatherName"
-                label="Father's Name"
-                sx={TEXTFIELD_STYLE_VALIDATION}
-                fullWidth
-                value={formik.values.fatherName}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.fatherName && Boolean(formik.errors.fatherName)
-                }
-                helperText={
-                  formik.touched.fatherName && formik.errors.fatherName
-                }
-              />
-            </Grid>
-            <Grid size={6}>
-              <TextField
-                id="fatherEmail"
-                label="Father's Email ID"
-                sx={TEXTFIELD_STYLE_VALIDATION}
-                fullWidth
-                value={formik.values.fatherEmail}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.fatherEmail &&
-                  Boolean(formik.errors.fatherEmail)
-                }
-                helperText={
-                  formik.touched.fatherEmail && formik.errors.fatherEmail
-                }
-              />
-            </Grid>
-            <Grid size={6}>
-              <MuiTelInput
-                sx={TEXTFIELD_STYLE_VALIDATION}
-                id={"fatherPhoneNumber"}
-                name={"fatherPhoneNumber"}
-                value={fatherPhoneNumber}
-                onChange={(value, info) => {
-                  handleChangePhoneNumber("fatherPhoneNumber", value, info);
-                }}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.fatherPhoneNumber &&
-                  Boolean(formik.errors.fatherPhoneNumber)
-                }
-                helperText={
-                  formik.touched.fatherPhoneNumber &&
-                  formik.errors.fatherPhoneNumber
-                }
-                fullWidth
-                defaultCountry="IN"
-              />
-            </Grid>
-            <Grid size={6}>
-              <TextField
-                id="fatherProfession"
-                label="Father's Profession"
-                sx={TEXTFIELD_STYLE_VALIDATION}
-                fullWidth
-                value={formik.values.fatherProfession}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.fatherProfession &&
-                  Boolean(formik.errors.fatherProfession)
-                }
-                helperText={
-                  formik.touched.fatherProfession &&
-                  formik.errors.fatherProfession
-                }
-              />
-            </Grid> */}
-            {/* <Grid size={12}>
-              <Typography
-                sx={{
-                  fontSize: 20,
-                  fontFamily: roboto.style.fontFamily,
-                  fontWeight: 600,
-                  color: COLORS.BLACK,
-                }}
-              >
-                Mother's Information
-              </Typography>
-            </Grid>
-            <Grid size={6}>
-              <TextField
-                id="motherName"
-                label="Mother's Name"
-                sx={TEXTFIELD_STYLE_VALIDATION}
-                fullWidth
-                value={formik.values.motherName}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.motherName && Boolean(formik.errors.motherName)
-                }
-                helperText={
-                  formik.touched.motherName && formik.errors.motherName
-                }
-              />
-            </Grid>
-            <Grid size={6}>
-              <TextField
-                id="motherEmail"
-                label="Mother's Email ID"
-                sx={TEXTFIELD_STYLE_VALIDATION}
-                fullWidth
-                value={formik.values.motherEmail}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.motherEmail &&
-                  Boolean(formik.errors.motherEmail)
-                }
-                helperText={
-                  formik.touched.motherEmail && formik.errors.motherEmail
-                }
-              />
-            </Grid>
-            <Grid size={6}>
-              <MuiTelInput
-                sx={TEXTFIELD_STYLE_VALIDATION}
-                id={"motherPhoneNumber"}
-                name={"motherPhoneNumber"}
-                value={motherPhoneNumber}
-                onChange={(value, info) => {
-                  handleChangePhoneNumber("motherPhoneNumber", value, info);
-                }}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.motherPhoneNumber &&
-                  Boolean(formik.errors.motherPhoneNumber)
-                }
-                helperText={
-                  formik.touched.motherPhoneNumber &&
-                  formik.errors.motherPhoneNumber
-                }
-                fullWidth
-                defaultCountry="IN"
-              />
-            </Grid>
-            <Grid size={6}>
-              <TextField
-                id="motherProfession"
-                label="Mother's Profession"
-                sx={TEXTFIELD_STYLE_VALIDATION}
-                fullWidth
-                value={formik.values.motherProfession}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={
-                  formik.touched.motherProfession &&
-                  Boolean(formik.errors.motherProfession)
-                }
-                helperText={
-                  formik.touched.motherProfession &&
-                  formik.errors.motherProfession
-                }
-              />
-            </Grid> */}
+
             <Grid size={12}>
               <BeamButton
                 sx={{
