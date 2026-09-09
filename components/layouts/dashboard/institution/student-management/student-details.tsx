@@ -14,7 +14,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React from "react";
 import InstitutionDashboardLayout from "../Index";
 import { roboto, montserrat, inter } from "@/utils/fonts";
 import { COLORS } from "@/utils/enum";
@@ -32,7 +31,6 @@ import {
   Person,
   CalendarToday,
   Wc,
-  SupervisorAccount,
   Cancel,
 } from "@mui/icons-material";
 import ProfileCard from "./components/Profile-Card";
