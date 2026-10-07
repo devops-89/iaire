@@ -5,6 +5,7 @@ import { montserrat } from "@/utils/fonts";
 import { COLORS, SUPPORT_TICKET_STATUS } from "@/utils/enum";
 import moment from "moment";
 import BeamButton from "@/components/widgets/BeamButton";
+import { getCategoryLabel } from "@/utils/constant";
 
 export interface Ticket {
   id: string;
@@ -23,16 +24,6 @@ interface TicketDetailsDrawerProps {
   onClose: () => void;
 }
 
-const getCategoryLabel = (cat: string) => {
-  const map: Record<string, string> = {
-    TECHNICAL_SUPPORT: "Technical Support",
-    TRAINING: "Training",
-    RESOURCE_ACCESS: "Resource Access",
-    BILLING: "Billing",
-    OTHER: "Other",
-  };
-  return map[cat] || cat;
-};
 
 const TicketDetailsDrawer = ({ ticket, open, onClose }: TicketDetailsDrawerProps) => {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { COLORS } from "@/utils/enum";
-import { montserrat, roboto, inter } from "@/utils/fonts";
+import { inter } from "@/utils/fonts";
 import { Box, Card, Chip, Stack, Typography } from "@mui/material";
 import BeamButton from "@/components/widgets/BeamButton";
 import {
@@ -38,21 +38,29 @@ const getIcon = (type?: string) => {
 
 const getThemeColor = (type?: string) => {
   const t = type?.toLowerCase() || "";
-  if (t.includes("playbook")) return COLORS.PRIMARY_NAVY || "#1B365D";
-  if (t.includes("module")) return "#EE8E26";
-  if (t.includes("template")) return "#3F51B5";
-  return "#78909C";
+  if (t.includes("playbook")) return "#1B365D";
+  if (t.includes("module")) return "#EA580C";
+  if (t.includes("template")) return "#4F46E5";
+  return "#0D9488";
 };
 
-const getGradientHeader = (type?: string) => {
+const getThemeBg = (type?: string) => {
   const t = type?.toLowerCase() || "";
   if (t.includes("playbook"))
-    return `linear-gradient(90deg, #1B365D 0%, #ff7b2b 100%)`;
+    return "linear-gradient(135deg, rgba(27, 54, 93, 0.1) 0%, rgba(27, 54, 93, 0.03) 100%)";
   if (t.includes("module"))
-    return `linear-gradient(90deg, #EE8E26 0%, #ffb74d 100%)`;
+    return "linear-gradient(135deg, rgba(234, 88, 12, 0.12) 0%, rgba(234, 88, 12, 0.03) 100%)";
   if (t.includes("template"))
-    return `linear-gradient(90deg, #3F51B5 0%, #7986cb 100%)`;
-  return `linear-gradient(90deg, #78909C 0%, #b0bec5 100%)`;
+    return "linear-gradient(135deg, rgba(79, 70, 229, 0.12) 0%, rgba(79, 70, 229, 0.03) 100%)";
+  return "linear-gradient(135deg, rgba(13, 148, 136, 0.12) 0%, rgba(13, 148, 136, 0.03) 100%)";
+};
+
+const getThemeBorder = (type?: string) => {
+  const t = type?.toLowerCase() || "";
+  if (t.includes("playbook")) return "rgba(27, 54, 93, 0.18)";
+  if (t.includes("module")) return "rgba(234, 88, 12, 0.22)";
+  if (t.includes("template")) return "rgba(79, 70, 229, 0.22)";
+  return "rgba(13, 148, 136, 0.22)";
 };
 
 const ResourceCard = ({
@@ -67,163 +75,173 @@ const ResourceCard = ({
   handleAccess,
 }: ResourceCardProps) => {
   const themeColor = getThemeColor(type);
-  const gradientHeader = getGradientHeader(type);
+  const themeBg = getThemeBg(type);
+  const themeBorder = getThemeBorder(type);
 
   return (
     <Card
       sx={{
         height: "100%",
         borderRadius: "20px",
-        boxShadow: "0px 8px 24px rgba(11, 23, 39, 0.02)",
-        border: "1px solid #f1f5f9",
+        boxShadow: "0px 4px 20px -2px rgba(15, 23, 42, 0.05)",
+        border: "1px solid #E2E8F0",
         background: "#ffffff",
         display: "flex",
         flexDirection: "column",
         position: "relative",
         overflow: "hidden",
-        transition: "all 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: "5px",
-          background: gradientHeader,
-        },
+        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
         "&:hover": {
           transform: "translateY(-6px)",
-          boxShadow: "0px 20px 35px rgba(248, 93, 0, 0.08)",
-          borderColor: "rgba(248, 93, 0, 0.15)",
+          boxShadow:
+            "0px 20px 35px -8px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(27, 54, 93, 0.1)",
+          borderColor: "rgba(27, 54, 93, 0.2)",
         },
       }}
     >
-      <Stack spacing={2} sx={{ p: 3.5, pb: 2.5, flexGrow: 1 }}>
-        {/* Top Icon and Label section */}
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-          spacing={1.5}
+      {/* Top Icon & Status Badge */}
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{ p: 3, pb: 2 }}
+      >
+        <Box
+          sx={{
+            width: 48,
+            height: 48,
+            borderRadius: "14px",
+            background: themeBg,
+            display: "grid",
+            placeItems: "center",
+            color: themeColor,
+            border: `1px solid ${themeBorder}`,
+          }}
         >
-          <Box
-            sx={{
-              width: 44,
-              height: 44,
-              borderRadius: "12px",
-              background: `linear-gradient(135deg, ${themeColor}12 0%, ${themeColor}05 100%)`,
-              display: "grid",
-              placeItems: "center",
-              color: themeColor,
-              border: `1px solid ${themeColor}20`,
-            }}
-          >
-            {getIcon(type)}
-          </Box>
+          {getIcon(type)}
+        </Box>
 
-          {/* Resource Status Badge */}
-          {!isMember ? (
-            <Chip
-              icon={
-                <Lock
-                  sx={{
-                    fontSize: "12px !important",
-                    color: "#D97706 !important",
-                  }}
-                />
-              }
-              label="Premium"
-              size="small"
-              sx={{
-                fontFamily: montserrat.style.fontFamily,
-                fontWeight: 700,
-                fontSize: 10,
-                bgcolor: "#FFFBEB",
-                color: "#D97706",
-                border: "1px solid #FDE68A",
-                borderRadius: "6px",
-                pl: 0.5,
-              }}
-            />
-          ) : (
-            <Chip
-              icon={
-                <VerifiedUserOutlined
-                  sx={{
-                    fontSize: "12px !important",
-                    color: "#10B981 !important",
-                  }}
-                />
-              }
-              label="Unlocked"
-              size="small"
-              sx={{
-                fontFamily: montserrat.style.fontFamily,
-                fontWeight: 700,
-                fontSize: 10,
-                bgcolor: "#ECFDF5",
-                color: "#10B981",
-                border: "1px solid #A7F3D0",
-                borderRadius: "6px",
-                pl: 0.5,
-              }}
-            />
-          )}
-        </Stack>
-
-        {/* Title & Type */}
-        <Box>
-          <Typography
-            sx={{
-              fontFamily: montserrat.style.fontFamily,
-              fontSize: 16,
-              fontWeight: 750,
-              color: "#0f172a",
-              lineHeight: 1.4,
-              mb: 0.5,
-            }}
-          >
-            {title}
-          </Typography>
-          <Typography
+        {/* Resource Status Badge */}
+        {!isMember ? (
+          <Chip
+            icon={
+              <Lock
+                sx={{
+                  fontSize: "13px !important",
+                  color: "#D97706 !important",
+                }}
+              />
+            }
+            label="Premium"
+            size="small"
             sx={{
               fontFamily: inter.style.fontFamily,
-              fontSize: 11,
               fontWeight: 700,
-              color: themeColor,
-              textTransform: "uppercase",
-              letterSpacing: "1px",
+              fontSize: 11,
+              bgcolor: "#FFFBEB",
+              color: "#D97706",
+              border: "1px solid #FDE68A",
+              borderRadius: "8px",
+              pl: 0.5,
             }}
-          >
-            {type || "Resource"}
-          </Typography>
-        </Box>
+          />
+        ) : (
+          <Chip
+            icon={
+              <VerifiedUserOutlined
+                sx={{
+                  fontSize: "13px !important",
+                  color: "#10B981 !important",
+                }}
+              />
+            }
+            label="Unlocked"
+            size="small"
+            sx={{
+              fontFamily: inter.style.fontFamily,
+              fontWeight: 700,
+              fontSize: 11,
+              bgcolor: "#ECFDF5",
+              color: "#059669",
+              border: "1px solid #A7F3D0",
+              borderRadius: "8px",
+              pl: 0.5,
+            }}
+          />
+        )}
+      </Stack>
+
+      {/* Card Content */}
+      <Box
+        sx={{
+          px: 3,
+          pb: 2.5,
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {/* Type Label */}
+        <Typography
+          sx={{
+            fontFamily: inter.style.fontFamily,
+            fontSize: "11px",
+            fontWeight: 700,
+            color: themeColor,
+            textTransform: "uppercase",
+            letterSpacing: "0.8px",
+            mb: 0.75,
+          }}
+        >
+          {type || "Resource"}
+        </Typography>
+
+        {/* Title */}
+        <Typography
+          sx={{
+            fontFamily: inter.style.fontFamily,
+            fontSize: "17px",
+            fontWeight: 700,
+            color: "#0F172A",
+            lineHeight: 1.4,
+            mb: 1.25,
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+            minHeight: "48px",
+          }}
+        >
+          {title}
+        </Typography>
 
         {/* Description */}
         <Typography
           sx={{
             fontFamily: inter.style.fontFamily,
-            fontSize: 14,
-            color: "#64748b",
+            fontSize: "13.5px",
+            color: "#64748B",
             lineHeight: 1.6,
+            mb: 2.5,
             flexGrow: 1,
             display: "-webkit-box",
             WebkitLineClamp: 3,
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
+            minHeight: "64px",
           }}
         >
           {description ||
             "Access custom materials, toolkits, and curated playbooks designed to structure your classroom workflow."}
         </Typography>
 
-        {/* Category Tags */}
+        {/* Tags / Meta Chips */}
         <Stack
           direction="row"
           spacing={1}
           flexWrap="wrap"
           useFlexGap
-          sx={{ mt: 1 }}
+          sx={{ mt: "auto" }}
         >
           {category && (
             <Chip
@@ -233,9 +251,10 @@ const ResourceCard = ({
                 fontFamily: inter.style.fontFamily,
                 fontWeight: 600,
                 fontSize: 11,
-                bgcolor: "#f1f5f9",
+                bgcolor: "#F1F5F9",
                 color: "#475569",
                 borderRadius: "8px",
+                height: "26px",
               }}
             />
           )}
@@ -247,9 +266,10 @@ const ResourceCard = ({
                 fontFamily: inter.style.fontFamily,
                 fontWeight: 600,
                 fontSize: 11,
-                bgcolor: "#f1f5f9",
+                bgcolor: "#F1F5F9",
                 color: "#475569",
                 borderRadius: "8px",
+                height: "26px",
               }}
             />
           )}
@@ -261,13 +281,22 @@ const ResourceCard = ({
                 fontFamily: inter.style.fontFamily,
                 fontWeight: 600,
                 fontSize: 11,
-                bgcolor: "#f1f5f9",
+                bgcolor: "#F1F5F9",
                 color: "#475569",
                 borderRadius: "8px",
+                height: "26px",
               }}
             />
           )}
           <Chip
+            icon={
+              <ArticleOutlined
+                sx={{
+                  fontSize: "14px !important",
+                  color: "#64748B !important",
+                }}
+              />
+            }
             label="Resource File"
             size="small"
             sx={{
@@ -275,85 +304,37 @@ const ResourceCard = ({
               fontWeight: 600,
               fontSize: 11,
               bgcolor: "rgba(15, 23, 42, 0.04)",
-              color: "#64748b",
+              color: "#64748B",
               borderRadius: "8px",
+              height: "26px",
+              pl: 0.5,
             }}
           />
         </Stack>
-      </Stack>
+      </Box>
 
       {/* Card Footer Button Container */}
-      <Box sx={{ p: 3, pt: 0 }}>
-        {/* {isMember ? (
-          <BeamButton
-            variant="contained"
-            fullWidth
-            endIcon={<OpenInNewOutlined />}
-            onClick={() => handleAccess(fileUrl)}
-            sx={{
-              background: "linear-gradient(135deg, #1B365D 0%, #8C3100 100%)",
-              color: COLORS.WHITE,
-              textTransform: "none",
-              borderRadius: "12px",
-              padding: "11px 0",
-              fontFamily: montserrat.style.fontFamily,
-              fontWeight: 700,
-              fontSize: 14,
-              transition: "all 0.25s",
-              "&:hover": {
-                background: "linear-gradient(135deg, #8C3100 0%, #4f1b00 100%)",
-                boxShadow: "0px 8px 20px rgba(248, 93, 0, 0.25)",
-                transform: "scale(1.02)",
-              },
-            }}
-          >
-            Access Resource
-          </BeamButton>
-        ) : (
-          <BeamButton
-            variant="contained"
-            fullWidth
-            startIcon={<Lock />}
-            onClick={() => handleAccess()}
-            sx={{
-              background: "linear-gradient(135deg, #EE8E26 0%, #D97706 100%)",
-              color: COLORS.WHITE,
-              textTransform: "none",
-              borderRadius: "12px",
-              padding: "11px 0",
-              fontFamily: montserrat.style.fontFamily,
-              fontWeight: 700,
-              fontSize: 14,
-              transition: "all 0.25s",
-              "&:hover": {
-                background: "linear-gradient(135deg, #D97706 0%, #B45309 100%)",
-                boxShadow: "0px 8px 20px rgba(217, 119, 6, 0.3)",
-                transform: "scale(1.02)",
-              },
-            }}
-          >
-            Unlock to Access
-          </BeamButton>
-        )} */}
+      <Box sx={{ p: 3, pt: 2, borderTop: "1px solid #F1F5F9" }}>
         <BeamButton
           variant="contained"
           fullWidth
-          endIcon={<OpenInNewOutlined />}
+          endIcon={<OpenInNewOutlined sx={{ fontSize: 18 }} />}
           onClick={() => handleAccess(fileUrl)}
           sx={{
-            background: "linear-gradient(135deg, #1B365D 0%, #8C3100 100%)",
+            background: "linear-gradient(135deg, #1B365D 0%, #254F85 100%)",
             color: COLORS.WHITE,
             textTransform: "none",
             borderRadius: "12px",
             padding: "11px 0",
-            fontFamily: montserrat.style.fontFamily,
+            fontFamily: inter.style.fontFamily,
             fontWeight: 700,
             fontSize: 14,
-            transition: "all 0.25s",
+            boxShadow: "0 4px 12px rgba(27, 54, 93, 0.2)",
+            transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
             "&:hover": {
-              background: "linear-gradient(135deg, #8C3100 0%, #4f1b00 100%)",
-              boxShadow: "0px 8px 20px rgba(248, 93, 0, 0.25)",
-              transform: "scale(1.02)",
+              background: "linear-gradient(135deg, #0F2038 0%, #1B365D 100%)",
+              boxShadow: "0 8px 20px rgba(27, 54, 93, 0.35)",
+              transform: "translateY(-1px)",
             },
           }}
         >

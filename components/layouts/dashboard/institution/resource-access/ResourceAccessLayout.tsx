@@ -2,22 +2,19 @@
 
 import InstitutionDashboardLayout from "@/components/layouts/dashboard/institution/Index";
 import Breadcrumb from "@/components/widgets/Breadcrumb";
-import { COLORS, USER_ROLES } from "@/utils/enum";
-import { montserrat, roboto, inter } from "@/utils/fonts";
+import { USER_ROLES } from "@/utils/enum";
+import { inter } from "@/utils/fonts";
 import {
   Box,
   Card,
   Grid,
   Stack,
-  Tab,
-  Tabs,
   TextField,
   Typography,
   InputAdornment,
   IconButton,
-  Chip,
 } from "@mui/material";
-import { Close, SearchOutlined } from "@mui/icons-material";
+import { AutoAwesomeOutlined, Close, SearchOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import ResourceCard from "./ResourceCard";
 import { useGetResources } from "@/hooks/common/useResources";
@@ -25,6 +22,7 @@ import { useSignup } from "@/store/useSignup";
 import { useModal } from "@/store/useModal";
 import Plans from "@/components/modals/common/Plans";
 import { Atom } from "react-loading-indicators";
+import BeamButton from "@/components/widgets/BeamButton";
 
 const RESOURCE_TABS = [
   { label: "All Resources", value: "all" },
@@ -48,6 +46,19 @@ const ResourceAccessLayout = () => {
     false;
 
   const displayResources = resources;
+
+  const tabCounts = {
+    all: displayResources.length,
+    playbook: displayResources.filter((res) =>
+      res.type?.toLowerCase().includes("playbook")
+    ).length,
+    module: displayResources.filter((res) =>
+      res.type?.toLowerCase().includes("module")
+    ).length,
+    template: displayResources.filter((res) =>
+      res.type?.toLowerCase().includes("template")
+    ).length,
+  };
 
   const filteredResources = displayResources.filter((res) => {
     const matchesTab =
@@ -92,89 +103,145 @@ const ResourceAccessLayout = () => {
         </Stack>
 
         <Stack spacing={4}>
+          {/* Welcome Card Banner */}
           <Card
             sx={{
-              p: { xs: 4, md: 5 },
-              background: `linear-gradient(135deg, #1B365D 0%, #8c3100 100%)`,
+              p: { xs: 3.5, md: 5 },
+              background:
+                "linear-gradient(135deg, #0A192F 0%, #122B52 50%, #1B365D 100%)",
               color: "#fff",
               borderRadius: "24px",
               position: "relative",
               overflow: "hidden",
-              boxShadow: "0px 15px 35px rgba(248, 93, 0, 0.25)",
-              border: "1px solid rgba(255, 255, 255, 0.08)",
+              boxShadow: "0px 16px 40px -10px rgba(11, 23, 47, 0.35)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
             }}
           >
+            {/* Ambient glow accents */}
+            <Box
+              sx={{
+                width: 450,
+                height: 450,
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(circle, rgba(238, 142, 38, 0.18) 0%, transparent 70%)",
+                position: "absolute",
+                top: -120,
+                right: -80,
+                pointerEvents: "none",
+              }}
+            />
             <Box
               sx={{
                 width: 320,
                 height: 320,
                 borderRadius: "50%",
-                background: "rgba(255, 255, 255, 0.02)",
-                position: "absolute",
-                top: -100,
-                right: -100,
-                filter: "blur(40px)",
-              }}
-            />
-            <Box
-              sx={{
-                width: 200,
-                height: 200,
-                borderRadius: "50%",
                 background:
-                  "linear-gradient(135deg, rgba(238, 142, 38, 0.15) 0%, rgba(255, 255, 255, 0) 100%)",
+                  "radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)",
                 position: "absolute",
-                bottom: -80,
-                left: "15%",
-                filter: "blur(30px)",
+                bottom: -100,
+                left: "20%",
+                pointerEvents: "none",
               }}
             />
 
             <Stack
-              spacing={2}
-              sx={{ position: "relative", zIndex: 2, maxWidth: 700 }}
+              spacing={2.5}
+              sx={{ position: "relative", zIndex: 2, maxWidth: 760 }}
             >
-              <Chip
-                label="Premium Academic Toolkit"
-                size="small"
+              <Box
                 sx={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 1,
+                  px: 1.5,
+                  py: 0.6,
+                  borderRadius: "20px",
+                  background: "rgba(255, 255, 255, 0.08)",
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid rgba(255, 255, 255, 0.15)",
                   alignSelf: "flex-start",
-                  fontFamily: montserrat.style.fontFamily,
-                  fontWeight: 700,
-                  fontSize: 11,
-                  letterSpacing: "1px",
-                  textTransform: "uppercase",
-                  bgcolor: "rgba(238, 142, 38, 0.15)",
-                  color: "#EE8E26",
-                  border: "1px solid rgba(238, 142, 38, 0.3)",
-                  px: 1,
-                  py: 1.5,
                 }}
-              />
+              >
+                <AutoAwesomeOutlined sx={{ fontSize: 14, color: "#FDBA74" }} />
+                <Typography
+                  sx={{
+                    fontFamily: inter.style.fontFamily,
+                    fontWeight: 700,
+                    fontSize: 11,
+                    letterSpacing: "0.8px",
+                    textTransform: "uppercase",
+                    color: "#FED7AA",
+                  }}
+                >
+                  Premium Institutional Toolkit
+                </Typography>
+              </Box>
+
               <Typography
                 variant="h4"
                 sx={{
-                  fontFamily: montserrat.style.fontFamily,
+                  fontFamily: inter.style.fontFamily,
                   fontWeight: 800,
-                  letterSpacing: "-0.5px",
-                  fontSize: { xs: "28px", md: "36px" },
+                  letterSpacing: "-0.8px",
+                  fontSize: { xs: "28px", sm: "34px", md: "40px" },
+                  lineHeight: 1.2,
                 }}
               >
                 Institutional Resource Library
               </Typography>
+
               <Typography
                 variant="body1"
                 sx={{
                   fontFamily: inter.style.fontFamily,
-                  color: "rgba(255, 255, 255, 0.8)",
-                  lineHeight: 1.6,
+                  color: "rgba(255, 255, 255, 0.85)",
+                  lineHeight: 1.65,
                   fontSize: { xs: "14px", md: "15px" },
+                  maxWidth: 680,
                 }}
               >
                 Equip your coordinators and educators with official IAIRE
                 playbooks, research frameworks, templates, and training modules
                 designed to foster institutional innovation.
               </Typography>
+
+              {/* Quick Feature Badges */}
+              <Stack
+                direction="row"
+                spacing={1.5}
+                flexWrap="wrap"
+                useFlexGap
+                sx={{ pt: 0.5 }}
+              >
+                {[
+                  { label: "Verified Curricula", icon: "📚" },
+                  { label: "Institutional Frameworks", icon: "🏛️" },
+                  { label: "School Playbooks", icon: "📄" },
+                  { label: "Instant Digital Access", icon: "⚡" },
+                ].map((item) => (
+                  <Box
+                    key={item.label}
+                    sx={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 0.8,
+                      px: 1.5,
+                      py: 0.6,
+                      borderRadius: "10px",
+                      background: "rgba(255, 255, 255, 0.06)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      fontSize: "12px",
+                      fontFamily: inter.style.fontFamily,
+                      fontWeight: 500,
+                      color: "rgba(255, 255, 255, 0.9)",
+                    }}
+                  >
+                    <span>{item.icon}</span>
+                    <span>{item.label}</span>
+                  </Box>
+                ))}
+              </Stack>
             </Stack>
           </Card>
 
@@ -188,58 +255,80 @@ const ResourceAccessLayout = () => {
               sx={{
                 mb: 4,
                 pb: 2,
-                borderBottom: "1px solid #e2e8f0",
+                borderBottom: "1px solid #E2E8F0",
               }}
             >
-              {/* Segmented Pill Tabs */}
-              <Tabs
-                value={activeTab}
-                onChange={(e, val) => setActiveTab(val)}
-                variant="scrollable"
-                scrollButtons="auto"
+              {/* Segmented Pill Tabs with Count Badges */}
+              <Stack
+                direction="row"
+                spacing={1}
                 sx={{
-                  minHeight: "auto",
-                  "& .MuiTabs-indicator": {
-                    display: "none",
-                  },
-                  "& .MuiTabs-flexContainer": {
-                    gap: "8px",
-                  },
+                  p: 0.75,
+                  bgcolor: "#F8FAFC",
+                  borderRadius: "16px",
+                  border: "1px solid #E2E8F0",
+                  overflowX: "auto",
+                  maxWidth: "100%",
+                  "&::-webkit-scrollbar": { display: "none" },
                 }}
               >
-                {RESOURCE_TABS.map((tab) => (
-                  <Tab
-                    key={tab.value}
-                    label={tab.label}
-                    value={tab.value}
-                    sx={{
-                      borderRadius: "10px",
-                      textTransform: "none",
-                      minHeight: "auto",
-                      py: 1.2,
-                      px: 2.5,
-                      fontSize: "14px",
-                      fontFamily: montserrat.style.fontFamily,
-                      fontWeight: 600,
-                      color: "#64748b",
-                      bgcolor: "rgba(15, 23, 42, 0.03)",
-                      transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
-                      border: "1px solid transparent",
-                      "&.Mui-selected": {
-                        bgcolor: "#fff",
-                        color: "#1B365D",
-                        borderColor: "#e2e8f0",
-                        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.04)",
-                        fontWeight: 700,
-                      },
-                      "&:hover:not(.Mui-selected)": {
-                        bgcolor: "rgba(15, 23, 42, 0.06)",
-                        color: "#334155",
-                      },
-                    }}
-                  />
-                ))}
-              </Tabs>
+                {RESOURCE_TABS.map((tab) => {
+                  const isSelected = activeTab === tab.value;
+                  const count =
+                    tabCounts[tab.value as keyof typeof tabCounts] ?? 0;
+                  return (
+                    <Box
+                      key={tab.value}
+                      onClick={() => setActiveTab(tab.value)}
+                      sx={{
+                        cursor: "pointer",
+                        py: 1,
+                        px: 2,
+                        borderRadius: "10px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 1,
+                        whiteSpace: "nowrap",
+                        fontFamily: inter.style.fontFamily,
+                        fontSize: "13.5px",
+                        fontWeight: isSelected ? 700 : 500,
+                        color: isSelected ? "#0F172A" : "#64748B",
+                        bgcolor: isSelected ? "#FFFFFF" : "transparent",
+                        boxShadow: isSelected
+                          ? "0 2px 8px rgba(15, 23, 42, 0.08)"
+                          : "none",
+                        border: isSelected
+                          ? "1px solid #E2E8F0"
+                          : "1px solid transparent",
+                        transition: "all 0.2s ease",
+                        "&:hover": {
+                          color: "#0F172A",
+                          bgcolor: isSelected
+                            ? "#FFFFFF"
+                            : "rgba(255, 255, 255, 0.6)",
+                        },
+                      }}
+                    >
+                      <span>{tab.label}</span>
+                      <Box
+                        sx={{
+                          fontSize: "11px",
+                          fontWeight: 700,
+                          px: 0.8,
+                          py: 0.2,
+                          borderRadius: "6px",
+                          bgcolor: isSelected
+                            ? "rgba(27, 54, 93, 0.08)"
+                            : "rgba(100, 116, 139, 0.1)",
+                          color: isSelected ? "#1B365D" : "#64748B",
+                        }}
+                      >
+                        {count}
+                      </Box>
+                    </Box>
+                  );
+                })}
+              </Stack>
 
               {/* Advanced Search Input */}
               <TextField
@@ -266,11 +355,11 @@ const ResourceAccessLayout = () => {
                     </InputAdornment>
                   ),
                   sx: {
-                    borderRadius: "12px",
+                    borderRadius: "14px",
                     bgcolor: "#fff",
                     fontSize: "14px",
                     fontFamily: inter.style.fontFamily,
-                    width: { xs: "100%", md: 280 },
+                    width: { xs: "100%", md: 300 },
                     boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
                     "& fieldset": {
                       borderColor: "#e2e8f0",
@@ -308,21 +397,36 @@ const ResourceAccessLayout = () => {
                     <Box
                       sx={{
                         textAlign: "center",
-                        py: 12,
+                        py: 10,
+                        px: 3,
                         bgcolor: "#fff",
                         borderRadius: "20px",
                         border: "1px dashed #cbd5e1",
                       }}
                     >
-                      <SearchOutlined
-                        sx={{ fontSize: 48, color: "#94a3b8", mb: 2 }}
-                      />
+                      <Box
+                        sx={{
+                          width: 64,
+                          height: 64,
+                          borderRadius: "50%",
+                          bgcolor: "#F8FAFC",
+                          display: "grid",
+                          placeItems: "center",
+                          mx: "auto",
+                          mb: 2,
+                          border: "1px solid #E2E8F0",
+                        }}
+                      >
+                        <SearchOutlined
+                          sx={{ fontSize: 32, color: "#94a3b8" }}
+                        />
+                      </Box>
                       <Typography
                         variant="h6"
                         sx={{
-                          fontFamily: montserrat.style.fontFamily,
+                          fontFamily: inter.style.fontFamily,
                           fontWeight: 700,
-                          color: "#334155",
+                          color: "#1E293B",
                           mb: 1,
                         }}
                       >
@@ -333,13 +437,34 @@ const ResourceAccessLayout = () => {
                         sx={{
                           fontFamily: inter.style.fontFamily,
                           color: "#64748b",
-                          maxWidth: 380,
+                          maxWidth: 420,
                           mx: "auto",
+                          mb: 2,
                         }}
                       >
                         We couldn't find any resources matching your search or
-                        filters. Try adjusting your search query.
+                        filters. Try resetting the search or exploring other tabs.
                       </Typography>
+                      {(searchQuery || activeTab !== "all") && (
+                        <BeamButton
+                          variant="outlined"
+                          size="small"
+                          onClick={() => {
+                            setSearchQuery("");
+                            setActiveTab("all");
+                          }}
+                          sx={{
+                            textTransform: "none",
+                            borderRadius: "10px",
+                            fontFamily: inter.style.fontFamily,
+                            fontWeight: 600,
+                            borderColor: "#CBD5E1",
+                            color: "#1B365D",
+                          }}
+                        >
+                          Reset Filters
+                        </BeamButton>
+                      )}
                     </Box>
                   </Grid>
                 )}

@@ -8,11 +8,12 @@ import {
   Divider,
   Grid,
   Stack,
-  Typography} from "@mui/material";
+  Typography,
+} from "@mui/material";
 import { Lightbulb } from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { montserrat } from "@/utils/fonts";
-import { COLORS } from "@/utils/enum";
+import { APPROVAL_STATUS, COLORS } from "@/utils/enum";
 import { TEAM_DETAILS_RESPONSE } from "@/utils/type";
 import BeamButton from "@/components/widgets/BeamButton";
 
@@ -24,7 +25,10 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
   const router = useRouter();
 
   return (
-    <Card elevation={0} sx={{ border: "1px solid #e0e0e0", borderRadius: "12px" }}>
+    <Card
+      elevation={0}
+      sx={{ border: "1px solid #e0e0e0", borderRadius: "12px" }}
+    >
       <CardContent sx={{ p: 3 }}>
         <Typography
           className={montserrat.className}
@@ -73,7 +77,12 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
                       alignItems="center"
                       gap={2}
                     >
-                      <Avatar sx={{ bgcolor: "rgba(248, 93, 0, 0.08)", color: "#1B365D" }}>
+                      <Avatar
+                        sx={{
+                          bgcolor: "rgba(248, 93, 0, 0.08)",
+                          color: "#1B365D",
+                        }}
+                      >
                         <Lightbulb />
                       </Avatar>
                       <Box>
@@ -99,15 +108,15 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
                         size="small"
                         sx={{
                           bgcolor:
-                            innovation.status === "APPROVED"
+                            innovation.status === APPROVAL_STATUS.APPROVED
                               ? "#e8f5e9"
-                              : innovation.status === "PENDING"
+                              : innovation.status === APPROVAL_STATUS.PENDING
                                 ? "#fff3e0"
                                 : "#ffebee",
                           color:
-                            innovation.status === "APPROVED"
+                            innovation.status === APPROVAL_STATUS.APPROVED
                               ? "#2e7d32"
-                              : innovation.status === "PENDING"
+                              : innovation.status === APPROVAL_STATUS.PENDING
                                 ? "#ef6c00"
                                 : "#c62828",
                           fontWeight: 600,
@@ -128,8 +137,11 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
                       )}
                     </Grid>
 
-                    <Grid size={{ xs: 12, sm: 3 }} sx={{ textAlign: { xs: "left", sm: "right" } }}>
-                      <BeamButton
+                    <Grid
+                      size={{ xs: 12, sm: 3 }}
+                      sx={{ textAlign: { xs: "left", sm: "right" } }}
+                    >
+                      {/* <BeamButton
                         variant="outlined"
                         size="small"
                         onClick={() =>
@@ -149,7 +161,7 @@ const TeamInnovationsCard = ({ teamDetails }: TeamInnovationsCardProps) => {
                         }}
                       >
                         View Details
-                      </BeamButton>
+                      </BeamButton> */}
                     </Grid>
                   </Grid>
                 </Box>

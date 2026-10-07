@@ -2,7 +2,13 @@
 import { useGetHonorariumDetails } from "@/hooks/mentor/useRequestHonorarium";
 import { COLORS } from "@/utils/enum";
 import { montserrat, roboto } from "@/utils/fonts";
-import { CircularProgress, Divider, Grid, Stack, Typography } from "@mui/material";
+import {
+  CircularProgress,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useEffect } from "react";
 
 const detailLabelSx = {
@@ -71,8 +77,13 @@ const HonorariumDetailsModal = ({ id }: HonorariumDetailsModalProps) => {
   }
 
   const creatorName = details.creator
-    ? `${details.creator.firstName || ""} ${details.creator.lastName || ""}`.trim() || details.creator.email
+    ? `${details.creator.firstName || ""} ${details.creator.lastName || ""}`.trim() ||
+      details.creator.email
     : "-";
+
+  const isRejected =
+    details.status?.toLowerCase() === "rejected" ||
+    Boolean(details.rejectReason || details.rejectionReason);
 
   return (
     <>
@@ -103,7 +114,11 @@ const HonorariumDetailsModal = ({ id }: HonorariumDetailsModalProps) => {
         <DetailRow label="Status" value={details.status} />
         <DetailRow
           label="Amount"
-          value={details.amount !== null && details.amount !== undefined ? `₹${details.amount}` : "Pending Approval"}
+          value={
+            details.amount !== null && details.amount !== undefined
+              ? `₹${details.amount}`
+              : "Pending Approval"
+          }
         />
         <DetailRow
           label="Date Requested"
@@ -119,8 +134,24 @@ const HonorariumDetailsModal = ({ id }: HonorariumDetailsModalProps) => {
         />
         <Grid size={12}>
           <Typography sx={detailLabelSx}>Description</Typography>
-          <Typography sx={detailValueSx}>{details.description || "-"}</Typography>
+          <Typography sx={detailValueSx}>
+            {details.description || "-"}
+          </Typography>
         </Grid>
+
+        {isRejected && (
+          <Grid size={12}>
+            <Typography sx={detailLabelSx}>Rejection Reason</Typography>
+            <Typography
+              sx={{
+                ...detailValueSx,
+                color: "#d32f2f",
+              }}
+            >
+              {details.rejectReason || details.rejectionReason || "-"}
+            </Typography>
+          </Grid>
+        )}
 
         <Grid size={12}>
           <Divider sx={{ my: 1 }} />
@@ -137,10 +168,7 @@ const HonorariumDetailsModal = ({ id }: HonorariumDetailsModalProps) => {
           </Typography>
         </Grid>
 
-        <DetailRow
-          label="Account Holder"
-          value={details.accountHolderName}
-        />
+        <DetailRow label="Account Holder" value={details.accountHolderName} />
         <DetailRow label="Bank Name" value={details.bankName} />
         <DetailRow label="Account Number" value={details.accountNumber} />
         <DetailRow label="IFSC Code" value={details.ifscCode} />

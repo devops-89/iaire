@@ -9,17 +9,9 @@ import SupportTicketHeader from "./components/SupportTicketHeader";
 import SupportTicketStats from "./components/SupportTicketStats";
 import SupportTicketFilter from "./components/SupportTicketFilter";
 import SupportTicketTable from "./components/SupportTicketTable";
+import { getCategoryLabel } from "@/utils/constant";
 
-export const getCategoryLabel = (cat: string) => {
-  const map: Record<string, string> = {
-    TECHNICAL_SUPPORT: "Technical Support",
-    TRAINING: "Training",
-    RESOURCE_ACCESS: "Resource Access",
-    BILLING: "Billing",
-    OTHER: "Other",
-  };
-  return map[cat] || cat;
-};
+export { getCategoryLabel };
 
 const SupportTicket = () => {
   const { tickets, fetchTickets, loading } = useGetAllSupportTickets();

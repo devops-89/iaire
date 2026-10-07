@@ -14,8 +14,7 @@ import moment from "moment";
 import { Ticket } from "./TicketDetailsDrawer";
 import { COLORS, SUPPORT_TICKET_STATUS } from "@/utils/enum";
 import { roboto } from "@/utils/fonts";
-import { SUPPORT_TICKET_HEADER } from "@/utils/constant";
-import { getCategoryLabel } from "../SupportTicket";
+import { SUPPORT_TICKET_HEADER, getCategoryLabel } from "@/utils/constant";
 
 interface SupportTicketTableProps {
   loading: boolean;

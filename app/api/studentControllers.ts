@@ -1,5 +1,5 @@
-import { UPDATE_PROFILE_FORM_PROPS } from "@/utils/type";
-import { platformSecuredApi, userPublicApi } from "./config";
+import { ASSISTANCE_RESPONSE_DATA_PROPS, UPDATE_PROFILE_FORM_PROPS } from "@/utils/type";
+import { needAssistance, platformSecuredApi, userPublicApi } from "./config";
 
 export const studentControllers = {
   updateSelfProfileBeforeSignup: async (
@@ -71,6 +71,22 @@ export const studentControllers = {
   getStudentDashboard: async () => {
     try {
       const result = await platformSecuredApi.get("/dashboard/student");
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  needAssistance: async (data: ASSISTANCE_RESPONSE_DATA_PROPS) => {
+    try {
+      let result = await needAssistance.post("/create", data);
+      return result.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  getAllTickets: async () => {
+    try {
+      let result = await needAssistance.get("/all");
       return result.data;
     } catch (error) {
       throw error;

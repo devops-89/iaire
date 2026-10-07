@@ -60,6 +60,11 @@ export const STUDENT_SIDEBAR_DATA = [
     url: "/dashboard/student/research-management",
   },
   {
+    icon: Help,
+    label: "Request Support",
+    url: "/dashboard/student/support-ticket",
+  },
+  {
     icon: AccountTree,
     label: "Resource Access",
     url: "/dashboard/student/resource-access",
@@ -2385,6 +2390,17 @@ export const SUPPORT_TICKET_HEADER = [
   "Priority",
   "Status",
 ];
+
+export const getCategoryLabel = (cat: string) => {
+  const map: Record<string, string> = {
+    TECHNICAL_SUPPORT: "Technical Support",
+    TRAINING: "Training",
+    RESOURCE_ACCESS: "Resource Access",
+    BILLING: "Billing",
+    OTHER: "Other",
+  };
+  return map[cat] || cat;
+};
 
 export const HONORARIUM_CATEGORY = [
   {
