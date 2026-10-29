@@ -374,36 +374,9 @@ const AddEducatorcomponent = () => {
                 onBlur={formik.handleBlur}
                 error={formik.touched.phone && Boolean(formik.errors.phone)}
                 helperText={formik.touched.phone && formik.errors.phone}
-                defaultCountry="IN"
+                defaultCountry="US"
               />
             </Grid>
-
-            {/* <Grid size={{ xs: 12, md: 6 }}>
-              <Autocomplete
-                multiple
-                freeSolo
-                options={[]}
-                value={formik.values.primarySubjects}
-                onChange={(e, newValue) => {
-                  formik.setFieldValue("primarySubjects", newValue);
-                }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Primary Subjects"
-                    placeholder="Type a subject and press Enter"
-                    error={
-                      formik.touched.primarySubjects &&
-                      Boolean(formik.errors.primarySubjects)
-                    }
-                    helperText={
-                      formik.touched.primarySubjects &&
-                      (formik.errors.primarySubjects as string)
-                    }
-                  />
-                )}
-              />
-            </Grid> */}
 
             <Grid size={{ xs: 12, md: 6 }}>
               <Autocomplete
@@ -477,20 +450,6 @@ const AddEducatorcomponent = () => {
               </Grid>
             )}
 
-            {/* {!planLoading &&
-              planData.map((val, i) => (
-                <Grid size={12} key={i}>
-                  <PlanCard
-                    name={val.name}
-                    billingCycle={val.billingCycle}
-                    price={val.price}
-                    limits={val.limits}
-                    currency={val.currency}
-                    id={val.id}
-                  />
-                </Grid>
-              ))} */}
-
             <Grid size={{ xs: 12 }} sx={{ mt: 3, display: "flex", gap: 2 }}>
               <BeamButton
                 type="submit"
@@ -507,9 +466,15 @@ const AddEducatorcomponent = () => {
                   "&:hover": {
                     bgcolor: "#1a2a3a",
                   },
+                  width: 180,
+                  height: 50,
                 }}
               >
-                {loading ? "Adding..." : "Add Educator"}
+                {loading ? (
+                  <CircularProgress sx={{ color: "#fff" }} size={5} />
+                ) : (
+                  "Add Educator"
+                )}
               </BeamButton>
               <BeamButton
                 onClick={() => formik.resetForm()}

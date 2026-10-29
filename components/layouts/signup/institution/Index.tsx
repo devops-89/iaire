@@ -89,15 +89,16 @@ const InstitutionRegistration = () => {
     validationSchema: institutionSignupValidationSchema,
     onSubmit: (values) => {
       setReviewLoading(true);
-      setInstitutionData(values as any);
-      router.push("/signup/review");
-      setReviewLoading(false);
+      setTimeout(() => {
+        setInstitutionData(values as any);
+        router.push("/signup/review");
+        setReviewLoading(false);
+      }, 10000);
     },
   });
 
   const countryChangeHandler = (_: any, newValue: any) => {
     setCountry(newValue);
-    console.log("country", newValue);
     if (newValue) {
       formik.setFieldValue("country", newValue);
       formik.setFieldValue("isd", "");

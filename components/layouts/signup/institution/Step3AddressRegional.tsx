@@ -18,6 +18,7 @@ import {
   AlternateEmail,
   ArrowBack,
   CheckCircle,
+  Phone,
 } from "@mui/icons-material";
 import { montserrat } from "@/utils/fonts";
 import { US_STATES } from "@/utils/constant";
@@ -153,8 +154,9 @@ const Step3AddressRegional: React.FC<Step3AddressRegionalProps> = ({
           name="contactPersonPhone"
           label="Contact Person Phone"
           placeholder="Phone Number"
+          type="tel"
           formik={formik}
-          icon={<LocationOn />}
+          icon={<Phone />}
           required
         />
       </Grid>

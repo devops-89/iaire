@@ -36,7 +36,8 @@ const ReviewPage = () => {
     if (typeof window !== "undefined") {
       let activeRole: string | null = null;
       if (institutionData) activeRole = USER_ROLES.INSTITUTION;
-      else if (educatorData) activeRole = educatorData.role ?? USER_ROLES.EDUCATOR;
+      else if (educatorData)
+        activeRole = educatorData.role ?? USER_ROLES.EDUCATOR;
       else if (data) activeRole = data.role ?? USER_ROLES.STUDENT;
 
       if (!activeRole) {

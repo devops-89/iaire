@@ -83,16 +83,20 @@ export const institutionSignupValidationSchema = Yup.object({
   institutionName: Yup.string().required("Institution name is required"),
   principalName: Yup.string().required("Principal's name is required"),
   country: Yup.mixed().required("Please Select Country"),
-  affiliationType: Yup.mixed().when("country", {
-    is: (val: any) => val?.code === "IN" || val?.code === "AE",
-    then: (schema) => schema.required("Affiliation type is required"),
-    otherwise: (schema) => schema.optional(),
-  }),
-  affiliationNumber: Yup.string().when("country", {
-    is: (val: any) => val?.code === "IN" || val?.code === "AE",
-    then: (schema) => schema.required("Affiliation number is required"),
-    otherwise: (schema) => schema.optional(),
-  }),
+  affiliationType: Yup.mixed()
+    .nullable()
+    .when("country", {
+      is: (val: any) => val?.code === "IN" || val?.code === "AE",
+      then: (schema) => schema.required("Affiliation type is required"),
+      otherwise: (schema) => schema.optional(),
+    }),
+  affiliationNumber: Yup.string()
+    .nullable()
+    .when("country", {
+      is: (val: any) => val?.code === "IN" || val?.code === "AE",
+      then: (schema) => schema.required("Affiliation number is required"),
+      otherwise: (schema) => schema.optional(),
+    }),
   affiliationCertificate: Yup.mixed()
     .nullable()
     .when("country", {
@@ -100,11 +104,13 @@ export const institutionSignupValidationSchema = Yup.object({
       then: (schema) => schema.required("Affiliation certificate is required"),
       otherwise: (schema) => schema.optional(),
     }),
-  isd: Yup.string().when("country", {
-    is: (val: any) => val?.code === "US",
-    then: (schema) => schema.required("ISD is required"),
-    otherwise: (schema) => schema.optional(),
-  }),
+  isd: Yup.string()
+    .nullable()
+    .when("country", {
+      is: (val: any) => val?.code === "US",
+      then: (schema) => schema.required("ISD is required"),
+      otherwise: (schema) => schema.optional(),
+    }),
   email: Yup.string()
     .email("Invalid email")
     .required("Institution email is required"),
@@ -132,14 +138,27 @@ export const institutionSignupValidationSchema = Yup.object({
 
   noOfTeachers: Yup.number().optional(),
   noOfStudents: Yup.number().optional(),
+  totalTeacherCount: Yup.number().nullable().optional(),
+  totalStudentCount: Yup.number().nullable().optional(),
   registrationYear: Yup.string().optional(),
   contactPersonName: Yup.string().required("Please Enter Contact Person Name"),
   contactPersonEmail: Yup.string()
     .required("Please Enter Contact Person Email")
     .email("Invalid Email"),
-  contactPersonPhone: Yup.string().required(
-    "Please Enter Contact Person Phone",
-  ),
+  contactPersonPhone: Yup.string()
+    .required("Please Enter Contact Person Phone")
+    .test(
+      "is-valid-phone",
+      "Please enter a valid phone number (10 to 15 digits)",
+      (value) => {
+        if (!value) return false;
+        const validFormat = /^\+?[0-9\s\-()]+$/.test(value);
+        if (!validFormat) return false;
+        if (value.slice(1).includes("+")) return false;
+        const digits = value.replace(/\D/g, "");
+        return digits.length >= 10 && digits.length <= 15;
+      },
+    ),
 });
 
 export const addEducatorValidationSchema = Yup.object({

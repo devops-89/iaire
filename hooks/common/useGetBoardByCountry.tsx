@@ -24,8 +24,9 @@ export const useBoardByCountry = (country: COUNTRYDATAPROPS | null) => {
         } else if (country?.code === "US") {
           try {
             const result = await countryControllers.getIsdByCountry(country.id);
-            // console.log("res", result);
-            setBoardData(result?.data?.data?.isdCodes);
+            setBoardData(
+              result?.data?.isdCodes || result?.data?.data?.isdCodes || [],
+            );
           } catch (error) {
             console.log("Error in fetching board by country", error);
           } finally {
